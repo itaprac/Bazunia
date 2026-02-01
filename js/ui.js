@@ -1,0 +1,755 @@
+// ui.js — DOM rendering and event handling
+
+import { shuffle, renderLatex } from './utils.js';
+
+// --- Deck List View ---
+
+export function renderDeckList(decks, statsMap) {
+  const container = document.getElementById('deck-list-container');
+
+  if (decks.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">&#128218;</div>
+        <div class="empty-state-title">Brak talii</div>
+        <div class="empty-state-text">
+          Importuj plik JSON z pytaniami, aby rozpocząć naukę.
+        </div>
+        <button class="btn btn-primary" id="btn-import-empty">Importuj talię</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = decks.map(deck => {
+    const stats = statsMap[deck.id] || { dueReview: 0, dueLearning: 0, newAvailable: 0, totalCards: 0 };
+    const hasDue = stats.dueReview > 0 || stats.dueLearning > 0 || stats.newAvailable > 0;
+    return `
+      <div class="deck-card" data-deck-id="${deck.id}">
+        <div class="deck-card-header">
+          <div class="deck-card-title">${escapeHtml(deck.name)}</div>
+        </div>
+        ${deck.description ? `<div class="deck-card-description">${escapeHtml(deck.description)}</div>` : ''}
+        <div class="deck-card-stats">
+          <div class="deck-stat new">
+            <span class="stat-value">${stats.newAvailable}</span>
+            <span>nowych</span>
+          </div>
+          <div class="deck-stat learning">
+            <span class="stat-value">${stats.dueLearning}</span>
+            <span>w nauce</span>
+          </div>
+          <div class="deck-stat review">
+            <span class="stat-value">${stats.dueReview}</span>
+            <span>do powtórki</span>
+          </div>
+        </div>
+        <div class="deck-card-actions">
+          <button class="btn btn-primary btn-study" data-deck-id="${deck.id}">
+            Otwórz
+          </button>
+          <button class="btn btn-secondary btn-sm btn-deck-settings" data-deck-id="${deck.id}">
+            Ustawienia
+          </button>
+          <button class="btn btn-secondary btn-sm btn-delete-deck" data-deck-id="${deck.id}" data-deck-name="${escapeHtml(deck.name)}">
+            Usuń
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// --- Question Rendering ---
+
+export function renderQuestion(question, cardNumber, totalForSession, isMultiSelect, shouldShuffle = true) {
+  const shuffledAnswers = shouldShuffle ? shuffle(question.answers) : [...question.answers];
+  const hint = isMultiSelect ? '(Zaznacz wszystkie poprawne)' : '(Wybierz jedną odpowiedź)';
+  const indicatorType = isMultiSelect ? 'checkbox' : '';
+
+  const html = `
+    <div class="question-card">
+      <div class="question-card-topbar">
+        <div class="question-number">Pytanie ${cardNumber}</div>
+        <button class="btn-edit-question" id="btn-edit-question" title="Edytuj pytanie">&#9998;</button>
+      </div>
+      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      <div class="question-hint">${hint}</div>
+      <div class="answers-list" id="answers-list">
+        ${shuffledAnswers.map((a, i) => `
+          <div class="answer-option" data-answer-id="${a.id}" data-index="${i}">
+            <div class="answer-indicator ${indicatorType}">${i + 1}</div>
+            <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="check-answer-container">
+        <button class="btn btn-primary" id="btn-check-answer">Pokaż odpowiedź</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('study-content').innerHTML = html;
+
+  return shuffledAnswers;
+}
+
+// --- Answer Feedback Rendering ---
+
+export function renderAnswerFeedback(question, shuffledAnswers, selectedIds, explanation, intervals, keybindings = null) {
+  const correctIds = new Set(question.answers.filter(a => a.correct).map(a => a.id));
+  const noSelection = selectedIds.size === 0;
+
+  const answersHtml = shuffledAnswers.map(a => {
+    const isCorrect = correctIds.has(a.id);
+    const isSelected = selectedIds.has(a.id);
+
+    let stateClass = 'disabled';
+    let icon = '';
+
+    if (noSelection) {
+      if (isCorrect) {
+        stateClass += ' correct-selected';
+        icon = '<span class="answer-feedback-icon" style="color: var(--color-success)">&#10003;</span>';
+      }
+    } else if (isSelected && isCorrect) {
+      stateClass += ' correct-selected';
+      icon = '<span class="answer-feedback-icon" style="color: var(--color-success)">&#10003;</span>';
+    } else if (isSelected && !isCorrect) {
+      stateClass += ' incorrect-selected';
+      icon = '<span class="answer-feedback-icon" style="color: var(--color-danger)">&#10007;</span>';
+    } else if (!isSelected && isCorrect) {
+      stateClass += ' correct-missed';
+      icon = '<span class="answer-feedback-icon" style="color: var(--color-warning)">&#10003;</span>';
+    }
+
+    return `
+      <div class="answer-option ${stateClass}" data-answer-id="${a.id}">
+        <div class="answer-indicator ${correctIds.size > 1 ? 'checkbox' : ''}"></div>
+        <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+        ${icon}
+      </div>
+    `;
+  }).join('');
+
+  const explanationHtml = explanation ? `
+    <div class="explanation-box">
+      <div class="explanation-label">Wyjaśnienie</div>
+      <div>${renderLatex(escapeHtml(explanation))}</div>
+    </div>
+  ` : '';
+
+  const kb = keybindings;
+  const keyLabel = (keys) => keys ? keys.map(k => formatKeyName(k)).join(' / ') : '';
+
+  const ratingHtml = `
+    <div class="rating-buttons">
+      <button class="rating-btn again" data-rating="1">
+        <span class="rating-label">Powtórz</span>
+        <span class="rating-interval">${intervals.again}</span>
+        <span class="rating-key">${kb ? keyLabel(kb.again) : '1'}</span>
+      </button>
+      <button class="rating-btn hard" data-rating="2">
+        <span class="rating-label">Trudne</span>
+        <span class="rating-interval">${intervals.hard}</span>
+        <span class="rating-key">${kb ? keyLabel(kb.hard) : '2'}</span>
+      </button>
+      <button class="rating-btn good" data-rating="3">
+        <span class="rating-label">Dobrze</span>
+        <span class="rating-interval">${intervals.good}</span>
+        <span class="rating-key">${kb ? keyLabel(kb.good) : '3'}</span>
+      </button>
+      <button class="rating-btn easy" data-rating="4">
+        <span class="rating-label">Łatwe</span>
+        <span class="rating-interval">${intervals.easy}</span>
+        <span class="rating-key">${kb ? keyLabel(kb.easy) : '4'}</span>
+      </button>
+    </div>
+    <div class="rating-shortcut-hint">${kb ? keyLabel(kb.showAnswer) + ' = Dobrze' : 'Spacja / Enter = Dobrze'}</div>
+  `;
+
+  document.getElementById('study-content').innerHTML = `
+    <div class="question-card">
+      <div class="question-card-topbar">
+        <div></div>
+        <button class="btn-edit-question" id="btn-edit-question" title="Edytuj pytanie">&#9998;</button>
+      </div>
+      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      <div class="answers-list">${answersHtml}</div>
+      ${explanationHtml}
+      ${ratingHtml}
+    </div>
+  `;
+}
+
+// --- Session Complete ---
+
+export function renderSessionComplete(todayStats, deckName) {
+  document.getElementById('complete-deck-name').textContent = deckName;
+  const total = todayStats.againCount + todayStats.hardCount + todayStats.goodCount + todayStats.easyCount;
+  const maxCount = Math.max(todayStats.againCount, todayStats.hardCount, todayStats.goodCount, todayStats.easyCount, 1);
+
+  document.getElementById('complete-content').innerHTML = `
+    <div class="session-complete">
+      <div class="session-complete-title">Sesja zakończona!</div>
+      <div class="session-stats-grid">
+        <div class="session-stat">
+          <div class="stat-number">${total}</div>
+          <div class="stat-label">Kart przeglądanych</div>
+        </div>
+        <div class="session-stat">
+          <div class="stat-number">${todayStats.newStudied}</div>
+          <div class="stat-label">Nowych kart</div>
+        </div>
+        <div class="session-stat">
+          <div class="stat-number">${todayStats.reviewsDone}</div>
+          <div class="stat-label">Powtórek</div>
+        </div>
+      </div>
+      <div class="rating-breakdown">
+        <h3>Rozkład ocen</h3>
+        ${ratingBarRow('Powtórz', todayStats.againCount, maxCount, 'var(--color-again)')}
+        ${ratingBarRow('Trudne', todayStats.hardCount, maxCount, 'var(--color-hard)')}
+        ${ratingBarRow('Dobrze', todayStats.goodCount, maxCount, 'var(--color-good)')}
+        ${ratingBarRow('Łatwe', todayStats.easyCount, maxCount, 'var(--color-easy)')}
+      </div>
+      <button class="btn btn-primary" id="btn-back-to-decks-complete">Powrót do listy talii</button>
+    </div>
+  `;
+}
+
+function ratingBarRow(label, count, max, color) {
+  const pct = max > 0 ? (count / max) * 100 : 0;
+  return `
+    <div class="rating-bar-row">
+      <span class="rating-bar-label">${label}</span>
+      <div class="rating-bar-container">
+        <div class="rating-bar-fill" style="width: ${pct}%; background: ${color}"></div>
+      </div>
+      <span class="rating-bar-count">${count}</span>
+    </div>
+  `;
+}
+
+// --- Study Header Counts ---
+
+export function updateStudyCounts(learningCount, reviewCount, newCount, activeSource) {
+  const elLearning = document.getElementById('count-learning');
+  const elReview = document.getElementById('count-review');
+  const elNew = document.getElementById('count-new');
+  elLearning.textContent = learningCount;
+  elReview.textContent = reviewCount;
+  elNew.textContent = newCount;
+  elLearning.classList.toggle('active', activeSource === 'learning' || activeSource === 'learning_wait');
+  elReview.classList.toggle('active', activeSource === 'review');
+  elNew.classList.toggle('active', activeSource === 'new');
+}
+
+export function updateProgress(studied, total) {
+  const pct = total > 0 ? Math.round((studied / total) * 100) : 0;
+  document.getElementById('study-progress').style.width = `${pct}%`;
+}
+
+// --- View Switching ---
+
+export function showView(viewId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(`view-${viewId}`).classList.add('active');
+}
+
+// --- Notification Toast ---
+
+export function showNotification(message, type = 'info') {
+  // Remove any existing notification
+  const existing = document.querySelector('.notification');
+  if (existing) existing.remove();
+
+  const el = document.createElement('div');
+  el.className = `notification ${type}`;
+  el.textContent = message;
+  document.body.appendChild(el);
+
+  setTimeout(() => {
+    el.classList.add('fade-out');
+    setTimeout(() => el.remove(), 300);
+  }, 3000);
+}
+
+// --- Confirm Modal ---
+
+export function showConfirm(title, text) {
+  return new Promise((resolve) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box">
+        <div class="modal-title">${escapeHtml(title)}</div>
+        <div class="modal-text">${escapeHtml(text)}</div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary modal-cancel">Anuluj</button>
+          <button class="btn btn-danger modal-confirm">Usuń</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('.modal-cancel').addEventListener('click', () => {
+      overlay.remove();
+      resolve(false);
+    });
+    overlay.querySelector('.modal-confirm').addEventListener('click', () => {
+      overlay.remove();
+      resolve(true);
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.remove();
+        resolve(false);
+      }
+    });
+  });
+}
+
+// --- Category Select ---
+
+export function renderCategorySelect(deckName, categories, statsMap) {
+  document.getElementById('category-select-deck-name').textContent = deckName;
+
+  const totalQuestions = categories.reduce((sum, c) => sum + c.questionCount, 0);
+  const totalDue = Object.values(statsMap).reduce((sum, s) => sum + s.due, 0);
+  const totalNew = Object.values(statsMap).reduce((sum, s) => sum + s.newCount, 0);
+
+  const allCardHtml = `
+    <div class="category-card category-card-all" data-category="all">
+      <div class="category-card-name">Wszystkie pytania</div>
+      <div class="category-card-count">${totalQuestions} pytań</div>
+      <div class="category-card-stats">
+        ${totalDue > 0 ? `<span class="cat-stat due">${totalDue} do powtórki</span>` : ''}
+        ${totalNew > 0 ? `<span class="cat-stat new">${totalNew} nowych</span>` : ''}
+      </div>
+    </div>
+  `;
+
+  const cardsHtml = categories.map(cat => {
+    const stats = statsMap[cat.id] || { due: 0, newCount: 0 };
+    return `
+      <div class="category-card" data-category="${cat.id}">
+        <div class="category-card-num">${escapeHtml(cat.name.split('.')[0] || '')}</div>
+        <div class="category-card-name">${escapeHtml(cat.name.replace(/^\d+\.\s*/, ''))}</div>
+        <div class="category-card-count">${cat.questionCount} pytań</div>
+        <div class="category-card-stats">
+          ${stats.due > 0 ? `<span class="cat-stat due">${stats.due} do powtórki</span>` : ''}
+          ${stats.newCount > 0 ? `<span class="cat-stat new">${stats.newCount} nowych</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('category-select-content').innerHTML = allCardHtml + `<div class="category-grid">${cardsHtml}</div>`;
+}
+
+// --- Mode Select ---
+
+export function renderModeSelect(deckName, deckStats) {
+  document.getElementById('mode-select-deck-name').textContent = deckName;
+
+  const hasDue = deckStats.dueToday > 0 || deckStats.newAvailable > 0 || (deckStats.learningTotal || 0) > 0;
+
+  document.getElementById('mode-select-content').innerHTML = `
+    <div class="mode-select-grid">
+      <div class="mode-card ${!hasDue ? 'disabled' : ''}" data-mode="anki">
+        <div class="mode-card-icon">&#x1F4DA;</div>
+        <div class="mode-card-name">Anki</div>
+        <div class="mode-card-desc">Nauka z powtarzaniem rozłożonym (SM-2)</div>
+      </div>
+      <div class="mode-card ${deckStats.totalCards === 0 ? 'disabled' : ''}" data-mode="test">
+        <div class="mode-card-icon">&#x1F4DD;</div>
+        <div class="mode-card-name">Test</div>
+        <div class="mode-card-desc">Losowy test z wybraną liczbą pytań</div>
+      </div>
+      <div class="mode-card ${deckStats.totalCards === 0 ? 'disabled' : ''}" data-mode="browse">
+        <div class="mode-card-icon">&#x1F50D;</div>
+        <div class="mode-card-name">Przeglądanie</div>
+        <div class="mode-card-desc">Lista wszystkich pytań z odpowiedziami</div>
+      </div>
+    </div>
+  `;
+}
+
+// --- Test Config ---
+
+export function renderTestConfig(totalQuestions) {
+  const defaultCount = Math.min(10, totalQuestions);
+
+  document.getElementById('test-content').innerHTML = `
+    <div class="test-config">
+      <div class="test-config-title">Konfiguracja testu</div>
+      <div class="test-config-slider-row">
+        <input type="range" id="test-count-slider" min="1" max="${totalQuestions}" value="${defaultCount}">
+        <span class="test-config-count" id="test-count-display">${defaultCount}</span>
+      </div>
+      <div class="test-config-label">Liczba pytań (max ${totalQuestions})</div>
+      <button class="btn btn-primary" id="btn-start-test">Rozpocznij test</button>
+    </div>
+  `;
+}
+
+// --- Test Question ---
+
+export function renderTestQuestion(question, num, total, isMulti, shouldShuffle = true, preShuffledAnswers = null, previousSelection = null) {
+  const shuffledAnswers = preShuffledAnswers || (shouldShuffle ? shuffle(question.answers) : [...question.answers]);
+  const hint = isMulti ? '(Zaznacz wszystkie poprawne)' : '(Wybierz jedną odpowiedź)';
+  const indicatorType = isMulti ? 'checkbox' : '';
+
+  document.getElementById('test-counter').textContent = `${num} / ${total}`;
+  const pct = total > 0 ? Math.round((num / total) * 100) : 0;
+  document.getElementById('test-progress').style.width = `${pct}%`;
+
+  const isLast = num === total;
+  const isFirst = num === 1;
+  const hasSelection = previousSelection && previousSelection.size > 0;
+
+  document.getElementById('test-content').innerHTML = `
+    <div class="question-card">
+      <div class="question-number">Pytanie ${num} z ${total}</div>
+      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      <div class="question-hint">${hint}</div>
+      <div class="answers-list" id="test-answers-list">
+        ${shuffledAnswers.map((a, i) => `
+          <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${a.id}" data-index="${i}">
+            <div class="answer-indicator ${indicatorType}">${i + 1}</div>
+            <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="check-answer-container">
+        ${!isFirst ? '<button class="btn btn-secondary" id="btn-test-prev">Wstecz</button>' : ''}
+        <button class="btn btn-primary" id="btn-test-next" ${hasSelection ? '' : 'disabled'}>
+          ${isLast ? 'Zakończ test' : 'Następne pytanie'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  return shuffledAnswers;
+}
+
+// --- Test Result ---
+
+export function renderTestResult(deckName, results) {
+  document.getElementById('test-result-deck-name').textContent = deckName;
+
+  const { score, total, answers } = results;
+  const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+
+  let scoreClass = 'score-low';
+  if (pct >= 75) scoreClass = 'score-high';
+  else if (pct >= 50) scoreClass = 'score-mid';
+
+  let barColor = 'var(--color-danger)';
+  if (pct >= 75) barColor = 'var(--color-success)';
+  else if (pct >= 50) barColor = 'var(--color-warning)';
+
+  const reviewHtml = answers.map((a, i) => {
+    const isCorrect = a.correct;
+    const iconClass = isCorrect ? 'correct' : 'incorrect';
+    const iconChar = isCorrect ? '&#10003;' : '&#10007;';
+
+    const detailHtml = a.question.answers.map(ans => {
+      const wasSelected = a.selectedIds.has(ans.id);
+      const isRight = ans.correct;
+
+      let cssClass = '';
+      let icon = '';
+      if (wasSelected && isRight) {
+        cssClass = 'is-correct';
+        icon = '<span class="test-review-answer-icon" style="color: var(--color-success)">&#10003;</span>';
+      } else if (wasSelected && !isRight) {
+        cssClass = 'is-incorrect-selected';
+        icon = '<span class="test-review-answer-icon" style="color: var(--color-danger)">&#10007;</span>';
+      } else if (!wasSelected && isRight) {
+        cssClass = 'is-correct';
+        icon = '<span class="test-review-answer-icon" style="color: var(--color-warning)">&#10003;</span>';
+      } else {
+        icon = '<span class="test-review-answer-icon" style="color: transparent">&#8226;</span>';
+      }
+
+      return `<div class="test-review-answer ${cssClass}">${icon}<span>${renderLatex(escapeHtml(ans.text))}</span></div>`;
+    }).join('');
+
+    return `
+      <div class="test-review-item" data-index="${i}">
+        <div class="test-review-header">
+          <div class="test-review-icon ${iconClass}">${iconChar}</div>
+          <div class="test-review-question">${renderLatex(escapeHtml(a.question.text))}</div>
+          <div class="test-review-chevron">&#9654;</div>
+        </div>
+        <div class="test-review-detail">${detailHtml}</div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('test-result-content').innerHTML = `
+    <div class="test-result">
+      <div class="test-result-title">Wynik testu</div>
+      <div class="test-result-score ${scoreClass}">${score} / ${total}</div>
+      <div class="test-result-percent">${pct}%</div>
+      <div class="test-result-bar">
+        <div class="test-result-bar-fill" style="width: ${pct}%; background: ${barColor}"></div>
+      </div>
+      <div class="test-result-actions">
+        <button class="btn btn-primary" id="btn-test-retry">Powtórz test</button>
+        <button class="btn btn-secondary" id="btn-test-back-to-decks">Powrót do talii</button>
+      </div>
+      <div class="test-review-list">${reviewHtml}</div>
+    </div>
+  `;
+}
+
+// --- Browse ---
+
+export function renderBrowse(deckName, questions) {
+  document.getElementById('browse-deck-name').textContent = deckName;
+
+  const searchHtml = `
+    <div class="browse-search">
+      <input type="text" id="browse-search-input" placeholder="Szukaj pytania...">
+    </div>
+  `;
+
+  const listHtml = questions.map((q, i) => {
+    const answersHtml = q.answers.map(a => {
+      const isCorrect = a.correct;
+      const cls = isCorrect ? 'correct' : '';
+      const icon = isCorrect
+        ? '<span class="browse-answer-icon" style="color: var(--color-success)">&#10003;</span>'
+        : '<span class="browse-answer-icon" style="color: transparent">&#8226;</span>';
+      return `<div class="browse-answer ${cls}">${icon}<span>${renderLatex(escapeHtml(a.text))}</span></div>`;
+    }).join('');
+
+    const explanationHtml = q.explanation
+      ? `<div class="browse-item-explanation"><strong>Wyjaśnienie:</strong> ${renderLatex(escapeHtml(q.explanation))}</div>`
+      : '';
+
+    return `
+      <div class="browse-item" data-search-text="${escapeHtml(q.text.toLowerCase())}">
+        <div class="browse-item-number">Pytanie ${i + 1}</div>
+        <div class="browse-item-question">${renderLatex(escapeHtml(q.text))}</div>
+        <div class="browse-item-answers">${answersHtml}</div>
+        ${explanationHtml}
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('browse-content').innerHTML = searchHtml + `<div class="browse-list" id="browse-list">${listHtml}</div>`;
+}
+
+// --- Settings ---
+
+export function renderSettings(settings, defaults) {
+  const stepsToStr = (arr) => Array.isArray(arr) ? arr.join(', ') : String(arr);
+
+  document.getElementById('settings-content').innerHTML = `
+    <div class="settings-form">
+      <div class="settings-group">
+        <label class="settings-label" for="set-newCardsPerDay">Nowe karty dziennie</label>
+        <input class="settings-input" type="number" id="set-newCardsPerDay" min="1" max="100" value="${settings.newCardsPerDay}">
+        <div class="settings-hint">Ile nowych kart wprowadzić dziennie (1–100)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-maxReviewsPerDay">Maks. powtórek dziennie</label>
+        <input class="settings-input" type="number" id="set-maxReviewsPerDay" min="1" max="9999" value="${settings.maxReviewsPerDay}">
+        <div class="settings-hint">Limit powtórek na dzień (1–9999)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-learningSteps">Kroki nauki (min)</label>
+        <input class="settings-input" type="text" id="set-learningSteps" value="${stepsToStr(settings.learningSteps)}">
+        <div class="settings-hint">Interwały w minutach dla nowych kart, oddzielone przecinkami (np. 1, 10)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-relearningSteps">Kroki ponownej nauki (min)</label>
+        <input class="settings-input" type="text" id="set-relearningSteps" value="${stepsToStr(settings.relearningSteps)}">
+        <div class="settings-hint">Interwały dla kart z błędem, oddzielone przecinkami (np. 10)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-graduatingInterval">Interwał początkowy (dni)</label>
+        <input class="settings-input" type="number" id="set-graduatingInterval" min="1" max="30" value="${settings.graduatingInterval}">
+        <div class="settings-hint">Po ukończeniu kroków nauki (1–30)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-easyInterval">Łatwy interwał (dni)</label>
+        <input class="settings-input" type="number" id="set-easyInterval" min="1" max="60" value="${settings.easyInterval}">
+        <div class="settings-hint">Po kliknięciu "Łatwe" (1–60)</div>
+      </div>
+      <div class="settings-group">
+        <label class="settings-label" for="set-maximumInterval">Maks. interwał (dni)</label>
+        <input class="settings-input" type="number" id="set-maximumInterval" min="1" max="36500" value="${settings.maximumInterval}">
+        <div class="settings-hint">Maksymalny odstęp między powtórkami (1–36500)</div>
+      </div>
+      <div class="settings-actions">
+        <button class="btn btn-primary" id="btn-save-settings">Zapisz</button>
+        <button class="btn btn-secondary" id="btn-restore-defaults">Przywróć domyślne</button>
+      </div>
+    </div>
+    <div class="settings-danger-zone">
+      <div class="settings-danger-zone-title">Strefa zagrożenia</div>
+      <div class="settings-danger-zone-text">Resetuj postęp talii — wszystkie karty wrócą do stanu "nowe", statystyki zostaną usunięte.</div>
+      <button class="btn btn-danger" id="btn-reset-progress">Resetuj postęp talii</button>
+    </div>
+  `;
+}
+
+// --- Question Editor ---
+
+export function renderQuestionEditor(question) {
+  const answersHtml = question.answers.map((a, i) => `
+    <div class="editor-answer-row" data-answer-id="${a.id}">
+      <label class="toggle-switch toggle-switch-sm">
+        <input type="checkbox" class="editor-answer-correct" data-answer-id="${a.id}" ${a.correct ? 'checked' : ''}>
+        <span class="toggle-slider"></span>
+      </label>
+      <input type="text" class="editor-answer-text" data-answer-id="${a.id}" value="${escapeAttr(a.text)}">
+    </div>
+  `).join('');
+
+  document.getElementById('study-content').innerHTML = `
+    <div class="question-card question-editor">
+      <div class="editor-section">
+        <label class="editor-label">Treść pytania</label>
+        <textarea class="editor-textarea" id="editor-question-text" rows="3">${escapeHtml(question.text)}</textarea>
+      </div>
+      <div class="editor-section">
+        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
+        <div class="editor-answers-list" id="editor-answers-list">
+          ${answersHtml}
+        </div>
+      </div>
+      <div class="editor-section">
+        <label class="editor-label">Wyjaśnienie <span class="editor-label-hint">(opcjonalne)</span></label>
+        <textarea class="editor-textarea" id="editor-explanation" rows="2">${escapeHtml(question.explanation || '')}</textarea>
+      </div>
+      <div class="editor-actions">
+        <button class="btn btn-secondary" id="btn-editor-cancel">Anuluj</button>
+        <button class="btn btn-primary" id="btn-editor-save">Zapisz zmiany</button>
+      </div>
+    </div>
+  `;
+}
+
+// --- App Settings ---
+
+export function renderAppSettings(appSettings, defaults) {
+  const kb = appSettings.keybindings;
+
+  const keybindingRows = [
+    { action: 'Pokaż odpowiedź', key: 'showAnswer', keys: kb.showAnswer },
+    { action: 'Powtórz (Again)', key: 'again', keys: kb.again },
+    { action: 'Trudne (Hard)', key: 'hard', keys: kb.hard },
+    { action: 'Dobrze (Good)', key: 'good', keys: kb.good },
+    { action: 'Łatwe (Easy)', key: 'easy', keys: kb.easy },
+  ];
+
+  const keybindingsHtml = keybindingRows.map(row => `
+    <div class="keybinding-row" data-binding="${row.key}">
+      <span class="keybinding-action">${row.action}</span>
+      <span class="keybinding-keys">
+        ${row.keys.map(k => `<span class="keybinding-key">${escapeHtml(formatKeyName(k))}</span>`).join('')}
+      </span>
+      <button class="keybinding-record" data-binding="${row.key}">Zmień</button>
+    </div>
+  `).join('');
+
+  const themeOptions = [
+    { value: 'light', label: 'Jasny' },
+    { value: 'dark', label: 'Ciemny' },
+    { value: 'auto', label: 'Auto' },
+  ];
+
+  const themeHtml = themeOptions.map(opt => `
+    <button class="theme-option ${appSettings.theme === opt.value ? 'active' : ''}" data-theme="${opt.value}">
+      ${opt.label}
+    </button>
+  `).join('');
+
+  document.getElementById('app-settings-content').innerHTML = `
+    <div class="app-settings-form">
+      <div class="settings-section">
+        <div class="settings-section-title">Skróty klawiszowe</div>
+        <div class="keybinding-table">
+          ${keybindingsHtml}
+        </div>
+        <div class="keybinding-defaults">
+          <button class="btn btn-secondary btn-sm" id="btn-restore-keybindings">Przywróć domyślne skróty</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Motyw</div>
+        <div class="theme-options" id="theme-options">
+          ${themeHtml}
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Nauka</div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label-text">Mieszaj kolejność odpowiedzi</div>
+            <div class="toggle-hint">Losowa kolejność odpowiedzi w sesjach nauki i testach</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-shuffle" ${appSettings.shuffleAnswers ? 'checked' : ''}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="toggle-row" style="margin-top: 12px;">
+          <div>
+            <div class="toggle-label-text">Kolejność pytań</div>
+            <div class="toggle-hint">Po kolei (wg tematu) zamiast losowej</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-question-order" ${appSettings.questionOrder === 'ordered' ? 'checked' : ''}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="toggle-row" style="margin-top: 12px;">
+          <div>
+            <div class="toggle-label-text">Losowe wartości w pytaniach obliczeniowych</div>
+            <div class="toggle-hint">Za każdym razem inne liczby w pytaniach z obliczeniami</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-randomize" ${appSettings.randomizeNumbers ? 'checked' : ''}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// --- Utilities ---
+
+export function formatKeyName(key) {
+  const names = {
+    ' ': 'Spacja',
+    'Enter': 'Enter',
+    'Escape': 'Esc',
+    'ArrowUp': '↑',
+    'ArrowDown': '↓',
+    'ArrowLeft': '←',
+    'ArrowRight': '→',
+    'Backspace': '⌫',
+    'Tab': 'Tab',
+  };
+  return names[key] || key;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function escapeAttr(text) {
+  return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}

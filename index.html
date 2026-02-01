@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baza Deluxe</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- === DECK LIST VIEW === -->
+    <div id="view-deck-list" class="view active">
+      <header class="app-header">
+        <h1 class="app-title">Baza Deluxe</h1>
+        <div>
+          <input type="file" id="file-input" class="file-input-hidden" accept=".json">
+          <button class="btn btn-secondary btn-sm" id="btn-app-settings">Ustawienia</button>
+          <button class="btn btn-primary" id="btn-import">Importuj talię</button>
+        </div>
+      </header>
+      <div id="deck-list-container" class="deck-list"></div>
+    </div>
+
+    <!-- === STUDY SESSION VIEW === -->
+    <div id="view-study" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-to-decks">&larr; Powrót</button>
+        <span class="deck-name" id="study-deck-name"></span>
+        <div class="study-counts">
+          <span class="count-learning" id="count-learning">0</span>
+          <span>+</span>
+          <span class="count-review" id="count-review">0</span>
+          <span>+</span>
+          <span class="count-new" id="count-new">0</span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="study-progress" style="width: 0%"></div>
+      </div>
+      <div id="study-content"></div>
+    </div>
+
+    <!-- === SESSION COMPLETE VIEW === -->
+    <div id="view-complete" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-complete">&larr; Powrót</button>
+        <span class="deck-name" id="complete-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="complete-content"></div>
+    </div>
+
+    <!-- === CATEGORY SELECT VIEW === -->
+    <div id="view-category-select" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-categories">&larr; Powrót</button>
+        <span class="deck-name" id="category-select-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="category-select-content"></div>
+    </div>
+
+    <!-- === MODE SELECT VIEW === -->
+    <div id="view-mode-select" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-mode-select">&larr; Powrót</button>
+        <span class="deck-name" id="mode-select-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="mode-select-content"></div>
+    </div>
+
+    <!-- === TEST SESSION VIEW === -->
+    <div id="view-test" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-test">&larr; Powrót</button>
+        <span class="deck-name" id="test-deck-name"></span>
+        <div class="test-counter" id="test-counter"></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="test-progress" style="width: 0%"></div>
+      </div>
+      <div id="test-content"></div>
+    </div>
+
+    <!-- === TEST RESULT VIEW === -->
+    <div id="view-test-result" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-test-result">&larr; Powrót</button>
+        <span class="deck-name" id="test-result-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="test-result-content"></div>
+    </div>
+
+    <!-- === BROWSE VIEW === -->
+    <div id="view-browse" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-browse">&larr; Powrót</button>
+        <span class="deck-name" id="browse-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="browse-content"></div>
+    </div>
+
+    <!-- === APP SETTINGS VIEW === -->
+    <div id="view-app-settings" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-app-settings">&larr; Powrót</button>
+        <span class="deck-name">Ustawienia aplikacji</span>
+        <div></div>
+      </div>
+      <div id="app-settings-content"></div>
+    </div>
+
+    <!-- === SETTINGS VIEW === -->
+    <div id="view-settings" class="view">
+      <div class="study-header">
+        <button class="btn-back" id="btn-back-from-settings">&larr; Powrót</button>
+        <span class="deck-name" id="settings-deck-name"></span>
+        <div></div>
+      </div>
+      <div id="settings-content"></div>
+    </div>
+
+  </div>
+  <div class="font-size-control">
+    <button class="btn-font" id="btn-font-decrease">A&minus;</button>
+    <button class="btn-font" id="btn-font-increase">A+</button>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2697 @@
+[
+  {
+    "question": "Program komputerowy grający w „grę w naśladownictwo” (Test Turinga) nie powinien udzielać:",
+    "options": [
+      "odpowiedzi po zbyt długim namyśle",
+      "odpowiedzi randomizowanych",
+      "błędnych odpowiedzi",
+      "tylko poprawnych odpowiedzi"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "Według Minsky'ego maszyna zdolna do 100% introspekcji:",
+    "options": [
+      "dojdzie do przeświadczenia, że jest tylko maszyną",
+      "rozwiąże dowolny problem w czasie wielomianowym",
+      "osiągnie nadludzką inteligencję",
+      "zda test Turinga"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "W grze w „naśladownictwo” rozważanej przez Turinga bierze udział:",
+    "options": [
+      "1 gracz i 1 pytający",
+      "2 graczy i 1 pytający",
+      "2 graczy",
+      "2 graczy i 2 pytających"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "„Gra w życie” Conwaya jest przykładem:",
+    "options": [
+      "testu Turinga",
+      "problemu rozpoznawania wzorców",
+      "dwuwymiarowego automatu komórkowego",
+      "problemu optymalizacji"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "Przez analogię do gry „kółko i krzyżyk” o szachach można powiedzieć, że:",
+    "options": [
+      "są grą nieskończoną, ale rozwiązywalną",
+      "są grą skończoną, więc rozwiązywalną",
+      "są grą skończoną, ale nierozwiązywalną",
+      "są grą nieskończoną, więc nierozwiązywalną"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "W „grze w życie” Conwaya pusta komórka przeradza się w pełną jeżeli ma: [x2]",
+    "options": [
+      "Dokładnie 2 sąsiadów",
+      "Dokładnie 3 sąsiadów",
+      "Dokładnie 2 lub 3 sąsiadów",
+      "Żadne z powyższych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "Zdaniem Turinga problem „czy maszyny mogą myśleć?” można rozstrzygnąć tylko przez napisanie programu:",
+    "options": [
+      "grającego w „grę w naśladownictwo” i zdającego test",
+      "grającego w szachy",
+      "komponującego utwory muzyczne",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "01. Podstawy AI / Test Turinga / Filozofia"
+  },
+  {
+    "question": "Wskaż grupę algorytmów reprezentujących niepoinformowane techniki przeszukiwania grafów:",
+    "options": [
+      "Best-first search, A*, IDA*",
+      "Algorytm Dijkstry, Best-first search, A*",
+      "Breadth-first search, Depth-first search, Best-first search",
+      "Breadth-first search, Depth-first search, algorytm Dijkstry"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Stan pobrany ze zbioru Open w algorytmie A* search jest w stosunku do pozostałych stanów w Open jednym ze stanów o:",
+    "options": [
+      "najmniejszej wartości $$ h(s) $$",
+      "największej wartości $$ h(s) $$",
+      "najmniejszej wartości $$ g(s)+h(s) $$",
+      "największej wartości $$ g(s)+h(s) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Realizacja zbioru Open (w algorytmach A*, Best-first search) za pomocą kopca binarnego powoduje, że pobranie elementu minimalnego oraz dodanie nowego elementu (zamortyzowane) są o złożonościach odpowiednio:",
+    "options": [
+      "$$ O(\\log n), O(\\log n) $$",
+      "$$ O(\\log n), O(1) $$",
+      "$$ O(1), O(\\log n) $$",
+      "$$ O(1), O(1) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Dijkstry wybierając kolejne stany do odwiedzenia kieruje się:",
+    "options": [
+      "tylko kosztem pozostałym od danego stanu do celu",
+      "sumą kosztu przebytego i pozostałego",
+      "tylko kosztem przebytym do chwili osiągnięcia stanu",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne (8-puzzle) w stanie startowym $$ \\begin{pmatrix}1&8&2\\\\ 0&4&3\\\\ 7&6&5\\end{pmatrix} $$ i docelowym $$ \\begin{pmatrix}0&1&2\\\\ 3&4&5\\\\ 6&7&8\\end{pmatrix} $$, wartość heurystyki „Manhattan” wynosi:",
+    "options": [
+      "09",
+      "10",
+      "07",
+      "8"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli dla problemu komiwojażera i algorytmu przeszukującego, stan zdefiniujemy jako: zbiór odwiedzonych wierzchołków oraz informację, w którym z nich aktualnie przebywamy; to dobrą dopuszczalną heurystykę może stanowić:",
+    "options": [
+      "odległość do najdalszego nieodwiedzonego wierzchołka",
+      "długość brzegu powłoki wypukłej pozostałych wierzchołków",
+      "długość minimalnego drzewa rozpinającego pozostałych wierzchołków",
+      "odległość do najbliższego nieodwiedzonego wierzchołka"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Elementem gwarantującym znalezienie najkrótszej ścieżki (ścieżki o najmniejszym koszcie) przez algorytm A* jest:",
+    "options": [
+      "heurystyka dopuszczalna (admissible)",
+      "użycie tablicy mieszającej do implementacji zbioru Closed",
+      "generowanie minimalnego zbioru potomków",
+      "warunek stopu"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm IDA*:",
+    "options": [
+      "ma mniejszą złożoność obliczeniową niż A*",
+      "iteracyjnie pogłębia zbiór Open",
+      "nie przechowuje ewidencji stanów odwiedzonych (brak zbioru Closed)",
+      "używa tylko heurystyki nadszacowującej"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli algorytm A* używa jako heurystyki dolnego ograniczenia na odległość do celu, to: [x2]",
+    "options": [
+      "nie gwarantuje on znalezienia najkrótszej ścieżki",
+      "jest on wolniejszy niż algorytm Dijkstry",
+      "gwarantuje on znalezienie najkrótszej ścieżki",
+      "wymagał większego zbioru Open"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Niech $$ h_1 $$ i $$ h_2 $$ oznaczają dwie dopuszczalne funkcje heurystyczne, gdzie $$ \\forall s, h_1(s) \\ge h_2(s) $$. Algorytm A* wyposażony w $$ h_1 $$ będzie przeciętnie:",
+    "options": [
+      "błądził mniej niż A* wyposażony w $$ h_2 $$ (rozwinie mniej węzłów)",
+      "błądził więcej niż A* wyposażony w $$ h_2 $$",
+      "wymagał większego zbioru Open",
+      "wymagał mniejszego zbioru Open"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Breadth-first search zanim może odwiedzić węzeł o głębokości $$ d $$ musi najpierw:",
+    "options": [
+      "sprawdzić, czy zbiór Open jest pusty",
+      "sprawdzić, czy zbiór Closed jest pusty",
+      "odwiedzić wszystkie węzły o głębokości $$ d-1 $$",
+      "odwiedzić wszystkie węzły o głębokości $$ d+1 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytmy Breadth-first search i Depth-first search należą do grupy algorytmów przechodzenia grafu w sposób:",
+    "options": [
+      "heurystyczny",
+      "nieinformacyjny",
+      "zachłanny",
+      "przypadkowy"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Dijkstry w każdym węźle (stanie) wykorzystuje tylko informację o:",
+    "options": [
+      "dokładnej przebytej odległości od węzła początkowego",
+      "dokładnej odległości pozostałej do węzła końcowego",
+      "szacowanej odległości do węzła końcowego",
+      "szacowanej przebytej odległości od węzła początkowego"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Realizacja zbioru Closed za pomocą mapy haszującej pozwala na operacje odczytywania i dodawania elementów o złożonościach odpowiednio:",
+    "options": [
+      "liniowej i stałej",
+      "stałej i zamortyzowanej stałej",
+      "stałej i stałej",
+      "zamortyzowanej stałej i liniowej"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Best-first search jest:",
+    "options": [
+      "ogólniejszym algorytmem od Breadth-first search",
+      "ogólniejszym algorytmem od Depth-first search",
+      "szczególnym przypadkiem algorytmu Dijkstry",
+      "szczególnym przypadkiem algorytmu A* (w kontekście pytań egzaminacyjnych)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Funkcje heurystyczne używane w algorytmach Best-first search mają za zadanie określać atrakcyjność stanu za pomocą jego:",
+    "options": [
+      "bliskości do stanu docelowego",
+      "szacowanej sumy nagród wzdłuż pozostałej ścieżki",
+      "odległości od stanu początkowego",
+      "sumy nagród zebranej wzdłuż ścieżki"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Niech t oznacza dowolnego potomka stanu s. Heurystyka dopuszczalna (w sensie monotoniczności/spójności) to taka, dla której dla wszystkich par s, t zachodzi:",
+    "options": [
+      "$$ h(s) \\le h(t) $$",
+      "$$ h(s) \\ge d(s,t) + h(t) $$",
+      "$$ g(s) + h(s) \\le g(t) + h(t) $$",
+      "$$ f(s) \\ge f(t) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W układance „puzzle przesuwne” heurystyka Manhattan: [x2]",
+    "options": [
+      "jest mniej dokładna niż heurystyka Misplaced Tiles",
+      "jest równa odległości Manhattan kostki pustej do jej miejsca docelowego",
+      "jest równa odległości Manhattan kostki $$ n^2-1 $$ do jej miejsca docelowego",
+      "jest równa sumie odległości Manhattan wszystkich kostek o numerach $$ \\{1, 2, ..., n^2-1\\} $$ do ich miejsc docelowych"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Niech h1, h2, h3 oznaczają odpowiednio heurystyki Misplaced Tiles, Manhattan, Manhattan + Linear Conflicts. Dla każdego stanu s prawdziwe są nierówności:",
+    "options": [
+      "$$ h_3(s) \\le h_2(s) \\le h_1(s) $$",
+      "$$ h_1(s) \\le h_3(s) \\le h_2(s) $$",
+      "$$ h_2(s) \\le h_3(s) \\le h_1(s) $$",
+      "$$ h_1(s) \\le h_2(s) \\le h_3(s) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Bezpośrednio po wygenerowaniu potomków algorytmy przeszukujące grafy:",
+    "options": [
+      "sprawdzają obecność potomków w zbiorze Open",
+      "sprawdzają obecność potomków w zbiorze Closed",
+      "sprawdzają monotoniczność heurystyki",
+      "sprawdzają dopuszczalność heurystyki"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Stan pobrany ze zbioru Open w algorytmie Best-first-search jest w stosunku do pozostałych stanów w Open stanem o:",
+    "options": [
+      "najmniejszej wartości $$ h(s) $$",
+      "największej wartości $$ h(s) $$",
+      "najmniejszej wartości $$ g(s)+h(s) $$",
+      "największej wartości $$ g(s)+h(s) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne postaci (1,0,5; 3,2,4; 6,7,8) wartość heurystyki „Misplaced tiles” wynosi:",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne postaci (1,0,5; 3,2,4; 6,7,8) wartość heurystyki „Manhattan” wynosi: [x2]",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Ścieżkę minimalną prowadzącą do rozwiązania puzzli przesuwnych można znaleźć za pomocą:",
+    "options": [
+      "algorytmu Breadth-first-search",
+      "algorytmu Best-first-search",
+      "algorytmu Dijkstry",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Breadth-first search nie może odwiedzić stanu o głębokości d, jeżeli zbiór Open:",
+    "options": [
+      "zawiera stany o głębokości $$ d-1 $$",
+      "zawiera stany o głębokości $$ d+1 $$",
+      "jest pusty",
+      "jest pełny"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie o związku pomiędzy algorytmami A*, Best-first search (BFS) i Dijkstry:",
+    "options": [
+      "A* i BFS są szczególnymi przypadkami algorytmu Dijkstry",
+      "A* jest szczególnym przypadkiem BFS",
+      "A* i algorytm Dijkstry są szczególnymi przypadkami BFS",
+      "BFS i algorytm Dijkstry są szczególnymi przypadkami A*"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm A* używa funkcji heurystycznej h, aby:",
+    "options": [
+      "mierzyć odległość przebytą dotychczas",
+      "oszacować odległość pozostałą do celu",
+      "oszacować sumę odległości",
+      "odrzucić już odwiedzone stany"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli t jest stanem-potomkiem stanu s w przeszukiwaniu za pomocą A* z heurystyką monotoniczną, wtedy:",
+    "options": [
+      "$$ g(t) \\le g(s) + h(s) $$",
+      "$$ f(t) \\ge f(s) $$",
+      "$$ g(t) \\ge g(s) + h(s) $$",
+      "$$ f(t) \\le f(s) $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli zbiór Open jest zaimplementowany jako standardowa kolejka FIFO, wtedy czas pobrania elementu minimalnego jest:",
+    "options": [
+      "logarytmiczny",
+      "stały",
+      "liniowy",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W algorytmie A* o zbiorze Closed można powiedzieć, że:",
+    "options": [
+      "nie może być większego rozmiaru niż zbiór Open",
+      "stanowi wystarczający warunek stopu algorytmu",
+      "pozwala sprawdzić, czy pewien stan był już odwiedzony",
+      "można go zignorować, jeżeli graf zawiera cykl"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie na temat kosztów operacji (put, get) na zbiorze Closed implementowanym jako mapa haszująca:",
+    "options": [
+      "koszty zamortyzowane są $$ O(\\log n) $$",
+      "koszty w najgorszym wypadku są $$ O(\\log n) $$",
+      "koszty zamortyzowane są $$ O(1) $$",
+      "koszty w najgorszym wypadku są $$ O(1) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Algorytm Depth-first search nie może odwiedzić stanu o głębokości d, gdy Open zawiera stany o głębokości: [x2]",
+    "options": [
+      "$$ d-1 $$",
+      "$$ d+1 $$",
+      "$$ d $$",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie na temat związku pomiędzy algorytmami A* i Dijkstry dla ustalonego problemu (przy dopuszczalnej i spójnej heurystyce):",
+    "options": [
+      "A* wykona nie więcej iteracji niż algorytm Dijkstry",
+      "A* wykona nie mniej iteracji niż algorytm Dijkstry",
+      "A* wykona tyle samo iteracji co algorytm Dijkstry",
+      "nie wiadomo"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W algorytmie Best-first search porządek odwiedzania stanów jest określony wg:",
+    "options": [
+      "kosztu przebytego dotychczas",
+      "szacowanego kosztu pozostałego do celu",
+      "głębokości",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli szukamy najkrótszej ścieżki w grafie geograficznym (miasta, drogi) za pomocą A*, to odległość:",
+    "options": [
+      "euklidesowa może być niedopuszczalną heurystyką",
+      "euklidesowa jest zawsze dopuszczalną heurystyką",
+      "Manhattan jest zawsze dopuszczalną heurystyką",
+      "Manhattan nie doszacowuje odległości euklidesowej"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Warunek monotoniczności heurystyki można także wypowiedzieć jako:",
+    "options": [
+      "$$ h(t) \\le g(s)-g(t)+h(s) $$",
+      "$$ f(s) \\le g(t)-g(s)+h(s) $$",
+      "$$ h(s) \\le g(t)-g(s)+h(s) $$",
+      "$$ h(s) \\le g(t)-g(s)+h(t) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie na temat zbioru Closed w algorytmie A*: [x2]",
+    "options": [
+      "może być pominięty, jeżeli graf nie ma cykli",
+      "nie może przewyższać rozmiarem zbioru Open",
+      "stanowi wystarczający warunek stopu algorytmu",
+      "nie pozwala sprawdzać, czy stan był już odwiedzony"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W układance puzzle przesuwne niech hMT, hM oznaczają odpowiednio heurystyki: Misplaced Tiles, Manhattan. Prawdziwe jest zdanie:",
+    "options": [
+      "hMT zaniedbuje odległości płytek od ich miejsc docelowych",
+      "hM nie jest monotoniczna",
+      "hMT+LC(S) dodaje 1 za każdy konflikt liniowy",
+      "$$ h_{MT}(s) \\ge h_{M}(s) $$ dla wszystkich stanów s"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli sprawdzenie, czy stan był odwiedzony ma złożoność $$ O(1) $$ to jest to operacja realizowana: [x2]",
+    "options": [
+      "W miejscu",
+      "W czasie stałym (np. przez mapę haszującą)",
+      "W czasie liniowym",
+      "W 1 przebiegu pętli"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Zbiór Closed realizowany przez mapę haszującą można zastąpić zwykłą tablicą, jeżeli: [x2]",
+    "options": [
+      "Graf nie ma cykli",
+      "Graf ma co najwyżej 1 cykl",
+      "Liczba węzłów jest znana (i można je łatwo indeksować)",
+      "Liczba krawędzi jest znana"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Realizacja zbioru Open w A* za pomocą kopca binarnego. Pobranie min i włożenie elementu mają złożoność:",
+    "options": [
+      "$$ O(\\log n) $$ i $$ O(\\log n) $$",
+      "$$ O(1) $$ i $$ O(1) $$",
+      "$$ O(1) $$ i $$ O(\\log n) $$",
+      "$$ O(\\log n) $$ i $$ O(1) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne postaci (wierszami): $$ (7,0,8; 6,5,4; 3,1,2) $$ wartość heurystyki „Manhattan + Linear Conflicts” wynosi:",
+    "options": [
+      "13",
+      "19",
+      "17",
+      "15"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne postaci (wierszami): $$ (7,0,8; 6,5,4; 3,1,2) $$ wartość heurystyki „Manhattan” (bez konfliktów liniowych) wynosi:",
+    "options": [
+      "13",
+      "12",
+      "14",
+      "15"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Wskaz grupę algorytmów reprezentujących niepoinformowanetechniki przeszukiwania grafów.",
+    "options": [
+      "a. algorytm Dijkstry, Best-first search, A*",
+      "b. Breadth-first search, Depth-first search, Best-first search",
+      "c. Best-first search, A*, IDA*",
+      "d. Breadth-first search, Depth-first search, algorytm Dijkstry"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie na temat związku pomiędzy algorytmami A* i Dijkstry dla ustalonego problemu:",
+    "options": [
+      "a. A* wykona nie więcej iteracji niż algorytm Dijkstry",
+      "b. A* wykona nie mniej iteracji niż algorytm Dijkstry",
+      "c. A* wykona tyle samo iteracji co algorytm Dijkstry",
+      "d. nie wiadomo"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jeżeli zbiór Open jest kolejką priorytetową (na kopcu binarnym) i zawiera n elementów, to pobranie (i usunięcie) elementu minimalnego wymaga czasu:",
+    "options": [
+      "a. O(n)",
+      "b. O(1)",
+      "c. O(log2n)",
+      "d. O(n log2n)"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W układance puzzle przesuwne niech hMT, hM, hM+LC oznaczają odpowiednio heurystyki: Misplaced Tiles, Manhattan oraz Manhattan + Linear Conflicts. Prawdziwe jest zdanie: [x2]",
+    "options": [
+      "a. hMT zaniedbuje odległości płytek od ich miejsc docelowych",
+      "b. hM nie jest monotoniczna",
+      "c. hMT+LC(s) dodaje 1 za każdy konflikt liniowy",
+      "d. hMT(s)\\\\ge hM(s) dla wszystkich stanów s"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "W pewnym algorytmie A* zrealizowano zbiór Open na kopcu binarnym typu MIN. Najbardziej wymagającą operacją jest wówczas:",
+    "options": [
+      "podejrzenie stanu minimalnego",
+      "pobranie stanu minimalnego",
+      "dodanie stanu",
+      "podmiana stanu"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Podmiana (aktualizacja) pewnego stanu w zbiorze Open, realizowanego za pomocą kopca binarnego, wymaga w ogólności kosztu:",
+    "options": [
+      "$$ O(\\log n) $$",
+      "$$ O(n^2) $$",
+      "$$ O(n) $$",
+      "$$ O(n \\log n) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Jako konwencję dla funkcji heurystycznych h, przyjmuje się że:",
+    "options": [
+      "$$ h(s) < 0 $$ dla wszystkich s",
+      "$$ h(s) \\le 0 $$ dla wszystkich s",
+      "$$ h(s) > 0 $$ dla wszystkich s",
+      "$$ h(s) \\ge 0 $$ dla wszystkich s"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)"
+  },
+  {
+    "question": "Dla układanki puzzle przesuwne (8-puzzle) w stanie $$ \\begin{pmatrix}1&8&2\\\\ 0&4&3\\\\ 7&6&5\\end{pmatrix} $$ liczba konfliktów liniowych (linear conflicts) względem celu $$ \\begin{pmatrix}0&1&2\\\\ 3&4&5\\\\ 6&7&8\\end{pmatrix} $$ wynosi:",
+    "options": [
+      "0",
+      "2",
+      "4",
+      "1"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "03. Puzzle przesuwne / Heurystyki"
+  },
+  {
+    "question": "W pewnym trójwymiarowym labiryncie gracz ma współrzędne (x,y,z) i ruchy o kosztach jednostkowych. Niech $$ h_1 = |x-x_0|+|y-y_0|+|z-z_0| $$ (Manhattan) oraz $$ h_2 $$ (Euklidesowa). Prawdziwe jest zdanie:",
+    "options": [
+      "h1 i h2 nie są dopuszczalne",
+      "h1 i h2 są dopuszczalne",
+      "h1 jest dopuszczalne, h2 nie jest dopuszczalne",
+      "h2 jest dopuszczalne, h1 nie jest dopuszczalne"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "03. Puzzle przesuwne / Heurystyki"
+  },
+  {
+    "question": "Puzzle przesuwane można zaliczyć do grafowych problemów poszukiwania: [x2]",
+    "options": [
+      "Najkrótszej ścieżki",
+      "Ścieżki Hamiltona",
+      "Ścieżki Eulera",
+      "Porządku topologicznego"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "03. Puzzle przesuwne / Heurystyki"
+  },
+  {
+    "question": "Jako konwencję przyjmuje się, że funkcje heurystyczne w algorytmach grafowych są:",
+    "options": [
+      "dodatnie",
+      "nieujemne",
+      "ściśle monotoniczne",
+      "różnowartościowe"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "03. Puzzle przesuwne / Heurystyki"
+  },
+  {
+    "question": "Dla pewnej gry dwuosobowej pojęcie „słaba sztuczna inteligencja” reprezentuje program:",
+    "options": [
+      "nie wykorzystujący techniki quiescence",
+      "wykorzystujący funkcję oceny pozycji zaprojektowaną przez człowieka",
+      "wykorzystujący funkcję oceny pozycji wyuczoną lub wyewoluowaną przez algorytm",
+      "wykorzystujący technikę quiescence"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Dla algorytmu „przycinanie $$\\alpha-\\beta$$” równanie rekurencyjne opisujące minimalną liczbę liści w drzewie o wysokości d, które trzeba odwiedzić (w przypadku optymistycznym) ma postać:",
+    "options": [
+      "$$ R_d = \\sum_{k=0}^{d-1} R_k + b $$",
+      "$$ R_d = R_{d-1} + (b-1)R_{d-2} $$",
+      "$$ R_d = 2R_{d/2} + b^d $$ (lub przybliżenie rzędu $$ \\sqrt{b^d} $$)",
+      "$$ R_d = (b-1)R_{d-1} $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W „przycinaniu alfa-beta” badany jest stan typu MIN, dla którego $$\\alpha = -8, \\beta = 2$$. Wartości zwracane ze stanów potomnych to kolejno: -1, -9, 0, -infinity. Przycięcie nastąpi po:",
+    "options": [
+      "trzecim potomku",
+      "czwartym potomku",
+      "pierwszym potomku",
+      "drugim potomku"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W procedurze oceniającej stan typu MAX w ramach „przycinania $$\\alpha-\\beta$$”:",
+    "options": [
+      "aktualizacjom podlegają obydwie wartości $$\\alpha$$ i $$\\beta$$",
+      "ani $$\\alpha$$, ani $$\\beta$$ nie zmieniają się",
+      "aktualizacjom podlega tylko wartość $$\\alpha$$",
+      "aktualizacjom podlega tylko wartość $$\\beta$$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przeszukiwaniu drzew gier dwuosobowych algorytm MIN-MAX przegląda:",
+    "options": [
+      "możliwie najmniej stanów",
+      "przynajmniej tyle stanów, co „przycinanie $$ \\alpha-\\beta $$”",
+      "co najwyżej tyle stanów, co „przycinanie $$ \\alpha-\\beta $$”",
+      "stany wg rosnącej głębokości"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Algorytm „przycinanie $$ \\alpha-\\beta $$” odwiedzi pewien stan, jeżeli aktualnie spełniona jest zależność: [x2]",
+    "options": [
+      "$$ \\alpha < \\beta $$",
+      "$$ \\alpha \\le \\beta $$",
+      "$$ \\alpha > \\beta $$",
+      "$$ \\alpha \\ge \\beta $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Heurystyka materialna stosowana dla szachów oznacza:",
+    "options": [
+      "liczbę ruchów potrzebną do zadania mata",
+      "liczbę ruchów potrzebną do dojścia do pola przemiany",
+      "różnicę pomiędzy sumą wartości pozostałych bierek białych i czarnych",
+      "różnicę pomiędzy sumą wartości zbitych bierek białych i czarnych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przycinaniu $$ \\alpha-\\beta $$ analizowany jest stan typu MIN, dla którego $$ \\alpha=10, \\beta=15 $$. Wartości zwracane potomnych: 13, $$ -\\infty $$, 17, 4. Przycięcie nastąpi po:",
+    "options": [
+      "pierwszym potomku",
+      "drugim potomku",
+      "trzecim potomku",
+      "czwartym potomku"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przycinaniu $$ \\alpha-\\beta $$ analizowany jest stan typu MAX, dla którego $$ \\alpha=10, \\beta=15 $$. Wartości potomnych: 13, $$ -\\infty $$, 17, 4. Wtedy:",
+    "options": [
+      "przycięcie nie nastąpi wcale",
+      "przycięcie nastąpi po tym samym potomku, co w stanie typu MIN",
+      "przycięcie nastąpi po innym potomku, co w stanie typu MIN",
+      "stan typu MAX nie może przybrać takich wartości"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W ramach zadanej głębokości algorytm MIN-MAX może być postrzegany jako:",
+    "options": [
+      "algorytm zachłanny",
+      "algorytm sortujący",
+      "algorytm wyczerpujący",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Algorytm „przycinanie $$ \\alpha-\\beta $$” wywoła rekurencję (w dół) na rzecz pewnego stanu, jeżeli: [x2]",
+    "options": [
+      "$$ \\alpha > \\beta $$",
+      "$$ \\alpha \\ge \\beta $$",
+      "$$ \\alpha < \\beta $$",
+      "$$ \\alpha \\le \\beta $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie o algorytmie „przycinanie $$ \\alpha-\\beta $$”: [x2]",
+    "options": [
+      "gwarantuje odwiedzenie mniejszej liczby stanów niż MIN-MAX",
+      "aproksymuje odpowiedź algorytmu MIN-MAX",
+      "gwarantuje zasugerowanie takich samych najlepszych ruchów jak MIN-MAX",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Optymistyczna (best-case) złożoność „przycinania $$ \\alpha-\\beta $$” jest rzędu:",
+    "options": [
+      "$$ b^D $$ w przypadku pesymistycznym",
+      "$$ O(b^{D/2}) $$",
+      "$$ b^D $$ w przypadku optymistycznym",
+      "$$ O(D^b) $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przeszukiwaniu drzewa gry, gdy b jest współczynnikiem rozgałęziania, to złożoność w najgorszym przypadku skaluje się:",
+    "options": [
+      "liniowo z b",
+      "wykładniczo z b",
+      "wielomianowo z b",
+      "logarytmicznie z b"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Dla głębokości maksymalnej D i współczynnika rozgałęziania b złożoność algorytmu MIN-MAX jest:",
+    "options": [
+      "$$ O(d^B) $$",
+      "$$ O(D+b) $$",
+      "$$ O(D^b) $$",
+      "$$ O(b^D) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Prawdziwe jest następujące zdanie dla przycinania $$ \\alpha-\\beta $$ (b współczynnik rozgałęziania, D maksymalna głębokość): [x2]",
+    "options": [
+      "ma taką samą pesymistyczną złożoność jak MIN-MAX",
+      "ma taką samą optymistyczną złożoność jak MIN-MAX",
+      "ma wykładniczą złożoność ze względu na b (w sensie podstawy)",
+      "ma wielomianową złożoność ze względu na D"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przycinaniu alfa-beta analizowany jest stan typu MAX, $$ \\alpha=10, \\beta=11 $$. Wartości potomnych: 5, 10, 11, 12, 13. Można powiedzieć, że:",
+    "options": [
+      "Sytuacja niemożliwa",
+      "Przycięcie po pierwszym potomku",
+      "Przycięcie po drugim potomku",
+      "Przycięcie po trzecim potomku (gdy wartość 11 powoduje $$ \\alpha \\ge \\beta $$)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Dokładną liczbę stanów odwiedzonych przez algorytm MIN-MAX dla drzewa o głębokości D i rozgałęzieniu b przedstawia wyrażenie:",
+    "options": [
+      "$$ b^{D+1} $$",
+      "$$ b^{D+1}-1 $$",
+      "$$ b^{D/2} $$",
+      "$$ \\frac{b^{D+1}-1}{b-1} $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Szachy AI: depth 3.5 + quiescence + transposition table. Co najbardziej pogorszy grę?",
+    "options": [
+      "przełączenie na MIN-MAX",
+      "obniżenie głębokości do 3.0",
+      "wyłączenie quiescence (efekt horyzontu)",
+      "wyłączenie tablicy transpozycji"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Dla pewnego drzewa gry o wysokości równej 3 i współczynniku rozgałęziania $$ b=4 $$ wykonano algorytm „przycinanie alfa-beta”, odnotowując największą możliwą liczbę przycięć (przypadek optymistyczny). Liczba odwiedzonych przez algorytm liści tego drzewa wyniosła:",
+    "options": [
+      "24",
+      "37",
+      "19",
+      "11"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W algorytmie „przycinanie alfa-beta” uruchomionym dla gry „kółko i krzyżyk” (głębokość do końca), algorytm:",
+    "options": [
+      "wykryje optymalną sekwencję ruchów, ale przycięcia nie wystąpią",
+      "wykryje optymalną sekwencję ruchów i przycięcia wystąpią",
+      "nie wykryje optymalnej sekwencji ruchów",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Powiedzmy, że pewna sztuczna inteligencja do gry w szachy pracuje z uzyciem nastaw: „przycinanie alpha-beta\" + głęboko\" 3.5 queiescence + tablica transpozycji. Wskaż zmianę, która statystycznie spoe.oduje największe pogorszenie jakości gry tej sztucznej inteligencji.",
+    "options": [
+      "a. przełączenie algorytmu na \"MIN-MAX\"",
+      "b. obniżenie glębokości do 3.0",
+      "c. wyłączenie queiescence",
+      "d. wyłączzenie tablicy transpozycji"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Niech D oznacza maksymalną głębokość przeszukiwania, a b stały (lub średni) współczynnik rozgałęziający pewnej gry. Optymistyczna złożoność \"przycinania \\\\alpha -\\\\beta \" jest rzędu:",
+    "options": [
+      "a. O(√(b^ D ))",
+      "b. O(b^( √D) )",
+      "c. O(bD)",
+      "d. O(b^ D )"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Niech b oznacza stały współczynnik rozgałęziania pewnej gry, a D liczbę poziomów drzewa, które chcemy zbadać (D parzyste). Dokładną liczbę stanów odwiedzonych przez algorytm MIN-MAX przedstawia wyrażenie:",
+    "options": [
+      "a. b^ D",
+      "b. b^( D/2)",
+      "c. b^( D+1) -1",
+      "d. (b^( D+1) -1)/(b-1)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przycinaniu \\\\alpha -\\\\beta  analizowany jest pewien stan typu MIN, dla którego procedurę wywołano z początkowymi wartościami \\\\alpha =10, \\\\beta =15. Przypuśćmy, że wartości zwracane do tego stanu ze stanów potomnych będą wynosiły kolejno 13, -∞, 17, 4, ∞. Przycięcie nastąpi po:",
+    "options": [
+      "a. pierwszym potomku",
+      "b. drugim potomku",
+      "c. trzecim potomku",
+      "d. czwartym potomku"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W przycinansiu \\\\alpha -\\\\beta  analizowany jest pewien stan typu MAX, dla którego procedurę wywołano z początkowymi wartościami \\\\alpha =10, \\\\beta =15. Przypuśćmy, że wartości zwracane do tego stanu ze stanów potomnych będą wynosiły kolejno 13, -∞, 17, 4, ∞. Wtedy:",
+    "options": [
+      "a. przycięcie nie nastąpi wcale",
+      "b. przycięcie nastąpi po tym samym potomku, co w stanie typu MIN z takimi samymi początkowymi i zwracanymi wartościami.",
+      "c. przycięcie nastąpi po innym potomku, co w stanie typu MIN z takimi samymi początkowymi i zwracanymi wartościami",
+      "d. stan typu MAX nie może przybrać takich wartości"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Jeżeli D to maksymalna głębokość, a b współczynnik rozgałęzienia, to złożoność \"przycinania \\\\alpha −\\\\beta \" pruning jest proporcjonalna do:",
+    "options": [
+      "a. b^ D w przypadku pesymistycznym",
+      "b. √(b^ D ) w przypadku pesymistycznym",
+      "c. b^ D w przypadku pesymistycznym",
+      "d. √(b^ D ) w przypadku optymistycznym"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "\"Przycinanie \\\\alpha −\\\\beta \" odwiedza potomka aktualnego stanu, kiedy:",
+    "options": [
+      "a. \\\\alpha >\\\\beta ",
+      "b. \\\\alpha \\\\ge \\\\beta ",
+      "c. \\\\alpha <\\\\beta ",
+      "d. \\\\alpha \\\\le \\\\beta "
+    ],
+    "correct": [
+      2
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W „przycinaniu alfa-Beta” analizowany jest pewien stan typu MAX dla którego procedurę wywołano z początkowymi wartościami alfa=10, beta=11. Przypuśćmy że wartości zwracane e dla tego stanu ze stanów potomnych będą wynosiły kolejno: 5,10,11,12,13. Można powiedzieć, że",
+    "options": [
+      "a. Sytuacja ta jest niemożliwa ze względu na wartość pierwszego potomka 5 < alfa",
+      "b. Przycięcie nastąpi po pierwszym potomku",
+      "c. Po drugim potomku",
+      "d. Po trzecim potomku"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "Funkcja oceny pozycji dla szachów zaproponowana przez C. Shannona (1949) zawierała:",
+    "options": [
+      "składniki materialne i pozycyjne",
+      "tylko składniki materialne",
+      "składniki, których wagi były nastrajane algorytmem genetycznym",
+      "tylko składniki pozycyjne"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β"
+  },
+  {
+    "question": "W perceptronie prostym wektor wag to $$ w = (6, -2, -1, 3) $$. Do poprawki wybrano przykład $$ x_t = (1, 3, 5, 1) $$. Iloczyn skalarny wynosi -2. Jeśli nastąpiła poprawka, oznacza to, że:",
+    "options": [
+      "etykieta klasy tego przykładu to $$ y_j = 1 $$",
+      "etykieta klasy tego przykładu to $$ y_i = -1 $$",
+      "ustalenie etykiety nie jest możliwe",
+      "ustalenie etykiety klasy zależy od współczynnika uczenia"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Granica decyzyjna, którą wyznacza perceptron prosty, jest w ogólności:",
+    "options": [
+      "hiperpłaszczyzną",
+      "prostą",
+      "sferą",
+      "elipsoidą"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Zgodnie z twierdzeniem Novikoffa, górne ograniczenie na liczbę kroków wykonanych przez algorytm uczenia perceptronu prostego skaluje się proporcjonalnie do:",
+    "options": [
+      "marginesu między klasami",
+      "kwadratu marginesu między klasami (odwrotnie)",
+      "promienia danych",
+      "kwadratu promienia danych"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wzór na poprawkę wag można zapisać wzorem:",
+    "options": [
+      "$$ w(k+1) := w(k) + \\eta y_i x_i $$",
+      "$$ w(k+1) := w(k) \\eta y_i + x_i $$",
+      "$$ w(k+1) := w(k) \\eta y_i x_i $$",
+      "$$ w(k+1) := w(k) + \\eta y_i + x_i $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Dowód twierdzenia Novikoffa pokazuje m.in., że iloczyn skalarny wektora wag i wektora optymalnego $$ \\langle w(k), w^* \\rangle $$ jest w trakcie algorytmu uczenia ograniczony z dołu przez:",
+    "options": [
+      "$$ \\sqrt{k} \\cdot \\text{const} $$",
+      "$$ k^2 \\cdot \\text{const} $$",
+      "$$ k \\cdot \\text{const} $$",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Dowód twierdzenia Novikoffa pokazuje m.in., że norma wektora wag $$ ||w(k)|| $$ jest w trakcie algorytmu uczenia ograniczona z góry przez:",
+    "options": [
+      "$$ \\sqrt{k} \\cdot \\text{const} $$",
+      "$$ k^2 \\cdot \\text{const} $$",
+      "$$ k \\cdot \\text{const} $$",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Sztuczka „podnoszenia wymiarowości” w połączeniu z perceptronem prostym ma na celu próbę znalezienia rozwiązania (klasyfikatora) dla zbiorów danych: [x2]",
+    "options": [
+      "małej liczbie przykładów",
+      "dużej liczbie przykładów",
+      "separowalnych liniowo",
+      "nieseparowalnych liniowo"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wektor wag $$ (3, 1, -2, 2) $$. Przykład $$ x_i = (1, 2, 1, 2) $$ został wybrany do poprawki. Wynika z tego, że:",
+    "options": [
+      "$$ y_i = -1 $$",
+      "$$ y_i = 1 $$",
+      "nie można wywnioskować klasy przykładu",
+      "algorytm nie zatrzyma się"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wag $$ (3, 1, -2, 2) $$, przykład $$ x_i = (1, 2, 1, 2) $$. Współczynnik uczenia 0.5. Wiedząc, że przykład wybrano do poprawki, nowy wektor wag to:",
+    "options": [
+      "$$ (-2.5, 0, 2.5, -1) $$",
+      "$$ (2.5, 0, -2.5, 1) $$",
+      "$$ (-3.5, -2, 1.5, -3) $$",
+      "$$ (1.5, 2, -1.5, 3) $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Zgodnie z dowodem twierdzenia Novikoffa, jeżeli zbiór danych jest liniowo separowalny, to algorytm perceptronu wykona nie więcej kroków niż (proporcjonalnie do):",
+    "options": [
+      "$$ R_{max} / \\gamma_{min}^2 $$",
+      "$$ \\gamma_{min}^2 / R_{max} $$",
+      "$$ \\gamma_{min}^2 / R_{max}^2 $$",
+      "$$ R_{max}^2 / \\gamma_{min}^2 $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Pewien zbiór danych w $$ R^2 $$ nie jest liniowo separowalny. Dokonano redukcji do $$ R^1 $$. Można powiedzieć, że:",
+    "options": [
+      "nowy zbiór również nie jest liniowo-separowalny",
+      "nowy zbiór może być linowo-separowalny",
+      "wspomniane przekształcenie nie jest możliwe",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Perceptron prosty (inaczej perceptron Rosenblatta) próbuje rozwiązać zadanie:",
+    "options": [
+      "klasyfikacji binarnej",
+      "optymalizacji dyskretnej",
+      "optymalizacji ciągłej",
+      "optymalizacji mieszanej"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Załóżmy, że w perceptronie prostym wektor wag $$ w=(2,3,-1,-1) $$ ma zostać skorygowany na przykładzie $$ x=(1,0,2,-1) $$, $$ y=-1 $$, przy $$ \\eta=0.5 $$. Nowy wektor to:",
+    "options": [
+      "$$ \\omega=(2.5,3,0,-1.5) $$",
+      "$$ \\omega=(1.5,3,-2,-0.5) $$",
+      "poprawka jest niepotrzebna, bo przykład jest dobrze sklasyfikowany",
+      "podane informacje są niewystarczające"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Twierdzenie Novikoffa implikuje, że algorytm uczący (perceptron prosty) zatrzyma się po skończonej liczbie kroków:",
+    "options": [
+      "zawsze",
+      "jeżeli zbiór danych jest liniowo-separowalny",
+      "jeżeli zbiór danych nie jest liniowo-separowalny",
+      "gdy dane podniesiemy do wyższej wymiarowości"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Górne ograniczenie na liczbę kroków podane przez Novikoffa jest:",
+    "options": [
+      "odwrotnie proporcjonalne do kwadratu marginesu (proporcjonalne do $$ R^2/\\gamma^2 $$)",
+      "proporcjonalne do promienia danych",
+      "odwrotnie proporcjonalne do kwadratu promienia danych",
+      "odwrotnie proporcjonalne do promienia danych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Niech $$ \\omega^* $$ oznacza nieznany wektor separujący. Jeżeli dane są liniowo separowalne, wtedy podczas algorytmu wyrażenie $$ (\\omega(k), \\omega^*) $$: [x2]",
+    "options": [
+      "nie maleje (rośnie)",
+      "nie rośnie",
+      "pozostaje stałe",
+      "zależy od wielkości $$ ||\\omega(k)|| $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Perceptron prosty (lub perceptron Rosenblatta) poszukuje:",
+    "options": [
+      "wielomianowej granicy decyzyjnej",
+      "liniowej granicy decyzyjnej",
+      "maksimum iloczynu skalarnego",
+      "minimum iloczynu skalarnego"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wektor wag $$ \\omega=(0,3,-1,-1) $$ jest testowany dla przykładu $$ x=(1, 0, 2, -1) $$, $$ y=1 $$. Można powiedzieć, że:",
+    "options": [
+      "przykład jest poprawnie sklasyfikowany",
+      "przykład jest błędnie sklasyfikowany",
+      "nie można wykonać testu",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Jeżeli algorytm uczący perceptron Rosenblatta wpada w nieskończoną pętlę, to oznacza, że: [x2]",
+    "options": [
+      "dane nie są liniowo separowalne",
+      "dane są liniowo separowalne",
+      "twierdzenie Novikoffa nie obejmuje tego przypadku",
+      "żadne z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Przypuśćmy, że zaprojektowano wariant perceptronu prostego bez wyrazu wolnego (bias zawsze 0). Wtedy:",
+    "options": [
+      "algorytm jest niestabilny",
+      "algorytm nie zatrzyma się",
+      "algorytm i tak się zatrzyma",
+      "niektóre zbiory danych nie pozwolą się sklasyfikować (te nieseparowalne przez początek układu)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym do poprawki wag w danym kroku mogą być wybrane:",
+    "options": [
+      "jedynie przykłady źle sklasyfikowane",
+      "wszystkie przykłady",
+      "tylko przykłady poprawnie sklasyfikowane",
+      "losowe przykłady"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wektor wag $$ w=(1,2,3,4) $$ ma być poprawiony na podstawie pary uczącej $$ x=(1,0,1,-1), y=1 $$ przy $$ \\eta=1.0 $$. Prawdziwe jest następujące stwierdzenie:",
+    "options": [
+      "powstanie wektor wynikowy $$ w=(2,2,4,3) $$",
+      "powstanie wektor $$ w=(0,2,2,5) $$",
+      "wagi się nie zmienią",
+      "wektor się wyzeruje"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Jeżeli zbiór danych nie jest liniowo-separowalny to algorytm uczenia perceptronu prostego: [x2]",
+    "options": [
+      "nie zatrzyma się",
+      "znajdzie najlepsze przybliżenie",
+      "zatrzyma się po $$ N^2 $$ krokach",
+      "wyzeruje wagi"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Przykładowym zastosowaniem perceptronu prostego może być:",
+    "options": [
+      "Kompresja stratna zdjęć",
+      "Wyznaczanie najkrótszej ścieżki",
+      "Kreślenie linii w grafice 2D",
+      "Filtr antyspamowy"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Suma ważona obliczana w perceptronie prostym to inaczej: [x2]",
+    "options": [
+      "Iloczyn skalarny wektora danych i wektora wag",
+      "Iloczyn wektorowy",
+      "Norma wektora danych",
+      "Norma wektora wag"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Filtr antyspamowy jest przykładem zadania: [x2]",
+    "options": [
+      "Rozpoznawania wzorców",
+      "Klasyfikacji binarnej (często nazywanej też klasteryzacją w notatkach, choć błędnie)",
+      "Przeszukiwania grafu",
+      "Indukcji reguł decyzyjnych"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Zgodnie z dowodem twierdzenia Novikoffa, górne ograniczenie liczby kroków skaluje się odwrotnie proporcjonalnie do:",
+    "options": [
+      "promienia danych",
+      "kwadratu marginesu między klasami (czyli proporcjonalnie do $$ 1/\\gamma^2 $$)",
+      "kwadratu promienia danych",
+      "marginesu między klasami"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W perceptronie prostym wektor wag $$ w=(1,2,3,4) $$ ma być poprawiony na podstawie pary uczącej $$ x=(1,0,1,-1) $$, $$ y=1 $$ przy współczynniku uczenia $$ \\eta=1.0 $$. Nowy wektor wag wyniesie:",
+    "options": [
+      "$$ (2,2,4,3) $$",
+      "$$ (0,2,2,5) $$",
+      "$$ (1,2,3,4) $$",
+      "$$ (2,2,2,5) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Algorytm uczenia dla perceptronu prostego można scharakteryzować jako algorytm typu:",
+    "options": [
+      "On-line (działający krok po kroku)",
+      "Zachłanny",
+      "Rekurencyjny",
+      "Dziel i zwyciężaj"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Pewien zbiór danych określony na płaszczyźnie (w R2) nie jest liniowo separowalny. Dokonano pewnego przekształcenia współrzędnych tego zbioru redukując go do zbioru jednowymiarowego (określonego w R1). Można powiedzieć, że:",
+    "options": [
+      "a. nowy zbiór również nie jest liniowo-separowalny",
+      "b. nowy zbiór może być linowo-separowalny",
+      "c. wspomniane przekształcenie nie jest możliwe",
+      "d. żadne z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Perceptron prosty poprawia wagi wg wzoru:",
+    "options": [
+      "a. ω(k+1):=\\\\eta xiyi",
+      "b. ω(k+1):=−\\\\eta xiyi",
+      "c. ω(k+1):=ω(k)−\\\\eta xiyi",
+      "d. ω(k+1):=ω(k)+\\\\eta xiyi"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Funkcję aktywacji w perceptronie prostym można określić jako funkcję: [x2]",
+    "options": [
+      "Sigmoidalną",
+      "Ciągłą",
+      "Stałą",
+      "Schodkową (skokową)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "W algorytmie uczenia perceptronu prostego, poprawki wag w wariancie „on-line”:",
+    "options": [
+      "następują od razu po obejrzeniu pojedynczego przykładu",
+      "następują po obejrzeniu wszystkich przykładów",
+      "nie są stosowane",
+      "zależą od liczby warstw"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "05. Perceptron prosty / Twierdzenie Novikoffa"
+  },
+  {
+    "question": "Wybierz nieprawdziwe zdanie o sigmoidalnej funkcji aktywacji neuronu (logistycznej):",
+    "options": [
+      "ma punkt przegięcia w punkcie (0, 1/2)",
+      "przyjmuje wartości z przedziału (-1, 1)",
+      "jest wszędzie różniczkowalna",
+      "jest ściśle rosnąca"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wskaż wartość funkcji ReLU i wartość jej pochodnej (w tej kolejności) w punkcie $$ s=2 $$:",
+    "options": [
+      "2, 1",
+      "$$ 2e^1, 0 $$",
+      "$$ e^{-2}, 2 $$",
+      "$$ 1/(1+e^{-2}), 2(1-2) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Podczas obliczeń wstecz dla l-tej warstwy sieci MLP, wzór na propagację błędu do warstwy poprzedniej $$ \\delta_{l-1} $$ (przy użyciu $$ \\delta_l $$ i wag $$ W_l $$) ma postać:",
+    "options": [
+      "$$ \\phi'(S_{l-1}) \\circ (\\delta_l W_l) $$",
+      "$$ \\phi'(S_{l-1}) \\circ (\\delta_l^T W_l^T) $$",
+      "$$ \\phi'(S_{l-1}) \\circ (\\delta_l W_l^T) $$",
+      "$$ \\phi'(S_{l-1}) \\circ (\\delta_l^T W_l) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Dla danej warstwy sieci MLP wyznacz gradient względem wag $$ \\nabla_W $$, jeżeli $$ \\delta_l = \\begin{pmatrix}1&2\\\\ 3&4\\end{pmatrix} $$ i wejście $$ X_l = \\begin{pmatrix}2&-2\\\\ -5&3\\end{pmatrix} $$. Wzór to $$ X_l^T \\delta_l $$.",
+    "options": [
+      "$$ \\begin{pmatrix}-2&1\\\\ -2&-3\\end{pmatrix} $$",
+      "$$ \\begin{pmatrix}-8&4\\\\ -14&6\\end{pmatrix} $$",
+      "$$ \\begin{pmatrix}-13&7\\\\ -16&8\\end{pmatrix} $$",
+      "$$ \\begin{pmatrix}-4&4\\\\ -4&2\\end{pmatrix} $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W algorytmie RMSProp poprawka wag zawiera wyraz $$ \\sqrt{v_t + \\epsilon} $$. Wyraz $$ v_t $$ reprezentuje:",
+    "options": [
+      "wykładniczą średnią kroczącą gradientów",
+      "wygaszany współczynnik uczenia",
+      "rozpędzany współczynnik uczenia",
+      "wykładniczą średnią kroczącą kwadratów gradientów"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wskaż wzór na poprawkę wag sieci neuronowej zgodną z algorytmem Adam (uwzględniając korekcję obciążenia momentów):",
+    "options": [
+      "$$ -\\eta \\frac{m_t / (1-\\beta_1^{t})}{\\sqrt{v_t / (1-\\beta_2^{t})} + \\epsilon} $$",
+      "$$ -\\eta \\frac{m_t / (1+\\beta_1^{t})}{\\sqrt{v_t^2 / (1+\\beta_2^{t})} + \\epsilon} $$",
+      "$$ -\\eta \\frac{m_t}{\\sqrt{v_t} + \\epsilon} $$",
+      "$$ -\\eta \\frac{m_t}{(1-\\beta_1)} $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Dla sieci MLP z sigmoidalną aktywacją i kwadratową funkcją straty $$ (y_{MLP}-y_i)^2 $$, pochodna funkcji straty ze względu na wagi $$ w_{kj} $$ (w warstwie ukrytej) wyraża się przez:",
+    "options": [
+      "$$ 2(y_{MLP}-y_i) $$",
+      "$$ \\phi_k(1-\\phi_k)x_k $$",
+      "$$ -w_{kj}\\phi_k(1-\\phi_k)x_k $$ (lub forma z sumą błędów wstecznych)",
+      "$$ 2(y_{MLP}-y_i)v_0 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Dla sieci z poprzedniego zadania, pochodna funkcji straty ze względu na wagę $$ v_0 $$ (wyraz wolny w warstwie wyjściowej) wynosi:",
+    "options": [
+      "$$ 2(y_{MLP}-y_i) $$",
+      "$$ 2(y_{MLP}-y_i)v_0 $$",
+      "$$ 2(y_{MLP}-y_i)w_{0,0} $$",
+      "0"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Reguła łańcuchowa w ramach wstecznej propagacji błędu powoduje, że pochodne cząstkowe:",
+    "options": [
+      "wzdłuż jednej ścieżki połączeń są mnożone",
+      "wygaszają się do zera",
+      "dla ścieżek alternatywnych są mnożone",
+      "nie zależą od funkcji aktywacji"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wzór pozwalający na obliczenie wyrażenia błędu $$ \\delta_{l,j} $$ dla neuronu ukrytego (Backpropagation) ma postać:",
+    "options": [
+      "$$ \\frac{\\partial s_{l,j}}{\\partial \\phi_{l,j}} \\sum w \\delta $$",
+      "$$ \\frac{\\partial \\phi_{l,j}}{\\partial s_{l,j}} \\sum_{k} w_{l+1,k,j} \\delta_{l+1,k} $$",
+      "$$ \\frac{\\partial x}{\\partial \\phi} \\sum w \\delta $$",
+      "$$ \\sum w \\delta $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Podczas obliczeń w przód (Forward Pass) dla warstwy o wagach W i wejściu X (wsad $$ b \\times N $$), macierz sum ważonych S (wymiar $$ b \\times M $$) oblicza się jako:",
+    "options": [
+      "$$ W_l X_l + b $$",
+      "$$ (W_l X_l + b)^T $$",
+      "$$ W_l X_l^T + b $$",
+      "$$ (W_l X_l^T + W_{l;0} 1_{1 \\times b})^T $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Sigmoidalna funkcja aktywacji w perceptronie wielowarstwowym określona jest wzorem:",
+    "options": [
+      "$$ \\phi(s) = 1/(1-\\exp(s)) $$",
+      "$$ \\phi(s) = 1/(1-\\exp(-s)) $$",
+      "$$ \\phi(s) = 1/(1+\\exp(s)) $$",
+      "$$ \\phi(s) = 1/(1+\\exp(-s)) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Jeżeli dla sieci MLP używana jest sigmoidalna funkcja aktywacji $$ \\phi(s) $$ to zachodzi związek:",
+    "options": [
+      "$$ \\phi(s) = \\phi'(s)(1-\\phi'(s)) $$",
+      "$$ \\phi'(s) = -\\phi(s)(1+\\phi(s)) $$",
+      "$$ \\phi(s) = -\\phi'(s)(1+\\phi'(s)) $$",
+      "$$ \\phi'(s) = \\phi(s)(1-\\phi(s)) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Uczenie sieci MLP w wariancie on-line oznacza, że poprawki wag:",
+    "options": [
+      "następują po obejrzeniu każdego przykładu",
+      "następują po obejrzeniu wszystkich przykładów",
+      "następują warstwa po warstwie idąc wstecz",
+      "następują warstwa po warstwie idąc w przód"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W perceptronie wielowarstwowym (MLP) sigmoidalna funkcja aktywacji jest:",
+    "options": [
+      "monotoniczna",
+      "niemonotoniczna",
+      "parzysta",
+      "jednomodalna"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Pochodną funkcji sigmoidalnej można zapisać jako:",
+    "options": [
+      "$$ \\exp(-s)/(1+\\exp(-s)) $$",
+      "$$ -\\exp(-s)/(1+\\exp(-s)) $$",
+      "$$ \\exp(-s)/(1+\\exp(-s))^2 $$",
+      "$$ -\\exp(-s)/(1+\\exp(-s))^2 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "O sigmoidalnej funkcji aktywacji można powiedzieć, że:",
+    "options": [
+      "jest wszędzie różniczkowalna i ściśle rosnąca",
+      "jest nieróżniczkowalna",
+      "jest malejąca",
+      "przyjmuje wartości ujemne"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Uczenie sieci neuronowej w trybie off-line (batch) oznacza, że:",
+    "options": [
+      "poprawki następują dopiero po obejrzeniu wszystkich przykładów",
+      "poprawki są po każdym przykładzie",
+      "uczenie odbywa się bez nadzoru",
+      "uczenie odbywa się na innym komputerze"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Jeżeli sieć neuronowa MLP rozwiązuje zadanie estymacji regresji, to o wartościach $$ y_i $$ dla przykładów uczących można powiedzieć, że: [x2]",
+    "options": [
+      "Są ze zbioru {-1,1}",
+      "Są naturalne",
+      "Są rzeczywiste",
+      "Są nieznane"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W metodzie uczenia z rozpędem (momentum), wzór na poprawkę wagi $$ v(t+1) $$ ma postać (przyjmując $$ \\mu $$ jako wsp. rozpędu):",
+    "options": [
+      "$$ v(t+1) = v(t) - \\eta \\nabla + \\mu(v(t)-v(t-1)) $$",
+      "$$ v(t+1) = v(t) - \\eta \\nabla - \\mu v(t) $$",
+      "$$ v(t+1) = v(t) - \\eta \\nabla - \\mu(v(t)-v(t-1)) $$",
+      "$$ v(t+1) = v(t) - \\eta \\nabla + \\mu v(t) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Jeżeli wielkości gradientów są stałe, efektywny współczynnik uczenia w metodzie momentum (z parametrem $$ \\mu $$) jest proporcjonalny do:",
+    "options": [
+      "$$ \\eta \\mu $$",
+      "$$ \\eta / (1-\\mu) $$",
+      "$$ \\eta \\mu^2 $$",
+      "$$ \\mu / (1-\\eta) $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wskaż prawdziwe zdanie na temat metody uczenia RPROP:",
+    "options": [
+      "zaniedbywany jest znak gradientu",
+      "zaniedbywany jest współczynnik uczenia",
+      "zaniedbywana jest wielkość gradientu (używany tylko znak)",
+      "żadna z powyższych"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W algorytmie RPROP (przy domyślnych nastawach $$ \\eta_{0}=0.1, a=1.2, b=0.5 $$) aktualny współczynnik uczenia pewnej wagi po czterech aktualizacjach wynosi $$ 0.72\\eta_{0} $$ (czyli $$ 1.2 \\cdot 1.2 \\cdot 0.5 $$). Oznacza to, że pochodne funkcji błędu ze względu na tę wagę:",
+    "options": [
+      "nie zmieniały znaku",
+      "jednokrotnie zmieniały znak",
+      "dwukrotnie zmieniały znak",
+      "trzykrotnie zmieniały znak"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Dla sieci MLP z jedną warstwą ukrytą, pochodne błędu kwadratowego wag v_k,j można wyrazić wzorem",
+    "options": [
+      "a. (yMLP-yi)wkϕk(1-ϕk)xi,j",
+      "b. yiϕk(1-ϕk)xi,j",
+      "c. (yMLP-yi)ϕk(1-ϕk)xi,j",
+      "d. yiwkϕk(1-ϕk)xi,j"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wskaż prawdziwe zdanie na temat metody uczenia RPROP dla sieci neuronowych.",
+    "options": [
+      "a. zaniedbywany jest znak gradientu",
+      "b. zaniedbywany jest współczynnik uczenia",
+      "c. zaniedbywana jest wielkość gradientu",
+      "d. żadna z pozostałych odpowiedzi nie jest prawdziwa"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W algorytmie RPROP (przy domyślnych nastawach początkowych n0=0.1, a=1.2, b=0.5 aktualny współczynnik uczenia pewnej konkretnej wagi po czterech aktualizacjach wynosi 0.72n0. Oznacza to, że pochodne funkcji błędu ze względu na tę wagę",
+    "options": [
+      "a. dwukrotnie zmieniały znak",
+      "b. jednokrotnie zmieniały znak",
+      "c. nie zmieniały znaku",
+      "d. trzykrotnie zmieniały znak"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "W perceptronie wielowarstwowym rekurencja \"back-propagation\" pozwala obliczyć wartość błędu Ei,j (dla j-tego neuronu w warstwie t) wzorem:",
+    "options": [
+      "a. Φ t,j (1-Φ t,k )\\\\sum  k v t,k,j E t+1,k",
+      "b. Φ t,j (1-Φ t,k )\\\\sum  k v t,k,j E t-1,k",
+      "c. Φ t,j (1-Φ t,k )\\\\sum  k v t-1,k,j E t-1,k",
+      "d. Φ t,j (1-Φ t,k )\\\\sum  k v t-1,k,j E t+1,k"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Prawdziwy jest następujący związek pomiędzy ϕ(s) i jej pochodną:",
+    "options": [
+      "a. ϕ(s)=ϕ’(s)(1-ϕ’(s))",
+      "b. ϕ(s)=ϕ’(s)(1+ϕ(s))",
+      "c. ϕ’(s)=ϕ(s)(1+ϕ(s))",
+      "d. ϕ’(s)=ϕ(s)(1-ϕ(s))"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Pochodną funkcji φ(s) można zapisać jako: (1pkt)",
+    "options": [
+      "a. φ′(s)=exp(-s)/(1+exp(-s))",
+      "b. φ′(s)=-exp(-s)/(1+exp(-s))",
+      "c. φ′(s)=exp(-s)/(1+exp(-s))^2",
+      "d. φ′(s)=-exp(-s)/(1+exp(-s))^2"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory"
+  },
+  {
+    "question": "Wzór, wg którego naiwny klasyfikator Bayesa oblicza odpowiedź dla wektora $$ (x_1, ..., x_n) $$, może być zapisany (w logarytmach) jako:",
+    "options": [
+      "$$ \\arg\\max_y -(\\log P(Y=y) + \\log P(X_j=x_j|Y=y)) $$",
+      "$$ \\arg\\max_y P(Y=y) $$",
+      "$$ \\arg\\max_y \\prod P(X_j=x_j) $$",
+      "$$ \\arg\\max_y (\\sum_{j=1}^n \\log P(X_j=x_j|Y=y) + \\log P(Y=y)) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Niech m, n, K oznaczają kolejno liczbę przykładów, cech i klas. Uczenie naiwnego klasyfikatora Bayesa można zrealizować w czasie proporcjonalnym do:",
+    "options": [
+      "$$ K \\cdot m \\cdot n $$",
+      "$$ m \\cdot n $$",
+      "$$ K \\cdot n $$",
+      "$$ K \\cdot m $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Dla klasyfikatorów bayesowskich, który z poniższych elementów zapewnia bezpieczeństwo obliczeń prowadzonych na typie zmiennoprzecinkowym?",
+    "options": [
+      "logarytmowanie",
+      "dyskretyzacja",
+      "poprawka Laplace'a",
+      "założenie naiwne"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Wyraz P(dane|model) w tzw. regule Bayesa jest określany jako:",
+    "options": [
+      "likelihood (wiarygodność)",
+      "prawdopodobieństwo całkowite",
+      "prawdopodobieństwo a priori",
+      "prawdopodobieństwo a posteriori"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "W sieci bayesowskiej węzły reprezentują: [x2]",
+    "options": [
+      "wpływ potomków na rodziców",
+      "zmienne losowe (w tym dyskretne i ciągłe)",
+      "tylko prawdopodobieństwo a priori zdarzeń",
+      "wpływ jednego zdarzenia na inne"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Założenie naiwne w klasyfikatorze bayesowskim mówi dokładnie, że: [x2]",
+    "options": [
+      "zmienne wejściowe są parami zależne",
+      "zmienne wejściowe są parami niezależne bezwarunkowo",
+      "zmienne wejściowe są parami niezależne warunkowo w klasach decyzyjnych",
+      "zmienne wejściowe są parami zależne warunkowo"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Węzły A i B nie mają rodziców, oba wpływają na C. Nie podano dowodów (C nie jest znane). Wtedy:",
+    "options": [
+      "nie ma węzłów niezależnych",
+      "A i B są niezależne",
+      "A i C są niezależne",
+      "B i C są niezależne"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Jeżeli zdarzenia A, B są niezależne to: [x2]",
+    "options": [
+      "$$ P(A|B) = P(A) $$",
+      "$$ P(A \\cap B) > P(A)P(B) $$",
+      "$$ P(A|B) = P(A)P(B) $$",
+      "żadna z powyższych"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "O naiwnym klasyfikatorze Bayesa można powiedzieć, że: [x2]",
+    "options": [
+      "nie cierpi na przekleństwo wymiarowości i złożoność skaluje się kwadratowo",
+      "cierpi na przekleństwo wymiarowości",
+      "złożoność skaluje się wykładniczo",
+      "nie cierpi na przekleństwo wymiarowości i złożoność obliczenia odpowiedzi skaluje się liniowo wraz z liczbą zmiennych"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Dana jest struktura sieci Bayesa: A bez rodziców, B bez rodziców, B wpływa na C. (A i B niezależne, B->C). Aby wnioskować, należy podać:",
+    "options": [
+      "$$ P(C|A), P(B|A), P(C|B) $$",
+      "$$ P(C), P(B|C) $$...",
+      "$$ P(A), P(B), P(C|B), P(C|\\neg B) $$ (dla zmiennych binarnych)",
+      "$$ P(A), P(B), P(C) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "W pewnym binarnym naiwnym klasyfikatorze Bayesa użyto dla bezpieczeństwa numerycznego techniki logarytmowania (logarytm o podstawie 2). Przypuśćmy, że na wejście klasyfikatora podstawiono obiekt testowy o cechach $$ (a,b,c) $$ oraz wiadomo, że: $$ P(X_1=a|Y=+) = 0.25 $$, $$ P(X_2=b|Y=+) = 0.125 $$, $$ P(X_3=c|Y=+) = 0.5 $$, $$ P(Y=+) = 0.5 $$. Sumaryczna wartość (log-score) dla klasy $$ Y=+ $$ wynosi:",
+    "options": [
+      "$$ -6 $$",
+      "$$ (1/2)^6 $$",
+      "$$ -7 $$",
+      "$$ (1/2)^7 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Dana jest pewna struktura sieci Bayesa. Węzeł A nie ma rodziców i połączony jest z węzłem B, a B wpływa na C (A -> B -> C). Zakładając, że wszystkie zmienne są binarne, to dla prawidłowego, pełnego wnioskowania należy podać zestaw następujących prawdopodobieństw (CPT):",
+    "options": [
+      "$$ P(A), P(B), P(C) $$",
+      "$$ P(C|A), P(B|A), P(C|B) $$",
+      "$$ P(A), P(B|A), P(B|\\neg A), P(C|B), P(C|\\neg B) $$",
+      "$$ P(C), P(B|C), P(B|\\neg C), P(A|B), P(A|\\neg B) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "W sieci przekonań/Bayesa krawędzie reprezentują",
+    "options": [
+      "a. ciągłe zmienne losowe",
+      "b. zmienne losowe (w tym dyskretne i ciągłe)",
+      "c. wpływ jednego zdarzenia (zmiennej) na inne zdarzenie",
+      "d. tylko prawdopodobieństwo a priori faktów"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Dla pewnego wektora cech x klasyfikator bayesowski zwraca odpowiedź y*, której probabilistyczny sens jest następujący:",
+    "options": [
+      "a. y* = arg max P(X=x|Y=y)",
+      "b. y* = arg max P(Y=y, X=x)",
+      "c. y* = arg max P(Y=y|X=x)",
+      "d. żadna z pozostałych odpowiedzi nie jest poprawna"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Dana jest pewna struktura sieci bayesowskiej. Węzeł A i B nie mają rodziców i połączone Są z węzłem C: A wpływa na C i B wpływa na C, Które z węzłów są niezależne, jeżeli nie podano żadnych dodatkowych przekonań (dowodów)?",
+    "options": [
+      "a. nie ma węzłów niezależnych",
+      "b. A i B",
+      "c. C",
+      "d. A, B i C"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "Bezpieczeństwo numeryczne obliczeń w klasyfikatorze bayesowskim można podnieść poprzez",
+    "options": [
+      "a. poprawkę LaPlace'a",
+      "b. założenie naiwne",
+      "c. użycie funkcji gęstości",
+      "d. logarytmowanie"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "07. Klasyfikator Bayesa / Sieci Bayesa"
+  },
+  {
+    "question": "W selekcji ruletkowej algorytmu genetycznego osobnik x ma przystosowanie $$ f(x)=20 $$, suma przystosowań populacji wynosi 80. Liczebność populacji to 10. Oczekiwana liczba kopii tego osobnika wynosi:",
+    "options": [
+      "2",
+      "2.5",
+      "0.5",
+      "4"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "„Wymiana kawałków informacji genetycznej” pomiędzy osobnikami zachodzi podczas operacji:",
+    "options": [
+      "selekcji elitarnej",
+      "selekcji turniejowej",
+      "krzyżowania",
+      "mutacji"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Prawdopodobieństwo przejścia osobnika x do następnego pokolenia w selekcji ruletkowej można zapisać wzorem:",
+    "options": [
+      "$$ f(x) / \\sum_t f(t) $$",
+      "$$ \\text{rank} f(x) / \\sum_t \\text{rank} f(t) $$",
+      "$$ f(x) / \\max_t f(t) $$",
+      "$$ f(x) / \\min_t f(t) $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W selekcji ruletkowej wartość oczekiwaną liczby egzemplarzy pewnego osobnika $$ x_i $$ po selekcji można wyrazić wzorem:",
+    "options": [
+      "$$ f(x_i) / \\sum f(x_j) $$",
+      "$$ f(x_i) / (\\frac{1}{m} \\sum f(x_j)) $$",
+      "$$ (\\sum f(x_j)) / f(x_i) $$",
+      "$$ (\\frac{1}{m} \\sum f(x_j)) / f(x_i) $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Która z poniższych selekcji najdłużej utrzymuje różnorodność populacji (statystycznie)?:",
+    "options": [
+      "ruletkowa",
+      "rankingowa",
+      "deterministyczna",
+      "nie można rozstrzygnąć"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Niech x* oznacza osobnika z najlepszym przystosowaniem w aktualnej populacji. Wtedy:",
+    "options": [
+      "tylko selekcja rankingowa gwarantuje jego sukcesję",
+      "tylko selekcja ruletkowa gwarantuje jego sukcesję",
+      "obie selekcje ruletkowa i rankingowa gwarantują jego sukcesję",
+      "żadne z powyższych (bez elitaryzmu sukcesja nie jest gwarantowana)"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym algorytmie genetycznym (maksymalizującym) mamy 4 osobników o przystosowaniach $$ f_1=5, f_2=0, f_3=10, f_4=1 $$. Prawdopodobieństwo sukcesu tych osobników w selekcji ruletkowej wyniosą:",
+    "options": [
+      "$$ 3/10, 1/10, 4/10, 2/10 $$",
+      "$$ 5/16, 0, 10/16, 1/16 $$",
+      "$$ 0.25, 0.25, 0.25, 0.25 $$",
+      "$$ 1/4, 0, 1/2, 1/4 $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Algorytmy genetyczne służą do rozwiązywania zadań:",
+    "options": [
+      "aproksymacji",
+      "optymalizacji",
+      "klasyfikacji binarnej",
+      "klasyfikacji"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Algorytmy genetyczne nie wymagają:",
+    "options": [
+      "generowania liczb losowych",
+      "informacji o wartości funkcji optymalizowanej w punkcie",
+      "informacji o pochodnej funkcji optymalizowanej w punkcie",
+      "selekcji rozwiązań - kandydatów"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym AG mamy czterech osobników o przystosowaniach $$ f(x_1)=2, f(x_2)=1, f(x_3)=4, f(x_4)=9 $$. Odpowiadające im prawdopodobieństwa sukcesji w selekcji ruletkowej to:",
+    "options": [
+      "$$ 2/9, 1/9, 4/9, 9/9 $$",
+      "$$ 2/16, 1/16, 4/16, 9/16 $$",
+      "0, 0, 0, 1",
+      "$$ 2/10, 1/10, 3/10, 4/10 $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W ramach poprzedniego zadania (fit=2, sum=16, N=4) oczekiwana liczba kopii osobnika x1 po selekcji wynosi?",
+    "options": [
+      "1",
+      "2",
+      "12",
+      "0.5"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym AG mamy 4 osobników o przystosowaniach $$ f(x_1)=2, f(x_2)=1, f(x_3)=4, f(x_4)=3 $$. Odpowiadające im prawdopodobieństwa sukcesji dla selekcji rankingowej wynoszą:",
+    "options": [
+      "$$ 2/16, 1/16, 4/16, 3/16 $$",
+      "$$ 2/4, 1/4, 4/4, 3/4 $$",
+      "0, 0, 0, 1",
+      "$$ 2/10, 1/10, 4/10, 3/10 $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Dla warunków z poprzedniego zadania (prob=0.2, N=4), oczekiwana liczba kopii x1 po selekcji wynosi: [x2]",
+    "options": [
+      "$$ 4/10 $$",
+      "$$ 1/4 $$",
+      "$$ 4/5 $$",
+      "$$ 1/10 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym AG ma zostać skrzyżowana para rodziców (0,0,1,0,1,1,0,1) i (1,1,1,1,1,0,0,1). Punkt krzyżowania między 3 i 4 bitem. W rezultacie otrzymamy:",
+    "options": [
+      "jednego potomka",
+      "jednego potomka odwrotnego",
+      "dwóch potomków: (0,0,1,1,1,0,0,1) i (1,1,1,0,1,1,0,1)",
+      "ci rodzice nie mogą zostać skrzyżowani"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W selekcji turniejowej z turniejem o rozmiarze równym rozmiarowi populacji, nowa populacja:",
+    "options": [
+      "napełnia się (składa się wyłącznie z) najlepszym osobnikiem",
+      "jest losowa",
+      "jest taka sama jak poprzednia",
+      "składa się z najgorszych osobników"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Algorytmy genetyczne są przeznaczone do:",
+    "options": [
+      "rozwiązywania problemów optymalizacji w sposób przybliżony",
+      "rozwiązywania problemów klasyfikacji w sposób przybliżony",
+      "rozwiązywania problemów klasyfikacji w sposób dokładny",
+      "rozwiązywania problemów optymalizacji w sposób dokładny"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Pewien algorytm genetyczny: $$ f(x_1)=5, f(x_2)=1, f(x_3)=10, f(x_4)=2, f(x_5)=2 $$. Selekcja ruletkowa. Wskaż prawdziwe zdanie:",
+    "options": [
+      "prawdopodobieństwo selekcji piątego osobnika wynosi 2/10",
+      "osobnik drugi nie zostanie wyselekcjonowany",
+      "oczekiwana liczba egzemplarzy trzeciego osobnika po selekcji wynosi 2.5",
+      "oczekiwana liczba egzemplarzy pierwszego osobnika wynosi 4/5"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Algorytmy genetyczne sa przeznaczone:",
+    "options": [
+      "a. rozwiazywania problemów optymalizacji w sposób przybliżony",
+      "b. rozwiązywania problemów klasyfikacji w sposób przybliżony",
+      "c. rozwiązywania problemów klasyfikacji w sposób dokładny",
+      "d. rozwiązywania problemów optymalizacji w sposób dokładny"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Pewien algorytm genetyczny odnotował (dla populacji pięciu osobników) następujące przystosowania f(x1)=5, f(x2)=1, f(x3)=10, f(x4)=2, f(x5)=2 i będzie wykonywał selekcje ruletkową. Wskaż prawdziwe zdanie,",
+    "options": [
+      "a. prawdopodobieństwo selekcji piątego osobnika wynosi 2/10",
+      "b. osobnik drugi nie zostanie wyselekqonowany",
+      "c. oczekiwana liczba egzemplarzy trzeciego osobnika po selekcji wynosi 2.5",
+      "d. oczekiwana liczba egzemplarzy pierwszego osobnika po selekcji wynosi 4/5"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym AG mamy czterech osobników o przystosowaniach f(x1) = 2, f(x2) = 1, f(x3) = 4, f(x4) = 9 . Odpowiadające imprawdopodobieństwa sukcesji w selekcji ruletkowej to:",
+    "options": [
+      "a. 2/9, 1/9, 4/9, 9/9",
+      "b. 2/16, 1/16, 4/16, 9/16",
+      "c. 0,0,0,1",
+      "d. 2/10, 1/10, 3/10, 4/10"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W ramach poprzedniego zadania oczekiwana liczba kopii osobnika x1 po selekcji wynosi?",
+    "options": [
+      "a. 1",
+      "b. 2",
+      "c. 12",
+      "d. 1⁄2 Poprzednie zadanie: 105. W pewnym AG mamy czterech osobników o przystosowaniach f(x1) = 2, f(x2) = 1, f(x3) = 4, f(x4) = 9 . Odpowiadające im prawdopodobieństwa sukcesji w selekcji ruletkowej to:",
+      "a. 2/9, 1/9, 4/9, 9/9",
+      "b. 2/16, 1/16, 4/16, 9/16",
+      "c. 0,0,0,1",
+      "d. 2/10, 1/10, 3/10, 4/10"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "W pewnym AG mamy 4 osobników o następujących przystosowaniach f(x1) = 2, f(x2) = 1, f(x3) = 4, f(x4) = 3. Odpowiadające im prawdopodobieństwa sukcesji dla selekcji rankingowej wynoszą:",
+    "options": [
+      "a. 2/16, 1/16, 4/16, 3/16",
+      "b. 2/4, 1/4, 4/4, 3/4",
+      "c. 0, 0, 0, 1",
+      "d. 2/10, 1/10, 4/10, 3/10"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Algorytmy genetyczne (AG) próbują poszukiwać:",
+    "options": [
+      "a. miejsc zerowych",
+      "b. optimów lokalnych",
+      "c. rozwiązań stabilnych",
+      "d. żadne z powyższych"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "08. Algorytmy genetyczne"
+  },
+  {
+    "question": "Liczba iteracji, którą musiałby wykonać algorytm wyczerpujący dla dyskretnego „problemu plecakowego” wynosi:",
+    "options": [
+      "$$ n! $$",
+      "Ackermann(n)",
+      "$$ 2^n $$",
+      "$$ n^2 $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Dany jest dyskretny problem plecakowy o n przedmiotach i objętości plecaka C. Rozwiązanie poprzez programowanie dynamiczne jest złożoności:",
+    "options": [
+      "$$ O(C^n) $$",
+      "$$ O(n^C) $$",
+      "$$ O(C+n) $$",
+      "$$ O(Cn) $$"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Problem n-hetmanów polega na ustawieniu n hetmanów (bez wzajemnego ataku) na szachownicy o wymiarach: [x2]",
+    "options": [
+      "$$ 4 \\times 4 $$",
+      "$$ 8 \\times 8 $$",
+      "$$ n \\times n $$",
+      "$$ (n^2-1) \\times (n^2-1) $$"
+    ],
+    "correct": [
+      2
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "„Problem jeepa” jest przykładem problemu: [x2]",
+    "options": [
+      "optymalizacji dyskretnej",
+      "najkrótszej ścieżki",
+      "klasyfikacji binarnej",
+      "aproksymacji"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "„Problem komiwojażera” to problem: [x2]",
+    "options": [
+      "NP-zupełny",
+      "NP-trudny",
+      "decyzyjny",
+      "klasyfikacji"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Sudoku minimalne to sudoku: [x2]",
+    "options": [
+      "najmniejszej liczbie danych i 1 rozwiązaniu",
+      "najmniejszej liczbie danych i 2 rozwiązaniach",
+      "dla planszy $$ 4 \\times 4 $$",
+      "dla planszy $$ 1 \\times 1 $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Programowanie dynamiczne dla problemu plecakowego (DKP) o n elementach wymaga wykładniczego czasu, gdy objętość plecaka C jest proporcjonalna do: [x2]",
+    "options": [
+      "n",
+      "$$ 2^n $$",
+      "$$ n^2 $$",
+      "1"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Kluczowe przejście indukcyjne w programowaniu dynamicznym dla problemu plecakowego ma postać (przyjmując standardowe oznaczenia):",
+    "options": [
+      "$$ a_{i,j} = \\max\\{a_{i-1,j}, a_{i-1,j-c_i} + v_i\\} $$",
+      "$$ a_{i,j} = \\max\\{a_{i,j-1}, a_{i,j-1} - C_j + v_j\\} $$",
+      "$$ a_{i,j} = \\max\\{a_{i,j-1}, a_{i-1,j-1} + v_j\\} $$",
+      "$$ a_{i,j} = \\max\\{a_{i,j-1}, a_{i-1,j-1} - C_j + v_j\\} $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "W problemie jeepa rozwiązanie dla $$ n=2 $$ wynosi:",
+    "options": [
+      "$$ 1 + 1/2 $$",
+      "$$ 1 + 1/3 $$",
+      "$$ 1 + 1/3 + 1/3 $$",
+      "$$ 1 + \\sqrt{2}/2 $$"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "Problem komiwojażera to inaczej problem znalezienia: [x2]",
+    "options": [
+      "Najkrótszego cyklu Hamiltona",
+      "Najkrótszego cyklu Eulera",
+      "Najkrótszej ścieżki Hamiltona",
+      "Najkrótszej ścieżki Eulera"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "W „problemie jeepa” (dla n=2, przy jednym zbiorniku paliwa o pojemności 1 jednostki na jeepa) maksymalny zasięg wynosi:",
+    "options": [
+      "$$ 1 + 1/2 $$",
+      "$$ 1 + 1/3 $$",
+      "$$ 1 + 1/3 + 1/3 $$",
+      "$$ 1 + \\sqrt{2}/2 $$"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)"
+  },
+  {
+    "question": "W grze w „iterowany dylemat więźnia” (gdy liczba rund nie jest znana z góry), najlepszą strategią jest „wet za wet”. Jeśli liczba rund jest znana, racjonalnym wyborem w każdej rundzie jest:",
+    "options": [
+      "zdradzić",
+      "milczeć",
+      "losować",
+      "współpracować"
+    ],
+    "correct": [
+      0
+    ],
+    "category": "10. Teoria gier (dylemat więźnia)"
+  },
+  {
+    "question": "W grze w pojedynczy „dylemat więźnia” racjonalnym wyborem dla każdego z graczy jest: [x2]",
+    "options": [
+      "milczeć",
+      "zdradzić",
+      "postąpić jak przeciwnik",
+      "postąpić odwrotnie niż przeciwnik"
+    ],
+    "correct": [
+      1
+    ],
+    "category": "10. Teoria gier (dylemat więźnia)"
+  },
+  {
+    "question": "„Iterowany dylemat więźnia” redukuje się indukcyjnie do pojedynczego dylematu więźnia jeżeli:",
+    "options": [
+      "Gracze cały czas współpracują",
+      "Gracze cały czas zdradzają",
+      "Gracze grają wet za wet",
+      "Liczba rund jest znana z góry"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "10. Teoria gier (dylemat więźnia)"
+  },
+  {
+    "question": "„Iterowany dylemat więźnia” redukuje się indukcyjnie do pojedynczego dylematu więźnia (zdrada jest strategią dominującą), jeżeli:",
+    "options": [
+      "gracze cały czas współpracują",
+      "gracze cały czas zdradzają",
+      "gracze grają „wet za wet”",
+      "liczba rund jest znana z góry"
+    ],
+    "correct": [
+      3
+    ],
+    "category": "10. Teoria gier (dylemat więźnia)"
+  }
+]
