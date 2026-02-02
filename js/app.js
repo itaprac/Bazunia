@@ -1320,20 +1320,55 @@ function saveQuestionEdit() {
   const randomizeToggle = document.getElementById('editor-randomize-toggle');
   let newRandomize = undefined;
   if (randomizeToggle && randomizeToggle.checked) {
+    newRandomize = {};
+
+    // Read variables
     const varRows = document.querySelectorAll('.editor-var-row');
-    if (varRows.length > 0) {
-      newRandomize = {};
-      for (const row of varRows) {
-        const varName = row.querySelector('.editor-var-name').value.trim();
-        const varValues = row.querySelector('.editor-var-values').value.trim();
-        if (!varName || !varValues) continue;
-        const nums = varValues.split(',').map(s => parseFloat(s.trim())).filter(n => !isNaN(n));
-        if (nums.length >= 2 && /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(varName)) {
-          newRandomize[varName] = nums;
+    for (const row of varRows) {
+      const varName = row.querySelector('.editor-var-name').value.trim();
+      const varValues = row.querySelector('.editor-var-values').value.trim();
+      if (!varName || !varValues) continue;
+      if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(varName)) continue;
+      // Try parsing as numbers first
+      const parts = varValues.split(',').map(s => s.trim());
+      const nums = parts.map(s => parseFloat(s)).filter(n => !isNaN(n));
+      if (nums.length === parts.length && nums.length >= 2) {
+        newRandomize[varName] = nums;
+      } else if (parts.length >= 2) {
+        // Treat as text variable (string array)
+        newRandomize[varName] = parts;
+      }
+    }
+
+    // Read derived variables
+    const derivedRows = document.querySelectorAll('.editor-derived-row');
+    if (derivedRows.length > 0) {
+      const derived = {};
+      for (const row of derivedRows) {
+        const name = row.querySelector('.editor-derived-name').value.trim();
+        const expr = row.querySelector('.editor-derived-expr').value.trim();
+        if (!name || !expr) continue;
+        if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(name)) {
+          derived[name] = expr;
         }
       }
-      if (Object.keys(newRandomize).length === 0) newRandomize = undefined;
+      if (Object.keys(derived).length > 0) newRandomize.$derived = derived;
     }
+
+    // Read constraints
+    const constraintRows = document.querySelectorAll('.editor-constraint-row');
+    if (constraintRows.length > 0) {
+      const constraints = [];
+      for (const row of constraintRows) {
+        const expr = row.querySelector('.editor-constraint-expr').value.trim();
+        if (expr) constraints.push(expr);
+      }
+      if (constraints.length > 0) newRandomize.$constraints = constraints;
+    }
+
+    // Check if randomize has any actual content
+    const hasVars = Object.keys(newRandomize).some(k => !k.startsWith('$'));
+    if (!hasVars && !newRandomize.$derived) newRandomize = undefined;
   }
 
   // Update question in storage

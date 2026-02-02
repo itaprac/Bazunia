@@ -47,6 +47,7 @@
           <li><a href="#shortcuts">Skróty klawiszowe</a></li>
           <li><a href="#settings">Ustawienia</a></li>
           <li><a href="#randomize">Losowe wartości (szablony)</a></li>
+          <li><a href="#advanced-randomize">Zaawansowana randomizacja</a></li>
         </ul>
       </nav>
 
@@ -508,6 +509,131 @@
           przycisk &#x1F3B2; (kość). Kliknięcie losuje nowe wartości. W trybie testu przycisk nie jest dostępny
           &mdash; wartości są stałe dla danego podejścia.
         </p>
+      </section>
+
+      <!-- Section: Advanced Randomize -->
+      <section class="docs-section" id="advanced-randomize">
+        <h2 class="docs-section-title">Zaawansowana randomizacja</h2>
+        <p>
+          System szablonow zostal rozszerzony o operatory porownania, funkcje warunkowe,
+          zmienne pochodne, ograniczenia, formatowanie, zmienne tekstowe i dynamiczna poprawnosc odpowiedzi.
+        </p>
+
+        <h3>Operatory porownania</h3>
+        <p>
+          W wyrazeniach mozna uzywac operatorow porownania, ktore zwracaja <code>1</code> (prawda) lub <code>0</code> (falsz):
+        </p>
+        <table class="docs-table">
+          <thead><tr><th>Operator</th><th>Opis</th><th>Przyklad</th></tr></thead>
+          <tbody>
+            <tr><td><code>&gt;</code></td><td>wieksze</td><td><code>={if(a &gt; b, a, b)}</code></td></tr>
+            <tr><td><code>&lt;</code></td><td>mniejsze</td><td><code>a &lt; 10</code></td></tr>
+            <tr><td><code>&gt;=</code></td><td>wieksze lub rowne</td><td><code>a &gt;= 0</code></td></tr>
+            <tr><td><code>&lt;=</code></td><td>mniejsze lub rowne</td><td><code>a + b &lt;= 100</code></td></tr>
+            <tr><td><code>==</code></td><td>rowne</td><td><code>mod(n, 2) == 0</code></td></tr>
+            <tr><td><code>!=</code></td><td>rozne</td><td><code>a != b</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Funkcje warunkowe i logiczne</h3>
+        <table class="docs-table">
+          <thead><tr><th>Funkcja</th><th>Opis</th><th>Przyklad</th></tr></thead>
+          <tbody>
+            <tr><td><code>if(warunek, tak, nie)</code></td><td>Warunkowa — zwraca <code>tak</code> jesli warunek != 0, inaczej <code>nie</code></td><td><code>={if(a &gt; b, a, b)}</code> &mdash; maximum</td></tr>
+            <tr><td><code>and(a, b)</code></td><td>Logiczne AND (1 jesli oba != 0)</td><td><code>and(a &gt; 0, b &gt; 0)</code></td></tr>
+            <tr><td><code>or(a, b)</code></td><td>Logiczne OR (1 jesli ktorykolwiek != 0)</td><td><code>or(a == 0, b == 0)</code></td></tr>
+            <tr><td><code>not(a)</code></td><td>Logiczne NOT (1 jesli a == 0)</td><td><code>not(a == b)</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Zmienne pochodne ($derived)</h3>
+        <p>
+          Zmienne obliczane z losowych zmiennych, w kolejnosci definicji. Dostepne we wszystkich
+          wyrazeniach i podstawieniach.
+        </p>
+        <pre class="docs-code"><code>"randomize": {
+  "a": [1, 50],
+  "b": [1, 50],
+  "$derived": {
+    "sum": "a + b",
+    "diff": "abs(a - b)",
+    "bigger": "if(a > b, a, b)"
+  }
+}</code></pre>
+
+        <h3>Ograniczenia ($constraints)</h3>
+        <p>
+          Tablica wyrazen-warunkow. Jesli ktorykolwiek nie jest spelniony, system losuje nowe wartosci
+          (do 50 prob). Przydatne do unikania dzielenia przez zero, powtarzajacych sie wartosci itp.
+        </p>
+        <pre class="docs-code"><code>"randomize": {
+  "a": [1, 20],
+  "b": [1, 20],
+  "$constraints": ["a != b", "a + b <= 30"]
+}</code></pre>
+
+        <h3>Formatowanie {var:format}</h3>
+        <p>
+          Mozna dodac specyfikator formatu po dwukropku w podstawieniu zmiennej:
+        </p>
+        <table class="docs-table">
+          <thead><tr><th>Format</th><th>Opis</th><th>Przyklad</th><th>Wynik (dla 42)</th></tr></thead>
+          <tbody>
+            <tr><td><code>{a:bin}</code></td><td>Binarny</td><td><code>{n:bin}</code></td><td><code>101010</code></td></tr>
+            <tr><td><code>{a:hex}</code></td><td>Szesnastkowy</td><td><code>{n:hex}</code></td><td><code>2A</code></td></tr>
+            <tr><td><code>{a:oct}</code></td><td>Osemkowy</td><td><code>{n:oct}</code></td><td><code>52</code></td></tr>
+            <tr><td><code>{a:roman}</code></td><td>Rzymski</td><td><code>{n:roman}</code></td><td><code>XLII</code></td></tr>
+            <tr><td><code>{a:.2f}</code></td><td>2 miejsca dziesietne</td><td><code>{x:.2f}</code></td><td><code>42.00</code></td></tr>
+            <tr><td><code>{a:pct}</code></td><td>Procenty (x * 100)</td><td><code>{p:pct}</code></td><td><code>4200%</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Zmienne tekstowe</h3>
+        <p>
+          Jesli tablica wartosci zmiennej zawiera stringi, system losuje jeden z tekstow.
+          Zmienne tekstowe sa dostepne tylko przez <code>{nazwa}</code>, nie w wyrazeniach <code>={...}</code>.
+        </p>
+        <pre class="docs-code"><code>"randomize": {
+  "unit": ["metr", "centymetr", "milimetr"],
+  "n": [1, 100]
+}</code></pre>
+        <p>Uzycie: <code>"text": "Podaj {n} {unit} w..."</code></p>
+
+        <h3>Dynamiczna poprawnosc (correctWhen)</h3>
+        <p>
+          Zamiast statycznego <code>"correct": true/false</code>, odpowiedz moze miec pole <code>"correctWhen"</code>
+          z wyrazeniem. Poprawnosc jest obliczana dynamicznie po losowaniu zmiennych.
+        </p>
+        <pre class="docs-code"><code>"answers": [
+  { "id": "a", "text": "Parzysta", "correctWhen": "mod(n, 2) == 0" },
+  { "id": "b", "text": "Nieparzysta", "correctWhen": "mod(n, 2) != 0" },
+  { "id": "c", "text": "Dodatnia", "correctWhen": "n > 0" },
+  { "id": "d", "text": "Ujemna", "correctWhen": "n < 0" }
+]</code></pre>
+        <p>
+          Odpowiedzi z <code>correctWhen</code> nie potrzebuja pola <code>correct</code> &mdash; jest ono ignorowane
+          na rzecz wyniku wyrazenia. Jedna odpowiedz moze byc poprawna przy jednych wartosciach, a niepoprawna przy innych.
+        </p>
+
+        <h3>Pelny przyklad</h3>
+        <pre class="docs-code"><code>{
+  "id": "advanced-01",
+  "text": "Liczba {n} w systemie binarnym to {n:bin}. Ktore stwierdzenia sa prawdziwe?",
+  "randomize": {
+    "n": [1, 255],
+    "$derived": {
+      "parity": "mod(n, 2)",
+      "bits": "floor(log2(n)) + 1"
+    },
+    "$constraints": ["n > 0"]
+  },
+  "answers": [
+    { "id": "a", "text": "Liczba jest parzysta", "correctWhen": "parity == 0" },
+    { "id": "b", "text": "Liczba jest nieparzysta", "correctWhen": "parity != 0" },
+    { "id": "c", "text": "Potrzeba ={bits} bitow", "correct": true },
+    { "id": "d", "text": "Liczba jest wieksza niz 128", "correctWhen": "n > 128" }
+  ]
+}</code></pre>
       </section>
 
     </div>

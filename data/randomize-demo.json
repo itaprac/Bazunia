@@ -3,14 +3,15 @@
     "id": "randomize-demo",
     "name": "Losowe wartości — Przykłady",
     "description": "Talia demonstracyjna pokazująca możliwości systemu losowych wartości (randomize). Każde pytanie generuje inne liczby przy każdym wyświetleniu.",
-    "version": 1,
+    "version": 2,
     "categories": [
       { "id": "arytmetyka", "name": "1. Arytmetyka", "questionCount": 4 },
       { "id": "algebra", "name": "2. Algebra i wzory", "questionCount": 4 },
       { "id": "geometria", "name": "3. Geometria", "questionCount": 3 },
       { "id": "logarytmy", "name": "4. Logarytmy i potęgi", "questionCount": 3 },
       { "id": "statystyka", "name": "5. Statystyka i prawdopodobieństwo", "questionCount": 3 },
-      { "id": "informatyka", "name": "6. Informatyka", "questionCount": 3 }
+      { "id": "informatyka", "name": "6. Informatyka", "questionCount": 3 },
+      { "id": "zaawansowane", "name": "7. Zaawansowane szablony", "questionCount": 5 }
     ]
   },
   "questions": [
@@ -330,6 +331,107 @@
         { "id": "d", "text": "={pow(inp, 2)}", "correct": false }
       ],
       "explanation": "Każdy z {out} neuronów ma {inp} wag = {inp} * {out} = ={inp*out}. Z biasami byłoby ={inp*out + out} ({inp}*{out} + {out})."
+    },
+    {
+      "id": "rd-21",
+      "text": "Liczba {n} w systemie binarnym to: {n:bin}. Które stwierdzenia są prawdziwe?",
+      "category": "zaawansowane",
+      "randomize": {
+        "n": [1, 255],
+        "$derived": {
+          "parity": "mod(n, 2)",
+          "bits": "floor(log2(n)) + 1"
+        },
+        "$constraints": ["n > 1"]
+      },
+      "answers": [
+        { "id": "a", "text": "Liczba jest parzysta", "correctWhen": "parity == 0" },
+        { "id": "b", "text": "Liczba jest nieparzysta", "correctWhen": "parity != 0" },
+        { "id": "c", "text": "Reprezentacja binarna ma ={bits} bitów", "correct": true },
+        { "id": "d", "text": "Liczba jest większa niż 128", "correctWhen": "n > 128" }
+      ],
+      "explanation": "{n} = {n:bin} (bin) = {n:hex} (hex). Parzystość: ={if(parity == 0, 0, 1)} (mod 2). Bitów: ={bits}."
+    },
+    {
+      "id": "rd-22",
+      "text": "Dane są dwie różne liczby: a = {a}, b = {b}. Która jest większa?",
+      "category": "zaawansowane",
+      "randomize": {
+        "a": [-50, 50],
+        "b": [-50, 50],
+        "$derived": {
+          "bigger": "if(a > b, a, b)",
+          "smaller": "if(a < b, a, b)",
+          "diff": "abs(a - b)"
+        },
+        "$constraints": ["a != b"]
+      },
+      "answers": [
+        { "id": "a", "text": "a = {a} jest większe", "correctWhen": "a > b" },
+        { "id": "b", "text": "b = {b} jest większe", "correctWhen": "b > a" },
+        { "id": "c", "text": "Różnica wynosi ={diff}", "correct": true },
+        { "id": "d", "text": "Są równe", "correct": false }
+      ],
+      "explanation": "max({a}, {b}) = ={bigger}, min({a}, {b}) = ={smaller}, |{a} - {b}| = ={diff}"
+    },
+    {
+      "id": "rd-23",
+      "text": "Dane: a = {a}, b = {b}. Która własność jest spełniona?",
+      "category": "zaawansowane",
+      "randomize": {
+        "a": [1, 100],
+        "b": [1, 100],
+        "$derived": {
+          "sum": "a + b",
+          "prod": "a * b",
+          "sum_even": "mod(a + b, 2) == 0",
+          "prod_even": "mod(a * b, 2) == 0",
+          "both_odd": "and(mod(a, 2) != 0, mod(b, 2) != 0)"
+        },
+        "$constraints": ["a != b"]
+      },
+      "answers": [
+        { "id": "a", "text": "Suma a + b = ={sum} jest parzysta", "correctWhen": "sum_even == 1" },
+        { "id": "b", "text": "Suma a + b = ={sum} jest nieparzysta", "correctWhen": "sum_even == 0" },
+        { "id": "c", "text": "Iloczyn a * b = ={prod} jest parzysty", "correctWhen": "prod_even == 1" },
+        { "id": "d", "text": "Obie liczby są nieparzyste", "correctWhen": "both_odd == 1" }
+      ],
+      "explanation": "a={a}, b={b}: sum={a}+{b}=={sum} (parzysta: ={sum_even}), prod={a}*{b}=={prod} (parzysty: ={prod_even})"
+    },
+    {
+      "id": "rd-24",
+      "text": "Liczba {n} w różnych systemach liczbowych:",
+      "category": "zaawansowane",
+      "randomize": {
+        "n": [1, 3999],
+        "$constraints": ["n > 0"]
+      },
+      "answers": [
+        { "id": "a", "text": "Binarnie: {n:bin}", "correct": true },
+        { "id": "b", "text": "Szesnastkowo: {n:hex}", "correct": true },
+        { "id": "c", "text": "Ósemkowo: {n:oct}", "correct": true },
+        { "id": "d", "text": "Rzymsko: {n:roman}", "correct": true }
+      ],
+      "explanation": "{n} = {n:bin} (bin) = {n:oct} (oct) = {n:hex} (hex) = {n:roman} (roman)"
+    },
+    {
+      "id": "rd-25",
+      "text": "Temperatura wynosi {temp:.1f}°C. Jaki to odpowiednik w skali Fahrenheita?",
+      "category": "zaawansowane",
+      "randomize": {
+        "temp": [-20, 45],
+        "$derived": {
+          "fahr": "temp * 9 / 5 + 32",
+          "is_freezing": "if(temp <= 0, 1, 0)"
+        }
+      },
+      "answers": [
+        { "id": "a", "text": "={round(fahr * 100) / 100}°F", "correct": true },
+        { "id": "b", "text": "={round((temp + 32) * 100) / 100}°F", "correct": false },
+        { "id": "c", "text": "Temperatura jest poniżej zera", "correctWhen": "is_freezing == 1" },
+        { "id": "d", "text": "={round(temp * 2 + 30)}°F", "correct": false }
+      ],
+      "explanation": "F = C × 9/5 + 32 = {temp:.1f} × 1.8 + 32 = ={round(fahr * 100) / 100}°F"
     }
   ]
 }

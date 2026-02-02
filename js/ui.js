@@ -622,13 +622,34 @@ export function renderQuestionEditor(question) {
   `).join('');
 
   const hasRandomize = question.randomize && typeof question.randomize === 'object';
-  const vars = hasRandomize ? Object.entries(question.randomize) : [];
+  const vars = hasRandomize
+    ? Object.entries(question.randomize).filter(([n]) => !n.startsWith('$'))
+    : [];
 
   const varsHtml = vars.map(([name, values]) => `
     <div class="editor-var-row">
       <input type="text" class="editor-var-name" value="${escapeAttr(name)}" placeholder="nazwa">
       <input type="text" class="editor-var-values" value="${escapeAttr(values.join(', '))}" placeholder="min, max lub v1, v2, v3...">
       <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
+    </div>
+  `).join('');
+
+  const derivedEntries = hasRandomize && question.randomize.$derived
+    ? Object.entries(question.randomize.$derived) : [];
+  const derivedHtml = derivedEntries.map(([name, expr]) => `
+    <div class="editor-derived-row">
+      <input type="text" class="editor-derived-name" value="${escapeAttr(name)}" placeholder="nazwa">
+      <input type="text" class="editor-derived-expr" value="${escapeAttr(expr)}" placeholder="wyrażenie, np. a + b">
+      <button class="btn-remove-derived" title="Usuń">&times;</button>
+    </div>
+  `).join('');
+
+  const constraintsList = hasRandomize && Array.isArray(question.randomize.$constraints)
+    ? question.randomize.$constraints : [];
+  const constraintsHtml = constraintsList.map(expr => `
+    <div class="editor-constraint-row">
+      <input type="text" class="editor-constraint-expr" value="${escapeAttr(expr)}" placeholder="warunek, np. a != b">
+      <button class="btn-remove-constraint" title="Usuń">&times;</button>
     </div>
   `).join('');
 
@@ -665,6 +686,20 @@ export function renderQuestionEditor(question) {
             ${varsHtml}
           </div>
           <button class="btn btn-secondary btn-sm" id="btn-add-var">+ Dodaj zmienną</button>
+          <div class="editor-subsection">
+            <label class="editor-label editor-sublabel">Zmienne pochodne ($derived)</label>
+            <div class="editor-derived-list" id="editor-derived-list">
+              ${derivedHtml}
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-add-derived">+ Dodaj pochodną</button>
+          </div>
+          <div class="editor-subsection">
+            <label class="editor-label editor-sublabel">Ograniczenia ($constraints)</label>
+            <div class="editor-constraints-list" id="editor-constraints-list">
+              ${constraintsHtml}
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-add-constraint">+ Dodaj ograniczenie</button>
+          </div>
         </div>
       </div>
       <div class="editor-actions">
@@ -699,20 +734,52 @@ function bindRandomizeEditorEvents() {
         <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
       `;
       list.appendChild(row);
-      bindRemoveVarButtons();
+      bindRemoveButtons();
     });
   }
 
-  bindRemoveVarButtons();
+  const addDerivedBtn = document.getElementById('btn-add-derived');
+  if (addDerivedBtn) {
+    addDerivedBtn.addEventListener('click', () => {
+      const list = document.getElementById('editor-derived-list');
+      const row = document.createElement('div');
+      row.className = 'editor-derived-row';
+      row.innerHTML = `
+        <input type="text" class="editor-derived-name" value="" placeholder="nazwa">
+        <input type="text" class="editor-derived-expr" value="" placeholder="wyrażenie, np. a + b">
+        <button class="btn-remove-derived" title="Usuń">&times;</button>
+      `;
+      list.appendChild(row);
+      bindRemoveButtons();
+    });
+  }
+
+  const addConstraintBtn = document.getElementById('btn-add-constraint');
+  if (addConstraintBtn) {
+    addConstraintBtn.addEventListener('click', () => {
+      const list = document.getElementById('editor-constraints-list');
+      const row = document.createElement('div');
+      row.className = 'editor-constraint-row';
+      row.innerHTML = `
+        <input type="text" class="editor-constraint-expr" value="" placeholder="warunek, np. a != b">
+        <button class="btn-remove-constraint" title="Usuń">&times;</button>
+      `;
+      list.appendChild(row);
+      bindRemoveButtons();
+    });
+  }
+
+  bindRemoveButtons();
 }
 
-function bindRemoveVarButtons() {
-  document.querySelectorAll('.btn-remove-var').forEach(btn => {
+function bindRemoveButtons() {
+  const selector = '.btn-remove-var, .btn-remove-derived, .btn-remove-constraint';
+  document.querySelectorAll(selector).forEach(btn => {
     btn.replaceWith(btn.cloneNode(true)); // Remove old listeners
   });
-  document.querySelectorAll('.btn-remove-var').forEach(btn => {
+  document.querySelectorAll(selector).forEach(btn => {
     btn.addEventListener('click', () => {
-      btn.closest('.editor-var-row').remove();
+      btn.parentElement.remove();
     });
   });
 }

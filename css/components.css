@@ -1515,10 +1515,83 @@
   flex-shrink: 0;
 }
 
-.btn-remove-var:hover {
+.btn-remove-var:hover,
+.btn-remove-derived:hover,
+.btn-remove-constraint:hover {
   border-color: var(--color-danger);
   color: var(--color-danger);
   background: var(--color-answer-incorrect);
+}
+
+.editor-subsection {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.editor-sublabel {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.editor-derived-list,
+.editor-constraints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.editor-derived-row,
+.editor-constraint-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editor-derived-name {
+  width: 100px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+}
+
+.editor-derived-expr,
+.editor-constraint-expr {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+}
+
+.editor-derived-name:focus,
+.editor-derived-expr:focus,
+.editor-constraint-expr:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-remove-derived,
+.btn-remove-constraint {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 /* --- App Settings --- */

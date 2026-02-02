@@ -624,7 +624,17 @@ function tokenize(expr) {
   let i = 0;
   while (i < expr.length) {
     if (expr[i] === ' ') { i++; continue; }
-    if ('+-*/%(),'.includes(expr[i])) {
+    // Two-char comparison operators
+    if (i + 1 < expr.length) {
+      const two = expr[i] + expr[i + 1];
+      if (two === '>=' || two === '<=' || two === '==' || two === '!=') {
+        tokens.push({ type: 'op', value: two });
+        i += 2;
+        continue;
+      }
+    }
+    // Single-char operators (including > and <)
+    if ('+-*/%(),><'.includes(expr[i])) {
       tokens.push({ type: 'op', value: expr[i] });
       i++;
     } else if (/[0-9.]/.test(expr[i])) {
@@ -678,7 +688,32 @@ const FUNCTIONS = {
   fact:  (args) => { let n = Math.round(args[0]); if (n < 0 || n > 170) return NaN; let r = 1; for (let i = 2; i <= n; i++) r *= i; return r; },
   comb:  (args) => { let n = Math.round(args[0]), k = Math.round(args[1]); if (k < 0 || k > n || n > 170) return NaN; if (k > n - k) k = n - k; let r = 1; for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return Math.round(r); },
   perm:  (args) => { let n = Math.round(args[0]), k = Math.round(args[1]); if (k < 0 || k > n || n > 170) return NaN; let r = 1; for (let i = 0; i < k; i++) r *= (n - i); return r; },
+  // Conditional & logical
+  'if':  (args) => args[0] ? args[1] : args[2],
+  and:   (args) => (args[0] && args[1]) ? 1 : 0,
+  or:    (args) => (args[0] || args[1]) ? 1 : 0,
+  not:   (args) => args[0] ? 0 : 1,
 };
+
+function parseComparison(tokens, pos, vars) {
+  let [left, p] = parseExpr(tokens, pos, vars);
+  const CMP_OPS = ['>', '<', '>=', '<=', '==', '!='];
+  while (p < tokens.length && CMP_OPS.includes(tokens[p].value)) {
+    const op = tokens[p].value;
+    p++;
+    let right;
+    [right, p] = parseExpr(tokens, p, vars);
+    switch (op) {
+      case '>':  left = left > right ? 1 : 0; break;
+      case '<':  left = left < right ? 1 : 0; break;
+      case '>=': left = left >= right ? 1 : 0; break;
+      case '<=': left = left <= right ? 1 : 0; break;
+      case '==': left = left === right ? 1 : 0; break;
+      case '!=': left = left !== right ? 1 : 0; break;
+    }
+  }
+  return [left, p];
+}
 
 function parseExpr(tokens, pos, vars) {
   let [left, p] = parseTerm(tokens, pos, vars);
@@ -736,11 +771,11 @@ function parsePrimary(tokens, pos, vars) {
       const args = [];
       if (pos < tokens.length && tokens[pos].value !== ')') {
         let val;
-        [val, pos] = parseExpr(tokens, pos, vars);
+        [val, pos] = parseComparison(tokens, pos, vars);
         args.push(val);
         while (pos < tokens.length && tokens[pos].value === ',') {
           pos++;
-          [val, pos] = parseExpr(tokens, pos, vars);
+          [val, pos] = parseComparison(tokens, pos, vars);
           args.push(val);
         }
       }
@@ -756,7 +791,7 @@ function parsePrimary(tokens, pos, vars) {
   }
 
   if (tok.value === '(') {
-    let [val, p] = parseExpr(tokens, pos + 1, vars);
+    let [val, p] = parseComparison(tokens, pos + 1, vars);
     if (p >= tokens.length || tokens[p].value !== ')') throw new Error('missing )');
     return [val, p + 1];
   }
@@ -767,7 +802,7 @@ function parsePrimary(tokens, pos, vars) {
 function evaluateExpression(expr, vars) {
   const tokens = tokenize(expr);
   if (tokens.length === 0) return NaN;
-  const [result] = parseExpr(tokens, 0, vars);
+  const [result] = parseComparison(tokens, 0, vars);
   return result;
 }
 
@@ -783,7 +818,14 @@ function formatNumber(n) {
 function generateValues(randomize) {
   const vars = {};
   for (const [name, spec] of Object.entries(randomize)) {
+    // Skip meta keys ($derived, $constraints)
+    if (name.startsWith('$')) continue;
     if (!Array.isArray(spec) || spec.length < 2) continue;
+    // String array → text variable (random choice of string)
+    if (spec.some(v => typeof v === 'string')) {
+      vars[name] = randChoice(spec);
+      continue;
+    }
     if (spec.length === 2) {
       // [min, max] → random integer
       vars[name] = randInt(spec[0], spec[1]);
@@ -795,9 +837,63 @@ function generateValues(randomize) {
   return vars;
 }
 
+function computeDerived(randomize, vars) {
+  const derived = randomize.$derived;
+  if (!derived || typeof derived !== 'object') return;
+  for (const [name, expr] of Object.entries(derived)) {
+    vars[name] = evaluateExpression(expr, vars);
+  }
+}
+
+function checkConstraints(randomize, vars) {
+  const constraints = randomize.$constraints;
+  if (!Array.isArray(constraints) || constraints.length === 0) return true;
+  return constraints.every(expr => {
+    const result = evaluateExpression(expr, vars);
+    return !!result;
+  });
+}
+
+function toRoman(num) {
+  if (num <= 0 || num > 3999 || !Number.isInteger(num)) return String(num);
+  const vals = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  const syms = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+  let result = '';
+  for (let i = 0; i < vals.length; i++) {
+    while (num >= vals[i]) { result += syms[i]; num -= vals[i]; }
+  }
+  return result;
+}
+
+function formatWithSpecifier(value, specifier) {
+  // String values — no numeric formatting
+  if (typeof value === 'string') return value;
+  const n = Number(value);
+  if (!isFinite(n)) return String(n);
+  switch (specifier) {
+    case 'bin': return Math.trunc(n).toString(2);
+    case 'hex': return Math.trunc(n).toString(16).toUpperCase();
+    case 'oct': return Math.trunc(n).toString(8);
+    case 'roman': return toRoman(Math.trunc(n));
+    case 'pct': return (n * 100).toFixed(0) + '%';
+    default: {
+      // .Nf format (e.g. .2f, .3f)
+      const m = specifier.match(/^\.(\d+)f$/);
+      if (m) return n.toFixed(parseInt(m[1]));
+      return formatNumber(n);
+    }
+  }
+}
+
 function substituteVars(text, vars) {
-  return text.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)\}/g, (_, name) => {
-    return name in vars ? formatNumber(vars[name]) : `{${name}}`;
+  // Match {var:format} or {var}
+  return text.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(?::([a-zA-Z0-9_.]+))?\}/g, (match, name, spec) => {
+    if (!(name in vars)) return match;
+    const val = vars[name];
+    if (spec) return formatWithSpecifier(val, spec);
+    // String values — return as-is
+    if (typeof val === 'string') return val;
+    return formatNumber(val);
   });
 }
 
@@ -816,17 +912,27 @@ function processText(text, vars) {
 }
 
 function randomizeFromTemplate(question) {
-  const maxRetries = 10;
+  const maxRetries = 50;
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       const vars = generateValues(question.randomize);
 
+      // Compute derived variables
+      computeDerived(question.randomize, vars);
+
+      // Check constraints — retry if not satisfied
+      if (!checkConstraints(question.randomize, vars)) continue;
+
       const text = processText(question.text, vars);
-      const answers = question.answers.map(a => ({
-        ...a,
-        text: processText(a.text, vars),
-      }));
+      const answers = question.answers.map(a => {
+        const ans = { ...a, text: processText(a.text, vars) };
+        // Dynamic correctness via correctWhen
+        if (a.correctWhen) {
+          ans.correct = !!evaluateExpression(a.correctWhen, vars);
+        }
+        return ans;
+      });
       const explanation = question.explanation
         ? processText(question.explanation, vars)
         : undefined;

@@ -53,20 +53,60 @@ export function validateDeckJSON(data) {
           errors.push(`${prefix}: "randomize" musi być obiektem.`);
         } else {
           for (const [varName, varSpec] of Object.entries(q.randomize)) {
+            // $derived — object with string expressions
+            if (varName === '$derived') {
+              if (!varSpec || typeof varSpec !== 'object' || Array.isArray(varSpec)) {
+                errors.push(`${prefix}: "$derived" musi być obiektem z wyrażeniami.`);
+              } else {
+                for (const [dName, dExpr] of Object.entries(varSpec)) {
+                  if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(dName)) {
+                    errors.push(`${prefix}: nazwa zmiennej pochodnej "${dName}" jest niepoprawna.`);
+                  }
+                  if (typeof dExpr !== 'string') {
+                    errors.push(`${prefix}: wyrażenie zmiennej pochodnej "${dName}" musi być stringiem.`);
+                  }
+                }
+              }
+              continue;
+            }
+            // $constraints — array of string expressions
+            if (varName === '$constraints') {
+              if (!Array.isArray(varSpec) || varSpec.some(v => typeof v !== 'string')) {
+                errors.push(`${prefix}: "$constraints" musi być tablicą wyrażeń (stringów).`);
+              }
+              continue;
+            }
             if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(varName)) {
               errors.push(`${prefix}: nazwa zmiennej "${varName}" jest niepoprawna.`);
             }
-            if (!Array.isArray(varSpec) || varSpec.length < 2 || varSpec.some(v => typeof v !== 'number')) {
-              errors.push(`${prefix}: wartości zmiennej "${varName}" muszą być tablicą co najmniej 2 liczb.`);
+            if (!Array.isArray(varSpec) || varSpec.length < 2) {
+              errors.push(`${prefix}: wartości zmiennej "${varName}" muszą być tablicą co najmniej 2 elementów.`);
+            } else if (varSpec.some(v => typeof v === 'string')) {
+              // Text variable — all elements must be strings
+              if (!varSpec.every(v => typeof v === 'string')) {
+                errors.push(`${prefix}: zmienna tekstowa "${varName}" musi mieć same stringi.`);
+              }
+            } else if (varSpec.some(v => typeof v !== 'number')) {
+              errors.push(`${prefix}: wartości zmiennej "${varName}" muszą być liczbami lub stringami.`);
             }
           }
         }
+      }
+
+      // Validate correctWhen in answers
+      if (Array.isArray(q.answers)) {
+        q.answers.forEach((a, j) => {
+          if (a.correctWhen !== undefined && typeof a.correctWhen !== 'string') {
+            errors.push(`${prefix}, odpowiedź #${j + 1}: "correctWhen" musi być stringiem.`);
+          }
+        });
       }
 
       if (!Array.isArray(q.answers) || q.answers.length < 2) {
         errors.push(`${prefix}: musi mieć co najmniej 2 odpowiedzi.`);
       } else {
         let hasCorrect = false;
+        let hasCorrectWhen = false;
         q.answers.forEach((a, j) => {
           if (!a.id || typeof a.id !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "id".`);
@@ -74,12 +114,14 @@ export function validateDeckJSON(data) {
           if (!a.text || typeof a.text !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "text".`);
           }
-          if (typeof a.correct !== 'boolean') {
+          if (a.correctWhen) {
+            hasCorrectWhen = true;
+          } else if (typeof a.correct !== 'boolean') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: "correct" musi być true/false.`);
           }
           if (a.correct) hasCorrect = true;
         });
-        if (!hasCorrect) {
+        if (!hasCorrect && !hasCorrectWhen) {
           errors.push(`${prefix}: brak poprawnej odpowiedzi.`);
         }
       }
