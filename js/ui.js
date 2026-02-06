@@ -76,7 +76,9 @@ export function renderDeckList(decks, statsMap, options = {}) {
           <div class="deck-card-title">${escapeHtml(deck.name)}</div>
           ${deckKindBadge}
         </div>
-        ${deck.description ? `<div class="deck-card-description">${escapeHtml(deck.description)}</div>` : ''}
+        <div class="deck-card-description${deck.description ? '' : ' is-empty'}">
+          ${deck.description ? escapeHtml(deck.description) : '&nbsp;'}
+        </div>
         ${readOnlyHint}
         <div class="deck-card-stats">
           <div class="deck-stat new">

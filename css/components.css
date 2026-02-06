@@ -340,6 +340,9 @@
   transition: all var(--transition-smooth);
   position: relative;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .deck-card:hover {
@@ -391,6 +394,15 @@
   font-size: 0.82rem;
   margin-bottom: 14px;
   line-height: 1.5;
+  min-height: calc(1.5em * 2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.deck-card-description.is-empty {
+  visibility: hidden;
 }
 
 .deck-card-stats {
@@ -431,6 +443,8 @@
 .deck-card-actions {
   display: flex;
   gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
 }
 
 /* Empty state */
