@@ -62,6 +62,16 @@ export async function signUpWithPassword(email, password) {
   return client.auth.signUp({ email, password });
 }
 
+export async function signInWithGoogle() {
+  const client = ensureClient();
+  return client.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/`,
+    },
+  });
+}
+
 export async function signOutUser() {
   const client = ensureClient();
   return client.auth.signOut();

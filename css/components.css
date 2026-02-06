@@ -175,6 +175,15 @@
   flex: 1;
 }
 
+.auth-actions-stack {
+  flex-direction: column;
+  margin-top: 2px;
+}
+
+.auth-actions-stack .btn {
+  width: 100%;
+}
+
 .auth-message {
   min-height: 20px;
   font-size: 0.82rem;

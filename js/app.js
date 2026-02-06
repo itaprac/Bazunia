@@ -36,6 +36,7 @@ import {
   onAuthStateChange,
   signInWithPassword,
   signUpWithPassword,
+  signInWithGoogle,
   signOutUser,
 } from './supabase.js';
 
@@ -67,6 +68,9 @@ let currentDeckId = null;
 let currentCategory = null; // null = all, or category id
 let settingsReturnTo = null; // 'mode-select' or 'deck-list'
 let appSettingsReturnView = null; // view id to return to from app settings
+let docsReturnView = null;
+let docsLoaded = false;
+let docsLoadingPromise = null;
 let currentDeckSettings = null; // per-deck SM-2 settings for active session
 let studyPhase = null; // 'question' | 'feedback' | null
 let currentCardFlagged = false;
@@ -81,6 +85,7 @@ let studiedCount = 0;
 let sessionTotal = 0;
 let waitTimer = null;
 let currentUser = null;
+let sessionMode = null; // 'user' | 'guest' | null
 let authSubscription = null;
 let authEventsBound = false;
 
@@ -129,27 +134,26 @@ async function init() {
     }
   });
 
-  if (!isSupabaseConfigured()) {
-    resetUserPreferences();
-    showLoggedOutState('Skonfiguruj Supabase w .env (BAZA_SUPABASE_URL i BAZA_SUPABASE_ANON_KEY), potem zrestartuj kontener.', 'error');
-    return;
-  }
-
   try {
-    const session = await getCurrentSession();
-    if (session?.user) {
-      await bootstrapUserSession(session.user);
+    if (!isSupabaseConfigured()) {
+      await bootstrapGuestSession();
+      showNotification('Tryb gościa: logowanie wyłączone (brak konfiguracji Supabase).', 'info');
       handleStartupOpen();
     } else {
-      resetUserPreferences();
-      showLoggedOutState();
+      const session = await getCurrentSession();
+      if (session?.user) {
+        await bootstrapUserSession(session.user);
+      } else {
+        await bootstrapGuestSession();
+      }
+      handleStartupOpen();
     }
   } catch (error) {
-    resetUserPreferences();
-    showLoggedOutState(`Błąd inicjalizacji Supabase: ${error.message}`, 'error');
+    await bootstrapGuestSession();
+    showNotification(`Błąd inicjalizacji konta: ${error.message}`, 'error');
   }
 
-  if (!authSubscription) {
+  if (!authSubscription && isSupabaseConfigured()) {
     authSubscription = onAuthStateChange(async (_event, session) => {
       if (session?.user) {
         if (currentUser?.id !== session.user.id) {
@@ -157,13 +161,15 @@ async function init() {
             await bootstrapUserSession(session.user);
             handleStartupOpen();
           } catch (error) {
-            showLoggedOutState(`Błąd synchronizacji danych: ${error.message}`, 'error');
+            await bootstrapGuestSession();
+            showNotification(`Błąd synchronizacji danych: ${error.message}`, 'error');
           }
         }
         return;
       }
-      if (currentUser) {
-        showLoggedOutState('Wylogowano.', 'info');
+      if (sessionMode === 'user') {
+        await bootstrapGuestSession();
+        showNotification('Wylogowano.', 'info');
       }
     });
   }
@@ -176,6 +182,8 @@ function handleStartupOpen() {
 
   if (open === 'app-settings') {
     navigateToAppSettings();
+  } else if (open === 'docs') {
+    navigateToDocs();
   } else if (open === 'import') {
     const fileInput = document.getElementById('file-input');
     if (fileInput) fileInput.click();
@@ -188,18 +196,6 @@ function handleStartupOpen() {
 
 function applyFontScale() {
   document.documentElement.style.setProperty('--font-scale', fontScale);
-}
-
-function resetUserPreferences() {
-  appSettings = {
-    ...DEFAULT_APP_SETTINGS,
-    keybindings: { ...DEFAULT_APP_SETTINGS.keybindings },
-  };
-  fontScale = DEFAULT_FONT_SCALE;
-  applyTheme(appSettings.theme);
-  applyColorTheme(appSettings.colorTheme);
-  applyLayoutWidth(appSettings.layoutWidth);
-  applyFontScale();
 }
 
 function loadUserPreferences() {
@@ -238,14 +234,38 @@ function changeFontSize(delta) {
   storage.saveFontScale(fontScale);
 }
 
-function updateHeaderAuthState(isAuthenticated, email = '') {
+function isSessionReady() {
+  return sessionMode === 'user' || sessionMode === 'guest';
+}
+
+function updateHeaderSessionState(mode, email = '') {
   const actions = document.getElementById('header-app-actions');
   const emailEl = document.getElementById('auth-user-email');
-  const logoutBtn = document.getElementById('btn-auth-logout');
+  const authActionBtn = document.getElementById('btn-auth-logout');
 
-  if (actions) actions.style.display = isAuthenticated ? 'flex' : 'none';
-  if (logoutBtn) logoutBtn.style.display = isAuthenticated ? '' : 'none';
-  if (emailEl) emailEl.textContent = isAuthenticated ? email : 'Niezalogowany';
+  if (mode === 'user') {
+    if (actions) actions.style.display = 'flex';
+    if (emailEl) emailEl.textContent = email || 'Zalogowany użytkownik';
+    if (authActionBtn) {
+      authActionBtn.style.display = '';
+      authActionBtn.textContent = 'Wyloguj';
+    }
+    return;
+  }
+
+  if (mode === 'guest') {
+    if (actions) actions.style.display = 'flex';
+    if (emailEl) emailEl.textContent = 'Tryb gościa';
+    if (authActionBtn) {
+      authActionBtn.style.display = '';
+      authActionBtn.textContent = 'Zaloguj';
+    }
+    return;
+  }
+
+  if (actions) actions.style.display = 'none';
+  if (emailEl) emailEl.textContent = 'Niezalogowany';
+  if (authActionBtn) authActionBtn.style.display = 'none';
 }
 
 function showAuthMessage(message = '', type = 'info') {
@@ -255,20 +275,26 @@ function showAuthMessage(message = '', type = 'info') {
   el.className = `auth-message ${type}`;
 }
 
-function showLoggedOutState(message = '', type = 'info') {
-  clearWaitTimer();
-  currentUser = null;
-  storage.clearSession();
-  resetUserPreferences();
-  updateHeaderAuthState(false);
+function showAuthPanel(message = '', type = 'info') {
   showView('auth');
   showAuthMessage(message, type);
 }
 
-async function bootstrapUserSession(user) {
-  currentUser = user;
-  updateHeaderAuthState(true, user.email || 'Zalogowany użytkownik');
+async function bootstrapGuestSession() {
+  clearWaitTimer();
+  sessionMode = 'guest';
+  currentUser = null;
+  await storage.initGuest();
+  loadUserPreferences();
+  updateHeaderSessionState('guest');
+  await loadBuiltInDecks();
+  navigateToDeckList();
+}
 
+async function bootstrapUserSession(user) {
+  sessionMode = 'user';
+  currentUser = user;
+  updateHeaderSessionState('user', user.email || 'Zalogowany użytkownik');
   await storage.initForUser(user.id);
   loadUserPreferences();
   await loadBuiltInDecks();
@@ -364,9 +390,9 @@ function handleKeyDown(e) {
 }
 
 async function loadBuiltInDecks() {
-  if (!currentUser) return;
+  if (!isSessionReady()) return;
   const decks = storage.getDecks();
-  const builtInFiles = ['data/poi-egzamin.json', 'data/sample-exam.json', 'data/si-egzamin.json', 'data/randomize-demo.json', 'data/ii-egzamin.json', 'data/ii-egzamin-fiszki.json', 'data/zi2-egzamin.json'];
+  const builtInFiles = ['/data/poi-egzamin.json', '/data/sample-exam.json', '/data/si-egzamin.json', '/data/randomize-demo.json', '/data/ii-egzamin.json', '/data/ii-egzamin-fiszki.json', '/data/zi2-egzamin.json'];
 
   for (const file of builtInFiles) {
     try {
@@ -383,7 +409,7 @@ async function loadBuiltInDecks() {
 // --- Navigation ---
 
 function navigateToDeckList() {
-  if (!currentUser) {
+  if (!isSessionReady()) {
     showView('auth');
     return;
   }
@@ -1046,6 +1072,69 @@ function returnFromAppSettings() {
   }
 }
 
+async function ensureDocsLoaded() {
+  if (docsLoaded) return;
+  if (docsLoadingPromise) return docsLoadingPromise;
+
+  const container = document.getElementById('docs-content-container');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state-title">Ładowanie dokumentacji...</div>
+    </div>
+  `;
+
+  docsLoadingPromise = fetch('docs.html', { cache: 'no-store' })
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      const html = await response.text();
+      const parsed = new DOMParser().parseFromString(html, 'text/html');
+      const docsContent = parsed.querySelector('.docs-content');
+      if (!docsContent) {
+        throw new Error('Brak sekcji .docs-content w docs.html');
+      }
+      container.innerHTML = docsContent.innerHTML;
+      docsLoaded = true;
+    })
+    .catch((error) => {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-title">Nie udało się wczytać dokumentacji</div>
+          <div class="empty-state-text">${error.message}</div>
+        </div>
+      `;
+      showNotification(`Błąd ładowania dokumentacji: ${error.message}`, 'error');
+    })
+    .finally(() => {
+      docsLoadingPromise = null;
+    });
+
+  return docsLoadingPromise;
+}
+
+async function navigateToDocs() {
+  const currentView = document.querySelector('.view.active');
+  const viewId = currentView ? currentView.id.replace('view-', '') : 'deck-list';
+  docsReturnView = viewId === 'docs' ? 'deck-list' : viewId;
+  showView('docs');
+  await ensureDocsLoaded();
+}
+
+function returnFromDocs() {
+  const returnTo = docsReturnView || 'deck-list';
+  docsReturnView = null;
+
+  if (returnTo === 'deck-list') {
+    navigateToDeckList();
+    return;
+  }
+
+  showView(returnTo);
+}
+
 function bindAppSettingsEvents() {
   // Display mode options (light/dark/auto)
   document.querySelectorAll('.theme-option').forEach(btn => {
@@ -1157,6 +1246,13 @@ function bindAppSettingsEvents() {
       renderAppSettings(appSettings, DEFAULT_APP_SETTINGS);
       bindAppSettingsEvents();
       showNotification('Przywrócono domyślne skróty klawiszowe.', 'info');
+    });
+  }
+
+  const docsBtn = document.getElementById('btn-open-docs');
+  if (docsBtn) {
+    docsBtn.addEventListener('click', () => {
+      navigateToDocs();
     });
   }
 }
@@ -1397,25 +1493,43 @@ function showQuestionForCard(card) {
 function getAuthFormValues() {
   const emailInput = document.getElementById('auth-email');
   const passwordInput = document.getElementById('auth-password');
+  const passwordConfirmInput = document.getElementById('auth-password-confirm');
   const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
   const password = passwordInput ? passwordInput.value : '';
-  return { email, password };
+  const passwordConfirm = passwordConfirmInput ? passwordConfirmInput.value : '';
+  return { email, password, passwordConfirm };
 }
 
 function setAuthFormBusy(isBusy) {
   const loginBtn = document.getElementById('btn-auth-login');
   const signupBtn = document.getElementById('btn-auth-signup');
+  const googleBtn = document.getElementById('btn-auth-google');
+  const guestBtn = document.getElementById('btn-auth-guest');
   if (loginBtn) loginBtn.disabled = isBusy;
   if (signupBtn) signupBtn.disabled = isBusy;
+  if (googleBtn) googleBtn.disabled = isBusy;
+  if (guestBtn) guestBtn.disabled = isBusy;
 }
 
-function validateAuthInputs(email, password) {
+function validateLoginInputs(email, password) {
   if (!email || !password) {
     showAuthMessage('Podaj e-mail i hasło.', 'error');
     return false;
   }
+  return true;
+}
+
+function validateSignupInputs(email, password, passwordConfirm) {
+  if (!email || !password || !passwordConfirm) {
+    showAuthMessage('Podaj e-mail, hasło i potwierdzenie hasła.', 'error');
+    return false;
+  }
   if (password.length < 6) {
     showAuthMessage('Hasło musi mieć co najmniej 6 znaków.', 'error');
+    return false;
+  }
+  if (password !== passwordConfirm) {
+    showAuthMessage('Hasła nie są takie same.', 'error');
     return false;
   }
   return true;
@@ -1423,7 +1537,11 @@ function validateAuthInputs(email, password) {
 
 async function handleAuthLogin() {
   const { email, password } = getAuthFormValues();
-  if (!validateAuthInputs(email, password)) return;
+  if (!isSupabaseConfigured()) {
+    showAuthMessage('Logowanie niedostępne: brak konfiguracji Supabase.', 'error');
+    return;
+  }
+  if (!validateLoginInputs(email, password)) return;
 
   setAuthFormBusy(true);
   showAuthMessage('Logowanie...', 'info');
@@ -1445,8 +1563,12 @@ async function handleAuthLogin() {
 }
 
 async function handleAuthSignup() {
-  const { email, password } = getAuthFormValues();
-  if (!validateAuthInputs(email, password)) return;
+  const { email, password, passwordConfirm } = getAuthFormValues();
+  if (!isSupabaseConfigured()) {
+    showAuthMessage('Rejestracja niedostępna: brak konfiguracji Supabase.', 'error');
+    return;
+  }
+  if (!validateSignupInputs(email, password, passwordConfirm)) return;
 
   setAuthFormBusy(true);
   showAuthMessage('Tworzenie konta...', 'info');
@@ -1467,6 +1589,32 @@ async function handleAuthSignup() {
   } finally {
     setAuthFormBusy(false);
   }
+}
+
+async function handleAuthGoogle() {
+  if (!isSupabaseConfigured()) {
+    showAuthMessage('Google OAuth niedostępne: brak konfiguracji Supabase.', 'error');
+    return;
+  }
+
+  setAuthFormBusy(true);
+  showAuthMessage('Przekierowanie do Google...', 'info');
+
+  try {
+    const { data, error } = await signInWithGoogle();
+    if (error) throw error;
+    if (!data?.url) {
+      setAuthFormBusy(false);
+      showAuthMessage('Nie udało się rozpocząć logowania Google.', 'error');
+    }
+  } catch (error) {
+    showAuthMessage(error.message || 'Błąd logowania Google.', 'error');
+    setAuthFormBusy(false);
+  }
+}
+
+async function handleContinueAsGuest() {
+  await bootstrapGuestSession();
 }
 
 function bindAuthEvents() {
@@ -1495,17 +1643,36 @@ function bindAuthEvents() {
     });
   }
 
-  const logoutBtn = document.getElementById('btn-auth-logout');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', async () => {
-      try {
-        const { error } = await signOutUser();
-        if (error) throw error;
-      } catch (error) {
-        showNotification(`Błąd wylogowania: ${error.message}`, 'error');
-      } finally {
-        showLoggedOutState('Wylogowano.', 'info');
+  const googleBtn = document.getElementById('btn-auth-google');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', async () => {
+      await handleAuthGoogle();
+    });
+  }
+
+  const guestBtn = document.getElementById('btn-auth-guest');
+  if (guestBtn) {
+    guestBtn.addEventListener('click', async () => {
+      await handleContinueAsGuest();
+    });
+  }
+
+  const authActionBtn = document.getElementById('btn-auth-logout');
+  if (authActionBtn) {
+    authActionBtn.addEventListener('click', async () => {
+      if (sessionMode === 'user') {
+        try {
+          const { error } = await signOutUser();
+          if (error) throw error;
+          await bootstrapGuestSession();
+          showNotification('Wylogowano. Kontynuujesz w trybie gościa.', 'info');
+        } catch (error) {
+          showNotification(`Błąd wylogowania: ${error.message}`, 'error');
+        }
+        return;
       }
+
+      showAuthPanel('Zaloguj się lub kontynuuj jako gość.', 'info');
     });
   }
 }
@@ -1520,8 +1687,8 @@ function bindGlobalEvents() {
 
   // Home button (title)
   document.getElementById('btn-go-home').addEventListener('click', () => {
-    if (!currentUser) {
-      showView('auth');
+    if (!isSessionReady()) {
+      showAuthPanel('Zaloguj się lub kontynuuj jako gość.', 'info');
       return;
     }
     navigateToDeckList();
@@ -1529,17 +1696,22 @@ function bindGlobalEvents() {
 
   // App settings button
   document.getElementById('btn-app-settings').addEventListener('click', () => {
-    if (!currentUser) {
-      showView('auth');
+    if (!isSessionReady()) {
+      showAuthPanel('Zaloguj się lub kontynuuj jako gość.', 'info');
       return;
     }
     navigateToAppSettings();
   });
 
+  // Docs button
+  document.getElementById('btn-docs').addEventListener('click', () => {
+    navigateToDocs();
+  });
+
   // Import button
   document.getElementById('btn-import').addEventListener('click', () => {
-    if (!currentUser) {
-      showView('auth');
+    if (!isSessionReady()) {
+      showAuthPanel('Zaloguj się lub kontynuuj jako gość.', 'info');
       return;
     }
     document.getElementById('file-input').click();
@@ -1547,7 +1719,7 @@ function bindGlobalEvents() {
 
   // File input
   document.getElementById('file-input').addEventListener('change', async (e) => {
-    if (!currentUser) return;
+    if (!isSessionReady()) return;
     const file = e.target.files[0];
     if (!file) return;
     e.target.value = ''; // reset
@@ -1599,6 +1771,9 @@ function bindGlobalEvents() {
   });
   document.getElementById('btn-back-from-app-settings').addEventListener('click', () => {
     returnFromAppSettings();
+  });
+  document.getElementById('btn-back-from-docs').addEventListener('click', () => {
+    returnFromDocs();
   });
   document.getElementById('btn-back-from-settings').addEventListener('click', () => {
     returnFromSettings();
@@ -2105,6 +2280,6 @@ document.addEventListener('DOMContentLoaded', () => {
   init().catch((error) => {
     console.error('Initialization failed:', error);
     showNotification(`Błąd startu aplikacji: ${error.message}`, 'error');
-    showLoggedOutState('Nie udało się uruchomić aplikacji.', 'error');
+    showAuthPanel('Nie udało się uruchomić aplikacji.', 'error');
   });
 });

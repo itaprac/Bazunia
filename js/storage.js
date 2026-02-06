@@ -1,12 +1,13 @@
-// storage.js — in-memory cache with Supabase persistence
+// storage.js — cache + persistence layer (Supabase for users, localStorage for guest mode)
 
 import { fetchAllUserStorage, upsertUserStorage, deleteUserStorageKeys } from './supabase.js';
 
-const LEGACY_PREFIX = 'baza_';
+const PREFIX = 'baza_';
 const LEGACY_MIGRATION_KEY = '__legacyLocalMigratedV1';
 
 const cache = new Map();
 
+let persistenceMode = 'none'; // 'none' | 'guest' | 'user'
 let activeUserId = null;
 let initialized = false;
 let syncQueue = Promise.resolve();
@@ -14,6 +15,53 @@ let lastSyncError = null;
 
 function cloneValue(value) {
   return value == null ? value : JSON.parse(JSON.stringify(value));
+}
+
+function prefixedKey(key) {
+  return `${PREFIX}${key}`;
+}
+
+function loadLocalEntries() {
+  const entries = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const fullKey = localStorage.key(i);
+    if (!fullKey || !fullKey.startsWith(PREFIX)) continue;
+
+    const key = fullKey.slice(PREFIX.length);
+    const raw = localStorage.getItem(fullKey);
+    if (!raw) continue;
+
+    try {
+      entries.push([key, JSON.parse(raw)]);
+    } catch {
+      // Ignore malformed local values
+    }
+  }
+
+  return entries;
+}
+
+function writeLocalJSON(key, value) {
+  try {
+    localStorage.setItem(prefixedKey(key), JSON.stringify(value));
+  } catch (error) {
+    console.error('Local storage write failed:', error);
+    throw new Error('Brak miejsca w localStorage. Usuń nieużywane talie.');
+  }
+}
+
+function removeLocalKey(key) {
+  localStorage.removeItem(prefixedKey(key));
+}
+
+function resetRuntimeState(mode = 'none', userId = null) {
+  persistenceMode = mode;
+  activeUserId = userId;
+  initialized = false;
+  cache.clear();
+  lastSyncError = null;
+  syncQueue = Promise.resolve();
 }
 
 function getJSON(key, fallback = null) {
@@ -35,69 +83,52 @@ function enqueueSync(task) {
 }
 
 function setJSON(key, value) {
-  if (!initialized || !activeUserId) {
-    throw new Error('Brak aktywnej sesji użytkownika. Zaloguj się ponownie.');
+  if (!initialized) {
+    throw new Error('Storage nie jest gotowy.');
   }
 
   const safeValue = cloneValue(value);
   cache.set(key, safeValue);
-  enqueueSync(() => upsertUserStorage(activeUserId, key, safeValue));
-}
 
-async function migrateLegacyLocalStorage() {
-  if (cache.get(LEGACY_MIGRATION_KEY)) return;
-
-  const entriesToMigrate = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (!key || !key.startsWith(LEGACY_PREFIX)) continue;
-
-    const storageKey = key.slice(LEGACY_PREFIX.length);
-    const raw = localStorage.getItem(key);
-    if (!raw) continue;
-
-    try {
-      const parsed = JSON.parse(raw);
-      entriesToMigrate.push([storageKey, parsed]);
-    } catch {
-      // Ignore malformed legacy entries
+  if (persistenceMode === 'user') {
+    if (!activeUserId) {
+      throw new Error('Brak aktywnej sesji użytkownika. Zaloguj się ponownie.');
     }
+    enqueueSync(() => upsertUserStorage(activeUserId, key, safeValue));
+    return;
   }
 
-  if (entriesToMigrate.length === 0) {
+  if (persistenceMode === 'guest') {
+    writeLocalJSON(key, safeValue);
+    return;
+  }
+
+  throw new Error('Brak aktywnej sesji.');
+}
+
+async function migrateLocalToUserStorage() {
+  if (cache.get(LEGACY_MIGRATION_KEY)) return;
+
+  const localEntries = loadLocalEntries();
+
+  if (localEntries.length === 0) {
     cache.set(LEGACY_MIGRATION_KEY, true);
     await upsertUserStorage(activeUserId, LEGACY_MIGRATION_KEY, true);
     return;
   }
 
-  for (const [key, value] of entriesToMigrate) {
+  for (const [key, value] of localEntries) {
     cache.set(key, value);
     await upsertUserStorage(activeUserId, key, value);
-  }
-
-  // Migrate old standalone font key if present
-  const legacyFont = localStorage.getItem('baza_fontScale');
-  if (legacyFont) {
-    const parsedFont = parseFloat(legacyFont);
-    if (!Number.isNaN(parsedFont) && parsedFont > 0) {
-      cache.set('fontScale', parsedFont);
-      await upsertUserStorage(activeUserId, 'fontScale', parsedFont);
-    }
   }
 
   cache.set(LEGACY_MIGRATION_KEY, true);
   await upsertUserStorage(activeUserId, LEGACY_MIGRATION_KEY, true);
 
-  // Cleanup old browser-only data after successful migration
-  const keysToRemove = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key && key.startsWith(LEGACY_PREFIX)) keysToRemove.push(key);
+  // Data has been migrated to user storage, clear guest local keys
+  for (const [key] of localEntries) {
+    removeLocalKey(key);
   }
-  for (const key of keysToRemove) {
-    localStorage.removeItem(key);
-  }
-  localStorage.removeItem('baza_fontScale');
 }
 
 export async function initForUser(userId) {
@@ -105,27 +136,34 @@ export async function initForUser(userId) {
     throw new Error('Brak identyfikatora użytkownika.');
   }
 
-  activeUserId = userId;
-  initialized = false;
-  cache.clear();
-  lastSyncError = null;
-  syncQueue = Promise.resolve();
+  resetRuntimeState('user', userId);
 
   const rows = await fetchAllUserStorage(userId);
   for (const row of rows) {
     cache.set(row.key, row.value);
   }
 
-  await migrateLegacyLocalStorage();
+  await migrateLocalToUserStorage();
+  initialized = true;
+}
+
+export async function initGuest() {
+  resetRuntimeState('guest', null);
+
+  const localEntries = loadLocalEntries();
+  for (const [key, value] of localEntries) {
+    cache.set(key, value);
+  }
+
   initialized = true;
 }
 
 export function clearSession() {
-  activeUserId = null;
-  initialized = false;
-  cache.clear();
-  lastSyncError = null;
-  syncQueue = Promise.resolve();
+  resetRuntimeState('none', null);
+}
+
+export function getPersistenceMode() {
+  return persistenceMode;
 }
 
 export async function flushPendingWrites() {
@@ -221,7 +259,7 @@ export function saveFontScale(fontScale) {
 // --- Cleanup ---
 
 export function clearDeckData(deckId) {
-  if (!initialized || !activeUserId) return;
+  if (!initialized) return;
 
   const keys = [
     `cards_${deckId}`,
@@ -234,7 +272,16 @@ export function clearDeckData(deckId) {
     cache.delete(key);
   }
 
-  enqueueSync(() => deleteUserStorageKeys(activeUserId, keys));
+  if (persistenceMode === 'user' && activeUserId) {
+    enqueueSync(() => deleteUserStorageKeys(activeUserId, keys));
+    return;
+  }
+
+  if (persistenceMode === 'guest') {
+    for (const key of keys) {
+      removeLocalKey(key);
+    }
+  }
 }
 
 // --- Storage usage ---

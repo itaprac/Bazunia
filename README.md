@@ -37,8 +37,8 @@ BAZA_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 BAZA_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 ```
 
-3. W panelu Supabase włącz Email/Password auth (`Authentication -> Providers`).
-4. Uruchom aplikację i załóż konto lub zaloguj się na ekranie startowym.
+3. W panelu Supabase włącz provider `Email` oraz opcjonalnie `Google` (`Authentication -> Providers`).
+4. Uruchom aplikację. Możesz zalogować się lub kontynuować jako gość (tryb lokalny).
 
 ## Najczęstsze komendy
 

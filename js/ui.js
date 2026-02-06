@@ -1165,7 +1165,7 @@ export function renderAppSettings(appSettings, defaults) {
         <p style="font-size: 0.85rem; line-height: 1.6; color: var(--color-text-secondary); margin-bottom: 12px;">
           Baza Deluxe — aplikacja do nauki z powtarzaniem rozłożonym w czasie.
         </p>
-        <a href="docs.html" class="btn btn-secondary btn-sm">Dokumentacja</a>
+        <button class="btn btn-secondary btn-sm" id="btn-open-docs">Dokumentacja</button>
       </div>
     </div>
   `;
