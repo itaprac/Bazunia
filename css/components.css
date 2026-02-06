@@ -179,6 +179,11 @@
   gap: 8px;
 }
 
+.auth-field[hidden],
+.auth-link-btn[hidden] {
+  display: none !important;
+}
+
 .auth-label {
   font-size: 0.76rem;
   letter-spacing: 0.08em;

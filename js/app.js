@@ -52,11 +52,19 @@ const AUTH_VIEW_CONFIG = {
     title: 'Zaloguj się',
     subtitle: 'Logowanie jest opcjonalne. Możesz też kontynuować jako gość.',
     submitLabel: 'Zaloguj',
+    resetLinkLabel: 'Nie pamiętam hasła',
   },
   signup: {
     title: 'Załóż konto',
     subtitle: 'Utwórz konto, aby zapisywać własne talie i postęp nauki.',
     submitLabel: 'Załóż konto',
+    resetLinkLabel: '',
+  },
+  reset: {
+    title: 'Reset hasła',
+    subtitle: 'Podaj e-mail, a wyślemy link do ustawienia nowego hasła.',
+    submitLabel: 'Wyślij link resetu',
+    resetLinkLabel: 'Wróć do logowania',
   },
 };
 
@@ -118,7 +126,7 @@ let currentUser = null;
 let sessionMode = null; // 'user' | 'guest' | null
 let authSubscription = null;
 let authEventsBound = false;
-let authMode = 'login';
+let authMode = 'login'; // 'login' | 'signup' | 'reset'
 
 // Test mode state
 let testQuestions = [];
@@ -424,7 +432,7 @@ function showAuthMessage(message = '', type = 'info') {
 
 function setAuthMode(mode = 'login', options = {}) {
   const keepMessage = options.keepMessage === true;
-  authMode = mode === 'signup' ? 'signup' : 'login';
+  authMode = mode === 'signup' || mode === 'reset' ? mode : 'login';
   const config = AUTH_VIEW_CONFIG[authMode];
 
   const titleEl = document.getElementById('auth-title');
@@ -432,6 +440,7 @@ function setAuthMode(mode = 'login', options = {}) {
   const submitBtn = document.getElementById('btn-auth-submit');
   const loginModeBtn = document.getElementById('btn-auth-mode-login');
   const signupModeBtn = document.getElementById('btn-auth-mode-signup');
+  const passwordField = document.getElementById('auth-password-field');
   const passwordInput = document.getElementById('auth-password');
   const passwordConfirmField = document.getElementById('auth-password-confirm-field');
   const passwordConfirmInput = document.getElementById('auth-password-confirm');
@@ -451,7 +460,19 @@ function setAuthMode(mode = 'login', options = {}) {
   }
 
   if (passwordInput) {
-    passwordInput.autocomplete = authMode === 'signup' ? 'new-password' : 'current-password';
+    if (authMode === 'signup') {
+      passwordInput.autocomplete = 'new-password';
+    } else {
+      passwordInput.autocomplete = 'current-password';
+    }
+
+    const isReset = authMode === 'reset';
+    passwordInput.required = !isReset;
+    passwordInput.disabled = isReset;
+    if (isReset) passwordInput.value = '';
+  }
+  if (passwordField) {
+    passwordField.hidden = authMode === 'reset';
   }
   if (passwordConfirmField) {
     passwordConfirmField.hidden = authMode !== 'signup';
@@ -463,7 +484,8 @@ function setAuthMode(mode = 'login', options = {}) {
     if (!isSignup) passwordConfirmInput.value = '';
   }
   if (resetPasswordBtn) {
-    resetPasswordBtn.hidden = authMode !== 'login';
+    resetPasswordBtn.hidden = authMode === 'signup';
+    resetPasswordBtn.textContent = config.resetLinkLabel || 'Nie pamiętam hasła';
   }
 
   if (!keepMessage) {
@@ -2100,6 +2122,10 @@ async function handleAuthSubmit() {
     await handleAuthSignup();
     return;
   }
+  if (authMode === 'reset') {
+    await handleAuthPasswordReset();
+    return;
+  }
   await handleAuthLogin();
 }
 
@@ -2237,7 +2263,11 @@ function bindAuthEvents() {
   const resetPasswordBtn = document.getElementById('btn-auth-reset-password');
   if (resetPasswordBtn) {
     resetPasswordBtn.addEventListener('click', async () => {
-      await handleAuthPasswordReset();
+      if (authMode === 'reset') {
+        setAuthMode('login');
+        return;
+      }
+      setAuthMode('reset');
     });
   }
 
