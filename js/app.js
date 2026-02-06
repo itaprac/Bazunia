@@ -31,6 +31,7 @@ import {
 } from './ui.js';
 import { shuffle, isFlashcard, generateId } from './utils.js';
 import { hasRandomizer, hasTemplate, randomize } from './randomizers.js';
+import { initDocsNavigation } from './docs-navigation.js';
 import {
   isSupabaseConfigured,
   getCurrentSession,
@@ -39,12 +40,25 @@ import {
   signUpWithPassword,
   signInWithGoogle,
   signOutUser,
+  sendPasswordResetEmail,
 } from './supabase.js';
 
 // --- App State ---
 
 const FONT_SCALE_STEP = 0.1;
 const DEFAULT_FONT_SCALE = 1.0;
+const AUTH_VIEW_CONFIG = {
+  login: {
+    title: 'Zaloguj się',
+    subtitle: 'Logowanie jest opcjonalne. Możesz też kontynuować jako gość.',
+    submitLabel: 'Zaloguj',
+  },
+  signup: {
+    title: 'Załóż konto',
+    subtitle: 'Utwórz konto, aby zapisywać własne talie i postęp nauki.',
+    submitLabel: 'Załóż konto',
+  },
+};
 
 const DEFAULT_APP_SETTINGS = {
   theme: 'auto',
@@ -104,6 +118,7 @@ let currentUser = null;
 let sessionMode = null; // 'user' | 'guest' | null
 let authSubscription = null;
 let authEventsBound = false;
+let authMode = 'login';
 
 // Test mode state
 let testQuestions = [];
@@ -407,8 +422,58 @@ function showAuthMessage(message = '', type = 'info') {
   el.className = `auth-message ${type}`;
 }
 
-function showAuthPanel(message = '', type = 'info') {
+function setAuthMode(mode = 'login', options = {}) {
+  const keepMessage = options.keepMessage === true;
+  authMode = mode === 'signup' ? 'signup' : 'login';
+  const config = AUTH_VIEW_CONFIG[authMode];
+
+  const titleEl = document.getElementById('auth-title');
+  const subtitleEl = document.getElementById('auth-subtitle');
+  const submitBtn = document.getElementById('btn-auth-submit');
+  const loginModeBtn = document.getElementById('btn-auth-mode-login');
+  const signupModeBtn = document.getElementById('btn-auth-mode-signup');
+  const passwordInput = document.getElementById('auth-password');
+  const passwordConfirmField = document.getElementById('auth-password-confirm-field');
+  const passwordConfirmInput = document.getElementById('auth-password-confirm');
+  const resetPasswordBtn = document.getElementById('btn-auth-reset-password');
+
+  if (titleEl) titleEl.textContent = config.title;
+  if (subtitleEl) subtitleEl.textContent = config.subtitle;
+  if (submitBtn) submitBtn.textContent = config.submitLabel;
+
+  if (loginModeBtn) {
+    loginModeBtn.classList.toggle('active', authMode === 'login');
+    loginModeBtn.setAttribute('aria-pressed', authMode === 'login' ? 'true' : 'false');
+  }
+  if (signupModeBtn) {
+    signupModeBtn.classList.toggle('active', authMode === 'signup');
+    signupModeBtn.setAttribute('aria-pressed', authMode === 'signup' ? 'true' : 'false');
+  }
+
+  if (passwordInput) {
+    passwordInput.autocomplete = authMode === 'signup' ? 'new-password' : 'current-password';
+  }
+  if (passwordConfirmField) {
+    passwordConfirmField.hidden = authMode !== 'signup';
+  }
+  if (passwordConfirmInput) {
+    const isSignup = authMode === 'signup';
+    passwordConfirmInput.required = isSignup;
+    passwordConfirmInput.disabled = !isSignup;
+    if (!isSignup) passwordConfirmInput.value = '';
+  }
+  if (resetPasswordBtn) {
+    resetPasswordBtn.hidden = authMode !== 'login';
+  }
+
+  if (!keepMessage) {
+    showAuthMessage('', 'info');
+  }
+}
+
+function showAuthPanel(message = '', type = 'info', mode = 'login') {
   showView('auth');
+  setAuthMode(mode, { keepMessage: true });
   showAuthMessage(message, type);
 }
 
@@ -1508,6 +1573,7 @@ async function ensureDocsLoaded() {
         throw new Error('Brak sekcji .docs-content w docs.html');
       }
       container.innerHTML = docsContent.innerHTML;
+      initDocsNavigation(container);
       docsLoaded = true;
     })
     .catch((error) => {
@@ -1532,6 +1598,7 @@ async function navigateToDocs() {
   docsReturnView = viewId === 'docs' ? 'deck-list' : viewId;
   showView('docs');
   await ensureDocsLoaded();
+  initDocsNavigation(document.getElementById('docs-content-container'));
 }
 
 function returnFromDocs() {
@@ -1982,12 +2049,16 @@ function getAuthFormValues() {
 }
 
 function setAuthFormBusy(isBusy) {
-  const loginBtn = document.getElementById('btn-auth-login');
-  const signupBtn = document.getElementById('btn-auth-signup');
+  const submitBtn = document.getElementById('btn-auth-submit');
+  const loginModeBtn = document.getElementById('btn-auth-mode-login');
+  const signupModeBtn = document.getElementById('btn-auth-mode-signup');
+  const resetPasswordBtn = document.getElementById('btn-auth-reset-password');
   const googleBtn = document.getElementById('btn-auth-google');
   const guestBtn = document.getElementById('btn-auth-guest');
-  if (loginBtn) loginBtn.disabled = isBusy;
-  if (signupBtn) signupBtn.disabled = isBusy;
+  if (submitBtn) submitBtn.disabled = isBusy;
+  if (loginModeBtn) loginModeBtn.disabled = isBusy;
+  if (signupModeBtn) signupModeBtn.disabled = isBusy;
+  if (resetPasswordBtn) resetPasswordBtn.disabled = isBusy;
   if (googleBtn) googleBtn.disabled = isBusy;
   if (guestBtn) guestBtn.disabled = isBusy;
 }
@@ -2014,6 +2085,22 @@ function validateSignupInputs(email, password, passwordConfirm) {
     return false;
   }
   return true;
+}
+
+function validatePasswordResetInput(email) {
+  if (!email) {
+    showAuthMessage('Podaj e-mail, aby wysłać link resetu hasła.', 'error');
+    return false;
+  }
+  return true;
+}
+
+async function handleAuthSubmit() {
+  if (authMode === 'signup') {
+    await handleAuthSignup();
+    return;
+  }
+  await handleAuthLogin();
 }
 
 async function handleAuthLogin() {
@@ -2064,9 +2151,32 @@ async function handleAuthSignup() {
       return;
     }
 
+    setAuthMode('login', { keepMessage: true });
     showAuthMessage('Konto utworzone. Potwierdź rejestrację w e-mailu i zaloguj się.', 'info');
   } catch (error) {
     showAuthMessage(error.message || 'Błąd rejestracji.', 'error');
+  } finally {
+    setAuthFormBusy(false);
+  }
+}
+
+async function handleAuthPasswordReset() {
+  const { email } = getAuthFormValues();
+  if (!isSupabaseConfigured()) {
+    showAuthMessage('Reset hasła niedostępny: brak konfiguracji Supabase.', 'error');
+    return;
+  }
+  if (!validatePasswordResetInput(email)) return;
+
+  setAuthFormBusy(true);
+  showAuthMessage('Wysyłanie maila resetującego hasło...', 'info');
+
+  try {
+    const { error } = await sendPasswordResetEmail(email);
+    if (error) throw error;
+    showAuthMessage('Wysłano link resetu hasła. Sprawdź skrzynkę e-mail (oraz spam).', 'info');
+  } catch (error) {
+    showAuthMessage(error.message || 'Nie udało się wysłać maila resetu hasła.', 'error');
   } finally {
     setAuthFormBusy(false);
   }
@@ -2106,21 +2216,28 @@ function bindAuthEvents() {
   if (authForm) {
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      await handleAuthLogin();
+      await handleAuthSubmit();
     });
   }
 
-  const loginBtn = document.getElementById('btn-auth-login');
-  if (loginBtn) {
-    loginBtn.addEventListener('click', async () => {
-      await handleAuthLogin();
+  const loginModeBtn = document.getElementById('btn-auth-mode-login');
+  if (loginModeBtn) {
+    loginModeBtn.addEventListener('click', () => {
+      setAuthMode('login');
     });
   }
 
-  const signupBtn = document.getElementById('btn-auth-signup');
-  if (signupBtn) {
-    signupBtn.addEventListener('click', async () => {
-      await handleAuthSignup();
+  const signupModeBtn = document.getElementById('btn-auth-mode-signup');
+  if (signupModeBtn) {
+    signupModeBtn.addEventListener('click', () => {
+      setAuthMode('signup');
+    });
+  }
+
+  const resetPasswordBtn = document.getElementById('btn-auth-reset-password');
+  if (resetPasswordBtn) {
+    resetPasswordBtn.addEventListener('click', async () => {
+      await handleAuthPasswordReset();
     });
   }
 
@@ -2156,6 +2273,8 @@ function bindAuthEvents() {
       showAuthPanel('Zaloguj się lub kontynuuj jako gość.', 'info');
     });
   }
+
+  setAuthMode('login', { keepMessage: true });
 }
 
 function bindGlobalEvents() {

@@ -77,6 +77,13 @@ export async function signOutUser() {
   return client.auth.signOut();
 }
 
+export async function sendPasswordResetEmail(email) {
+  const client = ensureClient();
+  return client.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/`,
+  });
+}
+
 export async function fetchAllUserStorage(userId) {
   const client = ensureClient();
   const { data, error } = await client

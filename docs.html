@@ -43,20 +43,21 @@
     </header>
 
     <div class="docs-content">
-
-      <nav class="docs-toc">
-        <div class="docs-toc-title">Spis treści</div>
-        <ul>
-          <li><a href="#about">Czym jest Baza Deluxe</a></li>
-          <li><a href="#import">Import talii</a></li>
-          <li><a href="#modes">Tryby nauki</a></li>
-          <li><a href="#sm2">Algorytm SM-2</a></li>
-          <li><a href="#shortcuts">Skróty klawiszowe</a></li>
-          <li><a href="#settings">Ustawienia</a></li>
-          <li><a href="#randomize">Losowe wartości (szablony)</a></li>
-          <li><a href="#advanced-randomize">Zaawansowana randomizacja</a></li>
-        </ul>
-      </nav>
+      <div class="docs-layout">
+        <nav class="docs-toc" aria-label="Spis treści dokumentacji">
+          <div class="docs-toc-title">Spis treści</div>
+          <ul>
+            <li><a href="#about">Czym jest Baza Deluxe</a></li>
+            <li><a href="#import">Import talii</a></li>
+            <li><a href="#modes">Tryby nauki</a></li>
+            <li><a href="#sm2">Algorytm SM-2</a></li>
+            <li><a href="#shortcuts">Skróty klawiszowe</a></li>
+            <li><a href="#settings">Ustawienia</a></li>
+            <li><a href="#randomize">Losowe wartości (szablony)</a></li>
+            <li><a href="#advanced-randomize">Zaawansowana randomizacja</a></li>
+          </ul>
+        </nav>
+        <div class="docs-main">
 
       <!-- Section: About -->
       <section class="docs-section" id="about">
@@ -715,10 +716,12 @@
   ]
 }</code></pre>
       </section>
-
+        </div>
+      </div>
     </div>
   </div>
   <script type="module">
+    import { initDocsNavigation } from './js/docs-navigation.js';
     import { isSupabaseConfigured, getCurrentSession, signOutUser } from './js/supabase.js';
 
     const settingsBtn = document.getElementById('btn-app-settings');
@@ -767,6 +770,7 @@
     }
 
     syncAuthHeader();
+    initDocsNavigation(document);
   </script>
 </body>
 </html>
