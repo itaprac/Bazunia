@@ -1,12 +1,13 @@
 # Baza Deluxe
 
 Aplikacja webowa do nauki pytań egzaminacyjnych i fiszek z algorytmem powtórek SM-2.
-Działa w przeglądarce, a stan nauki zapisuje lokalnie w `localStorage`.
+Stan użytkownika (talie, karty, statystyki, ustawienia, progres) zapisuje w Supabase.
 
 ## Wymagania
 
 - Docker + Docker Compose (np. Docker Desktop)
 - Wolny port `8080`
+- Projekt Supabase
 
 ## Szybki start (Docker Compose)
 
@@ -19,6 +20,25 @@ docker compose up -d
 Aplikacja będzie dostępna pod adresem:
 
 - `http://localhost:8080`
+
+## Konfiguracja Supabase
+
+1. W Supabase SQL Editor uruchom skrypt: `supabase/schema.sql`.
+2. Skopiuj plik `.env.example` do `.env` i ustaw:
+
+```bash
+cp .env.example .env
+```
+
+`.env`:
+
+```env
+BAZA_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+BAZA_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+```
+
+3. W panelu Supabase włącz Email/Password auth (`Authentication -> Providers`).
+4. Uruchom aplikację i załóż konto lub zaloguj się na ekranie startowym.
 
 ## Najczęstsze komendy
 
@@ -46,6 +66,7 @@ docker compose restart web
 - Mapowanie portów: `8080:80`
 - Kod projektu montowany do kontenera jako `read-only`
 - Konfiguracja Nginx z `nginx.conf`
+- Auth + baza: Supabase (`auth.users` + tabela `public.user_storage`)
 
 ## Struktura projektu
 
@@ -66,6 +87,9 @@ js/
   importer.js
   randomizers.js
   sm2.js
+  supabase.js
+  supabase-config.js
+  runtime-config.template.js
   storage.js
   ui.js
   utils.js
@@ -78,6 +102,9 @@ data/                   # talie wbudowane (auto-import przy starcie)
   ii-egzamin.json
   ii-egzamin-fiszki.json
   zi2-egzamin.json
+
+supabase/
+  schema.sql            # tabela i polityki RLS dla danych użytkownika
 ```
 
 ## Import własnej talii
@@ -107,4 +134,5 @@ Minimalny format:
 ## Rozwiązywanie problemów
 
 - Błąd portu `8080` zajęty: zmień mapowanie w `docker-compose.yml` (np. `8081:80`) i uruchom ponownie.
-- Brak danych/„dziwne” zachowanie po zmianie formatu kart: wyczyść `localStorage` dla `localhost` i odśwież stronę.
+- Brak logowania: sprawdź URL/anon key Supabase w `.env` i zrestartuj kontener (`docker compose down && docker compose up -d`).
+- Brak zapisu postępu: sprawdź czy wykonano `supabase/schema.sql` i czy RLS policies są aktywne.

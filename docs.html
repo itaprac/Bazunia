@@ -6,6 +6,7 @@
   <title>Dokumentacja — Baza Deluxe</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
+  <script src="js/runtime-config.js"></script>
   <script>
     // Apply saved theme, color theme, and layout width from localStorage
     (function() {
@@ -30,11 +31,15 @@
   <div class="app-container">
     <header class="app-header">
       <a href="index.html" class="app-title">Baza Deluxe</a>
-      <div>
+      <div id="header-app-actions">
         <input type="file" id="file-input" class="file-input-hidden" accept=".json">
         <a href="docs.html" class="btn btn-secondary btn-sm">Dokumentacja</a>
         <button class="btn btn-secondary btn-sm" id="btn-app-settings">Ustawienia</button>
         <button class="btn btn-primary btn-sm" id="btn-import">Importuj talię</button>
+      </div>
+      <div class="header-auth">
+        <span class="auth-user-email" id="auth-user-email">Niezalogowany</span>
+        <button class="btn btn-secondary btn-sm" id="btn-auth-logout" style="display: none;">Wyloguj</button>
       </div>
     </header>
 
@@ -691,12 +696,34 @@
     </div>
   </div>
   <script type="module">
-    import { importFromFile } from './js/importer.js';
-    import { showNotification } from './js/ui.js';
+    import { isSupabaseConfigured, getCurrentSession, signOutUser } from './js/supabase.js';
 
     const settingsBtn = document.getElementById('btn-app-settings');
     const importBtn = document.getElementById('btn-import');
-    const fileInput = document.getElementById('file-input');
+    const authEmail = document.getElementById('auth-user-email');
+    const logoutBtn = document.getElementById('btn-auth-logout');
+
+    async function syncAuthHeader() {
+      if (!isSupabaseConfigured()) {
+        if (authEmail) authEmail.textContent = 'Niezalogowany';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        return;
+      }
+
+      try {
+        const session = await getCurrentSession();
+        if (session?.user) {
+          if (authEmail) authEmail.textContent = session.user.email || 'Zalogowany użytkownik';
+          if (logoutBtn) logoutBtn.style.display = '';
+          return;
+        }
+      } catch (e) {
+        console.error('Docs auth sync failed:', e);
+      }
+
+      if (authEmail) authEmail.textContent = 'Niezalogowany';
+      if (logoutBtn) logoutBtn.style.display = 'none';
+    }
 
     if (settingsBtn) {
       settingsBtn.addEventListener('click', () => {
@@ -704,27 +731,26 @@
       });
     }
 
-    if (importBtn && fileInput) {
+    if (importBtn) {
       importBtn.addEventListener('click', () => {
-        fileInput.click();
+        window.location.href = 'index.html?open=import';
       });
+    }
 
-      fileInput.addEventListener('change', async (e) => {
-        const file = e.target.files && e.target.files[0];
-        if (!file) return;
-        e.target.value = '';
-
-        const result = await importFromFile(file);
-        if (result.valid) {
-          showNotification(
-            `Zaimportowano "${result.deck.name}": ${result.added} nowych, ${result.updated} istniejących, ${result.total} łącznie.`,
-            'success'
-          );
-        } else {
-          showNotification(`Błąd importu: ${result.errors[0]}`, 'error');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async () => {
+        try {
+          const { error } = await signOutUser();
+          if (error) throw error;
+        } catch (e) {
+          console.error('Logout failed:', e);
+        } finally {
+          window.location.href = 'index.html';
         }
       });
     }
+
+    syncAuthHeader();
   </script>
 </body>
 </html>

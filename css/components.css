@@ -105,6 +105,90 @@
   background: var(--color-primary-glow);
 }
 
+/* --- Auth --- */
+
+#view-auth {
+  max-width: 460px;
+  margin: 44px auto 0;
+}
+
+.auth-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px 30px;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+}
+
+.auth-label {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.auth-input {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.auth-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.auth-actions .btn {
+  flex: 1;
+}
+
+.auth-message {
+  min-height: 20px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.auth-message.info {
+  color: var(--color-text-secondary);
+}
+
+.auth-message.error {
+  color: var(--color-danger);
+}
+
 /* --- Deck List --- */
 
 .deck-list {
@@ -2342,6 +2426,34 @@
 /* --- Responsive --- */
 
 @media (max-width: 480px) {
+  .app-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #header-app-actions {
+    order: 2;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .header-auth {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  #view-auth {
+    margin-top: 24px;
+  }
+
+  .auth-card {
+    padding: 22px 18px;
+  }
+
+  .auth-actions {
+    flex-direction: column;
+  }
+
   .app-container {
     padding: 16px 16px 100px;
   }

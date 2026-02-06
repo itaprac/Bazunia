@@ -131,7 +131,7 @@ async function init() {
 
   if (!isSupabaseConfigured()) {
     resetUserPreferences();
-    showLoggedOutState('Skonfiguruj Supabase w index.html (__BAZA_SUPABASE_URL i __BAZA_SUPABASE_ANON_KEY).', 'error');
+    showLoggedOutState('Skonfiguruj Supabase w .env (BAZA_SUPABASE_URL i BAZA_SUPABASE_ANON_KEY), potem zrestartuj kontener.', 'error');
     return;
   }
 
@@ -268,14 +268,11 @@ function showLoggedOutState(message = '', type = 'info') {
 async function bootstrapUserSession(user) {
   currentUser = user;
   updateHeaderAuthState(true, user.email || 'Zalogowany użytkownik');
-  showView('auth');
-  showAuthMessage('Ładowanie danych użytkownika...', 'info');
 
   await storage.initForUser(user.id);
   loadUserPreferences();
   await loadBuiltInDecks();
   navigateToDeckList();
-  showAuthMessage('');
 }
 
 let mediaQueryCleanup = null;

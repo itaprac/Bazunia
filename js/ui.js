@@ -281,8 +281,20 @@ export function updateProgress(studied, total) {
 const FONT_SCALE_VIEWS = new Set(['study', 'test', 'test-result', 'browse']);
 
 export function showView(viewId) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById(`view-${viewId}`).classList.add('active');
+  const views = document.querySelectorAll('.view');
+  views.forEach(v => v.classList.remove('active'));
+
+  const target = document.getElementById(`view-${viewId}`);
+  if (!target) {
+    console.error(`Missing view element: view-${viewId}`);
+    // Fallback to first available view to avoid hard crash
+    if (views.length > 0) {
+      views[0].classList.add('active');
+    }
+    return;
+  }
+
+  target.classList.add('active');
 
   const fontControl = document.querySelector('.font-size-control');
   if (fontControl) {

@@ -175,6 +175,20 @@ a.app-title {
   align-items: center;
 }
 
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-user-email {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 /* Views */
 .view {
   display: none;

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="js/runtime-config.js"></script>
 </head>
 <body>
   <div class="app-container">
@@ -15,13 +16,38 @@
     <!-- Global header — always visible -->
     <header class="app-header">
       <h1 class="app-title" id="btn-go-home">Baza Deluxe</h1>
-      <div>
+      <div id="header-app-actions">
         <input type="file" id="file-input" class="file-input-hidden" accept=".json">
         <a href="docs.html" class="btn btn-secondary btn-sm">Dokumentacja</a>
         <button class="btn btn-secondary btn-sm" id="btn-app-settings">Ustawienia</button>
         <button class="btn btn-primary btn-sm" id="btn-import">Importuj talię</button>
       </div>
+      <div class="header-auth">
+        <span class="auth-user-email" id="auth-user-email">Niezalogowany</span>
+        <button class="btn btn-secondary btn-sm" id="btn-auth-logout" style="display: none;">Wyloguj</button>
+      </div>
     </header>
+
+    <!-- === AUTH VIEW === -->
+    <div id="view-auth" class="view">
+      <div class="auth-card">
+        <h2 class="auth-title">Zaloguj się</h2>
+        <p class="auth-subtitle">Dane użytkownika, postęp i talie są zapisywane w Supabase.</p>
+        <form id="auth-form" class="auth-form">
+          <label class="auth-label" for="auth-email">E-mail</label>
+          <input class="auth-input" id="auth-email" type="email" autocomplete="email" required>
+
+          <label class="auth-label" for="auth-password">Hasło</label>
+          <input class="auth-input" id="auth-password" type="password" autocomplete="current-password" required>
+
+          <div class="auth-actions">
+            <button class="btn btn-primary" id="btn-auth-login" type="submit">Zaloguj</button>
+            <button class="btn btn-secondary" id="btn-auth-signup" type="button">Załóż konto</button>
+          </div>
+          <p id="auth-message" class="auth-message"></p>
+        </form>
+      </div>
+    </div>
 
     <!-- === DECK LIST VIEW === -->
     <div id="view-deck-list" class="view active">

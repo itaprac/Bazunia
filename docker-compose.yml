@@ -3,6 +3,13 @@ services:
     image: nginx:alpine
     ports:
       - "8080:80"
+    environment:
+      BAZA_SUPABASE_URL: ${BAZA_SUPABASE_URL:-}
+      BAZA_SUPABASE_ANON_KEY: ${BAZA_SUPABASE_ANON_KEY:-}
+    command: >
+      /bin/sh -c
+      "envsubst < /usr/share/nginx/html/js/runtime-config.template.js > /tmp/runtime-config.js
+      && nginx -g 'daemon off;'"
     volumes:
       - .:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro

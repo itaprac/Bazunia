@@ -30,7 +30,7 @@ export function getSupabaseClient() {
 function ensureClient() {
   const client = getSupabaseClient();
   if (!client) {
-    throw new Error('Brak konfiguracji Supabase. Ustaw __BAZA_SUPABASE_URL i __BAZA_SUPABASE_ANON_KEY.');
+    throw new Error('Brak konfiguracji Supabase. Ustaw BAZA_SUPABASE_URL i BAZA_SUPABASE_ANON_KEY (np. w .env).');
   }
   return client;
 }
