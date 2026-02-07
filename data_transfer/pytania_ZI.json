@@ -1,0 +1,920 @@
+[
+  {
+    "question": "Zaznacz super klucze dla relacji R(A, B, C, D, E):",
+    "options": [
+      "{A, B}+ = {A,B,C,D,E}",
+      "{C, D}+ = {C,D, B}",
+      "{A,B,C}+ = {A,B,C,D,E}",
+      "{A,B,C}+ ={A,B,C}"
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nXML są PRAWDZIWE?",
+    "options": [
+      "Elementy mogą być zagnieżdżone w innych\nelementach.",
+      "Dane mają strukturę hierarchiczna.",
+      "Elementy mogą się powtarzać w jednym XML'u.",
+      "Atrybuty mogą zawierać w sobie elementy.",
+      "Atrybuty mogą się powtarzać w ramach\nelementu."
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Algorytmami złączania (join)\nwykorzystującymi iloczyn kartezjański są:",
+    "options": [
+      "Index Nested Laop Join (INLJ)",
+      "Block Nested Loop Join (BNLJ)",
+      "Hash Join (H)",
+      "Nested Loop Join (NLJ)",
+      "Sort-Merge Join (SMJ)"
+    ],
+    "correct": [1, 3]
+  },
+  {
+    "question": "W jakim języku jest niniejszy fragment kodu:\nfor $mt in doc(\"dblp.xml\")/dblp/mastersthesis\nwhere $mt/year/text() = \"1999\"",
+    "options": [
+      "XQuery",
+      "XML",
+      "XSD",
+      "XPath",
+      "DTD"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Regułami Armstronga są",
+    "options": [
+      "Podział i łączenie (Split/Combine)",
+      "Przechodniość (Transitivity)",
+      "Zależności (Dependency)",
+      "Wnioskowania (Inference)",
+      "Redukcja (Reduction)"
+    ],
+    "correct": [0, 1, 4]
+  },
+  {
+    "question": "Komenda DELETE FROM tabela1; spowoduje",
+    "options": [
+      "usunięcie tabela1.",
+      "usunięcie rekordów z tabela1.",
+      "usunięcie atrybutów z tabela1.",
+      "usunięcie relacji z tabela1."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W algorytmach Nested Loop Join (NLJ) i\nBlock Nested Loop Join (BNLJ) w zewnętrznej\npętli powinna być relacja, która:",
+    "options": [
+      "jest większa",
+      "jest mniejsza",
+      "nie ma to znaczenia"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Jak nazywa się operacja, której wynik\nzawiera wszystkie pary rekordów z dwóch\nrelacji, niezależnie od tego, czy ich wartości\natrybutów są zgodne?",
+    "options": [
+      "złączenie (join)",
+      "iloczyn kartezjański (Cartesian product)",
+      "przecięcie zbiorów (intersect)",
+      "różnica zbiorów (except)"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "______ oznacza, ze dane użyte podczas\nrealizacji transakcji nie mogą być wykorzystane\nprzez drugą transakcje do czasu zakończenia\npierwszej.",
+    "options": [
+      "Izolacja",
+      "Atomowość",
+      "Znakowanie czasem",
+      "Serializacja"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Wybierz klucz spośród super kluczy dla\nrelacji R(A, B, C, D, E, F)",
+    "options": [
+      "{A, B, C, D}+",
+      "{A, B, C}+",
+      "{A, B}+",
+      "{A, B, C, D, E}+"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nB+ drzew są PRAWDZIWE:",
+    "options": [
+      "Można przyśpieszyć wyszukiwanie utrzymując\nczęść drzewa w pamięci RAM.",
+      "Liczba potomków węźle (fanout) powinna być\ntaka aby zając jeden blok danych.",
+      "Aby działać efektywnie drzewo powinno być\ncałkowicie zapełnione.",
+      "Koszt wyszukania danych w drzewie nie zależy\nod liczby potomków w węźle (fanout)."
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\ndziennika (loga) są PRAWDZIWE:",
+    "options": [
+      "Wykorzystywany jest do odtworzenia spójnego\nstanu bazy danych po awarii.",
+      "Może służyć jako kopia zapasowa bazy danych\n(backup).",
+      "Zapisywane są informacje o wszystkich\nwykonanych zapytaniach na bazie danych.",
+      "zapisywane są tylko informacje o zmianach w\nbazie danych.",
+      "DBMS wymusza zapisywanie dziennika na\ndysk."
+    ],
+    "correct": [0, 3, 4]
+  },
+  {
+    "question": "Zaznacz przywileje możliwe do nadania\nkomendą GRANT",
+    "options": [
+      "DROP",
+      "VIEW",
+      "UPDATE",
+      "CREATE",
+      "INDEX",
+      "INSERT",
+      "SELECT"
+    ],
+    "correct": [0, 2, 3, 4, 5, 6]
+  },
+  {
+    "question": "W ramach optymalizacji zapytań",
+    "options": [
+      "Wykonuje się wiele zapytań i zwracany jest\nwynik najszybszego z nich.",
+      "Można go zastąpić właściwym doborem\nindeksów",
+      "Wykonuje się tylko jeden plan, który\nprawdopodobnie najszybciej się wykona."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nblokad są PRAWDZIWE?",
+    "options": [
+      "Można założyć blokadę UPDATE dla zasobu,\nktóry ma założoną blokadę współdzieloną.",
+      "Nie można założyć blokady wyłącznej dla\nzasobu, który ma założoną blokade współdzieloną",
+      "Jeśli jest założona blokada wyłączna, nie można\nzałożyć żadnej innej blokady.",
+      "Blokada UPDATE przekształca się w blokadę\nwspółdzieloną.",
+      "Chęć założenia blokady wyłącznej powoduje\nusunięcie wszystkich założonych wcześniej\nblokad współdzielonych."
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\ndiagramów E/R są PRAWDZIWE:",
+    "options": [
+      "Trójkątem oznacza sie podklasy zbioru encji.",
+      "Słabe zbiory encji oznacza się przerywaną linią\nkonturu.",
+      "Pogrubiona linia łącząca zbiór encji z relacją\noznacza, ze jest to relacja jeden do wielu.",
+      "Słaby zbiory encji oznacza, że nie istnieje on\nsamoistnie bez zdefiniowana innego zbioru encji.",
+      "Podkreślone atrybuty tworzą klucz główny."
+    ],
+    "correct": [3, 4]
+  },
+  {
+    "question": "Podaj najniższą postać normalną, w której\nwystępują zależności wielowartościowe",
+    "options": [
+      "BCNF",
+      "pierwsza",
+      "czwarta",
+      "druga",
+      "trzecia",
+      "piąta"
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\ndiagramów E/R są PRAWDZIWE",
+    "options": [
+      "Relacja może być połączona tylko z dwoma\nzbiorami encji.",
+      "Dwie strzałki dochodzące do relacji oznaczają,\nże jest ona typu wiele do wielu.",
+      "Zbiór encji oznacza się prostokątem.",
+      "Atrybuty oznacza się owalem.",
+      "Relacje oznacza się rombem."
+    ],
+    "correct": [2, 3, 4]
+  },
+  {
+    "question": "Polecenie COMMIT oznacza:",
+    "options": [
+      "Założenie blokad.",
+      "Przywrócenie stanu bazy danych sprzed\nrozpoczęcia transakcji.",
+      "Brak możliwości wycofania wyników operacji z\nbazy.",
+      "Zakończenie transakcji."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Klucz główny",
+    "options": [
+      "może składać się z wielu atrybutów.",
+      "musi być utworzony dla każdej tabeli.",
+      "nie może mieć wartości NULL.",
+      "jest zawsze częścią klucza obcego.",
+      "baza danych automatycznie zakłada na nim\nindeks powiązany (clustered index).",
+      "musi mieć unikalne wartości."
+    ],
+    "correct": [0, 2, 4, 5]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nDTD i XSD są PRAWDZIWE?",
+    "options": [
+      "W XSD można definiować typy danych.",
+      "Każdy XML musi być zgodny z DTD lub z XSD.",
+      "W DTD można definiować elementy złożone.",
+      "DTD i XSD umożliwiają sprawdzenie\npoprawności XML'a.",
+      "DTD jest bardziej rozbudowane niż XSD."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Jeśli w relacji A atrybut jest kluczem\nobcym wskazującym na relacje B. To\nwskazywany atrybut w relacji B musi być",
+    "options": [
+      "super kluczem",
+      "nie może być kluczem",
+      "kluczem głównym",
+      "kluczem kandydującym",
+      "kluczem obcym"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nindeksów są PRAWDZIWE:",
+    "options": [
+      "Tablice bitów wykorzystuje się gdy atrybut ma\nbardzo dużo różnych wartości.",
+      "Tablice haszujące można zastosować do\nprzeszukania danych o określonej wartości, np.\nrównych 5.",
+      "B+ drzewa można zastosować do przeszukania\ndanych z podanego zakresu, np. od 5 do 15.",
+      "Tablice haszujące można zastosować do\nprzeszukania danych z podanego zakresu, np. od\n5 do 15.",
+      "B+ drzewa można zastosować do przeszukania\ndanych o określonej wartości, np. równych 5."
+    ],
+    "correct": [1, 2, 4]
+  },
+  {
+    "question": "Plan fizyczny optymalizacji zapytania\nobejmuje",
+    "options": [
+      "Dobór właściwych indeksów.",
+      "Budowa planu algebry relacji.",
+      "Uwzględnienie statystyk danych w tym\nhistogramów.",
+      "Dobór najlepszego algorytmu łączenia (join).",
+      "Określenie kolejności wykonania zapytań w\nramach bloku zapytań transakcji"
+    ],
+    "correct": [0, 2, 3]
+  },
+  {
+    "question": "Które własności algebry relacji są\npoprawne:",
+    "options": [
+      "σA( R ∩ P ) = σB( σA( R ) )",
+      "σ{A∨B}( R ) = σB( σA( R ) )",
+      "σA σB( R ) = σB σA( R )",
+      "π{a1,…,an}( σA( R ) ) = σA( π_{a1,…,an}( R ) )"
+    ],
+    "correct": [2, 3]
+  },
+  {
+    "question": "Zapytanie SQL: SELECT DISTINCT aa, bb\nFROM X JOIN Y ON aa = cc WHERE aa > 3\nzapisane w algebrze relacji będzie miało\npostać:",
+    "options": [
+      "σ(aa,bb) (ρ(aa>3) (X ⋈\"aa=cc\" Y))",
+      "ρ(aa,bb) (σ(aa>3) (X ⋈\"aa=cc\" Y))",
+      "σ(aa,bb) (Π(aa>3) (X ⋈\"aa=cc\" Y))",
+      "Π(aa,bb) (σ(aa>3) (X ⋈\"aa=cc\" Y))"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nACID są PRAWDZIWE?",
+    "options": [
+      "Spójność oznacza, że nie można wpisać\nniepoprawnych danych do bazy (łamiących np.\nwięzy integralności lub ograniczeń",
+      "Atomowość oznacza, że albo wszystkie\nzapytania zakończyły się poprawnie, albo nie\nwykonały się.",
+      "Trwałość oznacza, że po zakończeniu\ntransakcji (commit) dane są bezpiecznie zapisane\nw bazie.",
+      "Izolacja oznacza, że baza działa w takim trybie\njakby korzystał z niej tylko jeden użytkownik."
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nkomendy GRANT są PRAWDZIWE?",
+    "options": [
+      "Nadaje uprawnienia dotyczące wszystkich\nrekordów całej tabeli lub wybranych kolumn.",
+      "Po utworzeniu tabeli należy nadać sobie do\nniej uprawnienia.",
+      "Wykorzystanie widoków umożliwia nadanie\nuprawnień tylko do wybranej grupy rekordów.",
+      "Można nadawać uprawnienia tylko\nużytkownikom."
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nSort-Merge Join (SMJ) są PRAWDZIWE?",
+    "options": [
+      "SMJ potrzebuje do pracy mniej pamięci niż\nalgorytm Hash Join (H)).",
+      "Koszt obliczeniowy SMJ jest równy P(R) +\nT(R)P(S) + OUT.",
+      "Jeżeli dane wejściowe są posortowane to czas\nprzetwarzania algorytmu jest liniowy.",
+      "Optymalizacja SMJ polega na wykonaniu B-\nkrotnego złączania (merge).",
+      "Złączanie po atrybutach z duplikatami\nznacząco wydłuża pracę algorytmu."
+    ],
+    "correct": [0, 2, 3, 4]
+  },
+  {
+    "question": "Zapytanie XPath //title/text() w wyniku\nzwróci:",
+    "options": [
+      "wszystkie wartości zapisane w elemencie\n\"title\".",
+      "fragment XML'a z zawartością wszystkich\nelementów \"title\".",
+      "fragment XML'a z zawartością pierwszego\nnapotkanego elementu \"title\".",
+      "pierwszą napotkaną wartość zapisane w\nelemencie \"title\"."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Indeks wtórny (secondary) powinien być\nutworzony na atrybucie gdy:",
+    "options": [
+      "Zawiera dużo duplikatów.",
+      "Często pojawia się w zapytaniach.",
+      "Jest kluczem głównym.",
+      "Ma ustawione UNIQUE."
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Tworząc diagram E/R dla księgarni, które z poniższych przyporządkowań jest poprawne?",
+    "options": [
+      "'Książka' to zbiór encji, 'tytuł' to atrybut, a 'Wydana przez' to relacja.",
+      "'Książka' to atrybut, 'tytuł' to zbiór encji, a 'Wydana przez' to relacja.",
+      "'Książka' to relacja, 'tytuł' to atrybut, a 'Wydana przez' to zbiór encji.",
+      "'Książka' to zbiór encji, a 'tytuł' i 'Wydana przez' to atrybuty."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nprzechowywania danych są PRAWDZIE:",
+    "options": [
+      "Zastosowanie indeksu powiązanego (clustered\nindex) skutkuje sekwencyjnym ułożeniem danych\nna dysku.",
+      "RAID jest wykorzystywany aby zmniejszyć\nryzyko utraty danych z powodu awarii dysku.",
+      "Rozmiar bloku dyskowego nie ma wpływu na\nwydajność bazy danych.",
+      "RAID pozwala na przyśpieszenie operacji\nwe/wy.",
+      "Dane z dziennika (log) przechowywane są tylko\nw pamięci operacyjnej."
+    ],
+    "correct": [0, 1, 3]
+  },
+   {
+    "question": "Które z poniższych przyporządkowań symboli do operacji algebry relacji jest poprawne?",
+    "options": [
+      "σ - Selekcja, π - Projekcja, ⋈ - Złączenie",
+      "π - Selekcja, σ - Projekcja, ⋈ - Złączenie",
+      "σ - Selekcja, π - Projekcja, ρ - Złączenie",
+      "× - Projekcja, ρ - Selekcja, σ - Zmiana nazwy"
+    ],
+    "correct": [0]
+    },
+  {
+    "question": "W trybie Mandatory Access Control:",
+    "options": [
+      "Mając dostęp do materiałów ściśle tajnych mogę\nzapisywać do dokumentu z klauzulą poufne.",
+      "Mając dostęp do materiałów tajnych mogę\nodczytać dokument z klauzulą poufne.",
+      "Mając dostęp do materiałów tajnych mogę\nodczytać dokument z klauzulą ściśle tajne.",
+      "Mając dostęp do materiałów poufnych mogę\nodczytać dokument z klauzulą poufne.",
+      "Mając dostęp do materiałów poufnych mogę\nzapisywać do dokumentu z poufne."
+    ],
+    "correct": [1, 3]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nhistogramów są PRAWDZIWE?",
+    "options": [
+      "Są wykorzystywane do oszacowania czasu\nwykonania zapytania.",
+      "Zawierają pełną listę wartości atrybutów\nwystępujących w tabeli.",
+      "Można je parametryzować poprzez wybór\nliczby koszyków i ich typ.",
+      "Musza dotyczyć tylko jednego atrybutu (są\njednowymiarowe)",
+      "Histogramy mogą być aktualizowane."
+    ],
+    "correct": [0, 2, 4]
+  },
+  {
+    "question": "_________jest atomową sekwencją działań w\nbazie danych.",
+    "options": [
+      "Współbieżność",
+      "Relacja",
+      "Transakcja"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Indeksy w bazie danych mogą wykorzystywać\nnastępujące struktury danych",
+    "options": [
+      "B+ drzewa",
+      "Listy jednokierunkowe",
+      "Drzewa binarne",
+      "Tablice bitów",
+      "Tablice haszujące"
+    ],
+    "correct": [0, 3, 4]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących\nnormalizacji są PRAWDZIWE?",
+    "options": [
+      "Celem normalizacji jest wyeliminowanie anomalii.",
+      "Normalizacja powoduje wzrost liczby tabel.",
+      "Dzięki normalizacji w zapytaniach rzadziej\npojawia się konieczność łączenia tabel.",
+      "BCNF jest bardziej rygorystyczne niż 3 postać\nnormalna.",
+      "Przed normalizacją trzeba wykonać\ndenormalizację."
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Przyspieszenie algorytmu External Merge Sort\nmożna uzyskać dzięki:",
+    "options": [
+      "Zwiększeniu liczby buforów",
+      "Zwiększeniu rozmiaru początkowych przebiegów",
+      "Wykorzystaniu B+1 buforów do redukcji liczby\nprzebiegów"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Zaznacz dekompozycję tabel zachowujące\nzależności dla relacji R(A, B, C, D, E):",
+    "options": [
+      "R1(A, B), R2(D, E)",
+      "R1(A, B, C), R2(D, E)",
+      "R1(A, B, C, D), R2(C, D, E)",
+      "R1(A, B, C), R2(C, D, E)"
+    ],
+    "correct": [2, 3]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące Hash Join są\nprawdziwe?",
+    "options": [
+      "Najpierw wykonywana jest faza złączania\n(matching) a następnie faza podziału (partitioninig).",
+      "Liczba koszyków (buckets) nie ma wpływu na\nszybkość algorytmu.",
+      "Koszt obliczeniowy wynosi -3(P(R)+P(S)) + OUT.",
+      "Można go łatwo zrównoleglić.",
+      "Działa efektywnie jeśli rozmiary tabel mocno się\nróżnią."
+    ],
+    "correct": [2, 3, 4]
+  },
+  {
+    "question": "Relacyjnymi bazami danych są:",
+    "options": [
+      "Cassandra",
+      "Oracle",
+      "MS Access",
+      "SQLite",
+      "MySQL",
+      "MS SQL Server",
+      "HBase",
+      "MongoDB"
+    ],
+    "correct": [1, 2, 3, 4, 5]
+  },
+  {
+    "question": "Wykorzystując reguły Armstronga określ,\nktóre domknięcia relacji R(A,B,C,D) mając dane\nzależności A→B; B→C; B→C,D są prawdziwe:",
+    "options": [
+      "(D)+ = {C,D}",
+      "(A)+ = {A,B,C,D}",
+      "(B)+ = {B,C,D}",
+      "(C)+ = {C,D}"
+    ],
+    "correct": [1, 2]
+  },
+  {
+  "question": "Wskaż poprawną kolejność operacji wykonywanych przez system bazy danych podczas optymalizacji zapytania SQL:",
+  "options": [
+    "Odpalenie zapytania → Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej → Wyznaczenie planu fizycznego",
+    "Odpalenie zapytania → Wyznaczenie planu fizycznego → Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej",
+    "Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej → Wyznaczenie planu fizycznego → Odpalenie zapytania",
+    "Odpalenie zapytania → Optymalizacja planu algebry relacyjnej → Przekształcenie na plan algebry relacyjnej → Wyznaczenie planu fizycznego"
+  ],
+  "correct": [0]
+  },
+  {
+    "question": "Relacyjna baza danych jest kolekcją:",
+    "options": [
+      "Tabel",
+      "Obiektów",
+      "Indeksów",
+      "Rekordów"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Zadaniami systemu zarządzania bazą danych\nsą:",
+    "options": [
+      "Zarządzanie plikami",
+      "Wyświetlanie wyników zapytań",
+      "Zarządzanie dostępem (autoryzacja)",
+      "Optymalizacja zapytań",
+      "Zarządzanie blokadami",
+      "Zarządzanie transakcjami"
+    ],
+    "correct": [2, 3, 4, 5]
+  },
+  {
+    "question": "Elementami modelu logicznego bazy danych\nsą:",
+    "options": [
+      "Pola kluczowe",
+      "Typy danych atrybutów",
+      "Atrybuty",
+      "Nazwa tabeli"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Zbiór obiektów tego samego typu w\ndiagramach E/R nazywa się:",
+    "options": [
+      "Atrybut",
+      "Zbiór atrybutów",
+      "Encja",
+      "Zbiór encji",
+      "Zbiór relacji",
+      "Relacja"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Parametr opisujący obiekt w diagramie E/R\nnazywa się:",
+    "options": [
+      "Relacja",
+      "Atrybut",
+      "Zbiór atrybutów",
+      "Encja",
+      "Zbiór encji",
+      "Zbiór relacji"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Z których typów obiektów diagramu E/R\ntworzy się tabele bazy danych?",
+    "options": [
+      "Relacja",
+      "Encja",
+      "Zbiór atrybutów",
+      "Atrybut",
+      "Zbiór encji"
+    ],
+    "correct": [0, 1, 4]
+  },
+  {
+    "question": "Które stwierdzenia są PRAWDZIWE w\nkontekście SQL?",
+    "options": [
+      "Duże i małe litery nie mają znaczenia dla ciągów\nznaków",
+      "Jest językiem deklaratywnym",
+      "Wartość w komórce tabeli musi być typu\natomowego",
+      "Duże i małe litery nie mają znaczenia dla komend",
+      "Wykonuje operacje na multizbiorach",
+      "Do oznaczenia ciągu znaków używa się podwójny\ncudzysłów"
+    ],
+    "correct": [1, 3, 4]
+  },
+  {
+    "question": "Jaki będzie wynik operacji p OR q w SQL jeśli p\n= TRUE, q = NULL?",
+    "options": [
+      "FALSE",
+      "NULL",
+      "TRUE"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Jaki będzie wynik operacji p AND q w SQL jeśli\np = TRUE, q = NULL?",
+    "options": [
+      "NULL",
+      "FALSE",
+      "TRUE"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Jaki będzie wynik operacji p AND q w SQL jeśli\np = FALSE, q = NULL?",
+    "options": [
+      "TRUE",
+      "FALSE",
+      "NULL"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Jaki będzie wynik operacji p OR q w SQL jeśli p\n= FALSE, q = NULL?",
+    "options": [
+      "NULL",
+      "FALSE",
+      "TRUE"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Najniższa postać normalna, w której atrybuty\nzłożone rozbija się na atrybuty atomowe:",
+    "options": [
+      "Trzecia",
+      "BCNF",
+      "Czwarta",
+      "Pierwsza",
+      "Druga",
+      "Piąta"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Najniższa postać normalna, w której nie ma\nprzechodnich zależności funkcyjnych:",
+    "options": [
+      "BCNF",
+      "Druga",
+      "Piąta",
+      "Pierwsza",
+      "Trzecia",
+      "Czwarta"
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Najniższa postać normalna, w której każda\nnietrywialna zależność funkcyjna jest\nsuperkluczem:",
+    "options": [
+      "Pierwsza",
+      "Druga",
+      "Czwarta",
+      "Piąta",
+      "BCNF",
+      "Trzecia"
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Typy anomalii w bazach danych:",
+    "options": [
+      "Redundancja danych",
+      "Anomalia usuwania",
+      "Anomalia zależności funkcyjnej",
+      "Anomalia dekompozycji",
+      "Anomalia wstawiania",
+      "Anomalia modyfikacji"
+    ],
+    "correct": [0, 1, 4, 5]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące operacji\nwejścia/wyjścia są PRAWDZIWE?",
+    "options": [
+      "1GB pamięci RAM jest droższy niż 1GB dysku SSD",
+      "W przypadku awarii zasilania dane na dysku nie\nsą kasowane",
+      "Sekwencyjny odczyt danych z dysku HDD jest\nznacznie szybszy niż losowy",
+      "Dane z pamięci RAM po utracie zasilania są\nprzechowywane w buforze",
+      "W serwerowniach używa się przeważnie dysków\nHDD"
+    ],
+    "correct": [0, 1, 2, 4]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące RAID są\nPRAWDZIWE?",
+    "options": [
+      "RAID 0 ma dwa razy szybszy odczyt i zapis niż\npojedynczy dysk",
+      "Odtwarzanie danych po awarii jednego dysku w\nRAID 5 zajmuje dużo czasu",
+      "RAID 1 nie jest odporny na awarie dysku",
+      "RAID 6 potrzebuje więcej dysków niż RAID 5 do\nprzechowania tej samej ilości danych",
+      "W RAID 5 mogą ulec awarii jednocześnie dwa\ndyski bez ryzyka utraty danych"
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące transakcji są\nPRAWDZIWE?",
+    "options": [
+      "Zapewniają wielodostęp do baz danych",
+      "Pozwalają przetrwać bazie danych awarię bez\nryzyka niespójności danych",
+      "Przyśpieszają działanie bazy danych",
+      "Gwarantują, że nieuprawnieni użytkownicy nie\nmają dostępu do danych",
+      "Mogą składać się tylko z jednego zapytania"
+    ],
+    "correct": [0, 1, 4]
+  },
+  {
+    "question": "Awaria w trakcie transakcji spowoduje:",
+    "options": [
+      "Wynik transakcji zostanie zapisany na dysku jeśli\nwykonany był commit",
+      "Wynik transakcji zostanie zapisany na dysku bez\nwzględu na jej stan jeśli operacje były zapisywane w\nlogu",
+      "Log musi być zapisany na dysk przed przesłaniem\ndanych na dysk"
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "Harmonogram szeregowalny (serializable)\noznacza, że:",
+    "options": [
+      "Nie można wykonać żadnej transakcji, występuje\nzakleszczenie",
+      "Można wykonać równolegle wiele transakcji",
+      "Każda transakcja musi być wykonana szeregowo,\njedna po drugiej"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące konfliktów są\nPRAWDZIWE?",
+    "options": [
+      "Konflikt RW powoduje, że kolejny odczyt danych\njest niespójny",
+      "Baza danych zawsze musi być tak ustawiona, aby\nkonflikty nie były możliwe",
+      "Konflikt RW powoduje, że nie można utworzyć\nharmonogramu serializowanego",
+      "Konflikt WR spowoduje, że w przypadku\nwycofania transakcji odczyt danych będzie\nniespójny"
+    ],
+    "correct": [0, 2, 3]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące poziomów\nizolacji są PRAWDZIWE?",
+    "options": [
+      "Tryb read committed oznacza, że brudny odczyt\nnie jest możliwy",
+      "Tryb read uncommitted jest najbardziej\nbezpiecznym poziomem izolacji",
+      "Tryb repeatable read oznacza, że mogą wystąpić\nfantomy",
+      "Tryb serializable oznacza, że żadne konflikty nie\nsą akceptowane"
+    ],
+    "correct": [0, 2, 3]
+  },
+  {
+    "question": "Jeśli skierowany graf konfliktów transakcji\njest acykliczny, to:",
+    "options": [
+      "Można utworzyć harmonogram serializowalny",
+      "Nie występują konflikty",
+      "Musimy dodać transakcje do grafu"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Zakładanie blokad wg algorytmu blokowania\ndwufazowego (2PL) oznacza, że:",
+    "options": [
+      "Graf zależności transakcji musi mieć przynajmniej\njeden cykl",
+      "Utworzony harmonogram będzie serializowalny",
+      "Muszą być założone wszystkie blokady przed\nzdjęciem pierwszej z blokad"
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Mechanizmami zapewniającymi kontrolę\ndostępu są:",
+    "options": [
+      "Discretionary Access Control (DAC)",
+      "Database Administrator Access Control",
+      "Server Access Control",
+      "Role-Based Access Control (RBAC)",
+      "Mandatory Access Control (MAC)"
+    ],
+    "correct": [0, 3, 4]
+  },
+  {
+    "question": "WITH GRANT OPTION oznacza, że:",
+    "options": [
+      "Użytkownik może nie korzystać ze swoich\nuprawnień",
+      "Nadajemy użytkownikowi takie same uprawnienia\njakie sami posiadamy",
+      "Dajemy użytkownikowi prawo przekazywania\ndalej uprawnień",
+      "Zabieramy użytkownikowi uprawnienia do zasobu"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "SQL injection:",
+    "options": [
+      "Jest to jedna z technik uzyskiwania\nnieuprawnionego dostępu do danych",
+      "Jest to tryb dostępu administratora do bazy",
+      "Jest to jeden z trybów pracy bazy danych"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Elementami XML'a są:",
+    "options": [
+      "Text",
+      "Comment",
+      "Attribute",
+      "Element",
+      "Namespace"
+    ],
+    "correct": [0, 1, 2, 3, 4]
+  },
+  {
+    "question": "XQuery jest:",
+    "options": [
+      "Częścią pliku XML",
+      "Językiem zapytań dla XML",
+      "Strukturą danych w XML"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące optymalizacji\nplanu algebry relacji są PRAWDZIWE?",
+    "options": [
+      "Selekcja powinna być przesunięta w dół drzewa",
+      "Nie wolno zmienić kolejności operacji łączenia\n(join)",
+      "Istnieje tylko jedno drzewo przedstawiające plan\nalgebry relacji",
+      "Projekcja powinna być przesunięta w dół drzewa"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Operacja projekcji w algebrze relacji oznacza:",
+    "options": [
+      "Połączenie rekordów z dwóch tabel",
+      "Eliminację zbędnych kolumn",
+      "Zwrócenie rekordów, które spełniają podane\nwarunki",
+      "Usunięcie duplikatów"
+    ],
+    "correct": [1, 3]
+  },
+  {
+    "question": "Przepakowanie w algorytmie External Merge\nSort:",
+    "options": [
+      "Jeśli dane są posortowane to eliminujemy etap\nMerge",
+      "Można zawsze zastosować, bez względu na\nułożenie danych na dysku",
+      "Zawsze przyspiesza działanie algorytmu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Które stwierdzenia dotyczące indeksów są\nPRAWDZIWE?",
+    "options": [
+      "Indeksy spowalniają operacje aktualizacji danych",
+      "Na kolumnie może być założonych wiele\nindeksów",
+      "Można założyć wiele indeksów powiązanych\n(clustered) w tabeli",
+      "W bazie danych wszystkie indeksy muszą być\nprzechowywane w pamięci RAM"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Które algorytmy łączenia wymagają\n~3(P(R)+P(S)) + OUT operacji?",
+    "options": [
+      "Sort-Merge Join (SMJ)",
+      "Block Nested Loop Join (BNLJ)",
+      "Nested Loop Join (NLJ)",
+      "Hash Join (HJ)",
+      "Index Nested Loop Join (INLJ)"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Algorytm Index Nested Loop Join (INLJ):",
+    "options": [
+      "We wzorze P(R) + T(R)*L + OUT, L oznacza liczbę\noperacji we/wy",
+      "Nie musimy wykonywać iloczynu kartezjańskiego",
+      "Jest wolniejszy niż algorytm Nested Loop Join\n(NLJ)"
+    ],
+    "correct": [0, 1]
+  },
+ {
+    "question": "Do zaindeksowania 1TB danych przy typowych ustawieniach, B+ drzewo będzie miało najprawdopodobniej ile poziomów?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Wskaż poprawną kolejność składniową (zapisu) klauzul w poleceniu SELECT:",
+    "options": [
+      "SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY",
+      "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY",
+      "SELECT, FROM, WHERE, HAVING, GROUP BY, ORDER BY",
+      "SELECT, FROM, GROUP BY, WHERE, ORDER BY, HAVING"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Wskaż poprawną kolejność logicznego przetwarzania klauzul w poleceniu SELECT:",
+    "options": [
+      "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY",
+      "SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY",
+      "FROM, SELECT, WHERE, GROUP BY, HAVING, ORDER BY",
+      "FROM, WHERE, GROUP BY, SELECT, HAVING, ORDER BY"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Wybierz stwierdzenia, które są PRAWDZIWE w\nkontekście ról (Role-Based Access Control):",
+    "options": [
+      "można przypisać tylko na etapie tworzenia\nnowego użytkownika",
+      "Uprawnienia można przypisać do roli",
+      "Role można przypisać do wielu użytkowników",
+      "Użytkownik może być przypisany tylko do jednej\nroli"
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Wybierz stwierdzenia, które są PRAWDZIWE w\nkontekście danych półstrukturalnych\n(semistructural):",
+    "options": [
+      "Dobrze nadają się do przechowywania danych\nrzadkich",
+      "Struktura danych może ulegać zmianie w czasie",
+      "Struktura danych musi dać się przekształcić do\nrelacyjnego modelu",
+      "Obowiązkowo należy zdefiniować schemat\ndanych przed użyciem"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Wybierz stwierdzenia, które są PRAWDZIWE w\nkontekście DENORMALIZACJI bazy danych:",
+    "options": [
+      "Zmniejszenie liczby łączeń tabel (JOIN)",
+      "Ostatni etap normalizacji",
+      "Musi być wykonana dla każdej relacyjnej bazy",
+      "Zwiększenie wydajności bazy"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Wybierz stwierdzenia, które są PRAWDZIWE w\nkontekście JSON:",
+    "options": [
+      "Nie zawiera tagów zamykających",
+      "Obsługiwany tylko przez JavaScript",
+      "Nie obsługuje tablic",
+      "Łatwiejszy do parsowania od XML"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "W XPath:",
+    "options": [
+      "można definiować zmienne.",
+      "symbol * oznacza, że możemy zagłębić się w\ndrzewie XML na dowolną liczbę poziomów.",
+      "można zwrócić fragment XML lub zbiór wartości.",
+      "umożliwia pobranie z XML danych. []",
+      "występują pętle."
+    ],
+    "correct": [1, 2, 3]
+  }
+]

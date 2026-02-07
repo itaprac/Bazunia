@@ -1,0 +1,1217 @@
+[
+  {
+    "question": "Cechą charakterystyczną kodu Graya jest",
+    "options": [
+      "jednobitowa reprezentacja",
+      "słowa bitowe różniące się jednym bitem",
+      "zmniejszenie liczby bitów w wynikowym strumieniu",
+      "słowa bitowe różniące się parami bitów",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Współczynnik głębokości modulacji (prosze o konsultacje z tym pytaniem)",
+    "options": [
+      "ma wpływ na widmo sygnału zmodulowanego",
+      "wpływa na zmianę głębokości sygnału informacyjnego",
+      "określa stopień oddziaływania sygnału informacyjnego na falę nośną",
+      "określa stopień oddziaływania na falę nośną",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "Liczba warstw modelu OSI opisującego komunikację w sieci komputerowej wynosi",
+    "options": [
+      "8",
+      "4",
+      "3",
+      "7",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Do podstawowych zakłóceń w kanale telekomunikacyjnym zaliczamy:",
+    "options": [
+      "tłumienie",
+      "echo",
+      "opóźnienie",
+      "szumy"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Efektywność widmowa zależy od",
+    "options": [
+      "czasu trwania bitu",
+      "szerokości pasma zajmowanego przez sygnał zmodulowany",
+      "przepływności binarnej",
+      "wartościowości modulacji"
+    ],
+    "correct": [1, 2, 3]
+  },
+  {
+    "question": "Do kodów liniowych zaliczamy kody",
+    "options": [
+      "Hamminga",
+      "AMI",
+      "NRZI",
+      "Manchester"
+    ],
+    "correct": [1, 2, 3]
+  },
+  {
+    "question": "Skrambling polega na",
+    "options": [
+      "retransmisji danych",
+      "redukcji okresowości w ciągu bitowym",
+      "rozpraszaniu błędów transmisyjnych",
+      "zwiększenia szybkości transmisji"
+    ],
+    "correct": [1,2]
+  },
+  {
+    "question": "Kodowanie predykcyjne polega na",
+    "options": [
+      "przewidywaniu zmian w sygnale źródłowym",
+      "zmniejszaniu wartości pomiędzy sąsiednimi próbkami",
+      "występowaniu błędów predykcji",
+      "zastępowaniu większej liczby bitów wektorem o mniejszym rozmiarze"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Profil światłowodu określa",
+    "options": [
+      "zmianę współczynnika załamania światła wzdłuż przekroju włókna",
+      "trajektorię promieniowania świetlnego",
+      "kolor użytego światła",
+      "minimalną liczbę trajektorii światła"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Szerokość pasma sygnału postaci x(t)=sin(2*pi*200*t)+sin(40*pi*t)+2*cos(640*pi*t) wynosi",
+    "options": [
+      "300Hz",
+      "240Hz",
+      "600Hz",
+      "440Hz",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Pasmo ISM określa",
+    "options": [
+      "pasmo nielicencjonowane",
+      "pasmo w którym można nadawać mocą około 1KW",
+      "pasmo do zastosowań w przemyśle, badaniach naukowych oraz w systemach medycznych",
+      "pasmo, które obecnie jest przestarzałe i nieużywane"
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "W modulatorze kwadraturowym",
+    "options": [
+      "wykorzystuje się dekompozycję strumienia bitów na składowe I (synfazową) oraz Q (kwadraturową)",
+      "sygnał wejściowy podlega dekompozycji na dwa strumienie bitowe",
+      "wykorzystuje się dwa generatory sinusoidalne o przesuniętej fazie",
+      "wykorzystuje się operacje mnożenia i sumowania"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Multipleksacja TDM (Time Division Multiplexing)",
+    "options": [
+      "polega na przydziale odpowiednich szczelin czasowych",
+      "wymaga synchronizacji czasowej",
+      "umożliwia sekwencyjną transmisję wielu sygnałów przez jeden kanał",
+      "nie wymaga pasm ochronnych między kanałami"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Proces próbkowania sygnału",
+    "options": [
+      "polega na pobieraniu w regularnych odstępach próbek sygnału w dziedzinie czasu",
+      "wykorzystuje filtr dolnoprzepustowy do uniknięcia aliasingu",
+      "jest jednym z etapów konwersji analogowo-cyfrowej",
+      "wpływa na pasmo sygnału cyfrowego"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Protokoły NIE związane z transmisją strumieniową w sieciach IP to",
+    "options": [
+      "NTP",
+      "HTTP",
+      "FTP",
+      "SMTP"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Twierdzenie o próbkowaniu (Nyquista-Shannona)",
+    "options": [
+      "jest związane z maksymalną częstotliwością w sygnale",
+      "zakłada, że częstotliwość próbkowania powinna być przynajmniej dwa razy większa niż maksymalna częstotliwość w sygnale",
+      "jest związane z szerokością pasma sygnału próbkowanego",
+      "określa warunek poprawnej rekonstrukcji sygnału"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Szerokość pasma Idealnego przebiegu piłokształtnego",
+    "options": [
+      "jest większa niż tonu prostego",
+      "jest teoretycznie nieskończona",
+      "jest większa niż idealnego przebiegu prostokątnego",
+      "zależy od jego amplitudy",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Rozdzielczość widmowa zależy od",
+    "options": [
+      "liczby próbek sygnału (długości okna analizy)",
+      "częstotliwości próbkowania",
+      "liczby składowych w widmie",
+      "minimalnej częstotliwości w analizowanym sygnale"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "W symetrycznej parze skręcanej",
+    "options": [
+      "występuje takie samo napięcie, ale ma przeciwną polaryzację",
+      "występują dwa napięcia o przeciwnej fazie względem siebie",
+      "zakłócenia dodają się do obu żył w ten sam sposób, co pozwala na ich eliminację",
+      "dane przekazywane są jedną żyłą, a druga stanowi oplot"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Jednostką pochodną do jednostki dBm jest",
+    "options": [
+      "dBW",
+      "dBi",
+      "dBV",
+      "dBA"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Operacja przesunięcia w dziedzinie częstotliwości jest kluczowym elementem:",
+    "options": [
+      "modulacji",
+      "skalowania",
+      "wzmocnienia",
+      "opóźnienia"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Sygnał mowy wytwarzany przez człowieka może zawierać",
+    "options": [
+      "tony proste",
+      "części dźwięczne i bezdźwięczne",
+      "fragmenty o zmiennej energii",
+      "pauzy międzywyrazowe"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Parametry określające pojemność kanału transmisyjnego to:",
+    "options": [
+      "szerokość pasma",
+      "stosunek mocy sygnału do mocy szumu (SNR)",
+      "maksymalna prędkość bitowa",
+      "moc sygnału i moc szumu jako osobne wielkości"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Wartościowość modulacji BPSK wynosi",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Dewiacją częstotliwości w modulacji FM jest",
+    "options": [
+      "stopień zmian częstotliwości w sygnale informacyjnym",
+      "odchylenie częstotliwości fali nośnej w kolejnych chwilach czasu",
+      "maksymalne odchylenie częstotliwości chwilowej sygnału FM od częstotliwości nośnej",
+      "różnica częstotliwości w widmie sygnału zmodulowanego"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W procesie konwersji analogowo-cyfrowej, prawidłowa kolejność etapów to:",
+    "options": [
+      "filtracja dolnoprzepustowa, próbkowanie, kwantyzacja, kodowanie",
+      "próbkowanie, kompresja, kodowanie źródłowe",
+      "odszumianie, próbkowanie, kwantyzacja i kodowanie Hamminga",
+      "rekonstrukcja sygnału, próbkowanie, kwantyzacja wektorowa"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Skręcenie par przewodów w tzw. \"skrętce\" służy do",
+    "options": [
+      "zmniejszenia wpływu zakłóceń elektromagnetycznych",
+      "zmniejszenia zakłóceń wzajemnych (przesłuchów)",
+      "poprawy geometrii przewodu",
+      "blokady sygnałów dużej mocy"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "W kodowaniu Huffmana dane po kompresji są reprezentowane jako",
+    "options": [
+      "ciąg bitów o zmiennej długości",
+      "liczba reprezentująca podprzedział przedziału jednostkowego",
+      "wektor liczb zespolonych",
+      "zestaw liczb o przeciwnych znakach"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Do modulacji amplitudy zalicza się modulacje",
+    "options": [
+      "AM",
+      "PAM",
+      "PSK",
+      "ASK"
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Podstawowe parametry QoS (jakości usług) w sieciach pakietowych to:",
+    "options": [
+      "opóźnienie (delay)",
+      "poziom utraty pakietów (packet loss)",
+      "zmienność opóźnienia (jitter)",
+      "liczba węzłów w sieci"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Mod propagacji w światłowodzie określa",
+    "options": [
+      "dozwoloną trajektorię promieniowania świetlnego",
+      "maksymalną liczbę trajektorii światła",
+      "kolor użytego światła",
+      "minimalną liczbę trajektorii światła"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Wartościowość modulacji QPSK wynosi",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kodowaniu arytmetycznym dane po kompresji są reprezentowane jako",
+    "options": [
+      "zbiór danych reprezentowany przez bajty",
+      "liczba reprezentująca podprzedział przedziału jednostkowego",
+      "wektor liczb zespolonych",
+      "zestaw liczb o przeciwnych znakach"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Multipleksacja CDM (Code Division Multiplexing)",
+    "options": [
+      "wykorzystuje kody pseudolosowe do rozróżniania użytkowników",
+      "nie wymaga precyzyjnej synchronizacji w czasie (w porównaniu do TDM)",
+      "umożliwia jednoczesne przesyłanie wielu sygnałów na tym samym paśmie częstotliwości",
+      "wymaga pasm ochronnych"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Bilans mocy w łączu radiowym pozwala określić",
+    "options": [
+      "średni poziom mocy sygnału pojawiającego się na wejściu odbiornika",
+      "stosunek mocy sygnału na wejściu odbiornika do sygnału na jego wyjściu",
+      "liczbę anten w odbiorniku potrzebną do skutecznej transmisji radiowej",
+      "czy połączenie będzie działać z akceptowalną jakością"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "W modelu AWGN (addytywny biały szum gaussowski) szum dodawany do sygnału ma rozkład",
+    "options": [
+      "Laplace'a",
+      "normalny (Gaussa)",
+      "równomierny",
+      "gamma"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Do podstawowych protokołów transmisji strumieniowej w sieciach IP należą:",
+    "options": [
+      "RTP (Real-time Transport Protocol)",
+      "RTSP (Real Time Streaming Protocol)",
+      "RTCP (RTP Control Protocol)",
+      "UDP (User Datagram Protocol)"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Częstotliwość tonu prostego można obliczyć na podstawie jego",
+    "options": [
+      "amplitudy",
+      "okresu",
+      "fazy",
+      "pulsacji"
+    ],
+    "correct": [1, 3]
+  },
+  {
+    "question": "Technika ARQ (Automatic Repeat reQuest) wykorzystywana jest do",
+    "options": [
+      "retransmisji danych w przypadku błędu",
+      "poprawy parametrów transmitowanego sygnału",
+      "zmniejszenia rozmiaru sygnału",
+      "wykrywania błędów w transmisji"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Do modulacji kąta zalicza się modulacje",
+    "options": [
+      "AM",
+      "PM (modulacja fazy)",
+      "FM (modulacja częstotliwości)",
+      "ASK"
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Pojemność kanału transmisyjnego wzrasta, gdy:",
+    "options": [
+      "rośnie stosunek mocy sygnału do mocy szumu (SNR)",
+      "maleje stosunek sygnału do szumu",
+      "rośnie częstotliwość i faza sygnału",
+      "rośnie szerokość pasma"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Kody liniowe stosuje się w celu",
+    "options": [
+      "poprawy właściwości synchronizacyjnych",
+      "zniwelowania składowej stałej",
+      "zmniejszenia rozmiaru wiadomości",
+      "poprawy właściwości transmisyjnych sygnału"
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Przepływność binarna jest zależna od:",
+    "options": [
+      "czasu trwania bitu (jest jego odwrotnością)",
+      "mocy sygnału",
+      "częstotliwości nośnej",
+      "wartościowości modulacji"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Szerokość pasma idealnego przebiegu trójkątnego wynosi",
+    "options": [
+      "1Hz",
+      "1000Hz",
+      "1MHz",
+      "matematycznie jest nieskończona",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Jednostka dBi oznacza:",
+    "options": [
+      "zysk anteny w stosunku do impedancji",
+      "stratę w stosunku do iloczynu mocy wejściowej i wyjściowej",
+      "zysk energetyczny anteny w stosunku do anteny izotropowej",
+      "ogólny zysk energetyczny wszystkich anten w systemie"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Wartościowość kluczowania binarnego (BASK, BFSK, BPSK) wynosi:",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Proces modulacji polega na:",
+    "options": [
+      "Zmianie parametrów fali nośnej.",
+      "Regularnych zmianach sygnału informacyjnego.",
+      "Wyrównaniu mocy sygnału nośnego.",
+      "Przesunięciu pasma sygnału informacyjnego."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Liczba tonów prostych potrzebna do opisania idealnego przebiegu prostokątnego wynosi:",
+    "options": [
+      "Cztery tony proste.",
+      "Jeden ton prosty.",
+      "Nieskończenie wiele.",
+      "Dwa tony o przeciwnych fazach."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Pulsacja (ω) ma związek z:",
+    "options": [
+      "Amplitudą.",
+      "Okresem (T), ω = 2π/T",
+      "Mocą.",
+      "Częstotliwością (f), ω = 2πf"
+    ],
+    "correct": [1, 3]
+  },
+  {
+    "question": "Widmem (transformatą Fouriera) impulsu prostokątnego jest funkcja:",
+    "options": [
+      "arctan()",
+      "cos()",
+      "sinc()",
+      "arcsin()"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Do technik kodowania entropijnego zaliczamy:",
+    "options": [
+      "kodowanie Huffmana",
+      "kodowanie Hamminga",
+      "kodowanie różnicowe",
+      "kodowanie arytmetyczne"
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Przeplot (interleaving) stosowany w transmisji danych zapewnia:",
+    "options": [
+      "łączenie wiele strumieni danych w jeden",
+      "kompresję danych w czasie rzeczywistym",
+      "zwiększenie odporności na błędy skupione (burst errors)",
+      "rozproszenie błędów skupionych w czasie"
+    ],
+    "correct": [2, 3]
+  },
+  {
+    "question": "Które z poniższych stwierdzeń dotyczących fali elektromagnetycznej są prawdziwe?",
+    "options": [
+      "składa się ze składowej elektrycznej i magnetycznej, prostopadłych do siebie",
+      "posiada właściwości (np. tłumienie, odbicie) zależne od częstotliwości",
+      "stanowi medium transmisyjne w łączności radiowej",
+      "jej prędkość w próżni zależy od częstotliwości"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Tłumienie fali elektromagnetycznej zależy od:",
+    "options": [
+      "ukształtowania terenu",
+      "częstotliwości fali",
+      "odległości między nadajnikiem a odbiornikiem",
+      "warunków atmosferycznych (np. deszcz, mgła)"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "W procesie kwantyzacji:",
+    "options": [
+      "dokonuje się dopasowania ciągłych wartości próbek sygnału do najbliższych dyskretnych poziomów",
+      "wprowadzane są błędy kwantyzacji",
+      "pobierane są próbki sygnału w regularnych odstępach czasu",
+      "usuwana jest składowa stała z sygnału"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "W modulacji PPM (Pulse-Position Modulation):",
+    "options": [
+      "informacja jest zakodowana w położeniu (przesunięciu w czasie) impulsu",
+      "amplituda i szerokość impulsów są stałe",
+      "może być wykorzystany sygnał PAM jako etap pośredni",
+      "jest modulacją częstotliwości"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Kod liniowy, który posiada dobre właściwości synchronizacyjne i nie posiada składowej stałej to kod:",
+    "options": [
+      "Manchester",
+      "AMI",
+      "NRZ",
+      "HDB3"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Konstelacja kodowa:",
+    "options": [
+      "określa punkty charakterystyczne (symbole) modulacji na płaszczyźnie I/Q",
+      "opisuje zmiany amplitudy i fazy w sygnale zmodulowanym",
+      "może wykorzystywać kodowanie Graya do minimalizacji błędów bitowych",
+      "jest używana tylko w modulacji PSK"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Przy transmisji światłowodowej wykorzystywane jest:",
+    "options": [
+      "zjawisko całkowitego wewnętrznego odbicia",
+      "zjawisko załamania światła na granicy rdzenia i płaszcza",
+      "światło podczerwone",
+      "przewodnictwo elektryczne szkła"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Kolejność warstw w modelu OSI od najniższej (1) do najwyższej (7) jest następująca:",
+    "options": [
+      "fizyczna, łącza danych, sieciowa, transportowa, sesji, prezentacji, aplikacji",
+      "aplikacji, prezentacji, sesji, transportowa, sieciowa, łącza danych, fizyczna",
+      "fizyczna, sieciowa, transportowa, aplikacji",
+      "fizyczna, łącza danych, transportowa, sieciowa, sesji, aplikacji, prezentacji"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Multipleksacja FDM (Frequency Division Multiplexing)",
+    "options": [
+      "polega na przydziale odrębnych pasm częstotliwości dla każdego sygnału",
+      "wymaga zastosowania pasm ochronnych i filtrów do separacji kanałów",
+      "umożliwia równoczesną transmisję wielu sygnałów w tym samym czasie",
+      "jest stosowana w radiofonii FM"
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Kodek OPUS umożliwia:",
+    "options": [
+      "kompresję zarówno mowy, jak i muzyki",
+      "dynamiczną zmianę przepływności bitowej",
+      "pracę przy niskich opóźnieniach",
+      "tylko dekompresję dźwięku"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Odległość Hamminga to:",
+    "options": [
+      "liczba pozycji, na których różnią się dwa ciągi bitów o tej samej długości",
+      "minimalna liczba operacji (zamiany bitu) potrzebna do przekształcenia jednego ciągu w drugi",
+      "miara podobieństwa dwóch kodów",
+      "odległość fizyczna między antenami w systemie MIMO"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "W parze skręcanej niesymetrycznej:",
+    "options": [
+      "jedna żyła jest przeznaczona do transmisji sygnału, druga jest żyłą odniesienia (masą)",
+      "jest bardziej podatna na zakłócenia niż para symetryczna",
+      "przykładem jest kabel koncentryczny",
+      "obie żyły przenoszą sygnał o przeciwnej polaryzacji"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Kolejność orbit satelitarnych od najmniejszych do największych opóźnień transmisji to:",
+    "options": [
+      "LEO -> MEO -> GEO",
+      "GEO -> MEO -> LEO",
+      "LEO -> GEO -> MEO",
+      "MEO -> LEO -> GEO"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Ton prosty (sinusoida) NIE JEST sygnałem:",
+    "options": [
+      "szumem białym",
+      "trójkątnym",
+      "piłokształtnym",
+      "okresowym"
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Do subiektywnych, pięciostopniowych skali oceny jakości dźwięku należą skale:",
+    "options": [
+      "MOS (Mean Opinion Score)",
+      "ACR (Absolute Category Rating)",
+      "SNR (Signal-to-Noise Ratio)",
+      "THD (Total Harmonic Distortion)"
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Jaki jest związek między częstotliwością (f) i okresem (T) sygnału:",
+    "options": [
+      "T = 2 * Pi * f",
+      "f = 1 / T",
+      "Żadna z odpowiedzi nie jest poprawna.",
+      "f = 2T",
+      "T = 1 / f"
+    ],
+    "correct": [1, 4]
+  },
+  {
+    "question": "Proces transmisji światłowodowej wykorzystuje efekt:",
+    "options": [
+      "Żadna z odpowiedzi nie jest poprawna.",
+      "Zmiennej objętości w czasie",
+      "Naskórkowości",
+      "Dopplera",
+      "Całkowitego wewnętrznego odbicia"
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Do technik multipleksacji zaliczamy:",
+    "options": [
+      "TDM",
+      "FDM",
+      "WDM",
+      "CDM",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Ile bitów nadmiarowych zawiera kod Hamminga (15,11)?",
+    "options": [
+      "Żadna z odpowiedzi nie jest poprawna.",
+      "11",
+      "4",
+      "3",
+      "7"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Pasmo prawidłowo spróbkowanego sygnału, przy założeniu, że fs jest częstotliwością próbkowania, wynosi:",
+    "options": [
+      "2*fs",
+      "fs/4",
+      "fs",
+      "fs/2",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Fala elektromagnetyczna:",
+    "options": [
+      "Nie występuje przy częstotliwościach większych niż 10GHz",
+      "Posiada właściwości, które są zależne od częstotliwości",
+      "Posiada składową elektryczną i magnetyczną",
+      "Może być widoczna",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2, 3]
+  },
+  {
+    "question": "Rolą współczynnika głębokości modulacji w modulacjach ciągłych jest:",
+    "options": [
+      "Uniezależnienie sygnału informacyjnego od sygnału nośnego",
+      "Dodanie szumu do sygnału informacyjnego",
+      "Określenie wpływu sygnału informacyjnego na określony parametr sygnału nośnego",
+      "Zmniejszenie współczynnika mocy sygnału do szumu SNR",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Odległość Hamminga między dwoma ciągami bitowymi oznacza:",
+    "options": [
+      "Żadna z odpowiedzi nie jest poprawna.",
+      "Liczbę pozycji na których występują bity o wartości 0",
+      "Różnicę między dwoma ciągami zamienionymi na format dziesiętny",
+      "Liczbę pozycji, na których te ciągi różnią się",
+      "Sumę wszystkich bitów o wartości 1 w obu ciągach"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Częstotliwość próbkowania wpływa na:",
+    "options": [
+      "Szerokość pasma sygnału spróbkowanego",
+      "Opóźnienie próbek",
+      "Amplitudę sygnału",
+      "Liczbę próbek w jednostce czasu",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Które z poniższych modulacji wykorzystują zmiany fazowe do reprezentowania symboli?",
+    "options": [
+      "PSK",
+      "BPSK",
+      "QAM",
+      "QPSK",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Podstawowe etapy w procesie konwersji analogowo-cyfrowej to:",
+    "options": [
+      "Odszumianie",
+      "Próbkowanie",
+      "Kodowanie",
+      "Kwantyzacja",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2, 3]
+  },
+  {
+    "question": "Moduł CNG w kodekach mowy służy do:",
+    "options": [
+      "Generowania mowy",
+      "Dopasowywania przepływności",
+      "Generowania szumu",
+      "Wzmacniania sygnału",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Liniowe kodowanie transmisyjne ma wpływ na:",
+    "options": [
+      "Synchronizację",
+      "Szerokość pasma",
+      "Czas trwania sygnału",
+      "Składową stałą",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Pierwsza i ostatnia warstwa modelu OSI to:",
+    "options": [
+      "Warstwa łącza danych i warstwa sesji",
+      "Warstwa transportowa i warstwa prezentacji",
+      "Warstwa fizyczna i warstwa aplikacji",
+      "Warstwa łącza danych i warstwa aplikacji",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Do podstawowych torów światła w światłowodzie zalicza się:",
+    "options": [
+      "Fazowy",
+      "Jednomodowy",
+      "Wielomodowy",
+      "Stopniowy",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Do podstawowych protokołów ARQ zaliczamy:",
+    "options": [
+      "SAW",
+      "TNK",
+      "GBN",
+      "SR",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 2, 3]
+  },
+  {
+    "question": "Skrambling służy do:",
+    "options": [
+      "Redukcji długich ciągów zer i jedynek",
+      "Randomizacji strumienia binarnego",
+      "Wzmacniania sygnału",
+      "Redukcji opóźnień w sygnale",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1]
+  },
+  {
+    "question": "Tłumienie w wolnej przestrzeni zależy od:",
+    "options": [
+      "Prędkości rozchodzenia się fali",
+      "Liczby nadajników i odbiorników",
+      "Częstotliwości propagującej się fali",
+      "Odległości między antenami",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2, 3]
+  },
+  {
+    "question": "W procesie modulacji sygnału jest wykorzystywany sygnał:",
+    "options": [
+      "Błędu",
+      "Informacyjny",
+      "Nośny",
+      "Prostokątny",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Proces modulacji:",
+    "options": [
+      "Ma wpływ na szerokość pasma sygnału zmodulowanego",
+      "Wprowadza opóźnienie do sygnału wejściowego",
+      "Wykorzystuje falę nośną do przesunięcia widma sygnału",
+      "Wpływa na prędkość transmisji",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 2]
+  },
+  {
+    "question": "Dewiacja częstotliwości stanowi:",
+    "options": [
+      "Maksymalne odchylenie częstotliwości chwilowej sygnału FM od częstotliwości nośnej",
+      "Różnicę między sąsiednimi prążkami w widmie",
+      "Częstotliwość nośną w modulacji FM",
+      "Liczbę składowych w widmie sygnału zmodulowanego FM",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Wartościowość modulacji FSK wynosi:",
+    "options": [
+      "6",
+      "4",
+      "3",
+      "1",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Do rodzajów zakłóceń powstających w kanale transmisyjnym należą:",
+    "options": [
+      "Szumy",
+      "Opóźnienie",
+      "Tłumienie",
+      "Wzrost prędkości",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 2]
+  },
+  {
+    "question": "Szum kwantyzacji powstaje:",
+    "options": [
+      "Ze względu na poprzedzający etap próbkowania",
+      "W wyniku różnic pomiędzy wartościami rzeczywistymi i skwantowanymi",
+      "Przez zastosowanie filtra dolnoprzepustowego",
+      "W procesie zaszumiania sygnału próbkowanego",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W miarę wzrostu liczby wiadomości, między którymi źródło dokonuje wyboru, entropia:",
+    "options": [
+      "Zależy od treści wiadomości",
+      "Maleje",
+      "Pozostaje bez zmian",
+      "Rośnie",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Składowa synfazowa w modulatorze kwadraturowym:",
+    "options": [
+      "Moduluje składową sinusową",
+      "Moduluje składową cosinusową",
+      "Nie wpływa na żadną z tych składowych",
+      "Moduluje składową sinusową i cosinusową",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Przepływność binarna zależy od:",
+    "options": [
+      "Od liczby bitów",
+      "Czasu trwania bitu",
+      "Wartościowości modulacji",
+      "Opóźnienia bitów",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Widmo amplitudowe jest reprezentacją:",
+    "options": [
+      "Zmian amplitudy w funkcji zmian fazowych",
+      "Zmian wysokości bitów",
+      "W dziedzinie czasu",
+      "Zmian faz składowych w funkcji częstotliwości",
+      "Zmian amplitud w funkcji częstotliwości"
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Jednostka dBm określa:",
+    "options": [
+      "Moc sygnału względem 1W",
+      "Napięcie względem 1V",
+      "Zysk anteny w stosunku do anteny izotropowej",
+      "Moc sygnału względem 1mW",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Protokół RTCP służy do:",
+    "options": [
+      "Zarządzania i identyfikacją strumieni danych",
+      "Numerowania pakietów",
+      "Usuwania pakietów opóźnionych",
+      "Nadzoru nad jakością połączenia",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Przy modelowaniu sygnału akustycznego w procesie kodowania stratnego wykorzystuje się:",
+    "options": [
+      "Maskowanie dźwięków",
+      "Próg słyszalności",
+      "Pasma krytyczne",
+      "Przestrzenność w sygnale stereofonicznym",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 2, 3]
+  },
+  {
+    "question": "Wskaźnik modulacji sygnału FM określa:",
+    "options": [
+      "Stosunek częstotliwości nośnej do częstotliwości modulującej",
+      "Zmiany amplitudy sygnału nośnego",
+      "Stosunek dewiacji częstotliwości do częstotliwości modulującej",
+      "Różnicę między fazami sygnału zmodulowanego FM i PM",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Waga Hamminga oznacza:",
+    "options": [
+      "Liczbę bitów o wartości 1 w słowie kodowym",
+      "Liczbę bitów o wartości 0 w słowie kodowym",
+      "Różnicę liczby bitów o wartości 0 oraz 1 w słowie kodowym",
+      "Stosunek liczby bitów o wartości 0 do liczby wszystkich bitów w słowie kodowym",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Efektywność widmowa w modulacji cyfrowej zależy od:",
+    "options": [
+      "Czasu trwania bitu",
+      "Wartościowości modulacji",
+      "Szerokości pasma",
+      "Częstotliwości sygnału",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "Ile okien transmisyjnych wyróżnia się w transmisji światłowodowej?",
+    "options": [
+      "Cztery",
+      "Trzy",
+      "Dwa",
+      "Jedno",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Rozdzielczość widmowa zależy od:",
+    "options": [
+      "Liczby próbek wektora wejściowego",
+      "Maksymalnej amplitudy sygnału wejściowego",
+      "Mocy sygnału wejściowego",
+      "Okresu próbkowania sygnału wejściowego",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Splot sygnałów w dziedzinie czasu odpowiada następującej operacji w dziedzinie częstotliwości:",
+    "options": [
+      "Splotowi",
+      "Dodawaniu",
+      "Mnożeniu",
+      "Odejmowaniu",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Wykorzystanie modulatora kwadraturowego wymaga użycia:",
+    "options": [
+      "Sygnału wejściowego",
+      "Ortogonalnych nośnych",
+      "Wprowadzaniu danych w blokach nie większych niż 4 bity",
+      "Dekompozycji I/Q",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 1, 3]
+  },
+  {
+    "question": "Podobieństwa między przekształceniem DFT i FFT są następujące:",
+    "options": [
+      "Kwantyzacja wektorów wynikowych",
+      "Oba wykorzystują filtrację górnoprzepustową",
+      "Zerowanie wartości w wektorze wejściowym",
+      "Wszystkie elementy wektora wyjściowego zawsze sumują wartości 1",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Cechą charakterystyczną w kodowaniu różnicowym ze stałym krokiem jest występowanie:",
+    "options": [
+      "Obszaru zawierającego sygnał sinusoidalny",
+      "Obszaru ziarnistego",
+      "Obszaru przeciążenia zbocza",
+      "Obszaru ciszy",
+      "Żadna z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1, 2]
+  },
+  {
+    "question": "W klasycznej modulacji AM, szerokość pasma sygnału zmodulowanego jest:",
+    "options": [
+      "Dwa razy większa niż sygnału informacyjnego",
+      "Taka sama jak sygnału informacyjnego",
+      "Tyle razy większa ile wynosi współczynnik głębokości modulacji",
+      "Połowę mniejsza niż sygnału informacyjnego",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Protokół RTP oferuje:",
+    "options": [
+      "Identyfikacje źródła",
+      "Tworzenie strumieni danych",
+      "Odtworzenie czasu",
+      "Transport danych",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 2, 3]
+  },
+  {
+    "question": "Wartościowość modulacji ASK wynosi:",
+    "options": [
+      "8",
+      "4",
+      "1",
+      "16",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [4]
+  },
+  {
+    "question": "Na etapie kwantyzacji w procesie konwersji analogowo-cyfrowej, wraz ze wzrostem poziomów kwantyzacji stosunek sygnału do szumu:",
+    "options": [
+      "Ma zawsze wartość poniżej 20dB",
+      "Pozostaje bez zmian",
+      "Wzrasta",
+      "Maleje",
+      "Żadna z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W modelu OSI do warstw komunikacyjnych zalicza się:",
+    "options": [
+      "Warstwę sieciową i transportową",
+      "Warstwę sesji i prezentacji",
+      "Warstwę aplikacji i prezentacji",
+      "Warstwę fizyczną i łącza danych",
+      "Żadana z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Zakładając, że sygnał stanowi sumę dwóch tonów prostych o pulsacjach 400*pi oraz 1200*pi, prawidłowa częstotliwość próbkowania takiego sygnału może wynosić:",
+    "options": [
+      "200Hz",
+      "600Hz",
+      "2400Hz",
+      "1400Hz",
+      "Żadana z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [2, 3]
+  },
+  {
+    "question": "Moduł VAD w kodekach mowy służy do:",
+    "options": [
+      "Przesyłania sygnału mowy",
+      "Wykrywania sygnału mowy",
+      "Wzmacniania sygnału mowy",
+      "Odszumiania sygnału mowy",
+      "Żadana z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kodzie blokowym (n, k):",
+    "options": [
+      "k oznacza liczbę bitów informacyjnych",
+      "n jest sumą bitów o wartości 1",
+      "k oznacza liczbę potęg liczby 2",
+      "n jest całkowitą długością bloku",
+      "Żadna z odpowiedzi nie jest poprawna."
+    ],
+    "correct": [0, 3]
+  },
+  {
+    "question": "Ile razy pulsacja jest większa od częstotliwości:",
+    "options": [
+      "2",
+      "Pi",
+      "4",
+      "2Pi",
+      "Żadna z tych odpowiedzi nie jest poprawna."
+    ],
+    "correct": [3]
+  }
+]

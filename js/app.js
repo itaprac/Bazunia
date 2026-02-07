@@ -121,6 +121,7 @@ const USERNAME_RE = /^[a-z0-9_.-]{3,24}$/;
 const ADMIN_USERS_PAGE_SIZE = 12;
 const ADMIN_HIDDEN_DECKS_PAGE_SIZE = 8;
 const SHARED_CATALOG_PAGE_SIZE = 20;
+const MAX_PRIVATE_DECKS_PER_USER = 15;
 
 let appSettings = { ...DEFAULT_APP_SETTINGS, keybindings: { ...DEFAULT_APP_SETTINGS.keybindings } };
 let fontScale = DEFAULT_FONT_SCALE;
@@ -376,6 +377,19 @@ function normalizeAppRole(role) {
 
 function canManagePublicDecks() {
   return currentUserRole === 'admin' || currentUserRole === 'dev';
+}
+
+function getPrivateDeckCount() {
+  return storage.getDecks().filter((deckMeta) => getDeckScope(deckMeta) === 'private').length;
+}
+
+function canCreateMorePrivateDecks(options = {}) {
+  const count = getPrivateDeckCount();
+  if (count < MAX_PRIVATE_DECKS_PER_USER) return true;
+  if (options.notify !== false) {
+    showNotification(`Limit prywatnych talii na użytkownika to ${MAX_PRIVATE_DECKS_PER_USER}.`, 'error');
+  }
+  return false;
 }
 
 function canAccessAdminPanel() {
@@ -3423,6 +3437,7 @@ function bindGlobalEvents() {
       scope: 'private',
       source: 'user-import',
       readOnlyContent: false,
+      privateDeckLimit: MAX_PRIVATE_DECKS_PER_USER,
       reservedDeckIds: storage.getDecks()
         .filter((d) => getDeckScope(d) !== 'private')
         .map((d) => d.id),
@@ -3593,6 +3608,9 @@ async function copyDeckToPrivate(options = {}) {
   if (sessionMode !== 'user') {
     showNotification('Kopiowanie talii wymaga zalogowania.', 'info');
     showAuthPanel('Aby kopiować talie, zaloguj się.', 'info');
+    return;
+  }
+  if (!canCreateMorePrivateDecks()) {
     return;
   }
 
@@ -4079,6 +4097,9 @@ function openCreateDeckModal() {
     showAuthPanel('Aby tworzyć własne talie, zaloguj się.', 'info');
     return;
   }
+  if (!canCreateMorePrivateDecks()) {
+    return;
+  }
 
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
@@ -4168,6 +4189,9 @@ function openCreateDeckModal() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!canCreateMorePrivateDecks()) {
+      return;
+    }
     const name = nameInput.value.trim();
     const group = normalizeDeckGroup(groupSelect.value);
     const deckId = idInput.value.trim();

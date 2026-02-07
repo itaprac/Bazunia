@@ -1,0 +1,1186 @@
+[
+  {
+    "question": "Wskaż zdanie prawdziwe:",
+    "options": [
+      "Projekt musi mieć określony początek oraz koniec.",
+      "Projekt musi mieć określony początek, ale nie musi mieć określonego końca.",
+      "Projekt nie musi mieć określonych ram czasowych."
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Na jakim poziomie zebrane powinny zostać wymagania?",
+    "options": [
+      "Tylko nazwa.",
+      "Pełna specyfikacja włącznie z diagramami, interfejsami użytkownika, szczegółami implementacyjnymi.",
+      "Na poziomie 'wystarczająco dobrym', żeby uzyskać wspólne zrozumienie i rozpocząć implementację na akceptowalnym poziomie ryzyka."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Wskaż zdanie fałszywe dotyczące WBS",
+    "options": [
+      "Zawartość WBS może zmieniać się wielokrotnie aż do momentu jego zatwierdzenia.",
+      "W WBS powinny być wskazane prace z zakresu i spoza zakresu projektu",
+      "Każdy produkt z WBSa powinien znaleźć odniesienie w liście aktywności i harmonogramie."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Tymczasowa natura projektów wskazuje:",
+    "options": [
+      "Projekty nie mogą być dłuższe niż 6 miesięcy.",
+      "Projekty nie mogą być dłuższe niż 5 lat.",
+      "Tymczasowa natura projektów nie określa ich długo- lub krótkotrwałości."
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Wskaż przykład 'rozpełzywania' zakresu",
+    "options": [
+      "Główny programista zachorował, co wpływa na opóźnienie w projekcie.",
+      "Zespół programistów zdecydował przepisać zatwierdzony wcześniej etap kodu na nową bibliotekę JS.",
+      "Zespół projektowy został wyposażony w tablety z Androidem zamiast iPady, mimo że w zakresie zaplanowany był zakup iPadów."
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Rozwiń skrót SRS",
+    "options": [
+      "System Risk Scope",
+      "Software Results Specification",
+      "Software Requirements Specification"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "NGINX w SRS najlepiej zawrzeć w sekcji:",
+    "options": [
+      "Wymagania dotyczące interfejsu zewnętrznego",
+      "Założenia i zależności",
+      "Cechy jakości"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co powinien zawierać WBS",
+    "options": [
+      "Zadania do wykonania",
+      "Produkty do dostarczenia",
+      "Harmonogram dostarczania produktów"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Uczestnictwo w wykładzie i nauka materiału są w relacji",
+    "options": [
+      "start-to-start",
+      "finish-to-start",
+      "start-to-finish"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Kto odpowiada za zawartość product backloga w Scrum?",
+    "options": [
+      "Programiści",
+      "Product Owner",
+      "Project Owner"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Prawidłowa kolejność według XP",
+    "options": [
+      "Dekomp. cechy na zadania, tworzenie kodu, tworzenie testów jednostkowych",
+      "Dekomp. cechy na zadania, tworzenie testów jednostkowych, tworzenie kodu",
+      "Tworzenie testów jednostkowych, dekomp. cechy na zadania, tworzenie kodu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wykres wskazujący realizację funkcjonalności w trakcie sprintu",
+    "options": [
+      "Burndown chart",
+      "Burnup chart",
+      "Velocity chart"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Kto jest odpowiedzialny za stworzenie karty projektu?",
+    "options": [
+      "Zespół projektowy",
+      "Inicjator lub sponsor projektu",
+      "Project Owner"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Identyfikator wymagania 3.2.3.4 to przykład notacji",
+    "options": [
+      "Numeracja hierarchiczna",
+      "Sekwencja",
+      "Losowa"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Identyfikator wymagania wi-11 to przykład notacji",
+    "options": [
+      "Numeracja hierarchiczna",
+      "Sekwencja",
+      "Losowa"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co powinien zawierać WBS wg PMBOK",
+    "options": [
+      "Zadania do wykonania",
+      "Produkty do dostarczenia",
+      "Harmonogram dostarczenia produktów",
+      "Wszystkie odpowiedzi"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wskaż zdanie fałszywe dotyczące harmonogramu i WBS",
+    "options": [
+      "WBS stanowi dane wejściowe do harmonogramu",
+      "Harmonogram stanowi dane do WBS",
+      "WBS opisuje co jest do zrobienia",
+      "Harmonogram opisuje kiedy i co"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wskaż zdanie fałszywe dotyczące nazewnictwa WBS",
+    "options": [
+      "Każdy element WBS posiada swoją nazwę",
+      "Nazwa elementu WBS powinna być rzeczownikiem",
+      "Nazwa musi być czasownikiem",
+      "Słownik WBS zawiera bardziej szczegółowe opisy poszczególnych komponentów WBSa"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Zadania/aktywności i zależności czasowe między nimi przedstawione są",
+    "options": [
+      "W dokumencie SRS",
+      "W dokumencie WBS",
+      "W harmonogramie",
+      "W WBS i harmonogramie"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Standardowa długość cyklu wg XP",
+    "options": [
+      "7 dni",
+      "14 dni",
+      "30 dni",
+      "Zależne od zespołu"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Spotkanie w Scrum odbywające się codziennie w trakcie iteracji",
+    "options": [
+      "Daily Scrum",
+      "Sprint Review",
+      "Sprint Retrospective",
+      "Żadne z powyższych"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Co się dzieje z niewykonanymi zadaniami pod koniec sprinta w Scrum",
+    "options": [
+      "Są wrzucane do backloga",
+      "Są automatycznie usuwane",
+      "Przenoszone do następnego sprintu",
+      "Pozostają w sprint backlogu do końca projektu"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Co to są zasoby pieniężne?",
+    "options": [
+      "Korzyści namacalne",
+      "Kapitał finansowy dostępny dla projektu",
+      "Zasoby ludzkie przeliczane na pieniądze",
+      "Budżet projektowy zarezerwowany na sprzęt"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Jaka jest prawidłowa kolejność tworzenia karty projektu?",
+    "options": [
+      "Określenie celów i zakresu -> Tworzenie karty projektu -> Akceptacja",
+      "Specyfikacja wymagań -> Tworzenie karty projektu -> Akceptacja",
+      "Analiza ryzyka -> Tworzenie karty projektu -> Akceptacja"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Zgodnie z Manifestem Agile (Agile Manifesto), co jest cenione wyżej niż podążanie za planem?",
+    "options": [
+      "Negocjacje kontraktowe",
+      "Reagowanie na zmiany",
+      "Szczegółowa dokumentacja",
+      "Procesy i narzędzia"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Według zasad Agile, co jest podstawową miarą postępu w projekcie?",
+    "options": [
+      "Liczba przepracowanych roboczogodzin",
+      "Zgodność z harmonogramem",
+      "Działające oprogramowanie",
+      "Liczba zamkniętych zadań w Jirze"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Która z poniższych cech NIE jest wartością Scruma?",
+    "options": [
+      "Odwaga",
+      "Skupienie",
+      "Punktualność",
+      "Poszanowanie"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W metodzie MoSCoW, litera 'S' (Should have) oznacza wymagania, które:",
+    "options": [
+      "Są krytyczne dla sukcesu projektu",
+      "Są ważne, ale ich brak nie blokuje wydania produktu",
+      "Są miłym dodatkiem (tzw. 'nice to have')",
+      "Zostały odrzucone w tej iteracji"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Jaki jest główny cel spotkania Sprint Retrospective?",
+    "options": [
+      "Prezentacja przyrostu klientowi",
+      "Wybór zadań do kolejnego sprintu",
+      "Inspekcja sposobu pracy zespołu i zaplanowanie usprawnień procesu",
+      "Aktualizacja wykresu Burndown"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Czym są Story Points?",
+    "options": [
+      "Jednostką czasu (np. 1 punkt = 4 godziny)",
+      "Jednostką względnej miary pracochłonności i złożoności zadania",
+      "Liczbą błędów znalezionych w kodzie",
+      "Priorytetem nadanym przez Product Ownera"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W formacie User Story 'Jako [rola], chcę [cel], żeby [korzyść]', element 'korzyść' służy do:",
+    "options": [
+      "Określenia technologii wykonania",
+      "Zrozumienia wartości biznesowej wymagania",
+      "Podziału zadania na podzadania",
+      "Wskazania testera odpowiedzialnego za zadanie"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wymaganie: 'System musi zapewniać czas odpowiedzi mniejszy niż 2 sekundy' to przykład:",
+    "options": [
+      "Wymagania funkcjonalnego",
+      "Wymagania pozafunkcjonalnego (jakościowego)",
+      "Ograniczenia biznesowego",
+      "User Story"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Najniższy poziom dekompozycji w WBS (struktura podziału prac) to:",
+    "options": [
+      "Kamień milowy",
+      "Pakiet prac (Work Package)",
+      "Zadanie krytyczne",
+      "Główny produkt"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zasada 'Simplicity' (prostota) w Agile oznacza:",
+    "options": [
+      "Pisanie kodu w najprostszym możliwym języku",
+      "Sztukę maksymalizowania ilości pracy niewykonanej",
+      "Rezygnację z testowania oprogramowania",
+      "Zatrudnianie juniorów do projektu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W XP (Extreme Programming), 'Pair Programming' polega na:",
+    "options": [
+      "Pracy dwóch zespołów nad tym samym modułem",
+      "Pisaniu kodu przez dwóch programistów na jednym komputerze",
+      "Testowaniu kodu przez osobę, która go nie napisała",
+      "Spotkaniach dwóch liderów zespołów"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co definiuje 'Definition of Done' (DoD)?",
+    "options": [
+      "Moment, w którym programista kończy pisać kod",
+      "Wspólne kryteria, które musi spełniać przyrost, by uznać go za gotowy do wydania",
+      "Listę życzeń klienta",
+      "Czas zakończenia sprintu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W metodzie Kanban, ograniczenie WIP (Work In Progress) ma na celu:",
+    "options": [
+      "Zwiększenie liczby zadań wykonywanych jednocześnie",
+      "Uwidocznienie wąskich gardeł i poprawę przepływu pracy",
+      "Wymuszenie nadgodzin w zespole",
+      "Zablokowanie możliwości dodawania nowych zadań do backloga"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W wykresie Burnup (w przeciwieństwie do Burndown), linia postępu:",
+    "options": [
+      "Zawsze schodzi do zera",
+      "Pokazuje całkowitą ilość pracy ukończonej względem całkowitego zakresu",
+      "Pokazuje tylko błędy w systemie",
+      "Nie uwzględnia zmian w zakresie projektu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Akronim SMART w odniesieniu do celów projektowych oznacza:",
+    "options": [
+      "Simple, Measurable, Achievable, Relevant, Technical",
+      "Specific, Measurable, Achievable, Relevant, Time-bound",
+      "Specific, Managed, Accurate, Reliable, Tested",
+      "Systematic, Measurable, Agile, Relevant, Time-bound"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Które z poniższych zdarzeń Scrum jest ograniczone czasowo (time-boxed)?",
+    "options": [
+      "Tylko Sprint",
+      "Tylko Daily Scrum",
+      "Wszystkie zdarzenia w Scrumie",
+      "Żadne, czas trwania zależy od potrzeb zespołu"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Kiedy zaleca się rozpoczęcie tworzenia WBS (Struktury Podziału Prac)?",
+    "options": [
+      "Dopiero po zakończeniu fazy implementacji",
+      "W jak najwcześniejszej fazie projektu, nawet gdy dostępna jest tylko karta produktu",
+      "Dopiero po zatwierdzeniu szczegółowego harmonogramu",
+      "Na samym końcu projektu, w celu weryfikacji prac"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Która technika estymacji czasu trwania aktywności opiera się na wykorzystaniu danych historycznych z podobnych projektów?",
+    "options": [
+      "Metoda Delphi",
+      "Szacowanie przez analogię",
+      "Szacowanie oddolne",
+      "Analiza rezerw"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym charakteryzuje się technika podejmowania decyzji zwana 'mnogością' (plurality)?",
+    "options": [
+      "Decyzja zapada przy poparciu ponad 50% członków grupy",
+      "Wszyscy członkowie grupy muszą zgadzać się na jeden sposób działania",
+      "Wybierana jest opcja z poparciem największej grupy, nawet jeśli nie ma ona większości powyżej 50%",
+      "Jedna osoba podejmuje decyzję za całą grupę"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Projekt zostaje oficjalnie zakończony, gdy:",
+    "options": [
+      "Zasoby fizyczne i ludzkie przestały być dostępne",
+      "Osiągnięto cele projektu",
+      "Projekt przestał być potrzebny lub wyczerpano fundusze",
+      "Wszystkie powyższe odpowiedzi są prawidłowe"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Umiejętność skutecznego kierowania wydarzeniem grupowym do pomyślnego podjęcia decyzji lub znalezienia rozwiązania to:",
+    "options": [
+      "Zarządzanie konfliktem",
+      "Facylitacja",
+      "Autokratyzm",
+      "Eskalacja"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kontekście wymagań, 'Feature' (Funkcjonalność) to:",
+    "options": [
+      "Pojedyncza linia kodu",
+      "Zbiór powiązanych logicznie możliwości systemu zapewniający wartość użytkownikowi",
+      "Błąd zgłoszony przez klienta",
+      "Dokumentacja techniczna bazy danych"
+    ],
+    "correct": [1]
+  },
+  {
+  "question": "Głównym ryzykiem związanym z zebraniem wymagań na poziomie 'niedostatecznym' jest:",
+    "options": [
+      "Zbyt szybkie zakończenie projektu",
+      "Konieczność wykonywania nadmiernych, nieplanowanych poprawek",
+      "Zbyt duża motywacja zespołu",
+      "Brak konieczności tworzenia dokumentacji"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Który dokument jest używany do opisu wymaganych prac i dostarczanego produktu na podstawie zebranych wymagań?",
+    "options": [
+      "Dziennik założeń",
+      "Karta Projektu",
+      "Definicja Zakresu (Scope Statement)",
+      "Rejestr Ryzyk"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "Zasada 100% w tworzeniu WBS oznacza, że:",
+    "options": [
+      "Projekt musi zostać wykonany w 100% przez jednego programistę",
+      "WBS obejmuje 100% prac zdefiniowanych w zakresie projektu i uwzględnia wszystkie produkty",
+      "Każde zadanie musi trwać dokładnie 100 godzin",
+      "Zysk z projektu musi wynosić 100%"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Słownik WBS (WBS Dictionary) służy do:",
+    "options": [
+      "Tłumaczenia nazw produktów na języki obce",
+      "Dostarczania szczegółowych informacji o każdym elemencie WBS (np. opis prac, odpowiedzialność, koszty)",
+      "Definiowania pojęć programistycznych",
+      "Przechowywania haseł dostępowych do systemu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W Scrumie, kto jest odpowiedzialny za usuwanie przeszkód (impediments) blokujących pracę zespołu?",
+    "options": [
+      "Product Owner",
+      "Scrum Master",
+      "Klient",
+      "Prezes firmy"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co oznacza skrót MCDM w technikach podejmowania decyzji?",
+    "options": [
+      "Most Common Decision Method",
+      "Multi-Criteria Decision Analysis",
+      "Main Center of Data Management",
+      "Management Control Daily Meeting"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Cechy jakościowe (wymagania niefunkcjonalne) w SRS obejmują m.in.:",
+    "options": [
+      "Sposób logowania użytkownika",
+      "Wydajność, bezpieczeństwo, dostępność i łatwość utrzymania",
+      "Kolor przycisku 'Wyślij'",
+      "Nazwisko głównego programisty"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym jest 'kamień milowy' (milestone) w harmonogramie?",
+    "options": [
+      "Zadaniem trwającym połowę projektu",
+      "Punktem kontrolnym o zerowym czasie trwania, oznaczającym ważne wydarzenie",
+      "Najtrudniejszym zadaniem w projekcie",
+      "Spotkaniem z zespołem co rano"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Podejście 'TDD' (Test-Driven Development) charakterystyczne dla XP polega na:",
+    "options": [
+      "Pisaniu testów po zakończeniu całego projektu",
+      "Pisaniu testów automatycznych przed napisaniem właściwego kodu funkcjonalnego",
+      "Zatrudnieniu oddzielnego zespołu testerów",
+      "Ręcznym sprawdzaniu każdej linii kodu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W macierzy identyfikowalności wymagań (Traceability Matrix) wiążemy wymagania z:",
+    "options": [
+      "Kodem źródłowym i przypadkami testowymi",
+      "Celami biznesowymi i elementami projektu",
+      "Osobami odpowiedzialnymi za ich realizację",
+      "Wszystkie odpowiedzi są prawidłowe"
+    ],
+    "correct": [3]
+  },
+  {
+    "question": "Która rola w Scrumie dba o to, by zespół pracował zgodnie z zasadami i wartościami tej metodyki?",
+    "options": [
+      "Project Manager",
+      "Scrum Master",
+      "Lead Developer",
+      "Stakeholder"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co znajduje się na 'wyjściu' procesu definicji zakresu?",
+    "options": [
+      "Karta Projektu",
+      "Specyfikacja wymagań (często zamykająca zakres)",
+      "Zatwierdzony budżet",
+      "Lista płac zespołu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zgodnie z Manifestem Agile, współpraca z klientem jest ważniejsza niż:",
+    "options": [
+      "Reagowanie na zmiany",
+      "Działające oprogramowanie",
+      "Negocjowanie kontraktów",
+      "Procesy i narzędzia"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W strukturze SRS, sekcja 'Założenia i zależności' (Assumptions and Dependencies) zawiera:",
+    "options": [
+      "Listę wszystkich błędów w systemie",
+      "Czynniki, które mogą wpłynąć na realizację wymagań (np. dostępność zewnętrznych API)",
+      "Instrukcję instalacji serwera",
+      "Cennik usług"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W metodologii Scrum, co oznacza termin 'Time-boxing'?",
+    "options": [
+      "Przechowywanie starych wersji kodu w pudełkach",
+      "Sztywne ograniczenie ram czasowych dla danego spotkania lub iteracji",
+      "Rejestrowanie czasu pracy co do minuty",
+      "Przerwa w pracy zespołu na odpoczynek"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Która z wartości Scruma odnosi się do bycia otwartym na temat pracy i wyzwań?",
+    "options": [
+      "Odwaga",
+      "Zaangażowanie",
+      "Otwartość",
+      "Poszanowanie"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W kontekście SRS, co określa sekcja 'User Classes and Characteristics'?",
+    "options": [
+      "Klasy w kodzie źródłowym",
+      "Różne grupy użytkowników systemu i ich specyficzne cechy",
+      "Poziomy wynagrodzeń w projekcie",
+      "Wymagania sprzętowe dla serwera"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym jest 'Gold Plating' w zarządzaniu zakresem?",
+    "options": [
+      "Złoceniem obudowy serwerów",
+      "Dodawaniem przez zespół funkcjonalności, które nie były wymagane ani zatwierdzone",
+      "Dostarczaniem produktu najwyższej jakości zgodnie z planem",
+      "Nagradzaniem najlepszych programistów"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Technika 'Planning Poker' służy do:",
+    "options": [
+      "Hazardu w trakcie przerw",
+      "Grupowej estymacji pracochłonności zadań (User Stories)",
+      "Wybierania kolejnego Scrum Mastera",
+      "Rozwiązywania konfliktów personalnych"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wykres Burndown pokazuje:",
+    "options": [
+      "Ile pieniędzy pozostało w budżecie",
+      "Ile pracy pozostało do wykonania w bieżącym Sprincie",
+      "Wzrost temperatury procesorów na serwerze",
+      "Liczbę nowych wymagań dodanych przez klienta"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zgodnie z zasadą 'Single Point of Contact', kto w zespole Scrumowym powinien być jedynym źródłem priorytetów dla Deweloperów?",
+    "options": [
+      "Scrum Master",
+      "Product Owner",
+      "Główny interesariusz",
+      "Dyrektor techniczny (CTO)"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W XP, praktyka 'Collective Ownership' oznacza, że:",
+    "options": [
+      "Kod należy do klienta",
+      "Każdy programista może zmienić dowolny fragment kodu w dowolnym momencie",
+      "Tylko lider zespołu może zatwierdzać zmiany",
+      "Nikt nie jest odpowiedzialny za błędy"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wymaganie: 'System musi być dostępny przez 99,9% czasu w roku' to:",
+    "options": [
+      "Wymaganie funkcjonalne",
+      "Wymaganie dostępności (niefunkcjonalne)",
+      "Wymaganie prawne",
+      "Wymaganie interfejsu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym jest 'Sprint Backlog'?",
+    "options": [
+      "Listą wszystkich marzeń klienta",
+      "Zbiorem elementów z Product Backlogu wybranych do realizacji w danym Sprincie wraz z planem ich dostarczenia",
+      "Archiwum zakończonych projektów",
+      "Listą błędów po testach akceptacyjnych"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W WBS, 'Słownik WBS' jest tworzony, aby:",
+    "options": [
+      "Zastąpić harmonogram projektu",
+      "Uniknąć niejednoznaczności w interpretacji pakietów prac",
+      "Nauczyć zespół nowej terminologii",
+      "Ograniczyć liczbę poziomów dekompozycji"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W metodzie Kanban, tablica (Board) służy przede wszystkim do:",
+    "options": [
+      "Dekoracji biura",
+      "Wizualizacji przepływu pracy i identyfikacji zatorów",
+      "Zapisywania wyników meczów",
+      "Rysowania diagramów UML"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W XP, 'Continuous Integration' (CI) polega na:",
+    "options": [
+      "Ciągłym rozmawianiu z klientem",
+      "Częstym integrowaniu zmian w kodzie z głównym repozytorium i automatycznym testowaniu",
+      "Pracy nad projektem bez przerw na sen",
+      "Zatrudnianiu nowych osób w trakcie trwania sprintu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co to jest 'Minimum Viable Product' (MVP)?",
+    "options": [
+      "Wersja produktu z największą liczbą błędów",
+      "Wersja produktu z minimalnym zestawem cech, która pozwala na wprowadzenie go na rynek i zebranie feedbacku",
+      "Produkt, który kosztował najmniej pieniędzy",
+      "Dokumentacja bez kodu źródłowego"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W macierzy identyfikowalności (Traceability Matrix), brak powiązania wymagania z konkretnym celem biznesowym sugeruje, że:",
+    "options": [
+      "Wymaganie jest bardzo innowacyjne",
+      "Wymaganie może być zbędne (poza zakresem)",
+      "Cel biznesowy jest tajny",
+      "Należy zwolnić analityka"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Która technika głosowania wymaga, aby absolutnie wszyscy byli 'za'?",
+    "options": [
+      "Mnogość",
+      "Większość",
+      "Jednomyślność (Unanimity)",
+      "Autokratyzm"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W Agile, 'Samoorganizujący się zespół' to taki, który:",
+    "options": [
+      "Nie potrzebuje Product Ownera",
+      "Sam decyduje, jak najlepiej wykonać swoją pracę, zamiast czekać na polecenia kierownika",
+      "Sam wybiera sobie godziny pracy",
+      "Nie musi dokumentować swoich działań"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kontekście jakości, 'Weryfikacja' odpowiada na pytanie:",
+    "options": [
+      "Czy budujemy właściwy produkt (zgodny z potrzebami klienta)?",
+      "Czy budujemy produkt właściwie (zgodnie ze specyfikacją)?",
+      "Ile kosztuje produkt?",
+      "Kto kupi ten produkt?"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Pojęcie 'Velocity' (Prędkość) w Scrumie oznacza:",
+    "options": [
+      "Szybkość łącza internetowego w biurze",
+      "Średnią liczbę Story Points dostarczanych przez zespół w jednym Sprincie",
+      "Czas potrzebny na naprawę jednego błędu",
+      "Szybkość pisania kodu przez lidera"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W SRS, wymagania dotyczące 'Security' (Bezpieczeństwa) opisują:",
+    "options": [
+      "Wzrost wynagrodzeń pracowników",
+      "Ochronę danych przed nieuprawnionym dostępem i zapewnienie integralności",
+      "Liczbę ochroniarzy w budynku",
+      "Kopie zapasowe na dyskach zewnętrznych"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Kim jest 'Interesariusz' (Stakeholder) projektu?",
+    "options": [
+      "Wyłącznie osobą płacącą za projekt",
+      "Każdą osobą lub organizacją, która ma wpływ na projekt lub na którą projekt ma wpływ",
+      "Głównym programistą w zespole",
+      "Pracownikiem działu kadr"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Która technika zarządzania konfliktem polega na wspólnym wypracowaniu rozwiązania, które w pełni satysfakcjonuje wszystkie strony?",
+    "options": [
+      "Unikanie (Avoidance)",
+      "Współpraca / Rozwiązywanie problemów (Collaborate / Problem Solve)",
+      "Konfrontacja siłowa (Force / Direct)",
+      "Łagodzenie (Smooth / Accommodate)"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kontekście SRS, termin 'Ambiguity' (niejednoznaczność) oznacza, że:",
+    "options": [
+      "Wymaganie jest zbyt trudne do zaprogramowania",
+      "Wymaganie może być zinterpretowane na więcej niż jeden sposób",
+      "Wymaganie jest sprzeczne z budżetem",
+      "Wymaganie zostało napisane w języku obcym"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co to jest 'Baseline' (Linia bazowa) w kontekście wymagań?",
+    "options": [
+      "Najniższa możliwa płaca w projekcie",
+      "Zatwierdzona wersja specyfikacji, która służy jako punkt odniesienia do dalszych prac i zmian",
+      "Ostatnia linia kodu w programie",
+      "Podpis klienta pod umową"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W metodzie MoSCoW, kategoria 'Won't have this time' oznacza:",
+    "options": [
+      "Wymagania, które nigdy nie zostaną zrealizowane",
+      "Wymagania, które nie wejdą do bieżącego wydania, ale mogą być rozważone w przyszłości",
+      "Wymagania, które są najdroższe",
+      "Wymagania, które zespół już wykonał"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym jest 'Product Increment' w Scrumie?",
+    "options": [
+      "Podwyżką dla zespołu po sprincie",
+      "Sumą wszystkich elementów Backlogu ukończonych podczas Sprintu oraz wartością przyrostów z poprzednich sprintów",
+      "Planem na kolejny rok pracy",
+      "Listą nowych pracowników"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Który diagram w SRS pomaga zwizualizować granice systemu i jego interakcje z otoczeniem?",
+    "options": [
+      "Diagram klas",
+      "Diagram kontekstowy (Context Diagram)",
+      "Diagram baz danych",
+      "Wykres Gantta"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zasada 'Face-to-face communication' w Agile sugeruje, że:",
+    "options": [
+      "Należy zawsze nagrywać rozmowy wideo",
+      "Rozmowa bezpośrednia jest najskuteczniejszym sposobem przekazywania informacji",
+      "Nie wolno używać e-maili",
+      "Wszyscy muszą siedzieć przodem do lidera"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W WBS, dekompozycja powinna kończyć się w momencie, gdy:",
+    "options": [
+      "Zabraknie miejsca na kartce",
+      "Pakiety prac są wystarczająco małe, by można było je rzetelnie estymować i kontrolować",
+      "Każde zadanie trwa dokładnie jeden dzień",
+      "Klient powie 'stop'"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W karcie projektu (Project Charter), sekcja 'High-level Risks' zawiera:",
+    "options": [
+      "Szczegółowy plan naprawy błędów",
+      "Główne zagrożenia, które mogą wpłynąć na powodzenie projektu już na etapie startu",
+      "Listę osób, które mogą zachorować",
+      "Prognozę pogody na czas trwania projektu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Rola 'Sponsora' w projekcie polega głównie na:",
+    "options": [
+      "Pisaniu testów jednostkowych",
+      "Zapewnieniu zasobów finansowych i wsparcia politycznego dla projektu",
+      "Zarządzaniu codzienną pracą programistów",
+      "Projektowaniu bazy danych"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W kontekście zarządzania czasem, 'Slack' lub 'Float' to:",
+    "options": [
+      "Komunikator internetowy",
+      "Zapas czasu, o jaki można opóźnić zadanie bez wpływu na termin zakończenia projektu",
+      "Błąd w obliczeniach harmonogramu",
+      "Przerwa obiadowa"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W XP, 'Metaphor' służy do:",
+    "options": [
+      "Pisania wierszy o projekcie",
+      "Uproszczonego opisu architektury systemu zrozumiało dla wszystkich interesariuszy",
+      "Nazywania zmiennych w kodzie",
+      "Ukrywania błędów przed klientem"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Co to jest 'Backlog Grooming' (lub Refinement)?",
+    "options": [
+      "Usuwanie starych zadań z systemu",
+      "Regularne przeglądanie, doprecyzowanie i estymowanie elementów Product Backlogu",
+      "Sprzątanie biura po sprincie",
+      "Instalowanie aktualizacji na serwerze"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W macierzy identyfikowalności wymagań, powiązanie 'Backward traceability' oznacza:",
+    "options": [
+      "Sprawdzanie, czy każde wymaganie ma swój test",
+      "Możliwość wskazania źródła pochodzenia danego wymagania",
+      "Powrót do poprzedniej wersji kodu",
+      "Zmianę kierunku projektu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Atrybut wymagania 'Testable' (testowalne) oznacza, że:",
+    "options": [
+      "Wymaganie jest napisane przez testera",
+      "Istnieje obiektywny sposób sprawdzenia, czy wymaganie zostało spełnione",
+      "Wymaganie dotyczy tylko fazy testów",
+      "Można je przetestować bez użycia komputera"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W strukturze organizacyjnej projektu, 'Steering Committee' (Komitet Sterujący) zajmuje się:",
+    "options": [
+      "Pisaniem dokumentacji technicznej",
+      "Podejmowaniem kluczowych decyzji strategicznych i nadzorem nad projektem",
+      "Naprawianiem sprzętu komputerowego",
+      "Prowadzeniem codziennych spotkań Daily"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Pojęcie 'Technical Debt' (Dług techniczny) oznacza:",
+    "options": [
+      "Kredyt wzięty na zakup serwerów",
+      "Koszt wynikający z wybrania szybkich i prowizorycznych rozwiązań zamiast lepszych podejść",
+      "Opóźnienie w wypłatach dla programistów",
+      "Liczbę nieużywanych licencji oprogramowania"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W Scrumie, jeśli zespół nie jest w stanie ukończyć wszystkich zadań ze Sprint Backlogu:",
+    "options": [
+      "Musi pracować w nadgodzinach, aż skończy",
+      "Niewykonane zadania wracają do Product Backlogu",
+      "Sprint zostaje przedłużony o tydzień",
+      "Zadania te uznaje się za nieistniejące"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zgodnie z PMBOK, 'Project Management Plan' jest:",
+    "options": [
+      "Wyłącznie harmonogramem w formacie Gantta",
+      "Żywym dokumentem opisującym, jak projekt będzie wykonany, monitorowany i kontrolowany",
+      "Tabelą w Excelu z listą płac",
+      "Jednostronicową ulotką o projekcie"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czym są 'Persony' w kontekście zbierania wymagań?",
+    "options": [
+      "Prawdziwymi osobami z zespołu deweloperskiego",
+      "Profilami zmyślonych użytkowników, które pomagają zespołowi lepiej zrozumieć potrzeby i cele końcowych odbiorców",
+      "Listą płac personelu projektu",
+      "Nazwami serwerów w środowisku testowym"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W Scrumie, co się dzieje, gdy w połowie iteracji okaże się, że pracy jest więcej niż zespół jest w stanie wykonać?",
+    "options": [
+      "Zespół musi pracować w nocy i w weekendy",
+      "Przerzuca się nadmiar zadań na przyszłą iterację, skupiając się na dokończeniu najważniejszych elementów",
+      "Sprint zostaje natychmiast przerwany",
+      "Product Owner musi sam napisać brakujący kod"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W nazewnictwie elementów WBS (Struktury Podziału Prac), zgodnie z materiałami, nazwa elementu powinna być:",
+    "options": [
+      "Czasownikiem (np. 'Zaprojektuj bazę')",
+      "Rzeczownikiem (np. 'Projekt bazy danych')",
+      "Przymiotnikiem (np. 'Szybki system')",
+      "Dowolną formą gramatyczną"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Czy nazwa elementu w WBS musi być unikalna w skali całego dokumentu?",
+    "options": [
+      "Tak, każda nazwa może wystąpić tylko raz",
+      "Nie, nazwy mogą się powtarzać (np. 'Wstęp'), o ile są rozróżnialne przez swoje identyfikatory hierarchiczne",
+      "Tak, ale tylko na najwyższym poziomie dekompozycji",
+      "Tylko jeśli projekt jest finansowany ze środków publicznych"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Która z definicji najlepiej opisuje 'Refaktoryzację' (Refactoring)?",
+    "options": [
+      "Dodawanie nowych funkcjonalności do systemu",
+      "Zmiana struktury istniejącego kodu bez zmiany jego zewnętrznego zachowania, w celu poprawy jego jakości",
+      "Usuwanie starych plików z serwera",
+      "Przepisywanie całego systemu od zera w nowym języku"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Pojęcie 'Waterfall' (model kaskadowy) charakteryzuje się tym, że:",
+    "options": [
+      "Projekt jest dzielony na sekwencyjne fazy, a powrót do wcześniejszej fazy jest trudny i kosztowny",
+      "Dostarcza się oprogramowanie co tydzień",
+      "Zespół sam wybiera sobie zadania rano",
+      "Klient może zmieniać wymagania w dowolnym momencie bez formalnego procesu"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Zgodnie z materiałami, kiedy zadanie w Scrumie można uznać za 'Skończone' (Done)?",
+    "options": [
+      "Gdy programista powie, że skończył pisać",
+      "Gdy zostaną spełnione wszystkie kryteria zawarte w 'Definition of Done' (np. kod napisany, przetestowany, wdrożony)",
+      "Gdy skończy się czas trwania Sprintu",
+      "Gdy klient zapłaci fakturę za dany moduł"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Wyzwanie 'Electrico Fantastico' (zespół Alice) miało na celu pokazanie, że:",
+    "options": [
+      "Alice jest świetnym menedżerem",
+      "Można dowieźć projekt w czasie i budżecie, a i tak odnieść porażkę, jeśli produkt nie spełnia potrzeb biznesowych klienta",
+      "Samochody elektryczne są przyszłością",
+      "Karta Projektu jest jedynym dokumentem, jakiego potrzebuje zespół"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W metodologiach zwinnych, co jest ważniejsze od 'Długoterminowej irytacji zespołu' wynikającej ze zmian w kodzie?",
+    "options": [
+      "Darmowa kawa w biurze",
+      "Długoterminowe potrzeby użytkowników",
+      "Szybkie wyjście do domu",
+      "Użycie najnowszej biblioteki JavaScript"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Metoda Delphi stosowana w estymacji polega na:",
+    "options": [
+      "Rzucaniu monetą",
+      "Anonimowym zbieraniu opinii ekspertów i iteracyjnym dochodzeniu do konsensusu",
+      "Wybraniu najkrótszego czasu zaproponowanego przez zespół",
+      "Skopiowaniu terminów z innego projektu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Który z poniższych elementów NIE jest zazwyczaj częścią 'Persony'?",
+    "options": [
+      "Imię i zmyślone zdjęcie",
+      "Cele i frustracje użytkownika",
+      "Hasło do bazy danych produkcyjnej",
+      "Krótka biografia i zawód"
+    ],
+    "correct": [2]
+  },
+  {
+    "question": "W procesie zbierania wymagań, 'Facylitator' to osoba, która:",
+    "options": [
+      "Zawsze podejmuje ostateczną decyzję za zespół",
+      "Pomaga grupie pracować efektywniej, dba o przebieg spotkania i osiągnięcie wspólnego zrozumienia",
+      "Pisze kod za programistów",
+      "Jest zawsze najstarszym członkiem zespołu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W SRS, wymagania dotyczące 'Maintainability' (Łatwość utrzymania) określają:",
+    "options": [
+      "Jak łatwo można naprawiać błędy lub wprowadzać modyfikacje w systemie",
+      "Ile osób potrzebnych jest do obsługi serwerowni",
+      "Koszt zakupu komputerów",
+      "Kolorystykę interfejsu"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Dlaczego w Agile promuje się 'częstą komunikację z użytkownikami'?",
+    "options": [
+      "Żeby użytkownicy nie czuli się samotni",
+      "Aby uniknąć nagłych, dużych zmian na końcu projektu i synchronizować prace z realnymi potrzebami",
+      "Aby użytkownicy nauczyli się programować",
+      "Bo tak nakazuje prawo pracy"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Atrybut 'Traceability' (identyfikowalność) wymagań pozwala na:",
+    "options": [
+      "Śledzenie wymagań od ich źródła (np. potrzeba biznesowa) aż do implementacji i testów",
+      "Ukrycie wymagań przed konkurencją",
+      "Automatyczne pisanie kodu",
+      "Zmniejszenie liczby spotkań"
+    ],
+    "correct": [0]
+  },
+  {
+    "question": "Co oznacza '8/80 Rule' (Zasada 8/80) w tworzeniu WBS?",
+    "options": [
+      "Praca musi trwać od 8:00 do 20:00",
+      "Pakiety prac nie powinny być krótsze niż 8 godzin i dłuższe niż 80 godzin roboczych",
+      "80% projektu wykonuje 8% zespołu",
+      "Każdy element musi mieć 8 podpunktów"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W Scrumie, kto 'posiada' (is the owner of) Sprint Backlog?",
+    "options": [
+      "Product Owner",
+      "Zespół Deweloperski",
+      "Scrum Master",
+      "Prezes Zarządu"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Technika 'Brainstorming' służy do:",
+    "options": [
+      "Krytykowania pomysłów innych osób",
+      "Szybkiego generowania dużej liczby pomysłów lub wymagań bez ich wstępnej oceny",
+      "Naprawy serwerów po burzy",
+      "Zwalniania pracowników"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "W cyklu życia projektu, 'Inicjacja' kończy się zazwyczaj:",
+    "options": [
+      "Wydaniem pierwszej wersji oprogramowania",
+      "Zatwierdzeniem Karty Projektu",
+      "Zwolnieniem Project Managera",
+      "Przejściem na emeryturę sponsora"
+    ],
+    "correct": [1]
+  },
+  {
+    "question": "Zasada 'Sustainable Development' (zrównoważony rozwój) w Agile oznacza, że:",
+    "options": [
+      "Zespół powinien oszczędzać prąd",
+      "Sponsorzy, deweloperzy i użytkownicy powinni być w stanie utrzymać równe, stałe tempo pracy przez czas nieokreślony",
+      "Należy używać tylko ekologicznych serwerów",
+      "Projekt nigdy nie powinien się kończyć"
+    ],
+    "correct": [1]
+  }
+]

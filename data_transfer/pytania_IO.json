@@ -1,0 +1,1082 @@
+[
+    {
+        "question": "Funkcjonalności zaplanowane do implementacji wg metodyki zwinnej klient najczęściej formułuje w postaci:",
+        "options": [
+            "wymagań niefunkcjonalnych",
+            "przypadków użycia",
+            "historii użytkownika",
+            "zadań programistycznych"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Diagram przypadków użycia służy do zaprezentowania:",
+        "options": [
+            "przepływu danych między poszczególnymi funkcjami",
+            "funkcji realizowanych przez system z punktu widzenia użytkownika",
+            "kolejności realizacji poszczególnych funkcji",
+            "wymagań funkcjonalnych i niefunkcjonalnych"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Jakie polecenie systemu Git służy do wycofania wcześniej wykonanej operacji zapisania zmian w repozytorium?",
+        "options": [
+            "pull",
+            "abort",
+            "reset",
+            "back"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Pracochłonność prawidłowo zdefiniowanego zadania w metodyce zwinnej:",
+        "options": [
+            "powinna wynosić zawsze tyle ile wynosi czas iteracji",
+            "powinna wynosić około 1-3 dni",
+            "powinna wynosić około 1-3 tygodni",
+            "może być dłuższa niż czas trwania iteracji"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Pod względem poziomu opisu wymagania możemy podzielić na:",
+        "options": [
+            "biznesowe, użytkownika i systemowe",
+            "funkcjonalne, niefunkcjonalne i zgodności",
+            "postać tekstową w formie listy i postać graficzną w formie diagramu",
+            "żadna z pozostałych odpowiedzi nie jest prawidłowa"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Konserwacja oprogramowania dotyczy:",
+        "options": [
+            "odkrycia sposobu działania i architektury w systemie odziedziczonym",
+            "całego okresu wytwarzania od odtworzenia pierwszego produktu w ramach projektu",
+            "opracowania nowej implementacji oprogramowania na podstawie sposobu działania i architektury odkrytych w systemie odziedziczonym",
+            "okresu po przekazaniu do użytkowania"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Symbol związku (association) na diagramie przypadków użycia służy do połączenia:",
+        "options": [
+            "co najmniej dwóch przypadków użycia",
+            "aktora i przypadku użycia",
+            "wyłącznie dwóch aktorów",
+            "taki symbol nie występuje na diagramie przypadków użycia"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Symbol dziedziczenia na diagramie klas oznacza:",
+        "options": [
+            "że obiekt jednej klasy przyjmuje obiekt drugiej klasy jako argument jednej z operacji",
+            "że obiekty jednej klasy zawierają obiekty innej klasy",
+            "że klasa dziedzicząca przejmuje cechy i zachowanie klasy bazowej",
+            "że obiekt jednej klasy jest powiązany na zasadzie referencji/wskaźnika z obiektem innej klasy"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Typowymi działaniami zaimplementowanymi w testach jednostkowych są:",
+        "options": [
+            "przygotowanie niezbędnej konfiguracji, wywołanie testowanego fragmentu oprogramowania, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu",
+            "przygotowanie niezbędnej konfiguracji, wywołanie testowanego fragmentu oprogramowania, zapytanie testera czy program działa zgodnie z oczekiwaniami, podjęcie decyzji przez testera, rozmontowanie konfiguracji testu",
+            "instalacja oprogramowania w docelowym środowisku, przygotowanie niezbędnej konfiguracji, uruchomienie oprogramowania i nawigacja za pomocą GUI do testowanego fragmentu, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu",
+            "przygotowanie niezbędnej konfiguracji, uruchomienie oprogramowania i nawigacja za pomocą GUI do testowanego fragmentu, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Architekturę oprogramowania opracowaną w etapie projektowania ilustrują diagramy:",
+        "options": [
+            "komponentów",
+            "przypadków użycia",
+            "maszyny stanowej",
+            "klas"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Które twierdzenie odnośnie liczby punktów funkcyjnych jest prawdziwe?",
+        "options": [
+            "liczba ta ma bezpośrednie przełożenie na wielkość oprogramowania w liniach kodu źródłowego",
+            "liczba ta wyraża wielkość nakładów na realizację całego projektu",
+            "liczba ta wyraża wielkość nakładów na prace stricte programistyczne (kodowanie)",
+            "liczba ta wyraża rozmiar oprogramowania"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Rola przypisana do danego końca związku na diagramie klas:",
+        "options": [
+            "w takim miejscu nie jest możliwe przypisanie roli",
+            "determinuje nazwę atrybutu, który będzie wygenerowany w kodzie na podstawie tego diagramu",
+            "wskazuje nazwę klasy bazowej pod kątem dziedziczenia",
+            "determinuje nazwę klasy, która będzie wygenerowana w kodzie na podstawie tego diagramu"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Jakie polecenie systemu Git służy do wysłania lokalnej kopii repozytorium w celu synchronizacji z kopią na komputerze zdalnym?",
+        "options": [
+            "pull",
+            "commit",
+            "push",
+            "add"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Wymagania niefunkcjonalne:",
+        "options": [
+            "określają funkcje realizowane przez oprogramowanie",
+            "określają aspekty jakościowe oprogramowania",
+            "formułowane są zawsze w formie diagramu",
+            "powinny być sformułowane niezwłocznie po ukończeniu implementacji oprogramowania"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Diagram komponentów służy do pokazania:",
+        "options": [
+            "struktury aplikacji na poziomie jednostek, które mogą być projektowane i wytwarzane niezależnie",
+            "konfiguracji sprzętowej opracowywanego systemu",
+            "zależności między aktorami i klasami",
+            "elementów, z których składają się poszczególne klasy"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Defekt w oprogramowaniu:",
+        "options": [
+            "zawsze ujawnia się w postaci awarii",
+            "zawsze jest wynikiem błędnej konfiguracji sprzętowo-programowej",
+            "można wykryć nawet jeśli oprogramowanie nie jest uruchomione",
+            "można wykryć tylko w czasie działania programu"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Testowanie integracyjne ma na celu:",
+        "options": [
+            "ocenę połączonych składników oprogramowania",
+            "wykrycie defektów widocznych z punktu widzenia funkcji/wymagań użytkownika",
+            "sprawdzenie oprogramowania w środowisku docelowym lub je imitującym",
+            "sprawdzenie działania poszczególnych elementarnych składników oprogramowania"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Diagram rozmieszczenia w języku UML służy do pokazania:",
+        "options": [
+            "rozmieszczenia obiektów stanowiących implementację programu w pamięci RAM komputera",
+            "rozmieszczenia geograficznego zespołu deweloperskiego",
+            "rozmieszczenia komponentów programowych w węzłach sprzętowo/programowych",
+            "rozmieszczenia geograficznego miejsca implementacji poszczególnych funkcjonalności oprogramowania"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Pod względem zakresu wymagania możemy podzielić na:",
+        "options": [
+            "postać tekstową w formie listy i postać graficzną w formie diagramu",
+            "żadna z pozostałych odpowiedzi nie jest prawidłowa",
+            "biznesowe, użytkownika i systemowe",
+            "funkcjonalne, niefunkcjonalne i zgodności"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Weryfikacja (verification) na danym etapie wytwarzania oprogramowania polega na odniesieniu ocenianego produktu do:",
+        "options": [
+            "specyfikacji testowej",
+            "oczekiwań i potrzeb biznesowych klienta",
+            "produktu z poprzedniego etapu wytwarzania",
+            "specyfikacji wymagań"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Narzędzia testujące typu \"record & playback\", które symulują działanie użytkownika:",
+        "options": [
+            "są najczęściej używane do testowania jednostkowego",
+            "są najczęściej używane do testowania integracyjnego",
+            "są używane w metodach białej skrzynki",
+            "są wykorzystywane do testowania systemowego"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Co oznacza zasięg egzemplarzowy atrybutu na diagramie klas?",
+        "options": [
+            "że dostęp do danego atrybutu mają wszystkie obiekty z danej klasy i klas potomnych",
+            "że może istnieć tylko jeden egzemplarz (obiekt) danej klasy w skali całego systemu",
+            "że dany atrybut ma jedną wspólną wartość dla wszystkich obiektów danej klasy",
+            "że dany atrybut może przyjmować odrębne wartości dla poszczególnych obiektów danej klasy"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Główną cechą wyróżniającą metodyki zwinne jest:",
+        "options": [
+            "opracowanie szczegółowego i rygorystycznego sposobu zarządzania i przygotowania rozbudowanej dokumentacji projektowej",
+            "odejście od długofalowego planowania, zarządzania i dokumentowania",
+            "dokładne zaprojektowanie globalnej architektury oprogramowania w celu minimalizacji prac nad jej modyfikacją w przyszłości",
+            "drastyczne ograniczenie udziału klienta w projekcie, żeby nie przeszkadzał deweloperom w ich pracach programistycznych"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Najdłuższa jednostka czasu wykorzystywana do planowania zakresu prac w metodyce zwinnej odzwierciedla czas:",
+        "options": [
+            "wydania",
+            "implementacji przyrostu produktu",
+            "całego projektu",
+            "iteracji"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "W oprogramowaniu wykorzystującym podział na partycje poszczególne partycje:",
+        "options": [
+            "są niezależnymi od siebie komponentami działającymi na różnych węzłach sprzętowych (tj. każdy komponent na innym węźle)",
+            "mogą wywoływać partycje z warstwy wyższej",
+            "stanowią implementację zamkniętego zestawu funkcjonalności widzianego z punktu widzenia użytkownika",
+            "mogą wywoływać partycje z warstwy niższej"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Diagram czynności w języku UML służy do pokazania:",
+        "options": [
+            "działań, które muszą wykonać deweloperzy, żeby opracować dany program",
+            "działań, które składają się zawsze na pojedynczy kompletny przypadek użycia",
+            "działań wykonywanych podczas realizacji procesów/algorytmów",
+            "działań, które są realizowane przez zespół zarządzający danym projektem informatycznym"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Diagram sekwencji w języku UML służy do pokazania:",
+        "options": [
+            "jednostek sprzętowych, na których realizowane są poszczególne funkcje systemu",
+            "cyklu życia systemu wg metodyki zwinnej",
+            "komunikatów wymienianych między jednostkami programowymi realizującymi dane zadanie",
+            "ciągu działań podejmowanych przez deweloperów w celu opracowania danego programu"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "System kontroli wersji Git jest systemem:",
+        "options": [
+            "scentralizowanym",
+            "zwinnym",
+            "rozproszonym",
+            "kaskadowym"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Typowa klasa na diagramie klas zawiera oprócz nazwy:",
+        "options": [
+            "listę scenariuszy i listę kroków dla każdego scenariusza",
+            "przynajmniej jednego powiązanego aktora, ale nie może być powiązana z przypadkiem użycia",
+            "zestaw atrybutów i zestaw operacji",
+            "aktora i/lub przypadek użycia"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "W metodzie COCOMO II główną zmienną wpływającą na wynik jest:",
+        "options": [
+            "nakłady projektowe",
+            "wielkość oprogramowania",
+            "liczba defektów w oprogramowaniu",
+            "złożoność oprogramowania"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Liczba punktów funkcyjnych zależy od:",
+        "options": [
+            "wejść, wyjść, logicznych plików, interfejsów, zapytań",
+            "rozmiaru oprogramowania, parametrów skali, mnożników nakładów, stałych z możliwością kalibracji",
+            "wielkości oprogramowania, złożoności problemu, jakości procesu wytwórczego",
+            "przypadków użycia i aktorów"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Diagram klas służy do zaprezentowania:",
+        "options": [
+            "hierarchii zarządzania w projekcie informatycznym",
+            "komponentów oprogramowania i powiązań między nimi",
+            "obiektów, które biorą udział w przetwarzaniu danych i powiązań między nimi",
+            "wymagań funkcjonalnych"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Cecha jednoznaczności specyfikacji wymagań oznacza, że:",
+        "options": [
+            "wskazano jednoznacznie, w jaki sposób można przeprowadzić weryfikację spełnienia wymagań przez finalny produkt",
+            "opisane zostały tylko te wymagania, które są potrzebne użytkownikom",
+            "wymagania nie mogą zawierać sprzeczności między sobą",
+            "zapis każdego wymagania ma tylko jedną interpretację"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Metodami zapewnienia jakości oprogramowania są:",
+        "options": [
+            "testowanie, analiza środowiska i przeglądy",
+            "testowanie i analiza środowiska",
+            "testowanie, przeglądy i inspekcje, dowodzenie poprawności",
+            "testowanie, analiza przedwdrożeniowa, przeglądy i inspekcje"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Które twierdzenie odnośnie szacowania przez analogię jest nieprawdziwe?",
+        "options": [
+            "nie jest wykorzystywana do szacowania liczby defektów w oprogramowaniu",
+            "podstawą szacunku jest spotkanie robocze ekspertów",
+            "za punkt odniesienia można wykorzystać projekt nie w pełni zgodny z projektem podlegającym ocenie",
+            "bazuje na podobieństwie bieżącego projektu do projektu realizowanego wcześniej"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "System kontroli wersji (np. Git) nie służy do:",
+        "options": [
+            "odtworzenia stanu kodu programu z punktu czasu w przeszłości",
+            "zapewnienia przenośności oprogramowania na różne platformy docelowe",
+            "synchronizacji efektów pracy poszczególnych programistów",
+            "sprawdzenia kto wprowadził daną modyfikację w kodzie programu"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Symbol dziedziczenia można wykorzystać na diagramie przypadków użycia w celu połączenia:",
+        "options": [
+            "klasy i aktora",
+            "dwóch przypadków użycia",
+            "klasy i przypadku użycia",
+            "aktora i przypadku użycia"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Przegląd jakości oprogramowania:",
+        "options": [
+            "może być wykorzystany do oceny danego produktu projektu względem predefiniowanego zestawu kryteriów",
+            "może być użyty wyłącznie do oceny kodu źródłowego",
+            "ma na celu wykrycie defektów w oprogramowaniu",
+            "można wykorzystać do oceny jakości pracy poszczególnych deweloperów"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Inżynieria ponowna dotyczy:",
+        "options": [
+            "opracowania testów przed implementacją oprogramowania",
+            "odkrycia sposobu działania i architektury w systemie odziedziczonym",
+            "opracowania nowej implementacji oprogramowania na podstawie sposobu działania i architektury odkrytych w systemie odziedziczonym",
+            "aktualizacji dokumentacji po zaimplementowaniu nowych wymagań"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Punkty historii użytkownika (story points):",
+        "options": [
+            "są liczbami naturalnymi oznaczającymi ilość osobodni potrzebnych na implementację",
+            "są nieparzystymi liczbami naturalnymi",
+            "są liczbami naturalnymi niewyrażonymi w żadnej jednostce czasu",
+            "są liczbami naturalnymi oznaczającymi ilość osobotygodni potrzebnych na implementację"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Co można powiedzieć o adekwatności liczby przypadków testowych w następującej sytuacji w kontekście wiarygodnego przetestowania oprogramowania? Kompletna specyfikacja wymagań pewnego oprogramowania zawiera trzy przypadki użycia, każdy z nich zawiera dwa scenariusze. Dla tego systemu przygotowano trzy przypadki testowe.",
+        "options": [
+            "liczba przypadków testowych na pewno jest wystarczająca",
+            "liczba przypadków testowych może być zbyt wysoka",
+            "liczba przypadków testowych na pewno jest za niska",
+            "liczba przypadków testowych może być wystarczająca"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Gdy dysponujemy bardzo niewielką ilością danych empirycznych, a potrzebujemy dokonać oszacowania w obszarze inżynierii oprogramowania, to:",
+        "options": [
+            "nie możemy wykorzystać standardowych modeli z kalibracją w docelowym środowisku",
+            "nie możemy dokonać żadnego oszacowania",
+            "nie możemy wykorzystać technik bazujących na szacowaniu przez eksperta",
+            "skuteczne będą metody uczenia maszynowego"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Cechą charakterystyczną diagramu sekwencji w UML jest:",
+        "options": [
+            "oś czasu, która nie występuje na innych diagramach",
+            "diagram ten może jako jedyny posłużyć do wizualizacji hierarchii zarządzania danym projektem informatycznym",
+            "na tym diagramie nie można umieszczać aktorów",
+            "można na nim pokazać długi proces wykraczający poza pojedynczy przypadek użycia"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Do wzorców architektonicznych należą:",
+        "options": [
+            "singleton, adapter, dekorator",
+            "klient-serwer, adapter, dekorator",
+            "singleton, adapter, model-widok-kontroler",
+            "klient-serwer, model-widok-kontroler, architektura trójwarstwowa"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Symbol agregacji na diagramie klas oznacza:",
+        "options": [
+            "że obiekt jednej klasy jest powiązany z dokładnie jednym obiektem innej klasy",
+            "że obiekty jednej klasy zawierają obiekty innej klasy",
+            "że obiekt jednej klasy przyjmuje obiekt drugiej klasy jako argument jednej z operacji",
+            "że jedna klasa dziedziczy z innej klasy"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Wybierając wymagania do implementacji w danej iteracji w metodyce zwinnej:",
+        "options": [
+            "klient może wybrać dowolną ilość wymagań, w razie potrzeby każdorazowo ustalając czas trwania danej iteracji",
+            "sumaryczna pracochłonność wybranych wymagań nie może przekroczyć ustalonej szybkości",
+            "deweloperzy wybierają te wymagania wyłącznie wg własnych preferencji",
+            "kierownik projektu dokonuje wyboru tych wymagań każdorazowo dokonując negocjacji ze zleceniodawcą pod kątem ustalenia kosztu ich implementacji"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Testowanie akceptacyjne ma na celu:",
+        "options": [
+            "sprawdzenie oprogramowania w środowisku docelowym lub je imitującym",
+            "sprawdzenie działania poszczególnych elementarnych składników oprogramowania",
+            "ocenę połączonych składników oprogramowania",
+            "wykrycie defektów w odniesieniu do specyfikacji wymagań oprogramowania"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Wielkość zespołu deweloperskiego w metodyce Scrum powinna wynosić:",
+        "options": [
+            "co najmniej 10 osób",
+            "metodyka Scrum nie określa tej wielkości",
+            "ok. 5-9 osób",
+            "maksymalnie 20 osób"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Do wzorców projektowych należą:",
+        "options": [
+            "singleton, adapter, dekorator",
+            "klient-serwer, adapter, dekorator",
+            "klient-serwer, model-widok-kontroler, architektura trójwarstwowa",
+            "singleton, adapter, model-widok-kontroler"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Liczba punktów przypadków użycia zależy od:",
+        "options": [
+            "rozmiaru oprogramowania, parametrów skali, mnożników nakładów, stałych z możliwością kalibracji",
+            "wielkości oprogramowania, złożoności problemu, jakości procesu wytwórczego",
+            "wejść, wyjść, logicznych plików, interfejsów, zapytań",
+            "przypadków użycia i aktorów"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Sprzężenie w odniesieniu do architektury oprogramowania mówi o tym, że:",
+        "options": [
+            "powiązania pomiędzy podsystemami powinny być ścisłe",
+            "powiązania pomiędzy podsystemami powinny być luźne",
+            "powiązania wewnątrz poszczególnych podsystemów powinny być ścisłe",
+            "powiązania wewnątrz poszczególnych podsystemów powinny być luźne"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "W skład Zespołu Scrumowego wchodzą następujące role:",
+        "options": [
+            "Analityk, Architekt, Projektant, Programista, Tester, Mistrz Scruma, Kierownik projektu",
+            "Zespół deweloperski, Właściciel Produktu, Kierownik projektu",
+            "Zespół deweloperski, Właściciel Produktu, Mistrz Scruma",
+            "Zespół deweloperski, Właściciel Produktu, Mistrz Scruma, Kierownik projektu"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Model CMMI jest używany do oceny:",
+        "options": [
+            "dojrzałości procesu wytwórczego w firmie wytwarzającej dowolne produkty",
+            "jakości poszczególnych elementów składowych oprogramowania",
+            "jakości pracy poszczególnych deweloperów",
+            "dojrzałości procesu wytwórczego w firmie programistycznej"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Cecha poprawności specyfikacji wymagań oznacza, że:",
+        "options": [
+            "opisane zostały tylko te wymagania, które są potrzebne użytkownikom",
+            "wskazano, w jaki sposób można przeprowadzić weryfikację spełnienia wymagań przez finalny produkt",
+            "wymagania nie mogą zawierać sprzeczności między sobą",
+            "sformułowano, w jaki sposób można modyfikować wymagania"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Produktami projektowania są:",
+        "options": [
+            "architektura programu, projekt bazy danych, plan testowania, projekt testów",
+            "projekt bazy danych, projekt interfejsu użytkownika, projekt struktury programu, wymagania niefunkcjonalne",
+            "architektura programowa, cele projektowe, graniczne przypadki użycia",
+            "model przypadków użycia, model klas, wymagania niefunkcjonalne"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Na diagramie czynności w języku UML mogą występować następujące elementy:",
+        "options": [
+            "akcje, agregacje, punkty decyzyjne",
+            "akcje, aktorzy, przejścia",
+            "akcje, przejścia, punkty decyzyjne",
+            "akcje, aktorzy, agregacje"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Jakie polecenie systemu Git służy do pobrania zdalnej kopii repozytorium, która ma być zsynchronizowana z na komputerze lokalnym?",
+        "options": [
+            "commit",
+            "add",
+            "pull",
+            "push"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Plan testów określa:",
+        "options": [
+            "kroki wykonywane przez testera",
+            "wymagania, które będą testowane",
+            "dane, które będą użyte przez testera",
+            "które testy zakończyły się sukcesem/porażką"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "W metodzie punktów funkcyjnych IFPUG korygowanie miary punktów funkcyjnych następuje z wykorzystaniem:",
+        "options": [
+            "wskaźnika złożoności technicznej",
+            "wskaźnika złożoności środowiskowej",
+            "wskaźnika korekcji wartości",
+            "w tej metodzie nie dokonuje się korekcji"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Załóżmy, że na diagramie klas narysowano dwie klasy Autor i Książka, które połączono związkiem. W związku, przy końcu łączącym się z klasą Autor podano liczebność 1..*. Co oznacza taki zapis?",
+        "options": [
+            "że jeden obiekt klasy Książka musi być powiązany z co najmniej jednym obiektem klasy Autor",
+            "takie oznaczenie jest niedopuszczalne",
+            "że jeden obiekt klasy Autor musi być powiązany z co najmniej jednym obiektem klasy Książka",
+            "że w systemie musi istnieć co najmniej jeden obiekt typu Autor"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Kiedy wyczerpie się czas przewidziany na iterację w metodyce zwinnej, a nie wszystkie funkcjonalności zaplanowane do implementacji w tej iteracji zostaną zaimplementowane, to:",
+        "options": [
+            "klient przypisuje specjalne tzw. naprawcze historie użytkownika",
+            "nieukończone funkcjonalności są wycofywane z dalszej realizacji w projekcie (anulowane)",
+            "nieukończone funkcjonalności przechodzą do implementacji w następnej iteracji",
+            "czas tej iteracji ulega wydłużeniu o taki, który jest potrzebny do ukończenia implementacji wszystkich funkcjonalności zaplanowanych dla tej iteracji"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "W metodyce zwinnej:",
+        "options": [
+            "refaktoryzacja kodu stosowana jest sporadycznie",
+            "podstawą wymiany informacji między członkami zespołu jest bezpośrednia komunikacja",
+            "konieczne jest stosowanie programowania w parach przez co najmniej 30% czasu implementacji",
+            "podstawowym sposobem przechowywania i udostępniania informacji członkom zespołu jest szczegółowa dokumentacja projektowa"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Co oznacza związek zawierania na diagramie przypadków użycia?",
+        "options": [
+            "że dany przypadek użycia jest bezpośrednio wywoływany przez danego aktora",
+            "że dany aktor jest częścią danego przypadku użycia",
+            "że dany przypadek użycia następuje bezpośrednio po ukończeniu innego przypadku użycia",
+            "że jeden przypadek użycia jest częścią innego przypadku użycia"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Poszczególne testy:",
+        "options": [
+            "mogą być sprawdzane za pomocą innych testów (czyli \"testy testów\")",
+            "powinny być niezależne od siebie",
+            "mogą być skonstruowane w taki sposób, że wynik danego testu zależy od wyniku/wywołania innego testu",
+            "muszą być tak skonstruowane, żeby wszystkie łącznie zweryfikowały poprawność wszystkich instrukcji w kodzie źródłowym"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Zatwierdzanie (validation) oprogramowania polega na odniesieniu ocenianego produktu do:",
+        "options": [
+            "projektu architektury oprogramowania",
+            "specyfikacji testowej",
+            "produktu z poprzedniego etapu wytwarzania",
+            "oczekiwań i potrzeb biznesowych klienta"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "W oprogramowaniu wykorzystującym podział na warstwy, elementy składowe z danej warstwy:",
+        "options": [
+            "stanowią implementację zamkniętego zestawu funkcjonalności widzianego z punktu widzenia użytkownika",
+            "mogą wywoływać składowe z warstwy niższej",
+            "mogą wywoływać składowe z warstwy wyższej",
+            "są niezależnymi od siebie komponentami działającymi na różnych węzłach sprzętowych"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "W jaki sposób należy opracować model przypadków użycia, w którym musimy pokazać znaczną liczbę przypadków użycia?",
+        "options": [
+            "zgrupować przypadki użycia w klasy i narysować na osobnych diagramach zawartość poszczególnych klas",
+            "zgrupować przypadki użycia w pakiety i narysować na osobnych diagramach zawartość poszczególnych pakietów",
+            "taka sytuacja nigdy nie występuje",
+            "jeśli taka sytuacja wystąpiła, to znaczy, że źle został nazwane poszczególne przypadki użycia i należy dokonać stosownej korekty ich definicji"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Jakie polecenie systemu Git służy do zatwierdzenia zmiany w repozytorium?",
+        "options": [
+            "add",
+            "commit",
+            "push",
+            "create"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Czy następujące wymaganie jest poprawnie zdefiniowane: \"Oprogramowanie ma korzystać z przyjaznego interfejsu użytkownika\"?",
+        "options": [
+            "nie, ponieważ nie wskazano, jaka technologia/framework ma być użyta do implementacji",
+            "tak, jest to poprawne wymaganie",
+            "nie, ponieważ aspektów dotyczących przyjazności interfejsu użytkownika nie formułuje się w formie wymagań",
+            "nie, ponieważ nie można zweryfikować spełnienia tak sformułowanego wymagania"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Jakie polecenie systemu Git służy do sprawdzenia stanu zmian w katalogu roboczym?",
+        "options": [
+            "status",
+            "check",
+            "push",
+            "pull"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Na czym polega różnica między analizą a projektowaniem oprogramowania?",
+        "options": [
+            "analiza ma na celu opracowanie planu zarządzania projektem, a projektowanie dotyczy interfejsu użytkownika i bazy danych",
+            "analiza ma na celu pozyskanie i sformułowanie wymagań biznesowych, a projektowanie definiuje architekturę przyszłego rozwiązania",
+            "na niczym istotnym - są to praktycznie synonimy",
+            "analiza ma na celu opracowanie modelu abstrakcyjnego od technologii, a projektowanie definiuje schemat budowy oprogramowania w docelowej technologii"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Składnikami modelu analitycznego oprogramowania są zwykle:",
+        "options": [
+            "model przypadków użycia, model klas, wymagania niefunkcjonalne",
+            "architektura programowa, cele projektowe, graniczne przypadki użycia",
+            "architektura programu, projekt bazy danych, plan testowania, projekt testów",
+            "projekt bazy danych, projekt interfejsu użytkownika, projekt struktury programu, wymagania niefunkcjonalne"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Inspekcja jakości oprogramowania:",
+        "options": [
+            "ma na celu wykrycie defektów w oprogramowaniu",
+            "może być użyta wyłącznie do oceny projektu programu",
+            "jest używana do oceny danego produktu projektu względem predefiniowanego zestawu kryteriów",
+            "może być wykorzystana do oceny jakości pracy poszczególnych deweloperów"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Specyfikacja pojedynczego przypadku użycia powinna obejmować:",
+        "options": [
+            "listę scenariuszy i listę kroków dla każdego scenariusza",
+            "dokładnie jeden scenariusz i przypisaną do niego listę kroków",
+            "listę scenariuszy bez wskazania listy kroków",
+            "listę kroków realizowanych przez wszystkich aktorów występujących na tym samym diagramie, co dany przypadek użycia"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Metodami pozyskiwania wymagań są:",
+        "options": [
+            "obserwacja i analiza obiegu dokumentów, metoda punktów przypadków użycia, metoda punktów funkcyjnych",
+            "obserwacja i analiza obiegu dokumentów, studiowanie dostępnej dokumentacji, wywiady z przedstawicielami kierownictwa",
+            "obserwacja i analiza obiegu dokumentów, metoda punktów przypadków użycia, wywiady z przedstawicielami kierownictwa",
+            "obserwacja i analiza obiegu dokumentów, studiowanie dostępnej dokumentacji, metoda punktów przypadków użycia"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Klasycznym procesem wytwarzania oprogramowania, w którym poszczególne fazy/etapy realizowane są szeregowo jest proces:",
+        "options": [
+            "kaskadowy",
+            "iteracyjny",
+            "zwinny",
+            "spiralny"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Wytwarzanie sterowane testami (test driven development) polega na:",
+        "options": [
+            "opracowaniu programu, z którego automatycznie generowane są testy",
+            "opracowaniu testów, z których automatycznie generowany jest program",
+            "opracowaniu testów przed implementacją programu",
+            "opracowaniu testów niezwłocznie po implementacji programu"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Przypadek testowy na poziomie testowania jednostkowego określa:",
+        "options": [
+            "dane, które będą użyte w teście",
+            "kolejność i sposób przeprowadzania poszczególnych testów",
+            "wymagania, które będą testowane",
+            "które testy zakończyły się sukcesem/porażką"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Co oznacza symbol związku na diagramie klas?",
+        "options": [
+            "że jedna klasa może utworzyć drugą klasę",
+            "że jedna klasa dziedziczy z innej klasy",
+            "że obiekt danej klasy musi być utworzony przed obiektem innej klasy",
+            "że dane klasy są powiązane w sposób znaczeniowy"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Przypadek użycia na diagramie przypadków użycia:",
+        "options": [
+            "odzwierciedla zespół czynności stanowiących całość zadania z punktu widzenia aktora",
+            "odzwierciedla krok w działaniu systemu, który nie jest dalej dekomponowany na mniejsze części składowe",
+            "może być powiązany z maksymalnie jednym aktorem",
+            "odzwierciedla stan, w jakim może znaleźć się oprogramowanie"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Mistrz Scruma:",
+        "options": [
+            "formułuje i doprecyzowuje wymagania wobec oprogramowania",
+            "zapewnia zrozumienie i stosowanie metodyki przez Zespół Scrumowy",
+            "zajmuje się głównie przydzieleniem zadań poszczególnym deweloperom",
+            "weryfikuje poprawność zaimplementowania poszczególnych funkcjonalności"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Procedura testowania określa:",
+        "options": [
+            "wymagania, które będą testowane",
+            "kolejność i sposób przeprowadzania poszczególnych testów",
+            "które testy zakończyły się sukcesem/porażką",
+            "kroki wykonywane przez testera"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Testowanie systemowe ma na celu:",
+        "options": [
+            "ocenę współpracy połączonych składników oprogramowania",
+            "sprawdzenie działania poszczególnych elementarnych składników oprogramowania",
+            "wykrycie defektów w odniesieniu do specyfikacji wymagań oprogramowania",
+            "sprawdzenie oprogramowania w środowisku docelowym u użytkowników"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Wymagania funkcjonalne:",
+        "options": [
+            "powinny wynikać z przypadków testowych",
+            "powinny być sformułowane niezwłocznie po ukończeniu implementacji oprogramowania",
+            "nie powinny być opracowywane na etapie projektowania",
+            "żadna z pozostałych odpowiedzi nie jest prawidłowa"
+        ],
+        "correct": [
+            3
+        ]
+    },
+    {
+        "question": "Co oznacza związek zawierania (include) na diagramie przypadków użycia?",
+        "options": [
+            "że dany aktor jest częścią danego przypadku użycia",
+            "że dany przypadek użycia jest bezpośrednio wywoływany przez danego aktora",
+            "że dany przypadek użycia jest częścią innego przypadku użycia",
+            "że jeden przypadek użycia następuje bezpośrednio po ukończeniu innego przypadku użycia"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Modele jakości przedstawione w normach ISO 9126 czy serii 25010:",
+        "options": [
+            "zawierają rekomendacje dotyczące sposobu opracowania architektury oprogramowania o wysokiej jakości",
+            "przedstawiają cechy jakości i zawieranie się poszczególnych cech w innych cechach",
+            "informują o sposobie osiągnięcia wysokiej jakości oprogramowania",
+            "wskazują, jak zorganizować proces wytwarzania oprogramowania"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Iteracja w metodyce zwinnej:",
+        "options": [
+            "trwa maksymalnie kilka tygodni",
+            "trwa zwykle około dwóch miesięcy",
+            "trwa zwykle około pół roku",
+            "trwa maksymalnie kilka dni"
+        ],
+        "correct": [
+            0
+        ]
+    },
+    {
+        "question": "Wymaganie funkcjonalne:",
+        "options": [
+            "określa aspekty jakościowe oprogramowania",
+            "formułowane jest zawsze w formie diagramu",
+            "określa funkcję realizowaną przez oprogramowanie",
+            "dotyczy aspektów związanych z łatwością obsługi oprogramowania"
+        ],
+        "correct": [
+            2
+        ]
+    },
+    {
+        "question": "Spoistość w odniesieniu do architektury oprogramowania mówi o tym, że:",
+        "options": [
+            "powiązania wewnątrz poszczególnych podsystemów powinny być luźne",
+            "powiązania wewnątrz poszczególnych podsystemów powinny być ścisłe",
+            "powiązania pomiędzy podsystemami powinny być luźne",
+            "powiązania pomiędzy podsystemami powinny być ścisłe"
+        ],
+        "correct": [
+            1
+        ]
+    },
+    {
+        "question": "Metody testowania z grupy czarnej skrzynki:",
+        "options": [
+            "nie wykorzystują informacji o wewnętrznej strukturze testowanego programu",
+            "najczęściej dotyczą testowania jednostkowego",
+            "nie mogą być użyte do testowania systemowego",
+            "wykorzystują informacje o wewnętrznej strukturze testowanego programu"
+        ],
+        "correct": [
+            0
+        ]
+    }
+]

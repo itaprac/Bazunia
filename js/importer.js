@@ -8,6 +8,7 @@ const DEFAULT_IMPORT_OPTIONS = {
   source: 'user-import',
   readOnlyContent: false,
   reservedDeckIds: [],
+  privateDeckLimit: null,
 };
 
 const DECK_ID_RE = /^[a-z0-9_-]+$/i;
@@ -29,6 +30,9 @@ function normalizeImportOptions(options = {}) {
     reservedDeckIds: Array.isArray(merged.reservedDeckIds)
       ? [...new Set(merged.reservedDeckIds.filter((id) => typeof id === 'string' && id.trim().length > 0))]
       : [],
+    privateDeckLimit: Number.isFinite(merged.privateDeckLimit) && merged.privateDeckLimit > 0
+      ? Math.floor(merged.privateDeckLimit)
+      : null,
   };
 }
 
@@ -262,6 +266,16 @@ function registerImport(data, options = {}) {
   const decks = storage.getDecks();
   const existingIndex = decks.findIndex(d => d.id === data.deck.id);
   const existingDeck = existingIndex >= 0 ? decks[existingIndex] : null;
+  if (
+    importOptions.scope === 'private'
+    && existingIndex < 0
+    && Number.isFinite(importOptions.privateDeckLimit)
+  ) {
+    const privateDeckCount = decks.filter((d) => d.scope === 'private').length;
+    if (privateDeckCount >= importOptions.privateDeckLimit) {
+      throw new Error(`Limit prywatnych talii na użytkownika to ${importOptions.privateDeckLimit}.`);
+    }
+  }
   const hasImportedGroup = Object.prototype.hasOwnProperty.call(data.deck, 'group');
   const importedGroup = normalizeDeckGroup(data.deck.group);
   const existingGroup = normalizeDeckGroup(existingDeck?.group);

@@ -1,0 +1,1622 @@
+[
+  {
+    "question": "Która warstwa silnika gry znajduje się najniżej w hierarchii abstrakcji i wymaga najrzadszych zmian?",
+    "options": [
+      "Systemy podstawowe (Core Systems)",
+      "SDK osób trzecich (Third-party SDKs)",
+      "Sprzęt i sterowniki",
+      "Warstwa niezależności od platformy"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Jaka jest główna różnica między 'grą' a 'silnikiem gry' według definicji wykładowej?",
+    "options": [
+      "Gra jest ustrukturyzowaną zabawą, a silnik to oprogramowanie stanowiące jej fundament",
+      "Silnik gry jest zawsze oprogramowaniem otwartym (open source)",
+      "Gra nie wymaga interakcji z użytkownikiem, silnik tak",
+      "Nie ma żadnej różnicy, terminy te są tożsame"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Który z wymienionych silników był podstawą wczesnych gier cRPG, takich jak Baldur's Gate?",
+    "options": [
+      "Quake Engine",
+      "Infinity Engine",
+      "REDEngine",
+      "Source Engine"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W kontekście pętli głównej gry, co dzieje się bezpośrednio po badaniu wejścia od gracza?",
+    "options": [
+      "Wyświetlenie obrazu na ekranie",
+      "Zwolnienie zasobów pamięci",
+      "Aktualizacja sceny i logiki gry",
+      "Wczytywanie nowych modeli 3D"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Która z macierzy 4x4 we współrzędnych jednorodnych odpowiada za translację (przesunięcie)?",
+    "options": [
+      "Macierz mająca wartości przesunięcia w ostatniej kolumnie",
+      "Macierz mająca wartości na głównej przekątnej",
+      "Macierz jednostkowa",
+      "Macierz o wszystkich wartościach równych zero"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Co oznacza wynik 0 (zero) przy obliczaniu iloczynu skalarnego (dot product) dwóch wektorów?",
+    "options": [
+      "Wektory są równoległe",
+      "Wektory są prostopadłe",
+      "Wektory mają przeciwny zwrot",
+      "Wektory mają długość równą 1"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Do czego służą kwaterniony w silnikach gier?",
+    "options": [
+      "Do obliczania oświetlenia globalnego",
+      "Do reprezentowania rotacji, unikając blokady gimbala",
+      "Do przechowywania tekstur w formacie binarnym",
+      "Do detekcji kolizji sferycznych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika renderingu polega na liczeniu oświetlenia po ustaleniu parametrów obiektów zapisanych w G-buforze?",
+    "options": [
+      "Forward Rendering",
+      "Deferred Rendering",
+      "Ray Tracing",
+      "Mesh Shading"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'Z-fighting'?",
+    "options": [
+      "Metodą optymalizacji cieni",
+      "Błędem graficznym wynikającym z nakładania się poligonów na tej samej głębokości",
+      "Szybkim ruchem kamery w osi Z",
+      "Techniką wygładzania krawędzi"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który algorytm AA (Anti-aliasing) wykorzystuje dane z poprzednich klatek do wygładzania obrazu?",
+    "options": [
+      "MSAA",
+      "FXAA",
+      "TAA (Temporal AA)",
+      "FSAA"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "W układzie współrzędnych sferycznych, co określają parametry (ρ, ϕ, Θ)?",
+    "options": [
+      "Trzy odległości od osi X, Y, Z",
+      "Odległość od początku układu i dwa kąty",
+      "Pozycję na mapie wysokości (Heightmap)",
+      "Kolor piksela w formacie HDR"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaka operacja na punktach (P) i wektorach (V) jest geometrycznie niepoprawna?",
+    "options": [
+      "P + V = P",
+      "P - P = V",
+      "P + P",
+      "V + V = V"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Który collider jest najprostszy i najszybszy w obliczeniach kolizji?",
+    "options": [
+      "OBB (Oriented Bounding Box)",
+      "Sfera (Sphere)",
+      "AABB (Axis-Aligned Bounding Box)",
+      "Otoczka wypukła (Convex Hull)"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym zajmuje się programista narzędzi (Tools programmer)?",
+    "options": [
+      "Pisaniem shaderów dla wody",
+      "Tworzeniem oprogramowania wspomagającego pracę artystów i projektantów",
+      "Zarządzaniem serwerami multiplayer",
+      "Nagrywaniem sesji Motion Capture"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Frustum Culling'?",
+    "options": [
+      "Odrzucanie obiektów znajdujących się poza bryłą widzenia kamery",
+      "Zastępowanie modeli 3D ich płaskimi obrazami",
+      "Łączenie tekstur w atlasy",
+      "Symulacja fizyki szmacianej lalki"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Który model animacji polega na deformacji wierzchołków na podstawie ruchu 'kości'?",
+    "options": [
+      "Animacja wierzchołkowa",
+      "Animacja sprite'ów",
+      "Animacja szkieletowa",
+      "Morfologia"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Jaki jest główny cel stosowania technologii DLSS?",
+    "options": [
+      "Zwiększenie liczby trójkątów w modelu",
+      "Rekonstrukcja obrazu z niższej rozdzielczości za pomocą AI w celu poprawy wydajności",
+      "Symulacja realistycznych odbić w lustrach",
+      "Eliminacja opóźnień w grach sieciowych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który alokator pamięci jest najszybszy, ale pozwala na zwalnianie tylko wszystkich danych naraz?",
+    "options": [
+      "Pool Allocator",
+      "Stack Allocator",
+      "Malloc",
+      "Heap Allocator"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'LOD' (Level of Detail)?",
+    "options": [
+      "System zarządzania dźwiękiem przestrzennym",
+      "Technika upraszczania geometrii obiektów znajdujących się daleko od kamery",
+      "Format zapisu stanów gry",
+      "Metoda oświetlania wnętrz"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się parametr 'w' dodawany do współrzędnych (x, y, z) w celu umożliwienia translacji za pomocą macierzy?",
+    "options": [
+      "Współrzędna sferyczna",
+      "Współrzędna jednorodna",
+      "Wektor normalny",
+      "Skalar oświetlenia"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co oznacza skrót AABB w kontekście detekcji kolizji?",
+    "options": [
+      "Advanced Audio Binary Block",
+      "Axis-Aligned Bounding Box",
+      "Automated Asset Building Block",
+      "Active Animation Behavior Base"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który iloczyn wektorowy jest wykorzystywany do wyznaczenia kierunku prostopadłego do dwóch innych wektorów?",
+    "options": [
+      "Iloczyn skalarny (Dot product)",
+      "Iloczyn wektorowy (Cross product)",
+      "Interpolacja liniowa (LERP)",
+      "Normalizacja"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W jakiej przestrzeni współrzędnych znajdują się obiekty bezpośrednio po przeliczeniu ich pozycji względem kamery?",
+    "options": [
+      "Przestrzeń lokalna (Local space)",
+      "Przestrzeń globalna (World space)",
+      "Przestrzeń widoku (View space)",
+      "Przestrzeń ekranu (Screen space)"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Czym jest 'Gimbal Lock'?",
+    "options": [
+      "Blokadą zapisu danych na dysku",
+      "Utratą jednego stopnia swobody przy rotacji opartej na kątach Eulera",
+      "Błędem synchronizacji pionowej monitora",
+      "Zablokowaniem pętli głównej przez system fizyki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który komponent silnika odpowiada za efekty takie jak krew na ścianie czy ślady opon?",
+    "options": [
+      "System cząsteczkowy",
+      "System kalk (Decals)",
+      "System LOD",
+      "Frustum Culling"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaka jest główna cecha układu współrzędnych prawoskrętnego (RHS) w porównaniu do lewoskrętnego (LHS)?",
+    "options": [
+      "Oś Z jest skierowana w stronę obserwatora (w głąb ekranu w LHS)",
+      "Nie posiada osi Y",
+      "Służy tylko do obliczeń 2D",
+      "Zawsze używa radianów zamiast stopni"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Co to jest 'Ragdoll'?",
+    "options": [
+      "Technika optymalizacji tekstur",
+      "System animacji proceduralnej, gdzie ciało postaci reaguje jak zbiór połączonych brył sztywnych",
+      "Rodzaj kontrolera do gier arcade",
+      "Narzędzie do edycji terenu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który algorytm renderingu dzieli ekran na kafelki lub klastry, aby ograniczyć liczbę świateł na fragment?",
+    "options": [
+      "Forward Rendering",
+      "Tiled/Clustered Rendering",
+      "Ray Casting",
+      "Scanline Rendering"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Do czego służy technika 'Tone Mapping'?",
+    "options": [
+      "Do zmiany wysokości dźwięku",
+      "Do mapowania kolorów z zakresu HDR do zakresu obsługiwanego przez monitor (LDR)",
+      "Do wykrywania kolizji z terenem",
+      "Do przypisywania tekstur do modeli"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się struktura drzewiasta przyspieszająca sprawdzanie przecięć promieni w Ray Tracingu?",
+    "options": [
+      "BSP (Binary Space Partitioning)",
+      "BVH (Bounding Volume Hierarchy)",
+      "FSM (Finite State Machine)",
+      "LOD (Level of Detail)"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technologia RTX pozwala na zmniejszenie liczby próbek shadera w obszarach o niskim znaczeniu wizualnym?",
+    "options": [
+      "DLSS",
+      "Variable Rate Shading (VRS)",
+      "Mesh Shading",
+      "Ray Traced Reflections"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym charakteryzuje się 'Foveated Rendering'?",
+    "options": [
+      "Renderowaniem obrazu w pełnej jakości tylko w punkcie, na który patrzy użytkownik",
+      "Usuwaniem niewidocznych ścianek modeli",
+      "Automatycznym generowaniem poziomów",
+      "Przechowywaniem danych oświetlenia w teksturach"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Co powstaje w wyniku operacji: Punkt - Punkt?",
+    "options": [
+      "Nowy Punkt",
+      "Wektor (Kierunek)",
+      "Skalar",
+      "Macierz"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który element potoku graficznego (Pipeline) odpowiada za zamianę geometrii na piksele?",
+    "options": [
+      "Vertex Shader",
+      "Rasteryzator",
+      "Fragment Shader",
+      "Tesselator"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaką funkcję pełni 'V-Sync'?",
+    "options": [
+      "Zwiększa liczbę klatek na sekundę",
+      "Synchronizuje generowanie klatek z odświeżaniem monitora, zapobiegając rozrywaniu obrazu",
+      "Zmniejsza opóźnienie myszki (input lag)",
+      "Służy do kompresji tekstur"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z systemów odpowiada za znajdowanie ścieżek przez postacie NPC?",
+    "options": [
+      "Fizyka bryły sztywnej",
+      "Sztuczna Inteligencja (AI Pathfinding)",
+      "Renderer niskiego poziomu",
+      "Zarządca zasobów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Draw Call'?",
+    "options": [
+      "Polecenie narysowania grupy poligonów wysyłane z CPU do GPU",
+      "Funkcja w języku skryptowym",
+      "Metoda wczytywania plików z dysku",
+      "Połączenie między graczami w trybie multiplayer"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Który typ animacji polega na płynnym przechodzeniu między dwoma kształtami (np. wyrazami twarzy)?",
+    "options": [
+      "Animacja szkieletowa",
+      "Morfologia (Morph Targets)",
+      "Animacja sprite'ów",
+      "Ragdoll"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Dead zone' w kontekście kontrolerów?",
+    "options": [
+      "Obszar mapy, w którym gracz ginie",
+      "Zakres wychylenia drążka analogowego, który nie powoduje reakcji w grze",
+      "Moment, w którym kontroler się rozładowuje",
+      "Brak zasięgu w grze sieciowej"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który silnik został stworzony przez firmę CD Projekt RED?",
+    "options": [
+      "Frostbite",
+      "REDEngine",
+      "CryEngine",
+      "Godot"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W procesie tworzenia zasobów, co dzieje się podczas 'Serializacji'?",
+    "options": [
+      "Nakładanie tekstur na model",
+      "Zamiana obiektów w pamięci na format binarny możliwy do zapisu na dysku",
+      "Nagrywanie dźwięków w studio",
+      "Testowanie gry przez dział QA"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika AA jest najmniej obciążająca dla GPU, ale może powodować rozmycie obrazu?",
+    "options": [
+      "MSAA",
+      "SSAA",
+      "FXAA",
+      "DLSS"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Który format macierzy jest standardem przy wykonywaniu transformacji afinicznych w 3D?",
+    "options": [
+      "2x2",
+      "3x3",
+      "4x4",
+      "5x5"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Co określa termin 'FPS'?",
+    "options": [
+      "Liczbę wielokątów na ekranie",
+      "Liczbę klatek wyświetlanych w ciągu sekundy",
+      "Szybkość procesora",
+      "Opóźnienie sieciowe"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się proces odrzucania tylnych ścianek obiektów, których obserwator nie widzi?",
+    "options": [
+      "Frustum Culling",
+      "Backface Culling",
+      "Occlusion Culling",
+      "LOD"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która warstwa silnika zajmuje się asercjami i generatorami liczb losowych?",
+    "options": [
+      "Systemy podstawowe (Core)",
+      "Renderer",
+      "Warstwa sieciowa",
+      "Front End"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "W grach wieloosobowych, co oznacza 'Split-screen'?",
+    "options": [
+      "Grę przez internet",
+      "Podział ekranu na części dla wielu graczy lokalnych",
+      "Błąd synchronizacji pionowej",
+      "Wyświetlanie gry na dwóch monitorach"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'Atlas tekstur'?",
+    "options": [
+      "Zbiorem map wszystkich poziomów",
+      "Jedną dużą teksturą zawierającą wiele mniejszych obrazów w celu optymalizacji Draw Calls",
+      "Programem do malowania tekstur",
+      "Formatem plików graficznych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych jest silnikiem otwartoźródłowym (Open Source)?",
+    "options": [
+      "Unreal Engine",
+      "Unity",
+      "Godot",
+      "Frostbite"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "Kim w zespole produkcyjnym jest 'Modelarz pierwszoplanowy' (Foreground modeler)?",
+    "options": [
+      "Osobą tworzącą modele tła i horyzontu",
+      "Osobą tworzącą obiekty znajdujące się blisko gracza, wymagające największej liczby szczegółów",
+      "Osobą odpowiedzialną za animację szkieletową",
+      "Osobą zajmującą się optymalizacją siatek kolizji"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która przestrzeń współrzędnych odpowiada bezpośrednio położeniu piksela na ekranie monitora?",
+    "options": [
+      "Local space",
+      "View space",
+      "Clip space",
+      "Screen space"
+    ],
+    "correct": [ 3 ]
+  },
+  {
+    "question": "W kontekście układu współrzędnych biegunowych, co oznacza parametr 'r'?",
+    "options": [
+      "Kąt między punktem a osią X",
+      "Odległość punktu od początku układu współrzędnych (origin)",
+      "Promień krzywizny obiektywu kamery",
+      "Współczynnik odbicia światła"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się proces, w którym czas gry jest skalowany (np. w celu uzyskania efektu slow-motion)?",
+    "options": [
+      "V-Sync",
+      "Time scaling / Game clock manipulation",
+      "Interpolacja liniowa",
+      "Serializacja czasu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych systemów fizyki jest własnością firmy NVIDIA?",
+    "options": [
+      "Havok",
+      "PhysX",
+      "Open Dynamics Engine",
+      "Bullet"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym charakteryzuje się 'Animacja wierzchołkowa'?",
+    "options": [
+      "Wykorzystuje kości do poruszania modelem",
+      "Polega na bezpośredniej zmianie pozycji każdego wierzchołka modelu w każdej klatce",
+      "Służy wyłącznie do animacji interfejsu 2D",
+      "Wymaga zastosowania technologii Motion Capture"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaką rolę pełni 'Menedżer zasobów' (Asset Manager) w silniku gry?",
+    "options": [
+      "Renderuje cienie w czasie rzeczywistym",
+      "Zarządza ładowaniem, przechowywaniem i usuwaniem assetów (modeli, tekstur) z pamięci",
+      "Odpowiada za komunikację sieciową w trybie MMO",
+      "Służy do edycji skryptów AI"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika renderingu najlepiej radzi sobie z bardzo dużą liczbą dynamicznych źródeł światła?",
+    "options": [
+      "Forward Rendering",
+      "Deferred Rendering",
+      "Ray Casting",
+      "Wireframe Rendering"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'G-Buffer'?",
+    "options": [
+      "Pamięć podręczna procesora",
+      "Zbiór tekstur przechowujących dane o geometrii, normalnych i kolorze w Deferred Renderingu",
+      "Kontroler wejścia dla gracza",
+      "System zapisu stanu gry na serwerze"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W operacjach na wektorach, co oznacza wynik mnożenia wektora przez skalar k > 1?",
+    "options": [
+      "Zmianę kierunku wektora na przeciwny",
+      "Wydłużenie wektora przy zachowaniu jego kierunku",
+      "Obrót wektora o 90 stopni",
+      "Znormalizowanie wektora do długości 1"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Do czego służy funkcja 'atan2(y, x)' w matematyce gier?",
+    "options": [
+      "Do obliczania pola powierzchni trójkąta",
+      "Do wyznaczania kąta w pełnym zakresie 0-360 stopni na podstawie współrzędnych",
+      "Do mnożenia macierzy",
+      "Do wyznaczania odległości między dwoma punktami"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Kinematyka Odwrotna' (Inverse Kinematics)?",
+    "options": [
+      "Przewidywanie ruchu przeciwnika przez AI",
+      "Wyliczanie ułożenia stawów na podstawie pożądanej pozycji kończyny (np. dłoni lub stopy)",
+      "System cofania czasu w grze",
+      "Metoda renderowania przezroczystych obiektów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych formatów określa macierz jednostkową 3x3?",
+    "options": [
+      "Macierz z samymi zerami",
+      "Macierz z jedynkami na głównej przekątnej i zerami poza nią",
+      "Macierz z samymi jedynkami",
+      "Macierz, w której suma każdego wiersza wynosi 1"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W systemie audio, co oznacza termin 'Doppler Effect'?",
+    "options": [
+      "Zmianę głośności dźwięku",
+      "Zmianę częstotliwości dźwięku w zależności od prędkości źródła względem słuchacza",
+      "Efekt echa w jaskiniach",
+      "Kompresję plików MP3"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym zajmuje się 'Artysta oświetlenia' (Lighting Artist)?",
+    "options": [
+      "Tworzeniem tekstur emisyjnych",
+      "Rozmieszczaniem źródeł światła i ustawianiem ich parametrów w celu budowania nastroju sceny",
+      "Optymalizacją kodu shadera",
+      "Projektowaniem efektów wybuchów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Occlusion Culling'?",
+    "options": [
+      "Uproszczony model kolizji",
+      "Pomijanie renderowania obiektów, które są całkowicie zasłonięte przez inne, nieprzezroczyste obiekty",
+      "Rodzaj wygładzania krawędzi",
+      "Nakładanie tekstur na mapę terenu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W hierarchii warstw silnika, gdzie znajduje się 'System plików'?",
+    "options": [
+      "W silniku renderującym",
+      "W warstwie niezależności od platformy (Platform Abstraction Layer)",
+      "W logice konkretnej gry",
+      "W SDK fizyki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technologia NVIDIA RTX służy do sprzętowego przyspieszania obliczeń przecięcia promieni?",
+    "options": [
+      "RT Cores",
+      "Tensor Cores",
+      "CUDA Cores",
+      "ROPs"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Czym jest 'BVH' (Bounding Volume Hierarchy)?",
+    "options": [
+      "Algorytmem kompresji wideo",
+      "Strukturą danych organizującą obiekty w hierarchiczne bryły brzegowe w celu przyspieszenia testów kolizji/promieni",
+      "Językiem skryptowym silnika Unreal",
+      "Typem oświetlenia globalnego"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co oznacza skrót HUD?",
+    "options": [
+      "High Utility Display",
+      "Head-Up Display",
+      "Hidden Unit Data",
+      "Heuristic Utility Design"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który system silnika odpowiada za symulację tkanin, włosów lub wody?",
+    "options": [
+      "Core System",
+      "System fizyki (często fizyka ciał miękkich)",
+      "Audio Engine",
+      "Resource Manager"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Ray Casting' w najprostszym ujęciu?",
+    "options": [
+      "Metoda nagrywania ruchu aktora",
+      "Wystrzeliwanie promienia z punktu w określonym kierunku w celu znalezienia punktu trafienia",
+      "Rodzaj animacji 2D",
+      "Technika antyaliasingu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych jest przykładem 'Silnika konkretnego rodzaju gry'?",
+    "options": [
+      "Unity",
+      "Infinity Engine (gry izometryczne RPG)",
+      "Unreal Engine 5",
+      "Vulkan"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaki jest główny cel stosowania 'Współrzędnych jednorodnych'?",
+    "options": [
+      "Ładniejszy wygląd cieni",
+      "Ujednolicenie translacji, rotacji i skalowania do postaci mnożenia przez jedną macierz 4x4",
+      "Zmniejszenie zużycia pamięci VRAM",
+      "Umożliwienie gry wieloosobowej"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Meshlet' w kontekście Mesh Shading?",
+    "options": [
+      "Mała paczka trójkątów (geometrii), przetwarzana równolegle przez GPU",
+      "Miniaturowa tekstura",
+      "Rodzaj błędu graficznego",
+      "Skrypt sterujący kamerą"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Który gatunek gier definiuje się jako ustrukturyzowaną zabawę z ustalonymi zasadami, wykorzystującą interakcję do wyświetlenia wirtualnego obrazu?",
+    "options": [
+      "Gra elektroniczna",
+      "Gra komputerowa",
+      "Zabawa interaktywna",
+      "Symulacja wideo"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się stanowisko osoby, która tworzy szkice i rysunki przekazujące wizję projektu reszcie zespołu?",
+    "options": [
+      "Artysta tekstur",
+      "Artysta koncepcyjny (Concept artist)",
+      "Dyrektor kreatywny",
+      "Modelarz tła"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z wymienionych pracowników zajmuje się projektowaniem poszczególnych poziomów i dodawaniem do nich obiektów interaktywnych?",
+    "options": [
+      "Projektant makro",
+      "Projektant mikro (Micro designer)",
+      "Scenarzysta",
+      "Producent"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym zajmuje się 'Programista runtime'?",
+    "options": [
+      "Tworzeniem narzędzi do edycji poziomów",
+      "Pracą bezpośrednio nad silnikiem i samą działającą grą",
+      "Zarządzaniem budżetem projektu",
+      "Pisaniem scenariusza i dialogów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który dział w firmie zajmuje się zakupem sprzętu i zapewnianiem wsparcia technicznego klientom?",
+    "options": [
+      "Dział marketingu",
+      "Dział IT",
+      "Kadra administracyjna",
+      "Zarząd"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaka jest główna cecha gier typu 'Arcade'?",
+    "options": [
+      "Skomplikowana fabuła i rozwój postaci",
+      "Prosta, dynamiczna rozgrywka nastawiona na zręczność",
+      "Symulacja rzeczywistych procesów fizycznych",
+      "Turowy system walki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który typ silnika pozwala stworzyć wiele gier koncepcyjnie i wizualnie podobnych do siebie (np. tylko RPG)?",
+    "options": [
+      "Silnik konkretnej gry",
+      "Silnik konkretnego rodzaju gry",
+      "Silnik dowolnego rodzaju gry",
+      "Silnik dowolnej gry"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co charakteryzuje silniki o większym stopniu swobody (uniwersalne) w porównaniu do dedykowanych?",
+    "options": [
+      "Są prostsze w obsłudze",
+      "Są bardziej skomplikowane i często mniej wydajne",
+      "Są zawsze darmowe",
+      "Nie wymagają programowania"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który silnik jest wymieniany jako jeden z pierwszych, stanowiący podwalinę pod serie Doom i Quake?",
+    "options": [
+      "Unreal Engine",
+      "Quake Engine",
+      "Source Engine",
+      "Frostbite"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który system operacyjny wykorzystuje 'wywłaszczanie' (preemption), co wymusza na grze rozsądne dysponowanie zasobami?",
+    "options": [
+      "Systemy konsolowe (PS5, Xbox)",
+      "Systemy PC (Windows, Linux, MacOS)",
+      "Systemy wbudowane w automaty",
+      "Żaden z powyższych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Do czego służą biblioteki takie jak STL lub Boost w silnikach gier?",
+    "options": [
+      "Do renderowania grafiki 3D",
+      "Do wydajnego przechowywania danych i operacji na nich (kontenery, algorytmy)",
+      "Do symulacji fizyki cieczy",
+      "Do odtwarzania muzyki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się biblioteka SDK służąca specjalnie do animacji postaci?",
+    "options": [
+      "Havok",
+      "Granny",
+      "PhysX",
+      "Vulkan"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Renderer niskiego poziomu'?",
+    "options": [
+      "System odpowiedzialny za menu gry",
+      "Interfejs łączący silnik z API graficznym (np. DirectX) w celu rysowania prymitywów",
+      "Edytor terenu",
+      "Moduł do obsługi dźwięku"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który system odpowiada za konwersję współrzędnych walcowych (r, Θ, z) na kartezjańskie?",
+    "options": [
+      "x = r cos Θ, y = r sin Θ, z = z",
+      "x = r sin Θ, y = r cos Θ, z = 0",
+      "x = r, y = Θ, z = z",
+      "x = r^2, y = sin Θ, z = z"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Czym różnią się 'Gry z dzielonym ekranem' od 'Gier jednoekranowych'?",
+    "options": [
+      "W jednoekranowych każdy ma swoją kamerę",
+      "W dzielonym ekranie każdy gracz ma wydzieloną część wyświetlającą jego perspektywę",
+      "Dzielony ekran działa tylko przez internet",
+      "Nie ma między nimi różnicy"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika animacji polega na poruszaniu obrazami 2D (np. w grach platformowych)?",
+    "options": [
+      "Animacja szkieletowa",
+      "Animacja sprite'ów",
+      "Morfologia",
+      "Ragdoll"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Asynchroniczne wczytywanie plików'?",
+    "options": [
+      "Wczytywanie danych przy zatrzymanej grze (loading screen)",
+      "Wczytywanie danych w tle, bez przerywania działania pętli głównej gry",
+      "Wczytywanie tylko plików tekstowych",
+      "Ręczne ładowanie zasobów przez gracza"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych programów służy głównie do tworzenia efektów cząsteczkowych (dym, ogień)?",
+    "options": [
+      "Photoshop",
+      "Embergen",
+      "Audacity",
+      "Reaper"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W kontekście urządzeń wejścia, czym jest 'Interpretacja akordów'?",
+    "options": [
+      "Odtwarzaniem muzyki w formacie MIDI",
+      "Wykrywaniem jednoczesnego naciśnięcia wielu przycisków jako specyficznej akcji",
+      "Mapowaniem klawiszy klawiatury",
+      "Wygładzaniem ruchu myszki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co oznacza skrót 'LHS' w matematyce 3D?",
+    "options": [
+      "Low Hierarchy System",
+      "Left-Handed System (układ lewoskrętny)",
+      "Light Handling Shader",
+      "Linear Homogeneous Space"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który element silnika zajmuje się 'replikowaniem stanu gry'?",
+    "options": [
+      "Renderer",
+      "Moduł Multiplayer",
+      "System Audio",
+      "Generator liczb losowych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się proces zastępowania szczegółowych obiektów prostszymi wraz ze wzrostem odległości?",
+    "options": [
+      "Culling",
+      "LOD (Level of Detail)",
+      "Rasteryzacja",
+      "Tesselacja"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym zajmuje się 'Reżyser rozgrywki' (Game director)?",
+    "options": [
+      "Tylko programowaniem fizyki",
+      "Zarządzaniem całością projektowanej rozgrywki i dbaniem o jej spójność",
+      "Sprzedażą gry do wydawców",
+      "Nagrywaniem dubbingu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W jakim celu stosuje się 'Mapy świetlne' (Lightmaps)?",
+    "options": [
+      "Aby postać mogła widzieć w ciemności",
+      "Aby przechowywać wstępnie obliczone oświetlenie statyczne na teksturach (optymalizacja)",
+      "Do generowania losowych lochów",
+      "Do oznaczania pozycji graczy w sieci"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która operacja matematyczna pozwala wyliczyć kąt między dwoma znormalizowanymi wektorami?",
+    "options": [
+      "Iloczyn wektorowy",
+      "Arcus cosinus z ich iloczynu skalarnego",
+      "Dodawanie wektorów",
+      "Mnożenie przez macierz translacji"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który rodzaj shadera jest odpowiedzialny za obliczanie koloru konkretnego piksela (fragmentu) na ekranie?",
+    "options": [
+      "Vertex Shader",
+      "Geometry Shader",
+      "Fragment (Pixel) Shader",
+      "Compute Shader"
+    ],
+    "correct": [ 2 ]
+  },
+  {
+    "question": "W kontekście Ray-tracingu, co oznacza termin 'Primary Ray'?",
+    "options": [
+      "Promień wystrzelony z kamery w stronę sceny",
+      "Promień odbity od lustra",
+      "Promień lecący od źródła światła do obiektu",
+      "Cień rzucany przez postać"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Czym jest 'Denoiser' w algorytmach śledzenia promieni?",
+    "options": [
+      "Systemem usuwającym dźwięki tła",
+      "Algorytmem redukującym szum wizualny wynikający z małej liczby próbek promieni",
+      "Narzędziem do kompresji tekstur",
+      "Filtrem wyostrzającym krawędzie"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Z-Buffer' (bufor głębokości)?",
+    "options": [
+      "Miejsce przechowywania wyników punktowych graczy",
+      "Struktura danych przechowująca informację o odległości każdego piksela od kamery",
+      "Pamięć podręczna dla skryptów AI",
+      "Rejestr procesora odpowiedzialny za operacje logiczne"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika pozwala na wyświetlanie obiektów o bardzo dużej liczbie wielokątów poprzez dynamiczne dzielenie trójkątów na mniejsze?",
+    "options": [
+      "Tesselacja",
+      "Normal Mapping",
+      "Mip-mapping",
+      "Frustum Culling"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Jaką funkcję w silniku pełni 'Garbage Collector'?",
+    "options": [
+      "Usuwa niepotrzebne obiekty 3D ze sceny",
+      "Automatycznie zwalnia nieużywaną pamięć operacyjną",
+      "Optymalizuje kod źródłowy gry",
+      "Naprawia błędy w plikach zapisu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co oznacza termin 'Baking' w odniesieniu do oświetlenia?",
+    "options": [
+      "Generowanie tekstur w czasie rzeczywistym",
+      "Wstępne przeliczanie oświetlenia statycznego i zapisywanie go w teksturach przed uruchomieniem gry",
+      "Symulację temperatury w silniku fizycznym",
+      "Proces kompilacji shaderów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który shader pozwala na wykonywanie ogólnych obliczeń na GPU, niezwiązanych bezpośrednio z rysowaniem geometrii?",
+    "options": [
+      "Compute Shader",
+      "Vertex Shader",
+      "Hull Shader",
+      "Domain Shader"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Czym jest 'Mip-mapping'?",
+    "options": [
+      "Tworzeniem mapy poziomów",
+      "Przechowywaniem tej samej tekstury w kilku mniejszych rozdzielczościach w celu optymalizacji i uniknięcia aliasingu",
+      "Metodą poruszania się postaci po mapie",
+      "Systemem generowania terenu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Draw Call Batching'?",
+    "options": [
+      "Grupowanie wielu obiektów w jedno wywołanie rysowania w celu odciążenia CPU",
+      "Tworzenie kopii zapasowych projektu",
+      "Równoległe przetwarzanie fizyki",
+      "Metoda synchronizacji dźwięku z obrazem"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Który wektor jest zawsze prostopadły do powierzchni poligonu?",
+    "options": [
+      "Wektor styczny (Tangent)",
+      "Wektor normalny (Normal)",
+      "Wektor binormalny (Binormal)",
+      "Wektor widoku (View vector)"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W kontekście shaderów, co oznacza skrót PBR?",
+    "options": [
+      "Point-Based Rendering",
+      "Physically Based Rendering (rendering oparty na fizyce)",
+      "Pixel Binary Resolution",
+      "Polygon Batching Record"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który model oświetlenia jest najprostszy i oblicza tylko oświetlenie bezpośrednie?",
+    "options": [
+      "Global Illumination",
+      "Local Illumination",
+      "Ray Tracing",
+      "Path Tracing"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'Skybox'?",
+    "options": [
+      "Pudełkiem z narzędziami dla programisty",
+      "Dużą teksturą (często sześcianem) otaczającą całą scenę, symulującą niebo i horyzont",
+      "Systemem kolizji dla samolotów",
+      "Rodzajem oświetlenia punktowego"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak nazywa się opóźnienie między akcją gracza a reakcją widoczną na ekranie?",
+    "options": [
+      "Jitter",
+      "Input Lag",
+      "Bandwidth",
+      "Ping"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który alokator pamięci jest najbardziej efektywny dla obiektów o tym samym rozmiarze (np. cząsteczek w systemie cząsteczkowym)?",
+    "options": [
+      "Stack Allocator",
+      "Pool Allocator (Alokator puli)",
+      "Double-Ended Stack Allocator",
+      "Heap Allocator"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'Frustum' w kontekście kamery w grze 3D?",
+    "options": [
+      "Typem tekstury nieba",
+      "Bryłą ściętą (ostrosłupem), która definiuje pole widzenia kamery",
+      "Algorytmem kompresji dźwięku",
+      "Rodzajem kontrolera ruchu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W procesie rasteryzacji, co to jest 'Fragment'?",
+    "options": [
+      "Część siatki modelu 3D",
+      "Potencjalny piksel wraz ze wszystkimi jego danymi (kolor, głębia), zanim trafi do bufora ramki",
+      "Krótki filmik przerywnikowy",
+      "Uszkodzony plik z zasobami"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co definiuje krzywa Beziera w silnikach gier?",
+    "options": [
+      "Gęstość atmosfery",
+      "Gładką ścieżkę lub kształt zdefiniowany za pomocą punktów kontrolnych",
+      "Sposób zapisu plików binarnych",
+      "Algorytm wykrywania kolizji sferycznych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który z poniższych systemów odpowiada za 'Culling' (odrzucanie)?",
+    "options": [
+      "Renderer",
+      "Fizyka",
+      "System audio",
+      "AI"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Co to jest 'Z-prepass'?",
+    "options": [
+      "Wstępne renderowanie głębi sceny, aby uniknąć kosztownych obliczeń oświetlenia dla zasłoniętych pikseli",
+      "Technika zapisu stanu gry",
+      "Przyspieszenie animacji szkieletowej",
+      "Metoda generowania cieni miękkich"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Jak nazywa się parametr materiału określający stopień chropowatości powierzchni w modelu PBR?",
+    "options": [
+      "Metallic",
+      "Roughness",
+      "Albedo",
+      "Ambient Occlusion"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która operacja na macierzach NIE jest przemienna (A * B != B * A)?",
+    "options": [
+      "Dodawanie macierzy",
+      "Mnożenie macierzy",
+      "Mnożenie macierzy przez skalar",
+      "Transponowanie macierzy"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co robi funkcja 'Lerp(a, b, t)'?",
+    "options": [
+      "Mnoży dwa wektory",
+      "Wykonuje interpolację liniową między wartościami a i b o współczynnik t",
+      "Normalizuje wektor do długości 1",
+      "Oblicza sinus kąta"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technologia RTX służy do rekonstrukcji promieni w celu uzyskania lepszej jakości efektów Ray-tracingu?",
+    "options": [
+      "Ray Reconstruction (część DLSS 3.5)",
+      "Frame Generation",
+      "V-Sync",
+      "Anti-Aliasing"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Czym jest 'Normal Mapping'?",
+    "options": [
+      "Metodą poruszania się po mapie",
+      "Techniką udawania detali geometrii poprzez modyfikację wektorów normalnych na powierzchni modelu",
+      "Systemem automatycznego generowania dróg",
+      "Standardem zapisu kolorów 8-bitowych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która część pętli gry odpowiada za utrzymanie stałej prędkości rozgrywki niezależnie od liczby FPS?",
+    "options": [
+      "Delta Time (czas od ostatniej klatki)",
+      "Buforowanie klatek",
+      "Rasteryzacja",
+      "Alokacja stosu"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "W kontekście fizyki, co to jest 'Impuls'?",
+    "options": [
+      "Nagła zmiana pędu obiektu wynikająca z przyłożonej siły w krótkim czasie",
+      "Stała prędkość obiektu",
+      "Masa obiektu pomnożona przez grawitację",
+      "Współczynnik tarcia"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Do czego służy 'Stencil Buffer'?",
+    "options": [
+      "Do przechowywania haseł graczy",
+      "Do maskowania obszarów ekranu (np. w celu uzyskania efektu portalu lub odbicia)",
+      "Do generowania losowych tekstur",
+      "Do kompresji plików dźwiękowych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która przestrzeń współrzędnych jest używana do opisu pozycji wierzchołków względem środka modelu (zanim zostanie on umieszczony w świecie)?",
+    "options": [
+      "World Space",
+      "Object/Local Space",
+      "View Space",
+      "Clip Space"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co oznacza skrót GPU?",
+    "options": [
+      "General Processing Unit",
+      "Graphics Processing Unit",
+      "Gaming Path Unit",
+      "Global Position Utility"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'Skeletal Retargeting'?",
+    "options": [
+      "Procesem przenoszenia animacji z jednego szkieletu na inny o różnych proporcjach",
+      "Usunięciem kości z modelu w celu optymalizacji",
+      "Nagrywaniem ruchu w studio MoCap",
+      "Rodzajem kolizji między postaciami"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "W systemie cząsteczkowym, co określa parametr 'Lifetime'?",
+    "options": [
+      "Prędkość poruszania się cząsteczki",
+      "Czas, po którym cząsteczka zostaje usunięta ze świata",
+      "Wielkość cząsteczki",
+      "Kolor cząsteczki"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który algorytm sortowania jest często używany w silnikach do renderowania obiektów przezroczystych (od najdalszych do najbliższych)?",
+    "options": [
+      "Sortowanie bąbelkowe",
+      "Back-to-Front sorting",
+      "Quick sort",
+      "Random sorting"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Ambient Occlusion'?",
+    "options": [
+      "Całkowity brak światła w scenie",
+      "Efekt zaciemnienia miejsc, do których trudniej dociera światło rozproszone (np. kąty, szczeliny)",
+      "Rodzaj przezroczystości wody",
+      "Metoda mapowania tekstur na kule"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który komponent silnika zajmuje się wywoływaniem zdarzeń w określonych odstępach czasu (np. co 5 sekund)?",
+    "options": [
+      "Physics Engine",
+      "Timer Manager / Scheduler",
+      "Input Manager",
+      "Video Player"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym jest 'NavMesh'?",
+    "options": [
+      "Siatką modelu gracza",
+      "Uproszczoną geometrią świata definiującą obszary, po których mogą poruszać się postacie AI",
+      "Teksturą nawigacji na ekranie (kompas)",
+      "Systemem zapisu współrzędnych GPS"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Vertex Buffer Object' (VBO)?",
+    "options": [
+      "Zdjęcie modelu",
+      "Bufor w pamięci GPU przechowujący dane o wierzchołkach (pozycje, kolory, UV)",
+      "Skrypt sterujący ruchem kamery",
+      "Nazwa formatu pliku 3D"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który wektor otrzymamy, jeśli znormalizujemy dowolny wektor niezerowy?",
+    "options": [
+      "Wektor o długości 0",
+      "Wektor o długości 1, zachowujący oryginalny kierunek",
+      "Wektor prostopadły",
+      "Wektor o długości równej 10"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaką funkcję pełni 'Shader Compiler'?",
+    "options": [
+      "Rysuje trójkąty na ekranie",
+      "Tłumaczy kod shadera (np. HLSL/GLSL) na kod zrozumiały dla konkretnej karty graficznej",
+      "Zamyka aplikację w przypadku błędu",
+      "Łączy tekstury w atlasy"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która osoba w dziale technicznym jest najważniejsza i zarządza całym projektem od strony technologicznej?",
+    "options": [
+      "Technical Director (Kierownik techniczny)",
+      "Chief Technical Officer (Naczelny kierownik techniczny)",
+      "Lead Runtime Programmer",
+      "Tools Programmer"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jak w materiałach zdefiniowano 'Inżyniera' (Engineer) w przemyśle gier?",
+    "options": [
+      "Osoba naprawiająca sprzęt komputerowy",
+      "Osoba projektująca i implementująca oprogramowanie potrzebne do stworzenia gry",
+      "Osoba odpowiedzialna za budowę serwerowni",
+      "Osoba zajmująca się wyłącznie fizyką obiektów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co jest głównym problemem przy stosowaniu wyłącznie zegara lokalnego w systemie animacji?",
+    "options": [
+      "Zbyt duże zużycie procesora",
+      "Trudność w synchronizacji kilku różnych animacji ze sobą",
+      "Błędy w wyświetlaniu tekstur",
+      "Konieczność używania kwaternionów"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technika pozwala na płynne przejście między różnymi pózami bohatera (np. z idącego w biegnącego)?",
+    "options": [
+      "Animation Blending (Mieszanie animacji)",
+      "Frustum Culling",
+      "Normal Mapping",
+      "Texture Streaming"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Dlaczego 'Motion Adaptive Shading' pozwala na zmniejszenie liczby próbek bez widocznej utraty jakości?",
+    "options": [
+      "Ponieważ oczy nie widzą kolorów w ruchu",
+      "Ponieważ ludzkie oczy nie są w stanie płynnie śledzić bardzo szybkich skoków obrazu (rozmycie ruchu)",
+      "Ponieważ GPU automatycznie wyłącza cienie w ruchu",
+      "Ponieważ tekstury w ruchu są zawsze mniejsze"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Na czym polega 'Content Adaptive Shading'?",
+    "options": [
+      "Na zmianie treści gry w zależności od wieku gracza",
+      "Na dopasowaniu częstotliwości próbkowania do szczegółowości samej tekstury/obrazu",
+      "Na usuwaniu modeli, które nie pasują do sceny",
+      "Na renderowaniu tylko obiektów statycznych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jakie urządzenie jest niezbędne do poprawnego działania algorytmu 'Foveated Rendering'?",
+    "options": [
+      "Kontroler ruchu",
+      "Eye-tracker (system śledzenia wzroku)",
+      "Mikrofon",
+      "Drugi monitor"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Czym w technologii Mesh Shading zajmuje się 'Task Shader'?",
+    "options": [
+      "Rysowaniem pojedynczych pikseli",
+      "Tworzeniem 'meshletów' w oparciu o informacje od programisty",
+      "Wczytywaniem plików z dysku",
+      "Obliczaniem kolizji fizycznych"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który shader w nowoczesnym potoku RTX operuje bezpośrednio na 'meshletach', tworząc konkretne kształty?",
+    "options": [
+      "Vertex Shader",
+      "Mesh Shader",
+      "Pixel Shader",
+      "Compute Shader"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Jaka jest główna różnica między 'Zabawą' a 'Rozrywką' według definicji wykładowych?",
+    "options": [
+      "Rozrywka to ogół przyjemności, a zabawa to świadomie podjęte aktywne działanie",
+      "Zabawa wymaga komputera, rozrywka nie",
+      "Nie ma żadnej różnicy",
+      "Zabawa jest zawsze darmowa"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Jak nazywa się technika VRS (Variable Rate Shading) stosowana w VR, skupiająca jakość w centrum pola widzenia?",
+    "options": [
+      "Foveated Rendering",
+      "Motion Blurring",
+      "Occlusion Culling",
+      "Deferred Shading"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Co to jest 'Globalna oś animacji'?",
+    "options": [
+      "Linia wyznaczająca środek świata",
+      "Oś czasu ($\tau$), do której odnoszą się wszystkie uruchomione w grze animacje",
+      "Oś Z w układzie współrzędnych",
+      "Prędkość obrotu postaci"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W hierarchii ról, kto zajmuje się komunikacją z zespołem w sprawie nowych technologii i zarządza częścią projektu?",
+    "options": [
+      "Technical Director",
+      "Junior Programmer",
+      "Artist",
+      "Tester QA"
+    ],
+    "correct": [ 0 ]
+  },
+  {
+    "question": "Jaką zaletę ma system Mesh Shading nad tradycyjnym Vertex Shaderem?",
+    "options": [
+      "Pozwala na rysowanie w 2D",
+      "Wykonuje obliczenia wielowątkowo na grupach poligonów, co przyspiesza renderowanie skomplikowanych obiektów",
+      "Nie wymaga karty graficznej",
+      "Zmniejsza zużycie energii przez monitor"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co to jest 'Animation Post-processing'?",
+    "options": [
+      "Nakładanie filtrów kolorystycznych na postać",
+      "Modyfikacja pózy animacji po jej wyliczeniu (np. dopasowanie stóp do nierównego terenu)",
+      "Eksportowanie animacji do formatu MP4",
+      "Tworzenie tekstur dla szkieletu"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "W kontekście VRS, co oznacza 'Shading Rate'?",
+    "options": [
+      "Częstotliwość odświeżania monitora",
+      "Liczba próbek shadera na dany obszar pikseli",
+      "Prędkość poruszania się cieni",
+      "Rozmiar pliku shadera"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który element systemu animacji przechowuje informacje o aktualnym ułożeniu wszystkich kości postaci w danej klatce?",
+    "options": [
+      "Klip animacji",
+      "Poza (Pose)",
+      "Szkielet",
+      "Mesh"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Do czego służy parametr 'R' w równaniach czasu animacji?",
+    "options": [
+      "Do określenia promienia (Radius) modelu",
+      "Do skalowania prędkości odtwarzania animacji",
+      "Do definiowania rozdzielczości (Resolution)",
+      "Do obliczania rotacji (Rotation)"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Gdzie najczęściej wykorzystuje się 'Task Shadery'?",
+    "options": [
+      "W symulacji fizyki wody",
+      "W zaawansowanym usuwaniu (culling) geometrii przed etapem Mesh Shadera",
+      "W nagrywaniu dźwięku",
+      "W obsłudze interfejsu użytkownika"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Co dzieje się, gdy animacja ma skalę $R = 2.0$?",
+    "options": [
+      "Odtwarza się dwa razy szybciej",
+      "Odtwarza się dwa razy wolniej",
+      "Jest dwa razy większa",
+      "Ma dwa razy więcej kości"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Który system silnika odpowiada za synchronizację czasu między serwerem a klientem w grach sieciowych?",
+    "options": [
+      "Render Engine",
+      "Network Clock / Synchronization System",
+      "Physics Engine",
+      "Scripting Engine"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Dlaczego w Foveated Renderingu obszary peryferyjne są renderowane w niższej jakości?",
+    "options": [
+      "Ponieważ tam nie dociera światło",
+      "Ponieważ ludzka siatkówka ma tam mniejsze zagęszczenie receptorów odpowiedzialnych za ostrość widzenia",
+      "Aby zaoszczędzić miejsce na dysku",
+      "Jest to błąd wynikający z zakrzywienia soczewek"
+    ],
+    "correct": [ 1 ]
+  },
+  {
+    "question": "Która technologia rekonstrukcji obrazu korzysta z wektorów ruchu i danych z poprzednich klatek (temporal data)?",
+    "options": [
+      "DLSS",
+      "Baking",
+      "MIP-Mapping",
+      "Flat Shading"
+    ],
+    "correct": [ 0 ]
+  }
+]
