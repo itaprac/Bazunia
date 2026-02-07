@@ -28,6 +28,7 @@ import {
   showView,
   showNotification,
   showConfirm,
+  showPrompt,
 } from './ui.js';
 import { shuffle, isFlashcard, generateId } from './utils.js';
 import { hasRandomizer, hasTemplate, randomize } from './randomizers.js';
@@ -75,8 +76,7 @@ const DEFAULT_APP_SETTINGS = {
   deckListMode: 'compact', // 'compact' or 'classic'
   shuffleAnswers: true,
   questionOrder: 'shuffled', // 'shuffled' or 'ordered'
-  randomizeNumbers: false,
-  flaggedInAnki: false, // include flagged cards in Anki study mode
+  flaggedInAnki: true, // include flagged cards in normal Anki mode
   keybindings: {
     showAnswer: [' ', 'Enter'],
     again: ['1'],
@@ -147,6 +147,22 @@ function slugifyDeckId(value) {
     .replace(/[^a-z0-9_-]+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+function normalizeDeckGroup(value) {
+  if (typeof value !== 'string') return '';
+  return value.trim().replace(/\s+/g, ' ');
+}
+
+function getAvailableDeckGroups() {
+  const collator = new Intl.Collator('pl', { sensitivity: 'base', numeric: true });
+  const groups = new Set();
+  for (const deckMeta of storage.getDecks()) {
+    if (isDeckReadOnlyContent(deckMeta)) continue;
+    const groupName = normalizeDeckGroup(deckMeta.group);
+    if (groupName) groups.add(groupName);
+  }
+  return Array.from(groups).sort((a, b) => collator.compare(a, b));
 }
 
 function getUniqueDeckId(base) {
@@ -241,17 +257,31 @@ function migrateDeckMetadata() {
 
 // --- Per-deck settings ---
 
+const DEFAULT_DECK_BEHAVIOR_SETTINGS = Object.freeze({
+  builtInCalculationVariants: false,
+});
+
 function getSettingsForDeck(deckId) {
+  const defaults = {
+    ...DEFAULT_SETTINGS,
+    ...DEFAULT_DECK_BEHAVIOR_SETTINGS,
+  };
   const saved = storage.getDeckSettings(deckId);
   if (saved) {
-    return { ...DEFAULT_SETTINGS, ...saved };
+    return { ...defaults, ...saved };
   }
   // Fallback: try legacy global settings (migration)
   const legacy = storage.getSettings();
   if (legacy) {
-    return { ...DEFAULT_SETTINGS, ...legacy };
+    return { ...defaults, ...legacy };
   }
-  return { ...DEFAULT_SETTINGS };
+  return { ...defaults };
+}
+
+function shouldRandomizeQuestion(question, deckSettings = currentDeckSettings) {
+  if (!question) return false;
+  if (hasTemplate(question)) return true;
+  return !!(deckSettings?.builtInCalculationVariants && hasRandomizer(question.id));
 }
 
 // --- Initialization ---
@@ -812,6 +842,7 @@ function bindModeSelectEvents(deckId, stats) {
 
 function navigateToTestConfig(deckId) {
   currentDeckId = deckId;
+  currentDeckSettings = getSettingsForDeck(deckId);
   const deckMeta = storage.getDecks().find(d => d.id === deckId);
   const deckName = deckMeta ? deckMeta.name : deckId;
   const questions = getFilteredQuestions(deckId).filter(q => !isFlashcard(q));
@@ -842,6 +873,7 @@ function bindTestConfigEvents(deckId, totalQuestions) {
 
 function startTest(deckId, questionCount) {
   currentDeckId = deckId;
+  currentDeckSettings = getSettingsForDeck(deckId);
   const allQuestions = getFilteredQuestions(deckId).filter(q => !isFlashcard(q));
   if (appSettings.questionOrder === 'ordered') {
     // Sort by originalIndex (if present) for ordered mode
@@ -862,7 +894,7 @@ function showTestQuestion() {
 
   // Apply randomization (only on first visit, not when going back)
   // Template questions always randomize; hardcoded only when setting is on
-  const shouldRandomize = hasTemplate(question) || (appSettings.randomizeNumbers && hasRandomizer(question.id));
+  const shouldRandomize = shouldRandomizeQuestion(question, currentDeckSettings);
   if (shouldRandomize && !testShuffledMap.has(testCurrentIndex)) {
     const variant = randomize(question.id, question);
     if (variant) {
@@ -1536,6 +1568,7 @@ function navigateToSettings(deckId, returnTo = 'mode-select') {
   renderSettings(deckSettings, DEFAULT_SETTINGS, {
     deckMeta,
     canEditMeta: canEditDeckContent(deckId),
+    groupOptions: getAvailableDeckGroups(),
   });
   bindSettingsEvents(deckId);
 }
@@ -1722,16 +1755,6 @@ function bindAppSettingsEvents() {
     });
   }
 
-  // Randomize numbers toggle
-  const randomizeToggle = document.getElementById('toggle-randomize');
-  if (randomizeToggle) {
-    randomizeToggle.addEventListener('change', () => {
-      appSettings.randomizeNumbers = randomizeToggle.checked;
-      storage.saveAppSettings(appSettings);
-    });
-  }
-
-  // Flagged in Anki toggle
   const flaggedAnkiToggle = document.getElementById('toggle-flagged-anki');
   if (flaggedAnkiToggle) {
     flaggedAnkiToggle.addEventListener('change', () => {
@@ -1809,7 +1832,86 @@ function startKeyRecording(bindingKey, buttonEl) {
 
 // --- Deck Settings ---
 
+function bindGroupSelectControl(selectEl, options = {}) {
+  if (!selectEl) return;
+
+  const promptTitle = options.promptTitle || 'Nowa grupa';
+  const promptText = options.promptText || 'Podaj nazwę nowej grupy:';
+  const onInvalid = typeof options.onInvalid === 'function'
+    ? options.onInvalid
+    : (message) => showNotification(message, 'error');
+  let previousValue = selectEl.value || '';
+
+  const addOrSelectGroup = (rawValue) => {
+    const groupName = normalizeDeckGroup(rawValue);
+    if (!groupName) {
+      onInvalid('Nazwa nowej grupy nie może być pusta.');
+      selectEl.value = previousValue;
+      return;
+    }
+
+    const normalizedTarget = groupName.toLocaleLowerCase('pl');
+    const existingOption = Array.from(selectEl.options).find((opt) => {
+      const value = normalizeDeckGroup(opt.value);
+      if (!value || value === '__new__') return false;
+      return value.toLocaleLowerCase('pl') === normalizedTarget;
+    });
+
+    if (existingOption) {
+      selectEl.value = existingOption.value;
+      previousValue = existingOption.value;
+      return;
+    }
+
+    const option = document.createElement('option');
+    option.value = groupName;
+    option.textContent = groupName;
+    const newOption = selectEl.querySelector('option[value="__new__"]');
+    selectEl.insertBefore(option, newOption || null);
+    selectEl.value = groupName;
+    previousValue = groupName;
+  };
+
+  selectEl.addEventListener('focus', () => {
+    previousValue = selectEl.value || '';
+  });
+
+  selectEl.addEventListener('change', async () => {
+    if (selectEl.value !== '__new__') {
+      previousValue = selectEl.value || '';
+      return;
+    }
+
+    const entered = await showPrompt({
+      title: promptTitle,
+      text: promptText,
+      label: 'Nazwa grupy',
+      placeholder: 'np. semestr5',
+      confirmLabel: 'Utwórz',
+      cancelLabel: 'Anuluj',
+      validator: (value) => {
+        if (!normalizeDeckGroup(value)) {
+          return 'Nazwa grupy nie może być pusta.';
+        }
+        return true;
+      },
+    });
+    if (entered === null) {
+      selectEl.value = previousValue;
+      return;
+    }
+
+    addOrSelectGroup(entered);
+  });
+}
+
 function bindSettingsEvents(deckId) {
+  const groupSelect = document.getElementById('set-deck-group-select');
+  bindGroupSelectControl(groupSelect, {
+    promptTitle: 'Nowa grupa talii',
+    promptText: 'Podaj nazwę nowej grupy dla talii:',
+  });
+
   const saveDeckMetaBtn = document.getElementById('btn-save-deck-meta');
   if (saveDeckMetaBtn) {
     saveDeckMetaBtn.addEventListener('click', () => {
@@ -1822,10 +1924,14 @@ function bindSettingsEvents(deckId) {
   });
 
   document.getElementById('btn-restore-defaults').addEventListener('click', () => {
-    storage.saveDeckSettings(deckId, { ...DEFAULT_SETTINGS });
+    storage.saveDeckSettings(deckId, {
+      ...DEFAULT_SETTINGS,
+      ...DEFAULT_DECK_BEHAVIOR_SETTINGS,
+    });
     renderSettings(DEFAULT_SETTINGS, DEFAULT_SETTINGS, {
       deckMeta: getDeckMeta(deckId),
       canEditMeta: canEditDeckContent(deckId),
+      groupOptions: getAvailableDeckGroups(),
     });
     bindSettingsEvents(deckId);
     showNotification('Przywrócono ustawienia domyślne.', 'info');
@@ -1857,8 +1963,18 @@ function saveDeckMetadata(deckId) {
 
   const nameInput = document.getElementById('set-deck-name');
   const descInput = document.getElementById('set-deck-description');
+  const groupSelect = document.getElementById('set-deck-group-select');
+  const groupInput = document.getElementById('set-deck-group');
   const nextName = (nameInput?.value || '').trim();
   const nextDescription = (descInput?.value || '').trim();
+  const nextGroup = groupSelect
+    ? normalizeDeckGroup(groupSelect.value || '')
+    : normalizeDeckGroup(groupInput?.value || '');
+
+  if (groupSelect && groupSelect.value === '__new__') {
+    showNotification('Najpierw podaj nazwę nowej grupy w popupie.', 'error');
+    return;
+  }
 
   if (!nextName) {
     showNotification('Nazwa talii nie może być pusta.', 'error');
@@ -1872,17 +1988,23 @@ function saveDeckMetadata(deckId) {
     return;
   }
 
-  decks[idx] = {
+  const nextDeckMeta = {
     ...decks[idx],
     name: nextName,
     description: nextDescription,
   };
+  if (nextGroup) {
+    nextDeckMeta.group = nextGroup;
+  } else {
+    delete nextDeckMeta.group;
+  }
+  decks[idx] = nextDeckMeta;
   storage.saveDecks(decks);
 
   const settingsDeckName = document.getElementById('settings-deck-name');
   if (settingsDeckName) settingsDeckName.textContent = nextName;
 
-  showNotification('Nazwa i opis talii zostały zapisane.', 'success');
+  showNotification('Nazwa, opis i grupa talii zostały zapisane.', 'success');
 }
 
 function parseSteps(value) {
@@ -1896,6 +2018,7 @@ function clamp(val, min, max) {
 }
 
 function saveDeckSettings(deckId) {
+  const builtInCalculationVariants = document.getElementById('set-builtInCalculationVariants')?.checked === true;
   const newCardsPerDay = clamp(parseInt(document.getElementById('set-newCardsPerDay').value) || 20, 1, 9999);
   const maxReviewsPerDay = clamp(parseInt(document.getElementById('set-maxReviewsPerDay').value) || 200, 1, 9999);
   const learningSteps = parseSteps(document.getElementById('set-learningSteps').value);
@@ -1915,6 +2038,7 @@ function saveDeckSettings(deckId) {
 
   const deckSettings = {
     ...getSettingsForDeck(deckId),
+    builtInCalculationVariants,
     newCardsPerDay,
     maxReviewsPerDay,
     learningSteps,
@@ -2020,7 +2144,7 @@ function showQuestionForCard(card) {
   }
 
   // Apply randomization: template questions always, hardcoded only when setting is on
-  const shouldRandomize = hasTemplate(currentQuestion) || (appSettings.randomizeNumbers && hasRandomizer(currentQuestion.id));
+  const shouldRandomize = shouldRandomizeQuestion(currentQuestion, currentDeckSettings);
   if (shouldRandomize) {
     const variant = randomize(currentQuestion.id, currentQuestion);
     if (variant) {
@@ -2504,6 +2628,11 @@ function openCreateDeckModal() {
           <input class="modal-form-input" id="create-deck-name" type="text" required>
         </div>
         <div class="modal-form-group">
+          <label class="modal-form-label" for="create-deck-group-select">Grupa (opcjonalnie)</label>
+          <select class="modal-form-input" id="create-deck-group-select"></select>
+          <div class="modal-form-hint">Wybierz istniejącą grupę albo utwórz nową.</div>
+        </div>
+        <div class="modal-form-group">
           <label class="modal-form-label" for="create-deck-id">ID talii</label>
           <input class="modal-form-input" id="create-deck-id" type="text" required>
           <div class="modal-form-hint">Dozwolone: litery, cyfry, myślnik i podkreślenie.</div>
@@ -2524,10 +2653,28 @@ function openCreateDeckModal() {
 
   const form = overlay.querySelector('#create-deck-form');
   const nameInput = overlay.querySelector('#create-deck-name');
+  const groupSelect = overlay.querySelector('#create-deck-group-select');
   const idInput = overlay.querySelector('#create-deck-id');
   const descInput = overlay.querySelector('#create-deck-description');
   const errorEl = overlay.querySelector('#create-deck-error');
   const cancelBtn = overlay.querySelector('#btn-create-deck-cancel');
+
+  const addGroupOption = (value, label) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    groupSelect.appendChild(option);
+  };
+  addGroupOption('', 'Bez grupy');
+  for (const groupName of getAvailableDeckGroups()) {
+    addGroupOption(groupName, groupName);
+  }
+  addGroupOption('__new__', '+ Nowa grupa');
+  bindGroupSelectControl(groupSelect, {
+    promptTitle: 'Nowa grupa talii',
+    promptText: 'Podaj nazwę nowej grupy:',
+    onInvalid: (message) => { errorEl.textContent = message; },
+  });
 
   let idEditedManually = false;
   const updateId = () => {
@@ -2541,6 +2688,7 @@ function openCreateDeckModal() {
 
   nameInput.addEventListener('input', updateId);
   nameInput.addEventListener('input', () => { errorEl.textContent = ''; });
+  groupSelect.addEventListener('change', () => { errorEl.textContent = ''; });
   idInput.addEventListener('input', () => {
     idEditedManually = true;
     errorEl.textContent = '';
@@ -2557,11 +2705,16 @@ function openCreateDeckModal() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = nameInput.value.trim();
+    const group = normalizeDeckGroup(groupSelect.value);
     const deckId = idInput.value.trim();
     const description = descInput.value.trim();
 
     if (!name) {
       errorEl.textContent = 'Nazwa talii jest wymagana.';
+      return;
+    }
+    if (groupSelect.value === '__new__') {
+      errorEl.textContent = 'Najpierw podaj nazwę nowej grupy w popupie.';
       return;
     }
     if (!DECK_ID_RE.test(deckId)) {
@@ -2585,6 +2738,9 @@ function openCreateDeckModal() {
       source: 'user-manual',
       readOnlyContent: false,
     };
+    if (group) {
+      deckMeta.group = group;
+    }
 
     decks.push(deckMeta);
     storage.saveDecks(decks);
@@ -2709,7 +2865,7 @@ function handleReroll() {
   }
 
   const isMultiSelect = true;
-  const showReroll = hasTemplate(original) || (appSettings.randomizeNumbers && hasRandomizer(original.id));
+  const showReroll = shouldRandomizeQuestion(original, currentDeckSettings);
 
   // Flash animation to confirm re-roll happened
   const container = document.getElementById('study-content');
@@ -2773,7 +2929,7 @@ function exitEditMode() {
   } else {
     // Re-render question phase
     const isMultiSelect = true;
-    const showReroll = hasTemplate(currentQuestion) || (appSettings.randomizeNumbers && hasRandomizer(currentQuestion.id));
+    const showReroll = shouldRandomizeQuestion(currentQuestion, currentDeckSettings);
     currentShuffledAnswers = renderQuestion(
       currentQuestion,
       null,

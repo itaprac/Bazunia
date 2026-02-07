@@ -10,6 +10,11 @@ const DEFAULT_IMPORT_OPTIONS = {
   reservedDeckIds: [],
 };
 
+function normalizeDeckGroup(value) {
+  if (typeof value !== 'string') return '';
+  return value.trim().replace(/\s+/g, ' ');
+}
+
 function normalizeImportOptions(options = {}) {
   const merged = { ...DEFAULT_IMPORT_OPTIONS, ...(options || {}) };
   return {
@@ -50,6 +55,9 @@ export function validateDeckJSON(data, options = {}) {
     }
     if (!data.deck.name || typeof data.deck.name !== 'string') {
       errors.push('Brak lub nieprawidłowe "deck.name".');
+    }
+    if (data.deck.group !== undefined && typeof data.deck.group !== 'string') {
+      errors.push('"deck.group" musi być tekstem (string), jeśli jest podane.');
     }
   }
 
@@ -218,6 +226,14 @@ export async function importBuiltIn(url, options = {}) {
  */
 function registerImport(data, options = {}) {
   const importOptions = normalizeImportOptions(options);
+  const decks = storage.getDecks();
+  const existingIndex = decks.findIndex(d => d.id === data.deck.id);
+  const existingDeck = existingIndex >= 0 ? decks[existingIndex] : null;
+  const hasImportedGroup = Object.prototype.hasOwnProperty.call(data.deck, 'group');
+  const importedGroup = normalizeDeckGroup(data.deck.group);
+  const existingGroup = normalizeDeckGroup(existingDeck?.group);
+  const nextGroup = hasImportedGroup ? importedGroup : existingGroup;
+
   const deckMeta = {
     id: data.deck.id,
     name: data.deck.name,
@@ -229,6 +245,9 @@ function registerImport(data, options = {}) {
     source: importOptions.source,
     readOnlyContent: importOptions.readOnlyContent,
   };
+  if (nextGroup) {
+    deckMeta.group = nextGroup;
+  }
 
   // Preserve categories if present
   if (data.deck.categories) {
@@ -236,8 +255,6 @@ function registerImport(data, options = {}) {
   }
 
   // Save/update deck in registry
-  const decks = storage.getDecks();
-  const existingIndex = decks.findIndex(d => d.id === deckMeta.id);
   if (existingIndex >= 0) {
     decks[existingIndex] = deckMeta;
   } else {

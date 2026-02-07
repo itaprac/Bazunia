@@ -319,6 +319,46 @@
   gap: 12px;
 }
 
+.deck-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.deck-group-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deck-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.deck-group-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.deck-group-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  min-width: 28px;
+  text-align: center;
+}
+
 .deck-list-grid {
   display: grid;
   gap: 12px;

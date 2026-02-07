@@ -60,7 +60,13 @@ export function renderDeckList(decks, statsMap, options = {}) {
     return;
   }
 
-  const cardsHtml = decks.map(deck => {
+  const collator = new Intl.Collator('pl', { sensitivity: 'base', numeric: true });
+  const normalizeGroup = (value) => (
+    typeof value === 'string' ? value.trim().replace(/\s+/g, ' ') : ''
+  );
+  const getDeckGroupLabel = (deckMeta) => normalizeGroup(deckMeta.group) || 'Bez grupy';
+
+  const renderDeckCard = (deck) => {
     const stats = statsMap[deck.id] || { dueReview: 0, dueLearning: 0, newAvailable: 0, totalCards: 0 };
     const readOnlyContent = deck.readOnlyContent === true;
     const deckKindBadge = readOnlyContent
@@ -109,13 +115,61 @@ export function renderDeckList(decks, statsMap, options = {}) {
         </div>
       </div>
     `;
+  };
+
+  const sortedDecks = [...decks].sort((a, b) => collator.compare(a.name || '', b.name || ''));
+  const groupedDecks = new Map();
+
+  for (const deckMeta of sortedDecks) {
+    const groupLabel = getDeckGroupLabel(deckMeta);
+    const groupKey = groupLabel.toLocaleLowerCase('pl');
+    if (!groupedDecks.has(groupKey)) {
+      groupedDecks.set(groupKey, { label: groupLabel, decks: [] });
+    }
+    groupedDecks.get(groupKey).decks.push(deckMeta);
+  }
+
+  const groupEntries = Array.from(groupedDecks.values()).sort((a, b) => {
+    const groupA = a.label;
+    const groupB = b.label;
+    const aIsUngrouped = groupA === 'Bez grupy';
+    const bIsUngrouped = groupB === 'Bez grupy';
+    if (aIsUngrouped && !bIsUngrouped) return 1;
+    if (!aIsUngrouped && bIsUngrouped) return -1;
+    return collator.compare(groupA, groupB);
+  });
+  const showGroupHeaders = !(groupEntries.length === 1 && groupEntries[0].label === 'Bez grupy');
+
+  const groupsHtml = groupEntries.map(({ label, decks: groupDecks }) => {
+    const cardsHtml = groupDecks.map((deckMeta) => renderDeckCard(deckMeta)).join('');
+    if (!showGroupHeaders) {
+      return `
+        <section class="deck-group-section">
+          <div class="deck-list-grid ${deckListMode === 'compact' ? 'compact' : 'classic'}">
+            ${cardsHtml}
+          </div>
+        </section>
+      `;
+    }
+
+    return `
+      <section class="deck-group-section">
+        <div class="deck-group-header">
+          <h3 class="deck-group-title">${escapeHtml(label)}</h3>
+          <span class="deck-group-count">${groupDecks.length}</span>
+        </div>
+        <div class="deck-list-grid ${deckListMode === 'compact' ? 'compact' : 'classic'}">
+          ${cardsHtml}
+        </div>
+      </section>
+    `;
   }).join('');
 
   container.innerHTML = `
     ${tabsHtml}
     ${privateActionsHtml}
-    <div class="deck-list-grid ${deckListMode === 'compact' ? 'compact' : 'classic'}">
-      ${cardsHtml}
+    <div class="deck-groups">
+      ${groupsHtml}
     </div>
   `;
 }
@@ -435,6 +489,92 @@ export function showConfirm(title, text) {
         overlay.remove();
         resolve(false);
       }
+    });
+  });
+}
+
+// --- Prompt Modal ---
+
+export function showPrompt(options = {}) {
+  const {
+    title = 'Podaj wartość',
+    text = '',
+    label = 'Wartość',
+    placeholder = '',
+    initialValue = '',
+    confirmLabel = 'Zapisz',
+    cancelLabel = 'Anuluj',
+    validator = null,
+  } = options;
+
+  return new Promise((resolve) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box">
+        <div class="modal-title">${escapeHtml(title)}</div>
+        ${text ? `<div class="modal-text">${escapeHtml(text)}</div>` : ''}
+        <form class="modal-form" id="modal-prompt-form">
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="modal-prompt-input">${escapeHtml(label)}</label>
+            <input class="modal-form-input" id="modal-prompt-input" type="text" value="${escapeAttr(initialValue)}" placeholder="${escapeAttr(placeholder)}" required>
+          </div>
+          <div class="modal-form-error" id="modal-prompt-error"></div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary" type="button" id="modal-prompt-cancel">${escapeHtml(cancelLabel)}</button>
+            <button class="btn btn-primary" type="submit">${escapeHtml(confirmLabel)}</button>
+          </div>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const form = overlay.querySelector('#modal-prompt-form');
+    const input = overlay.querySelector('#modal-prompt-input');
+    const errorEl = overlay.querySelector('#modal-prompt-error');
+    const cancelBtn = overlay.querySelector('#modal-prompt-cancel');
+
+    let resolved = false;
+    const onEsc = (e) => {
+      if (e.key !== 'Escape' || resolved) return;
+      finalize(null);
+    };
+    const finalize = (value) => {
+      if (resolved) return;
+      resolved = true;
+      document.removeEventListener('keydown', onEsc);
+      overlay.remove();
+      resolve(value);
+    };
+
+    cancelBtn.addEventListener('click', () => finalize(null));
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) finalize(null);
+    });
+    document.addEventListener('keydown', onEsc);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = String(input.value || '').trim();
+      if (!value) {
+        errorEl.textContent = 'To pole jest wymagane.';
+        return;
+      }
+
+      if (typeof validator === 'function') {
+        const validation = validator(value);
+        if (validation !== true) {
+          errorEl.textContent = typeof validation === 'string' ? validation : 'Nieprawidłowa wartość.';
+          return;
+        }
+      }
+
+      finalize(value);
+    });
+
+    requestAnimationFrame(() => {
+      input.focus();
+      input.select();
     });
   });
 }
@@ -971,6 +1111,40 @@ export function renderSettings(settings, defaults, options = {}) {
   const stepsToStr = (arr) => Array.isArray(arr) ? arr.join(', ') : String(arr);
   const deckMeta = options.deckMeta && typeof options.deckMeta === 'object' ? options.deckMeta : null;
   const canEditMeta = options.canEditMeta === true;
+  const normalizeGroup = (value) => (
+    typeof value === 'string' ? value.trim().replace(/\s+/g, ' ') : ''
+  );
+  const groupOptions = Array.isArray(options.groupOptions)
+    ? [...new Set(options.groupOptions
+      .map((group) => normalizeGroup(group))
+      .filter((group) => group.length > 0))]
+    : [];
+  const currentGroup = normalizeGroup(deckMeta?.group);
+  if (currentGroup && !groupOptions.includes(currentGroup)) {
+    groupOptions.push(currentGroup);
+  }
+  const selectedGroupValue = currentGroup || '';
+  const groupOptionsHtml = groupOptions
+    .map((groupName) => `<option value="${escapeAttr(groupName)}" ${selectedGroupValue === groupName ? 'selected' : ''}>${escapeHtml(groupName)}</option>`)
+    .join('');
+
+  const groupFieldHtml = canEditMeta ? `
+    <div class="settings-group">
+      <label class="settings-label" for="set-deck-group-select">Grupa talii</label>
+      <select class="settings-input" id="set-deck-group-select">
+        <option value="" ${selectedGroupValue === '' ? 'selected' : ''}>Bez grupy</option>
+        ${groupOptionsHtml}
+        <option value="__new__" ${selectedGroupValue === '__new__' ? 'selected' : ''}>+ Nowa grupa</option>
+      </select>
+      <div class="settings-hint">Wybierz gotową grupę. Opcja „Nowa grupa” otworzy popup z nazwą.</div>
+    </div>
+  ` : `
+    <div class="settings-group">
+      <label class="settings-label" for="set-deck-group">Grupa talii</label>
+      <input class="settings-input" type="text" id="set-deck-group" value="${escapeAttr(currentGroup)}" disabled>
+      <div class="settings-hint">Talia ogólna: grupa jest tylko do odczytu.</div>
+    </div>
+  `;
 
   const deckMetaHtml = deckMeta ? `
     <div class="settings-form">
@@ -984,9 +1158,10 @@ export function renderSettings(settings, defaults, options = {}) {
         <textarea class="settings-input" id="set-deck-description" rows="3" ${canEditMeta ? '' : 'disabled'}>${escapeHtml(deckMeta.description || '')}</textarea>
         <div class="settings-hint">${canEditMeta ? 'Edytowalny opis prywatnej talii.' : 'Talia ogólna: opis jest tylko do odczytu.'}</div>
       </div>
+      ${groupFieldHtml}
       ${canEditMeta ? `
       <div class="settings-actions">
-        <button class="btn btn-secondary" id="btn-save-deck-meta">Zapisz nazwę i opis</button>
+        <button class="btn btn-secondary" id="btn-save-deck-meta">Zapisz nazwę, opis i grupę</button>
       </div>
       ` : ''}
     </div>
@@ -995,6 +1170,18 @@ export function renderSettings(settings, defaults, options = {}) {
   document.getElementById('settings-content').innerHTML = `
     ${deckMetaHtml}
     <div class="settings-form">
+      <div class="settings-group">
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label-text">Losuj wbudowane warianty pytań obliczeniowych</div>
+            <div class="toggle-hint">Dotyczy pytań z gotowym generatorem (ikona kostki). Pytania szablonowe działają niezależnie.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="set-builtInCalculationVariants" ${settings.builtInCalculationVariants ? 'checked' : ''}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
       <div class="settings-group">
         <label class="settings-label" for="set-newCardsPerDay">Nowe karty dziennie</label>
         <input class="settings-input" type="number" id="set-newCardsPerDay" min="1" max="9999" value="${settings.newCardsPerDay}">
@@ -1380,18 +1567,8 @@ export function renderAppSettings(appSettings, defaults) {
         </div>
         <div class="toggle-row" style="margin-top: 12px;">
           <div>
-            <div class="toggle-label-text">Losowe wartości w pytaniach obliczeniowych</div>
-            <div class="toggle-hint">Za każdym razem inne liczby w pytaniach z obliczeniami</div>
-          </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="toggle-randomize" ${appSettings.randomizeNumbers ? 'checked' : ''}>
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-        <div class="toggle-row" style="margin-top: 12px;">
-          <div>
             <div class="toggle-label-text">Oznaczone pytania w trybie Anki</div>
-            <div class="toggle-hint">Oflagowane pytania będą pojawiać się w normalnych sesjach Anki</div>
+            <div class="toggle-hint">Domyślnie włączone: standardowy Anki może pokazywać także pytania oznaczone.</div>
           </div>
           <label class="toggle-switch">
             <input type="checkbox" id="toggle-flagged-anki" ${appSettings.flaggedInAnki ? 'checked' : ''}>

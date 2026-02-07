@@ -128,7 +128,8 @@ Minimalny format JSON do importu:
 {
   "deck": {
     "id": "moja-talia",
-    "name": "Nazwa talii"
+    "name": "Nazwa talii",
+    "group": "semestr5"
   },
   "questions": [
     {
@@ -142,6 +143,8 @@ Minimalny format JSON do importu:
   ]
 }
 ```
+
+`deck.group` jest opcjonalne i służy do grupowania talii na liście.
 
 ## Rozwiązywanie problemów
 
