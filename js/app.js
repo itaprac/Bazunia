@@ -2569,9 +2569,13 @@ async function ensureDocsLoaded() {
       container.innerHTML = `
         <div class="empty-state">
           <div class="empty-state-title">Nie udało się wczytać dokumentacji</div>
-          <div class="empty-state-text">${error.message}</div>
+          <div class="empty-state-text" id="docs-load-error-message"></div>
         </div>
       `;
+      const docsLoadErrorMessage = document.getElementById('docs-load-error-message');
+      if (docsLoadErrorMessage) {
+        docsLoadErrorMessage.textContent = error.message || 'Nieznany błąd.';
+      }
       showNotification(`Błąd ładowania dokumentacji: ${error.message}`, 'error');
     })
     .finally(() => {

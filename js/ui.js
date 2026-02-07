@@ -186,7 +186,7 @@ export function renderDeckList(decks, statsMap, options = {}) {
     ` : '';
 
     return `
-      <div class="deck-card${isHiddenPublicDeck ? ' is-public-hidden' : ''}${canOpenDeck ? ' is-openable' : ''}${isSharedOwnDeck ? ' is-shared-own' : ''}" data-deck-id="${deck.id}" data-openable="${canOpenDeck ? '1' : '0'}" data-read-only="${readOnlyContent ? '1' : '0'}" data-public-hidden="${isHiddenPublicDeck ? '1' : '0'}" data-private-archived="${isArchivedPrivateDeck ? '1' : '0'}">
+      <div class="deck-card${isHiddenPublicDeck ? ' is-public-hidden' : ''}${canOpenDeck ? ' is-openable' : ''}${isSharedOwnDeck ? ' is-shared-own' : ''}" data-deck-id="${escapeAttr(deck.id)}" data-openable="${canOpenDeck ? '1' : '0'}" data-read-only="${readOnlyContent ? '1' : '0'}" data-public-hidden="${isHiddenPublicDeck ? '1' : '0'}" data-private-archived="${isArchivedPrivateDeck ? '1' : '0'}">
         <div class="deck-card-header">
           <div class="deck-card-title">${escapeHtml(deck.name)}</div>
           <div class="deck-card-header-right">
@@ -501,7 +501,7 @@ export function renderQuestion(
   const answersHtml = flashcard ? '' : `
       <div class="answers-list" id="answers-list">
         ${shuffledAnswers.map((a, i) => `
-          <div class="answer-option" data-answer-id="${a.id}" data-index="${i}">
+          <div class="answer-option" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
             <div class="answer-indicator ${indicatorType}">${i + 1}</div>
             <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           </div>
@@ -575,7 +575,7 @@ export function renderAnswerFeedback(
       }
 
       return `
-        <div class="answer-option ${stateClass}" data-answer-id="${a.id}">
+        <div class="answer-option ${stateClass}" data-answer-id="${escapeAttr(a.id)}">
           <div class="answer-indicator ${correctIds.size > 1 ? 'checkbox' : ''}"></div>
           <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           ${icon}
@@ -904,7 +904,7 @@ export function renderCategorySelect(deckName, categories, statsMap) {
   const cardsHtml = categories.map(cat => {
     const stats = statsMap[cat.id] || { due: 0, newCount: 0 };
     return `
-      <div class="category-card" data-category="${cat.id}">
+      <div class="category-card" data-category="${escapeAttr(cat.id)}">
         <div class="category-card-num">${escapeHtml(cat.name.split('.')[0] || '')}</div>
         <div class="category-card-name">${escapeHtml(cat.name.replace(/^\d+\.\s*/, ''))}</div>
         <div class="category-card-count">${cat.questionCount} pytań</div>
@@ -1005,7 +1005,7 @@ export function renderTestQuestion(question, num, total, isMulti, shouldShuffle 
       <div class="question-hint">${hint}</div>
       <div class="answers-list" id="test-answers-list">
         ${shuffledAnswers.map((a, i) => `
-          <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${a.id}" data-index="${i}">
+          <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
             <div class="answer-indicator ${indicatorType}">${i + 1}</div>
             <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           </div>
@@ -1134,7 +1134,7 @@ export function renderBrowse(deckName, questions, options = {}) {
       : '';
 
     return `
-      <div class="browse-item" data-search-text="${escapeHtml(q.text.toLowerCase())}" data-question-index="${i}">
+      <div class="browse-item" data-search-text="${escapeAttr(q.text.toLowerCase())}" data-question-index="${i}">
         <div class="browse-item-header">
           <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
           ${editBtn}
@@ -1256,12 +1256,12 @@ export function renderBrowseEditor(question, index) {
   const flashcard = isFlashcard(question);
 
   const answersHtml = flashcard ? '' : question.answers.map((a) => `
-    <div class="editor-answer-row" data-answer-id="${a.id}">
+    <div class="editor-answer-row" data-answer-id="${escapeAttr(a.id)}">
       <label class="toggle-switch toggle-switch-sm">
-        <input type="checkbox" class="editor-answer-correct" data-answer-id="${a.id}" ${a.correct ? 'checked' : ''}>
+        <input type="checkbox" class="editor-answer-correct" data-answer-id="${escapeAttr(a.id)}" ${a.correct ? 'checked' : ''}>
         <span class="toggle-slider"></span>
       </label>
-      <input type="text" class="editor-answer-text" data-answer-id="${a.id}" value="${escapeAttr(a.text)}">
+      <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
     </div>
   `).join('');
 
@@ -1393,12 +1393,12 @@ export function renderFlaggedBrowse(deckName, flaggedQuestions) {
     }
 
     return `
-      <div class="browse-item flagged-item" data-question-id="${q.id}">
+      <div class="browse-item flagged-item" data-question-id="${escapeAttr(q.id)}">
         <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
         <div class="browse-item-question">${renderLatex(escapeHtml(q.text))}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
         <div class="flagged-item-actions">
-          <button class="btn btn-secondary btn-sm btn-unflag" data-question-id="${q.id}">Odznacz</button>
+          <button class="btn btn-secondary btn-sm btn-unflag" data-question-id="${escapeAttr(q.id)}">Odznacz</button>
         </div>
       </div>
     `;
@@ -1538,12 +1538,12 @@ export function renderQuestionEditor(question) {
   const flashcard = isFlashcard(question);
 
   const answersHtml = flashcard ? '' : question.answers.map((a, i) => `
-    <div class="editor-answer-row" data-answer-id="${a.id}">
+    <div class="editor-answer-row" data-answer-id="${escapeAttr(a.id)}">
       <label class="toggle-switch toggle-switch-sm">
-        <input type="checkbox" class="editor-answer-correct" data-answer-id="${a.id}" ${a.correct ? 'checked' : ''}>
+        <input type="checkbox" class="editor-answer-correct" data-answer-id="${escapeAttr(a.id)}" ${a.correct ? 'checked' : ''}>
         <span class="toggle-slider"></span>
       </label>
-      <input type="text" class="editor-answer-text" data-answer-id="${a.id}" value="${escapeAttr(a.text)}">
+      <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
     </div>
   `).join('');
 
@@ -1968,10 +1968,10 @@ export function renderAdminPanel(data = {}) {
     const actions = [];
 
     if (role === 'user' && (currentUserRole === 'admin' || currentUserRole === 'dev')) {
-      actions.push(`<button class="btn btn-secondary btn-sm admin-user-action" data-user-id="${u.user_id}" data-next-role="admin">Ustaw admina</button>`);
+      actions.push(`<button class="btn btn-secondary btn-sm admin-user-action" data-user-id="${escapeAttr(u.user_id)}" data-next-role="admin">Ustaw admina</button>`);
     }
     if (role === 'admin' && currentUserRole === 'dev') {
-      actions.push(`<button class="btn btn-secondary btn-sm admin-user-action" data-user-id="${u.user_id}" data-next-role="user">Zdejmij admina</button>`);
+      actions.push(`<button class="btn btn-secondary btn-sm admin-user-action" data-user-id="${escapeAttr(u.user_id)}" data-next-role="user">Zdejmij admina</button>`);
     }
 
     return `

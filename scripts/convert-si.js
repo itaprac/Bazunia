@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-// convert-si.js — Converts pytania_SI_sorted.json to the app's deck format
+// convert-si.js — Converts raw SI questions into the app's deck format
 
 const fs = require('fs');
 const path = require('path');
 
-const inputPath = path.join(__dirname, '..', 'pytania_SI_sorted.json');
+const inputPath = path.join(__dirname, '..', 'data', 'raw', 'pytania_SI_sorted.json');
 const outputPath = path.join(__dirname, '..', 'data', 'si-egzamin.json');
 
 const raw = JSON.parse(fs.readFileSync(inputPath, 'utf8'));

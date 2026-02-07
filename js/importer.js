@@ -10,6 +10,11 @@ const DEFAULT_IMPORT_OPTIONS = {
   reservedDeckIds: [],
 };
 
+const DECK_ID_RE = /^[a-z0-9_-]+$/i;
+const QUESTION_ID_RE = /^[a-z0-9_-]+$/i;
+const ANSWER_ID_RE = /^[a-z0-9_-]+$/i;
+const CATEGORY_ID_RE = /^[a-z0-9_-]+$/i;
+
 function normalizeDeckGroup(value) {
   if (typeof value !== 'string') return '';
   return value.trim().replace(/\s+/g, ' ');
@@ -45,7 +50,7 @@ export function validateDeckJSON(data, options = {}) {
   } else {
     if (!data.deck.id || typeof data.deck.id !== 'string') {
       errors.push('Brak lub nieprawidłowe "deck.id".');
-    } else if (!/^[a-z0-9_-]+$/i.test(data.deck.id)) {
+    } else if (!DECK_ID_RE.test(data.deck.id)) {
       errors.push('"deck.id" może zawierać tylko litery, cyfry, myślniki i podkreślenia.');
     } else if (
       importOptions.scope === 'private' &&
@@ -59,6 +64,25 @@ export function validateDeckJSON(data, options = {}) {
     if (data.deck.group !== undefined && typeof data.deck.group !== 'string') {
       errors.push('"deck.group" musi być tekstem (string), jeśli jest podane.');
     }
+    if (data.deck.categories !== undefined) {
+      if (!Array.isArray(data.deck.categories)) {
+        errors.push('"deck.categories" musi być tablicą, jeśli jest podane.');
+      } else {
+        data.deck.categories.forEach((cat, i) => {
+          const prefix = `Kategoria #${i + 1}`;
+          if (!cat || typeof cat !== 'object' || Array.isArray(cat)) {
+            errors.push(`${prefix}: nieprawidłowy format kategorii.`);
+            return;
+          }
+          if (!cat.id || typeof cat.id !== 'string' || !CATEGORY_ID_RE.test(cat.id)) {
+            errors.push(`${prefix}: "id" może zawierać tylko litery, cyfry, myślniki i podkreślenia.`);
+          }
+          if (cat.name !== undefined && typeof cat.name !== 'string') {
+            errors.push(`${prefix}: "name" musi być tekstem (string), jeśli jest podane.`);
+          }
+        });
+      }
+    }
   }
 
   // Validate questions
@@ -70,6 +94,8 @@ export function validateDeckJSON(data, options = {}) {
       const prefix = `Pytanie #${i + 1}`;
       if (!q.id || typeof q.id !== 'string') {
         errors.push(`${prefix}: brak "id".`);
+      } else if (!QUESTION_ID_RE.test(q.id)) {
+        errors.push(`${prefix}: "id" może zawierać tylko litery, cyfry, myślniki i podkreślenia.`);
       } else if (seenIds.has(q.id)) {
         errors.push(`${prefix}: zduplikowane id "${q.id}".`);
       } else {
@@ -78,6 +104,11 @@ export function validateDeckJSON(data, options = {}) {
 
       if (!q.text || typeof q.text !== 'string') {
         errors.push(`${prefix}: brak treści pytania ("text").`);
+      }
+      if (q.category !== undefined) {
+        if (typeof q.category !== 'string' || !CATEGORY_ID_RE.test(q.category)) {
+          errors.push(`${prefix}: "category" może zawierać tylko litery, cyfry, myślniki i podkreślenia.`);
+        }
       }
 
       // Validate optional randomize field
@@ -145,6 +176,8 @@ export function validateDeckJSON(data, options = {}) {
         q.answers.forEach((a, j) => {
           if (!a.id || typeof a.id !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "id".`);
+          } else if (!ANSWER_ID_RE.test(a.id)) {
+            errors.push(`${prefix}, odpowiedź #${j + 1}: "id" może zawierać tylko litery, cyfry, myślniki i podkreślenia.`);
           }
           if (!a.text || typeof a.text !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "text".`);

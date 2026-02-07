@@ -24,6 +24,16 @@ Aplikacja działa pod adresem:
 
 - `http://localhost:8080`
 
+## Struktura repo (skrót)
+
+- `api/` – endpoint runtime config.
+- `css/` – style aplikacji.
+- `js/` – logika frontendowa.
+- `data/` – talie używane przez aplikację.
+- `data/raw/` – surowe źródła JSON do konwersji.
+- `scripts/` – skrypty pomocnicze (np. konwersja danych).
+- `supabase/` – schema i konfiguracja bazy/auth.
+
 ## Logowanie i zapis danych
 
 - Tryb gościa: dane zapisują się lokalnie w przeglądarce.

@@ -1,6 +1,6 @@
 // supabase.js — Supabase client, auth helpers, and storage persistence helpers
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.95.3/+esm';
 import { SUPABASE_URL, SUPABASE_ANON_KEY, isSupabaseConfigValid } from './supabase-config.js';
 
 let supabase = null;
