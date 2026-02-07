@@ -1,0 +1,2351 @@
+{
+  "deck": {
+    "id": "io-egzamin",
+    "name": "Inżynieria Oprogramowania",
+    "description": "Pytania z inżynierii oprogramowania",
+    "version": 1,
+    "group": "Semestr 4"
+  },
+  "questions": [
+    {
+      "id": "io-q001",
+      "text": "Funkcjonalności zaplanowane do implementacji wg metodyki zwinnej klient najczęściej formułuje w postaci:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wymagań niefunkcjonalnych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "przypadków użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "historii użytkownika",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zadań programistycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q002",
+      "text": "Diagram przypadków użycia służy do zaprezentowania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "przepływu danych między poszczególnymi funkcjami",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "funkcji realizowanych przez system z punktu widzenia użytkownika",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "kolejności realizacji poszczególnych funkcji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wymagań funkcjonalnych i niefunkcjonalnych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q003",
+      "text": "Jakie polecenie systemu Git służy do wycofania wcześniej wykonanej operacji zapisania zmian w repozytorium?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pull",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "abort",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "reset",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "back",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q004",
+      "text": "Pracochłonność prawidłowo zdefiniowanego zadania w metodyce zwinnej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powinna wynosić zawsze tyle ile wynosi czas iteracji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "powinna wynosić około 1-3 dni",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "powinna wynosić około 1-3 tygodni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "może być dłuższa niż czas trwania iteracji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q005",
+      "text": "Pod względem poziomu opisu wymagania możemy podzielić na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "biznesowe, użytkownika i systemowe",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "funkcjonalne, niefunkcjonalne i zgodności",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "postać tekstową w formie listy i postać graficzną w formie diagramu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "żadna z pozostałych odpowiedzi nie jest prawidłowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q006",
+      "text": "Konserwacja oprogramowania dotyczy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "odkrycia sposobu działania i architektury w systemie odziedziczonym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "całego okresu wytwarzania od odtworzenia pierwszego produktu w ramach projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "opracowania nowej implementacji oprogramowania na podstawie sposobu działania i architektury odkrytych w systemie odziedziczonym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "okresu po przekazaniu do użytkowania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q007",
+      "text": "Symbol związku (association) na diagramie przypadków użycia służy do połączenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "co najmniej dwóch przypadków użycia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "aktora i przypadku użycia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie dwóch aktorów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "taki symbol nie występuje na diagramie przypadków użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q008",
+      "text": "Symbol dziedziczenia na diagramie klas oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że obiekt jednej klasy przyjmuje obiekt drugiej klasy jako argument jednej z operacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że obiekty jednej klasy zawierają obiekty innej klasy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że klasa dziedzicząca przejmuje cechy i zachowanie klasy bazowej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "że obiekt jednej klasy jest powiązany na zasadzie referencji/wskaźnika z obiektem innej klasy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q009",
+      "text": "Typowymi działaniami zaimplementowanymi w testach jednostkowych są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "przygotowanie niezbędnej konfiguracji, wywołanie testowanego fragmentu oprogramowania, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "przygotowanie niezbędnej konfiguracji, wywołanie testowanego fragmentu oprogramowania, zapytanie testera czy program działa zgodnie z oczekiwaniami, podjęcie decyzji przez testera, rozmontowanie konfiguracji testu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "instalacja oprogramowania w docelowym środowisku, przygotowanie niezbędnej konfiguracji, uruchomienie oprogramowania i nawigacja za pomocą GUI do testowanego fragmentu, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przygotowanie niezbędnej konfiguracji, uruchomienie oprogramowania i nawigacja za pomocą GUI do testowanego fragmentu, sprawdzenie czy działa zgodnie z oczekiwaniami, rozmontowanie konfiguracji testu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q010",
+      "text": "Architekturę oprogramowania opracowaną w etapie projektowania ilustrują diagramy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "komponentów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "przypadków użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "maszyny stanowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "klas",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q011",
+      "text": "Które twierdzenie odnośnie liczby punktów funkcyjnych jest prawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "liczba ta ma bezpośrednie przełożenie na wielkość oprogramowania w liniach kodu źródłowego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "liczba ta wyraża wielkość nakładów na realizację całego projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "liczba ta wyraża wielkość nakładów na prace stricte programistyczne (kodowanie)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "liczba ta wyraża rozmiar oprogramowania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q012",
+      "text": "Rola przypisana do danego końca związku na diagramie klas:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "w takim miejscu nie jest możliwe przypisanie roli",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "determinuje nazwę atrybutu, który będzie wygenerowany w kodzie na podstawie tego diagramu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wskazuje nazwę klasy bazowej pod kątem dziedziczenia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "determinuje nazwę klasy, która będzie wygenerowana w kodzie na podstawie tego diagramu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q013",
+      "text": "Jakie polecenie systemu Git służy do wysłania lokalnej kopii repozytorium w celu synchronizacji z kopią na komputerze zdalnym?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pull",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "commit",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "push",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "add",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q014",
+      "text": "Wymagania niefunkcjonalne:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "określają funkcje realizowane przez oprogramowanie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "określają aspekty jakościowe oprogramowania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "formułowane są zawsze w formie diagramu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "powinny być sformułowane niezwłocznie po ukończeniu implementacji oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q015",
+      "text": "Diagram komponentów służy do pokazania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "struktury aplikacji na poziomie jednostek, które mogą być projektowane i wytwarzane niezależnie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "konfiguracji sprzętowej opracowywanego systemu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "zależności między aktorami i klasami",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "elementów, z których składają się poszczególne klasy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q016",
+      "text": "Defekt w oprogramowaniu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zawsze ujawnia się w postaci awarii",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zawsze jest wynikiem błędnej konfiguracji sprzętowo-programowej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "można wykryć nawet jeśli oprogramowanie nie jest uruchomione",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "można wykryć tylko w czasie działania programu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q017",
+      "text": "Testowanie integracyjne ma na celu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ocenę połączonych składników oprogramowania",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wykrycie defektów widocznych z punktu widzenia funkcji/wymagań użytkownika",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "sprawdzenie oprogramowania w środowisku docelowym lub je imitującym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "sprawdzenie działania poszczególnych elementarnych składników oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q018",
+      "text": "Diagram rozmieszczenia w języku UML służy do pokazania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rozmieszczenia obiektów stanowiących implementację programu w pamięci RAM komputera",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "rozmieszczenia geograficznego zespołu deweloperskiego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "rozmieszczenia komponentów programowych w węzłach sprzętowo/programowych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "rozmieszczenia geograficznego miejsca implementacji poszczególnych funkcjonalności oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q019",
+      "text": "Pod względem zakresu wymagania możemy podzielić na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "postać tekstową w formie listy i postać graficzną w formie diagramu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "żadna z pozostałych odpowiedzi nie jest prawidłowa",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "biznesowe, użytkownika i systemowe",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "funkcjonalne, niefunkcjonalne i zgodności",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q020",
+      "text": "Weryfikacja (verification) na danym etapie wytwarzania oprogramowania polega na odniesieniu ocenianego produktu do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "specyfikacji testowej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "oczekiwań i potrzeb biznesowych klienta",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "produktu z poprzedniego etapu wytwarzania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "specyfikacji wymagań",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q021",
+      "text": "Narzędzia testujące typu \"record & playback\", które symulują działanie użytkownika:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "są najczęściej używane do testowania jednostkowego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "są najczęściej używane do testowania integracyjnego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "są używane w metodach białej skrzynki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "są wykorzystywane do testowania systemowego",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q022",
+      "text": "Co oznacza zasięg egzemplarzowy atrybutu na diagramie klas?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że dostęp do danego atrybutu mają wszystkie obiekty z danej klasy i klas potomnych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że może istnieć tylko jeden egzemplarz (obiekt) danej klasy w skali całego systemu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że dany atrybut ma jedną wspólną wartość dla wszystkich obiektów danej klasy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "że dany atrybut może przyjmować odrębne wartości dla poszczególnych obiektów danej klasy",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q023",
+      "text": "Główną cechą wyróżniającą metodyki zwinne jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "opracowanie szczegółowego i rygorystycznego sposobu zarządzania i przygotowania rozbudowanej dokumentacji projektowej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "odejście od długofalowego planowania, zarządzania i dokumentowania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "dokładne zaprojektowanie globalnej architektury oprogramowania w celu minimalizacji prac nad jej modyfikacją w przyszłości",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "drastyczne ograniczenie udziału klienta w projekcie, żeby nie przeszkadzał deweloperom w ich pracach programistycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q024",
+      "text": "Najdłuższa jednostka czasu wykorzystywana do planowania zakresu prac w metodyce zwinnej odzwierciedla czas:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wydania",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "implementacji przyrostu produktu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "całego projektu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "iteracji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q025",
+      "text": "W oprogramowaniu wykorzystującym podział na partycje poszczególne partycje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "są niezależnymi od siebie komponentami działającymi na różnych węzłach sprzętowych (tj. każdy komponent na innym węźle)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "mogą wywoływać partycje z warstwy wyższej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "stanowią implementację zamkniętego zestawu funkcjonalności widzianego z punktu widzenia użytkownika",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "mogą wywoływać partycje z warstwy niższej",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q026",
+      "text": "Diagram czynności w języku UML służy do pokazania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "działań, które muszą wykonać deweloperzy, żeby opracować dany program",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "działań, które składają się zawsze na pojedynczy kompletny przypadek użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "działań wykonywanych podczas realizacji procesów/algorytmów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "działań, które są realizowane przez zespół zarządzający danym projektem informatycznym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q027",
+      "text": "Diagram sekwencji w języku UML służy do pokazania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jednostek sprzętowych, na których realizowane są poszczególne funkcje systemu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "cyklu życia systemu wg metodyki zwinnej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "komunikatów wymienianych między jednostkami programowymi realizującymi dane zadanie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ciągu działań podejmowanych przez deweloperów w celu opracowania danego programu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q028",
+      "text": "System kontroli wersji Git jest systemem:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "scentralizowanym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zwinnym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "rozproszonym",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "kaskadowym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q029",
+      "text": "Typowa klasa na diagramie klas zawiera oprócz nazwy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "listę scenariuszy i listę kroków dla każdego scenariusza",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "przynajmniej jednego powiązanego aktora, ale nie może być powiązana z przypadkiem użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "zestaw atrybutów i zestaw operacji",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "aktora i/lub przypadek użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q030",
+      "text": "W metodzie COCOMO II główną zmienną wpływającą na wynik jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nakłady projektowe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wielkość oprogramowania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "liczba defektów w oprogramowaniu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "złożoność oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q031",
+      "text": "Liczba punktów funkcyjnych zależy od:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wejść, wyjść, logicznych plików, interfejsów, zapytań",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "rozmiaru oprogramowania, parametrów skali, mnożników nakładów, stałych z możliwością kalibracji",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wielkości oprogramowania, złożoności problemu, jakości procesu wytwórczego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przypadków użycia i aktorów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q032",
+      "text": "Diagram klas służy do zaprezentowania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "hierarchii zarządzania w projekcie informatycznym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "komponentów oprogramowania i powiązań między nimi",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "obiektów, które biorą udział w przetwarzaniu danych i powiązań między nimi",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wymagań funkcjonalnych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q033",
+      "text": "Cecha jednoznaczności specyfikacji wymagań oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wskazano jednoznacznie, w jaki sposób można przeprowadzić weryfikację spełnienia wymagań przez finalny produkt",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "opisane zostały tylko te wymagania, które są potrzebne użytkownikom",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wymagania nie mogą zawierać sprzeczności między sobą",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zapis każdego wymagania ma tylko jedną interpretację",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q034",
+      "text": "Metodami zapewnienia jakości oprogramowania są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "testowanie, analiza środowiska i przeglądy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "testowanie i analiza środowiska",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "testowanie, przeglądy i inspekcje, dowodzenie poprawności",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "testowanie, analiza przedwdrożeniowa, przeglądy i inspekcje",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q035",
+      "text": "Które twierdzenie odnośnie szacowania przez analogię jest nieprawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie jest wykorzystywana do szacowania liczby defektów w oprogramowaniu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "podstawą szacunku jest spotkanie robocze ekspertów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "za punkt odniesienia można wykorzystać projekt nie w pełni zgodny z projektem podlegającym ocenie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "bazuje na podobieństwie bieżącego projektu do projektu realizowanego wcześniej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q036",
+      "text": "System kontroli wersji (np. Git) nie służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "odtworzenia stanu kodu programu z punktu czasu w przeszłości",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zapewnienia przenośności oprogramowania na różne platformy docelowe",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "synchronizacji efektów pracy poszczególnych programistów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "sprawdzenia kto wprowadził daną modyfikację w kodzie programu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q037",
+      "text": "Symbol dziedziczenia można wykorzystać na diagramie przypadków użycia w celu połączenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "klasy i aktora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "dwóch przypadków użycia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "klasy i przypadku użycia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "aktora i przypadku użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q038",
+      "text": "Przegląd jakości oprogramowania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "może być wykorzystany do oceny danego produktu projektu względem predefiniowanego zestawu kryteriów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "może być użyty wyłącznie do oceny kodu źródłowego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ma na celu wykrycie defektów w oprogramowaniu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "można wykorzystać do oceny jakości pracy poszczególnych deweloperów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q039",
+      "text": "Inżynieria ponowna dotyczy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "opracowania testów przed implementacją oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "odkrycia sposobu działania i architektury w systemie odziedziczonym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "opracowania nowej implementacji oprogramowania na podstawie sposobu działania i architektury odkrytych w systemie odziedziczonym",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "aktualizacji dokumentacji po zaimplementowaniu nowych wymagań",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q040",
+      "text": "Punkty historii użytkownika (story points):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "są liczbami naturalnymi oznaczającymi ilość osobodni potrzebnych na implementację",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "są nieparzystymi liczbami naturalnymi",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "są liczbami naturalnymi niewyrażonymi w żadnej jednostce czasu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "są liczbami naturalnymi oznaczającymi ilość osobotygodni potrzebnych na implementację",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q041",
+      "text": "Co można powiedzieć o adekwatności liczby przypadków testowych w następującej sytuacji w kontekście wiarygodnego przetestowania oprogramowania? Kompletna specyfikacja wymagań pewnego oprogramowania zawiera trzy przypadki użycia, każdy z nich zawiera dwa scenariusze. Dla tego systemu przygotowano trzy przypadki testowe.",
+      "answers": [
+        {
+          "id": "a",
+          "text": "liczba przypadków testowych na pewno jest wystarczająca",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "liczba przypadków testowych może być zbyt wysoka",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "liczba przypadków testowych na pewno jest za niska",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "liczba przypadków testowych może być wystarczająca",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q042",
+      "text": "Gdy dysponujemy bardzo niewielką ilością danych empirycznych, a potrzebujemy dokonać oszacowania w obszarze inżynierii oprogramowania, to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie możemy wykorzystać standardowych modeli z kalibracją w docelowym środowisku",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "nie możemy dokonać żadnego oszacowania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie możemy wykorzystać technik bazujących na szacowaniu przez eksperta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "skuteczne będą metody uczenia maszynowego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q043",
+      "text": "Cechą charakterystyczną diagramu sekwencji w UML jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "oś czasu, która nie występuje na innych diagramach",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "diagram ten może jako jedyny posłużyć do wizualizacji hierarchii zarządzania danym projektem informatycznym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "na tym diagramie nie można umieszczać aktorów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "można na nim pokazać długi proces wykraczający poza pojedynczy przypadek użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q044",
+      "text": "Do wzorców architektonicznych należą:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "singleton, adapter, dekorator",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "klient-serwer, adapter, dekorator",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "singleton, adapter, model-widok-kontroler",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "klient-serwer, model-widok-kontroler, architektura trójwarstwowa",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q045",
+      "text": "Symbol agregacji na diagramie klas oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że obiekt jednej klasy jest powiązany z dokładnie jednym obiektem innej klasy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że obiekty jednej klasy zawierają obiekty innej klasy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "że obiekt jednej klasy przyjmuje obiekt drugiej klasy jako argument jednej z operacji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "że jedna klasa dziedziczy z innej klasy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q046",
+      "text": "Wybierając wymagania do implementacji w danej iteracji w metodyce zwinnej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "klient może wybrać dowolną ilość wymagań, w razie potrzeby każdorazowo ustalając czas trwania danej iteracji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "sumaryczna pracochłonność wybranych wymagań nie może przekroczyć ustalonej szybkości",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "deweloperzy wybierają te wymagania wyłącznie wg własnych preferencji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "kierownik projektu dokonuje wyboru tych wymagań każdorazowo dokonując negocjacji ze zleceniodawcą pod kątem ustalenia kosztu ich implementacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q047",
+      "text": "Testowanie akceptacyjne ma na celu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "sprawdzenie oprogramowania w środowisku docelowym lub je imitującym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "sprawdzenie działania poszczególnych elementarnych składników oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ocenę połączonych składników oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wykrycie defektów w odniesieniu do specyfikacji wymagań oprogramowania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q048",
+      "text": "Wielkość zespołu deweloperskiego w metodyce Scrum powinna wynosić:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "co najmniej 10 osób",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "metodyka Scrum nie określa tej wielkości",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ok. 5-9 osób",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "maksymalnie 20 osób",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q049",
+      "text": "Do wzorców projektowych należą:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "singleton, adapter, dekorator",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "klient-serwer, adapter, dekorator",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "klient-serwer, model-widok-kontroler, architektura trójwarstwowa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "singleton, adapter, model-widok-kontroler",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q050",
+      "text": "Liczba punktów przypadków użycia zależy od:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rozmiaru oprogramowania, parametrów skali, mnożników nakładów, stałych z możliwością kalibracji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wielkości oprogramowania, złożoności problemu, jakości procesu wytwórczego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wejść, wyjść, logicznych plików, interfejsów, zapytań",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przypadków użycia i aktorów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q051",
+      "text": "Sprzężenie w odniesieniu do architektury oprogramowania mówi o tym, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powiązania pomiędzy podsystemami powinny być ścisłe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "powiązania pomiędzy podsystemami powinny być luźne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "powiązania wewnątrz poszczególnych podsystemów powinny być ścisłe",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "powiązania wewnątrz poszczególnych podsystemów powinny być luźne",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q052",
+      "text": "W skład Zespołu Scrumowego wchodzą następujące role:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Analityk, Architekt, Projektant, Programista, Tester, Mistrz Scruma, Kierownik projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zespół deweloperski, Właściciel Produktu, Kierownik projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zespół deweloperski, Właściciel Produktu, Mistrz Scruma",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zespół deweloperski, Właściciel Produktu, Mistrz Scruma, Kierownik projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q053",
+      "text": "Model CMMI jest używany do oceny:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "dojrzałości procesu wytwórczego w firmie wytwarzającej dowolne produkty",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jakości poszczególnych elementów składowych oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "jakości pracy poszczególnych deweloperów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "dojrzałości procesu wytwórczego w firmie programistycznej",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q054",
+      "text": "Cecha poprawności specyfikacji wymagań oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "opisane zostały tylko te wymagania, które są potrzebne użytkownikom",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wskazano, w jaki sposób można przeprowadzić weryfikację spełnienia wymagań przez finalny produkt",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wymagania nie mogą zawierać sprzeczności między sobą",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "sformułowano, w jaki sposób można modyfikować wymagania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q055",
+      "text": "Produktami projektowania są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "architektura programu, projekt bazy danych, plan testowania, projekt testów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "projekt bazy danych, projekt interfejsu użytkownika, projekt struktury programu, wymagania niefunkcjonalne",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "architektura programowa, cele projektowe, graniczne przypadki użycia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "model przypadków użycia, model klas, wymagania niefunkcjonalne",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q056",
+      "text": "Na diagramie czynności w języku UML mogą występować następujące elementy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "akcje, agregacje, punkty decyzyjne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "akcje, aktorzy, przejścia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "akcje, przejścia, punkty decyzyjne",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "akcje, aktorzy, agregacje",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q057",
+      "text": "Jakie polecenie systemu Git służy do pobrania zdalnej kopii repozytorium, która ma być zsynchronizowana z na komputerze lokalnym?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "commit",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "add",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "pull",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "push",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q058",
+      "text": "Plan testów określa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "kroki wykonywane przez testera",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wymagania, które będą testowane",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "dane, które będą użyte przez testera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "które testy zakończyły się sukcesem/porażką",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q059",
+      "text": "W metodzie punktów funkcyjnych IFPUG korygowanie miary punktów funkcyjnych następuje z wykorzystaniem:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wskaźnika złożoności technicznej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wskaźnika złożoności środowiskowej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wskaźnika korekcji wartości",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "w tej metodzie nie dokonuje się korekcji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q060",
+      "text": "Załóżmy, że na diagramie klas narysowano dwie klasy Autor i Książka, które połączono związkiem. W związku, przy końcu łączącym się z klasą Autor podano liczebność 1..*. Co oznacza taki zapis?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że jeden obiekt klasy Książka musi być powiązany z co najmniej jednym obiektem klasy Autor",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "takie oznaczenie jest niedopuszczalne",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że jeden obiekt klasy Autor musi być powiązany z co najmniej jednym obiektem klasy Książka",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "że w systemie musi istnieć co najmniej jeden obiekt typu Autor",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q061",
+      "text": "Kiedy wyczerpie się czas przewidziany na iterację w metodyce zwinnej, a nie wszystkie funkcjonalności zaplanowane do implementacji w tej iteracji zostaną zaimplementowane, to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "klient przypisuje specjalne tzw. naprawcze historie użytkownika",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "nieukończone funkcjonalności są wycofywane z dalszej realizacji w projekcie (anulowane)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nieukończone funkcjonalności przechodzą do implementacji w następnej iteracji",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "czas tej iteracji ulega wydłużeniu o taki, który jest potrzebny do ukończenia implementacji wszystkich funkcjonalności zaplanowanych dla tej iteracji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q062",
+      "text": "W metodyce zwinnej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "refaktoryzacja kodu stosowana jest sporadycznie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "podstawą wymiany informacji między członkami zespołu jest bezpośrednia komunikacja",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "konieczne jest stosowanie programowania w parach przez co najmniej 30% czasu implementacji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "podstawowym sposobem przechowywania i udostępniania informacji członkom zespołu jest szczegółowa dokumentacja projektowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q063",
+      "text": "Co oznacza związek zawierania na diagramie przypadków użycia?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że dany przypadek użycia jest bezpośrednio wywoływany przez danego aktora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że dany aktor jest częścią danego przypadku użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że dany przypadek użycia następuje bezpośrednio po ukończeniu innego przypadku użycia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "że jeden przypadek użycia jest częścią innego przypadku użycia",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q064",
+      "text": "Poszczególne testy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "mogą być sprawdzane za pomocą innych testów (czyli \"testy testów\")",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "powinny być niezależne od siebie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "mogą być skonstruowane w taki sposób, że wynik danego testu zależy od wyniku/wywołania innego testu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "muszą być tak skonstruowane, żeby wszystkie łącznie zweryfikowały poprawność wszystkich instrukcji w kodzie źródłowym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q065",
+      "text": "Zatwierdzanie (validation) oprogramowania polega na odniesieniu ocenianego produktu do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "projektu architektury oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "specyfikacji testowej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "produktu z poprzedniego etapu wytwarzania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "oczekiwań i potrzeb biznesowych klienta",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q066",
+      "text": "W oprogramowaniu wykorzystującym podział na warstwy, elementy składowe z danej warstwy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "stanowią implementację zamkniętego zestawu funkcjonalności widzianego z punktu widzenia użytkownika",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "mogą wywoływać składowe z warstwy niższej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "mogą wywoływać składowe z warstwy wyższej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "są niezależnymi od siebie komponentami działającymi na różnych węzłach sprzętowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q067",
+      "text": "W jaki sposób należy opracować model przypadków użycia, w którym musimy pokazać znaczną liczbę przypadków użycia?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zgrupować przypadki użycia w klasy i narysować na osobnych diagramach zawartość poszczególnych klas",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zgrupować przypadki użycia w pakiety i narysować na osobnych diagramach zawartość poszczególnych pakietów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "taka sytuacja nigdy nie występuje",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "jeśli taka sytuacja wystąpiła, to znaczy, że źle został nazwane poszczególne przypadki użycia i należy dokonać stosownej korekty ich definicji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q068",
+      "text": "Jakie polecenie systemu Git służy do zatwierdzenia zmiany w repozytorium?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "add",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "commit",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "push",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "create",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q069",
+      "text": "Czy następujące wymaganie jest poprawnie zdefiniowane: \"Oprogramowanie ma korzystać z przyjaznego interfejsu użytkownika\"?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie, ponieważ nie wskazano, jaka technologia/framework ma być użyta do implementacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "tak, jest to poprawne wymaganie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie, ponieważ aspektów dotyczących przyjazności interfejsu użytkownika nie formułuje się w formie wymagań",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "nie, ponieważ nie można zweryfikować spełnienia tak sformułowanego wymagania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q070",
+      "text": "Jakie polecenie systemu Git służy do sprawdzenia stanu zmian w katalogu roboczym?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "status",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "check",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "push",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "pull",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q071",
+      "text": "Na czym polega różnica między analizą a projektowaniem oprogramowania?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "analiza ma na celu opracowanie planu zarządzania projektem, a projektowanie dotyczy interfejsu użytkownika i bazy danych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "analiza ma na celu pozyskanie i sformułowanie wymagań biznesowych, a projektowanie definiuje architekturę przyszłego rozwiązania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "na niczym istotnym - są to praktycznie synonimy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "analiza ma na celu opracowanie modelu abstrakcyjnego od technologii, a projektowanie definiuje schemat budowy oprogramowania w docelowej technologii",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q072",
+      "text": "Składnikami modelu analitycznego oprogramowania są zwykle:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "model przypadków użycia, model klas, wymagania niefunkcjonalne",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "architektura programowa, cele projektowe, graniczne przypadki użycia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "architektura programu, projekt bazy danych, plan testowania, projekt testów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "projekt bazy danych, projekt interfejsu użytkownika, projekt struktury programu, wymagania niefunkcjonalne",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q073",
+      "text": "Inspekcja jakości oprogramowania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ma na celu wykrycie defektów w oprogramowaniu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "może być użyta wyłącznie do oceny projektu programu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "jest używana do oceny danego produktu projektu względem predefiniowanego zestawu kryteriów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "może być wykorzystana do oceny jakości pracy poszczególnych deweloperów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q074",
+      "text": "Specyfikacja pojedynczego przypadku użycia powinna obejmować:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "listę scenariuszy i listę kroków dla każdego scenariusza",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "dokładnie jeden scenariusz i przypisaną do niego listę kroków",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "listę scenariuszy bez wskazania listy kroków",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "listę kroków realizowanych przez wszystkich aktorów występujących na tym samym diagramie, co dany przypadek użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q075",
+      "text": "Metodami pozyskiwania wymagań są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "obserwacja i analiza obiegu dokumentów, metoda punktów przypadków użycia, metoda punktów funkcyjnych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "obserwacja i analiza obiegu dokumentów, studiowanie dostępnej dokumentacji, wywiady z przedstawicielami kierownictwa",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "obserwacja i analiza obiegu dokumentów, metoda punktów przypadków użycia, wywiady z przedstawicielami kierownictwa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "obserwacja i analiza obiegu dokumentów, studiowanie dostępnej dokumentacji, metoda punktów przypadków użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q076",
+      "text": "Klasycznym procesem wytwarzania oprogramowania, w którym poszczególne fazy/etapy realizowane są szeregowo jest proces:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "kaskadowy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "iteracyjny",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "zwinny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "spiralny",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q077",
+      "text": "Wytwarzanie sterowane testami (test driven development) polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "opracowaniu programu, z którego automatycznie generowane są testy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "opracowaniu testów, z których automatycznie generowany jest program",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "opracowaniu testów przed implementacją programu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "opracowaniu testów niezwłocznie po implementacji programu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q078",
+      "text": "Przypadek testowy na poziomie testowania jednostkowego określa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "dane, które będą użyte w teście",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "kolejność i sposób przeprowadzania poszczególnych testów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wymagania, które będą testowane",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "które testy zakończyły się sukcesem/porażką",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q079",
+      "text": "Co oznacza symbol związku na diagramie klas?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że jedna klasa może utworzyć drugą klasę",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że jedna klasa dziedziczy z innej klasy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że obiekt danej klasy musi być utworzony przed obiektem innej klasy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "że dane klasy są powiązane w sposób znaczeniowy",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q080",
+      "text": "Przypadek użycia na diagramie przypadków użycia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "odzwierciedla zespół czynności stanowiących całość zadania z punktu widzenia aktora",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "odzwierciedla krok w działaniu systemu, który nie jest dalej dekomponowany na mniejsze części składowe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "może być powiązany z maksymalnie jednym aktorem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "odzwierciedla stan, w jakim może znaleźć się oprogramowanie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q081",
+      "text": "Mistrz Scruma:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "formułuje i doprecyzowuje wymagania wobec oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zapewnia zrozumienie i stosowanie metodyki przez Zespół Scrumowy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zajmuje się głównie przydzieleniem zadań poszczególnym deweloperom",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "weryfikuje poprawność zaimplementowania poszczególnych funkcjonalności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q082",
+      "text": "Procedura testowania określa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wymagania, które będą testowane",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "kolejność i sposób przeprowadzania poszczególnych testów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "które testy zakończyły się sukcesem/porażką",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "kroki wykonywane przez testera",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q083",
+      "text": "Testowanie systemowe ma na celu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ocenę współpracy połączonych składników oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "sprawdzenie działania poszczególnych elementarnych składników oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wykrycie defektów w odniesieniu do specyfikacji wymagań oprogramowania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "sprawdzenie oprogramowania w środowisku docelowym u użytkowników",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q084",
+      "text": "Wymagania funkcjonalne:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powinny wynikać z przypadków testowych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "powinny być sformułowane niezwłocznie po ukończeniu implementacji oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie powinny być opracowywane na etapie projektowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "żadna z pozostałych odpowiedzi nie jest prawidłowa",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-q085",
+      "text": "Co oznacza związek zawierania (include) na diagramie przypadków użycia?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "że dany aktor jest częścią danego przypadku użycia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "że dany przypadek użycia jest bezpośrednio wywoływany przez danego aktora",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "że dany przypadek użycia jest częścią innego przypadku użycia",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "że jeden przypadek użycia następuje bezpośrednio po ukończeniu innego przypadku użycia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q086",
+      "text": "Modele jakości przedstawione w normach ISO 9126 czy serii 25010:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zawierają rekomendacje dotyczące sposobu opracowania architektury oprogramowania o wysokiej jakości",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "przedstawiają cechy jakości i zawieranie się poszczególnych cech w innych cechach",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "informują o sposobie osiągnięcia wysokiej jakości oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wskazują, jak zorganizować proces wytwarzania oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q087",
+      "text": "Iteracja w metodyce zwinnej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "trwa maksymalnie kilka tygodni",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "trwa zwykle około dwóch miesięcy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "trwa zwykle około pół roku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "trwa maksymalnie kilka dni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q088",
+      "text": "Wymaganie funkcjonalne:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "określa aspekty jakościowe oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "formułowane jest zawsze w formie diagramu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "określa funkcję realizowaną przez oprogramowanie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "dotyczy aspektów związanych z łatwością obsługi oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q089",
+      "text": "Spoistość w odniesieniu do architektury oprogramowania mówi o tym, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powiązania wewnątrz poszczególnych podsystemów powinny być luźne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "powiązania wewnątrz poszczególnych podsystemów powinny być ścisłe",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "powiązania pomiędzy podsystemami powinny być luźne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "powiązania pomiędzy podsystemami powinny być ścisłe",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-q090",
+      "text": "Metody testowania z grupy czarnej skrzynki:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie wykorzystują informacji o wewnętrznej strukturze testowanego programu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "najczęściej dotyczą testowania jednostkowego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie mogą być użyte do testowania systemowego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wykorzystują informacje o wewnętrznej strukturze testowanego programu",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

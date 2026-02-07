@@ -1,8 +1,8 @@
 {
   "deck": {
     "id": "ii-egzamin",
-    "name": "Infrastruktura IT - II Egzamin",
-    "description": "Pytania z egzaminu z Infrastruktury IT - czesc II (104 pytania, 13 kategorii).",
+    "name": "Infrastruktura Informatyczna",
+    "description": "Pytania z Infrastruktury Informatycznej",
     "version": 1,
     "categories": [
       {
@@ -70,7 +70,8 @@
         "name": "13. ITIL 4",
         "questionCount": 6
       }
-    ]
+    ],
+    "group": "Semestr 5"
   },
   "questions": [
     {

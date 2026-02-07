@@ -1,0 +1,3051 @@
+{
+  "deck": {
+    "id": "ipz-egzamin",
+    "name": "IPZ",
+    "description": "Pytania z IPZ",
+    "version": 1,
+    "group": "Semestr 5"
+  },
+  "questions": [
+    {
+      "id": "ipz-q001",
+      "text": "Wskaż zdanie prawdziwe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projekt musi mieć określony początek oraz koniec.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Projekt musi mieć określony początek, ale nie musi mieć określonego końca.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Projekt nie musi mieć określonych ram czasowych.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q002",
+      "text": "Na jakim poziomie zebrane powinny zostać wymagania?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko nazwa.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pełna specyfikacja włącznie z diagramami, interfejsami użytkownika, szczegółami implementacyjnymi.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Na poziomie 'wystarczająco dobrym', żeby uzyskać wspólne zrozumienie i rozpocząć implementację na akceptowalnym poziomie ryzyka.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ipz-q003",
+      "text": "Wskaż zdanie fałszywe dotyczące WBS",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zawartość WBS może zmieniać się wielokrotnie aż do momentu jego zatwierdzenia.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W WBS powinny być wskazane prace z zakresu i spoza zakresu projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Każdy produkt z WBSa powinien znaleźć odniesienie w liście aktywności i harmonogramie.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q004",
+      "text": "Tymczasowa natura projektów wskazuje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projekty nie mogą być dłuższe niż 6 miesięcy.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Projekty nie mogą być dłuższe niż 5 lat.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Tymczasowa natura projektów nie określa ich długo- lub krótkotrwałości.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ipz-q005",
+      "text": "Wskaż przykład 'rozpełzywania' zakresu",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Główny programista zachorował, co wpływa na opóźnienie w projekcie.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zespół programistów zdecydował przepisać zatwierdzony wcześniej etap kodu na nową bibliotekę JS.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zespół projektowy został wyposażony w tablety z Androidem zamiast iPady, mimo że w zakresie zaplanowany był zakup iPadów.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q006",
+      "text": "Rozwiń skrót SRS",
+      "answers": [
+        {
+          "id": "a",
+          "text": "System Risk Scope",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Software Results Specification",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Software Requirements Specification",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ipz-q007",
+      "text": "NGINX w SRS najlepiej zawrzeć w sekcji:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymagania dotyczące interfejsu zewnętrznego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Założenia i zależności",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Cechy jakości",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q008",
+      "text": "Co powinien zawierać WBS",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zadania do wykonania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Produkty do dostarczenia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Harmonogram dostarczania produktów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q009",
+      "text": "Uczestnictwo w wykładzie i nauka materiału są w relacji",
+      "answers": [
+        {
+          "id": "a",
+          "text": "start-to-start",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "finish-to-start",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "start-to-finish",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q010",
+      "text": "Kto odpowiada za zawartość product backloga w Scrum?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Programiści",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Product Owner",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Project Owner",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q011",
+      "text": "Prawidłowa kolejność według XP",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dekomp. cechy na zadania, tworzenie kodu, tworzenie testów jednostkowych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dekomp. cechy na zadania, tworzenie testów jednostkowych, tworzenie kodu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tworzenie testów jednostkowych, dekomp. cechy na zadania, tworzenie kodu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q012",
+      "text": "Wykres wskazujący realizację funkcjonalności w trakcie sprintu",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Burndown chart",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Burnup chart",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Velocity chart",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q013",
+      "text": "Kto jest odpowiedzialny za stworzenie karty projektu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zespół projektowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Inicjator lub sponsor projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Project Owner",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q014",
+      "text": "Identyfikator wymagania 3.2.3.4 to przykład notacji",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Numeracja hierarchiczna",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Sekwencja",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Losowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q015",
+      "text": "Identyfikator wymagania wi-11 to przykład notacji",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Numeracja hierarchiczna",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sekwencja",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Losowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q016",
+      "text": "Co powinien zawierać WBS wg PMBOK",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zadania do wykonania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Produkty do dostarczenia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Harmonogram dostarczenia produktów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie odpowiedzi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q017",
+      "text": "Wskaż zdanie fałszywe dotyczące harmonogramu i WBS",
+      "answers": [
+        {
+          "id": "a",
+          "text": "WBS stanowi dane wejściowe do harmonogramu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Harmonogram stanowi dane do WBS",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "WBS opisuje co jest do zrobienia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Harmonogram opisuje kiedy i co",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q018",
+      "text": "Wskaż zdanie fałszywe dotyczące nazewnictwa WBS",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Każdy element WBS posiada swoją nazwę",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Nazwa elementu WBS powinna być rzeczownikiem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nazwa musi być czasownikiem",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Słownik WBS zawiera bardziej szczegółowe opisy poszczególnych komponentów WBSa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q019",
+      "text": "Zadania/aktywności i zależności czasowe między nimi przedstawione są",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W dokumencie SRS",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W dokumencie WBS",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "W harmonogramie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "W WBS i harmonogramie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q020",
+      "text": "Standardowa długość cyklu wg XP",
+      "answers": [
+        {
+          "id": "a",
+          "text": "7 dni",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "14 dni",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "30 dni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zależne od zespołu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q021",
+      "text": "Spotkanie w Scrum odbywające się codziennie w trakcie iteracji",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Daily Scrum",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Sprint Review",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Sprint Retrospective",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Żadne z powyższych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q022",
+      "text": "Co się dzieje z niewykonanymi zadaniami pod koniec sprinta w Scrum",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Są wrzucane do backloga",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Są automatycznie usuwane",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przenoszone do następnego sprintu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Pozostają w sprint backlogu do końca projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q023",
+      "text": "Co to są zasoby pieniężne?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Korzyści namacalne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Kapitał finansowy dostępny dla projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zasoby ludzkie przeliczane na pieniądze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Budżet projektowy zarezerwowany na sprzęt",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q024",
+      "text": "Jaka jest prawidłowa kolejność tworzenia karty projektu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Określenie celów i zakresu -> Tworzenie karty projektu -> Akceptacja",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Specyfikacja wymagań -> Tworzenie karty projektu -> Akceptacja",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Analiza ryzyka -> Tworzenie karty projektu -> Akceptacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q025",
+      "text": "Zgodnie z Manifestem Agile (Agile Manifesto), co jest cenione wyżej niż podążanie za planem?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Negocjacje kontraktowe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Reagowanie na zmiany",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szczegółowa dokumentacja",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Procesy i narzędzia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q026",
+      "text": "Według zasad Agile, co jest podstawową miarą postępu w projekcie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Liczba przepracowanych roboczogodzin",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zgodność z harmonogramem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Działające oprogramowanie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Liczba zamkniętych zadań w Jirze",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q027",
+      "text": "Która z poniższych cech NIE jest wartością Scruma?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odwaga",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Skupienie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Punktualność",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Poszanowanie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q028",
+      "text": "W metodzie MoSCoW, litera 'S' (Should have) oznacza wymagania, które:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Są krytyczne dla sukcesu projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Są ważne, ale ich brak nie blokuje wydania produktu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Są miłym dodatkiem (tzw. 'nice to have')",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zostały odrzucone w tej iteracji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q029",
+      "text": "Jaki jest główny cel spotkania Sprint Retrospective?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Prezentacja przyrostu klientowi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wybór zadań do kolejnego sprintu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Inspekcja sposobu pracy zespołu i zaplanowanie usprawnień procesu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Aktualizacja wykresu Burndown",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q030",
+      "text": "Czym są Story Points?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jednostką czasu (np. 1 punkt = 4 godziny)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jednostką względnej miary pracochłonności i złożoności zadania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Liczbą błędów znalezionych w kodzie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Priorytetem nadanym przez Product Ownera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q031",
+      "text": "W formacie User Story 'Jako [rola], chcę [cel], żeby [korzyść]', element 'korzyść' służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Określenia technologii wykonania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zrozumienia wartości biznesowej wymagania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Podziału zadania na podzadania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wskazania testera odpowiedzialnego za zadanie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q032",
+      "text": "Wymaganie: 'System musi zapewniać czas odpowiedzi mniejszy niż 2 sekundy' to przykład:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymagania funkcjonalnego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymagania pozafunkcjonalnego (jakościowego)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ograniczenia biznesowego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "User Story",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q033",
+      "text": "Najniższy poziom dekompozycji w WBS (struktura podziału prac) to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kamień milowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pakiet prac (Work Package)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zadanie krytyczne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Główny produkt",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q034",
+      "text": "Zasada 'Simplicity' (prostota) w Agile oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisanie kodu w najprostszym możliwym języku",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sztukę maksymalizowania ilości pracy niewykonanej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rezygnację z testowania oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zatrudnianie juniorów do projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q035",
+      "text": "W XP (Extreme Programming), 'Pair Programming' polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pracy dwóch zespołów nad tym samym modułem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pisaniu kodu przez dwóch programistów na jednym komputerze",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Testowaniu kodu przez osobę, która go nie napisała",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Spotkaniach dwóch liderów zespołów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q036",
+      "text": "Co definiuje 'Definition of Done' (DoD)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Moment, w którym programista kończy pisać kod",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wspólne kryteria, które musi spełniać przyrost, by uznać go za gotowy do wydania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Listę życzeń klienta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Czas zakończenia sprintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q037",
+      "text": "W metodzie Kanban, ograniczenie WIP (Work In Progress) ma na celu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zwiększenie liczby zadań wykonywanych jednocześnie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uwidocznienie wąskich gardeł i poprawę przepływu pracy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wymuszenie nadgodzin w zespole",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zablokowanie możliwości dodawania nowych zadań do backloga",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q038",
+      "text": "W wykresie Burnup (w przeciwieństwie do Burndown), linia postępu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zawsze schodzi do zera",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pokazuje całkowitą ilość pracy ukończonej względem całkowitego zakresu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pokazuje tylko błędy w systemie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie uwzględnia zmian w zakresie projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q039",
+      "text": "Akronim SMART w odniesieniu do celów projektowych oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Simple, Measurable, Achievable, Relevant, Technical",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Specific, Measurable, Achievable, Relevant, Time-bound",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Specific, Managed, Accurate, Reliable, Tested",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Systematic, Measurable, Agile, Relevant, Time-bound",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q040",
+      "text": "Które z poniższych zdarzeń Scrum jest ograniczone czasowo (time-boxed)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko Sprint",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tylko Daily Scrum",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wszystkie zdarzenia w Scrumie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Żadne, czas trwania zależy od potrzeb zespołu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q041",
+      "text": "Kiedy zaleca się rozpoczęcie tworzenia WBS (Struktury Podziału Prac)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dopiero po zakończeniu fazy implementacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W jak najwcześniejszej fazie projektu, nawet gdy dostępna jest tylko karta produktu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dopiero po zatwierdzeniu szczegółowego harmonogramu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Na samym końcu projektu, w celu weryfikacji prac",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q042",
+      "text": "Która technika estymacji czasu trwania aktywności opiera się na wykorzystaniu danych historycznych z podobnych projektów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metoda Delphi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Szacowanie przez analogię",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szacowanie oddolne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Analiza rezerw",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q043",
+      "text": "Czym charakteryzuje się technika podejmowania decyzji zwana 'mnogością' (plurality)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Decyzja zapada przy poparciu ponad 50% członków grupy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wszyscy członkowie grupy muszą zgadzać się na jeden sposób działania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wybierana jest opcja z poparciem największej grupy, nawet jeśli nie ma ona większości powyżej 50%",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Jedna osoba podejmuje decyzję za całą grupę",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q044",
+      "text": "Projekt zostaje oficjalnie zakończony, gdy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zasoby fizyczne i ludzkie przestały być dostępne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Osiągnięto cele projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Projekt przestał być potrzebny lub wyczerpano fundusze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie powyższe odpowiedzi są prawidłowe",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ipz-q045",
+      "text": "Umiejętność skutecznego kierowania wydarzeniem grupowym do pomyślnego podjęcia decyzji lub znalezienia rozwiązania to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzanie konfliktem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Facylitacja",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Autokratyzm",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Eskalacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q046",
+      "text": "W kontekście wymagań, 'Feature' (Funkcjonalność) to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pojedyncza linia kodu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zbiór powiązanych logicznie możliwości systemu zapewniający wartość użytkownikowi",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Błąd zgłoszony przez klienta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dokumentacja techniczna bazy danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q047",
+      "text": "Głównym ryzykiem związanym z zebraniem wymagań na poziomie 'niedostatecznym' jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zbyt szybkie zakończenie projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Konieczność wykonywania nadmiernych, nieplanowanych poprawek",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zbyt duża motywacja zespołu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Brak konieczności tworzenia dokumentacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q048",
+      "text": "Który dokument jest używany do opisu wymaganych prac i dostarczanego produktu na podstawie zebranych wymagań?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dziennik założeń",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Karta Projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Definicja Zakresu (Scope Statement)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Rejestr Ryzyk",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q049",
+      "text": "Zasada 100% w tworzeniu WBS oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projekt musi zostać wykonany w 100% przez jednego programistę",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "WBS obejmuje 100% prac zdefiniowanych w zakresie projektu i uwzględnia wszystkie produkty",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Każde zadanie musi trwać dokładnie 100 godzin",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zysk z projektu musi wynosić 100%",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q050",
+      "text": "Słownik WBS (WBS Dictionary) służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tłumaczenia nazw produktów na języki obce",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dostarczania szczegółowych informacji o każdym elemencie WBS (np. opis prac, odpowiedzialność, koszty)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Definiowania pojęć programistycznych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przechowywania haseł dostępowych do systemu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q051",
+      "text": "W Scrumie, kto jest odpowiedzialny za usuwanie przeszkód (impediments) blokujących pracę zespołu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Product Owner",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Scrum Master",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Klient",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Prezes firmy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q052",
+      "text": "Co oznacza skrót MCDM w technikach podejmowania decyzji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Most Common Decision Method",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Multi-Criteria Decision Analysis",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Main Center of Data Management",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Management Control Daily Meeting",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q053",
+      "text": "Cechy jakościowe (wymagania niefunkcjonalne) w SRS obejmują m.in.:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Sposób logowania użytkownika",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wydajność, bezpieczeństwo, dostępność i łatwość utrzymania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Kolor przycisku 'Wyślij'",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nazwisko głównego programisty",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q054",
+      "text": "Czym jest 'kamień milowy' (milestone) w harmonogramie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zadaniem trwającym połowę projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Punktem kontrolnym o zerowym czasie trwania, oznaczającym ważne wydarzenie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Najtrudniejszym zadaniem w projekcie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Spotkaniem z zespołem co rano",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q055",
+      "text": "Podejście 'TDD' (Test-Driven Development) charakterystyczne dla XP polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisaniu testów po zakończeniu całego projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pisaniu testów automatycznych przed napisaniem właściwego kodu funkcjonalnego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zatrudnieniu oddzielnego zespołu testerów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ręcznym sprawdzaniu każdej linii kodu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q056",
+      "text": "W macierzy identyfikowalności wymagań (Traceability Matrix) wiążemy wymagania z:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kodem źródłowym i przypadkami testowymi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Celami biznesowymi i elementami projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Osobami odpowiedzialnymi za ich realizację",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie odpowiedzi są prawidłowe",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ipz-q057",
+      "text": "Która rola w Scrumie dba o to, by zespół pracował zgodnie z zasadami i wartościami tej metodyki?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Project Manager",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Scrum Master",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Lead Developer",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Stakeholder",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q058",
+      "text": "Co znajduje się na 'wyjściu' procesu definicji zakresu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Karta Projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Specyfikacja wymagań (często zamykająca zakres)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zatwierdzony budżet",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Lista płac zespołu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q059",
+      "text": "Zgodnie z Manifestem Agile, współpraca z klientem jest ważniejsza niż:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Reagowanie na zmiany",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Działające oprogramowanie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Negocjowanie kontraktów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Procesy i narzędzia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q060",
+      "text": "W strukturze SRS, sekcja 'Założenia i zależności' (Assumptions and Dependencies) zawiera:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Listę wszystkich błędów w systemie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Czynniki, które mogą wpłynąć na realizację wymagań (np. dostępność zewnętrznych API)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Instrukcję instalacji serwera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Cennik usług",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q061",
+      "text": "W metodologii Scrum, co oznacza termin 'Time-boxing'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Przechowywanie starych wersji kodu w pudełkach",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sztywne ograniczenie ram czasowych dla danego spotkania lub iteracji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rejestrowanie czasu pracy co do minuty",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przerwa w pracy zespołu na odpoczynek",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q062",
+      "text": "Która z wartości Scruma odnosi się do bycia otwartym na temat pracy i wyzwań?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odwaga",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zaangażowanie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Otwartość",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Poszanowanie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q063",
+      "text": "W kontekście SRS, co określa sekcja 'User Classes and Characteristics'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Klasy w kodzie źródłowym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Różne grupy użytkowników systemu i ich specyficzne cechy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Poziomy wynagrodzeń w projekcie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymagania sprzętowe dla serwera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q064",
+      "text": "Czym jest 'Gold Plating' w zarządzaniu zakresem?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Złoceniem obudowy serwerów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dodawaniem przez zespół funkcjonalności, które nie były wymagane ani zatwierdzone",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dostarczaniem produktu najwyższej jakości zgodnie z planem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nagradzaniem najlepszych programistów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q065",
+      "text": "Technika 'Planning Poker' służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Hazardu w trakcie przerw",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Grupowej estymacji pracochłonności zadań (User Stories)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wybierania kolejnego Scrum Mastera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rozwiązywania konfliktów personalnych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q066",
+      "text": "Wykres Burndown pokazuje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ile pieniędzy pozostało w budżecie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ile pracy pozostało do wykonania w bieżącym Sprincie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wzrost temperatury procesorów na serwerze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Liczbę nowych wymagań dodanych przez klienta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q067",
+      "text": "Zgodnie z zasadą 'Single Point of Contact', kto w zespole Scrumowym powinien być jedynym źródłem priorytetów dla Deweloperów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Scrum Master",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Product Owner",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Główny interesariusz",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dyrektor techniczny (CTO)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q068",
+      "text": "W XP, praktyka 'Collective Ownership' oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kod należy do klienta",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Każdy programista może zmienić dowolny fragment kodu w dowolnym momencie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tylko lider zespołu może zatwierdzać zmiany",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nikt nie jest odpowiedzialny za błędy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q069",
+      "text": "Wymaganie: 'System musi być dostępny przez 99,9% czasu w roku' to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymaganie funkcjonalne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymaganie dostępności (niefunkcjonalne)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wymaganie prawne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymaganie interfejsu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q070",
+      "text": "Czym jest 'Sprint Backlog'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Listą wszystkich marzeń klienta",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zbiorem elementów z Product Backlogu wybranych do realizacji w danym Sprincie wraz z planem ich dostarczenia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Archiwum zakończonych projektów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Listą błędów po testach akceptacyjnych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q071",
+      "text": "W WBS, 'Słownik WBS' jest tworzony, aby:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zastąpić harmonogram projektu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uniknąć niejednoznaczności w interpretacji pakietów prac",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Nauczyć zespół nowej terminologii",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ograniczyć liczbę poziomów dekompozycji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q072",
+      "text": "W metodzie Kanban, tablica (Board) służy przede wszystkim do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dekoracji biura",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wizualizacji przepływu pracy i identyfikacji zatorów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zapisywania wyników meczów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rysowania diagramów UML",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q073",
+      "text": "W XP, 'Continuous Integration' (CI) polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ciągłym rozmawianiu z klientem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Częstym integrowaniu zmian w kodzie z głównym repozytorium i automatycznym testowaniu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pracy nad projektem bez przerw na sen",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zatrudnianiu nowych osób w trakcie trwania sprintu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q074",
+      "text": "Co to jest 'Minimum Viable Product' (MVP)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wersja produktu z największą liczbą błędów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wersja produktu z minimalnym zestawem cech, która pozwala na wprowadzenie go na rynek i zebranie feedbacku",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Produkt, który kosztował najmniej pieniędzy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dokumentacja bez kodu źródłowego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q075",
+      "text": "W macierzy identyfikowalności (Traceability Matrix), brak powiązania wymagania z konkretnym celem biznesowym sugeruje, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymaganie jest bardzo innowacyjne",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymaganie może być zbędne (poza zakresem)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Cel biznesowy jest tajny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Należy zwolnić analityka",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q076",
+      "text": "Która technika głosowania wymaga, aby absolutnie wszyscy byli 'za'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Mnogość",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Większość",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Jednomyślność (Unanimity)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Autokratyzm",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q077",
+      "text": "W Agile, 'Samoorganizujący się zespół' to taki, który:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nie potrzebuje Product Ownera",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sam decyduje, jak najlepiej wykonać swoją pracę, zamiast czekać na polecenia kierownika",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sam wybiera sobie godziny pracy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie musi dokumentować swoich działań",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q078",
+      "text": "W kontekście jakości, 'Weryfikacja' odpowiada na pytanie:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Czy budujemy właściwy produkt (zgodny z potrzebami klienta)?",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Czy budujemy produkt właściwie (zgodnie ze specyfikacją)?",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ile kosztuje produkt?",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kto kupi ten produkt?",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q079",
+      "text": "Pojęcie 'Velocity' (Prędkość) w Scrumie oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Szybkość łącza internetowego w biurze",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Średnią liczbę Story Points dostarczanych przez zespół w jednym Sprincie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Czas potrzebny na naprawę jednego błędu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Szybkość pisania kodu przez lidera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q080",
+      "text": "W SRS, wymagania dotyczące 'Security' (Bezpieczeństwa) opisują:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wzrost wynagrodzeń pracowników",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ochronę danych przed nieuprawnionym dostępem i zapewnienie integralności",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Liczbę ochroniarzy w budynku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kopie zapasowe na dyskach zewnętrznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q081",
+      "text": "Kim jest 'Interesariusz' (Stakeholder) projektu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wyłącznie osobą płacącą za projekt",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Każdą osobą lub organizacją, która ma wpływ na projekt lub na którą projekt ma wpływ",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Głównym programistą w zespole",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Pracownikiem działu kadr",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q082",
+      "text": "Która technika zarządzania konfliktem polega na wspólnym wypracowaniu rozwiązania, które w pełni satysfakcjonuje wszystkie strony?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Unikanie (Avoidance)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Współpraca / Rozwiązywanie problemów (Collaborate / Problem Solve)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Konfrontacja siłowa (Force / Direct)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Łagodzenie (Smooth / Accommodate)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q083",
+      "text": "W kontekście SRS, termin 'Ambiguity' (niejednoznaczność) oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymaganie jest zbyt trudne do zaprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymaganie może być zinterpretowane na więcej niż jeden sposób",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wymaganie jest sprzeczne z budżetem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymaganie zostało napisane w języku obcym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q084",
+      "text": "Co to jest 'Baseline' (Linia bazowa) w kontekście wymagań?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Najniższa możliwa płaca w projekcie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zatwierdzona wersja specyfikacji, która służy jako punkt odniesienia do dalszych prac i zmian",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ostatnia linia kodu w programie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Podpis klienta pod umową",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q085",
+      "text": "W metodzie MoSCoW, kategoria 'Won't have this time' oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymagania, które nigdy nie zostaną zrealizowane",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymagania, które nie wejdą do bieżącego wydania, ale mogą być rozważone w przyszłości",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wymagania, które są najdroższe",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymagania, które zespół już wykonał",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q086",
+      "text": "Czym jest 'Product Increment' w Scrumie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Podwyżką dla zespołu po sprincie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sumą wszystkich elementów Backlogu ukończonych podczas Sprintu oraz wartością przyrostów z poprzednich sprintów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Planem na kolejny rok pracy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Listą nowych pracowników",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q087",
+      "text": "Który diagram w SRS pomaga zwizualizować granice systemu i jego interakcje z otoczeniem?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Diagram klas",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Diagram kontekstowy (Context Diagram)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Diagram baz danych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wykres Gantta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q088",
+      "text": "Zasada 'Face-to-face communication' w Agile sugeruje, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Należy zawsze nagrywać rozmowy wideo",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rozmowa bezpośrednia jest najskuteczniejszym sposobem przekazywania informacji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Nie wolno używać e-maili",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszyscy muszą siedzieć przodem do lidera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q089",
+      "text": "W WBS, dekompozycja powinna kończyć się w momencie, gdy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zabraknie miejsca na kartce",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pakiety prac są wystarczająco małe, by można było je rzetelnie estymować i kontrolować",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Każde zadanie trwa dokładnie jeden dzień",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Klient powie 'stop'",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q090",
+      "text": "W karcie projektu (Project Charter), sekcja 'High-level Risks' zawiera:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Szczegółowy plan naprawy błędów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Główne zagrożenia, które mogą wpłynąć na powodzenie projektu już na etapie startu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Listę osób, które mogą zachorować",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Prognozę pogody na czas trwania projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q091",
+      "text": "Rola 'Sponsora' w projekcie polega głównie na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisaniu testów jednostkowych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zapewnieniu zasobów finansowych i wsparcia politycznego dla projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zarządzaniu codzienną pracą programistów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Projektowaniu bazy danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q092",
+      "text": "W kontekście zarządzania czasem, 'Slack' lub 'Float' to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Komunikator internetowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zapas czasu, o jaki można opóźnić zadanie bez wpływu na termin zakończenia projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Błąd w obliczeniach harmonogramu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przerwa obiadowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q093",
+      "text": "W XP, 'Metaphor' służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisania wierszy o projekcie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uproszczonego opisu architektury systemu zrozumiało dla wszystkich interesariuszy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Nazywania zmiennych w kodzie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ukrywania błędów przed klientem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q094",
+      "text": "Co to jest 'Backlog Grooming' (lub Refinement)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Usuwanie starych zadań z systemu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Regularne przeglądanie, doprecyzowanie i estymowanie elementów Product Backlogu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sprzątanie biura po sprincie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Instalowanie aktualizacji na serwerze",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q095",
+      "text": "W macierzy identyfikowalności wymagań, powiązanie 'Backward traceability' oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Sprawdzanie, czy każde wymaganie ma swój test",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Możliwość wskazania źródła pochodzenia danego wymagania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Powrót do poprzedniej wersji kodu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zmianę kierunku projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q096",
+      "text": "Atrybut wymagania 'Testable' (testowalne) oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymaganie jest napisane przez testera",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Istnieje obiektywny sposób sprawdzenia, czy wymaganie zostało spełnione",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wymaganie dotyczy tylko fazy testów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Można je przetestować bez użycia komputera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q097",
+      "text": "W strukturze organizacyjnej projektu, 'Steering Committee' (Komitet Sterujący) zajmuje się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisaniem dokumentacji technicznej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Podejmowaniem kluczowych decyzji strategicznych i nadzorem nad projektem",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Naprawianiem sprzętu komputerowego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Prowadzeniem codziennych spotkań Daily",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q098",
+      "text": "Pojęcie 'Technical Debt' (Dług techniczny) oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kredyt wzięty na zakup serwerów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Koszt wynikający z wybrania szybkich i prowizorycznych rozwiązań zamiast lepszych podejść",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Opóźnienie w wypłatach dla programistów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Liczbę nieużywanych licencji oprogramowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q099",
+      "text": "W Scrumie, jeśli zespół nie jest w stanie ukończyć wszystkich zadań ze Sprint Backlogu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Musi pracować w nadgodzinach, aż skończy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Niewykonane zadania wracają do Product Backlogu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sprint zostaje przedłużony o tydzień",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zadania te uznaje się za nieistniejące",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q100",
+      "text": "Zgodnie z PMBOK, 'Project Management Plan' jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wyłącznie harmonogramem w formacie Gantta",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Żywym dokumentem opisującym, jak projekt będzie wykonany, monitorowany i kontrolowany",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tabelą w Excelu z listą płac",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Jednostronicową ulotką o projekcie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q101",
+      "text": "Czym są 'Persony' w kontekście zbierania wymagań?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Prawdziwymi osobami z zespołu deweloperskiego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Profilami zmyślonych użytkowników, które pomagają zespołowi lepiej zrozumieć potrzeby i cele końcowych odbiorców",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Listą płac personelu projektu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nazwami serwerów w środowisku testowym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q102",
+      "text": "W Scrumie, co się dzieje, gdy w połowie iteracji okaże się, że pracy jest więcej niż zespół jest w stanie wykonać?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zespół musi pracować w nocy i w weekendy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Przerzuca się nadmiar zadań na przyszłą iterację, skupiając się na dokończeniu najważniejszych elementów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sprint zostaje natychmiast przerwany",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Product Owner musi sam napisać brakujący kod",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q103",
+      "text": "W nazewnictwie elementów WBS (Struktury Podziału Prac), zgodnie z materiałami, nazwa elementu powinna być:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Czasownikiem (np. 'Zaprojektuj bazę')",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rzeczownikiem (np. 'Projekt bazy danych')",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Przymiotnikiem (np. 'Szybki system')",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dowolną formą gramatyczną",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q104",
+      "text": "Czy nazwa elementu w WBS musi być unikalna w skali całego dokumentu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tak, każda nazwa może wystąpić tylko raz",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Nie, nazwy mogą się powtarzać (np. 'Wstęp'), o ile są rozróżnialne przez swoje identyfikatory hierarchiczne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tak, ale tylko na najwyższym poziomie dekompozycji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tylko jeśli projekt jest finansowany ze środków publicznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q105",
+      "text": "Która z definicji najlepiej opisuje 'Refaktoryzację' (Refactoring)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dodawanie nowych funkcjonalności do systemu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zmiana struktury istniejącego kodu bez zmiany jego zewnętrznego zachowania, w celu poprawy jego jakości",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Usuwanie starych plików z serwera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przepisywanie całego systemu od zera w nowym języku",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q106",
+      "text": "Pojęcie 'Waterfall' (model kaskadowy) charakteryzuje się tym, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projekt jest dzielony na sekwencyjne fazy, a powrót do wcześniejszej fazy jest trudny i kosztowny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Dostarcza się oprogramowanie co tydzień",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zespół sam wybiera sobie zadania rano",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Klient może zmieniać wymagania w dowolnym momencie bez formalnego procesu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q107",
+      "text": "Zgodnie z materiałami, kiedy zadanie w Scrumie można uznać za 'Skończone' (Done)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Gdy programista powie, że skończył pisać",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Gdy zostaną spełnione wszystkie kryteria zawarte w 'Definition of Done' (np. kod napisany, przetestowany, wdrożony)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Gdy skończy się czas trwania Sprintu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Gdy klient zapłaci fakturę za dany moduł",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q108",
+      "text": "Wyzwanie 'Electrico Fantastico' (zespół Alice) miało na celu pokazanie, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Alice jest świetnym menedżerem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Można dowieźć projekt w czasie i budżecie, a i tak odnieść porażkę, jeśli produkt nie spełnia potrzeb biznesowych klienta",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Samochody elektryczne są przyszłością",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Karta Projektu jest jedynym dokumentem, jakiego potrzebuje zespół",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q109",
+      "text": "W metodologiach zwinnych, co jest ważniejsze od 'Długoterminowej irytacji zespołu' wynikającej ze zmian w kodzie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Darmowa kawa w biurze",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Długoterminowe potrzeby użytkowników",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szybkie wyjście do domu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Użycie najnowszej biblioteki JavaScript",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q110",
+      "text": "Metoda Delphi stosowana w estymacji polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rzucaniu monetą",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Anonimowym zbieraniu opinii ekspertów i iteracyjnym dochodzeniu do konsensusu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wybraniu najkrótszego czasu zaproponowanego przez zespół",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Skopiowaniu terminów z innego projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q111",
+      "text": "Który z poniższych elementów NIE jest zazwyczaj częścią 'Persony'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Imię i zmyślone zdjęcie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Cele i frustracje użytkownika",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Hasło do bazy danych produkcyjnej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Krótka biografia i zawód",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q112",
+      "text": "W procesie zbierania wymagań, 'Facylitator' to osoba, która:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zawsze podejmuje ostateczną decyzję za zespół",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pomaga grupie pracować efektywniej, dba o przebieg spotkania i osiągnięcie wspólnego zrozumienia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pisze kod za programistów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Jest zawsze najstarszym członkiem zespołu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q113",
+      "text": "W SRS, wymagania dotyczące 'Maintainability' (Łatwość utrzymania) określają:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jak łatwo można naprawiać błędy lub wprowadzać modyfikacje w systemie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Ile osób potrzebnych jest do obsługi serwerowni",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Koszt zakupu komputerów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kolorystykę interfejsu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q114",
+      "text": "Dlaczego w Agile promuje się 'częstą komunikację z użytkownikami'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Żeby użytkownicy nie czuli się samotni",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Aby uniknąć nagłych, dużych zmian na końcu projektu i synchronizować prace z realnymi potrzebami",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Aby użytkownicy nauczyli się programować",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Bo tak nakazuje prawo pracy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q115",
+      "text": "Atrybut 'Traceability' (identyfikowalność) wymagań pozwala na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Śledzenie wymagań od ich źródła (np. potrzeba biznesowa) aż do implementacji i testów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Ukrycie wymagań przed konkurencją",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Automatyczne pisanie kodu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zmniejszenie liczby spotkań",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q116",
+      "text": "Co oznacza '8/80 Rule' (Zasada 8/80) w tworzeniu WBS?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Praca musi trwać od 8:00 do 20:00",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pakiety prac nie powinny być krótsze niż 8 godzin i dłuższe niż 80 godzin roboczych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "80% projektu wykonuje 8% zespołu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Każdy element musi mieć 8 podpunktów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q117",
+      "text": "W Scrumie, kto 'posiada' (is the owner of) Sprint Backlog?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Product Owner",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zespół Deweloperski",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Scrum Master",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Prezes Zarządu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q118",
+      "text": "Technika 'Brainstorming' służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Krytykowania pomysłów innych osób",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Szybkiego generowania dużej liczby pomysłów lub wymagań bez ich wstępnej oceny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Naprawy serwerów po burzy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zwalniania pracowników",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q119",
+      "text": "W cyklu życia projektu, 'Inicjacja' kończy się zazwyczaj:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wydaniem pierwszej wersji oprogramowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zatwierdzeniem Karty Projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zwolnieniem Project Managera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przejściem na emeryturę sponsora",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ipz-q120",
+      "text": "Zasada 'Sustainable Development' (zrównoważony rozwój) w Agile oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zespół powinien oszczędzać prąd",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sponsorzy, deweloperzy i użytkownicy powinni być w stanie utrzymać równe, stałe tempo pracy przez czas nieokreślony",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Należy używać tylko ekologicznych serwerów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Projekt nigdy nie powinien się kończyć",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

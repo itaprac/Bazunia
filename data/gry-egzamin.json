@@ -1,0 +1,4223 @@
+{
+  "deck": {
+    "id": "gry-egzamin",
+    "name": "Gry Komputerowe",
+    "description": "Są to pytania wygenerowane przez Gemini na bazie wykładów",
+    "version": 1,
+    "group": "Semestr 5"
+  },
+  "questions": [
+    {
+      "id": "gry-q001",
+      "text": "Która warstwa silnika gry znajduje się najniżej w hierarchii abstrakcji i wymaga najrzadszych zmian?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Systemy podstawowe (Core Systems)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "SDK osób trzecich (Third-party SDKs)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Sprzęt i sterowniki",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Warstwa niezależności od platformy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q002",
+      "text": "Jaka jest główna różnica między 'grą' a 'silnikiem gry' według definicji wykładowej?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Gra jest ustrukturyzowaną zabawą, a silnik to oprogramowanie stanowiące jej fundament",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Silnik gry jest zawsze oprogramowaniem otwartym (open source)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Gra nie wymaga interakcji z użytkownikiem, silnik tak",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie ma żadnej różnicy, terminy te są tożsame",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q003",
+      "text": "Który z wymienionych silników był podstawą wczesnych gier cRPG, takich jak Baldur's Gate?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Quake Engine",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Infinity Engine",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "REDEngine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Source Engine",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q004",
+      "text": "W kontekście pętli głównej gry, co dzieje się bezpośrednio po badaniu wejścia od gracza?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wyświetlenie obrazu na ekranie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zwolnienie zasobów pamięci",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Aktualizacja sceny i logiki gry",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Wczytywanie nowych modeli 3D",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q005",
+      "text": "Która z macierzy 4x4 we współrzędnych jednorodnych odpowiada za translację (przesunięcie)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Macierz mająca wartości przesunięcia w ostatniej kolumnie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Macierz mająca wartości na głównej przekątnej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Macierz jednostkowa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Macierz o wszystkich wartościach równych zero",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q006",
+      "text": "Co oznacza wynik 0 (zero) przy obliczaniu iloczynu skalarnego (dot product) dwóch wektorów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wektory są równoległe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wektory są prostopadłe",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wektory mają przeciwny zwrot",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wektory mają długość równą 1",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q007",
+      "text": "Do czego służą kwaterniony w silnikach gier?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do obliczania oświetlenia globalnego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do reprezentowania rotacji, unikając blokady gimbala",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do przechowywania tekstur w formacie binarnym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do detekcji kolizji sferycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q008",
+      "text": "Która technika renderingu polega na liczeniu oświetlenia po ustaleniu parametrów obiektów zapisanych w G-buforze?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Forward Rendering",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Deferred Rendering",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ray Tracing",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Mesh Shading",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q009",
+      "text": "Czym jest 'Z-fighting'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metodą optymalizacji cieni",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Błędem graficznym wynikającym z nakładania się poligonów na tej samej głębokości",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szybkim ruchem kamery w osi Z",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Techniką wygładzania krawędzi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q010",
+      "text": "Który algorytm AA (Anti-aliasing) wykorzystuje dane z poprzednich klatek do wygładzania obrazu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "MSAA",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "FXAA",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TAA (Temporal AA)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "FSAA",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q011",
+      "text": "W układzie współrzędnych sferycznych, co określają parametry (ρ, ϕ, Θ)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Trzy odległości od osi X, Y, Z",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Odległość od początku układu i dwa kąty",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pozycję na mapie wysokości (Heightmap)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kolor piksela w formacie HDR",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q012",
+      "text": "Jaka operacja na punktach (P) i wektorach (V) jest geometrycznie niepoprawna?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "P + V = P",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "P - P = V",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "P + P",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "V + V = V",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q013",
+      "text": "Który collider jest najprostszy i najszybszy w obliczeniach kolizji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "OBB (Oriented Bounding Box)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sfera (Sphere)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "AABB (Axis-Aligned Bounding Box)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Otoczka wypukła (Convex Hull)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q014",
+      "text": "Czym zajmuje się programista narzędzi (Tools programmer)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pisaniem shaderów dla wody",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tworzeniem oprogramowania wspomagającego pracę artystów i projektantów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zarządzaniem serwerami multiplayer",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nagrywaniem sesji Motion Capture",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q015",
+      "text": "Co to jest 'Frustum Culling'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odrzucanie obiektów znajdujących się poza bryłą widzenia kamery",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zastępowanie modeli 3D ich płaskimi obrazami",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Łączenie tekstur w atlasy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Symulacja fizyki szmacianej lalki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q016",
+      "text": "Który model animacji polega na deformacji wierzchołków na podstawie ruchu 'kości'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Animacja wierzchołkowa",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Animacja sprite'ów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Animacja szkieletowa",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Morfologia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q017",
+      "text": "Jaki jest główny cel stosowania technologii DLSS?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zwiększenie liczby trójkątów w modelu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rekonstrukcja obrazu z niższej rozdzielczości za pomocą AI w celu poprawy wydajności",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Symulacja realistycznych odbić w lustrach",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Eliminacja opóźnień w grach sieciowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q018",
+      "text": "Który alokator pamięci jest najszybszy, ale pozwala na zwalnianie tylko wszystkich danych naraz?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pool Allocator",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Stack Allocator",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Malloc",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Heap Allocator",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q019",
+      "text": "Co to jest 'LOD' (Level of Detail)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "System zarządzania dźwiękiem przestrzennym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Technika upraszczania geometrii obiektów znajdujących się daleko od kamery",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Format zapisu stanów gry",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metoda oświetlania wnętrz",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q020",
+      "text": "Jak nazywa się parametr 'w' dodawany do współrzędnych (x, y, z) w celu umożliwienia translacji za pomocą macierzy?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Współrzędna sferyczna",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Współrzędna jednorodna",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wektor normalny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Skalar oświetlenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q021",
+      "text": "Co oznacza skrót AABB w kontekście detekcji kolizji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Advanced Audio Binary Block",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Axis-Aligned Bounding Box",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Automated Asset Building Block",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Active Animation Behavior Base",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q022",
+      "text": "Który iloczyn wektorowy jest wykorzystywany do wyznaczenia kierunku prostopadłego do dwóch innych wektorów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Iloczyn skalarny (Dot product)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Iloczyn wektorowy (Cross product)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Interpolacja liniowa (LERP)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Normalizacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q023",
+      "text": "W jakiej przestrzeni współrzędnych znajdują się obiekty bezpośrednio po przeliczeniu ich pozycji względem kamery?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Przestrzeń lokalna (Local space)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Przestrzeń globalna (World space)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przestrzeń widoku (View space)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Przestrzeń ekranu (Screen space)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q024",
+      "text": "Czym jest 'Gimbal Lock'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Blokadą zapisu danych na dysku",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Utratą jednego stopnia swobody przy rotacji opartej na kątach Eulera",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Błędem synchronizacji pionowej monitora",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zablokowaniem pętli głównej przez system fizyki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q025",
+      "text": "Który komponent silnika odpowiada za efekty takie jak krew na ścianie czy ślady opon?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "System cząsteczkowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "System kalk (Decals)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "System LOD",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Frustum Culling",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q026",
+      "text": "Jaka jest główna cecha układu współrzędnych prawoskrętnego (RHS) w porównaniu do lewoskrętnego (LHS)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Oś Z jest skierowana w stronę obserwatora (w głąb ekranu w LHS)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Nie posiada osi Y",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Służy tylko do obliczeń 2D",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zawsze używa radianów zamiast stopni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q027",
+      "text": "Co to jest 'Ragdoll'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Technika optymalizacji tekstur",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "System animacji proceduralnej, gdzie ciało postaci reaguje jak zbiór połączonych brył sztywnych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rodzaj kontrolera do gier arcade",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Narzędzie do edycji terenu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q028",
+      "text": "Który algorytm renderingu dzieli ekran na kafelki lub klastry, aby ograniczyć liczbę świateł na fragment?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Forward Rendering",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tiled/Clustered Rendering",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ray Casting",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Scanline Rendering",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q029",
+      "text": "Do czego służy technika 'Tone Mapping'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do zmiany wysokości dźwięku",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do mapowania kolorów z zakresu HDR do zakresu obsługiwanego przez monitor (LDR)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do wykrywania kolizji z terenem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do przypisywania tekstur do modeli",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q030",
+      "text": "Jak nazywa się struktura drzewiasta przyspieszająca sprawdzanie przecięć promieni w Ray Tracingu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "BSP (Binary Space Partitioning)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "BVH (Bounding Volume Hierarchy)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "FSM (Finite State Machine)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "LOD (Level of Detail)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q031",
+      "text": "Która technologia RTX pozwala na zmniejszenie liczby próbek shadera w obszarach o niskim znaczeniu wizualnym?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DLSS",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Variable Rate Shading (VRS)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Mesh Shading",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ray Traced Reflections",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q032",
+      "text": "Czym charakteryzuje się 'Foveated Rendering'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Renderowaniem obrazu w pełnej jakości tylko w punkcie, na który patrzy użytkownik",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Usuwaniem niewidocznych ścianek modeli",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Automatycznym generowaniem poziomów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Przechowywaniem danych oświetlenia w teksturach",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q033",
+      "text": "Co powstaje w wyniku operacji: Punkt - Punkt?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nowy Punkt",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wektor (Kierunek)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Skalar",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Macierz",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q034",
+      "text": "Który element potoku graficznego (Pipeline) odpowiada za zamianę geometrii na piksele?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Vertex Shader",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rasteryzator",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Fragment Shader",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tesselator",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q035",
+      "text": "Jaką funkcję pełni 'V-Sync'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zwiększa liczbę klatek na sekundę",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Synchronizuje generowanie klatek z odświeżaniem monitora, zapobiegając rozrywaniu obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zmniejsza opóźnienie myszki (input lag)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Służy do kompresji tekstur",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q036",
+      "text": "Który z systemów odpowiada za znajdowanie ścieżek przez postacie NPC?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Fizyka bryły sztywnej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Sztuczna Inteligencja (AI Pathfinding)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Renderer niskiego poziomu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zarządca zasobów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q037",
+      "text": "Co to jest 'Draw Call'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Polecenie narysowania grupy poligonów wysyłane z CPU do GPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Funkcja w języku skryptowym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Metoda wczytywania plików z dysku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Połączenie między graczami w trybie multiplayer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q038",
+      "text": "Który typ animacji polega na płynnym przechodzeniu między dwoma kształtami (np. wyrazami twarzy)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Animacja szkieletowa",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Morfologia (Morph Targets)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Animacja sprite'ów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ragdoll",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q039",
+      "text": "Co to jest 'Dead zone' w kontekście kontrolerów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Obszar mapy, w którym gracz ginie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zakres wychylenia drążka analogowego, który nie powoduje reakcji w grze",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Moment, w którym kontroler się rozładowuje",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Brak zasięgu w grze sieciowej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q040",
+      "text": "Który silnik został stworzony przez firmę CD Projekt RED?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Frostbite",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "REDEngine",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "CryEngine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Godot",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q041",
+      "text": "W procesie tworzenia zasobów, co dzieje się podczas 'Serializacji'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nakładanie tekstur na model",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zamiana obiektów w pamięci na format binarny możliwy do zapisu na dysku",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Nagrywanie dźwięków w studio",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Testowanie gry przez dział QA",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q042",
+      "text": "Która technika AA jest najmniej obciążająca dla GPU, ale może powodować rozmycie obrazu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "MSAA",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "SSAA",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "FXAA",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "DLSS",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q043",
+      "text": "Który format macierzy jest standardem przy wykonywaniu transformacji afinicznych w 3D?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "2x2",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "3x3",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "4x4",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "5x5",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q044",
+      "text": "Co określa termin 'FPS'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Liczbę wielokątów na ekranie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Liczbę klatek wyświetlanych w ciągu sekundy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szybkość procesora",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Opóźnienie sieciowe",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q045",
+      "text": "Jak nazywa się proces odrzucania tylnych ścianek obiektów, których obserwator nie widzi?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Frustum Culling",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Backface Culling",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Occlusion Culling",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "LOD",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q046",
+      "text": "Która warstwa silnika zajmuje się asercjami i generatorami liczb losowych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Systemy podstawowe (Core)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Renderer",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Warstwa sieciowa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Front End",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q047",
+      "text": "W grach wieloosobowych, co oznacza 'Split-screen'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Grę przez internet",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Podział ekranu na części dla wielu graczy lokalnych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Błąd synchronizacji pionowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wyświetlanie gry na dwóch monitorach",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q048",
+      "text": "Czym jest 'Atlas tekstur'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zbiorem map wszystkich poziomów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jedną dużą teksturą zawierającą wiele mniejszych obrazów w celu optymalizacji Draw Calls",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Programem do malowania tekstur",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Formatem plików graficznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q049",
+      "text": "Który z poniższych jest silnikiem otwartoźródłowym (Open Source)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Unreal Engine",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Unity",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Godot",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Frostbite",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q050",
+      "text": "Kim w zespole produkcyjnym jest 'Modelarz pierwszoplanowy' (Foreground modeler)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Osobą tworzącą modele tła i horyzontu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Osobą tworzącą obiekty znajdujące się blisko gracza, wymagające największej liczby szczegółów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Osobą odpowiedzialną za animację szkieletową",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Osobą zajmującą się optymalizacją siatek kolizji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q051",
+      "text": "Która przestrzeń współrzędnych odpowiada bezpośrednio położeniu piksela na ekranie monitora?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Local space",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "View space",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Clip space",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Screen space",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gry-q052",
+      "text": "W kontekście układu współrzędnych biegunowych, co oznacza parametr 'r'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kąt między punktem a osią X",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Odległość punktu od początku układu współrzędnych (origin)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Promień krzywizny obiektywu kamery",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Współczynnik odbicia światła",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q053",
+      "text": "Jak nazywa się proces, w którym czas gry jest skalowany (np. w celu uzyskania efektu slow-motion)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "V-Sync",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Time scaling / Game clock manipulation",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Interpolacja liniowa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Serializacja czasu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q054",
+      "text": "Który z poniższych systemów fizyki jest własnością firmy NVIDIA?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Havok",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "PhysX",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Open Dynamics Engine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Bullet",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q055",
+      "text": "Czym charakteryzuje się 'Animacja wierzchołkowa'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wykorzystuje kości do poruszania modelem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Polega na bezpośredniej zmianie pozycji każdego wierzchołka modelu w każdej klatce",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Służy wyłącznie do animacji interfejsu 2D",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymaga zastosowania technologii Motion Capture",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q056",
+      "text": "Jaką rolę pełni 'Menedżer zasobów' (Asset Manager) w silniku gry?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Renderuje cienie w czasie rzeczywistym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zarządza ładowaniem, przechowywaniem i usuwaniem assetów (modeli, tekstur) z pamięci",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Odpowiada za komunikację sieciową w trybie MMO",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Służy do edycji skryptów AI",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q057",
+      "text": "Która technika renderingu najlepiej radzi sobie z bardzo dużą liczbą dynamicznych źródeł światła?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Forward Rendering",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Deferred Rendering",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ray Casting",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wireframe Rendering",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q058",
+      "text": "Co to jest 'G-Buffer'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pamięć podręczna procesora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zbiór tekstur przechowujących dane o geometrii, normalnych i kolorze w Deferred Renderingu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Kontroler wejścia dla gracza",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "System zapisu stanu gry na serwerze",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q059",
+      "text": "W operacjach na wektorach, co oznacza wynik mnożenia wektora przez skalar k > 1?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zmianę kierunku wektora na przeciwny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wydłużenie wektora przy zachowaniu jego kierunku",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Obrót wektora o 90 stopni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Znormalizowanie wektora do długości 1",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q060",
+      "text": "Do czego służy funkcja 'atan2(y, x)' w matematyce gier?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do obliczania pola powierzchni trójkąta",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do wyznaczania kąta w pełnym zakresie 0-360 stopni na podstawie współrzędnych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do mnożenia macierzy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do wyznaczania odległości między dwoma punktami",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q061",
+      "text": "Co to jest 'Kinematyka Odwrotna' (Inverse Kinematics)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Przewidywanie ruchu przeciwnika przez AI",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wyliczanie ułożenia stawów na podstawie pożądanej pozycji kończyny (np. dłoni lub stopy)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "System cofania czasu w grze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metoda renderowania przezroczystych obiektów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q062",
+      "text": "Który z poniższych formatów określa macierz jednostkową 3x3?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Macierz z samymi zerami",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Macierz z jedynkami na głównej przekątnej i zerami poza nią",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Macierz z samymi jedynkami",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Macierz, w której suma każdego wiersza wynosi 1",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q063",
+      "text": "W systemie audio, co oznacza termin 'Doppler Effect'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zmianę głośności dźwięku",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zmianę częstotliwości dźwięku w zależności od prędkości źródła względem słuchacza",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Efekt echa w jaskiniach",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kompresję plików MP3",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q064",
+      "text": "Czym zajmuje się 'Artysta oświetlenia' (Lighting Artist)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tworzeniem tekstur emisyjnych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rozmieszczaniem źródeł światła i ustawianiem ich parametrów w celu budowania nastroju sceny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Optymalizacją kodu shadera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Projektowaniem efektów wybuchów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q065",
+      "text": "Co to jest 'Occlusion Culling'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Uproszczony model kolizji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pomijanie renderowania obiektów, które są całkowicie zasłonięte przez inne, nieprzezroczyste obiekty",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rodzaj wygładzania krawędzi",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nakładanie tekstur na mapę terenu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q066",
+      "text": "W hierarchii warstw silnika, gdzie znajduje się 'System plików'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W silniku renderującym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W warstwie niezależności od platformy (Platform Abstraction Layer)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "W logice konkretnej gry",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "W SDK fizyki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q067",
+      "text": "Która technologia NVIDIA RTX służy do sprzętowego przyspieszania obliczeń przecięcia promieni?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "RT Cores",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Tensor Cores",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "CUDA Cores",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "ROPs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q068",
+      "text": "Czym jest 'BVH' (Bounding Volume Hierarchy)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Algorytmem kompresji wideo",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Strukturą danych organizującą obiekty w hierarchiczne bryły brzegowe w celu przyspieszenia testów kolizji/promieni",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Językiem skryptowym silnika Unreal",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Typem oświetlenia globalnego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q069",
+      "text": "Co oznacza skrót HUD?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "High Utility Display",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Head-Up Display",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Hidden Unit Data",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Heuristic Utility Design",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q070",
+      "text": "Który system silnika odpowiada za symulację tkanin, włosów lub wody?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Core System",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "System fizyki (często fizyka ciał miękkich)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Audio Engine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Resource Manager",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q071",
+      "text": "Co to jest 'Ray Casting' w najprostszym ujęciu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metoda nagrywania ruchu aktora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wystrzeliwanie promienia z punktu w określonym kierunku w celu znalezienia punktu trafienia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rodzaj animacji 2D",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Technika antyaliasingu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q072",
+      "text": "Który z poniższych jest przykładem 'Silnika konkretnego rodzaju gry'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Unity",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Infinity Engine (gry izometryczne RPG)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Unreal Engine 5",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Vulkan",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q073",
+      "text": "Jaki jest główny cel stosowania 'Współrzędnych jednorodnych'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ładniejszy wygląd cieni",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ujednolicenie translacji, rotacji i skalowania do postaci mnożenia przez jedną macierz 4x4",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zmniejszenie zużycia pamięci VRAM",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Umożliwienie gry wieloosobowej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q074",
+      "text": "Co to jest 'Meshlet' w kontekście Mesh Shading?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Mała paczka trójkątów (geometrii), przetwarzana równolegle przez GPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Miniaturowa tekstura",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Rodzaj błędu graficznego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Skrypt sterujący kamerą",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q075",
+      "text": "Który gatunek gier definiuje się jako ustrukturyzowaną zabawę z ustalonymi zasadami, wykorzystującą interakcję do wyświetlenia wirtualnego obrazu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Gra elektroniczna",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Gra komputerowa",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zabawa interaktywna",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Symulacja wideo",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q076",
+      "text": "Jak nazywa się stanowisko osoby, która tworzy szkice i rysunki przekazujące wizję projektu reszcie zespołu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Artysta tekstur",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Artysta koncepcyjny (Concept artist)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dyrektor kreatywny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Modelarz tła",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q077",
+      "text": "Który z wymienionych pracowników zajmuje się projektowaniem poszczególnych poziomów i dodawaniem do nich obiektów interaktywnych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projektant makro",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Projektant mikro (Micro designer)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Scenarzysta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Producent",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q078",
+      "text": "Czym zajmuje się 'Programista runtime'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tworzeniem narzędzi do edycji poziomów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pracą bezpośrednio nad silnikiem i samą działającą grą",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zarządzaniem budżetem projektu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Pisaniem scenariusza i dialogów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q079",
+      "text": "Który dział w firmie zajmuje się zakupem sprzętu i zapewnianiem wsparcia technicznego klientom?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dział marketingu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dział IT",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Kadra administracyjna",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zarząd",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q080",
+      "text": "Jaka jest główna cecha gier typu 'Arcade'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Skomplikowana fabuła i rozwój postaci",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Prosta, dynamiczna rozgrywka nastawiona na zręczność",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Symulacja rzeczywistych procesów fizycznych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Turowy system walki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q081",
+      "text": "Który typ silnika pozwala stworzyć wiele gier koncepcyjnie i wizualnie podobnych do siebie (np. tylko RPG)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Silnik konkretnej gry",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Silnik konkretnego rodzaju gry",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Silnik dowolnego rodzaju gry",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Silnik dowolnej gry",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q082",
+      "text": "Co charakteryzuje silniki o większym stopniu swobody (uniwersalne) w porównaniu do dedykowanych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Są prostsze w obsłudze",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Są bardziej skomplikowane i często mniej wydajne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Są zawsze darmowe",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie wymagają programowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q083",
+      "text": "Który silnik jest wymieniany jako jeden z pierwszych, stanowiący podwalinę pod serie Doom i Quake?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Unreal Engine",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Quake Engine",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Source Engine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Frostbite",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q084",
+      "text": "Który system operacyjny wykorzystuje 'wywłaszczanie' (preemption), co wymusza na grze rozsądne dysponowanie zasobami?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Systemy konsolowe (PS5, Xbox)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Systemy PC (Windows, Linux, MacOS)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Systemy wbudowane w automaty",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Żaden z powyższych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q085",
+      "text": "Do czego służą biblioteki takie jak STL lub Boost w silnikach gier?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do renderowania grafiki 3D",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do wydajnego przechowywania danych i operacji na nich (kontenery, algorytmy)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do symulacji fizyki cieczy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do odtwarzania muzyki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q086",
+      "text": "Jak nazywa się biblioteka SDK służąca specjalnie do animacji postaci?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Havok",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Granny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "PhysX",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Vulkan",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q087",
+      "text": "Co to jest 'Renderer niskiego poziomu'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "System odpowiedzialny za menu gry",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Interfejs łączący silnik z API graficznym (np. DirectX) w celu rysowania prymitywów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Edytor terenu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Moduł do obsługi dźwięku",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q088",
+      "text": "Który system odpowiada za konwersję współrzędnych walcowych (r, Θ, z) na kartezjańskie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "x = r cos Θ, y = r sin Θ, z = z",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "x = r sin Θ, y = r cos Θ, z = 0",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "x = r, y = Θ, z = z",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "x = r^2, y = sin Θ, z = z",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q089",
+      "text": "Czym różnią się 'Gry z dzielonym ekranem' od 'Gier jednoekranowych'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W jednoekranowych każdy ma swoją kamerę",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W dzielonym ekranie każdy gracz ma wydzieloną część wyświetlającą jego perspektywę",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dzielony ekran działa tylko przez internet",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie ma między nimi różnicy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q090",
+      "text": "Która technika animacji polega na poruszaniu obrazami 2D (np. w grach platformowych)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Animacja szkieletowa",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Animacja sprite'ów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Morfologia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ragdoll",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q091",
+      "text": "Co to jest 'Asynchroniczne wczytywanie plików'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wczytywanie danych przy zatrzymanej grze (loading screen)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wczytywanie danych w tle, bez przerywania działania pętli głównej gry",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wczytywanie tylko plików tekstowych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ręczne ładowanie zasobów przez gracza",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q092",
+      "text": "Który z poniższych programów służy głównie do tworzenia efektów cząsteczkowych (dym, ogień)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Photoshop",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Embergen",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Audacity",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Reaper",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q093",
+      "text": "W kontekście urządzeń wejścia, czym jest 'Interpretacja akordów'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odtwarzaniem muzyki w formacie MIDI",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wykrywaniem jednoczesnego naciśnięcia wielu przycisków jako specyficznej akcji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Mapowaniem klawiszy klawiatury",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wygładzaniem ruchu myszki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q094",
+      "text": "Co oznacza skrót 'LHS' w matematyce 3D?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Low Hierarchy System",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Left-Handed System (układ lewoskrętny)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Light Handling Shader",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Linear Homogeneous Space",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q095",
+      "text": "Który element silnika zajmuje się 'replikowaniem stanu gry'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Renderer",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Moduł Multiplayer",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "System Audio",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Generator liczb losowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q096",
+      "text": "Jak nazywa się proces zastępowania szczegółowych obiektów prostszymi wraz ze wzrostem odległości?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Culling",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "LOD (Level of Detail)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rasteryzacja",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tesselacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q097",
+      "text": "Czym zajmuje się 'Reżyser rozgrywki' (Game director)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko programowaniem fizyki",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zarządzaniem całością projektowanej rozgrywki i dbaniem o jej spójność",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sprzedażą gry do wydawców",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nagrywaniem dubbingu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q098",
+      "text": "W jakim celu stosuje się 'Mapy świetlne' (Lightmaps)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Aby postać mogła widzieć w ciemności",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Aby przechowywać wstępnie obliczone oświetlenie statyczne na teksturach (optymalizacja)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do generowania losowych lochów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do oznaczania pozycji graczy w sieci",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q099",
+      "text": "Która operacja matematyczna pozwala wyliczyć kąt między dwoma znormalizowanymi wektorami?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Iloczyn wektorowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Arcus cosinus z ich iloczynu skalarnego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dodawanie wektorów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Mnożenie przez macierz translacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q100",
+      "text": "Który rodzaj shadera jest odpowiedzialny za obliczanie koloru konkretnego piksela (fragmentu) na ekranie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Vertex Shader",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Geometry Shader",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Fragment (Pixel) Shader",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Compute Shader",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q101",
+      "text": "W kontekście Ray-tracingu, co oznacza termin 'Primary Ray'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Promień wystrzelony z kamery w stronę sceny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Promień odbity od lustra",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Promień lecący od źródła światła do obiektu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Cień rzucany przez postać",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q102",
+      "text": "Czym jest 'Denoiser' w algorytmach śledzenia promieni?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Systemem usuwającym dźwięki tła",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Algorytmem redukującym szum wizualny wynikający z małej liczby próbek promieni",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Narzędziem do kompresji tekstur",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Filtrem wyostrzającym krawędzie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q103",
+      "text": "Co to jest 'Z-Buffer' (bufor głębokości)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Miejsce przechowywania wyników punktowych graczy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Struktura danych przechowująca informację o odległości każdego piksela od kamery",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pamięć podręczna dla skryptów AI",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rejestr procesora odpowiedzialny za operacje logiczne",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q104",
+      "text": "Która technika pozwala na wyświetlanie obiektów o bardzo dużej liczbie wielokątów poprzez dynamiczne dzielenie trójkątów na mniejsze?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tesselacja",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Normal Mapping",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Mip-mapping",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Frustum Culling",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q105",
+      "text": "Jaką funkcję w silniku pełni 'Garbage Collector'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Usuwa niepotrzebne obiekty 3D ze sceny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Automatycznie zwalnia nieużywaną pamięć operacyjną",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Optymalizuje kod źródłowy gry",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Naprawia błędy w plikach zapisu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q106",
+      "text": "Co oznacza termin 'Baking' w odniesieniu do oświetlenia?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Generowanie tekstur w czasie rzeczywistym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wstępne przeliczanie oświetlenia statycznego i zapisywanie go w teksturach przed uruchomieniem gry",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Symulację temperatury w silniku fizycznym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Proces kompilacji shaderów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q107",
+      "text": "Który shader pozwala na wykonywanie ogólnych obliczeń na GPU, niezwiązanych bezpośrednio z rysowaniem geometrii?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Compute Shader",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Vertex Shader",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Hull Shader",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Domain Shader",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q108",
+      "text": "Czym jest 'Mip-mapping'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tworzeniem mapy poziomów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Przechowywaniem tej samej tekstury w kilku mniejszych rozdzielczościach w celu optymalizacji i uniknięcia aliasingu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Metodą poruszania się postaci po mapie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Systemem generowania terenu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q109",
+      "text": "Co to jest 'Draw Call Batching'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Grupowanie wielu obiektów w jedno wywołanie rysowania w celu odciążenia CPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Tworzenie kopii zapasowych projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Równoległe przetwarzanie fizyki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metoda synchronizacji dźwięku z obrazem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q110",
+      "text": "Który wektor jest zawsze prostopadły do powierzchni poligonu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wektor styczny (Tangent)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wektor normalny (Normal)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wektor binormalny (Binormal)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wektor widoku (View vector)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q111",
+      "text": "W kontekście shaderów, co oznacza skrót PBR?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Point-Based Rendering",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Physically Based Rendering (rendering oparty na fizyce)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pixel Binary Resolution",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Polygon Batching Record",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q112",
+      "text": "Który model oświetlenia jest najprostszy i oblicza tylko oświetlenie bezpośrednie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Global Illumination",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Local Illumination",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ray Tracing",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Path Tracing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q113",
+      "text": "Czym jest 'Skybox'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pudełkiem z narzędziami dla programisty",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dużą teksturą (często sześcianem) otaczającą całą scenę, symulującą niebo i horyzont",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Systemem kolizji dla samolotów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rodzajem oświetlenia punktowego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q114",
+      "text": "Jak nazywa się opóźnienie między akcją gracza a reakcją widoczną na ekranie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jitter",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Input Lag",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Bandwidth",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ping",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q115",
+      "text": "Który alokator pamięci jest najbardziej efektywny dla obiektów o tym samym rozmiarze (np. cząsteczek w systemie cząsteczkowym)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Stack Allocator",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pool Allocator (Alokator puli)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Double-Ended Stack Allocator",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Heap Allocator",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q116",
+      "text": "Czym jest 'Frustum' w kontekście kamery w grze 3D?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Typem tekstury nieba",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bryłą ściętą (ostrosłupem), która definiuje pole widzenia kamery",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Algorytmem kompresji dźwięku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rodzajem kontrolera ruchu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q117",
+      "text": "W procesie rasteryzacji, co to jest 'Fragment'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Część siatki modelu 3D",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Potencjalny piksel wraz ze wszystkimi jego danymi (kolor, głębia), zanim trafi do bufora ramki",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Krótki filmik przerywnikowy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Uszkodzony plik z zasobami",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q118",
+      "text": "Co definiuje krzywa Beziera w silnikach gier?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Gęstość atmosfery",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Gładką ścieżkę lub kształt zdefiniowany za pomocą punktów kontrolnych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sposób zapisu plików binarnych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Algorytm wykrywania kolizji sferycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q119",
+      "text": "Który z poniższych systemów odpowiada za 'Culling' (odrzucanie)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Renderer",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Fizyka",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "System audio",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "AI",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q120",
+      "text": "Co to jest 'Z-prepass'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wstępne renderowanie głębi sceny, aby uniknąć kosztownych obliczeń oświetlenia dla zasłoniętych pikseli",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Technika zapisu stanu gry",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przyspieszenie animacji szkieletowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metoda generowania cieni miękkich",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q121",
+      "text": "Jak nazywa się parametr materiału określający stopień chropowatości powierzchni w modelu PBR?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metallic",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Roughness",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Albedo",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ambient Occlusion",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q122",
+      "text": "Która operacja na macierzach NIE jest przemienna (A * B != B * A)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dodawanie macierzy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mnożenie macierzy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Mnożenie macierzy przez skalar",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Transponowanie macierzy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q123",
+      "text": "Co robi funkcja 'Lerp(a, b, t)'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Mnoży dwa wektory",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wykonuje interpolację liniową między wartościami a i b o współczynnik t",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Normalizuje wektor do długości 1",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Oblicza sinus kąta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q124",
+      "text": "Która technologia RTX służy do rekonstrukcji promieni w celu uzyskania lepszej jakości efektów Ray-tracingu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ray Reconstruction (część DLSS 3.5)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Frame Generation",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "V-Sync",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Anti-Aliasing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q125",
+      "text": "Czym jest 'Normal Mapping'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metodą poruszania się po mapie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Techniką udawania detali geometrii poprzez modyfikację wektorów normalnych na powierzchni modelu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Systemem automatycznego generowania dróg",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Standardem zapisu kolorów 8-bitowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q126",
+      "text": "Która część pętli gry odpowiada za utrzymanie stałej prędkości rozgrywki niezależnie od liczby FPS?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Delta Time (czas od ostatniej klatki)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Buforowanie klatek",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Rasteryzacja",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Alokacja stosu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q127",
+      "text": "W kontekście fizyki, co to jest 'Impuls'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nagła zmiana pędu obiektu wynikająca z przyłożonej siły w krótkim czasie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Stała prędkość obiektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Masa obiektu pomnożona przez grawitację",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Współczynnik tarcia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q128",
+      "text": "Do czego służy 'Stencil Buffer'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do przechowywania haseł graczy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do maskowania obszarów ekranu (np. w celu uzyskania efektu portalu lub odbicia)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do generowania losowych tekstur",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do kompresji plików dźwiękowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q129",
+      "text": "Która przestrzeń współrzędnych jest używana do opisu pozycji wierzchołków względem środka modelu (zanim zostanie on umieszczony w świecie)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "World Space",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Object/Local Space",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "View Space",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Clip Space",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q130",
+      "text": "Co oznacza skrót GPU?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "General Processing Unit",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Graphics Processing Unit",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Gaming Path Unit",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Global Position Utility",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q131",
+      "text": "Czym jest 'Skeletal Retargeting'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Procesem przenoszenia animacji z jednego szkieletu na inny o różnych proporcjach",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Usunięciem kości z modelu w celu optymalizacji",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nagrywaniem ruchu w studio MoCap",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rodzajem kolizji między postaciami",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q132",
+      "text": "W systemie cząsteczkowym, co określa parametr 'Lifetime'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Prędkość poruszania się cząsteczki",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Czas, po którym cząsteczka zostaje usunięta ze świata",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wielkość cząsteczki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kolor cząsteczki",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q133",
+      "text": "Który algorytm sortowania jest często używany w silnikach do renderowania obiektów przezroczystych (od najdalszych do najbliższych)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Sortowanie bąbelkowe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Back-to-Front sorting",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Quick sort",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Random sorting",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q134",
+      "text": "Co to jest 'Ambient Occlusion'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Całkowity brak światła w scenie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Efekt zaciemnienia miejsc, do których trudniej dociera światło rozproszone (np. kąty, szczeliny)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rodzaj przezroczystości wody",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metoda mapowania tekstur na kule",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q135",
+      "text": "Który komponent silnika zajmuje się wywoływaniem zdarzeń w określonych odstępach czasu (np. co 5 sekund)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Physics Engine",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Timer Manager / Scheduler",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Input Manager",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Video Player",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q136",
+      "text": "Czym jest 'NavMesh'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Siatką modelu gracza",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uproszczoną geometrią świata definiującą obszary, po których mogą poruszać się postacie AI",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Teksturą nawigacji na ekranie (kompas)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Systemem zapisu współrzędnych GPS",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q137",
+      "text": "Co to jest 'Vertex Buffer Object' (VBO)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zdjęcie modelu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bufor w pamięci GPU przechowujący dane o wierzchołkach (pozycje, kolory, UV)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Skrypt sterujący ruchem kamery",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nazwa formatu pliku 3D",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q138",
+      "text": "Który wektor otrzymamy, jeśli znormalizujemy dowolny wektor niezerowy?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wektor o długości 0",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wektor o długości 1, zachowujący oryginalny kierunek",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wektor prostopadły",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wektor o długości równej 10",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q139",
+      "text": "Jaką funkcję pełni 'Shader Compiler'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rysuje trójkąty na ekranie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tłumaczy kod shadera (np. HLSL/GLSL) na kod zrozumiały dla konkretnej karty graficznej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zamyka aplikację w przypadku błędu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Łączy tekstury w atlasy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q140",
+      "text": "Która osoba w dziale technicznym jest najważniejsza i zarządza całym projektem od strony technologicznej?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Technical Director (Kierownik techniczny)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Chief Technical Officer (Naczelny kierownik techniczny)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Lead Runtime Programmer",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tools Programmer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q141",
+      "text": "Jak w materiałach zdefiniowano 'Inżyniera' (Engineer) w przemyśle gier?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Osoba naprawiająca sprzęt komputerowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Osoba projektująca i implementująca oprogramowanie potrzebne do stworzenia gry",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Osoba odpowiedzialna za budowę serwerowni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Osoba zajmująca się wyłącznie fizyką obiektów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q142",
+      "text": "Co jest głównym problemem przy stosowaniu wyłącznie zegara lokalnego w systemie animacji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zbyt duże zużycie procesora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Trudność w synchronizacji kilku różnych animacji ze sobą",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Błędy w wyświetlaniu tekstur",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Konieczność używania kwaternionów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q143",
+      "text": "Która technika pozwala na płynne przejście między różnymi pózami bohatera (np. z idącego w biegnącego)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Animation Blending (Mieszanie animacji)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Frustum Culling",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Normal Mapping",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Texture Streaming",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q144",
+      "text": "Dlaczego 'Motion Adaptive Shading' pozwala na zmniejszenie liczby próbek bez widocznej utraty jakości?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ponieważ oczy nie widzą kolorów w ruchu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ponieważ ludzkie oczy nie są w stanie płynnie śledzić bardzo szybkich skoków obrazu (rozmycie ruchu)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ponieważ GPU automatycznie wyłącza cienie w ruchu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ponieważ tekstury w ruchu są zawsze mniejsze",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q145",
+      "text": "Na czym polega 'Content Adaptive Shading'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Na zmianie treści gry w zależności od wieku gracza",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Na dopasowaniu częstotliwości próbkowania do szczegółowości samej tekstury/obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Na usuwaniu modeli, które nie pasują do sceny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Na renderowaniu tylko obiektów statycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q146",
+      "text": "Jakie urządzenie jest niezbędne do poprawnego działania algorytmu 'Foveated Rendering'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kontroler ruchu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Eye-tracker (system śledzenia wzroku)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Mikrofon",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Drugi monitor",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q147",
+      "text": "Czym w technologii Mesh Shading zajmuje się 'Task Shader'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rysowaniem pojedynczych pikseli",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tworzeniem 'meshletów' w oparciu o informacje od programisty",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wczytywaniem plików z dysku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Obliczaniem kolizji fizycznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q148",
+      "text": "Który shader w nowoczesnym potoku RTX operuje bezpośrednio na 'meshletach', tworząc konkretne kształty?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Vertex Shader",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mesh Shader",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pixel Shader",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Compute Shader",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q149",
+      "text": "Jaka jest główna różnica między 'Zabawą' a 'Rozrywką' według definicji wykładowych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rozrywka to ogół przyjemności, a zabawa to świadomie podjęte aktywne działanie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zabawa wymaga komputera, rozrywka nie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nie ma żadnej różnicy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zabawa jest zawsze darmowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q150",
+      "text": "Jak nazywa się technika VRS (Variable Rate Shading) stosowana w VR, skupiająca jakość w centrum pola widzenia?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Foveated Rendering",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Motion Blurring",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Occlusion Culling",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Deferred Shading",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q151",
+      "text": "Co to jest 'Globalna oś animacji'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Linia wyznaczająca środek świata",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Oś czasu ($ au$), do której odnoszą się wszystkie uruchomione w grze animacje",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Oś Z w układzie współrzędnych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Prędkość obrotu postaci",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q152",
+      "text": "W hierarchii ról, kto zajmuje się komunikacją z zespołem w sprawie nowych technologii i zarządza częścią projektu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Technical Director",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Junior Programmer",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Artist",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tester QA",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q153",
+      "text": "Jaką zaletę ma system Mesh Shading nad tradycyjnym Vertex Shaderem?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pozwala na rysowanie w 2D",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wykonuje obliczenia wielowątkowo na grupach poligonów, co przyspiesza renderowanie skomplikowanych obiektów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Nie wymaga karty graficznej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zmniejsza zużycie energii przez monitor",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q154",
+      "text": "Co to jest 'Animation Post-processing'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nakładanie filtrów kolorystycznych na postać",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Modyfikacja pózy animacji po jej wyliczeniu (np. dopasowanie stóp do nierównego terenu)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Eksportowanie animacji do formatu MP4",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tworzenie tekstur dla szkieletu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q155",
+      "text": "W kontekście VRS, co oznacza 'Shading Rate'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Częstotliwość odświeżania monitora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Liczba próbek shadera na dany obszar pikseli",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Prędkość poruszania się cieni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rozmiar pliku shadera",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q156",
+      "text": "Który element systemu animacji przechowuje informacje o aktualnym ułożeniu wszystkich kości postaci w danej klatce?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Klip animacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Poza (Pose)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szkielet",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Mesh",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q157",
+      "text": "Do czego służy parametr 'R' w równaniach czasu animacji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do określenia promienia (Radius) modelu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do skalowania prędkości odtwarzania animacji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do definiowania rozdzielczości (Resolution)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do obliczania rotacji (Rotation)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q158",
+      "text": "Gdzie najczęściej wykorzystuje się 'Task Shadery'?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W symulacji fizyki wody",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "W zaawansowanym usuwaniu (culling) geometrii przed etapem Mesh Shadera",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "W nagrywaniu dźwięku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "W obsłudze interfejsu użytkownika",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q159",
+      "text": "Co dzieje się, gdy animacja ma skalę $R = 2.0$?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odtwarza się dwa razy szybciej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Odtwarza się dwa razy wolniej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jest dwa razy większa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ma dwa razy więcej kości",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q160",
+      "text": "Który system silnika odpowiada za synchronizację czasu między serwerem a klientem w grach sieciowych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Render Engine",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Network Clock / Synchronization System",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Physics Engine",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Scripting Engine",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q161",
+      "text": "Dlaczego w Foveated Renderingu obszary peryferyjne są renderowane w niższej jakości?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ponieważ tam nie dociera światło",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ponieważ ludzka siatkówka ma tam mniejsze zagęszczenie receptorów odpowiedzialnych za ostrość widzenia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Aby zaoszczędzić miejsce na dysku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Jest to błąd wynikający z zakrzywienia soczewek",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gry-q162",
+      "text": "Która technologia rekonstrukcji obrazu korzysta z wektorów ruchu i danych z poprzednich klatek (temporal data)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DLSS",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Baking",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "MIP-Mapping",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Flat Shading",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

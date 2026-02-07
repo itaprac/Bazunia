@@ -1,13 +1,14 @@
 {
   "deck": {
     "id": "poi-egzamin",
-    "name": "POI - Podstawy Ochrony Informacji",
-    "description": "Pytania egzaminacyjne z przedmiotu Podstawy Ochrony Informacji.",
-    "version": 1
+    "name": "Podstawy ochrony informacji",
+    "description": "Pytania z Podstaw ochrony informacji",
+    "version": 1,
+    "group": "Semestr 5"
   },
   "questions": [
     {
-      "id": "q001",
+      "id": "poi-q001",
       "text": "Które z poniższych stwierdzeń opisuje ryzyko związane z dostępem do nośników wymiennych?",
       "answers": [
         {
@@ -33,7 +34,7 @@
       ]
     },
     {
-      "id": "q002",
+      "id": "poi-q002",
       "text": "Który z komponentów zaufanej bazy obliczeniowej (TCB) zanim udzieli dostępu do zasobu najpierw weryfikuje każde żądanie, które może dotyczyć tego zasobu?",
       "answers": [
         {
@@ -59,7 +60,7 @@
       ]
     },
     {
-      "id": "q003",
+      "id": "poi-q003",
       "text": "Wskaż tę z poniższych funkcji, którą wykonuje przede wszystkim system wykrywania włamań (IDS).",
       "answers": [
         {
@@ -85,7 +86,7 @@
       ]
     },
     {
-      "id": "q004",
+      "id": "poi-q004",
       "text": "Które z poniższych stwierdzeń jest najbardziej właściwe?",
       "answers": [
         {
@@ -111,7 +112,7 @@
       ]
     },
     {
-      "id": "q005",
+      "id": "poi-q005",
       "text": "W którym z poniższych ataków kryptoanalitycznych adwersarz (kryptoanalityk) ma do dyspozycji najmniejszą ilość informacji, którą może wykorzystać do przełamania szyfru?",
       "answers": [
         {
@@ -137,7 +138,7 @@
       ]
     },
     {
-      "id": "q006",
+      "id": "poi-q006",
       "text": "Które z poniższych rodzajów ataków kryptograficznych dotyczących algorytmu 2DES pokazują, że bezpieczeństwo algorytmu 2DES jest porównywalne ze standardowym algorytmem DES?",
       "answers": [
         {
@@ -163,7 +164,7 @@
       ]
     },
     {
-      "id": "q007",
+      "id": "poi-q007",
       "text": "Który z poniższych symptomów mogłyby oznaczać, że wiadomość została zmodyfikowana?",
       "answers": [
         {
@@ -189,7 +190,7 @@
       ]
     },
     {
-      "id": "q008",
+      "id": "poi-q008",
       "text": "Dwie strony chcą wymieniać zaszyfrowane wiadomości za pomocą kryptografii klucza symetrycznego. Strony nie mają jednak wcześniej uzgodnionej pozakryptograficznej metody wymiany kluczy. Dlatego strony powinny użyć:",
       "answers": [
         {
@@ -215,7 +216,7 @@
       ]
     },
     {
-      "id": "q009",
+      "id": "poi-q009",
       "text": "W pewnej firmie dane dotyczące płac są danymi wrażliwymi. Plik przechowujący listy płac jest tworzony przez określonego użytkownika, który jest pracownikiem firmy. Dostęp do tego pliku powinien być kontrolowany w oparciu o:",
       "answers": [
         {
@@ -241,7 +242,7 @@
       ]
     },
     {
-      "id": "q010",
+      "id": "poi-q010",
       "text": "Wadą oprogramowania w systemie operacyjnym, która może pozwolić nieautoryzowanemu użytkownikowi na uzyskanie dostępu do komputera bez znajomości hasła jest:",
       "answers": [
         {
@@ -267,7 +268,7 @@
       ]
     },
     {
-      "id": "q011",
+      "id": "poi-q011",
       "text": "Co nie jest właściwością lub cechą jednokierunkowej funkcji skrótu?",
       "answers": [
         {
@@ -293,7 +294,7 @@
       ]
     },
     {
-      "id": "q012",
+      "id": "poi-q012",
       "text": "Modelem kontroli dostępu bazującym na zasadzie No Read-Up i No Write-Down jest:",
       "answers": [
         {
@@ -319,7 +320,7 @@
       ]
     },
     {
-      "id": "q013",
+      "id": "poi-q013",
       "text": "Advanced Encryption Standard (AES) może być opisany jako:",
       "answers": [
         {
@@ -345,7 +346,7 @@
       ]
     },
     {
-      "id": "q014",
+      "id": "poi-q014",
       "text": "Jak współcześni kryptografowie bronią się przed atakami siłowymi (ang. brute-force)?",
       "answers": [
         {
@@ -371,7 +372,7 @@
       ]
     },
     {
-      "id": "q015",
+      "id": "poi-q015",
       "text": "Które z poniższych stwierdzeń jest cechą HMAC?",
       "answers": [
         {
@@ -397,7 +398,7 @@
       ]
     },
     {
-      "id": "q016",
+      "id": "poi-q016",
       "text": "Który z poniższych opisów dobrze charakteryzuje pojęcie strefy DMZ?",
       "answers": [
         {
@@ -423,7 +424,7 @@
       ]
     },
     {
-      "id": "q017",
+      "id": "poi-q017",
       "text": "Która z poniższych cech NIE jest właściwością trybu szyfru blokowego ECB?",
       "answers": [
         {
@@ -449,7 +450,7 @@
       ]
     },
     {
-      "id": "q018",
+      "id": "poi-q018",
       "text": "Która z poniższych odpowiedzi NIE jest prawdziwa w przypadku algorytmu Diffiego-Hellmana?",
       "answers": [
         {
@@ -475,7 +476,7 @@
       ]
     },
     {
-      "id": "q019",
+      "id": "poi-q019",
       "text": "Które z poniższych narzędzi służy do przeprowadzania audytu i odzyskiwania haseł?",
       "answers": [
         {
@@ -501,7 +502,7 @@
       ]
     },
     {
-      "id": "q020",
+      "id": "poi-q020",
       "text": "Zaznacz, które z poniższych odpowiedzi odnoszących się do protokołu SSL/TLS jest nieprawdziwe.",
       "answers": [
         {
@@ -527,7 +528,7 @@
       ]
     },
     {
-      "id": "q021",
+      "id": "poi-q021",
       "text": "W sieci z obsługą AAA użytkownik pracując w uprzywilejowanym trybie wykonawczym wydaje polecenie skonfigurowania terminala. Zaznacz, która z funkcji AAA zadziała, jeśli to polecenie zostanie odrzucone?",
       "answers": [
         {
@@ -553,7 +554,7 @@
       ]
     },
     {
-      "id": "q022",
+      "id": "poi-q022",
       "text": "Hasła jednorazowe (OTP), które generowane są przez token wyposażony w odpowiedni algorytm i zestrojone ustawienia czasu znane są jako:",
       "answers": [
         {
@@ -579,7 +580,7 @@
       ]
     },
     {
-      "id": "q023",
+      "id": "poi-q023",
       "text": "Załóżmy, że zdefiniowano dwie klasy dostępu do informacji w formie class = <rank, compartment>: L1 = {secret, {Asia, Europe}} i L2 = {top-secret, {Europe, South-America}}. Wówczas:",
       "answers": [
         {
@@ -605,7 +606,7 @@
       ]
     },
     {
-      "id": "q024",
+      "id": "poi-q024",
       "text": "Który z poniższych problemów dotyczy szyfru blokowego z kluczem symetrycznym?",
       "answers": [
         {
@@ -631,7 +632,7 @@
       ]
     },
     {
-      "id": "q025",
+      "id": "poi-q025",
       "text": "Wydłużanie hasła w Linux-ie polega na:",
       "answers": [
         {
@@ -657,7 +658,7 @@
       ]
     },
     {
-      "id": "q026",
+      "id": "poi-q026",
       "text": "Który z poniższych mechanizmów wykorzystywana jest w przypadku ataku typu SYN flood?",
       "answers": [
         {
@@ -683,7 +684,7 @@
       ]
     },
     {
-      "id": "q027",
+      "id": "poi-q027",
       "text": "W systemie kontroli dostępu przeciek prawa ze względu na ogólne prawo r oznacza, że:",
       "answers": [
         {
@@ -709,7 +710,7 @@
       ]
     },
     {
-      "id": "q028",
+      "id": "poi-q028",
       "text": "Która z poniższych właściwości NIE jest cechą charakterystyczną kryptosystemu klucza publicznego ElGamala?",
       "answers": [
         {
@@ -735,7 +736,7 @@
       ]
     },
     {
-      "id": "q029",
+      "id": "poi-q029",
       "text": "W którym z wymienionych poniżej przypadkach celu ochrony przed atakami na hasła najbardziej korzystne jest zastosowanie domieszek do hasła?",
       "answers": [
         {
@@ -761,7 +762,7 @@
       ]
     },
     {
-      "id": "q030",
+      "id": "poi-q030",
       "text": "Statystyczny system wykrywania włamań oparty na anomaliach:",
       "answers": [
         {
@@ -787,7 +788,7 @@
       ]
     },
     {
-      "id": "q031",
+      "id": "poi-q031",
       "text": "Sieci VPN można używać do ochrony ruchu sieciowego:",
       "answers": [
         {
@@ -813,7 +814,7 @@
       ]
     },
     {
-      "id": "q032",
+      "id": "poi-q032",
       "text": "Który z poniższych typów śluz bezpieczeństwa (inaczej zapór sieciowych) jest obsługiwany przez większość routerów i jest najłatwiejszy do wdrożenia?",
       "answers": [
         {
@@ -839,7 +840,7 @@
       ]
     },
     {
-      "id": "q033",
+      "id": "poi-q033",
       "text": "Które z poniższych elementów wchodzą w skład triady CIA?",
       "answers": [
         {
@@ -865,7 +866,7 @@
       ]
     },
     {
-      "id": "q034",
+      "id": "poi-q034",
       "text": "Uwierzytelnianie, w którym użytkownikowi prezentowana jest losowa wartość wykorzystywana przez niego do obliczenia i zwrócenia obliczonej liczby opartej na tej losowej wartości jest nazywane:",
       "answers": [
         {
@@ -891,7 +892,7 @@
       ]
     },
     {
-      "id": "q035",
+      "id": "poi-q035",
       "text": "SHA-3 jest przykładem:",
       "answers": [
         {
@@ -917,33 +918,7 @@
       ]
     },
     {
-      "id": "q036",
-      "text": "Co nie jest właściwością lub cechą jednokierunkowej funkcji skrótu?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "dla danej wartości skrótu obliczeniowo niewykonalne jest odtworzenie odpowiadającej mu wiadomości",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "uzyskanie tego samego skrótu z dwóch różnych wiadomości powinno być niemożliwe lub wyjątkowo rzadkie",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "konwertuje wiadomości o stałej długości w skróty o dowolnej długości",
-          "correct": true
-        },
-        {
-          "id": "d",
-          "text": "przetwarza wiadomość o dowolnej długości na wartość o stałej długości",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q037",
+      "id": "poi-q036",
       "text": "Rozważmy algorytm podwójnego szyfrowania postaci C=E{k1}(E{k2}(P)), gdzie k1 i k2 są n-bitowymi kluczami kryptograficznymi. Jaki typ ataku pokazuje, że liczba kluczy, którą należy przejrzeć wynosi w najgorszym przypadku 2^{n+1} zamiast 2^{2n}?",
       "answers": [
         {
@@ -969,7 +944,7 @@
       ]
     },
     {
-      "id": "q038",
+      "id": "poi-q037",
       "text": "Które z poniższych zdań najlepiej definiuje szyfr strumieniowy?",
       "answers": [
         {
@@ -995,7 +970,7 @@
       ]
     },
     {
-      "id": "q039",
+      "id": "poi-q038",
       "text": "Które z poniższych opcji zapewniają wiadomości e-mail autentyczność i poufność?",
       "answers": [
         {
@@ -1021,7 +996,7 @@
       ]
     },
     {
-      "id": "q040",
+      "id": "poi-q039",
       "text": "Która z poniższych cech nie jest cechą kryptograficznej funkcji skrótu?",
       "answers": [
         {
@@ -1047,7 +1022,7 @@
       ]
     },
     {
-      "id": "q041",
+      "id": "poi-q040",
       "text": "Który z poniższych typów ataku opiera się na prawdopodobieństwie wygenerowania takiego samego skrótu z dwóch różnych komunikatów przy użyciu tej samej funkcji skrótu?",
       "answers": [
         {
@@ -1073,7 +1048,7 @@
       ]
     },
     {
-      "id": "q042",
+      "id": "poi-q041",
       "text": "Ustalenie tego, co zrobił użytkownik systemu jest nazywane:",
       "answers": [
         {
@@ -1099,33 +1074,7 @@
       ]
     },
     {
-      "id": "q043",
-      "text": "Zaznacz, które z poniższych odpowiedzi odnoszących się do protokołu SSL/TLS jest nieprawdziwe.",
-      "answers": [
-        {
-          "id": "a",
-          "text": "Protokół SSL/TLS pozwala na jednostronne uwierzytelnienie serwera i klienta",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "Protokół SSL/TLS pozwala na wzajemne uwierzytelnienie serwera i klienta",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "Protokół SSL/TLS zapewnia integralność informacji wymienianej pomiędzy klientem a serwerem",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "Protokół SSL/TLS nie zapewnia ochrony sesji komunikacyjnej typu end-to-end",
-          "correct": true
-        }
-      ]
-    },
-    {
-      "id": "q044",
+      "id": "poi-q042",
       "text": "Do której z poniższych operacji najczęściej używany jest spoofing (podszywanie się)?",
       "answers": [
         {
@@ -1151,7 +1100,7 @@
       ]
     },
     {
-      "id": "q045",
+      "id": "poi-q043",
       "text": "Kontrola dostępu może być realizowana w każdym z poniższych przypadków z wyjątkiem:",
       "answers": [
         {
@@ -1177,7 +1126,7 @@
       ]
     },
     {
-      "id": "q046",
+      "id": "poi-q044",
       "text": "Które z poniższych form uwierzytelniania jest najbezpieczniejsza?",
       "answers": [
         {
@@ -1203,7 +1152,7 @@
       ]
     },
     {
-      "id": "q047",
+      "id": "poi-q045",
       "text": "Dana jest wiadomość m, której przypisano poziom zabezpieczeń poufna. Trzem podmiotom A, B i C przypisano poświadczenia bezpieczeństwa: A:poufne, B:poufne i C:tajne. Dysponentem wiadomości m jest podmiot A. Zamierza przekazać prawo czytania tej wiadomości podmiotowi B, ale w taki sposób, aby B nie mógł przekazać dalej tego prawa podmiotowi C. Który model kontroli dostępu pozwala na to?",
       "answers": [
         {
@@ -1229,7 +1178,7 @@
       ]
     },
     {
-      "id": "q048",
+      "id": "poi-q046",
       "text": "Która z poniższych kontroli dostępu polega na zastosowaniu etykiet bezpieczeństwa?",
       "answers": [
         {
@@ -1255,7 +1204,7 @@
       ]
     },
     {
-      "id": "q049",
+      "id": "poi-q047",
       "text": "Który z poniższych elementów jest fałszywą siecią zaprojektowaną w celu kuszenia intruzów...?",
       "answers": [
         {
@@ -1281,7 +1230,7 @@
       ]
     },
     {
-      "id": "q050",
+      "id": "poi-q048",
       "text": "Jakub chce zainstalować nową aplikację w swoim systemie operacyjnym Windows 10. Chce mieć pewność, że żadna aplikacja, której używa, nie zawiera konia trojańskiego. Co powinien zrobić, aby uzyskać taką pewność?",
       "answers": [
         {
@@ -1307,7 +1256,7 @@
       ]
     },
     {
-      "id": "q051",
+      "id": "poi-q049",
       "text": "Na które z poniższych ataków podatne jest środowisko sieciowe bazujące na uznaniowej kontroli dostępu?",
       "answers": [
         {
@@ -1333,13 +1282,13 @@
       ]
     },
     {
-      "id": "q052",
+      "id": "poi-q050",
       "text": "Które z poniższych własności modelu Biby nie zapewniają podmiotowi o wysokim poziomie integralności dostępu do obiektów o niższym poziomie integralności?",
       "answers": [
         {
           "id": "a",
           "text": "własność No Read Down",
-          "correct": false
+          "correct": true
         },
         {
           "id": "b",
@@ -1349,7 +1298,7 @@
         {
           "id": "c",
           "text": "własność No Write Down",
-          "correct": true
+          "correct": false
         },
         {
           "id": "d",
@@ -1359,7 +1308,7 @@
       ]
     },
     {
-      "id": "q053",
+      "id": "poi-q051",
       "text": "Co to jest zaufana baza obliczeniowa (TCB)?",
       "answers": [
         {
@@ -1385,7 +1334,7 @@
       ]
     },
     {
-      "id": "q054",
+      "id": "poi-q052",
       "text": "Który z poniższych mechanizmów jest stosowany w przypadku, gdy chcemy zapewnić niezaprzeczalność dostarczenia wiadomości?",
       "answers": [
         {
@@ -1411,7 +1360,7 @@
       ]
     },
     {
-      "id": "q055",
+      "id": "poi-q053",
       "text": "Którą z poniższych technik kryptoanalizy zilustrowano na poniższym rysunku? (Zakładając brak rysunku, opcja zgodna z kluczem C)",
       "answers": [
         {
@@ -1437,7 +1386,7 @@
       ]
     },
     {
-      "id": "q056",
+      "id": "poi-q054",
       "text": "W przypadku zastosowania metody szyfrowania punkt-punkt w sieci składającej się z 24 komputerów zapewnienie poufnej wymiany informacji wymaga użycia łącznie (1 klucz asymetryczny jest parą (klucz publiczny, klucz prywatny)):",
       "answers": [
         {
@@ -1468,7 +1417,7 @@
       ]
     },
     {
-      "id": "q057",
+      "id": "poi-q055",
       "text": "Które z poniższych elementów kontroluje zaufana baza obliczeniowa (TCB)?",
       "answers": [
         {
@@ -1494,7 +1443,7 @@
       ]
     },
     {
-      "id": "q058",
+      "id": "poi-q056",
       "text": "Który z następujących algorytmów szyfrowania jest obecnie uważany za słaby (z punktu widzenia ich bezpieczeństwa)?",
       "answers": [
         {
@@ -1520,7 +1469,7 @@
       ]
     },
     {
-      "id": "q059",
+      "id": "poi-q057",
       "text": "Które z poniższych stwierdzeń nie jest prawdziwe?",
       "answers": [
         {
@@ -1546,7 +1495,7 @@
       ]
     },
     {
-      "id": "q060",
+      "id": "poi-q058",
       "text": "Modelami kontroli dostępu bazującymi na zasadzie No Read-Down i No Write-Up są:",
       "answers": [
         {
@@ -1572,7 +1521,7 @@
       ]
     },
     {
-      "id": "q061",
+      "id": "poi-q059",
       "text": "Zaznacz, które z przedstawionych poniżej sformułowań, odnoszących się do sprzętowych tokenów uwierzytelniających, jest nieprawdziwe:",
       "answers": [
         {
@@ -1598,7 +1547,7 @@
       ]
     },
     {
-      "id": "q062",
+      "id": "poi-q060",
       "text": "Której z poniższych cech nie można uzyskać za pomocą kryptograficznej funkcji skrótu z kluczem?",
       "answers": [
         {
@@ -1624,7 +1573,7 @@
       ]
     },
     {
-      "id": "q063",
+      "id": "poi-q061",
       "text": "Wskaż tę z poniższych funkcji, którą wykonuje przede wszystkim system wykrywania włamań (IDS):",
       "answers": [
         {
@@ -1650,7 +1599,7 @@
       ]
     },
     {
-      "id": "q064",
+      "id": "poi-q062",
       "text": "Który z poniższych elementów może być użyty do ominięcia nawet najlepszych fizycznych i logicznych mechanizmów bezpieczeństwa w celu uzyskania dostępu do systemu?",
       "answers": [
         {
@@ -1676,7 +1625,7 @@
       ]
     },
     {
-      "id": "q065",
+      "id": "poi-q063",
       "text": "Załóżmy, że w szyfrowaniu stosowany jest tryb CBC, a podczas transmisji jeden kryptogram c_i został uszkodzony. Które komunikaty nie mogą być odtworzone przez odbiorcę?",
       "answers": [
         {
@@ -1702,7 +1651,7 @@
       ]
     },
     {
-      "id": "q066",
+      "id": "poi-q064",
       "text": "Jeśli Renia otrzyma podpisaną cyfrowo wiadomość od Michała, to którego z poniższych kluczy użyje w celu sprawdzenia, czy wiadomość rzeczywiście pochodzi od Michała?",
       "answers": [
         {
@@ -1728,7 +1677,7 @@
       ]
     },
     {
-      "id": "q067",
+      "id": "poi-q065",
       "text": "Której warstwy protokołów sieciowych dotyczy atak typu syn flood?",
       "answers": [
         {
@@ -1754,7 +1703,7 @@
       ]
     },
     {
-      "id": "q068",
+      "id": "poi-q066",
       "text": "Wskaż pierwszy krok, który poprzedza proces autoryzacji żądania dostępu do zasobów w uznaniowej kontroli dostępu:",
       "answers": [
         {
@@ -1780,7 +1729,7 @@
       ]
     },
     {
-      "id": "q069",
+      "id": "poi-q067",
       "text": "Jaka jest podstawowa zaleta schematu szyfrowego Rivesta, Shamira, Adelmana (RSA) w porównaniu z algorytmem podpisu cyfrowego DSA?",
       "answers": [
         {
@@ -1806,7 +1755,7 @@
       ]
     },
     {
-      "id": "q070",
+      "id": "poi-q068",
       "text": "W którym z poniższych rodzajów kontroli dostępu prosta własność bezpieczeństwa i własność * (gwiazdka) są kluczowymi regułami weryfikacji dostępu?",
       "answers": [
         {
@@ -1832,7 +1781,7 @@
       ]
     },
     {
-      "id": "q071",
+      "id": "poi-q069",
       "text": "Który z poniższych algorytmów klucza publicznego można stosować zarówno do szyfrowania, jak również do generowania podpisu cyfrowego?",
       "answers": [
         {
@@ -1858,7 +1807,7 @@
       ]
     },
     {
-      "id": "q072",
+      "id": "poi-q070",
       "text": "Administrator chce, aby cały ruch między dwoma serwerami był szyfrowany. W tym celu administrator powinien użyć protokołu:",
       "answers": [
         {
@@ -1884,7 +1833,7 @@
       ]
     },
     {
-      "id": "q073",
+      "id": "poi-q071",
       "text": "Który z poniższych systemów operacyjnych obsługuje model kontroli dostępu Bella-LaPaduli (BLP)?",
       "answers": [
         {
@@ -1910,33 +1859,7 @@
       ]
     },
     {
-      "id": "q074",
-      "text": "Advanced Encryption Standard (AES) może być opisany jako:",
-      "answers": [
-        {
-          "id": "a",
-          "text": "Strumieniowy szyfr blokowy",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "Szyfr rekurencyjny, sekwencyjny",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "Szyfr (sieć) Feistela",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "Iterowany szyfr blokowy",
-          "correct": true
-        }
-      ]
-    },
-    {
-      "id": "q075",
+      "id": "poi-q072",
       "text": "Która z poniższych definicji najlepiej definiuje model kontroli dostępu?",
       "answers": [
         {
@@ -1962,7 +1885,7 @@
       ]
     },
     {
-      "id": "q076",
+      "id": "poi-q073",
       "text": "Różnica pomiędzy atakiem powtórzeniowym a atakiem z osobą pośrodku polega na tym, że:",
       "answers": [
         {
@@ -1988,7 +1911,7 @@
       ]
     },
     {
-      "id": "q077",
+      "id": "poi-q074",
       "text": "Która z poniższych odpowiedzi nie jest prawdziwa w przypadku algorytmu Diffie-Hellmana?",
       "answers": [
         {
@@ -2014,33 +1937,7 @@
       ]
     },
     {
-      "id": "q078",
-      "text": "Wadą oprogramowania w systemie operacyjnym, która może pozwolić nieautoryzowanemu użytkownikowi na uzyskanie dostępu do komputera bez znajomości hasła jest:",
-      "answers": [
-        {
-          "id": "a",
-          "text": "\"wytrych\" dostępu do zasobów (ang. asset exploit, AΕ)",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "podatność",
-          "correct": true
-        },
-        {
-          "id": "c",
-          "text": "zagrożenie",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "czynnik zagrożenia",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q079",
+      "id": "poi-q075",
       "text": "Bezpieczeństwo algorytmów szyfrowych klucza asymetrycznego bazuje zwykle na trudnych problemach obliczeniowych. Na którym z wymienionych wyżej problemów oparty jest algorytm RSA?",
       "answers": [
         {
@@ -2066,7 +1963,7 @@
       ]
     },
     {
-      "id": "q080",
+      "id": "poi-q076",
       "text": "Szyfr blokowy:",
       "answers": [
         {
@@ -2092,7 +1989,7 @@
       ]
     },
     {
-      "id": "q081",
+      "id": "poi-q077",
       "text": "Z jakim typem ataku mamy do czynienia wtedy, gdy złośliwy użytkownik ustawia się pomiędzy klientem a serwerem, a następnie przerywa sesję i przejmuje ją?",
       "answers": [
         {
@@ -2103,7 +2000,7 @@
         {
           "id": "b",
           "text": "Hijacking",
-          "correct": false
+          "correct": true
         },
         {
           "id": "c",
@@ -2113,12 +2010,12 @@
         {
           "id": "d",
           "text": "Osoba pośrodku (Man-in-The-Middle)",
-          "correct": true
+          "correct": false
         }
       ]
     },
     {
-      "id": "q082",
+      "id": "poi-q078",
       "text": "Która z poniższych własności modelu Bell-LaPaduli nie zapewniają podmiotowi o niskim poziomie poświadczenia bezpieczeństwa dostępu do obiektów o wyższej etykiecie bezpieczeństwa?",
       "answers": [
         {
@@ -2144,7 +2041,7 @@
       ]
     },
     {
-      "id": "q083",
+      "id": "poi-q079",
       "text": "Ile różnych haseł jest można utworzyć, jeśli hasło może mieć maksymalnie 6 znaków (alfabet 26 znaków, brak rozróżnienia wielkości liter)?",
       "answers": [
         {
@@ -2170,33 +2067,7 @@
       ]
     },
     {
-      "id": "q084",
-      "text": "Która z poniższych właściwości NIE jest cechą charakterystyczną kryptosystemu klucza publicznego ElGamala?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "Może wykonywać szyfrowanie, ale nie do generowania podpisów cyfrowych.",
-          "correct": true
-        },
-        {
-          "id": "b",
-          "text": "Opiera się na problemie logarytmu dyskretnego.",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "Może wykonywać szyfrowanie.",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "Może być używany do generowania podpisów cyfrowych.",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q085",
+      "id": "poi-q080",
       "text": "W kontekście bezpieczeństwa informacji ryzyko to:",
       "answers": [
         {
@@ -2222,33 +2093,7 @@
       ]
     },
     {
-      "id": "q086",
-      "text": "Zaznacz, które z przedstawionych poniżej sformułowań, odnoszących się do sprzętowych tokenów uwierzytelniających, jest nieprawdziwe:",
-      "answers": [
-        {
-          "id": "a",
-          "text": "token pozwala na uwierzytelnienie jednostronne",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "przed użyciem, każdy token należy zsynchronizować z serwerem uwierzytelniającym,",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "to samo hasło uzyskane w oparciu o token można używać wielokrotnie w procesie rejestrowania się (ang. login),",
-          "correct": true
-        },
-        {
-          "id": "d",
-          "text": "token i serwer muszą pracować w oparciu o taki sam protokół uwierzytelniania i uzgodnione wcześniej dane uwierzytelniające (np. sekrety znane tylko obu stronom),",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q087",
+      "id": "poi-q081",
       "text": "Poniżej zaznacz tę propozycję, które najlepiej opisuje sposób przeprowadzenia ataku słownikowego typu 2 na hasło, przy czym f(.) oznacza funkcję dopełniającą, C - zbiór informacji dopełniającej:",
       "answers": [
         {
@@ -2274,7 +2119,7 @@
       ]
     },
     {
-      "id": "q088",
+      "id": "poi-q082",
       "text": "Która z poniższych operacji skupia się bardziej na badaniu wzorców i trendów związanych z danymi, aniżeli na ich rzeczywistej zawartości?",
       "answers": [
         {
@@ -2300,7 +2145,7 @@
       ]
     },
     {
-      "id": "q089",
+      "id": "poi-q083",
       "text": "Która z poniższych cech odnosi się do ataku metodą pełnego przeglądu (ang. a brute force attack)?",
       "answers": [
         {
@@ -2326,7 +2171,7 @@
       ]
     },
     {
-      "id": "q090",
+      "id": "poi-q084",
       "text": "Powyżej której warstwy protokołów sieciowych funkcjonuje protokół SSL/TLS?",
       "answers": [
         {
@@ -2352,7 +2197,7 @@
       ]
     },
     {
-      "id": "q091",
+      "id": "poi-q085",
       "text": "Która z poniższych operacji jest stosowana wtedy, gdy algorytm AES wykorzystuje skrzynki S w procesie szyfrowania?",
       "answers": [
         {
@@ -2378,7 +2223,7 @@
       ]
     },
     {
-      "id": "q092",
+      "id": "poi-q086",
       "text": "Który z poniższych sposobów nie spowoduje zwiększenia bezpieczeństwa oferowanego przez uwierzytelnianie za pomocą hasła?",
       "answers": [
         {
@@ -2404,7 +2249,7 @@
       ]
     },
     {
-      "id": "q093",
+      "id": "poi-q087",
       "text": "Które z poniższych stwierdzeń NIE jest prawdziwe w odniesieniu do śluz bezpieczeństwa?",
       "answers": [
         {
@@ -2430,7 +2275,7 @@
       ]
     },
     {
-      "id": "q094",
+      "id": "poi-q088",
       "text": "Przywołany na wykładzie problem kolorowania grafu był ilustracją:",
       "answers": [
         {
@@ -2456,7 +2301,7 @@
       ]
     },
     {
-      "id": "q095",
+      "id": "poi-q089",
       "text": "Nagłówki AH i ESP protokołu IPSec chronią różne części przesyłanych informacji w zależności od tego, czy jest używany tryb transportowy czy tunelowy. Która z poniższych odpowiedzi poprawnie identyfikuje części chronione przez ESP (w trybie transportu lub tunelowania)?",
       "answers": [
         {
@@ -2482,7 +2327,7 @@
       ]
     },
     {
-      "id": "q096",
+      "id": "poi-q090",
       "text": "Bankowość internetowa jest (wskaż właściwą opcję):",
       "answers": [
         {
@@ -2508,7 +2353,7 @@
       ]
     },
     {
-      "id": "q097",
+      "id": "poi-q091",
       "text": "Menedżer bezpieczeństwa chce uprościć sposób zarządzania uprawnieniami użytkowników. Jeśli tak to powinien rozważyć użycie:",
       "answers": [
         {
@@ -2534,7 +2379,7 @@
       ]
     },
     {
-      "id": "q098",
+      "id": "poi-q092",
       "text": "Kody uwierzytelniania wiadomości (MAC) i podpisy cyfrowe służą do uwierzytelniania treści wiadomości. Które z poniższych stwierdzeń najlepiej opisuje jak się zachowują?",
       "answers": [
         {
@@ -2560,7 +2405,7 @@
       ]
     },
     {
-      "id": "q099",
+      "id": "poi-q093",
       "text": "Dwie strony chcą wymieniać zaszyfrowane wiadomości za pomocą kryptografii klucza symetrycznego. Strony nie mają niestety wcześniej uzgodnionej pozakryptograficznej metody wymiany kluczy. Dlatego strony powinny użyć:",
       "answers": [
         {
@@ -2586,7 +2431,7 @@
       ]
     },
     {
-      "id": "q100",
+      "id": "poi-q094",
       "text": "Do realizacji algorytm Triple-DES trzykrotnie używa się standardowego algorytmu DES, stosując za każdym razem tych samych lub różnych kluczy (K1, K2, K3). Która z poniższych opcji stosowania kluczy w algorytmie Triple-DES daje w wyniku najsilniejszy (tj. najtrudniejszy do złamania) szyfr blokowy?",
       "answers": [
         {
@@ -2612,7 +2457,7 @@
       ]
     },
     {
-      "id": "q101",
+      "id": "poi-q095",
       "text": "Czego dotyczy pojęcie \"schemat Feistel'a\"?",
       "answers": [
         {
@@ -2638,7 +2483,7 @@
       ]
     },
     {
-      "id": "q102",
+      "id": "poi-q096",
       "text": "W których z wymienionych poniżej przypadkach celu ochrony przed atakami na hasła najbardziej korzystne jest zastosowanie domieszek do hasła?",
       "answers": [
         {
@@ -2664,7 +2509,7 @@
       ]
     },
     {
-      "id": "q103",
+      "id": "poi-q097",
       "text": "Dlaczego dostawcy oprogramowania klientom, którzy pobierają oprogramowania z Internetu publikują wartości skrótu obliczonej np. za pomocą kryptograficznej funkcji skrótu SHA-3?",
       "answers": [
         {
@@ -2690,7 +2535,7 @@
       ]
     },
     {
-      "id": "q104",
+      "id": "poi-q098",
       "text": "Jaka jest minimalna liczba różnych symetrycznych kluczy kryptograficznych potrzebnych do zapewnienia bezpiecznej komunikacji dwukierunkowej za pomocą algorytmów szyfrowych kryptografii symetrycznej?",
       "answers": [
         {
@@ -2716,7 +2561,7 @@
       ]
     },
     {
-      "id": "q105",
+      "id": "poi-q099",
       "text": "Które z poniższych wartości nie są poprawnymi długościami kluczy szyfru Advanced Encryption Standard (AES)?",
       "answers": [
         {
@@ -2742,7 +2587,7 @@
       ]
     },
     {
-      "id": "q106",
+      "id": "poi-q100",
       "text": "Aby zaszyfrować ciąg bloków tekstu jawnego p1, p2,...pn za pomocą szyfru blokowego E z kluczem k działającego w trybie elektronicznej książki kodowej (ECB), każdy blok szyfrogramu c1, c2, ..., cn jest obliczany jako $c_i=E_k(p_i)$. Która z poniższych cech NIE jest właściwością tego trybu szyfru blokowego?",
       "answers": [
         {
@@ -2768,7 +2613,7 @@
       ]
     },
     {
-      "id": "q107",
+      "id": "poi-q101",
       "text": "Które z poniższych stwierdzeń jest prawdziwe w przypadku systemu IDS opartego na hoście (HIDS)?",
       "answers": [
         {
@@ -2794,33 +2639,7 @@
       ]
     },
     {
-      "id": "q108",
-      "text": "Które z poniższych stwierdzeń jest najbardziej właściwe?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "bezpieczeństwo schematu Diffie-Hellmana wynika ze złożoności obliczeniowej rozwiązania problemu faktoryzacji iloczynu dwóch dużych liczb pierwszych",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "bezpieczeństwo schematu szyfrowego na krzywych eliptycznych (ECC) wynika ze złożoności obliczeniowej rozwiązania problemu faktoryzacji iloczynu dwóch dużych liczb pierwszych",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "bezpieczeństwo El Gamala wynika ze złożoności obliczeniowej rozwiązania problemu logarytmu dyskretnego w ciele skończonym",
-          "correct": true
-        },
-        {
-          "id": "d",
-          "text": "bezpieczeństwo RSA wynika ze złożoności obliczeniowej rozwiązania problemu logarytmu dyskretnego w ciele skończonym",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q109",
+      "id": "poi-q102",
       "text": "Jaki jest podstawowy cel użycia w roli funkcji dopełniającej kryptograficznej funkcji skrótu obliczającej skróty z haseł użytkowników?",
       "answers": [
         {
@@ -2846,33 +2665,7 @@
       ]
     },
     {
-      "id": "q110",
-      "text": "Której z poniższych cech nie można uzyskać za pomocą kryptograficznej funkcji skrótu z kluczem?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "autentyczności",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "uwierzytelnienia wiadomości",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "integralności",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "niezaprzeczalności",
-          "correct": true
-        }
-      ]
-    },
-    {
-      "id": "q111",
+      "id": "poi-q103",
       "text": "Który z poniższych algorytmów identyfikuje algorytm szyfrowania wybrany przez NIST dla nowego zaawansowanego standardu szyfrowania (AES)?",
       "answers": [
         {
@@ -2898,7 +2691,7 @@
       ]
     },
     {
-      "id": "q112",
+      "id": "poi-q104",
       "text": "Wskaż tę z poniższych funkcji, którą wykonuje przede wszystkim system wykrywania włamań (IDS)",
       "answers": [
         {
@@ -2924,7 +2717,7 @@
       ]
     },
     {
-      "id": "q113",
+      "id": "poi-q105",
       "text": "Który z poniższych elementów nie jest nigdy deszyfrowany, ale jest używany jedynie w celach porównawczych?",
       "answers": [
         {
@@ -2950,33 +2743,7 @@
       ]
     },
     {
-      "id": "q114",
-      "text": "Dlaczego dostawcy oprogramowania klientom, którzy pobierają oprogramowanie z Internetu publikują wartości skrótu obliczonej np. za pomocą kryptograficznej funkcji skrótu SHA-3?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "odbiorcy mogą zażądać przyszłych aktualizacji oprogramowania, używając przypisanej wartości skrótu",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "odbiorcy mogą potwierdzić autentyczność strony, z której pobierają oprogramowanie",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "odbiorcy potrzebują wartości skrótu, aby pomyślnie aktywować nowe oprogramowanie",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "odbiorcy mogą sprawdzić integralność oprogramowania po pobraniu",
-          "correct": true
-        }
-      ]
-    },
-    {
-      "id": "q115",
+      "id": "poi-q106",
       "text": "Która z poniższych cech NIE jest cechą kryptograficznej funkcji skrótu $h(m)$, gdzie m oznacza wiadomość, dla której obliczany jest skrót za pomocą funkcji h?",
       "answers": [
         {
@@ -3002,59 +2769,7 @@
       ]
     },
     {
-      "id": "q116",
-      "text": "Który z poniższych algorytmów klucza publicznego można stosować zarówno do szyfrowania, jak również do generowania podpisu cyfrowego?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "IDEA",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "RSA",
-          "correct": true
-        },
-        {
-          "id": "c",
-          "text": "DES",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "DSS",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q117",
-      "text": "Kody uwierzytelniania wiadomości (MAC) i podpisy cyfrowe służą do uwierzytelniania treści wiadomości. Które z poniższych stwierdzeń najlepiej opisuje jak się zachowują?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "MAC można zweryfikować tylko za pomocą tajnego klucza użytego do jego wygenerowania, ale podpis cyfrowy można zweryfikować tylko na podstawie wiadomości.",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "MAC można zweryfikować tylko na podstawie wiadomości, ale podpis cyfrowy można zweryfikować tylko za pomocą klucza publicznego strony, która podpisała wiadomość.",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "MAC można zweryfikować tylko za pomocą tajnego klucza użytego do jego wygenerowania, ale podpis cyfrowy można zweryfikować za pomocą klucza publicznego strony która podpisała wiadomość.",
-          "correct": true
-        },
-        {
-          "id": "d",
-          "text": "MAC może być weryfikowany tylko na podstawie wiadomości, ale podpis cyfrowy może być weryfikowany tylko za pomocą klucza prywatnego użytego do podpisania wiadomości.",
-          "correct": false
-        }
-      ]
-    },
-    {
-      "id": "q118",
+      "id": "poi-q107",
       "text": "Dowód, że użytkownik wysłał wiadomość e-mail określany jest mianem:",
       "answers": [
         {
@@ -3080,33 +2795,7 @@
       ]
     },
     {
-      "id": "q119",
-      "text": "Które z poniższych stwierdzeń jest najbardziej właściwe?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "bezpieczeństwo schematu szyfrowego na krzywych eliptycznych (ECC) wynika ze złożoności obliczeniowej rozwiązania problemu faktoryzacji iloczynu dwóch dużych liczb pierwszych",
-          "correct": false
-        },
-        {
-          "id": "b",
-          "text": "bezpieczeństwo RSA wynika ze złożoności obliczeniowej rozwiązania problemu logarytmu dyskretnego w ciele skończonym",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "bezpieczeństwo schematu Diffie-Hellmana wynika ze złożoności obliczeniowej rozwiązania problemu faktoryzacji iloczynu dwóch dużych liczb pierwszych",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "bezpieczeństwo El Gamala wynika ze złożoności obliczeniowej rozwiązania problemu logarytmu dyskretnego w ciele skończonym",
-          "correct": true
-        }
-      ]
-    },
-    {
-      "id": "q120",
+      "id": "poi-q108",
       "text": "Podobieństwo pomiędzy listami kontroli dostępu a listą możliwości polega na tym, że:",
       "answers": [
         {
@@ -3132,7 +2821,7 @@
       ]
     },
     {
-      "id": "q121",
+      "id": "poi-q109",
       "text": "Która z poniższych nazw własnych nie jest przykładem modelu kontroli dostępu?",
       "answers": [
         {
@@ -3158,7 +2847,7 @@
       ]
     },
     {
-      "id": "q122",
+      "id": "poi-q110",
       "text": "Jaki jest standardowy komponent w IPsec, który pomaga ustanowić i zarządzać skojarzeniem zabezpieczeń (SA) między dwoma podmiotami pracującymi w Internecie?",
       "answers": [
         {
@@ -3179,6 +2868,1644 @@
         {
           "id": "d",
           "text": "nagłówek uwierzytelnienia (AH)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q111",
+      "text": "Proces działający w imieniu użytkownika, który próbuje uzyskać dostęp do pliku jest znany jako:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "obiekt",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "podmiot (subject)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zasób",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wybór operacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q112",
+      "text": "W modelu ... użytkownik końcowy nie może zmieniać ustawień jakichkolwiek zabezpieczeń (decyduje administrator/polityka).",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Discretionary Access Control (DAC)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mandatory Access Control (MAC)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Security Access Control (SAC)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "RAC",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q113",
+      "text": "Lista kontroli dostępu (ACL) jest zbiorem uprawnień dołączonym do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "podmiotu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "modyfikatora obiektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "obiektu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "desygnatora wpisu zabezpieczeń",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q114",
+      "text": "... wykorzystuje system plikowy NTFS w systemie operacyjnym Windows do automatycznego szyfrowania wszystkich plików.",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Encrypting File System (EFS)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "GNU PGP",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "IDEA",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "SHA-1",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q115",
+      "text": "Zaznacz zdanie prawdziwe o podpisie cyfrowym z załącznikiem:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "polega na obliczeniu wartości skrótu z wiadomości, a następnie zaszyfrowaniu tego skrótu za pomocą klucza prywatnego",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "polega na szyfrowaniu całej wiadomości kluczem prywatnym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "polega na szyfrowaniu skrótu kluczem publicznym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "nie zapewnia integralności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q116",
+      "text": "Które z poniższych plików odgrywają kluczową rolę w zapobieganiu atakom słownikowym na Unix/Linux (przechowują hasła)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "/etc/passwd",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "/etc/shadow",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "/etc/group",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "/etc/security",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q117",
+      "text": "Co oznacza „bezpieczeństwo schematu szyfrowego\"?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "klucz jest niemożliwy do odgadnięcia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "algorytm jest tajny",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "szyfrogram wygląda jak losowy ciąg bitów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "adwersarz ne powinien uzyskać żadnej dodatkowej informacji o wiadomości na podstawie szyfrogramu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q118",
+      "text": "Zagrożenie zrealizuje się jeśli:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Istnieje tylko podatność",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Istnieje tylko zagrożenie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zagrożenie wykorzysta podatność (zbieg okoliczności)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Mamy firewall",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q119",
+      "text": "Protokół Kerberos służy głównie do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Szyfrowania dysków",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uwierzytelniania w sieciach otwartych przy użyciu zaufanej trzeciej strony (KDC)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ochrony przed wirusami",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Filtrowania pakietów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q120",
+      "text": "Co zapewnia protokół SSH?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko kompresję",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bezpieczny (szyfrowany) zdalny dostęp do terminala",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ochronę tylko przed wirusami",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nic, to protokół otwarty tekstem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q121",
+      "text": "Czy SSL chroni przed atakiem \"Traffic Analysis\" (analiza ruchu)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tak, całkowicie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Nie, ponieważ nagłówki TCP/IP i wielkość pakietów są widoczne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tak, bo szyfruje wszystko",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zależy od wersji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q122",
+      "text": "Korzyści z zastosowania VLAN:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ograniczenie domen rozgłoszeniowych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zwiększenie bezpieczeństwa (segmentacja)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Łatwość zarządzania logicznego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie powyższe",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q123",
+      "text": "Jaka była główna różnica między wirusem a robakiem (Worm)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wirus szyfruje pliki, robak je kasuje",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Robak potrzebuje pliku-nosiciela, wirus nie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wirus potrzebuje pliku-nosiciela (hosta) do replikacji, a robak jest samodzielnym programem replikującym się przez sieć",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Nie ma różnicy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q124",
+      "text": "Czym charakteryzuje się atak typu \"Logic Bomb\" (bomba logiczna)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wybucha fizycznie w serwerowni",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jest to złośliwy kod, który uruchamia się po spełnieniu określonego warunku logicznego (np. konkretna data)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jest to atak na protokół logiczny TCP",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Polega na zgadywaniu loginu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q125",
+      "text": "Najlepszą metodą ochrony przed atakiem SQL Injection jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Firewall",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Szyfrowanie bazy danych",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Walidacja danych wejściowych i używanie zapytań parametryzowanych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Używanie długich haseł",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q126",
+      "text": "Przejmowanie aktywnej sesji po wstawieniu się między klienta a serwer to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Spoofing",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Session Hijacking",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sniffing",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Phishing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q127",
+      "text": "Czy następujące środki (całodobowa administracja, antywirusy, audyty, odłączanie sieci) są wystarczające, aby całkowicie wyeliminować lub ograniczyć do zera skutek ataku wirusowego?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tak, jeśli stosowane są łącznie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tak, ale tylko przy odłączeniu od sieci",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nie / Żaden z powyższych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Tylko audyty dają pewność",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q128",
+      "text": "Co to jest \"ryzyko szczątkowe\" (residual risk)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ryzyko przed wdrożeniem zabezpieczeń",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ryzyko, które pozostaje po wdrożeniu zabezpieczeń i mechanizmów kontrolnych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ryzyko niemożliwe do zidentyfikowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ryzyko związane z awarią sprzętu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q129",
+      "text": "W modelu oszacowania ryzyka, \"Zagrożenie\" (Threat) definiuje się jako:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Słabość systemu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Potencjalną przyczynę niepożądanego zdarzenia, która może wyrządzić szkodę systemowi lub organizacji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wartość straty finansowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zabezpieczenie systemu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q130",
+      "text": "Dokument polityki bezpieczeństwa informacji NIE powinien być:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zatwierdzony przez kierownictwo",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Opublikowany dla pracowników",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zmieniany na bieżąco na każde żądanie bez procedury (lub \"tajny dla administratorów\")",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Poddawany przeglądom",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q131",
+      "text": "Odebranie praw dostępu do wrażliwych danych następuje zazwyczaj:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "na czas odbywania urlopu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "na żądanie administratora bezpieczeństwa informacji",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "podczas zmiany stanowiska i/lub przechodzeniu do innego działu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "na czas odbywaniu szkolenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q132",
+      "text": "Technika ukrywania faktu istnienia komunikacji poprzez ukrywanie informacji w innym pliku (np. w obrazie) to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kryptografia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Steganografia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Analiza ruchu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Znak wodny",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q133",
+      "text": "Praktyka polegająca na przechowywaniu kopii klucza prywatnego przez zaufaną stronę trzecią (na wypadek utraty lub na potrzeby organów ścigania) to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzanie certyfikatami",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dystrybucja kluczy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Depozyt kluczy (Key Escrow)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Kerberos",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q134",
+      "text": "Które z poniższych działań NIE są zazwyczaj uważane za formę etycznych testów penetracyjnych, a raczej za działanie szkodliwe/przestępcze?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ataki odmowy usługi (DoS)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Skanowanie portów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Dystrybucja złośliwego oprogramowania (np. wirusów) w sieci produkcyjnej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Próby łamania haseł",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q135",
+      "text": "Szyfrowanie na łączu jest lepsze niż szyfrowanie punkt-punkt, ponieważ:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nikt (poza nadawcą i odbiorcą na danym odcinku) nie jest w stanie poznać zawartości przesyłanej wiadomości ani nagłówków (ukrywa analizę ruchu)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "nie wymaga deszyfrowania na węzłach pośrednich",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "jest szybsze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wymaga mniej kluczy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q136",
+      "text": "W jakim celu stosuje się \"rozciąganie\" (stretching) klucza lub wielokrotne haszowanie hasła?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Aby skrócić czas logowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Aby utrudnić ataki brute-force/słownikowe poprzez zwiększenie kosztu obliczeniowego sprawdzenia jednego hasła",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Aby hasło zajmowało mniej miejsca na dysku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Aby umożliwić odzyskanie haseł",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q137",
+      "text": "Jaki typ zapory sieciowej (firewall) pracuje w warstwie aplikacji modelu ISO/OSI i rozumie protokoły takie jak HTTP czy FTP?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Filtr pakietów (Packet Filter)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bramka poziomu obwodu (Circuit-level Gateway)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Bramka aplikacji / Proxy (Application Gateway)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Stateful Inspection",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q138",
+      "text": "Jaka jest rola Monitora Referencyjnego (Reference Monitor) w Zaufanej Bazie Obliczeniowej (TCB)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Skanowanie dysku antywirusem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pośredniczenie w każdym żądaniu dostępu podmiotu do obiektu i weryfikacja uprawnień",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Monitorowanie wydajności procesora",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tworzenie kopii zapasowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q139",
+      "text": "Co oznacza SYN flood?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Atak na warstwę aplikacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Przepełnienie bufora pamięci",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Atak typu odmowa usługi (DoS) na bufory TCP",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Skanowanie portów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q140",
+      "text": "Atak wykorzystujący paradoks dnia urodzin dotyczy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Haseł",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Kluczy RSA",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Znajdowania kolizji funkcji skrótu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Szyfrów strumieniowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q141",
+      "text": "Wada oprogramowania pozwalająca na dostęp do systemu bez hasła (np. pozostawiona przez programistę):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Backdoor / Wytrych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wirus",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Robak",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Sniffer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q142",
+      "text": "Certyfikat klucza publicznego wiąże:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tożsamość użytkownika z jego kluczem publicznym",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Klucz prywatny z publicznym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Podpis z użytkownikiem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Klucz prywatny z podpisem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q143",
+      "text": "Najsilniejszą technologią, która daje pewność Alicji, że nadawcą wiadomości jest Bob jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Podpis cyfrowy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Certyfikat cyfrowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Skrót",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zaszyfrowany podpis",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q144",
+      "text": "W hierarchicznym modelu zaufania klucz prywatny roota (głównego CA) musi być:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dostępny publicznie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zmieniany codziennie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Znany wszystkim użytkownikom",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Bardzo mocno chroniony",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q145",
+      "text": "Określenie ogólnych celów (funkcji) zabezpieczeń to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Oszustwo i kradzież",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zapobieganie, Wykrywanie, Odtwarzanie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Szyfrowanie, Haszowanie, Podpisywanie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Poufność, Prywatność, Anonimowość",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q146",
+      "text": "Która z poniższych zasad stosowana w systemach kontroli dostępu oznacza, że każdemu może być przydzielona jedynie minimalny zbiór uprawnień niezbędnych tej osobie podczas pełnienia swojej funkcji w pracy?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pełnej odmowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Najmniejszych uprawnień (Least Privilege)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Bezpieczeństwa korporacyjnego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Obowiązkowych ograniczeń",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q147",
+      "text": "Ile rund występuje w standardowym algorytmie szyfrowania DES (Data Encryption Standard)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "10",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "12",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "16",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "32",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q148",
+      "text": "Jaka jest minimalna liczba kluczy używanych w algorytmie 3DES, aby zapewnić wyższy poziom bezpieczeństwa niż standardowy DES?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "1",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "2",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "4",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q149",
+      "text": "Który z poniższych algorytmów kryptograficznych NIE jest algorytmem symetrycznym?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DES",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "AES",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "RSA",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Blowfish",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q150",
+      "text": "Który z trybów pracy szyfrów blokowych (np. DES lub AES) jest uznawany za najmniej bezpieczny, ponieważ identyczne bloki tekstu jawnego są szyfrowane na identyczne bloki szyfrogramu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "CBC",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "ECB",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "CFB",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "OFB",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q151",
+      "text": "W trybie CBC (Cipher Block Chaining) - jeśli podczas transmisji jeden blok szyfrogramu zostanie uszkodzony (np. zmieniony jeden bit), to na które bloki odszyfrowanej wiadomości wpłynie ten błąd?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko na jeden odpowiadający mu blok",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Na ten blok oraz następny blok",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Na całą dalszą część wiadomości",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie wpłynie na żaden blok",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q152",
+      "text": "W przypadku szyfrowania algorytmem DES w trybie CBC:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Poprzednia wartość wektora roboczego wpływa na szyfrogram kolejnego bloku",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Każdy blok szyfrowany jest niezależnie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nie wykorzystuje się wektora inicjującego (IV)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Błędy nie propagują się pomiędzy blokami",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q153",
+      "text": "Który z poniższych algorytmów klucza symetrycznego jest obecnie uznawany za najsilniejszy i powszechnie stosowany standard kryptografii symetrycznej?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DES",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "3DES",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "AES",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "2DES",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q154",
+      "text": "Algorytm RSA:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jest algorytmem symetrycznym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jest algorytmem asymetrycznym (Rivest, Shamir, Adleman)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jest algorytmem prywatnym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nazwa oznacza Rational Signing Algorithm",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q155",
+      "text": "Dana jest wiadomość M podpisana cyfrowo algorytmem DSA. Które stwierdzenie jest poprawne?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Można odtworzyć treść wiadomości M na podstawie samego podpisu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Podpis cyfrowy szyfruje całą wiadomość",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Klucz prywatny służy do weryfikacji podpisu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nie można odtworzyć wiadomości M na podstawie samego podpisu - potrzebna jest treść wiadomości",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q156",
+      "text": "Czym jest \"salting\" (solenie) w kontekście bezpiecznego przechowywania haseł?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dodawaniem losowych danych do hasła przed haszowaniem w celu ochrony przed atakami słownikowymi i tęczowymi tablicami",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Szyfrowaniem hasła kluczem publicznym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zapisywaniem hasła w postaci jawnej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wymuszaniem zmiany hasła co 30 dni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q157",
+      "text": "Do czego służą tęczowe tablice (Rainbow Tables)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Do szyfrowania danych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Do przyspieszania łamania haseł poprzez odwracanie funkcji skrótu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Do generowania kluczy kryptograficznych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Do ochrony systemów przed wirusami",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q158",
+      "text": "Tokeny sprzętowe generujące hasła jednorazowe (OTP):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Mogą działać w trybie challenge-response",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mogą wykorzystywać synchronizację czasu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zapewniają silne uwierzytelnianie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie powyższe odpowiedzi są poprawne",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q159",
+      "text": "Który z poniższych elementów NIE jest klasycznym czynnikiem uwierzytelniania?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Coś, co użytkownik wie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Coś, co użytkownik posiada",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Coś, co użytkownik odkrył",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Coś, kim użytkownik jest",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q160",
+      "text": "Hasła jednorazowe (OTP) generowane przez token z synchronizacją czasową nazywane są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "OTP z podpisanym czasem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "OTP oparte na wyzwaniu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "OTP z synchronizowaną klawiaturą",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tokenami OTP opartymi na czasie (TOTP)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "poi-q161",
+      "text": "Która właściwość bezpieczeństwa zapewnia, że jedynie uprawnione podmioty mogą uzyskać dostęp do informacji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dostępność",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Integralność",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Poufność",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Niezaprzeczalność",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q162",
+      "text": "Klasyczna triada bezpieczeństwa informacji (CIA) obejmuje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Poufność, integralność, dostępność",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Prywatność, identyfikację, autoryzację",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Sprzęt, oprogramowanie, ludzi",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Blokowanie, wykrywanie, reagowanie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q163",
+      "text": "Której z poniższych właściwości NIE można zapewnić wyłącznie za pomocą kryptografii?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Poufności",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dostępności",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Integralności",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Autentyczności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q164",
+      "text": "Podpis cyfrowy NIE zapewnia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Weryfikacji odbiorcy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Weryfikacji nadawcy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Niezaprzeczalności",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Integralności danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q165",
+      "text": "Której cechy NIE można uzyskać za pomocą funkcji skrótu z kluczem (HMAC)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Integralności",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Autentyczności",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Poufności",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Wykrywania modyfikacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q166",
+      "text": "Wiadomość podpisana cyfrowo składa się z:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wiadomości jawnej oraz skrótu zaszyfrowanego kluczem prywatnym nadawcy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie wiadomości zaszyfrowanej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Certyfikatu i klucza prywatnego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wiadomości zaszyfrowanej kluczem publicznym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q167",
+      "text": "Skrót DMZ oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DeoxyMilo Azid",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "De-Militarized Zone (strefa buforowa bezpieczeństwa)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Data Management Zone",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dual Mode Zone",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q168",
+      "text": "Który z poniższych ataków jest przykładem socjotechniki (Social Engineering)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "SQL Injection",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ping of Death",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Phishing",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "SYN Flood",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q169",
+      "text": "Atak typu Man-in-the-Middle (MITM) polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zgadywaniu haseł",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Podsłuchiwaniu i ewentualnej modyfikacji komunikacji między stronami",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ataku niemożliwym w sieciach WiFi",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ataku wyłącznie na bazy danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q170",
+      "text": "Środowisko wykorzystujące DAC (Discretionary Access Control) jest szczególnie podatne na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ataki siłowe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Konie trojańskie i podszywanie się",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ataki DDoS",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "SQL Injection",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q171",
+      "text": "Korzyścią bezpieczeństwa wynikającą z zastosowania VLAN jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Logiczną separację sieci i ograniczenie ruchu rozgłoszeniowego",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Szyfrowanie pakietów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zwiększenie mocy procesora",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Automatyczne usuwanie wirusów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q172",
+      "text": "Które stwierdzenie o kryptografii symetrycznej jest NIEPRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Charakteryzuje się małą prędkością przetwarzania danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Ma szeroki zakres zastosowań",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wykorzystuje relatywnie krótkie klucze",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ma problem z bezpieczną dystrybucją klucza",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "poi-q173",
+      "text": "Gdy Bob chce wysłać poufną wiadomość do Alicji z użyciem kryptografii asymetrycznej, jakiego klucza użyje do jej zaszyfrowania?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Klucza publicznego Boba",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Klucza publicznego Alicji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Klucza prywatnego Boba",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Klucza prywatnego Alicji",
           "correct": false
         }
       ]

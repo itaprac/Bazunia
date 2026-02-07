@@ -1,0 +1,1722 @@
+{
+  "deck": {
+    "id": "kcm-egzamin",
+    "name": "Komunikacja człowiek maszyna",
+    "description": "Pytania z komunikacja człowiek maszyna",
+    "version": 1,
+    "group": "Semestr 5"
+  },
+  "questions": [
+    {
+      "id": "kcm-q001",
+      "text": "Do jednostek fonetycznych zaliczamy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "mikrofon",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "fonem",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "trifon",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "alofon",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q002",
+      "text": "Czy wykrywanie sylwetki człowieka (szkieletu), na potrzeby sterowania, możliwe jest do realizacji z wykorzystaniem zwykłej kamery?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nie. Potrzebna jest przynajmniej para kamer, aby uzyskać mapę głębokości z obrazu stereowizyjnego.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tak. Współczesne biblioteki oparte na algorytmach głębokiego uczenia potrafią wykrywać sylwetkę w zwykłym obrazie z zadowalającą szybkością.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Tak. Potrzebne do tego jednak są złożone stacje robocze wysokiej mocy obliczeniowej. W przeciwnym wypadku, na współczesnym \"średnim\" komputerze jedna klatka będzie przetwarzana przez kilkanaście sekund.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q003",
+      "text": "Analiza sentymentu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "polega na naprzemiennej wymianie zdań",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jest metodą analizy tekstu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "dotyczy określania stopnia nacechowania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "może wykorzystywać metodę słownikową lub statystyczną",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q004",
+      "text": "Alfabetem uproszczonych znaków NIE jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Graffiti",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Graffiti 2",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Courier",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Unistroke",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q005",
+      "text": "Do zadań ucha środkowego należą:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "lokalizacja źródeł dźwięku",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zamiana wibracji powietrza na wibracje mechaniczne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "dopasowanie impedancji",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "analiza i przetwarzanie informacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q006",
+      "text": "Żyroskop:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie ma zastosowania w sprzęcie, gdzie występuje akcelerometr",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "mierzy przyspieszenie liniowe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "mierzy położenie kątowe",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "używany jest wyłącznie do nawigacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q007",
+      "text": "Intonacja opisuje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "melodię wypowiedzi poprzez zmianę parametrów głosu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "zmiany w obwiedni widma sygnału mowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "w jakim stopniu amplituda sygnału różni się od częstotliwości podstawowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "następstwo fonemów poprzez zmianę głośności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q008",
+      "text": "Które z poniższych cech są charakterystyczne dla potencjałów SSVEP:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ważne dla ich powstania jest, aby wywołujący je bodziec był dostarczany ze stałą częstotliwością",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "mogą być obserwowane nad różnymi obszarami kory mózgowej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zawsze są obserwowane nad tą samą okolicą mózgu (okolicą związaną z uwagą)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "należą do kategorii potencjałów spontanicznych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q009",
+      "text": "Składowe w regule 7-38-55 oznaczają kolejno:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "procentowy udział brzemia głosu, zmian jego głośności oraz częstości zmian stanu emocjonalnego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "treść wypowiedzi; brzmienie głosu oraz komunikację niewerbalną (wyrażone w procentach)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "liczbę zmian wysokości głosu; średnią przerwę międzyznakową w milisekundach; procentowy stosunek znaków w wyrazie do liczby znaków w zdaniu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "stan emocjonalny; głośność wypowiedzi; maksymalna liczba znaków w zdaniu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q010",
+      "text": "Ekran dotykowy może zostać zrealizowany w technologii wykorzystującej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zmianę pojemności elektrycznej",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "zaburzenie fali akustycznej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "przerwanie strumienia światła",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zmianę oporu elektrycznego",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q011",
+      "text": "Wykorzystanie kamery (wbudowanej w komputer) w okulografii:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest pozbawione sensu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zwraca wyniki o jakości zbliżonej do okulografu sprzętowego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "umożliwia identyfikację kształtu tęczówki oka",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "w badaniu użyteczności, gdzie duża dokładność nie jest istotna, może być wystarczająca",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q012",
+      "text": "Techniką wprowadzania tekstu na urządzeniach mobilnych jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "5-tiles",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "8pen",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "speedtext",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "swype",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q013",
+      "text": "Jakie wzorce możemy rozpoznać w sygnale EEG:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wzorce, które pojawiają się, kiedy użytkownik jest podekscytowany",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wzorce, które pojawiają się, kiedy użytkownik skupia się na jednym z wielu obserwowanych elementów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wzorce, które pojawiają się, kiedy użytkownik myśli o ruchu poszczególnych palców",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Wzorce, które pojawiają się, kiedy użytkownik myśli o ruchu rąk bądź nóg",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q014",
+      "text": "Jakie są cechy potencjałów spontanicznych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ich generowanie wymaga dłuższego treningu użytkownika niż w przypadku potencjałów wywoływanych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "metoda ich generowania nie jest tak męcząca dla użytkownika, jak w przypadku potencjałów wywoływanych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "ich generowanie wymaga krótszego treningu użytkownika niż w przypadku potencjałów wywoływanych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "metoda ich generowania wywołuje szybsze zmęczenie użytkownika niż w przypadku potencjałów wywoływanych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q015",
+      "text": "Częstotliwość podstawowa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "określa maksymalną wartość w widmie fazowym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jest zależna od ruchu strun głosowych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "określa częstotliwość pobudzenia okresowego",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zależy od uwarunkowań osobniczych mówcy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q016",
+      "text": "Iloczas jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zjawiskiem różnicowania części dźwięcznych i bezdźwięcznych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zjawiskiem charakteryzujące się różnicowaniem długości trwania sylab lub głosek",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "iloczynem czasu trwania słowa oraz czasu trwania całego zdania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "mechanizmem różnicowania głośności samogłosek w zdaniu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q017",
+      "text": "Technika \"hover to select\" w interfejsie bezdotykowym:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nie znajduje zastosowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jest używana do pisania tekstów metodą \"swipe\"",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "określa szybkie machanie ręką, aby określić dłoń sterującą",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "jest używana do symulowania operacji wciskania/wyboru",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q018",
+      "text": "Które zdania dotyczące FACS (ang. Facial Action Coding System) są prawdziwe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "FACS opisuje skurcze lub rozluźnianie jednego lub więcej mięśni na potrzeby wykrywania emocji",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "FACS może działać w pełni automatycznie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "system FACS wyróżnia 9 podstawowych ekspresji mimicznych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "FACS to słownik ruchów mimicznych",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q019",
+      "text": "Błędem podczas projektowania dashboardu jest stwierdzenie:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "uproszczenie, ale nie jednorodność pomogą uniknąć wielu błędów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wykresy 3D zwiększają jakość przekazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "im więcej szczegółów, tym większa kontrola nad systemem",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ponieważ człowiek efektywnie pracuje z przekazem graficznym, im bardziej kolorowo tym lepiej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q020",
+      "text": "Wskaż prawdziwe stwierdzenia dotyczące akcelerometru:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pozwala na wykrycie przemieszczania się telefonu (wyposażonego w akcelerometr) w przestrzeni",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "mierzy prędkość kątową wykorzystując Efekt Coriolisa",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "czujnik mierzący przyspieszenie liniowe",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "nie jest w stanie wykryć subtelnych zmian obrotu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q021",
+      "text": "Etapy występujące w procesie rozpoznawania mowy to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "mówcy, wypowiedzi, prozodii, emocjonalny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zdaniowy, wyrazowy, znakowy, językowy, znaczeniowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "akustyczny, fonetyczny, ciągi jednostek fonetycznych, semantyczny",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "akustyczny, fonetyczny, wizualny",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q022",
+      "text": "Jakie są cechy scenariusza, w którym interfejs mózg-komputer jest wykorzystywany w rehabilitacji poudarowej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "bezpośrednie uszkodzenie kory mózgowej",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "uszkodzenie połączeń między korą mózgową a mięśniami",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wykorzystanie paradygmatu odstającego bodźca",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wykorzystanie paradygmatu wyobrażenia ruchu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q023",
+      "text": "Akcent w wypowiedzi może być:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rytmiczny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "dynamiczny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "melodyczny",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "statyczny",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q024",
+      "text": "Okulografia to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "metoda wykorzystywana w okulistyce do badania dna oka",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jedna z metod umożliwiającą komunikację człowieka z maszyną",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "technika śledzenia punktu skupienia wzroku",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "algorytm śledzenia ruchu obłych elementów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q025",
+      "text": "Wirtualne klawiatury Opti i Fitaly urządzeń mobilnych oferowały zwiększenie szybkości wprowadzania tekstów poprzez:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "umieszczenie blisko siebie znaków tworzących często występujące kombinacje",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "minimalizowanie długości ruchów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "przypisaniu najczęstszych liter pojawiających się w różnych tekstach do najszybszych i najsilniejszych palców",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "umieszczenie najczęściej wykorzystywanych znaków w centrum",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q026",
+      "text": "Wskaż trzy technologie, w których najczęściej realizuje się sensory biometryczne odcisków palców:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rezystanyjny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "pojemnościowy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "ultradźwiękowy",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "optyczny",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q027",
+      "text": "Funkcja HRTF:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Określa charakterystykę częstotliwościową uwzględniającą cechy anatomiczne słuchacza",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Definiuje sposób generacji składowych szumowych sygnału mowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Stanowi funkcję zmiany częstotliwości sygnału",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Jest funkcją „przeniesienia głowy”",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q028",
+      "text": "Technologia TOF (time of flight):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wykorzystywana jest w interfejsach symulatorów lotów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jest najstarszą z technologii pozyskiwania głębi stosowaną w sensorach",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wykorzystuje światło strukturalne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Np. wykorzystywana w sensorze Kinect 2",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q029",
+      "text": "Interakcja z wykorzystaniem statycznych gestów dłonią:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wymaga mechanizmów śledzenia (tracking)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wymaga działania systemu w czasie rzeczywistym (bez opóźnień)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Opiera się na mechanizmach rozpoznawania specyfiki ruchu ręki wewnątrz wideo",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Analizuje konfigurację dłoni (np. liczba widocznych palców)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q030",
+      "text": "Poziomy procesu rozpoznawania mowy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "poziom sygnału, poziom konwersji, poziom wyrazowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "parametryzacja sygnału mowy, przypisanie jednostek fonetycznych fragmentom wypowiedzi, dopasowanie ciągu jednostek fonetycznych do fragmentów sygnału, nadanie wartości semantycznej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "poziom akustyczny, poziom fonetyczny, ciągi jednostek fonetycznych oraz poziom semantyczny",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "poziom rejestracji sygnału, poziom analizy danych, generacja znaków",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q031",
+      "text": "W których z poniższych rozwiązań znajduje się po stronie ekranu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Playstation Move",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Microsoft Kinect",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Intel RealSense",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Nintendo Wii",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q032",
+      "text": "Wskaż prawdziwe informacje charakteryzujące sygnał EEG w dziedzinie częstotliwości:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Widmo sygnału EEG ma wyższą amplitudę przy niższych częstotliwościach, aniżeli przy częstotliwościach wyższych.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Fala mózgowa to synchroniczna praca wielu neuronów w określonym paśmie częstotliwości.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pasmo alfa obejmuje zakres częstotliwości niższych niż pasmo beta.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Szum tła wynika z tego, że tylko część z aktywności, którą rejestrujemy pochodzi z synchronicznej pracy zespołu neuronów.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q033",
+      "text": "Części dźwięczne sygnału mowy w stosunku do części bezdźwięcznych charakteryzują się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "mniejszą liczbą przejść sygnału przez poziom o wartości 0",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "większą energią",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "mniejszą energią i większą wartością ZCR",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "lepszymi właściwościami statystycznymi",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q034",
+      "text": "Cechy użyteczności interfejsu HCI to m.in.:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "przyjemność użytkowania",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wydajność",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "łatwość zapamiętania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "łatwość użytkowania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q035",
+      "text": "Dashboard to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest specyficznym rodzajem raportu, na którym w wizualny sposób przedstawione są kluczowe informacje o systemie.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "reprezentacja graficzna, przedstawiająca w szczegółowy sposób informację o systemie.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "panel informujący o bieżącym stanie systemu.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zbiór parametrów systemu wyświetlanym na całej stronie. W przypadku bardzo dużej liczby parametrów, w celu ich wizualizacji dopuszcza się możliwość przewijania dashboardu.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q036",
+      "text": "Jakie elementy wchodzą w skład interfejsu mózg-komputer wykorzystywanego w rehabilitacji poudarowej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "elektrody rejestrujące sygnał EEG",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "elektrody stymulujące pracę mięśni rehabilitowanej kończyny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "elektrody rejestrujące sygnał elektryczny pochodzący z mięśni rehabilitowanej kończyny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "elektrody stymulujące pracę neuronów kory mózgowej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q037",
+      "text": "Uznaje się, że mysz komputerowa została wynaleziona:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "przez Ralpha Benjamina jako część powojennego systemu radarowego kierowania ogniem, zwanego Comprehensive Display System (CDS).",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "przez Kenyona Taylora - urządzenie to powstało podczas prac nad systemem DATAR (Digital Automated Tracking and Resolving) Royal Canadian Navy w 1952 roku.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "przez Billa Englisha, który w 1964 roku dołączył do ARC, gdzie pomógł zbudować pierwszy prototyp myszy.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przez Douglasa Carla Engelbarta - amerykańskiego naukowca i wynalazcę, pioniera interfejsów użytkownika, współtwórcy hipertekstu, komputerów sieciowych.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q038",
+      "text": "Wybrane zasady interakcji człowiek-maszyna wg Nielsena brzmią:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Daj użytkownikowi pełną kontrolę",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Trzymaj się standardów i zachowaj spójność.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zapobiegaj błędom oraz zapewnij skuteczną obsługę błędów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Pokazuj status systemu i zachowaj zgodność pomiędzy systemem a rzeczywistością",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q039",
+      "text": "Wśród subiektywnych badań słuchu można wyróżnić:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Próba Webera - subiektywna metoda badania słuchu polegająca na przyłożeniu wprawionego w drgania stroika do czoła lub szczytu czaszki pacjenta. Zadaniem chorego jest określenie w którym uchu dźwięk słyszany jest głośniej.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Próba Rinnego - służy przede wszystkim do oceny utraty słuchu. Porównuje czas słyszenia dźwięków przenoszonych przez przewodnictwo powietrzne z dźwiękami przenoszonymi przez przewodnictwo kostne. W ten sposób szybko można ocenić stopień i obecność utraty słuchu.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Próba Schwabacha - subiektywna metoda badania słuchu polegająca na przyłożeniu wprawionego w drgania stroika do wyrostka sutkowatego kości skroniowej i określeniu czasu słyszenia dźwięku drogą kostną.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Próba Manoliego - subiektywna metoda samobadania słuchu polegająca na samodzielnym wypowiadaniu słów testowych i samodzielnemu określaniu ich zrozumiałości w skali 1-10.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q040",
+      "text": "Wskaż poprawne definicje błędów czujników:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "błąd histerezy - powoduje przypadkowe odchylenia sygnału w czasie.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "błąd histerezy - powoduje zmianę wartości wyjściowej w zależności od poprzednich wartości wejściowych.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "błąd kwantyzacji - powstaje jeśli zmienna wejściowa... zmienia się okresowo z częstotliwością bliską wielokrotności częstotliwości próbkowania.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "błąd kwantyzacji - powstaje na skutek przybliżania wartości do najbliższych wartości dyskretnych.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q041",
+      "text": "W przypadku zdalnych badań diagnostycznych kalibracja to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "działania w kierunku ustaleniu relacji pomiędzy wartościami wskazywanymi przez badane urządzenie a wartościami wskazywanymi przez wzorzec.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "działania zmierzające do wyeliminowania błędów histerezy.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "odpowiedni dobór średnicy przewodu lufy palnej.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "ogół czynności ustalających relację między wartościami wskazanymi przez przyrząd a odpowiednimi wartościami wzorca jednostki miary wraz z podaniem niepewności.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q042",
+      "text": "Rozpoznawanie mowy izolowanej polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rozpoznawaniu mowy pochodzącej z ograniczonego zbioru mówców",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "rozpoznawanie mowy w pomieszczeniach izolowanych od otoczenia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "rozpoznawaniu mowy z dużej odległości od mikrofonu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "rozpoznawaniu pojedynczych słów oddzielonych pauzami",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q043",
+      "text": "Który z filmów science fiction zainspirował środowiska badawcze do tworzenia prototypów interfejsów bezdotykowych opartych na ruchu i gestach (np. GoMonkey, Maestro, Sensitive Wall)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Matrix",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Raport mniejszości",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Star Wars",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Avatar",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q044",
+      "text": "Do zadań nadzorcy dialogu należy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "definiowanie przebiegu dialogu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wytwarzanie sygnału mowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "realizacja przejść między stanami dialogu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ekstrakcja informacji tekstowej i jej generacja",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q045",
+      "text": "Które z poniższych definicji technologii wytwarzania sensorów są prawdziwe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "MEMS (ang. Micro ElectroMechanical Systems) - mikrosystem składający się z elementów mechanicznych i elektrycznych.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "NEMS (ang. Nano Electro Mechanical Systems) - mikrosystem składający się z elementów mechanicznych i elektrycznych, zawierający elementy o rozmiarach nanometrycznych.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "NOEMS (ang. Nano Opto ElectroMechanicalSystems) - mikrosystem składający się z elementów mechanicznych, optycznych i elektrycznych, zawierający elementy o rozmiarach nanometrycznych.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "MOEMS (ang. Micro Opto Electro Mechanical Systems) - mikrosystem składający się z elementów mechanicznych, optycznych i elektrycznych.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q046",
+      "text": "Ruch oczu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "dostarcza wyłącznie danych dotyczących świadomych reakcji człowieka.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "umożliwia świadomą formę komunikacji człowieka z maszyną.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "to jeden z nielicznych fizycznych, mierzalnych objawów procesów poznawczych zachodzących w umyśle człowieka.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "dostarcza obiektywnych danych na temat percepcji człowieka.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q047",
+      "text": "Prozodia określa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "głośność poszczególnych wyrazów, głosek i fonemów w wypowiedzi",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "liczbę wyrazów w zdaniu o zmiennej wysokości stanowiące o sylabicznym ciągu wypowiedzi",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "liczbę wyrazów, sylab, głosek i fonemów w wypowiedzi",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "brzmieniowe właściwości mowy nakładające się na głoskowy, sylabiczny i wyrazowy ciąg wypowiedzi",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q048",
+      "text": "Zaznacz prawdziwe wypowiedzi dotyczące Sensor Bar (Nintendo Wii):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zawiera zestaw 2 kamer umożliwiających pozyskanie mapy głębokości",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zawiera zestaw 3 kamer umożliwiających pozyskanie mapy głębokości",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Umieszczony na wprost grającego, nad ekranem lub pod nim",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zawiera diody emitujące światło podczerwone, wykrywane przez czujniki umieszczone w Wii Remote",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q049",
+      "text": "Które z poniższych cech są charakterystyczne dla interfejsu SSVEP:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "niewielka liczba stanów sterujących",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "uśrednianie wielokrotnych prezentacji bodźca",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "duża liczba stanów sterujących",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "spontaniczna aktywność mózgowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q050",
+      "text": "Język VoiceXML służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "opisu zachowań procesu interakcji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "rozpoznawania sygnału mowy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "specyfikowania dialogów głosowych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "tłumaczenia zapytań głosowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q051",
+      "text": "Kinect 2 opiera swoje działanie na technologii:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "TOF (time-of-flight)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "radaru",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "stereowizji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "światła strukturalnego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q052",
+      "text": "Które z wymienionych potencjałów należy zaliczyć do kategorii potencjałów spontanicznych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wzrokowe SSVEP",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "potencjały związane z wyobrażeniem ruchu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "rytmy motoryczne",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "potencjały P300",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q053",
+      "text": "Narząd słuchu u człowieka składa się z:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "małżowiny usznej i ślimaka",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "ucha zewnętrznego, ucha środkowego i ucha wewnętrznego",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "małżowiny usznej, przewodu słuchowego, bębenka, młoteczka, kowadełka, strzemiączka i ślimaka",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "lewej i prawej małżowiny usznej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q054",
+      "text": "Ton podstawowy w sygnale mowy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "może służyć do określenia zabarwienia emocjonalnego wypowiedzi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "odzwierciedla prędkość ruchu strun głosowych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "jego wartość jest zależna od płci mówcy",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "określa głośność wypowiedzi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q055",
+      "text": "Do wysokopoziomowych cechy sygnału mowy można zaliczyć:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "liczbę pauz, sposób intonacji",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "tempo mówienia, akcent, rytm",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "energię, ZCR i MFCC",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "kontur energii sygnału",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q056",
+      "text": "Minimalizacja błędów podczas projektowania interfejsu użytkownika wymaga określenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jak łatwo wznowić działanie systemu po wystąpieniu błędu.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Jak zmniejsza się liczba popełnianych błędów wraz z czasem użytkowania systemu.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wielkości błędu zgodnie ze standardem WTTG",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "jak wiele błędów pojawia się podczas użytkowania systemu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q057",
+      "text": "Etapy procesu syntezy mowy obejmują:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "podział wyrazów na litery, usuwanie znaków interpunkcyjnych, wybór dźwięków z bazy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "usuwanie niejednoznaczności w tekście, tworzenie struktury syntaktycznej i generacja informacji prozodycznej, wytwarzanie sygnału mowy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "separacja liter od cyfr, generacja tonów prostych, poprawa brzmienia uzyskanego sygnału",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przetwarzanie wstępne tekstu, fonetyczno-prozodyczna konwersja tekstu, generacja sygnału mowy",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q058",
+      "text": "Technologie stosowane do określenia położenia myszy komputerowych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "laserowa",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "optyczna",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "mechaniczna",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ultradźwiękowa",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q059",
+      "text": "Proces rozpoznawania mowy z sygnału mowy obejmuje następujące fazy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "poziom akustyczny, poziom fonetyczny, ciągi jednostek fonetycznych oraz poziom semantyczny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "obliczanie energii sygnału mowy, wyznaczanie histogramu i pobieranie znaków z tablicy ASCII",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "parametryzacja sygnału mowy, przypisanie jednostek fonetycznych fragmentom wypowiedzi, dopasowanie ciągu jednostek fonetycznych do fragmentów sygnału, nadanie wartości semantycznej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "nagrywanie sygnału mowy i układanie zdań",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q060",
+      "text": "Czy można wprowadzać tekst do systemu komputerowego wykorzystując tylko jeden przycisk?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nie, minimalna liczba przycisków wynosi 3: 2 przyciski przewijania alfabetu oraz 1 przycisk służący zatwierdzaniu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tak, ale potrzebne są 4 dodatkowe przyciski kierunkowe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Tak",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Nie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q061",
+      "text": "Częstotliwość tonu podstawowego zależy od:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "długości przewodu słuchowego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "budowy anatomicznej strun głosowych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "głośności wypowiadanych słów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "napięcia, długości, elastyczności oraz kształtu strun głosowych",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q062",
+      "text": "Struktura traktu głosowego obejmuje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "płuca, oskrzela, tchawica, krtań, język, podniebienie, zęby, wargi",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "krtań, język, usta, ucho zewnętrzne",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "płuca, krtań, język, małżowina uszna",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "płuca, oskrzela, tchawica, krtań, struny głosowe, język, ucho, podniebienie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q063",
+      "text": "Zadaniem modułu VAD jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "sprawdzanie integralności danych zawierających wypowiedzi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "detekcja sygnału mowy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wykrywanie fragmentów sygnału zawierającego mowę",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "rozpoznawanie mówców",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q064",
+      "text": "Które techniki umożliwiają opracowanie interfejsu bezdotykowego?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rozpoznawanie mowy (speech recognition)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Widzenie maszynowe (computer vision)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "BCI (brain computer interfaces)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Okulografia (eyetracking)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "kcm-q065",
+      "text": "Technologia wielodotykowa miała swój początek w roku:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "1992 r., Simon",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "1982 r., Input Research Group na Uniwersytecie w Toronto",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "2010 r., iPad",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "2007 r., iPhone",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "kcm-q066",
+      "text": "Zjawiska fizyczne wykorzystywane w działaniu ekranów dotykowych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "optyczna",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "akustyczna (SAW)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "elektryczna",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "pojemnościowa",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

@@ -106,13 +106,21 @@ const DEFAULT_APP_SETTINGS = {
 };
 
 const BUILT_IN_DECK_SOURCES = [
+  { id: 'io-egzamin', file: '/data/io-egzamin.json' },
+  { id: 'zi-egzamin', file: '/data/zi-egzamin.json' },
+  { id: 'gk-egzamin', file: '/data/gk-egzamin.json' },
+  { id: 'gk2-egzamin', file: '/data/gk2-egzamin.json' },
+  { id: 'td-egzamin', file: '/data/td-egzamin.json' },
+  { id: 'td2-egzamin', file: '/data/td2-egzamin.json' },
   { id: 'poi-egzamin', file: '/data/poi-egzamin.json' },
-  { id: 'podstawy-it', file: '/data/sample-exam.json' },
-  { id: 'si-egzamin', file: '/data/si-egzamin.json' },
-  { id: 'randomize-demo', file: '/data/randomize-demo.json' },
-  { id: 'ii-egzamin', file: '/data/ii-egzamin.json' },
-  { id: 'ii-egzamin-fiszki', file: '/data/ii-egzamin-fiszki.json' },
   { id: 'zi2-egzamin', file: '/data/zi2-egzamin.json' },
+  { id: 'kcm-egzamin', file: '/data/kcm-egzamin.json' },
+  { id: 'si-egzamin', file: '/data/si-egzamin.json' },
+  { id: 'gry-egzamin', file: '/data/gry-egzamin.json' },
+  { id: 'ipz-egzamin', file: '/data/ipz-egzamin.json' },
+  { id: 'ai-egzamin', file: '/data/ai-egzamin.json' },
+  { id: 'ii-egzamin', file: '/data/ii-egzamin.json' },
+  { id: 'infrastruktura-informatyczna', file: '/data/infrastruktura_informatyczna.json' },
 ];
 const BUILT_IN_DECK_ID_SET = new Set(BUILT_IN_DECK_SOURCES.map((item) => item.id));
 const BUILT_IN_DECK_IDS = [...BUILT_IN_DECK_ID_SET];

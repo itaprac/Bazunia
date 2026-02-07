@@ -1,0 +1,739 @@
+{
+  "deck": {
+    "id": "ai-egzamin",
+    "name": "Aplikacje Internetowe",
+    "description": "Pytania z Aplikacji Internetowych",
+    "version": 1,
+    "group": "Semestr 5"
+  },
+  "questions": [
+    {
+      "id": "ai-q001",
+      "text": "W Google Images Search można wskazać typy licencji obrazków: (1) Dowolna, (2) Do ponownego wykorzystania z modyfikacją, (3) Do ponownego wykorzystania, (4) Do ponownego wykorzystania w celach niekomercyjnych z modyfikacją, (5) Do ponownego wykorzystania w celach niekomercyjnych. Które z powyższych można wykorzystać do wstawienia na witrynę WWW przedsiębiorstwa?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "(1)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "(2) oraz (3)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "(4) oraz (5)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "(2), (3), (4), (5)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q002",
+      "text": "Z wykorzystaniem jakich znaczników tworzone są listy wypunktowane (nieuporządkowane)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ol do listy i li do pozycji listy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "ul do listy i li do pozycji listy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "list do listy i ol do pozycji listy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "list do listy i ul do pozycji listy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q003",
+      "text": "Który znacznik służy do umieszczania obrazków w HTML?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "<image>",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "<img>",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "<figure>",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "<media>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q004",
+      "text": "Jaką właściwość i wartość w CSS należy wykorzystać do ustawienia przezroczystości obrazka na 25% (czyli obrazek ma być w 75% widoczny/nieprzezroczysty)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "transparency: 0.25",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "transparency: 0.75",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "opacity: 0.25",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "opacity: 0.75",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q005",
+      "text": "Wykonano kod JS: let a = false; let i = 0; if(a) console.log('increasing i'); i += 1; console.log(i); Jaka wartość zmiennej i została wydrukowana?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "0",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "1",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "false",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "brak poprawnej odpowiedzi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q006",
+      "text": "Wskaż wynik porównania 'Artur' < 'Zorro'",
+      "answers": [
+        {
+          "id": "a",
+          "text": "true",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "false",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "null",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "undefined",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q007",
+      "text": "Wykonano kod z ramki: let a = \"5\"; let b = 1; console.log(a+b); Jaka wartość została wydrukowana?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "5",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "1",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "6",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "51",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q008",
+      "text": "Jak policzyć liczbę znaków w ciągu tekstowym w JavaScript?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "\"abc\".length",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "length(\"abc\")",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "\"abc\".count()",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "\"abc\".size",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q009",
+      "text": "Które linie z kodu z ramki wyświetlą napis Hello World!? let hello = 'Hello'; let world = 'World!'; console.log(hello+''+world); // (1) console.log(hello.''.world); // (2) console.log('\\$(hello} \\${world}'); // (3) console.log('\\${hello} \\${world}'); // (4) console.log('Shello \\$world'); // (5)console.log('\\$hello \\$world'); // (6)",
+      "answers": [
+        {
+          "id": "a",
+          "text": "(1), (3)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "(2), (4)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "(1), (5)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "(1), (4)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q010",
+      "text": "Określ typ zmiennej $a po wykonaniu poniższego kodu: $a = 123; $a = 'true';",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Boolean wartość prawda",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Boolean - wartość 1",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "String wartość true",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Kod nie wykona się, ponieważ przypisane wartości są różnych typów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q011",
+      "text": "Które z poniższych wyrażeń oznaczają poprawny komentarz w PHP:: 1) // 2) % 3) # 4) /*...*/ 5) /**...*/ 6);",
+      "answers": [
+        {
+          "id": "a",
+          "text": "(1), (3), (4), (5)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "(1), (3), (4), (6)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "(2), (4), (5), (6)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie odpowiedzi są poprawne.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q012",
+      "text": "Administrator chce skonfigurować serwer w taki sposób, aby informacje o błędach i ostrzeżeniach były zapisywane do logów, ale nie były wyświetlane na stronie. Wskaż poprawne ustawienia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "error_reporting = E_ERROR_AND_WARNING; display_errors = Off;",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "error_reporting = E_ERROR_AND_WARNING; hide_errors= On;",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "error_reporting = E_ALL; display_errors = Off;",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "error_reporting = E_ALL; hide_errors= On;",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q013",
+      "text": "Wykonano kod: SorderStatuses=[ 'new', in progress', 'shipped', SorderStatuses[]='ready for shipment'; SorderStatuses[2] = 'complete'; Pod jakim indeksem i w jakiej kolejności znajduje się wpis ready for shipment?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Indeks 0, jako pierwszy element tablicy.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Indeks 0, jako ostatni element tablicy.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Indeks 3, jako pierwszy element tablicy.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Indeks 3, jako ostatni element tablicy.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q014",
+      "text": "Wykonano kod: function add($a, $b) { return $a + $b;} $c = (add(1, 2) ?: null); Jaka wartość została przypisana do zmiennej $c?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wartość 3. Funkcja add() została wykonana 1 raz.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wartość 3. Funkcja add() została wykonana 2 razy.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wartość null. Funkcja add() została wykonana 1 raz.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wartość null. Funkcja add() została wykonana 2 razy.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q015",
+      "text": "Wykonano kod: $a = 1; switch ($a) { case 1: echo $a; case 2: echo $a; case 3: echo $a; default: echo 'x'; Jaki tekst został wydrukowany?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "1",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "111",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "123x",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "111x",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q016",
+      "text": "Napisano bibliotekę funkcji wykorzystywanych w programie (plik lib.php). Do każdego pliku w tym programie dołączono następnie ten plik biblioteki. Jakiej konstrukcji należało użyć?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "include()",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "include_once()",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "require()",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "require_once()",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q017",
+      "text": "Jak usunąć ciasteczko w PHP?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "setcookie() z czasem w przeszłości",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "deleteCookie()",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "delete $_COOKIE ['abc']",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "unset($_COOKIES['abc'])",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q018",
+      "text": "Użytkownik jest zalogowany w systemie. Następnie wykonano kod: //poczatek skryptu session_destroy(); // pierwsza linia skryptu //dalsze instrukcje skryptu Jaki jest wynik działania kodu?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Użytkownik wylogowany natychmiastowo. Usunięcie danych użytkownika z sesji już w bieżącym wykonaniu skryptu.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Użytkownik wylogowany. Dane użytkownika dostępne w zmiennych sesji do końca bieżącego wykonania skryptu.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Użytkownik wylogowany. Dane sesji zostaną usunięte w losowym momencie wykonania skryptu przez Garbage Collector.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Użytkownik pozostaje zalogowany.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q019",
+      "text": "Czym różni się funkcja fwrite() od file_put_contents()?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tylko nazwą, działanie jest takie samo.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Funkcja file_put_contents() operuje na identyfikatorach zasobów, a fwrite() na nazwach plików.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Funkcja fwrite() operuje na identyfikatorach zasobów, a file_put_contents() na nazwach plików.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Funkcja fwrite() zapisuje cały tekst dokumentu, a file_put_contents() tylko określoną liczbę znaków.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q020",
+      "text": "Wskaż nieprawidłowe zdanie:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "TypeScript stanowi podzbiór JavaScript.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "TypeScript stanowi nadzbiór JavaScript.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TypeScript wprowadza do JS typy statyczne.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "TypeScript jest kompilowany do JavaScript a nie do bytecode.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q021",
+      "text": "Kod w jakiej wersji JavaScript można uzyskać automatycznie za pomocą TypeScript? 1) ES3 2) ES5 3) ES6 5) ES2016 4) ES2015 6) ESNext",
+      "answers": [
+        {
+          "id": "a",
+          "text": "(1), (2), (3)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "(4), (5), (6)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "(6)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie od (1) - (6)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q022",
+      "text": "Jaki wzorzec projektowy przedstawiony jest na diagramie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Simple Factory",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Factory Method",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Abstract Factory",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Strategy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q023",
+      "text": "Który wzorzec projektowy definiuje rodzinę algorytmów, hermetyzuje każdy z nich i czyni je wymiennymi (pozwala na dynamiczną zmianę)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Builder",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Strategy (Strategia)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Facade (Fasada)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Singleton",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q024",
+      "text": "W jakim celu wykonuje się badanie słów kluczowych przed pisaniem tekstów (SEO)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Żeby tekst był dłuższy i miał więcej znaków",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Żeby lepiej dopasować treść artykułu do tego, czego szukają użytkownicy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Żeby ukryć tekst przed robotami Google",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Żeby zablokować indeksowanie strony",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q025",
+      "text": "Która metoda HTTP służy do zastąpienia CAŁOŚCI istniejącej encji w systemie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "GET",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "POST",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "PUT",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "PATCH",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q026",
+      "text": "Która metoda HTTP służy do zastąpienia FRAGMENTU istniejącej encji w systemie?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "GET",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "POST",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "PUT",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "PATCH",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "ai-q027",
+      "text": "Który plik służy do głównej konfiguracji projektu w Cordova (ID, wersja, nazwa)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "config.json",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "config.xml",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "parameters.yml",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "AndroidManifest.xml",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "ai-q028",
+      "text": "W jakim języku programowania tworzy się aplikacje w Cordova (bezpośrednio przez programistę)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Java / Swift",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "C++",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "JavaScript / HTML / CSS",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Python",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

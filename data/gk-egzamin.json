@@ -1,0 +1,2938 @@
+{
+  "deck": {
+    "id": "gk-egzamin",
+    "name": "Grafika Komputerowa",
+    "description": "Pytania z grafiki komputerowej",
+    "version": 1,
+    "group": "Semestr 4"
+  },
+  "questions": [
+    {
+      "id": "gk-q001",
+      "text": "W potoku graficznym czasu rzeczywistego (ang. forward rendering):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wykonywana jest operacja rzutowania z 3D na 2D",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "większość obliczeń wykonywana jest na procesorze GPU",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "obliczany jest kolor pikseli",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zapewnione jest prawidłowe przesłanianie się obiektów względem kamery",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "położenie trójkąta na scenie mapowane jest na położenie tego trójkąta w rastrze",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "równanie oświetlenia rozwiązywane jest raz dla całego trójkąta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q002",
+      "text": "W ray tracingu elementami globalnego modelu oświetlenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest obliczenie koloru powierzchni z wykorzystaniem równania oświetlenia",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "jest obliczanie załamania światła na powierzchniach obiektów przezroczystych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "są obliczenia, w których o kolorze powierzchni decyduje światło załamane lub odbite od innych powierzchni",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "jest obliczanie odbicia światła od powierzchniach zwierciadlanych",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "teksturowanie",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "obliczanie cieni",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q003",
+      "text": "Kwantyzacja kolorów obrazu polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zamianie ciągłych wartości kolorów obrazu na cyfrowe wartości dyskretne",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "podniesieniu kontrastu w obrazie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "podziale obrazu na kilka mniejszych podobrazów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "pobieraniu wartości kolorów obrazu w różnych miejscach na jego powierzchni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q004",
+      "text": "W ray tracingu promienie śledzone są od kamery w kierunku sceny do źródeł światła:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ponieważ tylko w taki sposób możliwe jest obliczenie kolorów powierzchni z uwzględnieniem globalnego modelu oświetlenia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "ponieważ tylko takie rozwiązanie umożliwia obliczenie koloru powierzchni",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "w celu przyśpieszenia szukania ścieżek światła biegnących od źródeł światła, odbijających się od powierzchni obiektów i trafiających w kamerę",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "ponieważ jest to zgodne z fizycznym zjawiskiem rozchodzenia się światła w przestrzeni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q005",
+      "text": "Aliasing na obrazie:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powstaje na skutek użycia zbyt dużej częstotliwości próbkowania obrazu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "prowadzi do nadmiernego nasycenia kolorów w obrazie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "może doprowadzić do zanikania szczegółów (detali) w obrazie rastrowym",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "może doprowadzić do migania fragmentów obrazu",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "techniką stosowaną w celu jego ograniczania jest antyaliasing",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "jest widoczny jako schodkowane krawędzie obiektów widocznych w rastrze",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q006",
+      "text": "W grach komputerowych powszechnie stosowany jest model oświetlenia lokalnego ponieważ:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ten model wymaga znacznie mniej obliczeń w porównaniu z globalnym modelem oświetlania",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "obliczanie oświetlenia globalnego jest zbyt czasochłonne/kosztowne",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "model globalny dawałby gorszą jakość grafiki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wymaga obliczania wzajemnego oświetlania się obiektów na scenie",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "model lokalny jest efektywnie obliczany na procesorze GPU",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "model lokalny wymaga obliczania wzajemnego oświetlania się trójkątów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q007",
+      "text": "Model oświetlenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "stosowany jest w systemach graficznych czasu rzeczywistego, ponieważ nie można w nich symulować fizycznego zjawiska dystrybucji światła ze względu na jego bardzo dużą złożoność",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "model obliczeniowy stosowany w renderingu obrazów i umożliwiający obliczenie koloru powierzchni obiektów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zbiór źródeł światła zdefiniowanych na scenie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "to uproszczenie naturalnego zjawiska rozchodzenia się światła w otoczeniu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q008",
+      "text": "W monitorach LCD:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "konieczne jest zastosowanie podświetlenia (ang. backlight)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "kolor pozyskuje się dzięki różnokolorowym ciekłym kryształom",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ciekłe kryształy muszą być schłodzone poniżej 0 stopni Celsjusza",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "stosowane są filtry polaryzacyjne",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q009",
+      "text": "Rozdzielczość wyświetlacza to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "długość przekątnej wyświetlacza",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "liczba wyświetlanych punktów/pikseli na jednostkę powierzchni",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "fizyczna wielkość punktu/piksela wyświetlacza",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "liczba wyświetlanych obrazów na sekundę",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "liczba pikseli w poziomie i pionie",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "maksymalna liczba wyświetlanych obrazów na sekundę",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q010",
+      "text": "Elementem karty graficznej jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zegar taktujący",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "filtr polaryzacyjny",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "pamięć",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "procesor CPU",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q011",
+      "text": "Grafika komputerowa:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest dziedziną wiedzy zajmującą się przetwarzaniem i analizą obrazów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "definiuje algorytmy renderingu obrazów, które mogą być stosowane tylko w systemach offline'owych, tzn. w takich, w których rendering obrazów nie odbywa się w czasie rzeczywistym",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "definiuje techniki renderingu stosowane w grach komputerowych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "to dziedzina wiedzy zajmująca się algorytmami renderingu umożliwiającym syntezę obrazów na podstawie danych opisujących parametry sceny",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "opisuje podstawowe techniki stosowane w grach komputerowych do renderingu obrazów",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "nie może być wykorzystywana w grach komputerowych ze względu na czasochłonność algorytmów, które są w niej wykorzystywane",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q012",
+      "text": "Podstawowym parametrem wyświetlacza LCD jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "częstotliwość odświeżania pionowego obrazu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "rozdzielczość",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "materiał z jakiego wykonana jest jego obudowa",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "fizyczne pomiary ekranu wyświetlacza",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "waga",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "jasność obiektywu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q013",
+      "text": "Wynikiem iloczynu skalarnego jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wektor",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wektor prostopadły do mnożonych wektorów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "liczba skalarna",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "liczba równa sumie iloczynów parametrów mnożonych wektorów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q014",
+      "text": "Atlas tekstur to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "technika zmniejszająca rozdrobnienie tekstur i umożliwiająca ich efektywne przesyłanie z głównej pamięci RAM do pamięci karty graficznej",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "jedna duża tekstura zawierająca wiele mniejszych tekstur nakładanych na różne powierzchnie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "piramida tekstur o różnych wymiarach",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zestaw tekstur różnego rodzaju nakładanych na jedną powierzchnię, np. tekstury typu diffuse, normal, specular",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "jedna bardzo duża rozmiarem tekstura tak naprawdę składająca się z wielu innych tekstur",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "folder zawierający tekstury",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q015",
+      "text": "Parametry profilu koloru:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "muszą być dostosowywane do użytkowania wyświetlacza, dla którego mierzony jest profil koloru",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "mogą być różne dla dwóch wyświetlaczy, pomimo że są to identyczne modele tych wyświetlaczy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "mogą być mierzone za pomocą mierników luminancji i chrominancji",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "mogą być różne dla różnych fizycznych urządzeń",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "zależą od parametrów wzroku obserwatora",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q016",
+      "text": "W ray tracingu komponent koloru specular:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pozwala na zamodelowanie powierzchni o metalicznym wyglądzie, które w znaczącym stopniu odbija światło w sposób kierunkowy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "zależy od wzajemnego położenia punktu przecięcia, źródła światła oraz kamery",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "nie jest obliczany w równaniu oświetlania ze względu na czasochłonność obliczeń",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "umożliwia symulowanie wyglądu połyskliwych powierzchni (ang. glossy) dzięki wykorzystaniu parametru shininess",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "na jego wartość nie ma wpływu światło odbite od innych obiektów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q017",
+      "text": "Systemem graficznym nazywany jest system czasu rzeczywistego, jeżeli:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "renderowane są powierzchnie zwierciadlane",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "szybkość renderingu jest ważniejsza od uzyskiwanej jakości grafiki",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "jakość grafiki jest ważniejsza od szybkości renderingu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "generuje liczbę obrazów na sekundę taką samą jak częstotliwość odświeżania pionowego wyświetlacza",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q018",
+      "text": "Bufor Z (ang. Z-buffer):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "to bufor w pamięci umożliwiający rendering rozmycia ruchu (ang. motion blur)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "służy do obliczania przesłaniania się obiektów w klasycznych systemach renderingu obrazów opartych na obliczeniach wykonywanych na GPU",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "to miejsce w pamięci, w którym dla każdego piksela renderowanego obrazu przechowywana jest odległość od kamery do powierzchni, której próbkę stanowi ten piksel",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "nie jest wykorzystywany do testowania widoczności obiektów, ponieważ jest zbyt kosztowny pod względem obliczeniowym",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "służy do zapewnienia właściwego przesłaniania się obiektów z punktu widzenia kamery",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "generowania efektu rozmycia ruchu",
+          "correct": false
+        },
+        {
+          "id": "g",
+          "text": "przechowywania odległości od kamery do obiektów",
+          "correct": true
+        },
+        {
+          "id": "h",
+          "text": "przechowywania danych o kolorach pikseli",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q019",
+      "text": "W procesie teksturowania filtracja tekstury:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "to technika umożliwiająca mapowanie tekstury o prostokątnym kształcie na powierzchnie krzywoliniowe np. na powierzchnię kuli",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "to proces polegający na dostosowaniu wielkości tekstury do obszaru w rastrze, na który ta tekstura ma zostać nałożona",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "ma na celu rozmycie tekstury, aby polepszyć wygląd powierzchni obiektów na renderowanym obiekcie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "przykładowo powiększanie tekstury",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "zmiana kolorów tekstury",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "na przykład powiększenie tekstury w różnych proporcjach w poziomie i pionie",
+          "correct": true
+        },
+        {
+          "id": "g",
+          "text": "wymnożenie koloru teksela razy kolor obliczony w równaniu oświetlenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q020",
+      "text": "Zmapowanie tekstury to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "proces polegający na obliczaniu współrzędnych (u,v) teksela tekstury dla punktu na teksturowanej powierzchni",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "proces, którego celem jest nałożenie tekstury na krzywoliniową powierzchnię w sposób, który w jak najmniejszym stopniu zniekształci treść tekstury",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "proces polegający na dostosowaniu wielkości tekstury do obszaru w rastrze, na który ta tekstura ma zostać nałożona",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "proces polegający na powiększaniu lub pomniejszaniu tekstury",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "proces pozwalający na dostosowanie płaskiego prostokątnego kształtu tekstury do krzywoliniowej powierzchni, na którą nakładana jest tekstura",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q021",
+      "text": "Składowa specular w modelu Phonga zależy od:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "położenia obserwatora (kamery)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "liczby trójkątów z jakiej składa się mesh",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "położenia źródła światła",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "parametru nazwanego shininess",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q022",
+      "text": "Kwantyzacja obrazu polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pobieraniu wartości obrazu w różnych miejscach na jego powierzchni",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zamianie koloru punktów obrazu z reprezentacji analogowej na cyfrową",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "podniesieniu kontrastu w obrazie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "podziale obrazu na szereg mniejszych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q023",
+      "text": "Obraz rastrowy 2D:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest to dwuwymiarowa macierz pikseli",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "może powstawać w wyniku procesu renderingu – zmiany trójwymiarowej sceny na dwuwymiarowy raster",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "kolory w nim powstają na skutek mieszania barw podstawowych – cyjan, magenta, żółty i czarny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "jego aspektem nazywamy liczbę pikseli w pionie i poziomie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q024",
+      "text": "Biblioteka OpenGL:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "służy do wyświetlania obrazów na wyświetlaczu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "służy do renderowania obrazów graficznych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "renderuje obraz na podstawie danych sceny",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "służy do budowania graficznych interfejsów użytkownika",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q025",
+      "text": "Clipping jest to operacja polegająca na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "usuwaniu obiektów znajdujących się poza polem widzenia kamery",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "pomniejszaniu obrazu rastrowego tak, aby w całości zmieścił się na ekranie monitora",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "usuwaniu obiektów zasłoniętych przez inne obiekty",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "dodatkowym zaciemnianiu powierzchni trudnodostępnych dla światła",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q026",
+      "text": "Reprezentacja wielokątowa obiektów:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "cechuje się idealną dokładnością reprezentowania zadanego kształtu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "umożliwia szybkie przetwarzanie obiektów na kartach GPU",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "ułatwia zrównoleglenie obliczeń",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "w tej reprezentacji elementem podstawowym jest trójkąt bądź czworokąt (którego wierzchołki nie leżą na jednej płaszczyźnie)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q027",
+      "text": "Stosowany w grafice komputerowej skrót GPU oznacza:",
+      "answers": [],
+      "explanation": "Fiszka utworzona automatycznie. Źródłowa odpowiedź: Graphics Processing Unit"
+    },
+    {
+      "id": "gk-q028",
+      "text": "Rzutowanie służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "obliczania koloru powierzchni obiektów",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "obliczenia położenia wierzchołków trójkątów w przestrzeni 2D",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "transformowaniu obiektów z 2D do trójwymiarowego rzutu gry komputerowej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wyeliminowaniu powierzchni zasłoniętych przez inne obiekty",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q029",
+      "text": "Culling jest to operacja polegająca na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "dodatkowym zaciemnianiu powierzchni trudnodostępnych dla światła",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "pomniejszaniu obrazu rastrowego tak, aby w całości zmieścił się na ekranie monitora",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "usuwaniu obiektów zasłoniętych przez inne obiekty",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "usuwaniu obiektów znajdujących się poza polem widzenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q030",
+      "text": "Elementem karty graficznej może być:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "procesor GPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "procesor CPU",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "pamięć",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "gniazdo HDMI",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q031",
+      "text": "Próbkowanie i integracja sceny charakteryzują się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "integracja odbywa się w aparatach cyfrowych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "algorytmy graficzne w silnikach do gier komputerowych próbkują scenę",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "elementem integracji stosowanym w grafice komputerowej są algorytmy antyaliasingu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "próbkowanie lepiej zapamiętuje sygnał wejściowy niż integracja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q032",
+      "text": "W równaniu oświetlenia:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "składowa diffuse zależy od wzajemnego położenia powierzchni i źródła światła oraz od położenia obserwatora",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "składowa ambient zależy od położenia obserwatora",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "składowa specular zależy tylko od parametru powierzchni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "składowa diffuse zależy od wzajemnego położenia powierzchni i źródła światła",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q033",
+      "text": "Zasada działania monitora LCD opiera się między innymi na wykorzystaniu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zjawiska polaryzacji światła",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "zjawiska dyspersji światła",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "zjawiska indukcji elektromagnetycznej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "elementów światłoczułych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q034",
+      "text": "W modelu oświetlenia Phonga komponent związany ze światłem rozproszonym to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "diffuse",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "reflection",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ambient",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "specular",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q035",
+      "text": "Model oświetlenia Blina-Phonga:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "reprezentuje kolor w postaci składowych ambient, diffuse i specular",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "uwzględnia powierzchnie przezroczyste",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "stosowany jest w silnikach graficznych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "uwzględnia renderowanie cieni",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q036",
+      "text": "Karta graficzna zbudowana jest z:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "procesora graficznego",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "pamięci",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "elementów zawierających cząstki ciekłego kryształu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zegarów taktujących",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q037",
+      "text": "Równanie oświetlenia służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "porównywania natężenia oświetlenia zmierzonego dla różnych źródeł światła",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wyznaczania wzajemnego położenia źródeł światła",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "obliczania koloru punktów na powierzchni obiektów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "modelowania sposobu dystrybucji światła na scenie",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "obliczenia koloru powierzchni obiektu",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "modeluje efekt rozchodzenia się światła w zadanym otoczeniu",
+          "correct": true
+        },
+        {
+          "id": "g",
+          "text": "nie uwzględnia położenia źródeł światła",
+          "correct": false
+        },
+        {
+          "id": "h",
+          "text": "nie może być obliczane na GPU",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q038",
+      "text": "Definicja sceny 3D uwzględnia następujące parametry:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "źródła światła",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "parametry materiałów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "parametry źródeł światła",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "opis położenia oraz kształtu obiektów geometrycznych",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "położenie źródeł światła",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "kolor źródeł światła",
+          "correct": true
+        },
+        {
+          "id": "g",
+          "text": "położenie wierzchołków trójkątów tworzących obiekty",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q039",
+      "text": "Procesor GPU szybciej od CPU renderuje obrazy ponieważ:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "oblicza równolegle więcej wątków niż CPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "ma szybszy dostęp do pamięci",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ma architekturę SISD (Single Instruction Single Data)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "ma szybszy dostęp do pamięci obrazu (framebuffera)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q040",
+      "text": "Składowe równania oświetlenia odpowiedzialne są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "składowa specular za symulację odbić metalicznych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "składowa ambient za przybliżenie oświetlenia globalnego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "składowa diffuse za symulację wpływu światła odbitego od innych powierzchni",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "składowa diffuse za symulację materiałów rozpraszających światło na powierzchni",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q041",
+      "text": "Podstawowe komponenty w modelu oświetlenia Phonga to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ambient",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "diffuse",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "reflection",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "specular",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q042",
+      "text": "W monitorach LCD kolory uzyskuje się poprzez:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wykorzystanie podświetlenia (ang. backlight) w trzech różnych kolorach, czerwonym, zielonym i niebieskim",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zastosowanie filtrów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zmianę częstotliwości świecenia elementów matrycy monitora",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zastosowanie elementów LCD świecących w trzech kolorach podstawowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q043",
+      "text": "Model oświetlenia nazywany jest globalnym, jeżeli:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "uwzględnia tylko punktowe źródła światła",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "kolor powierzchni obliczany jest tylko na podstawie światła docierającego bezpośrednio ze źródeł światła",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "uwzględnia białe źródła światła",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "uwzględnia wzajemne oświetlanie się obiektów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q044",
+      "text": "Rekonstrukcja polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zmianie wartości ciągłej na wartość dyskretną",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "uśrednianiu przedziału funkcji ciągłej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "zamianie dyskretnej próbek na funkcję ciągłą",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zamianie wartości ciągłej na wartość dyskretną",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q045",
+      "text": "Próbkowanie sceny różni się od integracji sceny:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "próbkowanie wierniej odwzorowuje scenę na obrazie wyjściowym",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "próbkowanie stosowane jest w aparatach cyfrowych",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "integracja uśrednia wartość światła w danym kącie bryłowym",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "próbkowanie stosowane jest w algorytmach syntezy obrazów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q046",
+      "text": "Mnożenie macierzy:",
+      "answers": [],
+      "explanation": "Fiszka utworzona automatycznie. W źródle brak oznaczonej poprawnej odpowiedzi."
+    },
+    {
+      "id": "gk-q047",
+      "text": "Rysowanie linii w rastrze polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rysowaniu pikseli wzdłuż idealnej linii łączącej piksel początkowy i końcowy rysowanego odcinka",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wykorzystaniu do obliczeń operacji zmiennoprzecinkowych",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wpisywaniu do pamięci obrazu danych o kolorach pikseli należących do rysowanej linii",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "obliczaniu położenia kolejnych pikseli pomiędzy początkowym i końcowym pikselem rysowanego odcinka",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "wykonywane jest przez zoptymalizowane algorytmy ze względu na konieczność szybkiego rysowania bardzo wielu linii w czasie renderingu obrazu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q048",
+      "text": "Tekstury używane w tradycyjnym podejściu do renderingu to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "diffuse",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "metallic",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "specular",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "albedo",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "ambient",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q049",
+      "text": "Operacja BitBliting to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "naprzemienne wyświetlanie piksela w dwóch kolorach powodujące jego migotanie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "kopiowanie fragmentu pamięci obrazu w inne miejsce w pamięci obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "kopiowanie dwuwymiarowego fragmentu obrazu z wykorzystaniem operacji logicznych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "kasowanie pamięci obrazu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q050",
+      "text": "Ortogonalny trójwymiarowy (x,y,z) układ współrzędnych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "to układ wyznaczony przez trzy prostopadłe osie współrzędnych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "może być prawoskrętny bądź lewoskrętny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "jednoznacznie definiuje punkt w przestrzeni trójwymiarowej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "jednoznacznie definiuje rozmiary i kształt obiektów w nim zdefiniowanych",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q051",
+      "text": "Model typu low poly:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest powszechnie używany w grach",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "składa się z możliwie jak najmniejszej liczby wielokątów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "powstaje w wyniku operacji subdivide na modelu high poly",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "dąży się, aby jak najlepiej przybliżał model high poly",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q052",
+      "text": "Operacja polegająca na podzieleniu mesha na mniejsze części z jednoczesnym zaokrągleniem na krawędziach obiektu to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "subdivide",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "shell",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "bend",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "turbosmooth",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q053",
+      "text": "Antyaliasing stosuje się aby:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "poprawić jakość obrazów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "zmniejszyć aliasing bez konieczności zwiększania rozdzielczości obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zmniejszyć widoczność aliasingu na obrazie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wyostrzyć obraz",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q054",
+      "text": "Normal mapping:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "powoduje zmianę położenia wierzchołków modelu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "nie zmienia położenia wierzchołków modelu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "opiera swoje działanie na zmianie kierunku wektorów normalnych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zmienia kolor powierzchni obiektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q055",
+      "text": "W modelu renderungu PBR tekstura typu metalic:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "może być utożsamiana z teksturą diffuse",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "symuluje mikronierówności na powierzchni obiektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "określa czy materiał jest metalem czy dielektrykiem",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "nadaje kolor obiektowi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q056",
+      "text": "Tekstury używane w modelu renderingu PBR to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "roughness",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "specular",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "albedo",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "metalic",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q057",
+      "text": "Tekstura proceduralna:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "tworzona jest przez program uruchamiany na procesorze GPU",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "to program służący do tworzenia tekstury na powierzchni obiektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "możliwa jest do utworzenia na zaawansowanych kartach graficznych, ponieważ wymaga dużej pamięci RAM",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "nie wymaga stosowania danych w postaci obrazu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q058",
+      "text": "Wyświetlacz OLED różni się od wyświetlacza LCD:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wyświetlacz OLED ma krótsze opóźnienie wyświetlania obrazu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "w przypadku wyświetlacz OLED możliwe jest uzyskanie zerowej jasności elementów wyświetlających",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wyświetlacz OLED cechuje się większym kontrastem",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wyświetlacz LCD nie wyświetla obrazów kolorowych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q059",
+      "text": "Podpory (ang. suport edges):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "pozwalają tworzyć modele o bardzo dużych rozmiarach",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "są to dodatkowe pętle znajdujące się przy krawędziach obiektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "powodują zaostrzenie krawędzi obiektu po operacji subdivide",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "pozwalają tworzyć obiekty wyglądające jak mosty",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q060",
+      "text": "W modelu renderungu PBR tekstura typu roughness:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "nadaje kolor obiektowi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "określa czy materiał jest metalem czy dielektrykiem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "służy do określenia czy materiał jest matowy czy błyszczący",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "umożliwia obrót wektorami normalnymi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q061",
+      "text": "Bump mapping służy do:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "symulowania powierzchni o nierównej strukturze",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "animowania ruchu kulistego obiektu na powierzchni",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "umieszczenia na powierzchni kulistych obszarów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "dzielenie powierzchni na mniejsze trójkąty i symulowania nierówności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q062",
+      "text": "Operacje pozwalające na manipulacje wektorami normalnymi to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "użycie smoothing group",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "parallax mapping",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "normal mapping",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "displacement mapping",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q063",
+      "text": "Próbkowanie polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "uśrednianiu przedziału funkcji ciągłej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zamianie wartości ciągłej na wartość dyskretną",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zamianie ciągłego sygnału na skończoną liczbę wartości opisujących ten sygnał",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "zamianie dyskretnych próbek na funkcję ciągłą",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q064",
+      "text": "Rekonstrukcja obrazu z obrazu rastrowego polega na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wyświetlaniu obrazu rastrowego na monitorze LCD",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "uzupełnieniu kolorów brakujących pikseli",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "uzupełnianiu brakujących składowych kolorów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "nadaniu pikselowi fizycznych wymiarów za pomocą urządzenia wyświetlającego",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q065",
+      "text": "Vertex shader to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "program wykonywany przez procesor graficzny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "algorytm obliczający kolor powierzchni",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "program wykonywany przez procesor CPU",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "algorytm obliczający cienie",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "program wykonujący transformacje wierzchołków trójkątów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q066",
+      "text": "Mesh składa się z:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wokseli",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "krawędzi",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "tekseli",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wielokątów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q067",
+      "text": "Normalna mapa przenosząca informację z modelu high poly na model low poly powstaje w wyniku procesu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "normalizacji",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wypiekania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "transferowania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "mapowania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q068",
+      "text": "Kolor w grafice komputerowej:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "reprezentowany jest w postaci wektora z trzema parametrami R G i B (red green blue)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "reprezentowany jest za pomocą wektora wartości zdefiniowanych w przestrzeni XYZ",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wyraża barwę obiektów zapisaną w postaci cyfrowej",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "reprezentowany jest w postaci wektora RGB, ponieważ w wyświetlaczach wykorzystywane są filtry R G i B",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q069",
+      "text": "Model oświetlenia to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zbiór źródeł świateł umieszczonych na scenie, które decydują o wyglądzie tej sceny na renderowanym obrazie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "uproszczenia naturalnego zjawiska rozchodzenia się światła w otoczeniu stosowane w celu ograniczenia liczby obliczeń koniecznych do renderingu obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "uproszczenia naturalnego zjawiska rozchodzenia się światła w otoczeniu umożliwiającego widzenie obiektów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "uproszczony sposób definiowania źródeł światła na scenie",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q070",
+      "text": "Model zjawiska fizycznego:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "będzie bardziej złożony pod względem obliczeniowym, jeżeli w większym stopniu przybliża to zjawisko fizyczne",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "nie jest stosowany do komputerowej symulacji zjawisk fizycznych, ze względu na zbyt duże uproszczenie tych zjawisk",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "stosowany jest do komputerowej symulacji tego zjawiska",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "to uproszczenie tego zjawiska umożliwiające np. symulowanie tego zjawiska za pomocą komputerów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q071",
+      "text": "Obrazy HDR (ang. high dynamic range):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "w lepszym stopniu odwzorowuje kolory sceny niż klasyczny obraz rastrowy LDR (ang. low dynamic range), w którym kolory reprezentowane są za pomocą trzech wartości 8-bitowych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "to obraz rastrowy, w którym piksele wyrażone są za pomocą liczb zmiennoprzecinkowych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "ma mniejszy zakres dynamiki w stosunku do obrazu LDR",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wymaga zapamiętania kolorów piksela na większej liczbie bitów niż w przypadku LDR",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q072",
+      "text": "Operator tonów:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "to algorytm implementujący kompresję tonów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "to program do automatycznego dostosowywania tonów obrazu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "to algorytm do zmiany stylu grafiki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "to program służący do swobodnej zmiany koloru tekstury",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q073",
+      "text": "Punkt bieli:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest niezbędnym parametrem profilu koloru wyświetlaczy komputerowych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "może być wyrażony za pomocą temperatury barwowej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "jest wyliczany jako średnia wszystkich kolorów na scenie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "to kolor, do którego zaadaptowany byłby wzrok człowieka przebywającego na scenie",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q074",
+      "text": "Ray tracing to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "metoda syntezy obrazów polegająca na śledzeniu promieni światła od kamery do źródeł światła",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "metoda syntezy obrazów, w której obraz jest generowany poprzez rysowanie po kolei wszystkich obiektów widocznych na scenie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "metoda syntezy obrazów, w której uwzględniane są elementy globalnego modelu oświetlenia, takie jak cienie i odbicia zwierciadlane",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "metoda syntezy obrazów wymyślona przez firmę Nvidia, która użyła jej pierwszy raz na kartach graficznych serii RTX",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q075",
+      "text": "Rysowanie piksela w rastrze wymaga:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zamiany dwuwymiarowego indeksu piksela na liniowy adres w pamięci obrazu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wpisania koloru piksela do odpowiedniej komórki pamięci obrazu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "obliczenia adresu komórki pamięci w pamięci obrazu odpowiadającej temu pikselowi",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wyświetlaniu piksela w odpowiednim miejscu na wyświetlaczu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q076",
+      "text": "Scena:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "w przypadku scen trójwymiarowych niezbędnym elementem sceny są parametry kamery",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "składa się między innymi z informacji o kształcie obiektów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "to zbiór danych wejściowych wykorzystywanych do renderingu obrazu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "składa się między innymi z informacji o tym jak powierzchnie obiektów odbijają światło",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q077",
+      "text": "Teksturowanie:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "to proces polegający na modyfikacji koloru powierzchni obiektu poprzez wymnożenie koloru tej powierzchni obliczonego w równaniu oświetlenia poprzez kolor teksela odpowiadającego wybranemu punktowi na powierzchni",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "to proces polegający na obliczeniu gamy wektorów normalnych dla danego obiektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "polega na zastępowaniu kolorem tekstury koloru powierzchni obliczonego za pomocą równania oświetlenia",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "wymaga obliczenia położenia w teksturze odpowiadającego punktowi na powierzchni, w którym nakładana jest tekstura",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q078",
+      "text": "W ray tracingu komponent koloru diffuse:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "obliczany jest osobno dla każdego źródła światła umieszczonego na scenie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "na wartości tego komponentu koloru nie ma wpływu na położenie kamery",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zależy tylko od koloru źródeł światła",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zależy od wzajemnego położenia punktu przecięcia oraz źródła światła",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q079",
+      "text": "W ray tracingu do obliczania kierunku promienia pierwotnego potrzebna jest znajomość:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "położenia źródła światła",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "parametrów materiału obiektu, w który trafi promień",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "położenia piksela renderowanego obrazu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "parametrów kamery",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q080",
+      "text": "W ray tracingu rekurencyjne śledzenie promieni:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "stosuje się w celu uproszczenia implementacji ray tracera wymagającej śledzenia rozgałęzionego drzewa promieni wtórnych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "polega na wysłaniu promieni testujących cienie dla każdego źródła światła",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "polega na wywoływaniu funkcji dla niższego poziomu promieni wtórnych z wnętrza tej samej funkcji",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "nie jest stosowane",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q081",
+      "text": "W ray tracingu obliczając punkt przecięcia promienia z obiektami na scenie należy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "znaleźć przecięcie promienia z najbliższym obiektem na scenie licząc od początku promienia",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "odrzucić obiekty, dla których punkt przecięcia znajduje się za kamerą (w kierunku odwrotnym do kierunku promienia)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wykorzystywać różne algorytmy obliczania przecięcia dla obiektów o różnych kształtach np. dla kul i trójkątów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "pominąć testowanie przecięć z obiektami znajdującymi się za kamerą",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q082",
+      "text": "W ray tracingu punkt przecięcia promienia z obiektem oblicza się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wykorzystując równania różniczkowe",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "szukając punktu lub punktów wspólnych obiektu (np. kuli) i promienia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wykorzystując współrzędne mapowania tekstury",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "z wykorzystaniem parametrów obiektu, np. jego położenia",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q083",
+      "text": "W ray tracingu obliczenie równania oświetlenia ma na celu:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "obliczenie koloru powierzchni obiektu w punkcie przecięcia promienia z tą powierzchnią",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "obliczenie komponentów ambient, diffuse i specular koloru powierzchni",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "również obliczenie wzajemnego przesłaniania się obiektów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "obliczenie koloru źródeł światła",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q084",
+      "text": "W ray tracingu promienie wtórne:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wykorzystywane są do obliczania zmian koloru powierzchni obiektu powodowanych przez światło odbite od innych obiektów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "wykorzystywane są do renderowania powierzchni zwierciadlanych oraz obiektów przezroczystych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "to promienie tworzone po odbiciu promienia pierwotnego od powierzchni obiektu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "to promienie tworzone po załamaniu promienia pierwotnego na powierzchni przezroczystego obiektu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q085",
+      "text": "Wynikiem iloczynu wektorowego jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "liczba skalarna równa cosinusowi kąta pomiędzy mnożonymi wektorami",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "liczba skalarna",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wektor prostopadły do mnożonych wektorów",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wektor",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q086",
+      "text": "Profil koloru:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "definiowany jest między innymi przez wartości trzech barw podstawowych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "definiowany jest między innymi przez wartości koloru bieli",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "to kształt figury barw widzianych dla człowieka",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "to zestaw parametrów opisujących w jaki sposób dane urządzenie wyświetla kolory",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q087",
+      "text": "Kodowanie i dekodowanie gamma:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "polega na liniowej zmianie kolorów obrazu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jest określone przez stałą dodawaną bądź odejmowaną od obrazu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "ma na celu taką kwantyzację kolorów w obrazie, która w jak najmniejszym stopniu zniekształci kontrasty w tym obrazie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "polega na nieliniowej zmianie jasności obrazu przed wykonaniem kwantyzacji tego obrazu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q088",
+      "text": "Operator tonów (ang. tone mapping operator):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest sprzętowym modułem wbudowanym w wyświetlacze HDR, odpowiedzialnym za bezpośrednie renderowanie scen o wysokiej jasności.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "służy do rozszerzania zakresu dynamiki obrazów LDR, przekształcając je w pełnoprawne obrazy HDR z dodatkowymi informacjami o jasności.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "dąży do kompresji luminancji w taki sposób, aby szczegóły zarówno w najjaśniejszych światłach, jak i najgłębszych cieniach oryginalnego obrazu HDR były nadal widoczne na obrazie LDR.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "to algorytm dostosowujący styl grafiki do wybranego motywu, np. zmieniający ciepłą tonację kolorów na zimną.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q089",
+      "text": "Jakie są przykłady wskazówek głębi (depth cues), których używa ludzki system wzrokowy do oceny odległości i postrzegania trójwymiarowości sceny?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nasycenie kolorów, gdzie bardziej nasycone barwy często wydają się być bliżej.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Stereopsja (widzenie stereoskopowe) wynikająca z różnic w obrazach widzianych przez lewe i prawe oko (dysparacja dwuoczna).",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Lokalizacja dźwięku, czyli określanie odległości na podstawie kierunku, z którego dochodzi dźwięk.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Temperatura barwowa światła, gdzie światło o cieplejszej barwie zawsze oznacza obiekty znajdujące się bliżej.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q090",
+      "text": "W jaki sposób w wyświetlaczach LCD (Liquid Crystal Display) tworzony jest obraz kolorowy?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Białe podświetlenie przechodzi przez warstwę filtrów kolorów (Color Filter Array - CFA), a następnie przez panel ciekłokrystaliczny regulujący jasność.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mieszając światło z subpikseli (R, G, B) o różnej intensywności, ludzkie oko postrzega wypadkowy kolor całego piksela (addytywne mieszanie barw).",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dzięki zjawisku dyfrakcji światła na strukturze ciekłych kryształów, które rozszczepia białe światło na barwy składowe.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Intensywność światła przechodzącego przez każdy subpiksel (R, G, B) jest niezależnie regulowana przez sterowanie odpowiednią komórką ciekłego kryształu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q091",
+      "text": "Kompresja tonów obrazów:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "polega na nieliniowej zmianie jasności pikseli obrazu przed wyświetleniem obrazu.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "to proces służący do zmniejszenia pamięci potrzebnej do przechowywania obrazu.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "to proces polegający na dostosowaniu zakresu jasności obrazu do zakresu dynamiki wyświetlacza.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "realizowana jest za pomocą algorytmu, który oblicza luminancję pikseli na podstawie wartości kanałów koloru, kompresuje tę luminancję, a następnie ponownie oblicza wektor kolorów.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q092",
+      "text": "Jakie artefakty wizualne mogą pojawić się na ekranie, gdy liczba klatek renderowanych przez kartę graficzną nie jest zsynchronizowana z częstotliwością odświeżania monitora (np. gdy V-Sync jest wyłączony)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Aliasing (schodkowanie krawędzi) - postrzępione krawędzie obiektów spowodowane niewystarczającą rozdzielczością lub brakiem antyaliasingu.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Input lag (opóźnienie wejściowe) - opóźnienie między akcją użytkownika a reakcją na ekranie (brak synchronizacji może go zmniejszyć lub zwiększyć, ale nie jest jego bezpośrednim artefaktem).",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Screen tearing (rozrywanie obrazu) - widoczna linia \"przecinająca\" obraz poziomo, gdzie górna i dolna część ramki pochodzą z różnych momentów renderowania.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Burn-in (wypalenie obrazu) - trwałe uszkodzenie pikseli spowodowane długotrwałym wyświetlaniem statycznego obrazu.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q093",
+      "text": "Zaletą wyświetlaczy OLED w porównaniu do LCD (w tym z podświetleniem LED/Mini-LED) pod kątem ich przydatności do gier komputerowych jest, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wyświetlacze LCD zużywają zawsze mniej energii elektrycznej niż OLED, niezależnie od wyświetlanej treści, co jest ważne podczas długich sesji gamingowych.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wyświetlacze OLED oferują szersze kąty widzenia i lepszą jednolitość kolorów przy patrzeniu z boku w porównaniu do LCD, co jest ważne w grach wieloosobowych na jednym ekranie.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "czas reakcji pikseli w OLED jest znacznie krótszy niż w LCD, co minimalizuje smużenie (ghosting) i rozmycie ruchu (motion blur) w dynamicznych grach.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "wyświetlacze OLED zazwyczaj oferują znacznie wyższy współczynnik kontrastu i prawdziwą czerń dzięki indywidualnemu wyłączaniu pikseli, co jest korzystne w ciemnych scenach gier.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q094",
+      "text": "Czym charakteryzują się obrazy HDR (High Dynamic Range) i jakie są główne różnice w porównaniu do obrazów LDR (Low Dynamic Range)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Obrazy HDR zawsze mają wyższą rozdzielczość przestrzenną (więcej pikseli) niż obrazy LDR.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "HDR pozwala na jednoczesne pokazanie detali w światłach (np. chmury na jasnym niebie) i cieniach (np. obiekt w ciemnym pomieszczeniu), co jest trudne w LDR.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Obrazy LDR mają ograniczony zakres dynamiki, co oznacza, że mogą tracić szczegóły w bardzo jasnych lub bardzo ciemnych obszarach sceny, podczas gdy HDR stara się je zachować.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Obrazy HDR przechowują szerszy zakres wartości jasności niż obrazy LDR, co pozwala na bardziej realistyczne odwzorowanie sceny.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q095",
+      "text": "Jakie technologie lub cechy dotyczą podświetlenia (backlight) stosowanego w wyświetlaczach LCD?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nowsze monitory LCD wykorzystują diody LED jako źródło podświetlenia, co pozwala na cieńszą konstrukcję i lepszą efektywność energetyczną.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Technologia Full-Array Local Dimming (FALD) wykorzystuje matrycę diod LED za całym panelem, pozwalając na niezależne sterowanie jasnością poszczególnych stref dla lepszego kontrastu.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Podświetlenie krawędziowe (Edge-lit LED) polega na umieszczeniu diod LED wzdłuż krawędzi ekranu.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "W wyświetlaczach LCD podświetlenie generuje kolor obrazu, a ciekłe kryształy tylko regulują jego jasność.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q096",
+      "text": "Rekonstrukcja obrazu (analogowego) z obrazu rastrowego:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest procesem odwrotnym do próbkowania (sampling) i ma na celu jak najwierniejsze odtworzenie oryginalnego, ciągłego sygnału wizualnego na podstawie dyskretnych danych.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "jest konieczna, aby wyświetlić obraz rastrowy na wyświetlaczu komputerowym.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "zawsze prowadzi do idealnego odtworzenia oryginalnego sygnału analogowego bez jakichkolwiek zniekształceń czy utraty informacji.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "jest procesem konwersji modelu wektorowego obiektu na zbiór pikseli, czyli rasteryzacją.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q097",
+      "text": "Które z poniższych cech i technologii monitorów komputerowych są szczególnie istotne z perspektywy gracza i mogą znacząco wpłynąć na wrażenia z rozgrywki?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wbudowane głośniki o dużej mocy są najważniejszym elementem monitora dla graczy, zastępując potrzebę używania słuchawek czy zewnętrznych systemów audio.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Niski input lag (opóźnienie wejściowe) jest krytyczny dla responsywności, szczególnie w grach kompetytywnych, ponieważ skraca czas między akcją gracza a jej wyświetleniem na ekranie.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Monitory z matrycą typu TN (Twisted Nematic) zawsze oferują najlepsze odwzorowanie kolorów i najszersze kąty widzenia, co jest kluczowe dla gier RPG i przygodowych.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Obecność portu USB-C z funkcją Power Delivery jest ważniejsza dla płynności rozgrywki niż wsparcie DisplayPort czy HDMI 2.1.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q098",
+      "text": "Pamięć obrazu to",
+      "answers": [
+        {
+          "id": "a",
+          "text": "miejsce w pamięci, w których przechowywane są dane o głębokości.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "pamięć nazywana buforem ramki (ang. framebuffer).",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "pamięć, w której uruchamiany jest program renderujący grafikę.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "pamięć komputerowa, w której przechowywane są dane obrazu.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "pamięć, do której zapisywane są obliczane wartości kolorów pikseli obrazu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q099",
+      "text": "Które z poniższych stwierdzeń dotyczących operacji na macierzach i wektorach są prawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wynikiem mnożenia macierzy M (o wymiarach m x n) przez wektor kolumnowy v (o wymiarach n x 1) jest wektor kolumnowy o wymiarach m x 1.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Każda macierz prostokątna posiada macierz odwrotną.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Macierz odwrotna A⁻¹ do macierzy A spełnia warunek A * A⁻¹ = A⁻¹ * A = I, gdzie I jest macierzą jednostkową.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Wynikiem mnożenia macierzy przez wektor jest zawsze liczba skalarna.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q100",
+      "text": "Jakie technologie lub mechanizmy służą do synchronizacji momentu wyświetlenia nowej ramki obrazu przez monitor z momentem zakończenia jej renderowania przez kartę graficzną?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Bufor Z (Z-buffer) - służy do synchronizacji wyświetlania klatek.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "HDR (High Dynamic Range) - technologia synchronizująca rendering z wyświetlaniem.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "G-Sync (NVIDIA) - technologia adaptacyjnej synchronizacji, gdzie monitor dostosowuje swoją częstotliwość odświeżania do klatek generowanych przez GPU NVIDIA.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "V-Sync (Synchronizacja Pionowa) - ogranicza liczbę klatek renderowanych przez GPU do częstotliwości odświeżania monitora, zapobiegając \"rozrywaniu\" obrazu (screen tearing).",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q101",
+      "text": "Które z poniższych stwierdzeń dotyczących budowy i zasady działania nowoczesnych gogli Wirtualnej Rzeczywistości (VR) są prawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Głównym elementem optycznym są specjalne pryzmaty, które rozszczepiają obraz na składowe RGB dla każdego oka.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zawierają systemy soczewek (np. Fresnela, asferyczne, pancake) umieszczone między oczami użytkownika a wyświetlaczami, służące do ogniskowania obrazu i zapewnienia szerokiego pola widzenia (FOV).",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Często posiadają zintegrowane systemy audio (słuchawki lub głośniki) lub złącza audio do podłączenia zewnętrznych słuchawek, wspierające dźwięk przestrzenny.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Generują obrazy holograficzne bezpośrednio na siatkówce oka użytkownika za pomocą miniaturowych projektorów laserowych.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q102",
+      "text": "Tworzenie obrazu rastrowego poprzez integrację sceny",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest standardową, szybką metodą stosowaną w interaktywnych aplikacjach 3D, takich jak gry, ze względu na niskie wymagania obliczeniowe.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "polega na budowaniu trójwymiarowego modelu sceny z podstawowych prymitywów geometrycznych przed jakimkolwiek obliczeniem pikseli.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie jest możliwy w czasie rzeczywistym, ponieważ wymaga obliczenia bardzo wielu próbek koloru dla jednego piksela.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "jest stosowany w algorytmach renderingu wykorzystywanych w grach komputerowych.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q103",
+      "text": "Które z poniższych technologii są wykorzystywane w budowie wyświetlaczy?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "LCD (Liquid Crystal Display).",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Magnetyczny rezonans jądrowy (MRI).",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Ultradźwięki.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "E-papier / E-ink (Electronic Paper).",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q104",
+      "text": "Parametrami piksela są",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wartości składowych koloru, takie jak R (czerwony), G (zielony), B (niebieski).",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "jego fizyczne wymiary, wyrażone w milimetrach lub calach.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wektor normalny powierzchni obiektu, którą ten piksel reprezentuje.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "informacja o głębi (wartość Z), jeśli używany jest bufor Z, określająca odległość od obserwatora.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q105",
+      "text": "Proces próbkowania",
+      "answers": [
+        {
+          "id": "a",
+          "text": "polega na zamianie dyskretnych próbek na funkcję ciągłą.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "polega na zamianie ciągłego sygnału na skończoną liczbę wartości opisujących ten sygnał.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "polega na pobieraniu próbek światła ze źródeł światła w celu obliczania koloru powierzchni.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "prowadzi do obliczania wartości koloru pikseli obrazu rastrowego.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "gk-q106",
+      "text": "Które z poniższych stwierdzeń dotyczących własności macierzy są prawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Macierz odwrotna do macierzy kwadratowej A istnieje wtedy i tylko wtedy, gdy wyznacznik macierzy A jest różny od zera.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wyznacznik macierzy jest zawsze liczbą dodatnią.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Macierz jednostkowa (identycznościowa) jest macierzą kwadratową, która ma jedynki na głównej przekątnej i zera w pozostałych miejscach.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Transpozycja macierzy zmienia jej wyznacznik na wartość przeciwną.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "gk-q107",
+      "text": "Jak działają wyświetlacze stereoskopowe (np. w goglach VR lub telewizorach 3D)?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W goglach VR stosuje się dwa oddzielne wyświetlacze (po jednym na oko) lub jeden wyświetlacz podzielony na dwie części.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Przedstawiają oddzielny obraz dla lewego i prawego oka, wykorzystując różnice w perspektywie do stworzenia iluzji głębi.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wyświetlają jeden, specjalnie zniekształcony obraz, który mózg interpretuje jako trójwymiarowy.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wykorzystują specjalne soczewki, które fizycznie powiększają obraz, nadając mu trójwymiarowość.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

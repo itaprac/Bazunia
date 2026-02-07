@@ -1,0 +1,2489 @@
+{
+  "deck": {
+    "id": "zi-egzamin",
+    "name": "Zarządzanie informacją",
+    "description": "Pytania z Zarządzania informacją",
+    "version": 1,
+    "group": "Semestr 4"
+  },
+  "questions": [
+    {
+      "id": "zi-q001",
+      "text": "Zaznacz super klucze dla relacji R(A, B, C, D, E):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "{A, B}+ = {A,B,C,D,E}",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "{C, D}+ = {C,D, B}",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "{A,B,C}+ = {A,B,C,D,E}",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "{A,B,C}+ ={A,B,C}",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q002",
+      "text": "Które z poniższych stwierdzeń dotyczących XML są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Elementy mogą być zagnieżdżone w innych elementach.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Dane mają strukturę hierarchiczna.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Elementy mogą się powtarzać w jednym XML'u.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Atrybuty mogą zawierać w sobie elementy.",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Atrybuty mogą się powtarzać w ramach elementu.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q003",
+      "text": "Algorytmami złączania (join) wykorzystującymi iloczyn kartezjański są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Index Nested Laop Join (INLJ)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Block Nested Loop Join (BNLJ)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Hash Join (H)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nested Loop Join (NLJ)",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Sort-Merge Join (SMJ)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q004",
+      "text": "W jakim języku jest niniejszy fragment kodu: for $mt in doc(\"dblp.xml\")/dblp/mastersthesis where $mt/year/text() = \"1999\"",
+      "answers": [
+        {
+          "id": "a",
+          "text": "XQuery",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "XML",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "XSD",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "XPath",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "DTD",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q005",
+      "text": "Regułami Armstronga są",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Podział i łączenie (Split/Combine)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Przechodniość (Transitivity)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zależności (Dependency)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wnioskowania (Inference)",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Redukcja (Reduction)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q006",
+      "text": "Komenda DELETE FROM tabela1; spowoduje",
+      "answers": [
+        {
+          "id": "a",
+          "text": "usunięcie tabela1.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "usunięcie rekordów z tabela1.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "usunięcie atrybutów z tabela1.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "usunięcie relacji z tabela1.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q007",
+      "text": "W algorytmach Nested Loop Join (NLJ) i Block Nested Loop Join (BNLJ) w zewnętrznej pętli powinna być relacja, która:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "jest większa",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "jest mniejsza",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "nie ma to znaczenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q008",
+      "text": "Jak nazywa się operacja, której wynik zawiera wszystkie pary rekordów z dwóch relacji, niezależnie od tego, czy ich wartości atrybutów są zgodne?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "złączenie (join)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "iloczyn kartezjański (Cartesian product)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "przecięcie zbiorów (intersect)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "różnica zbiorów (except)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q009",
+      "text": "______ oznacza, ze dane użyte podczas realizacji transakcji nie mogą być wykorzystane przez drugą transakcje do czasu zakończenia pierwszej.",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Izolacja",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Atomowość",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Znakowanie czasem",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Serializacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q010",
+      "text": "Wybierz klucz spośród super kluczy dla relacji R(A, B, C, D, E, F)",
+      "answers": [
+        {
+          "id": "a",
+          "text": "{A, B, C, D}+",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "{A, B, C}+",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "{A, B}+",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "{A, B, C, D, E}+",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q011",
+      "text": "Które z poniższych stwierdzeń dotyczących B+ drzew są PRAWDZIWE:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Można przyśpieszyć wyszukiwanie utrzymując część drzewa w pamięci RAM.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Liczba potomków węźle (fanout) powinna być taka aby zając jeden blok danych.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Aby działać efektywnie drzewo powinno być całkowicie zapełnione.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Koszt wyszukania danych w drzewie nie zależy od liczby potomków w węźle (fanout).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q012",
+      "text": "Które z poniższych stwierdzeń dotyczących dziennika (loga) są PRAWDZIWE:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wykorzystywany jest do odtworzenia spójnego stanu bazy danych po awarii.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Może służyć jako kopia zapasowa bazy danych (backup).",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zapisywane są informacje o wszystkich wykonanych zapytaniach na bazie danych.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zapisywane są tylko informacje o zmianach w bazie danych.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "DBMS wymusza zapisywanie dziennika na dysk.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q013",
+      "text": "Zaznacz przywileje możliwe do nadania komendą GRANT",
+      "answers": [
+        {
+          "id": "a",
+          "text": "DROP",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "VIEW",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "UPDATE",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "CREATE",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "INDEX",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "INSERT",
+          "correct": true
+        },
+        {
+          "id": "g",
+          "text": "SELECT",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q014",
+      "text": "W ramach optymalizacji zapytań",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wykonuje się wiele zapytań i zwracany jest wynik najszybszego z nich.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Można go zastąpić właściwym doborem indeksów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wykonuje się tylko jeden plan, który prawdopodobnie najszybciej się wykona.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q015",
+      "text": "Które z poniższych stwierdzeń dotyczących blokad są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Można założyć blokadę UPDATE dla zasobu, który ma założoną blokadę współdzieloną.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Nie można założyć blokady wyłącznej dla zasobu, który ma założoną blokade współdzieloną",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jeśli jest założona blokada wyłączna, nie można założyć żadnej innej blokady.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Blokada UPDATE przekształca się w blokadę współdzieloną.",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Chęć założenia blokady wyłącznej powoduje usunięcie wszystkich założonych wcześniej blokad współdzielonych.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q016",
+      "text": "Które z poniższych stwierdzeń dotyczących diagramów E/R są PRAWDZIWE:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Trójkątem oznacza sie podklasy zbioru encji.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Słabe zbiory encji oznacza się przerywaną linią konturu.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Pogrubiona linia łącząca zbiór encji z relacją oznacza, ze jest to relacja jeden do wielu.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Słaby zbiory encji oznacza, że nie istnieje on samoistnie bez zdefiniowana innego zbioru encji.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Podkreślone atrybuty tworzą klucz główny.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q017",
+      "text": "Podaj najniższą postać normalną, w której występują zależności wielowartościowe",
+      "answers": [
+        {
+          "id": "a",
+          "text": "BCNF",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "pierwsza",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "czwarta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "druga",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "trzecia",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "piąta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q018",
+      "text": "Które z poniższych stwierdzeń dotyczących diagramów E/R są PRAWDZIWE",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Relacja może być połączona tylko z dwoma zbiorami encji.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Dwie strzałki dochodzące do relacji oznaczają, że jest ona typu wiele do wielu.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zbiór encji oznacza się prostokątem.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Atrybuty oznacza się owalem.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Relacje oznacza się rombem.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q019",
+      "text": "Polecenie COMMIT oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Założenie blokad.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Przywrócenie stanu bazy danych sprzed rozpoczęcia transakcji.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Brak możliwości wycofania wyników operacji z bazy.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zakończenie transakcji.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q020",
+      "text": "Klucz główny",
+      "answers": [
+        {
+          "id": "a",
+          "text": "może składać się z wielu atrybutów.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "musi być utworzony dla każdej tabeli.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "nie może mieć wartości NULL.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "jest zawsze częścią klucza obcego.",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "baza danych automatycznie zakłada na nim indeks powiązany (clustered index).",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "musi mieć unikalne wartości.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q021",
+      "text": "Które z poniższych stwierdzeń dotyczących DTD i XSD są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "W XSD można definiować typy danych.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Każdy XML musi być zgodny z DTD lub z XSD.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "W DTD można definiować elementy złożone.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "DTD i XSD umożliwiają sprawdzenie poprawności XML'a.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "DTD jest bardziej rozbudowane niż XSD.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q022",
+      "text": "Jeśli w relacji A atrybut jest kluczem obcym wskazującym na relacje B. To wskazywany atrybut w relacji B musi być",
+      "answers": [
+        {
+          "id": "a",
+          "text": "super kluczem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "nie może być kluczem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "kluczem głównym",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "kluczem kandydującym",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "kluczem obcym",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q023",
+      "text": "Które z poniższych stwierdzeń dotyczących indeksów są PRAWDZIWE:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tablice bitów wykorzystuje się gdy atrybut ma bardzo dużo różnych wartości.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Tablice haszujące można zastosować do przeszukania danych o określonej wartości, np. równych 5.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "B+ drzewa można zastosować do przeszukania danych z podanego zakresu, np. od 5 do 15.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Tablice haszujące można zastosować do przeszukania danych z podanego zakresu, np. od 5 do 15.",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "B+ drzewa można zastosować do przeszukania danych o określonej wartości, np. równych 5.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q024",
+      "text": "Plan fizyczny optymalizacji zapytania obejmuje",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dobór właściwych indeksów.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Budowa planu algebry relacji.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Uwzględnienie statystyk danych w tym histogramów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Dobór najlepszego algorytmu łączenia (join).",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Określenie kolejności wykonania zapytań w ramach bloku zapytań transakcji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q025",
+      "text": "Które własności algebry relacji są poprawne:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "σA( R ∩ P ) = σB( σA( R ) )",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "σ{A∨B}( R ) = σB( σA( R ) )",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "σA σB( R ) = σB σA( R )",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "π{a1,…,an}( σA( R ) ) = σA( π_{a1,…,an}( R ) )",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q026",
+      "text": "Zapytanie SQL: SELECT DISTINCT aa, bb FROM X JOIN Y ON aa = cc WHERE aa > 3 zapisane w algebrze relacji będzie miało postać:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "σ(aa,bb) (ρ(aa>3) (X ⋈\"aa=cc\" Y))",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "ρ(aa,bb) (σ(aa>3) (X ⋈\"aa=cc\" Y))",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "σ(aa,bb) (Π(aa>3) (X ⋈\"aa=cc\" Y))",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Π(aa,bb) (σ(aa>3) (X ⋈\"aa=cc\" Y))",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q027",
+      "text": "Które z poniższych stwierdzeń dotyczących ACID są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Spójność oznacza, że nie można wpisać niepoprawnych danych do bazy (łamiących np. więzy integralności lub ograniczeń",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Atomowość oznacza, że albo wszystkie zapytania zakończyły się poprawnie, albo nie wykonały się.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Trwałość oznacza, że po zakończeniu transakcji (commit) dane są bezpiecznie zapisane w bazie.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Izolacja oznacza, że baza działa w takim trybie jakby korzystał z niej tylko jeden użytkownik.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q028",
+      "text": "Które z poniższych stwierdzeń dotyczących komendy GRANT są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nadaje uprawnienia dotyczące wszystkich rekordów całej tabeli lub wybranych kolumn.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Po utworzeniu tabeli należy nadać sobie do niej uprawnienia.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Wykorzystanie widoków umożliwia nadanie uprawnień tylko do wybranej grupy rekordów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Można nadawać uprawnienia tylko użytkownikom.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q029",
+      "text": "Które z poniższych stwierdzeń dotyczących Sort-Merge Join (SMJ) są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "SMJ potrzebuje do pracy mniej pamięci niż algorytm Hash Join (H)).",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Koszt obliczeniowy SMJ jest równy P(R) + T(R)P(S) + OUT.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Jeżeli dane wejściowe są posortowane to czas przetwarzania algorytmu jest liniowy.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Optymalizacja SMJ polega na wykonaniu B- krotnego złączania (merge).",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Złączanie po atrybutach z duplikatami znacząco wydłuża pracę algorytmu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q030",
+      "text": "Zapytanie XPath //title/text() w wyniku zwróci:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wszystkie wartości zapisane w elemencie \"title\".",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "fragment XML'a z zawartością wszystkich elementów \"title\".",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "fragment XML'a z zawartością pierwszego napotkanego elementu \"title\".",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "pierwszą napotkaną wartość zapisane w elemencie \"title\".",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q031",
+      "text": "Indeks wtórny (secondary) powinien być utworzony na atrybucie gdy:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zawiera dużo duplikatów.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Często pojawia się w zapytaniach.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jest kluczem głównym.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Ma ustawione UNIQUE.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q032",
+      "text": "Tworząc diagram E/R dla księgarni, które z poniższych przyporządkowań jest poprawne?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "'Książka' to zbiór encji, 'tytuł' to atrybut, a 'Wydana przez' to relacja.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "'Książka' to atrybut, 'tytuł' to zbiór encji, a 'Wydana przez' to relacja.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "'Książka' to relacja, 'tytuł' to atrybut, a 'Wydana przez' to zbiór encji.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "'Książka' to zbiór encji, a 'tytuł' i 'Wydana przez' to atrybuty.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q033",
+      "text": "Które z poniższych stwierdzeń dotyczących przechowywania danych są PRAWDZIE:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zastosowanie indeksu powiązanego (clustered index) skutkuje sekwencyjnym ułożeniem danych na dysku.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "RAID jest wykorzystywany aby zmniejszyć ryzyko utraty danych z powodu awarii dysku.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Rozmiar bloku dyskowego nie ma wpływu na wydajność bazy danych.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "RAID pozwala na przyśpieszenie operacji we/wy.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Dane z dziennika (log) przechowywane są tylko w pamięci operacyjnej.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q034",
+      "text": "Które z poniższych przyporządkowań symboli do operacji algebry relacji jest poprawne?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "σ - Selekcja, π - Projekcja, ⋈ - Złączenie",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "π - Selekcja, σ - Projekcja, ⋈ - Złączenie",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "σ - Selekcja, π - Projekcja, ρ - Złączenie",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "× - Projekcja, ρ - Selekcja, σ - Zmiana nazwy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q035",
+      "text": "W trybie Mandatory Access Control:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Mając dostęp do materiałów ściśle tajnych mogę zapisywać do dokumentu z klauzulą poufne.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Mając dostęp do materiałów tajnych mogę odczytać dokument z klauzulą poufne.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Mając dostęp do materiałów tajnych mogę odczytać dokument z klauzulą ściśle tajne.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Mając dostęp do materiałów poufnych mogę odczytać dokument z klauzulą poufne.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Mając dostęp do materiałów poufnych mogę zapisywać do dokumentu z poufne.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q036",
+      "text": "Które z poniższych stwierdzeń dotyczących histogramów są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Są wykorzystywane do oszacowania czasu wykonania zapytania.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zawierają pełną listę wartości atrybutów występujących w tabeli.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Można je parametryzować poprzez wybór liczby koszyków i ich typ.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Musza dotyczyć tylko jednego atrybutu (są jednowymiarowe)",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Histogramy mogą być aktualizowane.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q037",
+      "text": "_________jest atomową sekwencją działań w bazie danych.",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Współbieżność",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Relacja",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Transakcja",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q038",
+      "text": "Indeksy w bazie danych mogą wykorzystywać następujące struktury danych",
+      "answers": [
+        {
+          "id": "a",
+          "text": "B+ drzewa",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Listy jednokierunkowe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Drzewa binarne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Tablice bitów",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Tablice haszujące",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q039",
+      "text": "Które z poniższych stwierdzeń dotyczących normalizacji są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Celem normalizacji jest wyeliminowanie anomalii.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Normalizacja powoduje wzrost liczby tabel.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Dzięki normalizacji w zapytaniach rzadziej pojawia się konieczność łączenia tabel.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "BCNF jest bardziej rygorystyczne niż 3 postać normalna.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Przed normalizacją trzeba wykonać denormalizację.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q040",
+      "text": "Przyspieszenie algorytmu External Merge Sort można uzyskać dzięki:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zwiększeniu liczby buforów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zwiększeniu rozmiaru początkowych przebiegów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wykorzystaniu B+1 buforów do redukcji liczby przebiegów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q041",
+      "text": "Zaznacz dekompozycję tabel zachowujące zależności dla relacji R(A, B, C, D, E):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "R1(A, B), R2(D, E)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "R1(A, B, C), R2(D, E)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "R1(A, B, C, D), R2(C, D, E)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "R1(A, B, C), R2(C, D, E)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q042",
+      "text": "Które stwierdzenia dotyczące Hash Join są prawdziwe?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Najpierw wykonywana jest faza złączania (matching) a następnie faza podziału (partitioninig).",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Liczba koszyków (buckets) nie ma wpływu na szybkość algorytmu.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Koszt obliczeniowy wynosi -3(P(R)+P(S)) + OUT.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Można go łatwo zrównoleglić.",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Działa efektywnie jeśli rozmiary tabel mocno się różnią.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q043",
+      "text": "Relacyjnymi bazami danych są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Cassandra",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Oracle",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "MS Access",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "SQLite",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "MySQL",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "MS SQL Server",
+          "correct": true
+        },
+        {
+          "id": "g",
+          "text": "HBase",
+          "correct": false
+        },
+        {
+          "id": "h",
+          "text": "MongoDB",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q044",
+      "text": "Wykorzystując reguły Armstronga określ, które domknięcia relacji R(A,B,C,D) mając dane zależności A→B; B→C; B→C,D są prawdziwe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "(D)+ = {C,D}",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "(A)+ = {A,B,C,D}",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "(B)+ = {B,C,D}",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "(C)+ = {C,D}",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q045",
+      "text": "Wskaż poprawną kolejność operacji wykonywanych przez system bazy danych podczas optymalizacji zapytania SQL:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Odpalenie zapytania → Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej → Wyznaczenie planu fizycznego",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Odpalenie zapytania → Wyznaczenie planu fizycznego → Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przekształcenie na plan algebry relacyjnej → Optymalizacja planu algebry relacyjnej → Wyznaczenie planu fizycznego → Odpalenie zapytania",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Odpalenie zapytania → Optymalizacja planu algebry relacyjnej → Przekształcenie na plan algebry relacyjnej → Wyznaczenie planu fizycznego",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q046",
+      "text": "Relacyjna baza danych jest kolekcją:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tabel",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Obiektów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Indeksów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rekordów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q047",
+      "text": "Zadaniami systemu zarządzania bazą danych są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzanie plikami",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wyświetlanie wyników zapytań",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zarządzanie dostępem (autoryzacja)",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Optymalizacja zapytań",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Zarządzanie blokadami",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Zarządzanie transakcjami",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q048",
+      "text": "Elementami modelu logicznego bazy danych są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pola kluczowe",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Typy danych atrybutów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Atrybuty",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Nazwa tabeli",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q049",
+      "text": "Zbiór obiektów tego samego typu w diagramach E/R nazywa się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Atrybut",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zbiór atrybutów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Encja",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zbiór encji",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Zbiór relacji",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "Relacja",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q050",
+      "text": "Parametr opisujący obiekt w diagramie E/R nazywa się:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Relacja",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Atrybut",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zbiór atrybutów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Encja",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Zbiór encji",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "Zbiór relacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q051",
+      "text": "Z których typów obiektów diagramu E/R tworzy się tabele bazy danych?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Relacja",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Encja",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zbiór atrybutów",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Atrybut",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Zbiór encji",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q052",
+      "text": "Które stwierdzenia są PRAWDZIWE w kontekście SQL?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Duże i małe litery nie mają znaczenia dla ciągów znaków",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Jest językiem deklaratywnym",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wartość w komórce tabeli musi być typu atomowego",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Duże i małe litery nie mają znaczenia dla komend",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Wykonuje operacje na multizbiorach",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Do oznaczenia ciągu znaków używa się podwójny cudzysłów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q053",
+      "text": "Jaki będzie wynik operacji p OR q w SQL jeśli p = TRUE, q = NULL?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "FALSE",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "NULL",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TRUE",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q054",
+      "text": "Jaki będzie wynik operacji p AND q w SQL jeśli p = TRUE, q = NULL?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "NULL",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "FALSE",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TRUE",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q055",
+      "text": "Jaki będzie wynik operacji p AND q w SQL jeśli p = FALSE, q = NULL?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "TRUE",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "FALSE",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "NULL",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q056",
+      "text": "Jaki będzie wynik operacji p OR q w SQL jeśli p = FALSE, q = NULL?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "NULL",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "FALSE",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TRUE",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q057",
+      "text": "Najniższa postać normalna, w której atrybuty złożone rozbija się na atrybuty atomowe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Trzecia",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "BCNF",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Czwarta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Pierwsza",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Druga",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "Piąta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q058",
+      "text": "Najniższa postać normalna, w której nie ma przechodnich zależności funkcyjnych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "BCNF",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Druga",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Piąta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Pierwsza",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Trzecia",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Czwarta",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q059",
+      "text": "Najniższa postać normalna, w której każda nietrywialna zależność funkcyjna jest superkluczem:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pierwsza",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Druga",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Czwarta",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Piąta",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "BCNF",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Trzecia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q060",
+      "text": "Typy anomalii w bazach danych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Redundancja danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Anomalia usuwania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Anomalia zależności funkcyjnej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Anomalia dekompozycji",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Anomalia wstawiania",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Anomalia modyfikacji",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q061",
+      "text": "Które stwierdzenia dotyczące operacji wejścia/wyjścia są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "1GB pamięci RAM jest droższy niż 1GB dysku SSD",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "W przypadku awarii zasilania dane na dysku nie są kasowane",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Sekwencyjny odczyt danych z dysku HDD jest znacznie szybszy niż losowy",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Dane z pamięci RAM po utracie zasilania są przechowywane w buforze",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "W serwerowniach używa się przeważnie dysków HDD",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q062",
+      "text": "Które stwierdzenia dotyczące RAID są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "RAID 0 ma dwa razy szybszy odczyt i zapis niż pojedynczy dysk",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Odtwarzanie danych po awarii jednego dysku w RAID 5 zajmuje dużo czasu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "RAID 1 nie jest odporny na awarie dysku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "RAID 6 potrzebuje więcej dysków niż RAID 5 do przechowania tej samej ilości danych",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "W RAID 5 mogą ulec awarii jednocześnie dwa dyski bez ryzyka utraty danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q063",
+      "text": "Które stwierdzenia dotyczące transakcji są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zapewniają wielodostęp do baz danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Pozwalają przetrwać bazie danych awarię bez ryzyka niespójności danych",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Przyśpieszają działanie bazy danych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Gwarantują, że nieuprawnieni użytkownicy nie mają dostępu do danych",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Mogą składać się tylko z jednego zapytania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q064",
+      "text": "Awaria w trakcie transakcji spowoduje:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wynik transakcji zostanie zapisany na dysku jeśli wykonany był commit",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wynik transakcji zostanie zapisany na dysku bez względu na jej stan jeśli operacje były zapisywane w logu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Log musi być zapisany na dysk przed przesłaniem danych na dysk",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q065",
+      "text": "Harmonogram szeregowalny (serializable) oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nie można wykonać żadnej transakcji, występuje zakleszczenie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Można wykonać równolegle wiele transakcji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Każda transakcja musi być wykonana szeregowo, jedna po drugiej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q066",
+      "text": "Które stwierdzenia dotyczące konfliktów są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Konflikt RW powoduje, że kolejny odczyt danych jest niespójny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Baza danych zawsze musi być tak ustawiona, aby konflikty nie były możliwe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Konflikt RW powoduje, że nie można utworzyć harmonogramu serializowanego",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Konflikt WR spowoduje, że w przypadku wycofania transakcji odczyt danych będzie niespójny",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q067",
+      "text": "Które stwierdzenia dotyczące poziomów izolacji są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Tryb read committed oznacza, że brudny odczyt nie jest możliwy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Tryb read uncommitted jest najbardziej bezpiecznym poziomem izolacji",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Tryb repeatable read oznacza, że mogą wystąpić fantomy",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Tryb serializable oznacza, że żadne konflikty nie są akceptowane",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q068",
+      "text": "Jeśli skierowany graf konfliktów transakcji jest acykliczny, to:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Można utworzyć harmonogram serializowalny",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Nie występują konflikty",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Musimy dodać transakcje do grafu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q069",
+      "text": "Zakładanie blokad wg algorytmu blokowania dwufazowego (2PL) oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Graf zależności transakcji musi mieć przynajmniej jeden cykl",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Utworzony harmonogram będzie serializowalny",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Muszą być założone wszystkie blokady przed zdjęciem pierwszej z blokad",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q070",
+      "text": "Mechanizmami zapewniającymi kontrolę dostępu są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Discretionary Access Control (DAC)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Database Administrator Access Control",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Server Access Control",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Role-Based Access Control (RBAC)",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Mandatory Access Control (MAC)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q071",
+      "text": "WITH GRANT OPTION oznacza, że:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Użytkownik może nie korzystać ze swoich uprawnień",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Nadajemy użytkownikowi takie same uprawnienia jakie sami posiadamy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Dajemy użytkownikowi prawo przekazywania dalej uprawnień",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zabieramy użytkownikowi uprawnienia do zasobu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q072",
+      "text": "SQL injection:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jest to jedna z technik uzyskiwania nieuprawnionego dostępu do danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Jest to tryb dostępu administratora do bazy",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Jest to jeden z trybów pracy bazy danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q073",
+      "text": "Elementami XML'a są:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Text",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Comment",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Attribute",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Element",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Namespace",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q074",
+      "text": "XQuery jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Częścią pliku XML",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Językiem zapytań dla XML",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Strukturą danych w XML",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q075",
+      "text": "Które stwierdzenia dotyczące optymalizacji planu algebry relacji są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Selekcja powinna być przesunięta w dół drzewa",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Nie wolno zmienić kolejności operacji łączenia (join)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Istnieje tylko jedno drzewo przedstawiające plan algebry relacji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Projekcja powinna być przesunięta w dół drzewa",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q076",
+      "text": "Operacja projekcji w algebrze relacji oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Połączenie rekordów z dwóch tabel",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Eliminację zbędnych kolumn",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zwrócenie rekordów, które spełniają podane warunki",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Usunięcie duplikatów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q077",
+      "text": "Przepakowanie w algorytmie External Merge Sort:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jeśli dane są posortowane to eliminujemy etap Merge",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Można zawsze zastosować, bez względu na ułożenie danych na dysku",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zawsze przyspiesza działanie algorytmu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q078",
+      "text": "Które stwierdzenia dotyczące indeksów są PRAWDZIWE?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Indeksy spowalniają operacje aktualizacji danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Na kolumnie może być założonych wiele indeksów",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Można założyć wiele indeksów powiązanych (clustered) w tabeli",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "W bazie danych wszystkie indeksy muszą być przechowywane w pamięci RAM",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q079",
+      "text": "Które algorytmy łączenia wymagają ~3(P(R)+P(S)) + OUT operacji?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Sort-Merge Join (SMJ)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Block Nested Loop Join (BNLJ)",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nested Loop Join (NLJ)",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Hash Join (HJ)",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Index Nested Loop Join (INLJ)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q080",
+      "text": "Algorytm Index Nested Loop Join (INLJ):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "We wzorze P(R) + T(R)*L + OUT, L oznacza liczbę operacji we/wy",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Nie musimy wykonywać iloczynu kartezjańskiego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jest wolniejszy niż algorytm Nested Loop Join (NLJ)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q081",
+      "text": "Do zaindeksowania 1TB danych przy typowych ustawieniach, B+ drzewo będzie miało najprawdopodobniej ile poziomów?",
+      "answers": [
+        {
+          "id": "a",
+          "text": "2",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "4",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q082",
+      "text": "Wskaż poprawną kolejność składniową (zapisu) klauzul w poleceniu SELECT:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "SELECT, FROM, WHERE, HAVING, GROUP BY, ORDER BY",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "SELECT, FROM, GROUP BY, WHERE, ORDER BY, HAVING",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q083",
+      "text": "Wskaż poprawną kolejność logicznego przetwarzania klauzul w poleceniu SELECT:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "FROM, SELECT, WHERE, GROUP BY, HAVING, ORDER BY",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "FROM, WHERE, GROUP BY, SELECT, HAVING, ORDER BY",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q084",
+      "text": "Wybierz stwierdzenia, które są PRAWDZIWE w kontekście ról (Role-Based Access Control):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "można przypisać tylko na etapie tworzenia nowego użytkownika",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Uprawnienia można przypisać do roli",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Role można przypisać do wielu użytkowników",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Użytkownik może być przypisany tylko do jednej roli",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q085",
+      "text": "Wybierz stwierdzenia, które są PRAWDZIWE w kontekście danych półstrukturalnych (semistructural):",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dobrze nadają się do przechowywania danych rzadkich",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Struktura danych może ulegać zmianie w czasie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Struktura danych musi dać się przekształcić do relacyjnego modelu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Obowiązkowo należy zdefiniować schemat danych przed użyciem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zi-q086",
+      "text": "Wybierz stwierdzenia, które są PRAWDZIWE w kontekście DENORMALIZACJI bazy danych:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zmniejszenie liczby łączeń tabel (JOIN)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Ostatni etap normalizacji",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Musi być wykonana dla każdej relacyjnej bazy",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zwiększenie wydajności bazy",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q087",
+      "text": "Wybierz stwierdzenia, które są PRAWDZIWE w kontekście JSON:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Nie zawiera tagów zamykających",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Obsługiwany tylko przez JavaScript",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nie obsługuje tablic",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Łatwiejszy do parsowania od XML",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zi-q088",
+      "text": "W XPath:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "można definiować zmienne.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "symbol * oznacza, że możemy zagłębić się w drzewie XML na dowolną liczbę poziomów.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "można zwrócić fragment XML lub zbiór wartości.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "umożliwia pobranie z XML danych. []",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "występują pętle.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
