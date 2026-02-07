@@ -159,6 +159,10 @@ let testShuffledAnswers = null;
 let testSelectedIds = new Set();
 let testShuffledMap = new Map(); // index → shuffled answers array
 
+function normalizeLayoutWidth(value) {
+  return String(value || '').trim() === '50%' ? '50%' : '65%';
+}
+
 function slugifyDeckId(value) {
   const input = String(value || '')
     .trim()
@@ -453,6 +457,13 @@ function loadUserPreferences() {
       ...DEFAULT_APP_SETTINGS,
       keybindings: { ...DEFAULT_APP_SETTINGS.keybindings },
     };
+  }
+  const normalizedLayoutWidth = normalizeLayoutWidth(appSettings.layoutWidth);
+  if (normalizedLayoutWidth !== appSettings.layoutWidth) {
+    appSettings.layoutWidth = normalizedLayoutWidth;
+    storage.saveAppSettings(appSettings);
+  } else {
+    appSettings.layoutWidth = normalizedLayoutWidth;
   }
 
   applyTheme(appSettings.theme);
@@ -2175,36 +2186,11 @@ function bindAppSettingsEvents() {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.layout-width-option').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      appSettings.layoutWidth = btn.dataset.width;
+      appSettings.layoutWidth = normalizeLayoutWidth(btn.dataset.width);
       applyLayoutWidth(appSettings.layoutWidth);
       storage.saveAppSettings(appSettings);
-      // Sync custom input
-      const customInput = document.getElementById('custom-width-input');
-      if (customInput) {
-        const numVal = parseInt(btn.dataset.width);
-        customInput.value = isNaN(numVal) ? '' : numVal;
-      }
     });
   });
-
-  // Custom width input
-  const customWidthInput = document.getElementById('custom-width-input');
-  if (customWidthInput) {
-    customWidthInput.addEventListener('change', () => {
-      let val = parseInt(customWidthInput.value);
-      if (isNaN(val) || val < 20) val = 20;
-      if (val > 100) val = 100;
-      customWidthInput.value = val;
-      document.querySelectorAll('.layout-width-option').forEach(b => b.classList.remove('active'));
-      // Check if matches a preset
-      document.querySelectorAll('.layout-width-option').forEach(b => {
-        if (b.dataset.width === val + '%') b.classList.add('active');
-      });
-      appSettings.layoutWidth = val + '%';
-      applyLayoutWidth(appSettings.layoutWidth);
-      storage.saveAppSettings(appSettings);
-    });
-  }
 
   // Deck list layout options
   document.querySelectorAll('.deck-layout-option').forEach((btn) => {

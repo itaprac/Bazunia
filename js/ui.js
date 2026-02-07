@@ -1495,14 +1495,9 @@ export function renderAppSettings(appSettings, defaults) {
   `).join('');
 
   const layoutWidths = [
-    { value: '35%', label: 'Wąski', desc: '35%' },
-    { value: '40%', label: 'Kompaktowy', desc: '40%' },
-    { value: '50%', label: 'Normalny', desc: '50%' },
-    { value: '65%', label: 'Szeroki', desc: '65%' },
+    { value: '65%', label: 'Normalny', desc: '65%' },
+    { value: '50%', label: 'Kompaktowy', desc: '50%' },
   ];
-
-  const currentWidthNum = parseInt(appSettings.layoutWidth);
-  const isPreset = layoutWidths.some(lw => lw.value === appSettings.layoutWidth);
 
   const layoutHtml = layoutWidths.map(lw => `
     <button class="layout-width-option ${appSettings.layoutWidth === lw.value ? 'active' : ''}" data-width="${lw.value}">
@@ -1554,15 +1549,6 @@ export function renderAppSettings(appSettings, defaults) {
         <div class="settings-section-title">Szerokość układu</div>
         <div class="layout-width-options" id="layout-width-options">
           ${layoutHtml}
-        </div>
-        <div class="custom-width-row">
-          <label for="custom-width-input">Własna szerokość:</label>
-          <div class="custom-width-input-wrap">
-            <input type="number" id="custom-width-input" min="20" max="100" step="5"
-              value="${!isNaN(currentWidthNum) ? currentWidthNum : ''}"
-              placeholder="np. 70">
-            <span class="custom-width-unit">%</span>
-          </div>
         </div>
       </div>
 
