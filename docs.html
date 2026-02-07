@@ -65,7 +65,7 @@
         <h2 class="docs-section-title">Czym jest Bazunia</h2>
         <p>
           Bazunia to aplikacja webowa do nauki z wykorzystaniem fiszek i powtarzania rozłożonego w czasie.
-          Działa w przeglądarce, z dwoma zakresami talii: <strong>Ogólne</strong> (publiczne) oraz <strong>Moje</strong> (prywatne).
+          Działa w przeglądarce, z trzema zakładkami talii: <strong>Ogólne</strong>, <strong>Udostępnione</strong> i <strong>Moje</strong>.
           W trybie gościa dane są lokalne, a po zalogowaniu dane użytkownika synchronizują się przez Supabase.
         </p>
         <p>
@@ -174,28 +174,6 @@
           <li>Brak odpowiedzi poprawnej w pytaniu testowym.</li>
         </ul>
 
-        <h3>Wbudowane talie (katalog data/)</h3>
-        <p>
-          Pliki JSON umieszczone w katalogu <code>data/</code> obok <code>index.html</code> są automatycznie
-          ładowane przy starcie aplikacji jako talie <strong>Ogólne</strong> (publiczne). Ścieżki i identyfikatory
-          wbudowanych talii są zdefiniowane w kodzie aplikacji (tablica <code>BUILT_IN_DECK_SOURCES</code> w <code>app.js</code>).
-        </p>
-        <p>
-          Talie ogólne są tylko do nauki: można uruchamiać Anki/Test/Przeglądanie oraz ustawiać własne parametry SRS,
-          ale nie można usuwać talii ani edytować ich treści.
-        </p>
-        <p>
-          Aby dodać własną wbudowaną talię:
-        </p>
-        <ul>
-          <li>Umieść plik JSON w katalogu <code>data/</code> (np. <code>data/moja-talia.json</code>)</li>
-          <li>Dodaj wpis (id + ścieżka) do tablicy <code>BUILT_IN_DECK_SOURCES</code> w pliku <code>js/app.js</code></li>
-          <li>Talia załaduje się automatycznie przy pierwszym uruchomieniu aplikacji</li>
-        </ul>
-        <p>
-          Jeśli talia o tym samym <code>deck.id</code> już istnieje, ponowny import zaktualizuje
-          pytania i doda nowe, zachowując postęp nauki.
-        </p>
       </section>
 
       <!-- Section: Modes -->
@@ -417,11 +395,10 @@
         <ul>
           <li><strong>Motyw kolorystyczny</strong> — 5 palet kolorów (Academic Noir, Ocean, Forest, Midnight, Lavender)</li>
           <li><strong>Tryb wyświetlania</strong> — Jasny, Ciemny lub Automatyczny (wg systemu)</li>
-          <li><strong>Szerokość układu</strong> — 4 presety (35%, 40%, 50%, 65%) oraz własna wartość (20-100%)</li>
+          <li><strong>Szerokość układu</strong> — 2 presety (50% i 65%)</li>
           <li><strong>Skróty klawiszowe</strong> — zmiana klawiszy do nawigacji w trybie nauki</li>
           <li><strong>Mieszanie odpowiedzi</strong> — losowa kolejność odpowiedzi</li>
           <li><strong>Kolejność pytań</strong> — w teście: losowa albo po kolei (wg kolejności w pliku)</li>
-          <li><strong>Losowe wartości w pytaniach obliczeniowych</strong> — losowanie dla pytań z wbudowanym randomizerem</li>
           <li><strong>Oznaczone pytania w trybie Anki</strong> — czy oflagowane pytania mają trafiać do zwykłej sesji Anki</li>
         </ul>
 
@@ -433,6 +410,7 @@
           <li>Kroki nauki i ponownej nauki (w minutach)</li>
           <li>Interwał początkowy i łatwy (w dniach)</li>
           <li>Maksymalny interwał</li>
+          <li>Losowanie wbudowanych wariantów pytań obliczeniowych</li>
         </ul>
         <p>
           W strefie zagrożenia można zresetować postęp talii — wszystkie karty wrócą do stanu "nowe".
@@ -457,7 +435,7 @@
         <p>
           Dla pytań opartych o pole <code>randomize</code> losowanie działa automatycznie.
           Przełącznik <strong>Losowe wartości w pytaniach obliczeniowych</strong> dotyczy
-          dodatkowych, wbudowanych randomizerów zdefiniowanych w kodzie aplikacji.
+          dodatkowych, gotowych wariantów pytań obliczeniowych.
         </p>
 
         <h3>Format pola randomize</h3>
