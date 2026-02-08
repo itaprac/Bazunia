@@ -4,7 +4,8 @@
     "name": "Sztuczna inteligencja",
     "description": "Pytania ze Sztuczna inteligencja (Bez Logiki)",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

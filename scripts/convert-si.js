@@ -75,6 +75,7 @@ const output = {
     name: 'SI - Sztuczna Inteligencja',
     description: 'Pytania egzaminacyjne z przedmiotu Sztuczna Inteligencja (207 pytań, 10 kategorii).',
     version: 1,
+    defaultSelectionMode: 'single',
     categories,
   },
   questions,

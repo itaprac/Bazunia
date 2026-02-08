@@ -4,7 +4,8 @@
     "name": "Aplikacje Internetowe",
     "description": "Pytania z Aplikacji Internetowych",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

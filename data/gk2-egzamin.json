@@ -4,7 +4,8 @@
     "name": "Grafika Komputerowa 2",
     "description": "Pytania z grafiki komputerowej 23.06.2025 Egzamin",
     "version": 1,
-    "group": "Semestr 4"
+    "group": "Semestr 4",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {

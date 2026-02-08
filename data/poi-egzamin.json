@@ -4,7 +4,8 @@
     "name": "Podstawy ochrony informacji",
     "description": "Pytania z Podstaw ochrony informacji",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

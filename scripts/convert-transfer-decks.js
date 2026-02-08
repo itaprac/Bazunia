@@ -18,6 +18,7 @@ const DECKS = [
     name: 'Inżynieria Oprogramowania',
     description: 'Pytania z inżynierii oprogramowania',
     group: 'Semestr 4',
+    defaultSelectionMode: 'single',
   },
   {
     sourceFile: 'pytania_ZI.json',
@@ -27,6 +28,7 @@ const DECKS = [
     name: 'Zarządzanie informacją',
     description: 'Pytania z Zarządzania informacją',
     group: 'Semestr 4',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_GK.json',
@@ -36,6 +38,7 @@ const DECKS = [
     name: 'Grafika Komputerowa',
     description: 'Pytania z grafiki komputerowej',
     group: 'Semestr 4',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_GK2.json',
@@ -45,6 +48,7 @@ const DECKS = [
     name: 'Grafika Komputerowa 2',
     description: 'Pytania z grafiki komputerowej 23.06.2025 Egzamin',
     group: 'Semestr 4',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_TD.json',
@@ -54,6 +58,7 @@ const DECKS = [
     name: 'Transmisja Danych',
     description: 'Wszystkie dotychczas pytania z Transmisji danych',
     group: 'Semestr 4',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_TD2.json',
@@ -63,6 +68,7 @@ const DECKS = [
     name: 'Transmisja Danych 2',
     description: 'Pytania z Transmisji danych z egzaminu z dnia 26.06.2025',
     group: 'Semestr 4',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_POI.json',
@@ -72,6 +78,7 @@ const DECKS = [
     name: 'Podstawy ochrony informacji',
     description: 'Pytania z Podstaw ochrony informacji',
     group: 'Semestr 5',
+    defaultSelectionMode: 'single',
   },
   {
     sourceFile: 'pytania_ZI2.json',
@@ -81,6 +88,7 @@ const DECKS = [
     name: 'Zarządzanie informacją 2',
     description: 'Pytania z Zarządzania informacją 2',
     group: 'Semestr 5',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_KCM.json',
@@ -90,6 +98,7 @@ const DECKS = [
     name: 'Komunikacja człowiek maszyna',
     description: 'Pytania z komunikacja człowiek maszyna',
     group: 'Semestr 5',
+    defaultSelectionMode: 'multiple',
   },
   {
     sourceFile: 'pytania_SI.json',
@@ -99,6 +108,7 @@ const DECKS = [
     name: 'Sztuczna inteligencja',
     description: 'Pytania ze Sztuczna inteligencja (Bez Logiki)',
     group: 'Semestr 5',
+    defaultSelectionMode: 'single',
   },
   {
     sourceFile: 'pytaniaGry.json',
@@ -108,6 +118,7 @@ const DECKS = [
     name: 'Gry Komputerowe',
     description: 'Są to pytania wygenerowane przez Gemini na bazie wykładów',
     group: 'Semestr 5',
+    defaultSelectionMode: 'single',
   },
   {
     sourceFile: 'pytaniaIPZ.json',
@@ -117,6 +128,7 @@ const DECKS = [
     name: 'IPZ',
     description: 'Pytania z IPZ',
     group: 'Semestr 5',
+    defaultSelectionMode: 'single',
   },
   {
     sourceFile: 'pytaniaAI.json',
@@ -126,6 +138,7 @@ const DECKS = [
     name: 'Aplikacje Internetowe',
     description: 'Pytania z Aplikacji Internetowych',
     group: 'Semestr 5',
+    defaultSelectionMode: 'single',
   },
 ];
 
@@ -217,6 +230,7 @@ function convertDeck(config) {
       description: config.description,
       version: 1,
       group: config.group,
+      defaultSelectionMode: config.defaultSelectionMode || 'multiple',
     },
     questions,
   };

@@ -4,7 +4,8 @@
     "name": "Zarządzanie informacją",
     "description": "Pytania z Zarządzania informacją",
     "version": 1,
-    "group": "Semestr 4"
+    "group": "Semestr 4",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {

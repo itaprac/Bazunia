@@ -1,6 +1,6 @@
 // ui.js — DOM rendering and event handling
 
-import { shuffle, renderLatex, isFlashcard } from './utils.js';
+import { shuffle, renderLatex, isFlashcard, normalizeSelectionMode } from './utils.js';
 
 // --- Deck List View ---
 
@@ -476,12 +476,13 @@ export function renderQuestion(
   question,
   cardNumber,
   totalForSession,
-  isMultiSelect,
+  selectionMode = 'multiple',
   shouldShuffle = true,
   showReroll = false,
   flagged = false,
   canEdit = true
 ) {
+  const isMultiSelect = selectionMode === 'multiple';
   const flashcard = isFlashcard(question);
   const shuffledAnswers = flashcard ? [] : (shouldShuffle ? shuffle(question.answers) : [...question.answers]);
   const hint = flashcard
@@ -538,12 +539,14 @@ export function renderAnswerFeedback(
   question,
   shuffledAnswers,
   selectedIds,
+  selectionMode = 'multiple',
   explanation,
   intervals,
   keybindings = null,
   flagged = false,
   canEdit = true
 ) {
+  const isMultiSelect = selectionMode === 'multiple';
   const flashcard = isFlashcard(question);
 
   let answersHtml = '';
@@ -576,7 +579,7 @@ export function renderAnswerFeedback(
 
       return `
         <div class="answer-option ${stateClass}" data-answer-id="${escapeAttr(a.id)}">
-          <div class="answer-indicator ${correctIds.size > 1 ? 'checkbox' : ''}"></div>
+          <div class="answer-indicator ${isMultiSelect ? 'checkbox' : ''}"></div>
           <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           ${icon}
         </div>
@@ -985,7 +988,8 @@ export function renderTestConfig(totalQuestions) {
 
 // --- Test Question ---
 
-export function renderTestQuestion(question, num, total, isMulti, shouldShuffle = true, preShuffledAnswers = null, previousSelection = null) {
+export function renderTestQuestion(question, num, total, selectionMode = 'multiple', shouldShuffle = true, preShuffledAnswers = null, previousSelection = null) {
+  const isMulti = selectionMode === 'multiple';
   const shuffledAnswers = preShuffledAnswers || (shouldShuffle ? shuffle(question.answers) : [...question.answers]);
   const hint = isMulti ? '(Zaznacz wszystkie poprawne)' : '(Wybierz jedną odpowiedź)';
   const indicatorType = isMulti ? 'checkbox' : '';
@@ -1155,6 +1159,7 @@ export function renderBrowseCreateEditor(options = {}) {
   const questionText = typeof options.text === 'string' ? options.text : '';
   const explanation = typeof options.explanation === 'string' ? options.explanation : '';
   const isFlashcard = !!options.isFlashcard;
+  const selectionMode = normalizeSelectionMode(options.selectionMode, 'multiple');
   const answers = Array.isArray(options.answers) && options.answers.length > 0
     ? options.answers
     : [
@@ -1205,6 +1210,11 @@ export function renderBrowseCreateEditor(options = {}) {
         <textarea class="editor-textarea" id="create-question-text" rows="3">${escapeHtml(questionText)}</textarea>
       </div>
       <div class="editor-section" id="create-editor-answers-section" style="${isFlashcard ? 'display:none' : ''}">
+        <label class="editor-label" for="create-question-selection-mode">Typ wyboru</label>
+        <select class="editor-select" id="create-question-selection-mode">
+          <option value="multiple" ${selectionMode === 'multiple' ? 'selected' : ''}>Wielokrotny wybór</option>
+          <option value="single" ${selectionMode === 'single' ? 'selected' : ''}>Pojedynczy wybór</option>
+        </select>
         <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
         <div class="editor-answers-list" id="create-editor-answers-list">
           ${answerRowsHtml}
@@ -1252,8 +1262,9 @@ export function renderBrowseCreateEditor(options = {}) {
 
 // --- Browse Editor (inline) ---
 
-export function renderBrowseEditor(question, index) {
+export function renderBrowseEditor(question, index, deckDefaultSelectionMode = 'multiple') {
   const flashcard = isFlashcard(question);
+  const selectionMode = normalizeSelectionMode(question.selectionMode, normalizeSelectionMode(deckDefaultSelectionMode, 'multiple'));
 
   const answersHtml = flashcard ? '' : question.answers.map((a) => `
     <div class="editor-answer-row" data-answer-id="${escapeAttr(a.id)}">
@@ -1307,6 +1318,13 @@ export function renderBrowseEditor(question, index) {
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
       </div>` : `
+      <div class="editor-section">
+        <label class="editor-label">Typ wyboru</label>
+        <select class="editor-select editor-selection-mode">
+          <option value="multiple" ${selectionMode === 'multiple' ? 'selected' : ''}>Wielokrotny wybór</option>
+          <option value="single" ${selectionMode === 'single' ? 'selected' : ''}>Pojedynczy wybór</option>
+        </select>
+      </div>
       <div class="editor-section">
         <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
         <div class="editor-answers-list">
@@ -1534,8 +1552,9 @@ export function renderSettings(settings, defaults, options = {}) {
 
 // --- Question Editor ---
 
-export function renderQuestionEditor(question) {
+export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multiple') {
   const flashcard = isFlashcard(question);
+  const selectionMode = normalizeSelectionMode(question.selectionMode, normalizeSelectionMode(deckDefaultSelectionMode, 'multiple'));
 
   const answersHtml = flashcard ? '' : question.answers.map((a, i) => `
     <div class="editor-answer-row" data-answer-id="${escapeAttr(a.id)}">
@@ -1589,6 +1608,13 @@ export function renderQuestionEditor(question) {
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
       </div>` : `
+      <div class="editor-section">
+        <label class="editor-label" for="editor-selection-mode">Typ wyboru</label>
+        <select class="editor-select" id="editor-selection-mode">
+          <option value="multiple" ${selectionMode === 'multiple' ? 'selected' : ''}>Wielokrotny wybór</option>
+          <option value="single" ${selectionMode === 'single' ? 'selected' : ''}>Pojedynczy wybór</option>
+        </select>
+      </div>
       <div class="editor-section">
         <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
         <div class="editor-answers-list" id="editor-answers-list">

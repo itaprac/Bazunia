@@ -2,6 +2,10 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MINUTE_MS = 60 * 1000;
+const SELECTION_MODES = Object.freeze({
+  SINGLE: 'single',
+  MULTIPLE: 'multiple',
+});
 
 /**
  * Fisher-Yates shuffle. Returns a NEW array (does not mutate input).
@@ -112,4 +116,36 @@ export function isFlashcard(question) {
   return !question.answers || question.answers.length === 0;
 }
 
-export { DAY_MS, MINUTE_MS };
+export function normalizeSelectionMode(value, fallback = SELECTION_MODES.MULTIPLE) {
+  if (value === SELECTION_MODES.SINGLE || value === SELECTION_MODES.MULTIPLE) {
+    return value;
+  }
+  return fallback;
+}
+
+export function getDeckDefaultSelectionMode(deckMeta = null, fallback = SELECTION_MODES.MULTIPLE) {
+  return normalizeSelectionMode(deckMeta?.defaultSelectionMode, fallback);
+}
+
+export function getQuestionSelectionMode(question, deckDefaultSelectionMode = SELECTION_MODES.MULTIPLE) {
+  return normalizeSelectionMode(question?.selectionMode, normalizeSelectionMode(deckDefaultSelectionMode));
+}
+
+export function getCorrectAnswerCount(question) {
+  if (!Array.isArray(question?.answers)) return 0;
+  return question.answers.reduce((count, answer) => {
+    return answer?.correct === true ? count + 1 : count;
+  }, 0);
+}
+
+export function getEffectiveQuestionSelectionMode(question, deckDefaultSelectionMode = SELECTION_MODES.MULTIPLE) {
+  const mode = getQuestionSelectionMode(question, deckDefaultSelectionMode);
+  if (mode !== SELECTION_MODES.SINGLE) return mode;
+
+  // If a single-choice question resolves to multiple correct answers at runtime
+  // (e.g. via correctWhen), temporarily treat it as multiple-choice.
+  const correctCount = getCorrectAnswerCount(question);
+  return correctCount > 1 ? SELECTION_MODES.MULTIPLE : SELECTION_MODES.SINGLE;
+}
+
+export { DAY_MS, MINUTE_MS, SELECTION_MODES };

@@ -4,7 +4,8 @@
     "name": "Transmisja Danych",
     "description": "Wszystkie dotychczas pytania z Transmisji danych",
     "version": 1,
-    "group": "Semestr 4"
+    "group": "Semestr 4",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {

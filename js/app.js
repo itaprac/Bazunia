@@ -34,7 +34,14 @@ import {
   showConfirmWithOptions,
   showPrompt,
 } from './ui.js';
-import { shuffle, isFlashcard, generateId } from './utils.js';
+import {
+  shuffle,
+  isFlashcard,
+  generateId,
+  normalizeSelectionMode,
+  getDeckDefaultSelectionMode as resolveDeckDefaultSelectionMode,
+  getEffectiveQuestionSelectionMode as resolveEffectiveQuestionSelectionMode,
+} from './utils.js';
 import { hasRandomizer, hasTemplate, randomize } from './randomizers.js';
 import { initDocsNavigation } from './docs-navigation.js';
 import {
@@ -282,6 +289,18 @@ function isDeckReadOnlyContent(deckMeta) {
 
 function getDeckMeta(deckId) {
   return storage.getDecks().find((d) => d.id === deckId) || null;
+}
+
+function getDeckDefaultSelectionModeForDeckId(deckId) {
+  const deckMeta = getDeckMeta(deckId);
+  return resolveDeckDefaultSelectionMode(deckMeta, 'multiple');
+}
+
+function getEffectiveSelectionModeForDeck(question, deckId = currentDeckId) {
+  return resolveEffectiveQuestionSelectionMode(
+    question,
+    getDeckDefaultSelectionModeForDeckId(deckId)
+  );
 }
 
 function canEditDeckContent(deckId) {
@@ -1584,7 +1603,8 @@ function showTestQuestion() {
     }
   }
 
-  const isMulti = true;
+  const selectionMode = getEffectiveSelectionModeForDeck(question, currentDeckId);
+  const isMulti = selectionMode === 'multiple';
 
   // Reuse previously stored shuffle order if going back
   const storedShuffle = testShuffledMap.get(testCurrentIndex) || null;
@@ -1595,7 +1615,7 @@ function showTestQuestion() {
     question,
     testCurrentIndex + 1,
     testQuestions.length,
-    isMulti,
+    selectionMode,
     appSettings.shuffleAnswers,
     storedShuffle,
     previousSelection
@@ -1799,7 +1819,11 @@ function openBrowseEditor(index) {
   const browseItem = document.querySelector(`.browse-item[data-question-index="${index}"]`);
   if (!browseItem) return;
 
-  browseItem.innerHTML = renderBrowseEditor(question, index);
+  browseItem.innerHTML = renderBrowseEditor(
+    question,
+    index,
+    getDeckDefaultSelectionModeForDeckId(currentDeckId)
+  );
 
   // Bind randomize toggle
   const editor = browseItem.querySelector('.browse-editor');
@@ -1853,6 +1877,7 @@ function openBrowseCreateEditor() {
     categories,
     selectedCategory,
     isFlashcard: false,
+    selectionMode: getDeckDefaultSelectionModeForDeckId(currentDeckId),
   });
   browseList.prepend(wrapper);
 
@@ -2011,6 +2036,10 @@ function saveCreatedQuestion(editor, wrapper) {
 
   const isFlashcardQuestion = !!editor.querySelector('#create-question-is-flashcard')?.checked;
   const explanation = (editor.querySelector('#create-question-explanation')?.value || '').trim();
+  const selectionMode = normalizeSelectionMode(
+    editor.querySelector('#create-question-selection-mode')?.value,
+    getDeckDefaultSelectionModeForDeckId(currentDeckId)
+  );
 
   const answers = [];
   if (!isFlashcardQuestion) {
@@ -2020,13 +2049,13 @@ function saveCreatedQuestion(editor, wrapper) {
       return;
     }
 
-    let hasCorrect = false;
+    let correctCount = 0;
     rows.forEach((row, idx) => {
       const answerText = (row.querySelector('.create-answer-text')?.value || '').trim();
       const isCorrect = !!row.querySelector('.create-answer-correct')?.checked;
       if (!answerText) return;
       answers.push({ id: `a${idx + 1}`, text: answerText, correct: isCorrect });
-      if (isCorrect) hasCorrect = true;
+      if (isCorrect) correctCount++;
     });
 
     if (answers.length < 2) {
@@ -2034,7 +2063,12 @@ function saveCreatedQuestion(editor, wrapper) {
       return;
     }
 
-    if (!hasCorrect) {
+    if (selectionMode === 'single' && correctCount !== 1) {
+      showNotification('Pytanie jednokrotnego wyboru musi mieć dokładnie jedną poprawną odpowiedź.', 'error');
+      return;
+    }
+
+    if (selectionMode !== 'single' && correctCount === 0) {
       showNotification('Co najmniej jedna odpowiedź musi być poprawna.', 'error');
       return;
     }
@@ -2054,6 +2088,9 @@ function saveCreatedQuestion(editor, wrapper) {
     text,
     answers: isFlashcardQuestion ? [] : answers,
   };
+  if (!isFlashcardQuestion) {
+    newQuestion.selectionMode = selectionMode;
+  }
 
   const categorySelect = editor.querySelector('#create-question-category');
   const selectedCategory = categorySelect ? categorySelect.value.trim() : '';
@@ -2185,10 +2222,14 @@ function saveBrowseEdit(index, editor) {
   }
 
   const newExplanation = editor.querySelector('.editor-explanation').value.trim();
+  const selectionMode = normalizeSelectionMode(
+    editor.querySelector('.editor-selection-mode')?.value,
+    getDeckDefaultSelectionModeForDeckId(currentDeckId)
+  );
 
   const answerRows = editor.querySelectorAll('.editor-answer-row');
   const updatedAnswers = [];
-  let hasCorrect = false;
+  let correctCount = 0;
 
   if (answerRows.length > 0) {
     for (const row of answerRows) {
@@ -2201,11 +2242,16 @@ function saveBrowseEdit(index, editor) {
         return;
       }
 
-      if (correct) hasCorrect = true;
+      if (correct) correctCount++;
       updatedAnswers.push({ id, text, correct });
     }
 
-    if (!hasCorrect) {
+    if (selectionMode === 'single' && correctCount !== 1) {
+      showNotification('Pytanie jednokrotnego wyboru musi mieć dokładnie jedną poprawną odpowiedź.', 'error');
+      return;
+    }
+
+    if (selectionMode !== 'single' && correctCount === 0) {
       showNotification('Co najmniej jedna odpowiedź musi być poprawna.', 'error');
       return;
     }
@@ -2223,6 +2269,9 @@ function saveBrowseEdit(index, editor) {
     allQuestions[qIndex].text = newText;
     if (updatedAnswers.length > 0) {
       allQuestions[qIndex].answers = updatedAnswers;
+      allQuestions[qIndex].selectionMode = selectionMode;
+    } else {
+      delete allQuestions[qIndex].selectionMode;
     }
     allQuestions[qIndex].explanation = newExplanation || undefined;
     if (newRandomize) {
@@ -3119,7 +3168,8 @@ function showQuestionForCard(card) {
     }
   }
 
-  const isMultiSelect = true;
+  const selectionMode = getEffectiveSelectionModeForDeck(currentQuestion, currentDeckId);
+  const isMultiSelect = selectionMode === 'multiple';
   const showReroll = shouldRandomize;
 
   currentCardFlagged = !!currentCard.flagged;
@@ -3127,7 +3177,7 @@ function showQuestionForCard(card) {
     currentQuestion,
     null,
     sessionTotal,
-    isMultiSelect,
+    selectionMode,
     appSettings.shuffleAnswers,
     showReroll,
     currentCardFlagged,
@@ -3619,6 +3669,10 @@ async function exportDeckToJSON(deckId) {
     description: deckMeta.description || '',
     version: Number(deckMeta.version) || 1,
   };
+  const defaultSelectionMode = normalizeSelectionMode(deckMeta.defaultSelectionMode, null);
+  if (defaultSelectionMode) {
+    deckPayload.defaultSelectionMode = defaultSelectionMode;
+  }
 
   const group = normalizeDeckGroup(deckMeta.group);
   if (group) {
@@ -3655,6 +3709,7 @@ async function copyDeckToPrivate(options = {}) {
   const sourceName = String(options.name || '').trim() || 'Talia';
   const sourceDescription = String(options.description || '').trim();
   const sourceGroup = normalizeDeckGroup(options.group || '');
+  const sourceDefaultSelectionMode = normalizeSelectionMode(options.defaultSelectionMode, null);
   const sourceCategories = Array.isArray(options.categories) ? cloneJSON(options.categories, null) : null;
   const sourceQuestions = Array.isArray(options.questions) ? cloneJSON(options.questions, []) : [];
   const sourceCards = Array.isArray(options.cards) ? cloneJSON(options.cards, []) : [];
@@ -3685,6 +3740,9 @@ async function copyDeckToPrivate(options = {}) {
     isArchived: false,
     isShared: false,
   };
+  if (sourceDefaultSelectionMode) {
+    nextDeckMeta.defaultSelectionMode = sourceDefaultSelectionMode;
+  }
   if (sourceGroup) nextDeckMeta.group = sourceGroup;
   if (sourceCategories) nextDeckMeta.categories = sourceCategories;
   decks.push(nextDeckMeta);
@@ -3718,6 +3776,7 @@ async function copyDeckFromLocal(deckId) {
     name: deckMeta.name || deckMeta.id,
     description: deckMeta.description || '',
     group: deckMeta.group || '',
+    defaultSelectionMode: deckMeta.defaultSelectionMode || null,
     categories: deckMeta.categories || null,
     questions: storage.getQuestions(deckId),
     cards: storage.getCards(deckId),
@@ -3735,6 +3794,7 @@ async function copyDeckFromSharedCatalog(sharedDeckId) {
     name: sharedDeck.name || sharedDeck.id,
     description: sharedDeck.description || '',
     group: sharedDeck.deck_group || '',
+    defaultSelectionMode: sharedDeck.defaultSelectionMode || sharedDeck.default_selection_mode || null,
     categories: sharedDeck.categories || null,
     questions: sharedDeck.questions || [],
   });
@@ -4265,6 +4325,7 @@ function openCreateDeckModal() {
       readOnlyContent: false,
       isArchived: false,
       isShared: false,
+      defaultSelectionMode: 'multiple',
     };
     if (group) {
       deckMeta.group = group;
@@ -4328,6 +4389,7 @@ function showFeedback() {
     currentQuestion,
     currentShuffledAnswers,
     selectedAnswerIds,
+    getEffectiveSelectionModeForDeck(currentQuestion, currentDeckId),
     currentQuestion.explanation || null,
     intervals,
     appSettings.keybindings,
@@ -4392,7 +4454,8 @@ function handleReroll() {
     currentQuestion = { ...original };
   }
 
-  const isMultiSelect = true;
+  const selectionMode = getEffectiveSelectionModeForDeck(currentQuestion, currentDeckId);
+  const isMultiSelect = selectionMode === 'multiple';
   const showReroll = shouldRandomizeQuestion(original, currentDeckSettings);
 
   // Flash animation to confirm re-roll happened
@@ -4402,7 +4465,7 @@ function handleReroll() {
     currentQuestion,
     null,
     sessionTotal,
-    isMultiSelect,
+    selectionMode,
     appSettings.shuffleAnswers,
     showReroll,
     currentCardFlagged,
@@ -4438,7 +4501,7 @@ function enterEditMode() {
     if (original) editorQuestion = original;
   }
 
-  renderQuestionEditor(editorQuestion);
+  renderQuestionEditor(editorQuestion, getDeckDefaultSelectionModeForDeckId(currentDeckId));
 
   // Cancel
   document.getElementById('btn-editor-cancel').addEventListener('click', () => {
@@ -4456,13 +4519,14 @@ function exitEditMode() {
     showFeedback();
   } else {
     // Re-render question phase
-    const isMultiSelect = true;
+    const selectionMode = getEffectiveSelectionModeForDeck(currentQuestion, currentDeckId);
+    const isMultiSelect = selectionMode === 'multiple';
     const showReroll = shouldRandomizeQuestion(currentQuestion, currentDeckSettings);
     currentShuffledAnswers = renderQuestion(
       currentQuestion,
       null,
       sessionTotal,
-      isMultiSelect,
+      selectionMode,
       appSettings.shuffleAnswers,
       showReroll,
       currentCardFlagged,
@@ -4490,11 +4554,15 @@ function saveQuestionEdit() {
   }
 
   const newExplanation = document.getElementById('editor-explanation').value.trim();
+  const selectionMode = normalizeSelectionMode(
+    document.getElementById('editor-selection-mode')?.value,
+    getDeckDefaultSelectionModeForDeckId(currentDeckId)
+  );
 
   // Read answers (flashcards have no answer rows)
   const answerRows = document.querySelectorAll('.editor-answer-row');
   const updatedAnswers = [];
-  let hasCorrect = false;
+  let correctCount = 0;
 
   if (answerRows.length > 0) {
     for (const row of answerRows) {
@@ -4507,11 +4575,16 @@ function saveQuestionEdit() {
         return;
       }
 
-      if (correct) hasCorrect = true;
+      if (correct) correctCount++;
       updatedAnswers.push({ id, text, correct });
     }
 
-    if (!hasCorrect) {
+    if (selectionMode === 'single' && correctCount !== 1) {
+      showNotification('Pytanie jednokrotnego wyboru musi mieć dokładnie jedną poprawną odpowiedź.', 'error');
+      return;
+    }
+
+    if (selectionMode !== 'single' && correctCount === 0) {
       showNotification('Co najmniej jedna odpowiedź musi być poprawna.', 'error');
       return;
     }
@@ -4579,6 +4652,9 @@ function saveQuestionEdit() {
     questions[qIndex].text = newText;
     if (updatedAnswers.length > 0) {
       questions[qIndex].answers = updatedAnswers;
+      questions[qIndex].selectionMode = selectionMode;
+    } else {
+      delete questions[qIndex].selectionMode;
     }
     questions[qIndex].explanation = newExplanation || undefined;
     if (newRandomize) {

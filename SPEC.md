@@ -124,12 +124,14 @@ Dodatkowe możliwości:
 Plik musi mieć:
 - `deck.id` (unikalny identyfikator),
 - `deck.name` (nazwa),
+- opcjonalnie: `deck.defaultSelectionMode` (`single` lub `multiple`),
 - `questions` (niepusta tablica pytań).
 
 ### 6.2. Zasady pytań
 
 Dla każdego pytania:
 - wymagane: `id`, `text`.
+- opcjonalnie: `selectionMode` (`single` lub `multiple`) dla pytań testowych,
 - odpowiedzi:
   - `0` odpowiedzi = fiszka,
   - `2+` odpowiedzi = pytanie testowe,
@@ -138,7 +140,14 @@ Dla każdego pytania:
 Dla pytań testowych:
 - odpowiedź musi mieć `id`, `text`,
 - poprawność przez `correct` (boolean) lub `correctWhen` (warunek dynamiczny),
-- musi istnieć co najmniej jedna odpowiedź poprawna.
+- musi istnieć co najmniej jedna odpowiedź poprawna,
+- tryb wyboru wyznaczany jest kolejno:
+  1. `question.selectionMode`,
+  2. `deck.defaultSelectionMode`,
+  3. domyślnie `multiple` (zgodność wsteczna),
+- dla `selectionMode=single`:
+  - pytanie statyczne musi mieć dokładnie 1 poprawną odpowiedź,
+  - pytanie z `correctWhen` jest dozwolone; jeśli po losowaniu wyjdzie >1 poprawna, UI tymczasowo przełącza pytanie na `multiple`.
 
 ### 6.3. Reimport
 
@@ -151,12 +160,14 @@ z zachowaniem istniejącego postępu kart.
 {
   "deck": {
     "id": "moja-talia",
-    "name": "Nazwa talii"
+    "name": "Nazwa talii",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {
       "id": "q001",
       "text": "Treść pytania",
+      "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "A", "correct": false },
         { "id": "b", "text": "B", "correct": true }

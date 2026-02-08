@@ -2,6 +2,7 @@
 
 import { createCard } from './card.js';
 import * as storage from './storage.js';
+import { normalizeSelectionMode, SELECTION_MODES } from './utils.js';
 
 const DEFAULT_IMPORT_OPTIONS = {
   scope: 'private',
@@ -43,6 +44,7 @@ function normalizeImportOptions(options = {}) {
 export function validateDeckJSON(data, options = {}) {
   const importOptions = normalizeImportOptions(options);
   const errors = [];
+  let deckDefaultSelectionMode = SELECTION_MODES.MULTIPLE;
 
   if (!data || typeof data !== 'object') {
     return { valid: false, errors: ['Nieprawidłowy format JSON.'] };
@@ -67,6 +69,14 @@ export function validateDeckJSON(data, options = {}) {
     }
     if (data.deck.group !== undefined && typeof data.deck.group !== 'string') {
       errors.push('"deck.group" musi być tekstem (string), jeśli jest podane.');
+    }
+    if (data.deck.defaultSelectionMode !== undefined) {
+      const normalizedDeckMode = normalizeSelectionMode(data.deck.defaultSelectionMode, null);
+      if (!normalizedDeckMode) {
+        errors.push('"deck.defaultSelectionMode" musi mieć wartość "single" albo "multiple".');
+      } else {
+        deckDefaultSelectionMode = normalizedDeckMode;
+      }
     }
     if (data.deck.categories !== undefined) {
       if (!Array.isArray(data.deck.categories)) {
@@ -112,6 +122,12 @@ export function validateDeckJSON(data, options = {}) {
       if (q.category !== undefined) {
         if (typeof q.category !== 'string' || !CATEGORY_ID_RE.test(q.category)) {
           errors.push(`${prefix}: "category" może zawierać tylko litery, cyfry, myślniki i podkreślenia.`);
+        }
+      }
+      if (q.selectionMode !== undefined) {
+        const normalizedQuestionMode = normalizeSelectionMode(q.selectionMode, null);
+        if (!normalizedQuestionMode) {
+          errors.push(`${prefix}: "selectionMode" musi mieć wartość "single" albo "multiple".`);
         }
       }
 
@@ -175,8 +191,10 @@ export function validateDeckJSON(data, options = {}) {
       if (Array.isArray(q.answers) && q.answers.length === 1) {
         errors.push(`${prefix}: musi mieć 0 (fiszka) lub co najmniej 2 odpowiedzi.`);
       } else if (Array.isArray(q.answers) && q.answers.length >= 2) {
+        const questionSelectionMode = normalizeSelectionMode(q.selectionMode, deckDefaultSelectionMode);
         let hasCorrect = false;
         let hasCorrectWhen = false;
+        let correctCount = 0;
         q.answers.forEach((a, j) => {
           if (!a.id || typeof a.id !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "id".`);
@@ -186,15 +204,22 @@ export function validateDeckJSON(data, options = {}) {
           if (!a.text || typeof a.text !== 'string') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: brak "text".`);
           }
-          if (a.correctWhen) {
+          const hasDynamicCorrectness = typeof a.correctWhen === 'string' && a.correctWhen.trim().length > 0;
+          if (hasDynamicCorrectness) {
             hasCorrectWhen = true;
           } else if (typeof a.correct !== 'boolean') {
             errors.push(`${prefix}, odpowiedź #${j + 1}: "correct" musi być true/false.`);
           }
-          if (a.correct) hasCorrect = true;
+          if (a.correct) {
+            hasCorrect = true;
+            correctCount++;
+          }
         });
         if (!hasCorrect && !hasCorrectWhen) {
           errors.push(`${prefix}: brak poprawnej odpowiedzi.`);
+        }
+        if (questionSelectionMode === SELECTION_MODES.SINGLE && !hasCorrectWhen && correctCount !== 1) {
+          errors.push(`${prefix}: dla "selectionMode=single" musi istnieć dokładnie jedna poprawna odpowiedź statyczna.`);
         }
       }
     });
@@ -280,6 +305,12 @@ function registerImport(data, options = {}) {
   const importedGroup = normalizeDeckGroup(data.deck.group);
   const existingGroup = normalizeDeckGroup(existingDeck?.group);
   const nextGroup = hasImportedGroup ? importedGroup : existingGroup;
+  const hasImportedDefaultSelectionMode = Object.prototype.hasOwnProperty.call(data.deck, 'defaultSelectionMode');
+  const importedDefaultSelectionMode = normalizeSelectionMode(data.deck.defaultSelectionMode, null);
+  const existingDefaultSelectionMode = normalizeSelectionMode(existingDeck?.defaultSelectionMode, null);
+  const nextDefaultSelectionMode = hasImportedDefaultSelectionMode
+    ? importedDefaultSelectionMode
+    : existingDefaultSelectionMode;
 
   const deckMeta = {
     id: data.deck.id,
@@ -306,6 +337,9 @@ function registerImport(data, options = {}) {
   }
   if (nextGroup) {
     deckMeta.group = nextGroup;
+  }
+  if (nextDefaultSelectionMode) {
+    deckMeta.defaultSelectionMode = nextDefaultSelectionMode;
   }
 
   // Preserve categories if present

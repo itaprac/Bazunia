@@ -61,12 +61,14 @@ Minimalny format:
 {
   "deck": {
     "id": "moja-talia",
-    "name": "Nazwa talii"
+    "name": "Nazwa talii",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {
       "id": "q001",
       "text": "Treść pytania",
+      "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "A", "correct": false },
         { "id": "b", "text": "B", "correct": true }
@@ -80,10 +82,17 @@ Wymagania importu:
 
 - `deck.id` i `deck.name` są wymagane.
 - `deck.id`: tylko litery, cyfry, `_`, `-`.
+- Opcjonalnie: `deck.defaultSelectionMode` = `single` lub `multiple`.
 - `questions` musi zawierać co najmniej 1 pytanie.
 - Pytanie może mieć:
   - `0` odpowiedzi (fiszka), albo
   - `2+` odpowiedzi (testowe).
+- Tryb wyboru pytania:
+  - `question.selectionMode` ma priorytet,
+  - w przeciwnym razie używany jest `deck.defaultSelectionMode`,
+  - gdy oba pola są puste, domyślnie działa `multiple` (zgodność wsteczna).
+- Dla `selectionMode: "single"` pytanie statyczne musi mieć dokładnie 1 poprawną odpowiedź.
+- Dla `selectionMode: "single"` z `correctWhen`: jeśli po losowaniu wyjdzie więcej niż jedna poprawna, pytanie jest tymczasowo pokazane jako `multiple`.
 
 ## Najczęstsze komendy
 

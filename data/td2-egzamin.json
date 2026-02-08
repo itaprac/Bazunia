@@ -4,7 +4,8 @@
     "name": "Transmisja Danych 2",
     "description": "Pytania z Transmisji danych z egzaminu z dnia 26.06.2025",
     "version": 1,
-    "group": "Semestr 4"
+    "group": "Semestr 4",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {

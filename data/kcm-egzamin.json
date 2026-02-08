@@ -4,7 +4,8 @@
     "name": "Komunikacja człowiek maszyna",
     "description": "Pytania z komunikacja człowiek maszyna",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {

@@ -4,7 +4,8 @@
     "name": "Inżynieria Oprogramowania",
     "description": "Pytania z inżynierii oprogramowania",
     "version": 1,
-    "group": "Semestr 4"
+    "group": "Semestr 4",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

@@ -70,7 +70,7 @@
           W trybie gościa dane są lokalne, a po zalogowaniu dane użytkownika synchronizują się przez Supabase.
         </p>
         <p>
-          Aplikacja obsługuje talie pytań wielokrotnego wyboru z wieloma poprawnymi odpowiedziami,
+          Aplikacja obsługuje talie pytań jednokrotnego i wielokrotnego wyboru,
           kategoriami, wyjaśnieniami i trzema głównymi trybami nauki:
           Anki (powtarzanie rozłożone), Test i Przeglądanie.
         </p>
@@ -116,6 +116,7 @@
     "group": "semestr5",
     "description": "Opcjonalny opis",
     "version": 1,
+    "defaultSelectionMode": "single",
     "categories": [
       { "id": "cat1", "name": "1. Kategoria pierwsza", "questionCount": 20 },
       { "id": "cat2", "name": "2. Kategoria druga", "questionCount": 15 }
@@ -126,10 +127,11 @@
       "id": "q1",
       "text": "Treść pytania?",
       "category": "cat1",
+      "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "Odpowiedź A", "correct": true },
         { "id": "b", "text": "Odpowiedź B", "correct": false },
-        { "id": "c", "text": "Odpowiedź C", "correct": true },
+        { "id": "c", "text": "Odpowiedź C", "correct": false },
         { "id": "d", "text": "Odpowiedź D", "correct": false }
       ],
       "explanation": "Opcjonalne wyjaśnienie."
@@ -142,13 +144,18 @@
           <li><code>deck.id</code> i <code>deck.name</code> są wymagane.</li>
           <li><code>deck.id</code> może zawierać tylko litery, cyfry, myślniki i podkreślenia.</li>
           <li><code>deck.id</code> nie może kolidować z identyfikatorami talii ogólnych (wbudowanych).</li>
+          <li><code>deck.defaultSelectionMode</code> (opcjonalnie) musi mieć wartość <code>single</code> lub <code>multiple</code>.</li>
           <li><code>questions</code> musi być niepustą tablicą.</li>
           <li>Każde pytanie musi mieć unikalne <code>id</code> i pole <code>text</code>.</li>
           <li>Jeśli pytanie ma odpowiedzi, musi mieć <code>0</code> (fiszka) albo <code>2+</code> odpowiedzi.
             Pytanie z dokładnie jedną odpowiedzią jest odrzucane.</li>
+          <li><code>question.selectionMode</code> (opcjonalnie) musi mieć wartość <code>single</code> lub <code>multiple</code>.</li>
+          <li>Tryb wyboru jest wyliczany kolejno:
+            <code>question.selectionMode</code> → <code>deck.defaultSelectionMode</code> → domyślnie <code>multiple</code>.</li>
           <li>Każda odpowiedź musi mieć <code>id</code>, <code>text</code> oraz
             <code>correct</code> (boolean) lub <code>correctWhen</code> (dla dynamicznej poprawności).</li>
           <li>W pytaniu testowym musi istnieć co najmniej jedna odpowiedź poprawna.</li>
+          <li>Dla pytań statycznych z <code>selectionMode=single</code> musi istnieć dokładnie jedna odpowiedź poprawna.</li>
         </ul>
 
         <h3>Pytania typu fiszka</h3>
@@ -160,9 +167,10 @@
         <h3>Pola opcjonalne</h3>
         <ul>
           <li><code>deck.group</code> (nazwa grupy talii wyświetlanej na liście)</li>
-          <li><code>deck.description</code>, <code>deck.version</code></li>
+          <li><code>deck.description</code>, <code>deck.version</code>, <code>deck.defaultSelectionMode</code></li>
           <li><code>deck.categories</code> (dla widoku wyboru kategorii; każda kategoria powinna mieć <code>id</code>, <code>name</code>, <code>questionCount</code>)</li>
           <li><code>category</code> w pytaniu (ID kategorii)</li>
+          <li><code>selectionMode</code> w pytaniu testowym</li>
           <li><code>explanation</code> w pytaniu</li>
           <li><code>randomize</code> w pytaniu (losowe wartości / szablony)</li>
         </ul>
@@ -173,6 +181,7 @@
           <li>Powielone identyfikatory pytań (<code>questions[*].id</code>).</li>
           <li>Pytanie z jedną odpowiedzią (musi być 0 lub minimum 2).</li>
           <li>Brak odpowiedzi poprawnej w pytaniu testowym.</li>
+          <li><code>selectionMode=single</code> z wieloma poprawnymi odpowiedziami statycznymi.</li>
         </ul>
 
       </section>
@@ -676,6 +685,8 @@
         <p>
           Odpowiedzi z <code>correctWhen</code> nie potrzebuja pola <code>correct</code> &mdash; jest ono ignorowane
           na rzecz wyniku wyrazenia. Jedna odpowiedz moze byc poprawna przy jednych wartosciach, a niepoprawna przy innych.
+          Jesli pytanie ma tryb <code>selectionMode=single</code>, ale po losowaniu wyjdzie wiecej niz jedna poprawna
+          odpowiedz, aplikacja tymczasowo przelaczy to pytanie na tryb wielokrotny.
         </p>
 
         <h3>Pelny przyklad</h3>

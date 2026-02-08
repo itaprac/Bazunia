@@ -4,7 +4,8 @@
     "name": "Gry Komputerowe",
     "description": "Są to pytania wygenerowane przez Gemini na bazie wykładów",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

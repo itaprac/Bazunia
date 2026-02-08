@@ -4,7 +4,8 @@
     "name": "IPZ",
     "description": "Pytania z IPZ",
     "version": 1,
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "single"
   },
   "questions": [
     {

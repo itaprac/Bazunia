@@ -71,7 +71,8 @@
         "questionCount": 6
       }
     ],
-    "group": "Semestr 5"
+    "group": "Semestr 5",
+    "defaultSelectionMode": "multiple"
   },
   "questions": [
     {
