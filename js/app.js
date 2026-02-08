@@ -42,6 +42,7 @@ import {
   getDeckDefaultSelectionMode as resolveDeckDefaultSelectionMode,
   getEffectiveQuestionSelectionMode as resolveEffectiveQuestionSelectionMode,
 } from './utils.js';
+import { initTooltips } from './tooltip.js';
 import { hasRandomizer, hasTemplate, randomize } from './randomizers.js';
 import { initDocsNavigation } from './docs-navigation.js';
 import {
@@ -779,6 +780,7 @@ function shouldRandomizeQuestion(question, deckSettings = currentDeckSettings) {
 // --- Initialization ---
 
 async function init() {
+  initTooltips({ defaultDelay: 450, defaultPlacement: 'top' });
   bindGlobalEvents();
   bindAuthEvents();
 
@@ -2324,7 +2326,7 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
       <span class="toggle-slider"></span>
     </label>
     <input type="text" class="editor-answer-text create-answer-text" value="${safeValue}">
-    <button class="btn-remove-create-answer" title="Usuń odpowiedź">&times;</button>
+    <button class="btn-remove-create-answer" data-tooltip="Usuń odpowiedź" aria-label="Usuń odpowiedź">&times;</button>
   `;
   list.appendChild(row);
   bindCreateAnswerRemoveButtons(editor);
@@ -2540,7 +2542,7 @@ function bindBrowseEditorAddButtons(editor) {
       row.innerHTML = `
         <input type="text" class="editor-var-name" value="" placeholder="nazwa">
         <input type="text" class="editor-var-values" value="" placeholder="min, max lub v1, v2, v3...">
-        <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
+        <button class="btn-remove-var" data-tooltip="Usuń zmienną" aria-label="Usuń zmienną">&times;</button>
       `;
       list.appendChild(row);
       bindBrowseEditorRemoveButtons(editor);
@@ -2556,7 +2558,7 @@ function bindBrowseEditorAddButtons(editor) {
       row.innerHTML = `
         <input type="text" class="editor-derived-name" value="" placeholder="nazwa">
         <input type="text" class="editor-derived-expr" value="" placeholder="wyrażenie, np. a + b">
-        <button class="btn-remove-derived" title="Usuń">&times;</button>
+        <button class="btn-remove-derived" data-tooltip="Usuń pochodną" aria-label="Usuń pochodną">&times;</button>
       `;
       list.appendChild(row);
       bindBrowseEditorRemoveButtons(editor);
@@ -2571,7 +2573,7 @@ function bindBrowseEditorAddButtons(editor) {
       row.className = 'editor-constraint-row';
       row.innerHTML = `
         <input type="text" class="editor-constraint-expr" value="" placeholder="warunek, np. a != b">
-        <button class="btn-remove-constraint" title="Usuń">&times;</button>
+        <button class="btn-remove-constraint" data-tooltip="Usuń ograniczenie" aria-label="Usuń ograniczenie">&times;</button>
       `;
       list.appendChild(row);
       bindBrowseEditorRemoveButtons(editor);
@@ -5108,6 +5110,14 @@ function handleFlagToggle() {
   if (flagBtn) {
     flagBtn.classList.toggle('flagged', currentCardFlagged);
     flagBtn.innerHTML = currentCardFlagged ? '&#x1F6A9;' : '&#x2691;';
+    const tooltipText = currentCardFlagged
+      ? 'Usuń oznaczenie pytania (skrót: F)'
+      : 'Oznacz pytanie flagą (skrót: F)';
+    const ariaLabel = currentCardFlagged
+      ? 'Usuń oznaczenie pytania'
+      : 'Oznacz pytanie flagą';
+    flagBtn.setAttribute('data-tooltip', tooltipText);
+    flagBtn.setAttribute('aria-label', ariaLabel);
   }
 
   showNotification(

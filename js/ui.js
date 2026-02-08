@@ -45,6 +45,20 @@ function getVoteEntry(voteSummaryByAnswer, answerId) {
   return normalizeVoteEntry(null);
 }
 
+function buildVoteTooltipText(voteAction, canVote) {
+  const base = voteAction === -1
+    ? '-1 = ta odpowiedź powinna być błędna. Kliknij ponownie, aby cofnąć głos.'
+    : '+1 = ta odpowiedź powinna być poprawna. Kliknij ponownie, aby cofnąć głos.';
+  return canVote ? base : `${base} Zaloguj się, aby głosować.`;
+}
+
+function tooltipAttrs(text, options = {}) {
+  const safeText = escapeAttr(text || '');
+  const safePlacement = options.placement ? ` data-tooltip-placement="${escapeAttr(options.placement)}"` : '';
+  const safeDelay = Number.isFinite(options.delay) ? ` data-tooltip-delay="${Math.max(0, options.delay)}"` : '';
+  return `data-tooltip="${safeText}"${safePlacement}${safeDelay}`;
+}
+
 function renderAnswerVoteControls(questionId, answerId, voteSummaryByAnswer, voteConfig = {}) {
   const enabled = voteConfig?.enabled === true;
   if (!enabled) return '';
@@ -53,7 +67,8 @@ function renderAnswerVoteControls(questionId, answerId, voteSummaryByAnswer, vot
   const showMinus = voteConfig?.showMinus === true;
   const voteEntry = getVoteEntry(voteSummaryByAnswer, answerId);
   const disabledAttr = canVote ? '' : ' aria-disabled="true"';
-  const title = canVote ? 'Zagłosuj na poprawność tej odpowiedzi.' : 'Zaloguj się, aby głosować.';
+  const plusTooltip = buildVoteTooltipText(1, canVote);
+  const plusAria = `${plusTooltip} Aktualna liczba głosów: ${voteEntry.plusCount}.`;
 
   const plusClass = voteEntry.userVote === 1 ? ' active' : '';
   const minusClass = voteEntry.userVote === -1 ? ' active' : '';
@@ -66,7 +81,8 @@ function renderAnswerVoteControls(questionId, answerId, voteSummaryByAnswer, vot
         data-vote-action="-1"
         data-question-id="${escapeAttr(questionId)}"
         data-answer-id="${escapeAttr(answerId)}"
-        title="${escapeAttr(title)}"${disabledAttr}
+        ${tooltipAttrs(buildVoteTooltipText(-1, canVote))}
+        aria-label="${escapeAttr(`${buildVoteTooltipText(-1, canVote)} Aktualna liczba głosów: ${voteEntry.minusCount}.`)}"${disabledAttr}
       >-${voteEntry.minusCount}</button>
     `
     : '';
@@ -79,7 +95,8 @@ function renderAnswerVoteControls(questionId, answerId, voteSummaryByAnswer, vot
         data-vote-action="1"
         data-question-id="${escapeAttr(questionId)}"
         data-answer-id="${escapeAttr(answerId)}"
-        title="${escapeAttr(title)}"${disabledAttr}
+        ${tooltipAttrs(plusTooltip)}
+        aria-label="${escapeAttr(plusAria)}"${disabledAttr}
       >+${voteEntry.plusCount}</button>
       ${minusHtml}
     </div>
@@ -249,7 +266,7 @@ export function renderDeckList(decks, statsMap, options = {}) {
 
     const menuHtml = menuItems.length > 0 ? `
       <div class="deck-card-menu">
-        <button class="deck-card-menu-trigger" type="button" aria-label="Menu talii">&#8942;</button>
+        <button class="deck-card-menu-trigger" type="button" ${tooltipAttrs('Opcje talii')} aria-label="Opcje talii">&#8942;</button>
         <div class="deck-card-menu-dropdown">
           ${menuItems.join('')}
         </div>
@@ -562,12 +579,16 @@ export function renderQuestion(
   const indicatorType = isMultiSelect ? 'checkbox' : '';
 
   const rerollBtn = showReroll
-    ? '<button class="btn-reroll" id="btn-reroll-question" title="Wylosuj ponownie">&#x1F3B2;</button>'
+    ? `<button class="btn-reroll" id="btn-reroll-question" ${tooltipAttrs('Wylosuj nowy wariant pytania')} aria-label="Wylosuj nowy wariant pytania">&#x1F3B2;</button>`
     : '';
 
-  const flagBtn = `<button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-flag-question" title="Oznacz pytanie (F)">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>`;
+  const flagTooltip = flagged
+    ? 'Usuń oznaczenie pytania (skrót: F)'
+    : 'Oznacz pytanie flagą (skrót: F)';
+  const flagAria = flagged ? 'Usuń oznaczenie pytania' : 'Oznacz pytanie flagą';
+  const flagBtn = `<button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-flag-question" ${tooltipAttrs(flagTooltip)} aria-label="${flagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>`;
   const editBtn = canEdit
-    ? '<button class="btn-edit-question" id="btn-edit-question" title="Edytuj pytanie">&#9998;</button>'
+    ? `<button class="btn-edit-question" id="btn-edit-question" ${tooltipAttrs('Edytuj treść pytania')} aria-label="Edytuj treść pytania">&#9998;</button>`
     : '';
 
   const answersHtml = flashcard ? '' : `
@@ -698,9 +719,13 @@ export function renderAnswerFeedback(
     <div class="rating-shortcut-hint">${kb ? keyLabel(kb.showAnswer) + ' = Dobrze' : 'Spacja / Enter = Dobrze'}</div>
   `;
 
-  const feedbackFlagBtn = `<button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-flag-question" title="Oznacz pytanie (F)">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>`;
+  const feedbackFlagTooltip = flagged
+    ? 'Usuń oznaczenie pytania (skrót: F)'
+    : 'Oznacz pytanie flagą (skrót: F)';
+  const feedbackFlagAria = flagged ? 'Usuń oznaczenie pytania' : 'Oznacz pytanie flagą';
+  const feedbackFlagBtn = `<button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-flag-question" ${tooltipAttrs(feedbackFlagTooltip)} aria-label="${feedbackFlagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>`;
   const feedbackEditBtn = canEdit
-    ? '<button class="btn-edit-question" id="btn-edit-question" title="Edytuj pytanie">&#9998;</button>'
+    ? `<button class="btn-edit-question" id="btn-edit-question" ${tooltipAttrs('Edytuj treść pytania')} aria-label="Edytuj treść pytania">&#9998;</button>`
     : '';
 
   document.getElementById('study-content').innerHTML = `
@@ -1255,7 +1280,7 @@ export function renderBrowse(deckName, questions, options = {}) {
       : '';
 
     const editBtn = canEdit
-      ? `<button class="btn-edit-question browse-edit-btn" data-question-index="${i}" title="Edytuj pytanie">&#9998;</button>`
+      ? `<button class="btn-edit-question browse-edit-btn" data-question-index="${i}" ${tooltipAttrs('Edytuj treść pytania')} aria-label="Edytuj treść pytania">&#9998;</button>`
       : '';
 
     return `
@@ -1295,7 +1320,7 @@ export function renderBrowseCreateEditor(options = {}) {
         <span class="toggle-slider"></span>
       </label>
       <input type="text" class="editor-answer-text create-answer-text" value="${escapeAttr(a.text || '')}" placeholder="Treść odpowiedzi">
-      <button class="btn-remove-create-answer" title="Usuń odpowiedź" ${answers.length <= 2 ? 'disabled' : ''}>&times;</button>
+      <button class="btn-remove-create-answer" ${tooltipAttrs('Usuń odpowiedź')} aria-label="Usuń odpowiedź" ${answers.length <= 2 ? 'disabled' : ''}>&times;</button>
     </div>
   `).join('');
 
@@ -1406,7 +1431,7 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
     <div class="editor-var-row">
       <input type="text" class="editor-var-name" value="${escapeAttr(name)}" placeholder="nazwa">
       <input type="text" class="editor-var-values" value="${escapeAttr(values.join(', '))}" placeholder="min, max lub v1, v2, v3...">
-      <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
+      <button class="btn-remove-var" ${tooltipAttrs('Usuń zmienną')} aria-label="Usuń zmienną">&times;</button>
     </div>
   `).join('');
 
@@ -1416,7 +1441,7 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
     <div class="editor-derived-row">
       <input type="text" class="editor-derived-name" value="${escapeAttr(name)}" placeholder="nazwa">
       <input type="text" class="editor-derived-expr" value="${escapeAttr(expr)}" placeholder="wyrażenie, np. a + b">
-      <button class="btn-remove-derived" title="Usuń">&times;</button>
+      <button class="btn-remove-derived" ${tooltipAttrs('Usuń pochodną')} aria-label="Usuń pochodną">&times;</button>
     </div>
   `).join('');
 
@@ -1425,7 +1450,7 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
   const constraintsHtml = constraintsList.map(expr => `
     <div class="editor-constraint-row">
       <input type="text" class="editor-constraint-expr" value="${escapeAttr(expr)}" placeholder="warunek, np. a != b">
-      <button class="btn-remove-constraint" title="Usuń">&times;</button>
+      <button class="btn-remove-constraint" ${tooltipAttrs('Usuń ograniczenie')} aria-label="Usuń ograniczenie">&times;</button>
     </div>
   `).join('');
 
@@ -1696,7 +1721,7 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
     <div class="editor-var-row">
       <input type="text" class="editor-var-name" value="${escapeAttr(name)}" placeholder="nazwa">
       <input type="text" class="editor-var-values" value="${escapeAttr(values.join(', '))}" placeholder="min, max lub v1, v2, v3...">
-      <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
+      <button class="btn-remove-var" ${tooltipAttrs('Usuń zmienną')} aria-label="Usuń zmienną">&times;</button>
     </div>
   `).join('');
 
@@ -1706,7 +1731,7 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
     <div class="editor-derived-row">
       <input type="text" class="editor-derived-name" value="${escapeAttr(name)}" placeholder="nazwa">
       <input type="text" class="editor-derived-expr" value="${escapeAttr(expr)}" placeholder="wyrażenie, np. a + b">
-      <button class="btn-remove-derived" title="Usuń">&times;</button>
+      <button class="btn-remove-derived" ${tooltipAttrs('Usuń pochodną')} aria-label="Usuń pochodną">&times;</button>
     </div>
   `).join('');
 
@@ -1715,7 +1740,7 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
   const constraintsHtml = constraintsList.map(expr => `
     <div class="editor-constraint-row">
       <input type="text" class="editor-constraint-expr" value="${escapeAttr(expr)}" placeholder="warunek, np. a != b">
-      <button class="btn-remove-constraint" title="Usuń">&times;</button>
+      <button class="btn-remove-constraint" ${tooltipAttrs('Usuń ograniczenie')} aria-label="Usuń ograniczenie">&times;</button>
     </div>
   `).join('');
 
@@ -1808,7 +1833,7 @@ function bindRandomizeEditorEvents() {
       row.innerHTML = `
         <input type="text" class="editor-var-name" value="" placeholder="nazwa">
         <input type="text" class="editor-var-values" value="" placeholder="min, max lub v1, v2, v3...">
-        <button class="btn-remove-var" title="Usuń zmienną">&times;</button>
+        <button class="btn-remove-var" ${tooltipAttrs('Usuń zmienną')} aria-label="Usuń zmienną">&times;</button>
       `;
       list.appendChild(row);
       bindRemoveButtons();
@@ -1824,7 +1849,7 @@ function bindRandomizeEditorEvents() {
       row.innerHTML = `
         <input type="text" class="editor-derived-name" value="" placeholder="nazwa">
         <input type="text" class="editor-derived-expr" value="" placeholder="wyrażenie, np. a + b">
-        <button class="btn-remove-derived" title="Usuń">&times;</button>
+        <button class="btn-remove-derived" ${tooltipAttrs('Usuń pochodną')} aria-label="Usuń pochodną">&times;</button>
       `;
       list.appendChild(row);
       bindRemoveButtons();
@@ -1839,7 +1864,7 @@ function bindRandomizeEditorEvents() {
       row.className = 'editor-constraint-row';
       row.innerHTML = `
         <input type="text" class="editor-constraint-expr" value="" placeholder="warunek, np. a != b">
-        <button class="btn-remove-constraint" title="Usuń">&times;</button>
+        <button class="btn-remove-constraint" ${tooltipAttrs('Usuń ograniczenie')} aria-label="Usuń ograniczenie">&times;</button>
       `;
       list.appendChild(row);
       bindRemoveButtons();
