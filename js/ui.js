@@ -632,22 +632,17 @@ export function renderAnswerFeedback(
       const isSelected = selectedIds.has(a.id);
 
       let stateClass = 'disabled';
-      let icon = '';
 
       if (noSelection) {
         if (isCorrect) {
           stateClass += ' correct-selected';
-          icon = '<span class="answer-feedback-icon" style="color: var(--color-success)">&#10003;</span>';
         }
       } else if (isSelected && isCorrect) {
         stateClass += ' correct-selected';
-        icon = '<span class="answer-feedback-icon" style="color: var(--color-success)">&#10003;</span>';
       } else if (isSelected && !isCorrect) {
         stateClass += ' incorrect-selected';
-        icon = '<span class="answer-feedback-icon" style="color: var(--color-danger)">&#10007;</span>';
       } else if (!isSelected && isCorrect) {
         stateClass += ' correct-missed';
-        icon = '<span class="answer-feedback-icon" style="color: var(--color-warning)">&#10003;</span>';
       }
 
       const votesHtml = renderAnswerVoteControls(
@@ -662,7 +657,6 @@ export function renderAnswerFeedback(
           <div class="answer-indicator ${isMultiSelect ? 'checkbox' : ''}"></div>
           <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           ${votesHtml}
-          ${icon}
         </div>
       `;
     }).join('');

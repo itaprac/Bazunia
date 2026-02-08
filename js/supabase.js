@@ -4,6 +4,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import { SUPABASE_URL, SUPABASE_ANON_KEY, isSupabaseConfigValid } from './supabase-config.js';
 
 let supabase = null;
+let answerVoteRpcAvailable = true;
 
 export function isSupabaseConfigured() {
   return isSupabaseConfigValid();
@@ -33,6 +34,26 @@ function ensureClient() {
     throw new Error('Brak konfiguracji Supabase. Ustaw BAZUNIA_SUPABASE_URL i BAZUNIA_SUPABASE_ANON_KEY (np. w .env).');
   }
   return client;
+}
+
+function isMissingAnswerVoteRpcError(error) {
+  if (!error || typeof error !== 'object') return false;
+  const code = String(error.code || '');
+  const message = String(error.message || '');
+  return code === 'PGRST202' || message.includes('Could not find the function public.set_answer_vote')
+    || message.includes('Could not find the function public.fetch_answer_vote_summary');
+}
+
+function toAnswerVoteRpcError(error) {
+  if (isMissingAnswerVoteRpcError(error)) {
+    answerVoteRpcAvailable = false;
+    return new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
+  }
+  return error;
+}
+
+export function isAnswerVoteRpcReady() {
+  return answerVoteRpcAvailable;
 }
 
 export async function getCurrentSession() {
@@ -395,6 +416,10 @@ export async function unsubscribeFromSharedDeck(sharedDeckId) {
 // --- Community answer votes ---
 
 export async function fetchAnswerVoteSummary(options = {}) {
+  if (!answerVoteRpcAvailable) {
+    throw new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
+  }
+
   const targetScope = String(options.targetScope || '').trim();
   const targetDeckId = String(options.targetDeckId || '').trim();
   const questionIds = Array.isArray(options.questionIds)
@@ -412,11 +437,15 @@ export async function fetchAnswerVoteSummary(options = {}) {
     p_question_ids: questionIds,
   });
 
-  if (error) throw error;
+  if (error) throw toAnswerVoteRpcError(error);
   return data || [];
 }
 
 export async function setAnswerVote(options = {}) {
+  if (!answerVoteRpcAvailable) {
+    throw new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
+  }
+
   const targetScope = String(options.targetScope || '').trim();
   const targetDeckId = String(options.targetDeckId || '').trim();
   const questionId = String(options.questionId || '').trim();
@@ -439,7 +468,7 @@ export async function setAnswerVote(options = {}) {
     p_vote: vote,
   });
 
-  if (error) throw error;
+  if (error) throw toAnswerVoteRpcError(error);
 }
 
 // --- User storage ---

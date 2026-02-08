@@ -852,8 +852,8 @@
 }
 
 .answer-option.correct-missed {
-  border-color: var(--color-answer-missed-border);
-  background: var(--color-answer-missed);
+  border-color: var(--color-answer-correct-border);
+  background: var(--color-answer-correct);
 }
 
 .answer-option .answer-indicator {

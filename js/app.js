@@ -70,6 +70,7 @@ import {
   unsubscribeFromSharedDeck,
   fetchAnswerVoteSummary,
   setAnswerVote,
+  isAnswerVoteRpcReady,
 } from './supabase.js';
 
 // --- App State ---
@@ -200,6 +201,7 @@ let testShuffledAnswers = null;
 let testSelectedIds = new Set();
 let testShuffledMap = new Map(); // index → shuffled answers array
 let testResultAnswers = [];
+let voteRpcUnavailableNotified = false;
 
 // Community vote cache:
 // key = `${targetScope}|${targetDeckId}|${questionId}`
@@ -336,6 +338,25 @@ function getVoteTargetForDeck(deckId) {
 
 function resetVoteSummaryCache() {
   voteSummaryCache = new Map();
+  voteRpcUnavailableNotified = false;
+}
+
+function notifyVoteRpcUnavailable() {
+  if (voteRpcUnavailableNotified) return;
+  voteRpcUnavailableNotified = true;
+  showNotification(
+    'Głosowanie wyłączone: brakuje funkcji RPC w Supabase. Uruchom migrację z pliku supabase/schema.sql.',
+    'error'
+  );
+}
+
+function disableVoteControlsInCurrentView() {
+  document.querySelectorAll('.answer-votes').forEach((wrapper) => {
+    wrapper.classList.add('disabled');
+  });
+  document.querySelectorAll('.vote-pill').forEach((button) => {
+    button.disabled = true;
+  });
 }
 
 function normalizeVoteEntry(entry = null) {
@@ -464,7 +485,7 @@ function buildVoteSummaryByQuestion(voteTarget, questions = []) {
 
 function getVoteConfigForDeck(deckId, options = {}) {
   const voteTarget = getVoteTargetForDeck(deckId);
-  const enabled = isSupabaseConfigured() && !!voteTarget;
+  const enabled = isSupabaseConfigured() && !!voteTarget && isAnswerVoteRpcReady();
   return {
     enabled,
     canVote: enabled && sessionMode === 'user',
@@ -524,6 +545,11 @@ function syncVoteButtonsForQuestion(deckId, question) {
 async function handleVoteButtonClick(deckId, question, answerId, requestedVote) {
   const voteTarget = getVoteTargetForDeck(deckId);
   if (!voteTarget || !isSupabaseConfigured()) return;
+  if (!isAnswerVoteRpcReady()) {
+    notifyVoteRpcUnavailable();
+    disableVoteControlsInCurrentView();
+    return;
+  }
   const questionId = String(question?.id || '');
   const normalizedAnswerId = String(answerId || '');
   if (!questionId || !normalizedAnswerId) return;
@@ -558,7 +584,12 @@ async function handleVoteButtonClick(deckId, question, answerId, requestedVote) 
     await ensureVoteSummaryForQuestions(deckId, [questionId], { forceRefresh: true });
   } catch (error) {
     setVoteEntryForAnswer(voteTarget, questionId, normalizedAnswerId, previousEntry);
-    showNotification(`Nie udało się zapisać głosu: ${error.message}`, 'error');
+    if (!isAnswerVoteRpcReady()) {
+      notifyVoteRpcUnavailable();
+      disableVoteControlsInCurrentView();
+    } else {
+      showNotification(`Nie udało się zapisać głosu: ${error.message}`, 'error');
+    }
   } finally {
     syncVoteButtonsForQuestion(deckId, question);
     setVoteButtonsLoading(questionId, normalizedAnswerId, false);
@@ -1999,7 +2030,7 @@ async function finishTest() {
 
   const deckMeta = storage.getDecks().find(d => d.id === currentDeckId);
   const deckName = deckMeta ? deckMeta.name : currentDeckId;
-  const voteConfig = getVoteConfigForDeck(currentDeckId);
+  let voteConfig = getVoteConfigForDeck(currentDeckId);
   let voteSummaryByQuestion = {};
 
   if (voteConfig.enabled && testQuestions.length > 0) {
@@ -2012,7 +2043,12 @@ async function finishTest() {
         voteSummaryByQuestion = buildVoteSummaryByQuestion(voteTarget, testQuestions);
       }
     } catch (error) {
-      showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      if (!isAnswerVoteRpcReady()) {
+        notifyVoteRpcUnavailable();
+      } else {
+        showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      }
+      voteConfig = { ...voteConfig, enabled: false, canVote: false };
     }
   }
 
@@ -2065,7 +2101,7 @@ async function navigateToBrowse(deckId, options = {}) {
   const deckMeta = storage.getDecks().find(d => d.id === deckId);
   const deckName = deckMeta ? deckMeta.name : deckId;
   const questions = getFilteredQuestions(deckId);
-  const voteConfig = getVoteConfigForDeck(deckId);
+  let voteConfig = getVoteConfigForDeck(deckId);
   let voteSummaryByQuestion = {};
 
   if (voteConfig.enabled && questions.length > 0) {
@@ -2078,7 +2114,12 @@ async function navigateToBrowse(deckId, options = {}) {
         voteSummaryByQuestion = buildVoteSummaryByQuestion(voteTarget, questions);
       }
     } catch (error) {
-      showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      if (!isAnswerVoteRpcReady()) {
+        notifyVoteRpcUnavailable();
+      } else {
+        showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      }
+      voteConfig = { ...voteConfig, enabled: false, canVote: false };
     }
   }
 
@@ -4726,7 +4767,7 @@ async function showFeedback() {
   studyPhase = 'feedback';
   const intervals = getButtonIntervals(currentCard, currentDeckSettings);
   const selectionMode = getEffectiveSelectionModeForDeck(currentQuestion, currentDeckId);
-  const voteConfig = getVoteConfigForDeck(currentDeckId, { showMinus: selectionMode === 'multiple' });
+  let voteConfig = getVoteConfigForDeck(currentDeckId, { showMinus: selectionMode === 'multiple' });
   let voteSummaryByAnswer = null;
 
   if (voteConfig.enabled && !isFlashcard(currentQuestion)) {
@@ -4737,7 +4778,12 @@ async function showFeedback() {
         voteSummaryByAnswer = summaryByQuestion[currentQuestion.id] || null;
       }
     } catch (error) {
-      showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      if (!isAnswerVoteRpcReady()) {
+        notifyVoteRpcUnavailable();
+      } else {
+        showNotification(`Nie udało się pobrać głosów społeczności: ${error.message}`, 'error');
+      }
+      voteConfig = { ...voteConfig, enabled: false, canVote: false };
     }
   }
 
