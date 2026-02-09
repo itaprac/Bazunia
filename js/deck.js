@@ -207,17 +207,49 @@ export function recordStat(deckId, rating, cardSource) {
 export function getDeckStats(deckId, settings = DEFAULT_SETTINGS, includeFlagged = false) {
   const now = Date.now();
   const today = startOfDay(now);
-  const allCards = storage.getCards(deckId);
-  const flaggedCount = allCards.filter(c => isFlagged(c)).length;
-  const cards = includeFlagged ? allCards : allCards.filter(c => !isFlagged(c));
+  const allCards = storage.peekCards(deckId);
 
-  const dueReview = cards.filter(c => isReview(c) && c.dueDate <= now).length;
-  const dueLearning = cards.filter(c => (isLearning(c) || isRelearning(c)) && c.dueDate <= now).length;
-  const totalNew = cards.filter(c => isNew(c)).length;
-  const learningTotal = cards.filter(c => isLearning(c) || isRelearning(c)).length;
-  const newCardsToday = cards.filter(c =>
-    c.firstStudiedDate != null && startOfDay(c.firstStudiedDate) === today
-  ).length;
+  let flaggedCount = 0;
+  let dueReview = 0;
+  let dueLearning = 0;
+  let totalNew = 0;
+  let learningTotal = 0;
+  let newCardsToday = 0;
+  let totalCards = 0;
+  let learned = 0;
+
+  for (const card of allCards) {
+    const flagged = isFlagged(card);
+    if (flagged) {
+      flaggedCount++;
+      if (!includeFlagged) continue;
+    }
+    totalCards++;
+
+    if (isNew(card)) {
+      totalNew++;
+      if (card.firstStudiedDate != null && startOfDay(card.firstStudiedDate) === today) {
+        newCardsToday++;
+      }
+      continue;
+    }
+
+    if (isLearning(card) || isRelearning(card)) {
+      learningTotal++;
+      if (card.dueDate <= now) {
+        dueLearning++;
+      }
+      continue;
+    }
+
+    if (isReview(card)) {
+      learned++;
+      if (card.dueDate <= now) {
+        dueReview++;
+      }
+    }
+  }
+
   const newAvailable = Math.min(totalNew, Math.max(0, settings.newCardsPerDay - newCardsToday));
 
   return {
@@ -227,8 +259,8 @@ export function getDeckStats(deckId, settings = DEFAULT_SETTINGS, includeFlagged
     learningTotal,
     newAvailable,
     totalNew,
-    totalCards: cards.length,
-    learned: cards.filter(c => isReview(c)).length,
+    totalCards,
+    learned,
     flagged: flaggedCount,
   };
 }
@@ -255,8 +287,8 @@ export function getTodayStats(deckId) {
  */
 export function getDeckCategoryStats(deckId, categories, includeFlagged = false) {
   const now = Date.now();
-  const cards = storage.getCards(deckId);
-  const questions = storage.getQuestions(deckId);
+  const cards = storage.peekCards(deckId);
+  const questions = storage.peekQuestions(deckId);
 
   // Build questionId → category map
   const qCatMap = new Map();

@@ -81,6 +81,12 @@ function getJSON(key, fallback = null) {
   return cloneValue(cache.get(key));
 }
 
+function peekJSON(key, fallback = null) {
+  if (!initialized) return fallback;
+  if (!cache.has(key)) return fallback;
+  return cache.get(key);
+}
+
 function enqueueSync(task) {
   syncQueue = syncQueue
     .then(async () => {
@@ -206,6 +212,11 @@ export function getCards(deckId) {
   return getJSON(`cards_${deckId}`, []);
 }
 
+export function peekCards(deckId) {
+  const raw = peekJSON(`cards_${deckId}`, []);
+  return Array.isArray(raw) ? raw : [];
+}
+
 export function saveCards(deckId, cards) {
   setJSON(`cards_${deckId}`, cards);
 }
@@ -214,6 +225,11 @@ export function saveCards(deckId, cards) {
 
 export function getQuestions(deckId) {
   return getJSON(`questions_${deckId}`, []);
+}
+
+export function peekQuestions(deckId) {
+  const raw = peekJSON(`questions_${deckId}`, []);
+  return Array.isArray(raw) ? raw : [];
 }
 
 export function saveQuestions(deckId, questions) {

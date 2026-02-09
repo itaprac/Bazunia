@@ -1194,6 +1194,55 @@ function mergeCardsForQuestions(deckId, questions) {
   storage.saveCards(deckId, nextCards);
 }
 
+function applyDeckDefaultSelectionModeToQuestions(questions = [], deckDefaultSelectionMode = null) {
+  const normalizedDefaultMode = normalizeSelectionMode(deckDefaultSelectionMode, null);
+  if (!normalizedDefaultMode || !Array.isArray(questions)) {
+    return Array.isArray(questions) ? questions : [];
+  }
+
+  let changed = false;
+  const normalizedQuestions = questions.map((question) => {
+    if (!question || typeof question !== 'object') return question;
+    const answers = Array.isArray(question.answers) ? question.answers : [];
+    if (answers.length < 2) return question;
+
+    const questionMode = normalizeSelectionMode(question.selectionMode, null);
+    if (questionMode) return question;
+
+    changed = true;
+    return {
+      ...question,
+      selectionMode: normalizedDefaultMode,
+    };
+  });
+
+  return changed ? normalizedQuestions : questions;
+}
+
+function inferDeckDefaultSelectionModeFromQuestions(questions = []) {
+  if (!Array.isArray(questions)) return null;
+
+  let inferredMode = null;
+  for (const question of questions) {
+    const answers = Array.isArray(question?.answers) ? question.answers : [];
+    if (answers.length < 2) continue;
+
+    const questionMode = normalizeSelectionMode(question?.selectionMode, null);
+    if (!questionMode) return null;
+
+    if (!inferredMode) {
+      inferredMode = questionMode;
+      continue;
+    }
+
+    if (inferredMode !== questionMode) {
+      return null;
+    }
+  }
+
+  return inferredMode;
+}
+
 function applyPublicDeckRowsToLocal(rows = [], options = {}) {
   const includeHidden = options.includeHidden === true;
   const activePublicRows = rows.filter((row) => row && (row.is_archived !== true || includeHidden));
@@ -1219,6 +1268,8 @@ function applyPublicDeckRowsToLocal(rows = [], options = {}) {
     const deckGroup = normalizeDeckGroup(row.deck_group);
     if (deckGroup) deckMeta.group = deckGroup;
     if (categories) deckMeta.categories = categories;
+    const inferredDefaultMode = inferDeckDefaultSelectionModeFromQuestions(questions);
+    if (inferredDefaultMode) deckMeta.defaultSelectionMode = inferredDefaultMode;
 
     publicDecks.push(deckMeta);
     storage.saveQuestions(deckMeta.id, questions);
@@ -1230,11 +1281,44 @@ function applyPublicDeckRowsToLocal(rows = [], options = {}) {
 
 async function seedPublicDecksFromBuiltInFiles(existingRows = []) {
   if (!canManagePublicDecks()) return;
+  const existingRowById = new Map(
+    (Array.isArray(existingRows) ? existingRows : [])
+      .filter((row) => row && typeof row.id === 'string')
+      .map((row) => [row.id, row])
+  );
   const existingArchiveMap = new Map(
     (Array.isArray(existingRows) ? existingRows : [])
       .filter((row) => row && typeof row.id === 'string')
       .map((row) => [row.id, row.is_archived === true])
   );
+  const sameJSON = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  const isBuiltInRowDifferent = (existingRow, payload) => {
+    if (!existingRow) return true;
+
+    const existingName = String(existingRow.name || '');
+    const existingDescription = String(existingRow.description || '');
+    const existingGroup = normalizeDeckGroup(existingRow.deck_group) || null;
+    const existingCategories = Array.isArray(existingRow.categories) ? existingRow.categories : null;
+    const existingVersion = Number(existingRow.version) || 1;
+    const existingQuestionCount = Number.isFinite(existingRow.question_count)
+      ? existingRow.question_count
+      : (Array.isArray(existingRow.questions) ? existingRow.questions.length : 0);
+    const existingQuestions = Array.isArray(existingRow.questions) ? existingRow.questions : [];
+    const existingArchived = existingRow.is_archived === true;
+    const existingSource = String(existingRow.source || '');
+
+    return (
+      existingName !== payload.name
+      || existingDescription !== payload.description
+      || existingGroup !== payload.deck_group
+      || !sameJSON(existingCategories, payload.categories)
+      || existingVersion !== payload.version
+      || existingQuestionCount !== payload.question_count
+      || !sameJSON(existingQuestions, payload.questions)
+      || existingArchived !== (payload.is_archived === true)
+      || existingSource !== payload.source
+    );
+  };
 
   for (const builtIn of BUILT_IN_DECK_SOURCES) {
     try {
@@ -1242,6 +1326,11 @@ async function seedPublicDecksFromBuiltInFiles(existingRows = []) {
       if (!response.ok) continue;
       const data = await response.json();
       if (!data || typeof data !== 'object' || !data.deck || !Array.isArray(data.questions)) continue;
+      const deckDefaultSelectionMode = normalizeSelectionMode(data.deck.defaultSelectionMode, null);
+      const normalizedQuestions = applyDeckDefaultSelectionModeToQuestions(
+        data.questions,
+        deckDefaultSelectionMode
+      );
 
       const payload = {
         id: data.deck.id,
@@ -1249,14 +1338,18 @@ async function seedPublicDecksFromBuiltInFiles(existingRows = []) {
         description: data.deck.description || '',
         deck_group: normalizeDeckGroup(data.deck.group) || null,
         categories: Array.isArray(data.deck.categories) ? data.deck.categories : null,
-        questions: data.questions,
-        question_count: data.questions.length,
+        questions: normalizedQuestions,
+        question_count: normalizedQuestions.length,
         version: Number(data.deck.version) || 1,
         source: 'builtin',
         is_archived: existingArchiveMap.get(data.deck.id) === true,
         updated_by: currentUser?.id || null,
       };
 
+      const existingRow = existingRowById.get(payload.id) || null;
+      if (!isBuiltInRowDifferent(existingRow, payload)) {
+        continue;
+      }
       await upsertPublicDeck(payload);
     } catch {
       // Optional source file can be missing, skip silently.
@@ -1271,10 +1364,11 @@ function filterBuiltInPublicRows(rows = []) {
 async function syncPublicDecksForCurrentUser(options = {}) {
   if (!isSupabaseConfigured() || sessionMode !== 'user') return;
   const fallbackToBuiltInsOnError = options.fallbackToBuiltInsOnError !== false;
+  const syncBuiltInFromFiles = options.syncBuiltInFromFiles === true;
   try {
     const includeHidden = canManagePublicDecks();
     let rows = filterBuiltInPublicRows(await fetchPublicDecks({ includeArchived: includeHidden }));
-    if (canManagePublicDecks()) {
+    if (canManagePublicDecks() && syncBuiltInFromFiles) {
       // Built-in JSON files are the canonical source of public deck content/metadata.
       // Keep Supabase rows in sync while preserving current hidden state.
       await seedPublicDecksFromBuiltInFiles(rows);
@@ -1527,7 +1621,7 @@ async function bootstrapUserSession(user) {
   loadUserPreferences();
   // Logged-in sessions synchronize public decks from Supabase.
   // Built-in files are used as a fallback/seed source when needed.
-  await syncPublicDecksForCurrentUser();
+  await syncPublicDecksForCurrentUser({ syncBuiltInFromFiles: canManagePublicDecks() });
   await syncSubscribedDecksForCurrentUser();
   updateHeaderSessionState('user', {
     email: user.email || '',
@@ -3056,7 +3150,10 @@ function bindAdminPanelEvents() {
       btn.disabled = true;
       try {
         await unhidePublicDeck(deckId);
-        await syncPublicDecksForCurrentUser({ fallbackToBuiltInsOnError: false });
+        await syncPublicDecksForCurrentUser({
+          fallbackToBuiltInsOnError: false,
+          syncBuiltInFromFiles: false,
+        });
         showNotification('Talia została ponownie pokazana wszystkim użytkownikom.', 'success');
         adminPanelState.hiddenDecks = adminPanelState.hiddenDecks.filter((d) => d.id !== deckId);
         renderAdminPanelFromState();
@@ -4502,7 +4599,10 @@ function bindDeckListEvents() {
             await hidePublicDeck(deckId);
             showNotification('Talia ogólna została ukryta dla zwykłych użytkowników.', 'info');
           }
-          await syncPublicDecksForCurrentUser({ fallbackToBuiltInsOnError: false });
+          await syncPublicDecksForCurrentUser({
+            fallbackToBuiltInsOnError: false,
+            syncBuiltInFromFiles: false,
+          });
           navigateToDeckList('public');
         } catch (error) {
           showNotification(`Nie udało się zmienić widoczności talii: ${error.message}`, 'error');
