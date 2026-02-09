@@ -1228,8 +1228,13 @@ function applyPublicDeckRowsToLocal(rows = [], options = {}) {
   storage.saveDecks([...publicDecks, ...privateDecks]);
 }
 
-async function seedPublicDecksFromBuiltInFiles() {
+async function seedPublicDecksFromBuiltInFiles(existingRows = []) {
   if (!canManagePublicDecks()) return;
+  const existingArchiveMap = new Map(
+    (Array.isArray(existingRows) ? existingRows : [])
+      .filter((row) => row && typeof row.id === 'string')
+      .map((row) => [row.id, row.is_archived === true])
+  );
 
   for (const builtIn of BUILT_IN_DECK_SOURCES) {
     try {
@@ -1248,7 +1253,7 @@ async function seedPublicDecksFromBuiltInFiles() {
         question_count: data.questions.length,
         version: Number(data.deck.version) || 1,
         source: 'builtin',
-        is_archived: false,
+        is_archived: existingArchiveMap.get(data.deck.id) === true,
         updated_by: currentUser?.id || null,
       };
 
@@ -1269,9 +1274,11 @@ async function syncPublicDecksForCurrentUser(options = {}) {
   try {
     const includeHidden = canManagePublicDecks();
     let rows = filterBuiltInPublicRows(await fetchPublicDecks({ includeArchived: includeHidden }));
-    if (canManagePublicDecks() && rows.length < BUILT_IN_DECK_SOURCES.length) {
-      await seedPublicDecksFromBuiltInFiles();
-      rows = filterBuiltInPublicRows(await fetchPublicDecks({ includeArchived: includeHidden }));
+    if (canManagePublicDecks()) {
+      // Built-in JSON files are the canonical source of public deck content/metadata.
+      // Keep Supabase rows in sync while preserving current hidden state.
+      await seedPublicDecksFromBuiltInFiles(rows);
+      rows = filterBuiltInPublicRows(await fetchPublicDecks({ includeArchived: true }));
     }
 
     if (rows.length === 0) {
