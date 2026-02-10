@@ -230,7 +230,7 @@ W sesji Anki można ręcznie losować nowy wariant pytania (przycisk z ikoną ko
 - widok listy talii (kompaktowy/klasyczny),
 - skróty klawiszowe,
 - mieszanie odpowiedzi,
-- kolejność pytań w teście (losowa/po kolei),
+- kolejność pytań (losowa/po kolei) w teście oraz przy doborze nowych kart w Anki,
 - uwzględnianie oznaczonych pytań w standardowej sesji Anki.
 
 ### 8.2. Ustawienia talii

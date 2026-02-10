@@ -3787,12 +3787,13 @@ function saveDeckSettings(deckId) {
 
 function startStudySession() {
   let filterIds = getFilteredQuestionIds(currentDeckId);
+  const queueOptions = { questionOrder: appSettings.questionOrder };
   if (studyingFlagged) {
     // Study only flagged cards
     filterIds = deck.getFlaggedQuestionIds(currentDeckId, filterIds);
-    queues = deck.buildQueues(currentDeckId, currentDeckSettings, filterIds, true);
+    queues = deck.buildQueues(currentDeckId, currentDeckSettings, filterIds, true, queueOptions);
   } else {
-    queues = deck.buildQueues(currentDeckId, currentDeckSettings, filterIds, appSettings.flaggedInAnki);
+    queues = deck.buildQueues(currentDeckId, currentDeckSettings, filterIds, appSettings.flaggedInAnki, queueOptions);
   }
   sessionTotal = queues.counts.learningDue + queues.counts.reviewDue + queues.counts.newAvailable;
   studiedCount = 0;

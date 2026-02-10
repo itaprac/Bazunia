@@ -1,7 +1,7 @@
 // deck.js — Deck management, queue building, session orchestration
 
 import { CARD_STATES, isNew, isDue, isLearning, isRelearning, isReview, isFlagged, createCard } from './card.js';
-import { startOfDay, formatDate, DAY_MS, MINUTE_MS } from './utils.js';
+import { startOfDay, formatDate, DAY_MS, MINUTE_MS, shuffle } from './utils.js';
 import { DEFAULT_SETTINGS } from './sm2.js';
 import * as storage from './storage.js';
 
@@ -18,7 +18,14 @@ function ensureDeckIdOnCards(deckId, cards) {
 /**
  * Build study queues for a deck. Returns { learning, review, newCards, counts }.
  */
-export function buildQueues(deckId, settings = DEFAULT_SETTINGS, questionIdFilter = null, includeFlagged = false) {
+export function buildQueues(
+  deckId,
+  settings = DEFAULT_SETTINGS,
+  questionIdFilter = null,
+  includeFlagged = false,
+  options = {}
+) {
+  const questionOrder = options?.questionOrder === 'ordered' ? 'ordered' : 'shuffled';
   const now = Date.now();
   const today = startOfDay(now);
   const { normalized, changed } = ensureDeckIdOnCards(deckId, storage.getCards(deckId));
@@ -40,14 +47,14 @@ export function buildQueues(deckId, settings = DEFAULT_SETTINGS, questionIdFilte
   }
 
   // Learning/Relearning cards (all — including not-yet-due so sessions resume properly)
-  const learning = cards
-    .filter(c => isLearning(c) || isRelearning(c))
-    .sort((a, b) => a.dueDate - b.dueDate);
+  const learningCandidates = cards.filter(c => isLearning(c) || isRelearning(c));
+  const learningBase = questionOrder === 'ordered' ? learningCandidates : shuffle(learningCandidates);
+  const learning = learningBase.sort((a, b) => a.dueDate - b.dueDate);
 
   // Review cards due today or earlier
-  const review = cards
-    .filter(c => isReview(c) && c.dueDate <= now)
-    .sort((a, b) => a.dueDate - b.dueDate);
+  const reviewCandidates = cards.filter(c => isReview(c) && c.dueDate <= now);
+  const reviewBase = questionOrder === 'ordered' ? reviewCandidates : shuffle(reviewCandidates);
+  const review = reviewBase.sort((a, b) => a.dueDate - b.dueDate);
 
   // Count new cards already introduced today
   const newCardsToday = cards.filter(c =>
@@ -57,9 +64,9 @@ export function buildQueues(deckId, settings = DEFAULT_SETTINGS, questionIdFilte
   const newCardsRemaining = Math.max(0, settings.newCardsPerDay - newCardsToday);
 
   // New cards (not yet studied)
-  const newCards = cards
-    .filter(c => isNew(c))
-    .slice(0, newCardsRemaining);
+  const newCandidates = cards.filter(c => isNew(c));
+  const orderedNewCards = questionOrder === 'ordered' ? newCandidates : shuffle(newCandidates);
+  const newCards = orderedNewCards.slice(0, newCardsRemaining);
 
   // Count reviews done today
   const reviewsToday = cards.filter(c =>
