@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'data');
@@ -45,6 +46,7 @@ function buildEntry(filename) {
     description: String(deck.description || ''),
     questionCount,
     version: toPosInt(deck.version, 1),
+    contentHash: crypto.createHash('sha256').update(raw).digest('hex'),
   };
   if (group) entry.group = group;
   if (categories) entry.categories = categories;

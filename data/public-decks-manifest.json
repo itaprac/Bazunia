@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T14:14:20.898Z",
+  "generatedAt": "2026-02-10T14:15:39.387Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -8,6 +8,7 @@
       "description": "Pytania z Aplikacji Internetowych",
       "questionCount": 28,
       "version": 1,
+      "contentHash": "b6012da099118faa078c4077db31802f0e3d39f4ff090cde02977a3b9a256ae8",
       "group": "Semestr 5",
       "defaultSelectionMode": "single"
     },
@@ -18,6 +19,7 @@
       "description": "Pytania z grafiki komputerowej",
       "questionCount": 107,
       "version": 1,
+      "contentHash": "c5235db422dd2e18225b7c1761af15f6994b94c6dcaf3c763c249406338cc419",
       "group": "Semestr 4",
       "defaultSelectionMode": "multiple"
     },
@@ -28,6 +30,7 @@
       "description": "Pytania z grafiki komputerowej 23.06.2025 Egzamin",
       "questionCount": 49,
       "version": 1,
+      "contentHash": "113df229be3c3e1aac743002bb3df68b6819622fcfd320cbf4e5dacbb3947945",
       "group": "Semestr 4",
       "defaultSelectionMode": "multiple"
     },
@@ -38,6 +41,7 @@
       "description": "Są to pytania wygenerowane przez Gemini na bazie wykładów",
       "questionCount": 162,
       "version": 1,
+      "contentHash": "7f5a2a738a307a1e004f663f5a2efa68d413d7d9f4a1bb9e8bfccd12573dc015",
       "group": "Semestr 5",
       "defaultSelectionMode": "single"
     },
@@ -48,6 +52,7 @@
       "description": "Pytania z Infrastruktury Informatycznej",
       "questionCount": 104,
       "version": 1,
+      "contentHash": "b947c7ba9bf4dca218fdee17bad41c1eaf05f52d1cd0c9dff14b43cb2f064a1f",
       "group": "Semestr 5",
       "categories": [
         {
@@ -125,6 +130,7 @@
       "description": "Pytania z egzaminu z Infrastruktury Informatycznej",
       "questionCount": 92,
       "version": 1,
+      "contentHash": "c69d2180b112802c37200aef6ada3d368b581d32d75cce422189ceacdab2bad2",
       "group": "Semestr 5",
       "categories": [
         {
@@ -197,6 +203,7 @@
       "description": "Pytania z inżynierii oprogramowania",
       "questionCount": 90,
       "version": 1,
+      "contentHash": "80c967165bda855163a0ed3b7d2fcf06a29c9295bf24ae38e6860fe659e03c4b",
       "group": "Semestr 4",
       "defaultSelectionMode": "single"
     },
@@ -207,6 +214,7 @@
       "description": "Pytania z IPZ",
       "questionCount": 120,
       "version": 1,
+      "contentHash": "67ae46ec574c2ea5ca76da44894d965da3ce9df7175fe5efc0985e0822b74b10",
       "group": "Semestr 5",
       "defaultSelectionMode": "single"
     },
@@ -217,6 +225,7 @@
       "description": "Pytania z komunikacja człowiek maszyna",
       "questionCount": 66,
       "version": 1,
+      "contentHash": "91355762640095305d55619fad151a4d8f53a587b5aefd6c7fe5633a81dee5cd",
       "group": "Semestr 5",
       "defaultSelectionMode": "multiple"
     },
@@ -227,6 +236,7 @@
       "description": "Pytania z Podstaw ochrony informacji",
       "questionCount": 173,
       "version": 1,
+      "contentHash": "c7aa324785438a6afb9fc79e6802e6aa9dc900c4c7ec792583816bac98793b90",
       "group": "Semestr 5",
       "defaultSelectionMode": "single"
     },
@@ -237,6 +247,7 @@
       "description": "Pytania ze Sztuczna inteligencja (Bez Logiki)",
       "questionCount": 221,
       "version": 1,
+      "contentHash": "58330772db34d23ecc3a7804be8bd608fcf3edf8e0993ee8824a9e313d5b69e5",
       "group": "Semestr 5",
       "defaultSelectionMode": "single"
     },
@@ -247,6 +258,7 @@
       "description": "Wszystkie dotychczas pytania z Transmisji danych",
       "questionCount": 116,
       "version": 1,
+      "contentHash": "29502042e6ee435979cc60c1478d951697dce6b44061a5c9a5801b0e7c1f0850",
       "group": "Semestr 4",
       "defaultSelectionMode": "multiple"
     },
@@ -257,6 +269,7 @@
       "description": "Pytania z Transmisji danych z egzaminu z dnia 26.06.2025",
       "questionCount": 49,
       "version": 1,
+      "contentHash": "b64ef7ba4ed7e902bec21694394ad6b9294f0eb4c0f69cbbbe34f80408b63d53",
       "group": "Semestr 4",
       "defaultSelectionMode": "multiple"
     },
@@ -267,6 +280,7 @@
       "description": "Pytania z Zarządzania informacją",
       "questionCount": 88,
       "version": 1,
+      "contentHash": "64084e016813cec4b679311c57970c8962e6f93e6c0a305d3be5100a8d661943",
       "group": "Semestr 4",
       "defaultSelectionMode": "multiple"
     },
@@ -277,6 +291,7 @@
       "description": "Pytania z Zarządzania informacją 2",
       "questionCount": 86,
       "version": 1,
+      "contentHash": "6a670e05a47f660729d1d85d48c69600be8b1a1d60f35bfb29932a5878d72606",
       "group": "Semestr 5",
       "defaultSelectionMode": "multiple"
     }

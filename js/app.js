@@ -1272,6 +1272,8 @@ function normalizeManifestDeckEntry(entry = null) {
     questionCount: Number.isFinite(entry.questionCount) ? Math.max(0, Math.floor(entry.questionCount)) : 0,
     version: Number(entry.version) || 1,
   };
+  const contentHash = String(entry.contentHash || '').trim();
+  if (contentHash) normalized.contentHash = contentHash;
   const group = normalizeDeckGroup(entry.group);
   if (group) normalized.group = group;
   if (Array.isArray(entry.categories)) normalized.categories = entry.categories;
@@ -1396,6 +1398,7 @@ function applyPublicDeckManifestToLocal(manifestDecks = [], visibilityMap = new 
     if (entry.group) deckMeta.group = entry.group;
     if (Array.isArray(entry.categories)) deckMeta.categories = entry.categories;
     if (entry.defaultSelectionMode) deckMeta.defaultSelectionMode = entry.defaultSelectionMode;
+    if (entry.contentHash) deckMeta.contentHash = entry.contentHash;
     nextPublicDecks.push(deckMeta);
   }
 
@@ -1437,7 +1440,17 @@ async function ensurePublicDeckLoaded(deckId) {
       } else if (storage.peekCards(deckId).length === 0) {
         mergeCardsForQuestions(deckId, existingQuestions);
       }
-      return true;
+      const localVersion = Number(deckMeta?.version) || 0;
+      const manifestVersion = Number(manifestEntry?.version) || 0;
+      const localHash = String(deckMeta?.contentHash || '').trim();
+      const manifestHash = String(manifestEntry?.contentHash || '').trim();
+      const refreshByVersion = manifestVersion > 0 && localVersion > 0 && manifestVersion !== localVersion;
+      const refreshByHash = manifestHash.length > 0 && manifestHash !== localHash;
+      const shouldRefreshFromSource = !!manifestEntry && (refreshByVersion || refreshByHash);
+
+      if (!shouldRefreshFromSource) {
+        return true;
+      }
     }
 
     if (!manifestEntry) {
@@ -1478,6 +1491,10 @@ async function ensurePublicDeckLoaded(deckId) {
         questionCount: normalizedQuestions.length,
         version: Number(data.deck?.version) || Number(manifestEntry.version) || 1,
       };
+      const contentHash = String(manifestEntry.contentHash || '').trim();
+      if (contentHash) {
+        nextMeta.contentHash = contentHash;
+      }
       if (deckDefaultSelectionMode) {
         nextMeta.defaultSelectionMode = deckDefaultSelectionMode;
       }
