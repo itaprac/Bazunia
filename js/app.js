@@ -1399,6 +1399,12 @@ function applyPublicDeckManifestToLocal(manifestDecks = [], visibilityMap = new 
     if (Array.isArray(entry.categories)) deckMeta.categories = entry.categories;
     if (entry.defaultSelectionMode) deckMeta.defaultSelectionMode = entry.defaultSelectionMode;
     if (entry.contentHash) deckMeta.contentHash = entry.contentHash;
+    if (existing && typeof existing.syncedContentHash === 'string') {
+      deckMeta.syncedContentHash = existing.syncedContentHash;
+    }
+    if (existing && Number.isFinite(Number(existing.syncedVersion))) {
+      deckMeta.syncedVersion = Number(existing.syncedVersion);
+    }
     nextPublicDecks.push(deckMeta);
   }
 
@@ -1440,13 +1446,17 @@ async function ensurePublicDeckLoaded(deckId) {
       } else if (storage.peekCards(deckId).length === 0) {
         mergeCardsForQuestions(deckId, existingQuestions);
       }
-      const localVersion = Number(deckMeta?.version) || 0;
+      const syncedVersion = Number(deckMeta?.syncedVersion) || 0;
       const manifestVersion = Number(manifestEntry?.version) || 0;
-      const localHash = String(deckMeta?.contentHash || '').trim();
+      const syncedHash = String(deckMeta?.syncedContentHash || '').trim();
       const manifestHash = String(manifestEntry?.contentHash || '').trim();
-      const refreshByVersion = manifestVersion > 0 && localVersion > 0 && manifestVersion !== localVersion;
-      const refreshByHash = manifestHash.length > 0 && manifestHash !== localHash;
-      const shouldRefreshFromSource = !!manifestEntry && (refreshByVersion || refreshByHash);
+      const refreshByHash = manifestHash.length > 0 && manifestHash !== syncedHash;
+      const refreshByVersion = manifestHash.length === 0
+        && manifestVersion > 0
+        && syncedVersion > 0
+        && manifestVersion !== syncedVersion;
+      const missingSyncMarker = manifestHash.length > 0 && syncedHash.length === 0;
+      const shouldRefreshFromSource = !!manifestEntry && (refreshByHash || refreshByVersion || missingSyncMarker);
 
       if (!shouldRefreshFromSource) {
         return true;
@@ -1486,14 +1496,17 @@ async function ensurePublicDeckLoaded(deckId) {
     const decks = storage.getDecks();
     const idx = decks.findIndex((d) => d.id === deckId);
     if (idx >= 0) {
+      const manifestVersion = Number(manifestEntry.version) || 1;
       const nextMeta = {
         ...decks[idx],
         questionCount: normalizedQuestions.length,
-        version: Number(data.deck?.version) || Number(manifestEntry.version) || 1,
+        version: Number(data.deck?.version) || manifestVersion || 1,
+        syncedVersion: manifestVersion,
       };
       const contentHash = String(manifestEntry.contentHash || '').trim();
       if (contentHash) {
         nextMeta.contentHash = contentHash;
+        nextMeta.syncedContentHash = contentHash;
       }
       if (deckDefaultSelectionMode) {
         nextMeta.defaultSelectionMode = deckDefaultSelectionMode;
