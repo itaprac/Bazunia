@@ -32,6 +32,12 @@ function toPercent(numerator, denominator) {
   return Math.round((numerator / denominator) * 1000) / 10;
 }
 
+function dateKeyToStartOfDay(dateKey) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateKey || ''))) return NaN;
+  const dt = new Date(`${dateKey}T00:00:00`);
+  return Number.isNaN(dt.getTime()) ? NaN : startOfDay(dt.getTime());
+}
+
 /**
  * Build study queues for a deck. Returns { learning, review, newCards, counts }.
  */
@@ -445,6 +451,11 @@ export function getStatsDashboardData(options = {}) {
   totals.firstActivityDate = activeDates.length > 0 ? activeDates[0] : null;
   totals.lastActivityDate = activeDates.length > 0 ? activeDates[activeDates.length - 1] : null;
 
+  const firstActivityStart = dateKeyToStartOfDay(totals.firstActivityDate);
+  const historyDaysAvailable = Number.isFinite(firstActivityStart)
+    ? Math.max(1, Math.floor((todayStart - firstActivityStart) / DAY_MS) + 1)
+    : 0;
+
   let streak = 0;
   for (let offset = 0; ; offset++) {
     const dateKey = formatDate(todayStart - offset * DAY_MS);
@@ -467,11 +478,22 @@ export function getStatsDashboardData(options = {}) {
     return bDate.localeCompare(aDate);
   });
 
+  const activityByDate = {};
+  for (const [dateKey, count] of activityByDay.entries()) {
+    if (count > 0) {
+      activityByDate[dateKey] = count;
+    }
+  }
+
   return {
     totals,
     chart: {
       days: chartDays,
       maxAnswers: chartMax,
+      activityByDate,
+      today: formatDate(todayStart),
+      defaultRangeDays: 60,
+      historyDaysAvailable,
     },
     decks: deckRows,
     generatedAt: Date.now(),

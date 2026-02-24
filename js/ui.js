@@ -2149,75 +2149,28 @@ function formatStatsDate(value, options = {}) {
   });
 }
 
-function bindStatsChartInteractions(root) {
-  const container = root instanceof Element ? root : document;
-  const chartWrap = container.querySelector('.stats-chart-interactive');
-  const tooltip = chartWrap?.querySelector('.stats-chart-tooltip');
-  if (!chartWrap || !tooltip) return;
-
-  const columns = Array.from(chartWrap.querySelectorAll('.stats-chart-col'));
-  let activeCol = null;
-
-  const clearActive = () => {
-    if (!activeCol) return;
-    activeCol.classList.remove('is-hovered');
-    activeCol = null;
-  };
-
-  const hideTooltip = () => {
-    clearActive();
-    tooltip.classList.remove('visible');
-    tooltip.setAttribute('hidden', '');
-  };
-
-  const setTooltipPosition = (target, event = null) => {
-    const wrapRect = chartWrap.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
-    const sourceX = event?.clientX ?? (targetRect.left + targetRect.width / 2);
-    const sourceY = targetRect.top;
-
-    const x = Math.max(14, Math.min(wrapRect.width - 14, sourceX - wrapRect.left));
-    const y = Math.max(4, sourceY - wrapRect.top - 8);
-
-    tooltip.style.left = `${x}px`;
-    tooltip.style.top = `${y}px`;
-  };
-
-  const showTooltip = (target, event = null) => {
-    if (!(target instanceof HTMLElement)) return;
-    clearActive();
-    activeCol = target;
-    target.classList.add('is-hovered');
-
-    const dateLabel = String(target.dataset.dateLabel || target.dataset.date || 'brak daty');
-    const answers = Math.max(0, Number(target.dataset.answers) || 0);
-    tooltip.textContent = `${dateLabel} • ${answers} odpowiedzi`;
-    setTooltipPosition(target, event);
-    tooltip.removeAttribute('hidden');
-    tooltip.classList.add('visible');
-  };
-
-  columns.forEach((col) => {
-    col.addEventListener('mouseenter', (event) => showTooltip(col, event));
-    col.addEventListener('mousemove', (event) => showTooltip(col, event));
-    col.addEventListener('focus', () => showTooltip(col));
-    col.addEventListener('click', (event) => showTooltip(col, event));
-    col.addEventListener('mouseleave', () => {
-      if (document.activeElement !== col) hideTooltip();
-    });
-    col.addEventListener('blur', () => hideTooltip());
-  });
+function formatStatsDateKey(timestamp = Date.now()) {
+  const dt = new Date(timestamp);
+  const y = dt.getFullYear();
+  const m = String(dt.getMonth() + 1).padStart(2, '0');
+  const d = String(dt.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 }
 
 export function renderStatsDashboard(model = {}, options = {}) {
   const totals = model?.totals || {};
   const chart = model?.chart || {};
   const chartDays = Array.isArray(chart.days) ? chart.days : [];
+  const chartActivityByDate = chart?.activityByDate && typeof chart.activityByDate === 'object'
+    ? chart.activityByDate
+    : null;
   const decks = Array.isArray(model?.decks) ? model.decks : [];
-  const maxAnswers = Number(chart.maxAnswers) > 0 ? Number(chart.maxAnswers) : 0;
   const hasActivity = Number(totals.totalAnswers) > 0;
   const generatedAtLabel = formatDateTime(model?.generatedAt);
   const includeInactiveDecks = options.includeInactiveDecks !== false;
+  const dayRanges = [30, 60, 90, 180];
+  const requestedDefaultRange = Number(chart?.defaultRangeDays);
+  const defaultRange = dayRanges.includes(requestedDefaultRange) ? requestedDefaultRange : 60;
 
   const scopeLabel = {
     public: 'Ogólna',
@@ -2243,28 +2196,14 @@ export function renderStatsDashboard(model = {}, options = {}) {
     </article>
   `).join('');
 
-  const chartBarsHtml = chartDays.map((day, idx) => {
-    const answers = Math.max(0, Number(day?.answers) || 0);
-    const heightPct = maxAnswers > 0 ? Math.round((answers / maxAnswers) * 1000) / 10 : 0;
-    const showTick = idx % 10 === 0 || idx === chartDays.length - 1;
-    const tickLabel = showTick ? formatStatsDate(day?.date, { compact: true }) : '&nbsp;';
-    const fullDateLabel = formatStatsDate(day?.date);
-    return `
-      <button
-        class="stats-chart-col"
-        type="button"
-        data-date="${escapeAttr(day?.date || '')}"
-        data-date-label="${escapeAttr(fullDateLabel)}"
-        data-answers="${answers}"
-        aria-label="${escapeAttr(`${fullDateLabel}: ${answers} odpowiedzi`)}"
-      >
-        <div class="stats-chart-bar-wrap">
-          <div class="stats-chart-bar${answers > 0 ? ' active' : ''}" style="height: ${heightPct}%"></div>
-        </div>
-        <div class="stats-chart-tick">${tickLabel}</div>
-      </button>
-    `;
-  }).join('');
+  const rangeButtonsHtml = dayRanges.map((days) => `
+    <button
+      type="button"
+      class="stats-range-btn${days === defaultRange ? ' active' : ''}"
+      data-range-days="${days}"
+      aria-pressed="${days === defaultRange ? 'true' : 'false'}"
+    >${days} dni</button>
+  `).join('');
 
   const visibleDecks = includeInactiveDecks
     ? decks
@@ -2302,14 +2241,13 @@ export function renderStatsDashboard(model = {}, options = {}) {
 
       <section class="stats-panel">
         <div class="stats-panel-head">
-          <h3 class="stats-panel-title">Aktywność (ostatnie 60 dni)</h3>
+          <h3 class="stats-panel-title" id="stats-chart-title">Aktywność (ostatnie ${defaultRange} dni)</h3>
           <div class="stats-panel-subtitle">Dzienna liczba ocenionych odpowiedzi</div>
         </div>
-        <div class="stats-chart-interactive">
-          <div class="stats-chart-tooltip" hidden></div>
-          <div class="stats-chart">
-            ${chartBarsHtml}
-          </div>
+        <div class="stats-range-controls" role="group" aria-label="Zakres wykresu aktywności">
+          ${rangeButtonsHtml}
+        </div>
+        <div class="stats-chart" id="stats-chart-bars">
         </div>
       </section>
 
@@ -2346,7 +2284,96 @@ export function renderStatsDashboard(model = {}, options = {}) {
     </section>
   `;
 
-  bindStatsChartInteractions(document.getElementById('stats-content'));
+  const statsRoot = document.getElementById('stats-content');
+  const chartBarsEl = statsRoot?.querySelector('#stats-chart-bars');
+  const chartTitleEl = statsRoot?.querySelector('#stats-chart-title');
+  const rangeButtons = Array.from(statsRoot?.querySelectorAll('.stats-range-btn') || []);
+  if (!chartBarsEl || !chartTitleEl || rangeButtons.length === 0) return;
+
+  const answerByDate = new Map();
+  if (chartActivityByDate) {
+    for (const [dateKey, value] of Object.entries(chartActivityByDate)) {
+      const safeValue = Math.max(0, Number(value) || 0);
+      if (safeValue > 0) {
+        answerByDate.set(dateKey, safeValue);
+      }
+    }
+  }
+  for (const day of chartDays) {
+    const dateKey = String(day?.date || '');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) continue;
+    if (answerByDate.has(dateKey)) continue;
+    answerByDate.set(dateKey, Math.max(0, Number(day?.answers) || 0));
+  }
+
+  const todayKey = (() => {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(String(chart?.today || ''))) {
+      return String(chart.today);
+    }
+    const lastModelDay = chartDays.length > 0 ? String(chartDays[chartDays.length - 1]?.date || '') : '';
+    if (/^\d{4}-\d{2}-\d{2}$/.test(lastModelDay)) return lastModelDay;
+    return formatStatsDateKey(Date.now());
+  })();
+
+  const dayMs = 24 * 60 * 60 * 1000;
+  const todayTsCandidate = new Date(`${todayKey}T00:00:00`).getTime();
+  const todayTs = Number.isNaN(todayTsCandidate) ? Date.now() : todayTsCandidate;
+
+  function buildSeries(rangeDays) {
+    const days = Math.max(1, Number(rangeDays) || defaultRange);
+    const series = [];
+    for (let offset = days - 1; offset >= 0; offset--) {
+      const dateKey = formatStatsDateKey(todayTs - offset * dayMs);
+      series.push({
+        date: dateKey,
+        answers: Math.max(0, Number(answerByDate.get(dateKey)) || 0),
+      });
+    }
+    return series;
+  }
+
+  function renderChart(rangeDays) {
+    const safeRange = dayRanges.includes(rangeDays) ? rangeDays : defaultRange;
+    const series = buildSeries(safeRange);
+    const maxAnswers = series.reduce((max, item) => Math.max(max, item.answers), 0);
+    const denominator = maxAnswers > 0 ? maxAnswers : 1;
+    const tickEvery = Math.max(1, Math.floor(safeRange / 6));
+
+    const barsHtml = series.map((day, idx) => {
+      const heightPct = Math.round((day.answers / denominator) * 1000) / 10;
+      const showTick = idx % tickEvery === 0 || idx === series.length - 1;
+      const tickLabel = showTick ? formatStatsDate(day.date, { compact: true }) : '&nbsp;';
+      const hoverLabel = `${formatStatsDate(day.date)} • ${formatStatsNumber(day.answers)} odpowiedzi`;
+      return `
+        <div class="stats-chart-col" title="${escapeAttr(hoverLabel)}" aria-label="${escapeAttr(hoverLabel)}">
+          <div class="stats-chart-bar-wrap">
+            <div class="stats-chart-bar${day.answers > 0 ? ' active' : ''}" style="height: ${heightPct}%"></div>
+          </div>
+          <div class="stats-chart-tick">${tickLabel}</div>
+        </div>
+      `;
+    }).join('');
+
+    chartBarsEl.style.gridTemplateColumns = `repeat(${safeRange}, minmax(0, 1fr))`;
+    chartBarsEl.innerHTML = barsHtml;
+    chartTitleEl.textContent = `Aktywność (ostatnie ${safeRange} dni)`;
+
+    rangeButtons.forEach((btn) => {
+      const btnRange = Number(btn.dataset.rangeDays);
+      const active = btnRange === safeRange;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  rangeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = Number(btn.dataset.rangeDays);
+      renderChart(selected);
+    });
+  });
+
+  renderChart(defaultRange);
 }
 
 // --- User/Profile ---
