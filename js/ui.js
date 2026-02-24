@@ -2115,6 +2115,8 @@ export function renderAppSettings(appSettings, defaults) {
 
 // --- Stats ---
 
+let statsActivityChart = null;
+
 function formatStatsNumber(value) {
   const num = Number(value);
   if (!Number.isFinite(num)) return '0';
@@ -2157,7 +2159,128 @@ function formatStatsDateKey(timestamp = Date.now()) {
   return `${y}-${m}-${d}`;
 }
 
+function destroyStatsActivityChart() {
+  if (!statsActivityChart) return;
+  statsActivityChart.destroy();
+  statsActivityChart = null;
+}
+
+function renderStatsActivityChart(canvasEl, series = []) {
+  if (!(canvasEl instanceof HTMLCanvasElement)) return;
+  const chartLib = window.Chart;
+  if (typeof chartLib !== 'function') {
+    const parent = canvasEl.parentElement;
+    if (parent) {
+      parent.innerHTML = '<div class="admin-empty">Nie udało się załadować biblioteki wykresów.</div>';
+    }
+    return;
+  }
+
+  const labels = series.map((day) => formatStatsDate(day.date, { compact: true }));
+  const fullDates = series.map((day) => formatStatsDate(day.date));
+  const values = series.map((day) => Math.max(0, Number(day.answers) || 0));
+  const bgColors = values.map((value) => (
+    value > 0
+      ? 'rgba(196, 93, 62, 0.45)'
+      : 'rgba(74, 111, 165, 0.08)'
+  ));
+  const borderColors = values.map((value) => (
+    value > 0
+      ? 'rgba(196, 93, 62, 0.9)'
+      : 'rgba(74, 111, 165, 0.2)'
+  ));
+
+  destroyStatsActivityChart();
+  const ctx = canvasEl.getContext('2d');
+  if (!ctx) return;
+
+  statsActivityChart = new chartLib(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor: bgColors,
+          borderColor: borderColors,
+          borderWidth: 1,
+          borderRadius: 6,
+          barPercentage: 0.72,
+          categoryPercentage: 0.92,
+          maxBarThickness: 18,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        tooltip: {
+          displayColors: false,
+          callbacks: {
+            title(items) {
+              const idx = items?.[0]?.dataIndex ?? 0;
+              return fullDates[idx] || '';
+            },
+            label(context) {
+              return `Odpowiedzi: ${formatStatsNumber(context?.parsed?.y ?? 0)}`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 8,
+            maxRotation: 0,
+            minRotation: 0,
+            color: '#a39d96',
+            font: {
+              size: 11,
+            },
+          },
+        },
+        y: {
+          beginAtZero: true,
+          grace: '10%',
+          border: {
+            display: false,
+          },
+          ticks: {
+            precision: 0,
+            color: '#a39d96',
+            callback(value) {
+              return formatStatsNumber(value);
+            },
+          },
+          grid: {
+            color: 'rgba(139, 134, 128, 0.18)',
+            drawBorder: false,
+          },
+        },
+      },
+    },
+  });
+}
+
 export function renderStatsDashboard(model = {}, options = {}) {
+  destroyStatsActivityChart();
+
   const totals = model?.totals || {};
   const chart = model?.chart || {};
   const chartDays = Array.isArray(chart.days) ? chart.days : [];
@@ -2247,7 +2370,10 @@ export function renderStatsDashboard(model = {}, options = {}) {
         <div class="stats-range-controls" role="group" aria-label="Zakres wykresu aktywności">
           ${rangeButtonsHtml}
         </div>
-        <div class="stats-chart" id="stats-chart-bars">
+        <div class="stats-chart">
+          <div class="stats-chart-canvas-wrap">
+            <canvas id="stats-chart-canvas" aria-label="Wykres aktywności dziennej" role="img"></canvas>
+          </div>
         </div>
       </section>
 
@@ -2285,10 +2411,10 @@ export function renderStatsDashboard(model = {}, options = {}) {
   `;
 
   const statsRoot = document.getElementById('stats-content');
-  const chartBarsEl = statsRoot?.querySelector('#stats-chart-bars');
+  const chartCanvasEl = statsRoot?.querySelector('#stats-chart-canvas');
   const chartTitleEl = statsRoot?.querySelector('#stats-chart-title');
   const rangeButtons = Array.from(statsRoot?.querySelectorAll('.stats-range-btn') || []);
-  if (!chartBarsEl || !chartTitleEl || rangeButtons.length === 0) return;
+  if (!chartCanvasEl || !chartTitleEl || rangeButtons.length === 0) return;
 
   const answerByDate = new Map();
   if (chartActivityByDate) {
@@ -2335,27 +2461,7 @@ export function renderStatsDashboard(model = {}, options = {}) {
   function renderChart(rangeDays) {
     const safeRange = dayRanges.includes(rangeDays) ? rangeDays : defaultRange;
     const series = buildSeries(safeRange);
-    const maxAnswers = series.reduce((max, item) => Math.max(max, item.answers), 0);
-    const denominator = maxAnswers > 0 ? maxAnswers : 1;
-    const tickEvery = Math.max(1, Math.floor(safeRange / 6));
-
-    const barsHtml = series.map((day, idx) => {
-      const heightPct = Math.round((day.answers / denominator) * 1000) / 10;
-      const showTick = idx % tickEvery === 0 || idx === series.length - 1;
-      const tickLabel = showTick ? formatStatsDate(day.date, { compact: true }) : '&nbsp;';
-      const hoverLabel = `${formatStatsDate(day.date)} • ${formatStatsNumber(day.answers)} odpowiedzi`;
-      return `
-        <div class="stats-chart-col" title="${escapeAttr(hoverLabel)}" aria-label="${escapeAttr(hoverLabel)}">
-          <div class="stats-chart-bar-wrap">
-            <div class="stats-chart-bar${day.answers > 0 ? ' active' : ''}" style="height: ${heightPct}%"></div>
-          </div>
-          <div class="stats-chart-tick">${tickLabel}</div>
-        </div>
-      `;
-    }).join('');
-
-    chartBarsEl.style.gridTemplateColumns = `repeat(${safeRange}, minmax(0, 1fr))`;
-    chartBarsEl.innerHTML = barsHtml;
+    renderStatsActivityChart(chartCanvasEl, series);
     chartTitleEl.textContent = `Aktywność (ostatnie ${safeRange} dni)`;
 
     rangeButtons.forEach((btn) => {
