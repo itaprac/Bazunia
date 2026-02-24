@@ -2113,6 +2113,169 @@ export function renderAppSettings(appSettings, defaults) {
   `;
 }
 
+// --- Stats ---
+
+function formatStatsNumber(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return '0';
+  return Math.max(0, Math.round(num)).toLocaleString('pl-PL');
+}
+
+function formatStatsPercent(value) {
+  const num = Number(value);
+  const safe = Number.isFinite(num) ? Math.max(0, num) : 0;
+  const rounded = Math.round(safe * 10) / 10;
+  const minDigits = Number.isInteger(rounded) ? 0 : 1;
+  return `${rounded.toLocaleString('pl-PL', {
+    minimumFractionDigits: minDigits,
+    maximumFractionDigits: 1,
+  })}%`;
+}
+
+function formatStatsDate(value, options = {}) {
+  if (!value) return 'brak danych';
+  const text = String(value);
+  const parsed = /^\d{4}-\d{2}-\d{2}$/.test(text)
+    ? new Date(`${text}T00:00:00`)
+    : new Date(text);
+  if (Number.isNaN(parsed.getTime())) return text;
+  if (options.compact === true) {
+    return parsed.toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' });
+  }
+  return parsed.toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+}
+
+export function renderStatsDashboard(model = {}, options = {}) {
+  const totals = model?.totals || {};
+  const chart = model?.chart || {};
+  const chartDays = Array.isArray(chart.days) ? chart.days : [];
+  const decks = Array.isArray(model?.decks) ? model.decks : [];
+  const maxAnswers = Number(chart.maxAnswers) > 0 ? Number(chart.maxAnswers) : 0;
+  const hasActivity = Number(totals.totalAnswers) > 0;
+  const generatedAtLabel = formatDateTime(model?.generatedAt);
+  const includeInactiveDecks = options.includeInactiveDecks !== false;
+
+  const scopeLabel = {
+    public: 'Ogólna',
+    private: 'Prywatna',
+    subscribed: 'Subskrybowana',
+  };
+
+  const kpiItems = [
+    { label: 'Odpowiedzi łącznie', value: formatStatsNumber(totals.totalAnswers) },
+    { label: 'Skuteczność', value: formatStatsPercent(totals.successRatePct) },
+    { label: 'Nowe karty', value: formatStatsNumber(totals.newStudied) },
+    { label: 'Powtórki', value: formatStatsNumber(totals.reviewsDone) },
+    { label: 'Kroki nauki', value: formatStatsNumber(totals.learningSteps) },
+    { label: 'Aktywne dni', value: formatStatsNumber(totals.activeDays) },
+    { label: 'Aktualna passa', value: `${formatStatsNumber(totals.currentStreakDays)} dni` },
+    { label: 'Ostatnia aktywność', value: formatStatsDate(totals.lastActivityDate) },
+  ];
+
+  const kpiHtml = kpiItems.map((item) => `
+    <article class="stats-kpi-card">
+      <div class="stats-kpi-value">${escapeHtml(item.value)}</div>
+      <div class="stats-kpi-label">${escapeHtml(item.label)}</div>
+    </article>
+  `).join('');
+
+  const chartBarsHtml = chartDays.map((day, idx) => {
+    const answers = Math.max(0, Number(day?.answers) || 0);
+    const heightPct = maxAnswers > 0 ? Math.round((answers / maxAnswers) * 1000) / 10 : 0;
+    const showTick = idx % 10 === 0 || idx === chartDays.length - 1;
+    const tickLabel = showTick ? formatStatsDate(day?.date, { compact: true }) : '&nbsp;';
+    return `
+      <div class="stats-chart-col" aria-label="${escapeAttr(`${day?.date || 'brak daty'}: ${answers} odpowiedzi`)}}">
+        <div class="stats-chart-bar-wrap">
+          <div class="stats-chart-bar${answers > 0 ? ' active' : ''}" style="height: ${heightPct}%"></div>
+        </div>
+        <div class="stats-chart-tick">${tickLabel}</div>
+      </div>
+    `;
+  }).join('');
+
+  const visibleDecks = includeInactiveDecks
+    ? decks
+    : decks.filter((row) => Number(row.totalAnswers) > 0 || Number(row.dueToday) > 0);
+
+  const tableRowsHtml = visibleDecks.map((row) => `
+    <tr>
+      <td>${escapeHtml(String(row.deckName || row.deckId || '-'))}</td>
+      <td>${escapeHtml(scopeLabel[row.scope] || 'Prywatna')}</td>
+      <td>${formatStatsNumber(row.totalAnswers)}</td>
+      <td>${formatStatsPercent(row.successRatePct)}</td>
+      <td>${formatStatsNumber(row.newStudied)}</td>
+      <td>${formatStatsNumber(row.reviewsDone)}</td>
+      <td>${formatStatsNumber(row.learningSteps)}</td>
+      <td>${formatStatsNumber(row.dueToday)}</td>
+      <td>${escapeHtml(formatStatsDate(row.lastActivityDate))}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('stats-content').innerHTML = `
+    <section class="stats-dashboard">
+      <div class="stats-header-meta">Wygenerowano: ${escapeHtml(generatedAtLabel)}</div>
+
+      <div class="stats-kpi-grid">
+        ${kpiHtml}
+      </div>
+
+      ${hasActivity ? '' : `
+        <div class="empty-state compact">
+          <div class="empty-state-text">
+            Brak aktywności Anki w zapisanych danych. Rozpocznij naukę, aby zobaczyć statystyki.
+          </div>
+        </div>
+      `}
+
+      <section class="stats-panel">
+        <div class="stats-panel-head">
+          <h3 class="stats-panel-title">Aktywność (ostatnie 60 dni)</h3>
+          <div class="stats-panel-subtitle">Dzienna liczba ocenionych odpowiedzi</div>
+        </div>
+        <div class="stats-chart">
+          ${chartBarsHtml}
+        </div>
+      </section>
+
+      <section class="stats-panel">
+        <div class="stats-panel-head">
+          <h3 class="stats-panel-title">Talie</h3>
+          <div class="stats-panel-subtitle">Sortowanie: liczba odpowiedzi malejąco, potem data aktywności</div>
+        </div>
+        ${visibleDecks.length === 0 ? `
+          <div class="admin-empty">Brak talii do wyświetlenia.</div>
+        ` : `
+          <div class="stats-table-wrap">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Talia</th>
+                  <th>Zakres</th>
+                  <th>Odpowiedzi</th>
+                  <th>Skuteczność</th>
+                  <th>Nowe</th>
+                  <th>Powtórki</th>
+                  <th>Kroki</th>
+                  <th>Na dziś</th>
+                  <th>Ostatnia aktywność</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+          </div>
+        `}
+      </section>
+    </section>
+  `;
+}
+
 // --- User/Profile ---
 
 function formatDateTime(value) {

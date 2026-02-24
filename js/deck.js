@@ -15,6 +15,23 @@ function ensureDeckIdOnCards(deckId, cards) {
   return { normalized, changed };
 }
 
+function toSafeCount(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num) || num <= 0) return 0;
+  return Math.floor(num);
+}
+
+function toScope(value) {
+  return value === 'public' || value === 'private' || value === 'subscribed'
+    ? value
+    : 'private';
+}
+
+function toPercent(numerator, denominator) {
+  if (denominator <= 0) return 0;
+  return Math.round((numerator / denominator) * 1000) / 10;
+}
+
 /**
  * Build study queues for a deck. Returns { learning, review, newCards, counts }.
  */
@@ -307,6 +324,157 @@ export function getTodayStats(deckId) {
     hardCount: 0,
     goodCount: 0,
     easyCount: 0,
+  };
+}
+
+/**
+ * Build aggregated model for global statistics dashboard.
+ */
+export function getStatsDashboardData(options = {}) {
+  const decks = Array.isArray(options.decks) ? options.decks : [];
+  const includeFlagged = options.includeFlagged === true;
+  const getDeckSettings = typeof options.getDeckSettings === 'function'
+    ? options.getDeckSettings
+    : (() => DEFAULT_SETTINGS);
+
+  const totals = {
+    totalAnswers: 0,
+    againCount: 0,
+    hardCount: 0,
+    goodCount: 0,
+    easyCount: 0,
+    successRatePct: 0,
+    newStudied: 0,
+    reviewsDone: 0,
+    learningSteps: 0,
+    activeDays: 0,
+    currentStreakDays: 0,
+    firstActivityDate: null,
+    lastActivityDate: null,
+  };
+
+  const activityByDay = new Map();
+  const deckRows = [];
+  const todayStart = startOfDay(Date.now());
+  const chartDays = [];
+  let chartMax = 0;
+
+  for (const deckMeta of decks) {
+    if (!deckMeta || typeof deckMeta !== 'object') continue;
+    const deckId = String(deckMeta.id || '').trim();
+    if (!deckId) continue;
+
+    const stats = storage.getStats(deckId);
+    const perDay = stats && typeof stats === 'object' ? stats : {};
+    const row = {
+      deckId,
+      deckName: String(deckMeta.name || deckId),
+      scope: toScope(deckMeta.scope),
+      totalAnswers: 0,
+      successRatePct: 0,
+      newStudied: 0,
+      reviewsDone: 0,
+      learningSteps: 0,
+      lastActivityDate: null,
+      dueToday: 0,
+    };
+
+    for (const [dateKey, statRaw] of Object.entries(perDay)) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) continue;
+      const stat = statRaw && typeof statRaw === 'object' ? statRaw : {};
+
+      const againCount = toSafeCount(stat.againCount);
+      const hardCount = toSafeCount(stat.hardCount);
+      const goodCount = toSafeCount(stat.goodCount);
+      const easyCount = toSafeCount(stat.easyCount);
+      const totalAnswers = againCount + hardCount + goodCount + easyCount;
+
+      const newStudied = toSafeCount(stat.newStudied);
+      const reviewsDone = toSafeCount(stat.reviewsDone);
+      const learningSteps = toSafeCount(stat.learningSteps);
+
+      row.againCount = (row.againCount || 0) + againCount;
+      row.hardCount = (row.hardCount || 0) + hardCount;
+      row.goodCount = (row.goodCount || 0) + goodCount;
+      row.easyCount = (row.easyCount || 0) + easyCount;
+      row.totalAnswers += totalAnswers;
+      row.newStudied += newStudied;
+      row.reviewsDone += reviewsDone;
+      row.learningSteps += learningSteps;
+
+      totals.againCount += againCount;
+      totals.hardCount += hardCount;
+      totals.goodCount += goodCount;
+      totals.easyCount += easyCount;
+      totals.newStudied += newStudied;
+      totals.reviewsDone += reviewsDone;
+      totals.learningSteps += learningSteps;
+
+      if (totalAnswers > 0) {
+        const prev = activityByDay.get(dateKey) || 0;
+        activityByDay.set(dateKey, prev + totalAnswers);
+        if (!row.lastActivityDate || dateKey > row.lastActivityDate) {
+          row.lastActivityDate = dateKey;
+        }
+      }
+    }
+
+    row.successRatePct = toPercent(
+      (row.goodCount || 0) + (row.easyCount || 0),
+      row.totalAnswers
+    );
+    delete row.againCount;
+    delete row.hardCount;
+    delete row.goodCount;
+    delete row.easyCount;
+
+    const deckStats = getDeckStats(deckId, getDeckSettings(deckId), includeFlagged);
+    row.dueToday = toSafeCount(deckStats?.dueToday);
+    deckRows.push(row);
+  }
+
+  totals.totalAnswers = totals.againCount + totals.hardCount + totals.goodCount + totals.easyCount;
+  totals.successRatePct = toPercent(totals.goodCount + totals.easyCount, totals.totalAnswers);
+
+  const activeDates = Array.from(activityByDay.entries())
+    .filter(([, count]) => count > 0)
+    .map(([date]) => date)
+    .sort((a, b) => (a < b ? -1 : 1));
+
+  totals.activeDays = activeDates.length;
+  totals.firstActivityDate = activeDates.length > 0 ? activeDates[0] : null;
+  totals.lastActivityDate = activeDates.length > 0 ? activeDates[activeDates.length - 1] : null;
+
+  let streak = 0;
+  for (let offset = 0; ; offset++) {
+    const dateKey = formatDate(todayStart - offset * DAY_MS);
+    if ((activityByDay.get(dateKey) || 0) <= 0) break;
+    streak++;
+  }
+  totals.currentStreakDays = streak;
+
+  for (let offset = 59; offset >= 0; offset--) {
+    const dateKey = formatDate(todayStart - offset * DAY_MS);
+    const answers = activityByDay.get(dateKey) || 0;
+    chartDays.push({ date: dateKey, answers });
+    if (answers > chartMax) chartMax = answers;
+  }
+
+  deckRows.sort((a, b) => {
+    if (b.totalAnswers !== a.totalAnswers) return b.totalAnswers - a.totalAnswers;
+    const aDate = a.lastActivityDate || '';
+    const bDate = b.lastActivityDate || '';
+    return bDate.localeCompare(aDate);
+  });
+
+  return {
+    totals,
+    chart: {
+      days: chartDays,
+      maxAnswers: chartMax,
+    },
+    decks: deckRows,
+    generatedAt: Date.now(),
   };
 }
 

@@ -24,6 +24,7 @@ import {
   renderAppSettings,
   renderQuestionEditor,
   renderUserProfile,
+  renderStatsDashboard,
   renderAdminPanel,
   setDeckHeaderLabel,
   formatKeyName,
@@ -835,6 +836,7 @@ function getShellNavKey(viewId = 'deck-list') {
   const normalized = String(viewId || 'deck-list');
   if (normalized === 'app-settings') return 'settings';
   if (normalized === 'docs') return 'docs';
+  if (normalized === 'stats') return 'stats';
   if (normalized === 'user') return null;
   if (normalized === 'admin') return 'admin';
   if (normalized === 'auth') return null;
@@ -872,6 +874,7 @@ function getTopbarCopy(viewId = 'deck-list') {
     browse: { title: 'Przeglądanie', subtitle: 'Lista pytań, filtracja i edycja treści' },
     settings: { title: 'Ustawienia talii', subtitle: 'Parametry SRS i konfiguracja decka' },
     'app-settings': { title: 'Ustawienia aplikacji', subtitle: 'Wygląd, skróty i zachowanie UI' },
+    stats: { title: 'Statystyki', subtitle: 'Podsumowanie aktywności i postęp nauki Anki' },
     user: { title: 'Profil użytkownika', subtitle: 'Tożsamość konta i preferencje' },
     admin: { title: 'Panel admina', subtitle: 'Zarządzanie użytkownikami i widocznością talii' },
     docs: { title: 'Dokumentacja', subtitle: 'Zasady działania i przewodnik po funkcjach' },
@@ -982,7 +985,7 @@ function bindShellNavigationEvents() {
   const statsBtn = document.getElementById('btn-nav-stats');
   if (statsBtn) {
     statsBtn.addEventListener('click', () => {
-      showNotification('Sekcja statystyk będzie dostępna wkrótce.', 'info');
+      navigateToStats();
     });
   }
 
@@ -1108,6 +1111,8 @@ function handleStartupOpen() {
     navigateToAppSettings();
   } else if (open === 'docs') {
     navigateToDocs();
+  } else if (open === 'stats') {
+    navigateToStats();
   } else if (open === 'import') {
     triggerPrivateImport();
   }
@@ -3482,6 +3487,37 @@ function returnFromSettings() {
   }
 }
 
+// --- Stats ---
+
+function navigateToStats() {
+  if (sessionMode !== 'user' || !currentUser) {
+    showAuthPanel('Statystyki są dostępne po zalogowaniu.', 'info');
+    return;
+  }
+
+  closeUserMenu();
+  const includedDecks = storage.getDecks().reduce((acc, deckMeta) => {
+    const scope = getDeckScope(deckMeta);
+    if (scope !== 'public' && scope !== 'private' && scope !== 'subscribed') {
+      return acc;
+    }
+    if (scope === 'private' && deckMeta.isArchived === true) {
+      return acc;
+    }
+    acc.push({ ...deckMeta, scope });
+    return acc;
+  }, []);
+
+  const model = deck.getStatsDashboardData({
+    decks: includedDecks,
+    includeFlagged: appSettings.flaggedInAnki,
+    getDeckSettings: (deckId) => getSettingsForDeck(deckId),
+  });
+
+  showView('stats');
+  renderStatsDashboard(model);
+}
+
 // --- App Settings ---
 
 function navigateToAppSettings() {
@@ -3499,6 +3535,8 @@ function returnFromAppSettings() {
   // For simple views, just show them back. For deck-list, re-render.
   if (returnTo === 'deck-list') {
     navigateToDeckList();
+  } else if (returnTo === 'stats') {
+    navigateToStats();
   } else {
     showView(returnTo);
   }
@@ -4752,6 +4790,9 @@ function bindGlobalEvents() {
   });
   document.getElementById('btn-back-from-app-settings').addEventListener('click', () => {
     returnFromAppSettings();
+  });
+  document.getElementById('btn-back-from-stats').addEventListener('click', () => {
+    navigateToDeckList();
   });
   document.getElementById('btn-back-from-docs').addEventListener('click', () => {
     returnFromDocs();
