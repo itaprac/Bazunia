@@ -270,6 +270,11 @@ export function renderDeckList(decks, statsMap, options = {}) {
         Eksportuj JSON
       </button>
     `);
+    menuItems.push(`
+      <button class="deck-card-menu-item btn-deck-stats" data-deck-id="${escapeAttr(deck.id)}" type="button">
+        Statystyki
+      </button>
+    `);
 
     if (canOpenDeck) {
       menuItems.push(`
@@ -2290,6 +2295,9 @@ export function renderStatsDashboard(model = {}, options = {}) {
   const decks = Array.isArray(model?.decks) ? model.decks : [];
   const hasActivity = Number(totals.totalAnswers) > 0;
   const generatedAtLabel = formatDateTime(model?.generatedAt);
+  const focusDeckId = String(options.focusDeckId || '').trim();
+  const focusDeckName = String(options.focusDeckName || '').trim();
+  const focusDeckLabel = focusDeckName || focusDeckId;
   const includeInactiveDecks = options.includeInactiveDecks !== false;
   const dayRanges = [30, 60, 90, 180];
   const requestedDefaultRange = Number(chart?.defaultRangeDays);
@@ -2349,6 +2357,7 @@ export function renderStatsDashboard(model = {}, options = {}) {
   document.getElementById('stats-content').innerHTML = `
     <section class="stats-dashboard">
       <div class="stats-header-meta">Wygenerowano: ${escapeHtml(generatedAtLabel)}</div>
+      ${focusDeckLabel ? `<div class="stats-header-meta">Zakres: ${escapeHtml(focusDeckLabel)}</div>` : ''}
 
       <div class="stats-kpi-grid">
         ${kpiHtml}

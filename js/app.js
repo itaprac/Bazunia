@@ -3489,24 +3489,43 @@ function returnFromSettings() {
 
 // --- Stats ---
 
-function navigateToStats() {
+function navigateToStats(options = {}) {
   if (sessionMode !== 'user' || !currentUser) {
     showAuthPanel('Statystyki są dostępne po zalogowaniu.', 'info');
     return;
   }
 
   closeUserMenu();
-  const includedDecks = storage.getDecks().reduce((acc, deckMeta) => {
-    const scope = getDeckScope(deckMeta);
+  const focusDeckId = String(options.deckId || '').trim();
+  let focusDeckName = '';
+  let includedDecks = [];
+
+  if (focusDeckId) {
+    const focusedDeckMeta = getDeckMeta(focusDeckId);
+    if (!focusedDeckMeta) {
+      showNotification('Nie znaleziono talii do statystyk.', 'error');
+      return;
+    }
+    const scope = getDeckScope(focusedDeckMeta);
     if (scope !== 'public' && scope !== 'private' && scope !== 'subscribed') {
-      return acc;
+      showNotification('Ta talia nie obsługuje statystyk.', 'info');
+      return;
     }
-    if (scope === 'private' && deckMeta.isArchived === true) {
+    includedDecks = [{ ...focusedDeckMeta, scope }];
+    focusDeckName = String(focusedDeckMeta.name || focusedDeckMeta.id || focusDeckId);
+  } else {
+    includedDecks = storage.getDecks().reduce((acc, deckMeta) => {
+      const scope = getDeckScope(deckMeta);
+      if (scope !== 'public' && scope !== 'private' && scope !== 'subscribed') {
+        return acc;
+      }
+      if (scope === 'private' && deckMeta.isArchived === true) {
+        return acc;
+      }
+      acc.push({ ...deckMeta, scope });
       return acc;
-    }
-    acc.push({ ...deckMeta, scope });
-    return acc;
-  }, []);
+    }, []);
+  }
 
   const model = deck.getStatsDashboardData({
     decks: includedDecks,
@@ -3515,7 +3534,10 @@ function navigateToStats() {
   });
 
   showView('stats');
-  renderStatsDashboard(model);
+  renderStatsDashboard(model, {
+    focusDeckId: focusDeckId || '',
+    focusDeckName,
+  });
 }
 
 // --- App Settings ---
@@ -5270,6 +5292,27 @@ function bindDeckListEvents() {
       const deckId = btn.dataset.deckId;
       if (!deckId) return;
       await exportDeckToJSON(deckId);
+    });
+  });
+
+  document.querySelectorAll('.btn-deck-stats').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const deckId = String(btn.dataset.deckId || '').trim();
+      if (!deckId) return;
+      const deckMeta = getDeckMeta(deckId);
+      if (!deckMeta) return;
+
+      const scope = getDeckScope(deckMeta);
+      if (scope === 'public' && sessionMode === 'user' && currentUser) {
+        try {
+          await ensurePublicDeckLoaded(deckId);
+        } catch (error) {
+          showNotification(`Nie udało się załadować talii: ${error.message}`, 'error');
+          return;
+        }
+      }
+
+      navigateToStats({ deckId });
     });
   });
 
