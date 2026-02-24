@@ -2149,6 +2149,66 @@ function formatStatsDate(value, options = {}) {
   });
 }
 
+function bindStatsChartInteractions(root) {
+  const container = root instanceof Element ? root : document;
+  const chartWrap = container.querySelector('.stats-chart-interactive');
+  const tooltip = chartWrap?.querySelector('.stats-chart-tooltip');
+  if (!chartWrap || !tooltip) return;
+
+  const columns = Array.from(chartWrap.querySelectorAll('.stats-chart-col'));
+  let activeCol = null;
+
+  const clearActive = () => {
+    if (!activeCol) return;
+    activeCol.classList.remove('is-hovered');
+    activeCol = null;
+  };
+
+  const hideTooltip = () => {
+    clearActive();
+    tooltip.classList.remove('visible');
+    tooltip.setAttribute('hidden', '');
+  };
+
+  const setTooltipPosition = (target, event = null) => {
+    const wrapRect = chartWrap.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const sourceX = event?.clientX ?? (targetRect.left + targetRect.width / 2);
+    const sourceY = targetRect.top;
+
+    const x = Math.max(14, Math.min(wrapRect.width - 14, sourceX - wrapRect.left));
+    const y = Math.max(4, sourceY - wrapRect.top - 8);
+
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
+  };
+
+  const showTooltip = (target, event = null) => {
+    if (!(target instanceof HTMLElement)) return;
+    clearActive();
+    activeCol = target;
+    target.classList.add('is-hovered');
+
+    const dateLabel = String(target.dataset.dateLabel || target.dataset.date || 'brak daty');
+    const answers = Math.max(0, Number(target.dataset.answers) || 0);
+    tooltip.textContent = `${dateLabel} • ${answers} odpowiedzi`;
+    setTooltipPosition(target, event);
+    tooltip.removeAttribute('hidden');
+    tooltip.classList.add('visible');
+  };
+
+  columns.forEach((col) => {
+    col.addEventListener('mouseenter', (event) => showTooltip(col, event));
+    col.addEventListener('mousemove', (event) => showTooltip(col, event));
+    col.addEventListener('focus', () => showTooltip(col));
+    col.addEventListener('click', (event) => showTooltip(col, event));
+    col.addEventListener('mouseleave', () => {
+      if (document.activeElement !== col) hideTooltip();
+    });
+    col.addEventListener('blur', () => hideTooltip());
+  });
+}
+
 export function renderStatsDashboard(model = {}, options = {}) {
   const totals = model?.totals || {};
   const chart = model?.chart || {};
@@ -2188,13 +2248,21 @@ export function renderStatsDashboard(model = {}, options = {}) {
     const heightPct = maxAnswers > 0 ? Math.round((answers / maxAnswers) * 1000) / 10 : 0;
     const showTick = idx % 10 === 0 || idx === chartDays.length - 1;
     const tickLabel = showTick ? formatStatsDate(day?.date, { compact: true }) : '&nbsp;';
+    const fullDateLabel = formatStatsDate(day?.date);
     return `
-      <div class="stats-chart-col" aria-label="${escapeAttr(`${day?.date || 'brak daty'}: ${answers} odpowiedzi`)}}">
+      <button
+        class="stats-chart-col"
+        type="button"
+        data-date="${escapeAttr(day?.date || '')}"
+        data-date-label="${escapeAttr(fullDateLabel)}"
+        data-answers="${answers}"
+        aria-label="${escapeAttr(`${fullDateLabel}: ${answers} odpowiedzi`)}"
+      >
         <div class="stats-chart-bar-wrap">
           <div class="stats-chart-bar${answers > 0 ? ' active' : ''}" style="height: ${heightPct}%"></div>
         </div>
         <div class="stats-chart-tick">${tickLabel}</div>
-      </div>
+      </button>
     `;
   }).join('');
 
@@ -2237,8 +2305,11 @@ export function renderStatsDashboard(model = {}, options = {}) {
           <h3 class="stats-panel-title">Aktywność (ostatnie 60 dni)</h3>
           <div class="stats-panel-subtitle">Dzienna liczba ocenionych odpowiedzi</div>
         </div>
-        <div class="stats-chart">
-          ${chartBarsHtml}
+        <div class="stats-chart-interactive">
+          <div class="stats-chart-tooltip" hidden></div>
+          <div class="stats-chart">
+            ${chartBarsHtml}
+          </div>
         </div>
       </section>
 
@@ -2274,6 +2345,8 @@ export function renderStatsDashboard(model = {}, options = {}) {
       </section>
     </section>
   `;
+
+  bindStatsChartInteractions(document.getElementById('stats-content'));
 }
 
 // --- User/Profile ---
