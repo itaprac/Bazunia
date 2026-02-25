@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T14:19:32.629Z",
+  "generatedAt": "2026-02-25T12:16:43.033Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -247,8 +247,65 @@
       "description": "Pytania ze Sztuczna inteligencja (Bez Logiki)",
       "questionCount": 221,
       "version": 1,
-      "contentHash": "58330772db34d23ecc3a7804be8bd608fcf3edf8e0993ee8824a9e313d5b69e5",
+      "contentHash": "99f742121f21c891a5826f561a2d3626bb094197726c910b430729fdc5f9a298",
       "group": "Semestr 5",
+      "categories": [
+        {
+          "id": "cat-01",
+          "name": "01. Podstawy AI / Test Turinga / Filozofia",
+          "questionCount": 8
+        },
+        {
+          "id": "cat-02",
+          "name": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)",
+          "questionCount": 53
+        },
+        {
+          "id": "cat-03",
+          "name": "03. Puzzle przesuwne / Heurystyki",
+          "questionCount": 4
+        },
+        {
+          "id": "cat-04",
+          "name": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β",
+          "questionCount": 34
+        },
+        {
+          "id": "cat-05",
+          "name": "05. Perceptron prosty / Twierdzenie Novikoffa",
+          "questionCount": 38
+        },
+        {
+          "id": "cat-06",
+          "name": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory",
+          "questionCount": 27
+        },
+        {
+          "id": "cat-07",
+          "name": "07. Klasyfikator Bayesa / Sieci Bayesa",
+          "questionCount": 17
+        },
+        {
+          "id": "cat-08",
+          "name": "08. Algorytmy genetyczne",
+          "questionCount": 21
+        },
+        {
+          "id": "cat-09",
+          "name": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)",
+          "questionCount": 12
+        },
+        {
+          "id": "cat-10",
+          "name": "10. Teoria gier (dylemat więźnia)",
+          "questionCount": 3
+        },
+        {
+          "id": "cat-99",
+          "name": "99. Nieprzypisane / Logika",
+          "questionCount": 4
+        }
+      ],
       "defaultSelectionMode": "single"
     },
     {

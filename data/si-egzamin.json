@@ -5,7 +5,64 @@
     "description": "Pytania ze Sztuczna inteligencja (Bez Logiki)",
     "version": 1,
     "group": "Semestr 5",
-    "defaultSelectionMode": "single"
+    "defaultSelectionMode": "single",
+    "categories": [
+      {
+        "id": "cat-01",
+        "name": "01. Podstawy AI / Test Turinga / Filozofia",
+        "questionCount": 8
+      },
+      {
+        "id": "cat-02",
+        "name": "02. Przeszukiwanie grafów (BFS, DFS, Dijkstra, A*, IDA*)",
+        "questionCount": 53
+      },
+      {
+        "id": "cat-03",
+        "name": "03. Puzzle przesuwne / Heurystyki",
+        "questionCount": 4
+      },
+      {
+        "id": "cat-04",
+        "name": "04. Gry dwuosobowe / MIN-MAX / Przycinanie α-β",
+        "questionCount": 34
+      },
+      {
+        "id": "cat-05",
+        "name": "05. Perceptron prosty / Twierdzenie Novikoffa",
+        "questionCount": 38
+      },
+      {
+        "id": "cat-06",
+        "name": "06. Sieci neuronowe MLP / Backpropagation / Optymalizatory",
+        "questionCount": 27
+      },
+      {
+        "id": "cat-07",
+        "name": "07. Klasyfikator Bayesa / Sieci Bayesa",
+        "questionCount": 17
+      },
+      {
+        "id": "cat-08",
+        "name": "08. Algorytmy genetyczne",
+        "questionCount": 21
+      },
+      {
+        "id": "cat-09",
+        "name": "09. Problemy optymalizacyjne (plecak, komiwojażer, jeep, hetmany)",
+        "questionCount": 12
+      },
+      {
+        "id": "cat-10",
+        "name": "10. Teoria gier (dylemat więźnia)",
+        "questionCount": 3
+      },
+      {
+        "id": "cat-99",
+        "name": "99. Nieprzypisane / Logika",
+        "questionCount": 4
+      }
+    ]
   },
   "questions": [
     {
@@ -32,7 +89,8 @@
           "text": "Breadth-first search, Depth-first search, algorytm Dijkstry",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q002",
@@ -58,7 +116,8 @@
           "text": "największej wartości $$ g(s)+h(s) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q003",
@@ -84,7 +143,8 @@
           "text": "$$ O(1), O(1) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q004",
@@ -110,7 +170,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q005",
@@ -136,7 +197,8 @@
           "text": "8",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q006",
@@ -162,7 +224,8 @@
           "text": "wykorzystujący technikę quiescence",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q007",
@@ -188,7 +251,8 @@
           "text": "$$ n^2 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q008",
@@ -214,7 +278,8 @@
           "text": "współpracować",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-10"
     },
     {
       "id": "si-q009",
@@ -240,7 +305,8 @@
           "text": "tylko poprawnych odpowiedzi",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q010",
@@ -266,7 +332,8 @@
           "text": "zda test Turinga",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q011",
@@ -292,7 +359,8 @@
           "text": "odległość do najbliższego nieodwiedzonego wierzchołka",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q012",
@@ -318,7 +386,8 @@
           "text": "$$ R_d = (b-1)R_{d-1} $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q013",
@@ -344,7 +413,8 @@
           "text": "drugim potomku",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q014",
@@ -370,7 +440,8 @@
           "text": "tylko składniki pozycyjne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q015",
@@ -396,7 +467,8 @@
           "text": "aktualizacjom podlega tylko wartość $$\\beta$$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q016",
@@ -422,7 +494,8 @@
           "text": "1",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-03"
     },
     {
       "id": "si-q017",
@@ -448,7 +521,8 @@
           "text": "warunek stopu",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q018",
@@ -474,7 +548,8 @@
           "text": "używa tylko heurystyki nadszacowującej",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q019",
@@ -500,7 +575,8 @@
           "text": "wymagał większego zbioru Open",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q020",
@@ -526,7 +602,8 @@
           "text": "wymagał mniejszego zbioru Open",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q021",
@@ -552,7 +629,8 @@
           "text": "ustalenie etykiety klasy zależy od współczynnika uczenia",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q022",
@@ -578,7 +656,8 @@
           "text": "elipsoidą",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q023",
@@ -604,7 +683,8 @@
           "text": "kwadratu promienia danych",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q024",
@@ -630,7 +710,8 @@
           "text": "jest ściśle rosnąca",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q025",
@@ -656,7 +737,8 @@
           "text": "$$ 1/(1+e^{-2}), 2(1-2) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q026",
@@ -682,7 +764,8 @@
           "text": "$$ \\arg\\max_y (\\sum_{j=1}^n \\log P(X_j=x_j|Y=y) + \\log P(Y=y)) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q027",
@@ -708,7 +791,8 @@
           "text": "$$ K \\cdot m $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q028",
@@ -734,7 +818,8 @@
           "text": "założenie naiwne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q029",
@@ -760,7 +845,8 @@
           "text": "prawdopodobieństwo a posteriori",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q030",
@@ -786,7 +872,8 @@
           "text": "$$ \\phi'(S_{l-1}) \\circ (\\delta_l^T W_l) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q031",
@@ -812,7 +899,8 @@
           "text": "$$ \\begin{pmatrix}-4&4\\\\ -4&2\\end{pmatrix} $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q032",
@@ -838,7 +926,8 @@
           "text": "wykładniczą średnią kroczącą kwadratów gradientów",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q033",
@@ -864,7 +953,8 @@
           "text": "$$ -\\eta \\frac{m_t}{(1-\\beta_1)} $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q034",
@@ -890,7 +980,8 @@
           "text": "4",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q035",
@@ -916,7 +1007,8 @@
           "text": "mutacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q036",
@@ -942,7 +1034,8 @@
           "text": "$$ 2(y_{MLP}-y_i)v_0 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q037",
@@ -968,7 +1061,8 @@
           "text": "0",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q038",
@@ -994,7 +1088,8 @@
           "text": "nie zależą od funkcji aktywacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q039",
@@ -1020,7 +1115,8 @@
           "text": "$$ \\sum w \\delta $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q040",
@@ -1046,7 +1142,8 @@
           "text": "$$ (W_l X_l^T + W_{l;0} 1_{1 \\times b})^T $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q041",
@@ -1072,7 +1169,8 @@
           "text": "wyrażenia w systemie każdego rzeczywistego konceptu",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-99"
     },
     {
       "id": "si-q042",
@@ -1098,7 +1196,8 @@
           "text": "zdania atomowe, o których nie wiemy, że są prawdziwe, uważa się za fałszywe",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-99"
     },
     {
       "id": "si-q043",
@@ -1124,7 +1223,8 @@
           "text": "2 graczy i 2 pytających",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q044",
@@ -1150,7 +1250,8 @@
           "text": "problemu optymalizacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q045",
@@ -1176,7 +1277,8 @@
           "text": "są grą nieskończoną, więc nierozwiązywalną",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q046",
@@ -1202,7 +1304,8 @@
           "text": "odwiedzić wszystkie węzły o głębokości $$ d+1 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q047",
@@ -1228,7 +1331,8 @@
           "text": "przypadkowy",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q048",
@@ -1254,7 +1358,8 @@
           "text": "szacowanej przebytej odległości od węzła początkowego",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q049",
@@ -1280,7 +1385,8 @@
           "text": "$$ O(n \\log n) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q050",
@@ -1306,7 +1412,8 @@
           "text": "zamortyzowanej stałej i liniowej",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q051",
@@ -1332,7 +1439,8 @@
           "text": "szczególnym przypadkiem algorytmu A* (w kontekście pytań egzaminacyjnych)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q052",
@@ -1358,7 +1466,8 @@
           "text": "sumy nagród zebranej wzdłuż ścieżki",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q053",
@@ -1384,7 +1493,8 @@
           "text": "$$ f(s) \\ge f(t) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q054",
@@ -1410,7 +1520,8 @@
           "text": "jest równa sumie odległości Manhattan wszystkich kostek o numerach $$ \\{1, 2, ..., n^2-1\\} $$ do ich miejsc docelowych",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q055",
@@ -1436,7 +1547,8 @@
           "text": "$$ h_1(s) \\le h_2(s) \\le h_3(s) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q056",
@@ -1462,7 +1574,8 @@
           "text": "stany wg rosnącej głębokości",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q057",
@@ -1488,7 +1601,8 @@
           "text": "$$ \\alpha \\ge \\beta $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q058",
@@ -1514,7 +1628,8 @@
           "text": "różnicę pomiędzy sumą wartości zbitych bierek białych i czarnych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q059",
@@ -1540,7 +1655,8 @@
           "text": "$$ w(k+1) := w(k) + \\eta y_i + x_i $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q060",
@@ -1566,7 +1682,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q061",
@@ -1592,7 +1709,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q062",
@@ -1618,7 +1736,8 @@
           "text": "nieseparowalnych liniowo",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q063",
@@ -1644,7 +1763,8 @@
           "text": "$$ \\phi(s) = 1/(1+\\exp(-s)) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q064",
@@ -1670,7 +1790,8 @@
           "text": "$$ f(x) / \\min_t f(t) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q065",
@@ -1696,7 +1817,8 @@
           "text": "$$ O(Cn) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q066",
@@ -1722,7 +1844,8 @@
           "text": "aproksymacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q067",
@@ -1748,7 +1871,8 @@
           "text": "klasyfikacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q068",
@@ -1774,7 +1898,8 @@
           "text": "postąpić odwrotnie niż przeciwnik",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-10"
     },
     {
       "id": "si-q069",
@@ -1800,7 +1925,8 @@
           "text": "sprawdzają dopuszczalność heurystyki",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q070",
@@ -1826,7 +1952,8 @@
           "text": "największej wartości $$ g(s)+h(s) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q071",
@@ -1852,7 +1979,8 @@
           "text": "podmiana stanu",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q072",
@@ -1878,7 +2006,8 @@
           "text": "5",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q073",
@@ -1904,7 +2033,8 @@
           "text": "5",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q074",
@@ -1930,7 +2060,8 @@
           "text": "h2 jest dopuszczalne, h1 nie jest dopuszczalne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-03"
     },
     {
       "id": "si-q075",
@@ -1956,7 +2087,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q076",
@@ -1982,7 +2114,8 @@
           "text": "czwartym potomku",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q077",
@@ -2008,7 +2141,8 @@
           "text": "stan typu MAX nie może przybrać takich wartości",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q078",
@@ -2034,7 +2168,8 @@
           "text": "algorytm nie zatrzyma się",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q079",
@@ -2060,7 +2195,8 @@
           "text": "$$ (1.5, 2, -1.5, 3) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q080",
@@ -2086,7 +2222,8 @@
           "text": "$$ R_{max}^2 / \\gamma_{min}^2 $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q081",
@@ -2112,7 +2249,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q082",
@@ -2138,7 +2276,8 @@
           "text": "$$ \\phi'(s) = \\phi(s)(1-\\phi(s)) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q083",
@@ -2164,7 +2303,8 @@
           "text": "następują warstwa po warstwie idąc w przód",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q084",
@@ -2190,7 +2330,8 @@
           "text": "$$ (\\frac{1}{m} \\sum f(x_j)) / f(x_i) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q085",
@@ -2216,7 +2357,8 @@
           "text": "jest pełny",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q086",
@@ -2242,7 +2384,8 @@
           "text": "BFS i algorytm Dijkstry są szczególnymi przypadkami A*",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q087",
@@ -2268,7 +2411,8 @@
           "text": "odrzucić już odwiedzone stany",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q088",
@@ -2294,7 +2438,8 @@
           "text": "$$ f(t) \\le f(s) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q089",
@@ -2320,7 +2465,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q090",
@@ -2346,7 +2492,8 @@
           "text": "można go zignorować, jeżeli graf zawiera cykl",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q091",
@@ -2372,7 +2519,8 @@
           "text": "koszty w najgorszym wypadku są $$ O(1) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q092",
@@ -2398,7 +2546,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q093",
@@ -2424,7 +2573,8 @@
           "text": "$$ \\alpha \\le \\beta $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q094",
@@ -2450,7 +2600,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q095",
@@ -2476,7 +2627,8 @@
           "text": "$$ O(D^b) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q096",
@@ -2502,7 +2654,8 @@
           "text": "optymalizacji mieszanej",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q097",
@@ -2528,7 +2681,8 @@
           "text": "podane informacje są niewystarczające",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q098",
@@ -2554,7 +2708,8 @@
           "text": "gdy dane podniesiemy do wyższej wymiarowości",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q099",
@@ -2580,7 +2735,8 @@
           "text": "odwrotnie proporcjonalne do promienia danych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q100",
@@ -2606,7 +2762,8 @@
           "text": "zależy od wielkości $$ ||\\omega(k)|| $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q101",
@@ -2632,7 +2789,8 @@
           "text": "nie można rozstrzygnąć",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q102",
@@ -2658,7 +2816,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q103",
@@ -2684,7 +2843,8 @@
           "text": "nie wiadomo",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q104",
@@ -2710,7 +2870,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q105",
@@ -2736,7 +2897,8 @@
           "text": "$$ h(s) \\ge 0 $$ dla wszystkich s",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q106",
@@ -2762,7 +2924,8 @@
           "text": "Manhattan nie doszacowuje odległości euklidesowej",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q107",
@@ -2788,7 +2951,8 @@
           "text": "$$ h(s) \\le g(t)-g(s)+h(t) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q108",
@@ -2814,7 +2978,8 @@
           "text": "nie pozwala sprawdzać, czy stan był już odwiedzony",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q109",
@@ -2840,7 +3005,8 @@
           "text": "$$ h_{MT}(s) \\ge h_{M}(s) $$ dla wszystkich stanów s",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q110",
@@ -2866,7 +3032,8 @@
           "text": "logarytmicznie z b",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q111",
@@ -2892,7 +3059,8 @@
           "text": "$$ O(b^D) $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q112",
@@ -2918,7 +3086,8 @@
           "text": "ma wielomianową złożoność ze względu na D",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q113",
@@ -2944,7 +3113,8 @@
           "text": "minimum iloczynu skalarnego",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q114",
@@ -2970,7 +3140,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q115",
@@ -2996,7 +3167,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q116",
@@ -3022,7 +3194,8 @@
           "text": "niektóre zbiory danych nie pozwolą się sklasyfikować (te nieseparowalne przez początek układu)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q117",
@@ -3048,7 +3221,8 @@
           "text": "jednomodalna",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q118",
@@ -3074,7 +3248,8 @@
           "text": "$$ -\\exp(-s)/(1+\\exp(-s))^2 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q119",
@@ -3100,7 +3275,8 @@
           "text": "żadne z powyższych (bez elitaryzmu sukcesja nie jest gwarantowana)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q120",
@@ -3126,7 +3302,8 @@
           "text": "1",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q121",
@@ -3152,7 +3329,8 @@
           "text": "$$ a_{i,j} = \\max\\{a_{i,j-1}, a_{i-1,j-1} - C_j + v_j\\} $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q122",
@@ -3178,7 +3356,8 @@
           "text": "$$ 1/4, 0, 1/2, 1/4 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q123",
@@ -3204,7 +3383,8 @@
           "text": "klasyfikacji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q124",
@@ -3230,7 +3410,8 @@
           "text": "selekcji rozwiązań - kandydatów",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q125",
@@ -3256,7 +3437,8 @@
           "text": "0.5",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q126",
@@ -3282,7 +3464,8 @@
           "text": "$$ 1/10 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q127",
@@ -3308,7 +3491,8 @@
           "text": "przyjmuje wartości ujemne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q128",
@@ -3334,7 +3518,8 @@
           "text": "ci rodzice nie mogą zostać skrzyżowani",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q129",
@@ -3360,7 +3545,8 @@
           "text": "losowe przykłady",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q130",
@@ -3386,7 +3572,8 @@
           "text": "wektor się wyzeruje",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q131",
@@ -3412,7 +3599,8 @@
           "text": "wyzeruje wagi",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q132",
@@ -3438,7 +3626,8 @@
           "text": "uczenie odbywa się na innym komputerze",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q133",
@@ -3464,7 +3653,8 @@
           "text": "składa się z najgorszych osobników",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q134",
@@ -3490,7 +3680,8 @@
           "text": "Filtr antyspamowy",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q135",
@@ -3516,7 +3707,8 @@
           "text": "Przycięcie po trzecim potomku (gdy wartość 11 powoduje $$ \\alpha \\ge \\beta $$)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q136",
@@ -3542,7 +3734,8 @@
           "text": "Norma wektora wag",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q137",
@@ -3568,7 +3761,8 @@
           "text": "Schodkową (skokową)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q138",
@@ -3594,7 +3788,8 @@
           "text": "Odpowiednio wyznaczy płaszczyznę separującą (zatrzyma się)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q139",
@@ -3620,7 +3815,8 @@
           "text": "Są nieznane",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q140",
@@ -3646,7 +3842,8 @@
           "text": "W 1 przebiegu pętli",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q141",
@@ -3672,7 +3869,8 @@
           "text": "Liczba krawędzi jest znana",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q142",
@@ -3698,7 +3896,8 @@
           "text": "Porządku topologicznego",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-03"
     },
     {
       "id": "si-q143",
@@ -3724,7 +3923,8 @@
           "text": "$$ 1 + \\sqrt{2}/2 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q144",
@@ -3750,7 +3950,8 @@
           "text": "Najkrótszej ścieżki Eulera",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q145",
@@ -3776,7 +3977,8 @@
           "text": "Żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q146",
@@ -3802,7 +4004,8 @@
           "text": "Indukcji reguł decyzyjnych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q147",
@@ -3828,7 +4031,8 @@
           "text": "rozwiązywania problemów optymalizacji w sposób dokładny",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q148",
@@ -3854,7 +4058,8 @@
           "text": "wpływ jednego zdarzenia na inne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q149",
@@ -3880,7 +4085,8 @@
           "text": "$$ v(t+1) = v(t) - \\eta \\nabla + \\mu v(t) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q150",
@@ -3906,7 +4112,8 @@
           "text": "$$ \\mu / (1-\\eta) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q151",
@@ -3932,7 +4139,8 @@
           "text": "$$ O(\\log n) $$ i $$ O(1) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q152",
@@ -3958,7 +4166,8 @@
           "text": "$$ \\frac{b^{D+1}-1}{b-1} $$",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q153",
@@ -3984,7 +4193,8 @@
           "text": "oczekiwana liczba egzemplarzy pierwszego osobnika wynosi 4/5",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q154",
@@ -4010,7 +4220,8 @@
           "text": "B i C są niezależne",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q155",
@@ -4036,7 +4247,8 @@
           "text": "żadna z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q156",
@@ -4062,7 +4274,8 @@
           "text": "marginesu między klasami",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q157",
@@ -4088,7 +4301,8 @@
           "text": "Jeżeli $$ P \\Rightarrow Q $$ i $$ \\neg Q $$, to $$ P $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-99"
     },
     {
       "id": "si-q158",
@@ -4114,7 +4328,8 @@
           "text": "wyłączenie tablicy transpozycji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q159",
@@ -4140,7 +4355,8 @@
           "text": "12",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q160",
@@ -4166,7 +4382,8 @@
           "text": "$$ P(A), P(B), P(C) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q161",
@@ -4192,7 +4409,8 @@
           "text": "$$ (1/2)^7 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q162",
@@ -4218,7 +4436,8 @@
           "text": "15",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q163",
@@ -4244,7 +4463,8 @@
           "text": "15",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q164",
@@ -4270,7 +4490,8 @@
           "text": "11",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q165",
@@ -4296,7 +4517,8 @@
           "text": "$$ P(C), P(B|C), P(B|\\neg C), P(A|B), P(A|\\neg B) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q166",
@@ -4322,7 +4544,8 @@
           "text": "trzykrotnie zmieniały znak",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q167",
@@ -4348,7 +4571,8 @@
           "text": "Jeżeli prawdziwe jest $$ P \\Rightarrow Q $$ i $$ \\neg P $$, to wnioskujemy $$ Q $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-99"
     },
     {
       "id": "si-q168",
@@ -4374,7 +4598,8 @@
           "text": "zależą od liczby warstw",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q169",
@@ -4400,7 +4625,8 @@
           "text": "$$ (2,2,2,5) $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q170",
@@ -4426,7 +4652,8 @@
           "text": "w jednym przebiegu pętli",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q171",
@@ -4452,7 +4679,8 @@
           "text": "$$ 1 + \\sqrt{2}/2 $$",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q172",
@@ -4478,7 +4706,8 @@
           "text": "liczba rund jest znana z góry",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-10"
     },
     {
       "id": "si-q173",
@@ -4504,7 +4733,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q174",
@@ -4530,7 +4760,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-01"
     },
     {
       "id": "si-q175",
@@ -4556,7 +4787,8 @@
           "text": "różnowartościowe",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-03"
     },
     {
       "id": "si-q176",
@@ -4582,7 +4814,8 @@
           "text": "żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q177",
@@ -4608,7 +4841,8 @@
           "text": "Dziel i zwyciężaj",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q178",
@@ -4634,7 +4868,8 @@
           "text": "schodkową (skokową)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q179",
@@ -4660,7 +4895,8 @@
           "text": "d. tylko prawdopodobieństwo a priori faktów",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q180",
@@ -4686,7 +4922,8 @@
           "text": "d. zmienne wejściowe są parami zależne warunkowo w klasach decyzyjnych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q181",
@@ -4712,7 +4949,8 @@
           "text": "d. żadna z pozostałych odpowiedzi nie jest poprawna",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q182",
@@ -4738,7 +4976,8 @@
           "text": "d. yiwkϕk(1-ϕk)xi,j",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q183",
@@ -4764,7 +5003,8 @@
           "text": "d. oczekiwana liczba egzemplarzy pierwszego osobnika po selekcji wynosi 4/5",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q184",
@@ -4790,7 +5030,8 @@
           "text": "d. A, B i C",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q185",
@@ -4816,7 +5057,8 @@
           "text": "d. żadna z pozostałych odpowiedzi nie jest prawdziwa",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q186",
@@ -4842,7 +5084,8 @@
           "text": "d. żadna z pozostałych odpowiedzi nie jest prawdziwa",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q187",
@@ -4868,7 +5111,8 @@
           "text": "d. logarytmowanie",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q188",
@@ -4894,7 +5138,8 @@
           "text": "d. nie cierpi na przekleństwo wymiarowości i złożoność obliczenia odpowiedzi skaluje się liniowo wraz z liczbą zmiennych wejściowych",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-07"
     },
     {
       "id": "si-q189",
@@ -4920,7 +5165,8 @@
           "text": "d. wyłączzenie tablicy transpozycji",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q190",
@@ -4946,7 +5192,8 @@
           "text": "d. j est równa sumie odległości Manhattan wszystkich kostek o numerach {1,2,..., n 2 -1} do ich miejsc docelowych",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q191",
@@ -4972,7 +5219,8 @@
           "text": "d. \\\\alpha \\\\ge \\\\beta",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q192",
@@ -4998,7 +5246,8 @@
           "text": "d. O(b^ D )",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q193",
@@ -5024,7 +5273,8 @@
           "text": "d. nieseparowalnych liniowo",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q194",
@@ -5050,7 +5300,8 @@
           "text": "d. Φ t,j (1-Φ t,k )\\\\sum k v t-1,k,j E t+1,k",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q195",
@@ -5076,7 +5327,8 @@
           "text": "d. (n^2 -1)×(n^2 -1)",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q196",
@@ -5102,7 +5354,8 @@
           "text": "d. dla planszy 1×1",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q197",
@@ -5128,7 +5381,8 @@
           "text": "d. (b^( D+1) -1)/(b-1)",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q198",
@@ -5154,7 +5408,8 @@
           "text": "d. czwartym potomku",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q199",
@@ -5180,7 +5435,8 @@
           "text": "d. stan typu MAX nie może przybrać takich wartości",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q200",
@@ -5206,7 +5462,8 @@
           "text": "d. żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q201",
@@ -5232,7 +5489,8 @@
           "text": "d. \\\\alpha \\\\le \\\\beta",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q202",
@@ -5258,7 +5516,8 @@
           "text": "d. żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q203",
@@ -5284,7 +5543,8 @@
           "text": "d. √(b^ D ) w przypadku optymistycznym",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q204",
@@ -5310,7 +5570,8 @@
           "text": "d. zależy od wielkości ||ω(k)||",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q205",
@@ -5336,7 +5597,8 @@
           "text": "d. ϕ’(s)=ϕ(s)(1-ϕ(s))",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q206",
@@ -5362,7 +5624,8 @@
           "text": "d. żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q207",
@@ -5388,7 +5651,8 @@
           "text": "d. nie wiadomo",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q208",
@@ -5414,7 +5678,8 @@
           "text": "d. O(n log2n)",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q209",
@@ -5440,7 +5705,8 @@
           "text": "d. hMT(s)\\\\ge hM(s) dla wszystkich stanów s",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-02"
     },
     {
       "id": "si-q210",
@@ -5466,7 +5732,8 @@
           "text": "d. \\\\alpha \\\\le \\\\beta",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q211",
@@ -5492,7 +5759,8 @@
           "text": "d. ma wielomianową złożoność ze względu na D",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-04"
     },
     {
       "id": "si-q212",
@@ -5518,7 +5786,8 @@
           "text": "d. ω(k+1):=ω(k)+\\\\eta xiyi",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q213",
@@ -5544,7 +5813,8 @@
           "text": "d. żadne z powyższych",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-05"
     },
     {
       "id": "si-q214",
@@ -5570,7 +5840,8 @@
           "text": "d. φ′(s)=-exp(-s)/(1+exp(-s))^2",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-06"
     },
     {
       "id": "si-q215",
@@ -5596,7 +5867,8 @@
           "text": "d. 1",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-09"
     },
     {
       "id": "si-q216",
@@ -5622,7 +5894,8 @@
           "text": "d. 2/10, 1/10, 3/10, 4/10",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q217",
@@ -5668,7 +5941,8 @@
           "text": "d. 2/10, 1/10, 3/10, 4/10",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q218",
@@ -5694,7 +5968,8 @@
           "text": "d. 2/10, 1/10, 4/10, 3/10",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q219",
@@ -5740,7 +6015,8 @@
           "text": "d. 2/10, 1/10, 4/10, 3/10",
           "correct": false
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q220",
@@ -5766,7 +6042,8 @@
           "text": "d. żadne z powyższych",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-08"
     },
     {
       "id": "si-q221",
@@ -5792,7 +6069,8 @@
           "text": "d. Po trzecim potomku",
           "correct": true
         }
-      ]
+      ],
+      "category": "cat-04"
     }
   ]
 }
