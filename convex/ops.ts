@@ -17,6 +17,30 @@ function normalizeUsername(username) {
   return String(username || "").trim().toLowerCase();
 }
 
+function usernameBaseFromEmail(email) {
+  const localPart = String(email || "").split("@")[0] || "user";
+  const base = normalizeUsername(localPart)
+    .replace(/[^a-z0-9_.-]+/g, ".")
+    .replace(/\.+/g, ".")
+    .replace(/^[._-]+|[._-]+$/g, "")
+    .slice(0, 20);
+  return /^[a-z0-9_.-]{3,24}$/.test(base) ? base : "user";
+}
+
+async function reserveUniqueUsername(ctx, email) {
+  const base = usernameBaseFromEmail(email);
+  for (let i = 0; i < 100; i += 1) {
+    const suffix = i === 0 ? "" : `.${i}`;
+    const candidate = `${base.slice(0, 24 - suffix.length)}${suffix}`;
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_username", (q) => q.eq("username", candidate))
+      .unique();
+    if (!existing) return candidate;
+  }
+  throw new Error("Nie udało się wygenerować unikalnej nazwy użytkownika.");
+}
+
 function userToClient(user) {
   if (!user) return null;
   return {
@@ -193,6 +217,40 @@ export const createUser = internalMutation({
   },
 });
 
+export const findOrCreateOAuthUser = internalMutation({
+  args: {
+    email: v.string(),
+    passwordSalt: v.string(),
+    passwordHash: v.string(),
+    role: v.optional(appRole),
+  },
+  returns: v.object({ user: v.any() }),
+  handler: async (ctx, args) => {
+    const email = normalizeEmail(args.email);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error("Google nie zwrócił poprawnego adresu e-mail.");
+
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+    if (existing) return { user: userToClient(existing) };
+
+    const ts = now();
+    const userId = await ctx.db.insert("users", {
+      email,
+      passwordSalt: args.passwordSalt,
+      passwordHash: args.passwordHash,
+      role: args.role || "user",
+      username: await reserveUniqueUsername(ctx, email),
+      createdAt: ts,
+      updatedAt: ts,
+      lastSignInAt: ts,
+    });
+    const user = await ctx.db.get(userId);
+    return { user: userToClient(user) };
+  },
+});
+
 export const createSession = internalMutation({
   args: {
     userId: v.id("users"),
@@ -218,6 +276,45 @@ export const createSession = internalMutation({
         expires_at: new Date(ts + 30 * dayMs).toISOString(),
       },
     };
+  },
+});
+
+export const createOAuthState = internalMutation({
+  args: {
+    stateHash: v.string(),
+    redirectTo: v.string(),
+    expiresAt: v.number(),
+  },
+  returns: v.null(),
+  handler: async (ctx, args) => {
+    const ts = now();
+    const expired = await ctx.db
+      .query("oauthStates")
+      .withIndex("by_expires_at", (q) => q.lt("expiresAt", ts))
+      .collect();
+    await Promise.all(expired.map((row) => ctx.db.delete(row._id)));
+    await ctx.db.insert("oauthStates", {
+      stateHash: args.stateHash,
+      redirectTo: args.redirectTo,
+      createdAt: ts,
+      expiresAt: args.expiresAt,
+    });
+    return null;
+  },
+});
+
+export const consumeOAuthState = internalMutation({
+  args: { stateHash: v.string() },
+  returns: v.union(v.null(), v.object({ redirectTo: v.string() })),
+  handler: async (ctx, args) => {
+    const row = await ctx.db
+      .query("oauthStates")
+      .withIndex("by_state_hash", (q) => q.eq("stateHash", args.stateHash))
+      .unique();
+    if (!row) return null;
+    await ctx.db.delete(row._id);
+    if (row.expiresAt <= now()) return null;
+    return { redirectTo: row.redirectTo };
   },
 });
 

@@ -5,6 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
+COPY index.html vite.config.js ./
+COPY css ./css
+COPY js ./js
+COPY src ./src
 COPY data ./data
 COPY scripts ./scripts
 RUN npm run build
@@ -15,10 +19,12 @@ RUN apk add --no-cache gettext
 
 WORKDIR /usr/share/nginx/html
 
+RUN mkdir -p /usr/share/nginx/html/js
+
+COPY --from=build /app/dist ./
 COPY --from=build /app/data ./data
-COPY index.html docs.html ./
-COPY css ./css
-COPY js ./js
+COPY docs.html ./
+COPY js/runtime-config.template.js ./js/runtime-config.template.js
 COPY nginx.conf /etc/nginx/conf.d/default.conf.template
 
 EXPOSE 8080

@@ -1,11 +1,21 @@
 {
   "scripts": {
+    "dev": "vite --host 0.0.0.0",
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
-    "build": "node scripts/generate-public-decks-manifest.js"
+    "build": "node scripts/generate-public-decks-manifest.js && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "check:google-oauth": "node scripts/check-google-oauth-readiness.js",
+    "configure:google-oauth": "node scripts/configure-google-oauth-from-client-secret.js"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
     "convex": "^1.38.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vite": "^7.3.1"
   }
 }

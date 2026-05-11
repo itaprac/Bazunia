@@ -49,6 +49,7 @@ import { hasRandomizer, hasTemplate, randomize } from './randomizers.js';
 import { initDocsNavigation } from './docs-navigation.js';
 import {
   isSupabaseConfigured,
+  consumeOAuthRedirect,
   getCurrentSession,
   onAuthStateChange,
   signInWithPassword,
@@ -1044,6 +1045,9 @@ async function init() {
   initTooltips({ defaultDelay: 450, defaultPlacement: 'top' });
   bindGlobalEvents();
   bindAuthEvents();
+  const oauthRedirect = isSupabaseConfigured()
+    ? consumeOAuthRedirect()
+    : { tokenStored: false, errorMessage: '' };
 
   // Browser back button support
   history.pushState(null, '', '');
@@ -1067,9 +1071,15 @@ async function init() {
       showNotification('Tryb gościa: logowanie wyłączone (brak konfiguracji Convex).', 'info');
       handleStartupOpen();
     } else {
+      if (oauthRedirect.errorMessage) {
+        showNotification(`Logowanie Google nie powiodło się: ${oauthRedirect.errorMessage}`, 'error');
+      }
       const session = await getCurrentSession();
       if (session?.user) {
         await bootstrapUserSession(session.user);
+        if (oauthRedirect.tokenStored) {
+          showNotification('Zalogowano przez Google.', 'info');
+        }
       } else {
         await bootstrapGuestSession();
       }
@@ -6197,10 +6207,6 @@ function clearWaitTimer() {
 
 // --- Start ---
 
-document.addEventListener('DOMContentLoaded', () => {
-  init().catch((error) => {
-    console.error('Initialization failed:', error);
-    showNotification(`Błąd startu aplikacji: ${error.message}`, 'error');
-    showAuthPanel('Nie udało się uruchomić aplikacji.', 'error');
-  });
-});
+export async function initBazunia() {
+  return init();
+}

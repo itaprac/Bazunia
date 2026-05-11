@@ -78,6 +78,48 @@ function authError(error) {
   return { data: null, error };
 }
 
+function cleanOAuthHashParams(url, hashParams) {
+  const hadOAuthParams = (
+    hashParams.has('bazunia_auth') ||
+    hashParams.has('bazunia_session') ||
+    hashParams.has('bazunia_auth_error')
+  );
+  if (!hadOAuthParams) return;
+  hashParams.delete('bazunia_auth');
+  hashParams.delete('bazunia_session');
+  hashParams.delete('bazunia_auth_error');
+  const nextHash = hashParams.toString();
+  url.hash = nextHash ? `#${nextHash}` : '';
+  history.replaceState(null, '', url.toString());
+}
+
+export function consumeOAuthRedirect() {
+  const hash = window.location.hash.replace(/^#/, '');
+  if (!hash) return { tokenStored: false, errorMessage: '' };
+
+  const params = new URLSearchParams(hash);
+  const sessionToken = params.get('bazunia_session') || '';
+  const errorMessage = params.get('bazunia_auth_error') || '';
+  if (!sessionToken && !errorMessage) return { tokenStored: false, errorMessage: '' };
+
+  const url = new URL(window.location.href);
+  cleanOAuthHashParams(url, params);
+
+  if (sessionToken) {
+    setSessionToken(sessionToken);
+    return { tokenStored: true, errorMessage: '' };
+  }
+
+  return { tokenStored: false, errorMessage };
+}
+
+function currentOAuthReturnUrl() {
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams(url.hash.replace(/^#/, ''));
+  cleanOAuthHashParams(url, params);
+  return url.toString();
+}
+
 // --- Auth ---
 
 export async function getCurrentSession() {
@@ -125,7 +167,14 @@ export async function signUpWithPassword(email, password) {
 }
 
 export async function signInWithGoogle() {
-  return authError(new Error('Google OAuth nie jest jeszcze skonfigurowane po migracji na Convex.'));
+  try {
+    ensureConfigured();
+    const url = `${CONVEX_SITE_URL}/api/auth/google/start?redirectTo=${encodeURIComponent(currentOAuthReturnUrl())}`;
+    window.location.assign(url);
+    return authResult({ url });
+  } catch (error) {
+    return authError(error);
+  }
 }
 
 export async function signOutUser() {

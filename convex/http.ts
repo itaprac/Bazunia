@@ -9,7 +9,7 @@ function corsHeaders(request: Request) {
   const origin = request.headers.get("Origin") || "*";
   return {
     "Access-Control-Allow-Origin": origin,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin",
@@ -71,6 +71,13 @@ function randomBase64(byteLength = 32) {
   return base64FromBytes(bytes);
 }
 
+function randomBase64Url(byteLength = 32) {
+  return randomBase64(byteLength)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
 function randomUsername() {
   const bytes = new Uint8Array(8);
   crypto.getRandomValues(bytes);
@@ -91,6 +98,94 @@ function roleForNewUser(email: string) {
   return devEmails.includes(String(email || "").trim().toLowerCase()) ? "dev" : "user";
 }
 
+function envValue(...names: string[]) {
+  for (const name of names) {
+    const value = String(process.env[name] || "").trim();
+    if (value) return value;
+  }
+  return "";
+}
+
+function getGoogleOAuthConfig() {
+  const clientId = envValue("BAZUNIA_GOOGLE_CLIENT_ID", "AUTH_GOOGLE_ID", "GOOGLE_CLIENT_ID");
+  const clientSecret = envValue("BAZUNIA_GOOGLE_CLIENT_SECRET", "AUTH_GOOGLE_SECRET", "GOOGLE_CLIENT_SECRET");
+  if (!clientId || !clientSecret) {
+    throw new Error("Brak konfiguracji Google OAuth w Convex. Ustaw BAZUNIA_GOOGLE_CLIENT_ID/BAZUNIA_GOOGLE_CLIENT_SECRET albo AUTH_GOOGLE_ID/AUTH_GOOGLE_SECRET.");
+  }
+  return { clientId, clientSecret };
+}
+
+function redirectResponse(url: string, status = 302) {
+  return new Response(null, {
+    status,
+    headers: {
+      Location: url,
+      "Cache-Control": "no-store",
+    },
+  });
+}
+
+function getUrlOrigin(value?: string | null) {
+  if (!value) return "";
+  try {
+    const url = new URL(value);
+    return url.origin;
+  } catch {
+    return "";
+  }
+}
+
+function allowedRedirectOrigins() {
+  return new Set(
+    [
+      ...String(process.env.BAZUNIA_ALLOWED_REDIRECT_ORIGINS || "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean),
+      envValue("BAZUNIA_APP_URL"),
+    ]
+      .map((item) => getUrlOrigin(item) || item)
+      .filter(Boolean)
+  );
+}
+
+function isLoopbackOrigin(origin: string) {
+  try {
+    const url = new URL(origin);
+    return (
+      (url.protocol === "http:" || url.protocol === "https:") &&
+      ["localhost", "127.0.0.1", "::1"].includes(url.hostname)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function normalizeRedirectTo(request: Request) {
+  const requestUrl = new URL(request.url);
+  const raw = requestUrl.searchParams.get("redirectTo") || request.headers.get("Referer") || envValue("BAZUNIA_APP_URL") || "";
+  if (!raw) throw new Error("Brak adresu powrotu po logowaniu Google.");
+
+  const redirectUrl = new URL(raw);
+  if (redirectUrl.protocol !== "https:" && redirectUrl.protocol !== "http:") {
+    throw new Error("Nieprawidłowy adres powrotu po logowaniu Google.");
+  }
+
+  const allowed = allowedRedirectOrigins();
+  if (!allowed.has(redirectUrl.origin) && !(allowed.size === 0 && isLoopbackOrigin(redirectUrl.origin))) {
+    throw new Error("Ten adres powrotu nie jest dozwolony dla logowania Google.");
+  }
+  return redirectUrl.toString();
+}
+
+function authRedirectUrl(redirectTo: string, params: Record<string, string>) {
+  const url = new URL(redirectTo);
+  const hashParams = new URLSearchParams(url.hash.replace(/^#/, ""));
+  for (const [key, value] of Object.entries(params)) hashParams.set(key, value);
+  url.hash = hashParams.toString();
+  return url.toString();
+}
+
 async function sessionHashFromToken(sessionToken?: string) {
   const token = String(sessionToken || "").trim();
   if (!token) throw new Error("Brak aktywnej sesji. Zaloguj się ponownie.");
@@ -100,6 +195,33 @@ async function sessionHashFromToken(sessionToken?: string) {
 async function optionalSessionHash(sessionToken?: string) {
   const token = String(sessionToken || "").trim();
   return token ? await sha256Base64(token) : undefined;
+}
+
+async function fetchGoogleIdentity(code: string, redirectUri: string, clientId: string, clientSecret: string) {
+  const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      code,
+      client_id: clientId,
+      client_secret: clientSecret,
+      redirect_uri: redirectUri,
+      grant_type: "authorization_code",
+    }),
+  });
+  const tokenPayload = await tokenResponse.json().catch(() => ({}));
+  if (!tokenResponse.ok || !tokenPayload.id_token) {
+    throw new Error(tokenPayload?.error_description || "Google nie zwrócił tokenu tożsamości.");
+  }
+
+  const infoResponse = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(tokenPayload.id_token)}`);
+  const identity = await infoResponse.json().catch(() => ({}));
+  if (!infoResponse.ok) throw new Error(identity?.error_description || "Nie udało się zweryfikować tokenu Google.");
+  if (identity.aud !== clientId) throw new Error("Token Google ma nieprawidłowego odbiorcę.");
+  if (String(identity.email_verified) !== "true") throw new Error("Adres e-mail Google nie jest zweryfikowany.");
+  const email = String(identity.email || "").trim().toLowerCase();
+  if (!email) throw new Error("Google nie zwrócił adresu e-mail.");
+  return { email };
 }
 
 async function handleRpc(ctx: any, request: Request) {
@@ -305,6 +427,93 @@ http.route({
       return jsonResponse(request, { ...result, error: null });
     } catch (error) {
       return jsonResponse(request, { data: null, error: { message: error?.message || "Błąd Convex." } }, 200);
+    }
+  }),
+});
+
+http.route({
+  path: "/api/auth/google/start",
+  method: "GET",
+  handler: httpAction(async (ctx, request) => {
+    let redirectTo = "";
+    try {
+      redirectTo = normalizeRedirectTo(request);
+      const { clientId } = getGoogleOAuthConfig();
+      const requestUrl = new URL(request.url);
+      const redirectUri = `${requestUrl.origin}/api/auth/google/callback`;
+      const state = randomBase64Url(32);
+      const stateHash = await sha256Base64(state);
+
+      await ctx.runMutation(internal.ops.createOAuthState, {
+        stateHash,
+        redirectTo,
+        expiresAt: Date.now() + 10 * 60 * 1000,
+      });
+
+      const googleUrl = new URL("https://accounts.google.com/o/oauth2/v2/auth");
+      googleUrl.searchParams.set("client_id", clientId);
+      googleUrl.searchParams.set("redirect_uri", redirectUri);
+      googleUrl.searchParams.set("response_type", "code");
+      googleUrl.searchParams.set("scope", "openid email profile");
+      googleUrl.searchParams.set("state", state);
+      googleUrl.searchParams.set("prompt", "select_account");
+
+      return redirectResponse(googleUrl.toString());
+    } catch (error) {
+      if (redirectTo) {
+        return redirectResponse(authRedirectUrl(redirectTo, {
+          bazunia_auth_error: error?.message || "Nie udało się rozpocząć logowania Google.",
+        }));
+      }
+      return jsonResponse(request, { data: null, error: { message: error?.message || "Nie udało się rozpocząć logowania Google." } }, 400);
+    }
+  }),
+});
+
+http.route({
+  path: "/api/auth/google/callback",
+  method: "GET",
+  handler: httpAction(async (ctx, request) => {
+    const requestUrl = new URL(request.url);
+    const state = requestUrl.searchParams.get("state") || "";
+    const code = requestUrl.searchParams.get("code") || "";
+    const oauthError = requestUrl.searchParams.get("error") || "";
+
+    if (!state) return new Response("Brak parametru state.", { status: 400 });
+    const stateHash = await sha256Base64(state);
+    const storedState = await ctx.runMutation(internal.ops.consumeOAuthState, { stateHash });
+    if (!storedState?.redirectTo) return new Response("Sesja logowania Google wygasła. Spróbuj ponownie.", { status: 400 });
+
+    const fail = (message: string) => redirectResponse(authRedirectUrl(storedState.redirectTo, {
+      bazunia_auth_error: message,
+    }));
+
+    try {
+      if (oauthError) return fail(`Google OAuth: ${oauthError}`);
+      if (!code) return fail("Google nie zwrócił kodu autoryzacji.");
+
+      const { clientId, clientSecret } = getGoogleOAuthConfig();
+      const redirectUri = `${requestUrl.origin}/api/auth/google/callback`;
+      const identity = await fetchGoogleIdentity(code, redirectUri, clientId, clientSecret);
+      const created = await ctx.runMutation(internal.ops.findOrCreateOAuthUser, {
+        email: identity.email,
+        passwordSalt: randomBase64(16),
+        passwordHash: randomBase64(32),
+        role: roleForNewUser(identity.email),
+      });
+      const sessionToken = randomBase64(36);
+      const tokenHash = await sha256Base64(sessionToken);
+      await ctx.runMutation(internal.ops.createSession, {
+        userId: created.user.id,
+        tokenHash,
+      });
+
+      return redirectResponse(authRedirectUrl(storedState.redirectTo, {
+        bazunia_auth: "google",
+        bazunia_session: sessionToken,
+      }));
+    } catch (error) {
+      return fail(error?.message || "Nie udało się zakończyć logowania Google.");
     }
   }),
 });

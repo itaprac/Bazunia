@@ -28,6 +28,15 @@ export default defineSchema({
     .index("by_token_hash", ["tokenHash"])
     .index("by_user", ["userId"]),
 
+  oauthStates: defineTable({
+    stateHash: v.string(),
+    redirectTo: v.string(),
+    createdAt: v.number(),
+    expiresAt: v.number(),
+  })
+    .index("by_state_hash", ["stateHash"])
+    .index("by_expires_at", ["expiresAt"]),
+
   userStorage: defineTable({
     userId: v.id("users"),
     key: v.string(),
