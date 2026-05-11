@@ -1,20 +1,31 @@
-// supabase-config.js — runtime configuration for Supabase
+// supabase-config.js — compatibility exports for the Convex runtime config
 
-export const SUPABASE_URL = window.__BAZUNIA_SUPABASE_URL || window.__BAZA_SUPABASE_URL || '';
-export const SUPABASE_ANON_KEY = window.__BAZUNIA_SUPABASE_ANON_KEY || window.__BAZA_SUPABASE_ANON_KEY || '';
+export const CONVEX_URL = window.__BAZUNIA_CONVEX_URL || window.__BAZA_CONVEX_URL || '';
+export const CONVEX_SITE_URL = normalizeConvexSiteUrl(CONVEX_URL);
+export const SUPABASE_URL = CONVEX_URL;
+export const SUPABASE_ANON_KEY = '';
 export const PUBLIC_DECK_PROVIDER = (
-  String(window.__BAZUNIA_PUBLIC_DECK_PROVIDER || window.__BAZA_PUBLIC_DECK_PROVIDER || 'static').toLowerCase() === 'supabase'
-    ? 'supabase'
+  ['convex', 'supabase'].includes(String(window.__BAZUNIA_PUBLIC_DECK_PROVIDER || window.__BAZA_PUBLIC_DECK_PROVIDER || 'static').toLowerCase())
+    ? 'convex'
     : 'static'
 );
 
-export function isSupabaseConfigValid() {
+function normalizeConvexSiteUrl(value) {
+  const raw = String(value || '').trim().replace(/\/+$/, '');
+  if (!raw) return '';
+  if (raw.endsWith('.convex.site')) return raw;
+  if (raw.endsWith('.convex.cloud')) return raw.replace(/\.convex\.cloud$/, '.convex.site');
+  return raw;
+}
+
+export function isConvexConfigValid() {
   return (
-    typeof SUPABASE_URL === 'string' &&
-    typeof SUPABASE_ANON_KEY === 'string' &&
-    SUPABASE_URL.length > 0 &&
-    SUPABASE_ANON_KEY.length > 0 &&
-    !SUPABASE_URL.includes('YOUR_SUPABASE_URL') &&
-    !SUPABASE_ANON_KEY.includes('YOUR_SUPABASE_ANON_KEY')
+    typeof CONVEX_SITE_URL === 'string' &&
+    CONVEX_SITE_URL.length > 0 &&
+    !CONVEX_SITE_URL.includes('YOUR_CONVEX_URL')
   );
+}
+
+export function isSupabaseConfigValid() {
+  return isConvexConfigValid();
 }

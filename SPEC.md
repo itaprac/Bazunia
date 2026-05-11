@@ -132,7 +132,7 @@ Dodatkowe możliwości:
   - klik aktywnego głosu usuwa głos (`0`),
   - klik przeciwnego głosu zmienia głos.
 - Głosować mogą tylko użytkownicy zalogowani.
-- Liczniki `+N/-N` są widoczne także dla gości (jeśli Supabase jest skonfigurowany).
+- Liczniki `+N/-N` są widoczne także dla gości (jeśli Convex jest skonfigurowany).
 - Widoczność liczników:
   - `Anki`: po `Pokaż odpowiedź`,
   - `Test`: w ekranie wyniku (sekcja przeglądu odpowiedzi),

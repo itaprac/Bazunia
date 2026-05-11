@@ -1,232 +1,185 @@
-// supabase.js — Supabase client, auth helpers, and storage persistence helpers
+// supabase.js — compatibility facade now backed by Convex
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.95.3/+esm';
-import { SUPABASE_URL, SUPABASE_ANON_KEY, isSupabaseConfigValid } from './supabase-config.js';
+import { CONVEX_SITE_URL, isConvexConfigValid } from './supabase-config.js';
 
-let supabase = null;
+const SESSION_TOKEN_KEY = 'bazunia_convex_session_token';
+
 let answerVoteRpcAvailable = true;
+const authListeners = new Set();
 
 export function isSupabaseConfigured() {
-  return isSupabaseConfigValid();
-}
-
-export function getSupabaseClient() {
-  if (!isSupabaseConfigured()) {
-    return null;
-  }
-
-  if (!supabase) {
-    supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      auth: {
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: true,
-      },
-    });
-  }
-
-  return supabase;
-}
-
-function ensureClient() {
-  const client = getSupabaseClient();
-  if (!client) {
-    throw new Error('Brak konfiguracji Supabase. Ustaw BAZUNIA_SUPABASE_URL i BAZUNIA_SUPABASE_ANON_KEY (np. w .env).');
-  }
-  return client;
-}
-
-function isMissingAnswerVoteRpcError(error) {
-  if (!error || typeof error !== 'object') return false;
-  const code = String(error.code || '');
-  const message = String(error.message || '');
-  return code === 'PGRST202' || message.includes('Could not find the function public.set_answer_vote')
-    || message.includes('Could not find the function public.fetch_answer_vote_summary');
-}
-
-function toAnswerVoteRpcError(error) {
-  if (isMissingAnswerVoteRpcError(error)) {
-    answerVoteRpcAvailable = false;
-    return new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
-  }
-  return error;
+  return isConvexConfigValid();
 }
 
 export function isAnswerVoteRpcReady() {
   return answerVoteRpcAvailable;
 }
 
+function getSessionToken() {
+  return localStorage.getItem(SESSION_TOKEN_KEY) || '';
+}
+
+function setSessionToken(token) {
+  if (token) {
+    localStorage.setItem(SESSION_TOKEN_KEY, token);
+  } else {
+    localStorage.removeItem(SESSION_TOKEN_KEY);
+  }
+}
+
+function toError(message) {
+  return new Error(message || 'Błąd komunikacji z Convex.');
+}
+
+function ensureConfigured() {
+  if (!isSupabaseConfigured()) {
+    throw new Error('Brak konfiguracji Convex. Ustaw BAZUNIA_CONVEX_URL (np. w .env).');
+  }
+}
+
+async function callConvex(operation, args = {}, options = {}) {
+  ensureConfigured();
+  const response = await fetch(`${CONVEX_SITE_URL}/api/rpc`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      operation,
+      args,
+      sessionToken: options.sessionToken ?? getSessionToken(),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Convex HTTP ${response.status}`);
+  }
+
+  const payload = await response.json();
+  if (payload?.error) {
+    throw toError(payload.error.message);
+  }
+  return payload?.data;
+}
+
+function notifyAuthListeners(event, session) {
+  for (const callback of authListeners) {
+    try {
+      callback(event, session);
+    } catch (error) {
+      console.error('Convex auth listener failed:', error);
+    }
+  }
+}
+
+function authResult(data) {
+  return { data, error: null };
+}
+
+function authError(error) {
+  return { data: null, error };
+}
+
+// --- Auth ---
+
 export async function getCurrentSession() {
-  const client = ensureClient();
-  const { data, error } = await client.auth.getSession();
-  if (error) throw error;
+  const token = getSessionToken();
+  if (!token) return null;
+  const data = await callConvex('auth.getSession', {}, { sessionToken: token });
+  if (!data?.session) {
+    setSessionToken('');
+    return null;
+  }
   return data.session;
 }
 
 export function onAuthStateChange(callback) {
-  const client = ensureClient();
-  const {
-    data: { subscription },
-  } = client.auth.onAuthStateChange((event, session) => {
-    callback(event, session);
-  });
-  return subscription;
+  authListeners.add(callback);
+  return {
+    unsubscribe() {
+      authListeners.delete(callback);
+    },
+  };
 }
 
 export async function signInWithPassword(email, password) {
-  const client = ensureClient();
-  return client.auth.signInWithPassword({ email, password });
+  try {
+    const data = await callConvex('auth.signInWithPassword', { email, password }, { sessionToken: '' });
+    const token = data?.session?.access_token || '';
+    if (token) setSessionToken(token);
+    notifyAuthListeners('SIGNED_IN', data?.session || null);
+    return authResult(data);
+  } catch (error) {
+    return authError(error);
+  }
 }
 
 export async function signUpWithPassword(email, password) {
-  const client = ensureClient();
-  return client.auth.signUp({ email, password });
+  try {
+    const data = await callConvex('auth.signUpWithPassword', { email, password }, { sessionToken: '' });
+    const token = data?.session?.access_token || '';
+    if (token) setSessionToken(token);
+    notifyAuthListeners('SIGNED_IN', data?.session || null);
+    return authResult(data);
+  } catch (error) {
+    return authError(error);
+  }
 }
 
 export async function signInWithGoogle() {
-  const client = ensureClient();
-  return client.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: `${window.location.origin}/`,
-    },
-  });
+  return authError(new Error('Google OAuth nie jest jeszcze skonfigurowane po migracji na Convex.'));
 }
 
 export async function signOutUser() {
-  const client = ensureClient();
-  return client.auth.signOut();
+  try {
+    await callConvex('auth.signOut');
+    setSessionToken('');
+    notifyAuthListeners('SIGNED_OUT', null);
+    return authResult({});
+  } catch (error) {
+    setSessionToken('');
+    notifyAuthListeners('SIGNED_OUT', null);
+    return authError(error);
+  }
 }
 
 export async function sendPasswordResetEmail(email) {
-  const client = ensureClient();
-  return client.auth.resetPasswordForEmail(email, {
-    redirectTo: `${window.location.origin}/`,
-  });
+  try {
+    await callConvex('auth.resetPassword', { email });
+    return authResult({});
+  } catch (error) {
+    return authError(error);
+  }
 }
 
 // --- Role and admin RPC ---
 
 export async function fetchCurrentUserRole() {
-  const client = ensureClient();
-  const { data, error } = await client.rpc('current_app_role');
-  if (error) throw error;
-  return typeof data === 'string' ? data : 'user';
+  return await callConvex('role.current');
 }
 
 export async function fetchAdminUsers() {
-  const client = ensureClient();
-  const { data, error } = await client.rpc('admin_list_users');
-  if (error) throw error;
-  return data || [];
+  return await callConvex('admin.users');
 }
 
 export async function setUserRole(targetUserId, nextRole) {
-  const client = ensureClient();
-  const { error } = await client.rpc('admin_set_user_role', {
-    target_user_id: targetUserId,
-    next_role: nextRole,
-  });
-  if (error) throw error;
+  return await callConvex('admin.setRole', { targetUserId, nextRole });
 }
 
 // --- Global public decks ---
 
-const PUBLIC_DECK_COLUMNS = [
-  'id',
-  'name',
-  'description',
-  'deck_group',
-  'categories',
-  'questions',
-  'question_count',
-  'version',
-  'source',
-  'is_archived',
-  'updated_by',
-  'created_at',
-  'updated_at',
-].join(',');
-
-const PUBLIC_DECK_VISIBILITY_COLUMNS = [
-  'deck_id',
-  'is_hidden',
-  'updated_by',
-  'created_at',
-  'updated_at',
-].join(',');
-
-const USER_PROFILE_COLUMNS = [
-  'user_id',
-  'username',
-  'created_at',
-  'updated_at',
-].join(',');
-
-const SHARED_DECK_COLUMNS = [
-  'id',
-  'owner_user_id',
-  'owner_username',
-  'source_deck_id',
-  'name',
-  'description',
-  'deck_group',
-  'categories',
-  'questions',
-  'question_count',
-  'is_published',
-  'created_at',
-  'updated_at',
-].join(',');
-
 export async function fetchPublicDecks(options = {}) {
-  const includeArchived = options.includeArchived === true;
-  const client = ensureClient();
-
-  let query = client
-    .from('public_decks')
-    .select(PUBLIC_DECK_COLUMNS)
-    .order('name', { ascending: true });
-
-  if (!includeArchived) {
-    query = query.eq('is_archived', false);
-  }
-
-  const { data, error } = await query;
-  if (error) throw error;
-  return data || [];
+  return await callConvex('publicDecks.fetch', { includeArchived: options.includeArchived === true });
 }
 
 export async function upsertPublicDeck(deckPayload) {
-  const client = ensureClient();
-  const { data, error } = await client
-    .from('public_decks')
-    .upsert(deckPayload, { onConflict: 'id' })
-    .select(PUBLIC_DECK_COLUMNS)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('publicDecks.upsert', { deck: deckPayload });
 }
 
 export async function archivePublicDeck(deckId) {
-  const client = ensureClient();
-  const { error } = await client
-    .from('public_decks')
-    .update({ is_archived: true })
-    .eq('id', deckId);
-
-  if (error) throw error;
+  return await callConvex('publicDecks.archive', { deckId, isArchived: true });
 }
 
 export async function restorePublicDeck(deckId) {
-  const client = ensureClient();
-  const { error } = await client
-    .from('public_decks')
-    .update({ is_archived: false })
-    .eq('id', deckId);
-
-  if (error) throw error;
+  return await callConvex('publicDecks.archive', { deckId, isArchived: false });
 }
 
 export async function hidePublicDeck(deckId) {
@@ -238,241 +191,58 @@ export async function unhidePublicDeck(deckId) {
 }
 
 export async function fetchPublicDeckVisibility() {
-  const client = ensureClient();
-  const { data, error } = await client
-    .from('public_deck_visibility')
-    .select(PUBLIC_DECK_VISIBILITY_COLUMNS)
-    .order('deck_id', { ascending: true });
-  if (error) throw error;
-  return data || [];
+  return await callConvex('publicDeckVisibility.fetch');
 }
 
 export async function setPublicDeckVisibility(deckId, isHidden) {
-  const normalizedId = String(deckId || '').trim();
-  if (!normalizedId) throw new Error('Brak identyfikatora talii.');
-
-  const hidden = isHidden === true;
-  const client = ensureClient();
-  if (!hidden) {
-    const { error } = await client
-      .from('public_deck_visibility')
-      .delete()
-      .eq('deck_id', normalizedId);
-    if (error) throw error;
-    return null;
-  }
-
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-
-  const payload = {
-    deck_id: normalizedId,
-    is_hidden: true,
-    updated_by: user?.id || null,
-  };
-
-  const { data, error } = await client
-    .from('public_deck_visibility')
-    .upsert(payload, { onConflict: 'deck_id' })
-    .select(PUBLIC_DECK_VISIBILITY_COLUMNS)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('publicDeckVisibility.set', { deckId, isHidden });
 }
 
 // --- User profile (username) ---
 
 export async function fetchMyProfile() {
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const { data, error } = await client
-    .from('user_profiles')
-    .select(USER_PROFILE_COLUMNS)
-    .eq('user_id', user.id)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('profile.get');
 }
 
 export async function updateMyUsername(username) {
-  const normalized = String(username || '').trim().toLowerCase();
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const { data, error } = await client
-    .from('user_profiles')
-    .update({ username: normalized })
-    .eq('user_id', user.id)
-    .select(USER_PROFILE_COLUMNS)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('profile.updateUsername', { username });
 }
 
 // --- Shared decks catalog and subscriptions ---
 
-function escapeLikeQuery(value) {
-  return String(value || '').replace(/[,%_]/g, ' ');
-}
-
 export async function searchSharedDecks(options = {}) {
-  const client = ensureClient();
-  const query = String(options.query || '').trim();
-  const pageSize = Math.max(1, Number(options.pageSize) || 20);
-  const page = Math.max(1, Number(options.page) || 1);
-  const from = (page - 1) * pageSize;
-  const to = from + pageSize - 1;
-
-  let request = client
-    .from('shared_decks')
-    .select(SHARED_DECK_COLUMNS, { count: 'exact' })
-    .eq('is_published', true)
-    .order('updated_at', { ascending: false })
-    .range(from, to);
-
-  if (query) {
-    const needle = `%${escapeLikeQuery(query)}%`;
-    request = request.or(`name.ilike.${needle},description.ilike.${needle}`);
-  }
-
-  const { data, error, count } = await request;
-  if (error) throw error;
-  const total = Number.isFinite(count) ? count : (data || []).length;
-  return {
-    items: data || [],
-    total,
-    page,
-    pageSize,
-  };
+  return await callConvex('sharedDecks.search', {
+    query: String(options.query || ''),
+    page: Math.max(1, Number(options.page) || 1),
+    pageSize: Math.max(1, Number(options.pageSize) || 20),
+  });
 }
 
 export async function publishSharedDeck(deckPayload) {
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const payload = {
-    ...deckPayload,
-    owner_user_id: user.id,
-    is_published: true,
-  };
-
-  const { data, error } = await client
-    .from('shared_decks')
-    .upsert(payload, { onConflict: 'owner_user_id,source_deck_id' })
-    .select(SHARED_DECK_COLUMNS)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('sharedDecks.publish', { deck: deckPayload });
 }
 
 export async function unpublishSharedDeck(sharedDeckId) {
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const { data, error } = await client
-    .from('shared_decks')
-    .update({ is_published: false })
-    .eq('id', sharedDeckId)
-    .eq('owner_user_id', user.id)
-    .select(SHARED_DECK_COLUMNS)
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('sharedDecks.unpublish', { sharedDeckId });
 }
 
 export async function fetchMySubscriptions() {
-  const client = ensureClient();
-  const { data, error } = await client
-    .from('shared_deck_subscriptions')
-    .select(`
-      user_id,
-      shared_deck_id,
-      created_at,
-      shared_decks (${SHARED_DECK_COLUMNS})
-    `)
-    .order('created_at', { ascending: false });
-
-  if (error) throw error;
-  return data || [];
+  return await callConvex('subscriptions.fetchMine');
 }
 
 export async function subscribeToSharedDeck(sharedDeckId) {
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const { data, error } = await client
-    .from('shared_deck_subscriptions')
-    .upsert(
-      {
-        user_id: user.id,
-        shared_deck_id: sharedDeckId,
-      },
-      { onConflict: 'user_id,shared_deck_id' }
-    )
-    .select('user_id,shared_deck_id,created_at')
-    .single();
-
-  if (error) throw error;
-  return data;
+  return await callConvex('subscriptions.subscribe', { sharedDeckId });
 }
 
 export async function unsubscribeFromSharedDeck(sharedDeckId) {
-  const client = ensureClient();
-  const {
-    data: { user },
-    error: authError,
-  } = await client.auth.getUser();
-  if (authError) throw authError;
-  if (!user) throw new Error('Brak aktywnego użytkownika.');
-
-  const { error } = await client
-    .from('shared_deck_subscriptions')
-    .delete()
-    .eq('user_id', user.id)
-    .eq('shared_deck_id', sharedDeckId);
-
-  if (error) throw error;
+  return await callConvex('subscriptions.unsubscribe', { sharedDeckId });
 }
 
 // --- Community answer votes ---
 
 export async function fetchAnswerVoteSummary(options = {}) {
   if (!answerVoteRpcAvailable) {
-    throw new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
+    throw new Error('Głosowanie w Convex jest niedostępne.');
   }
 
   const targetScope = String(options.targetScope || '').trim();
@@ -485,20 +255,12 @@ export async function fetchAnswerVoteSummary(options = {}) {
     return [];
   }
 
-  const client = ensureClient();
-  const { data, error } = await client.rpc('fetch_answer_vote_summary', {
-    p_target_scope: targetScope,
-    p_target_deck_id: targetDeckId,
-    p_question_ids: questionIds,
-  });
-
-  if (error) throw toAnswerVoteRpcError(error);
-  return data || [];
+  return await callConvex('answerVotes.summary', { targetScope, targetDeckId, questionIds });
 }
 
 export async function setAnswerVote(options = {}) {
   if (!answerVoteRpcAvailable) {
-    throw new Error('Brakuje funkcji RPC głosowania w Supabase. Uruchom migrację z pliku supabase/schema.sql.');
+    throw new Error('Głosowanie w Convex jest niedostępne.');
   }
 
   const targetScope = String(options.targetScope || '').trim();
@@ -514,56 +276,20 @@ export async function setAnswerVote(options = {}) {
     throw new Error('Nieprawidłowa wartość głosu.');
   }
 
-  const client = ensureClient();
-  const { error } = await client.rpc('set_answer_vote', {
-    p_target_scope: targetScope,
-    p_target_deck_id: targetDeckId,
-    p_question_id: questionId,
-    p_answer_id: answerId,
-    p_vote: vote,
-  });
-
-  if (error) throw toAnswerVoteRpcError(error);
+  await callConvex('answerVotes.set', { targetScope, targetDeckId, questionId, answerId, vote });
 }
 
 // --- User storage ---
 
 export async function fetchAllUserStorage(userId) {
-  const client = ensureClient();
-  const { data, error } = await client
-    .from('user_storage')
-    .select('key, value')
-    .eq('user_id', userId);
-
-  if (error) throw error;
-  return data || [];
+  return await callConvex('storage.fetchAll', { userId });
 }
 
 export async function upsertUserStorage(userId, key, value) {
-  const client = ensureClient();
-  const { error } = await client
-    .from('user_storage')
-    .upsert(
-      {
-        user_id: userId,
-        key,
-        value,
-      },
-      { onConflict: 'user_id,key' }
-    );
-
-  if (error) throw error;
+  return await callConvex('storage.upsert', { userId, key, value });
 }
 
 export async function deleteUserStorageKeys(userId, keys) {
   if (!Array.isArray(keys) || keys.length === 0) return;
-
-  const client = ensureClient();
-  const { error } = await client
-    .from('user_storage')
-    .delete()
-    .eq('user_id', userId)
-    .in('key', keys);
-
-  if (error) throw error;
+  return await callConvex('storage.deleteKeys', { userId, keys });
 }

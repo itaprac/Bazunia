@@ -1,4 +1,4 @@
-// storage.js — cache + persistence layer (Supabase for users, localStorage for guest mode)
+// storage.js — cache + persistence layer (Convex for users, localStorage for guest mode)
 
 import { fetchAllUserStorage, upsertUserStorage, deleteUserStorageKeys } from './supabase.js';
 
@@ -95,7 +95,7 @@ function enqueueSync(task) {
     })
     .catch((error) => {
       lastSyncError = error;
-      console.error('Supabase sync error:', error);
+      console.error('Convex sync error:', error);
     });
 }
 

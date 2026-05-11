@@ -373,7 +373,7 @@ function notifyVoteRpcUnavailable() {
   if (voteRpcUnavailableNotified) return;
   voteRpcUnavailableNotified = true;
   showNotification(
-    'Głosowanie wyłączone: brakuje funkcji RPC w Supabase. Uruchom migrację z pliku supabase/schema.sql.',
+    'Głosowanie wyłączone: backend Convex jest niedostępny.',
     'error'
   );
 }
@@ -1064,7 +1064,7 @@ async function init() {
   try {
     if (!isSupabaseConfigured()) {
       await bootstrapGuestSession();
-      showNotification('Tryb gościa: logowanie wyłączone (brak konfiguracji Supabase).', 'info');
+      showNotification('Tryb gościa: logowanie wyłączone (brak konfiguracji Convex).', 'info');
       handleStartupOpen();
     } else {
       const session = await getCurrentSession();
@@ -1420,7 +1420,7 @@ function buildSharedDeckPayload(deckId) {
   };
 }
 
-async function pushSharedDeckToSupabase(deckId) {
+async function pushSharedDeckToConvex(deckId) {
   const payload = buildSharedDeckPayload(deckId);
   if (!payload) return;
   const row = await publishSharedDeck(payload);
@@ -1435,15 +1435,15 @@ async function pushSharedDeckToSupabase(deckId) {
   storage.saveDecks(decks);
 }
 
-function syncSharedDeckToSupabaseAsync(deckId) {
+function syncSharedDeckToConvexAsync(deckId) {
   if (!shouldSyncSharedDeck(deckId)) return;
-  pushSharedDeckToSupabase(deckId).catch((error) => {
+  pushSharedDeckToConvex(deckId).catch((error) => {
     showNotification(`Nie udało się zsynchronizować udostępnionej talii: ${error.message}`, 'error');
   });
 }
 
-function syncOwnedDeckToSupabaseAsync(deckId) {
-  syncSharedDeckToSupabaseAsync(deckId);
+function syncOwnedDeckToConvexAsync(deckId) {
+  syncSharedDeckToConvexAsync(deckId);
 }
 
 function mergeCardsForQuestions(deckId, questions) {
@@ -1809,7 +1809,7 @@ function filterBuiltInPublicRows(rows = []) {
   return rows.filter((row) => row && isBuiltInDeckId(row.id));
 }
 
-async function syncPublicDecksFromSupabaseLegacy(options = {}) {
+async function syncPublicDecksFromConvex(options = {}) {
   if (!isSupabaseConfigured()) {
     await loadBuiltInDecks();
     return;
@@ -1825,7 +1825,7 @@ async function syncPublicDecksFromSupabaseLegacy(options = {}) {
     applyPublicDeckRowsToLocal(rows, { includeHidden });
     migrateDeckMetadata();
   } catch (error) {
-    showNotification(`Nie udało się wczytać talii ogólnych z Supabase: ${error.message}`, 'error');
+    showNotification(`Nie udało się wczytać talii ogólnych z Convex: ${error.message}`, 'error');
     if (fallbackToBuiltInsOnError) {
       await loadBuiltInDecks();
     }
@@ -1851,13 +1851,13 @@ async function syncPublicDecksFromManifest(options = {}) {
 }
 
 async function syncPublicDecksForCurrentUser(options = {}) {
-  const provider = options.providerOverride === 'supabase' || options.providerOverride === 'static'
+  const provider = ['convex', 'supabase', 'static'].includes(options.providerOverride)
     ? options.providerOverride
     : PUBLIC_DECK_PROVIDER;
   const allowFallback = options.allowFallback !== false;
 
-  if (provider === 'supabase') {
-    await syncPublicDecksFromSupabaseLegacy({
+  if (provider === 'convex' || provider === 'supabase') {
+    await syncPublicDecksFromConvex({
       ...options,
       fallbackToBuiltInsOnError: allowFallback,
     });
@@ -1869,7 +1869,7 @@ async function syncPublicDecksForCurrentUser(options = {}) {
   } catch (error) {
     showNotification(`Nie udało się wczytać manifestu talii ogólnych: ${error.message}`, 'error');
     if (allowFallback) {
-      await syncPublicDecksFromSupabaseLegacy({ ...options, fallbackToBuiltInsOnError: true });
+      await syncPublicDecksFromConvex({ ...options, fallbackToBuiltInsOnError: true });
     }
   }
 }
@@ -3299,7 +3299,7 @@ function saveCreatedQuestion(editor, wrapper) {
     storage.saveDecks(decks);
   }
 
-  syncOwnedDeckToSupabaseAsync(currentDeckId);
+  syncOwnedDeckToConvexAsync(currentDeckId);
 
   const activeSearch = getBrowseSearchQuery();
   wrapper.remove();
@@ -3453,7 +3453,7 @@ function saveBrowseEdit(index, editor) {
     storage.saveQuestions(currentDeckId, allQuestions);
   }
 
-  syncOwnedDeckToSupabaseAsync(currentDeckId);
+  syncOwnedDeckToConvexAsync(currentDeckId);
 
   showNotification('Pytanie zostało zaktualizowane.', 'success');
   navigateToBrowse(currentDeckId, { searchQuery: getBrowseSearchQuery() });
@@ -4238,7 +4238,7 @@ function saveDeckMetadata(deckId) {
   }
   decks[idx] = nextDeckMeta;
   storage.saveDecks(decks);
-  syncOwnedDeckToSupabaseAsync(deckId);
+  syncOwnedDeckToConvexAsync(deckId);
 
   const settingsDeckName = document.getElementById('settings-deck-name');
   if (settingsDeckName) settingsDeckName.textContent = nextName;
@@ -4497,7 +4497,7 @@ async function handleAuthSubmit() {
 async function handleAuthLogin() {
   const { email, password } = getAuthFormValues();
   if (!isSupabaseConfigured()) {
-    showAuthMessage('Logowanie niedostępne: brak konfiguracji Supabase.', 'error');
+    showAuthMessage('Logowanie niedostępne: brak konfiguracji Convex.', 'error');
     return;
   }
   if (!validateLoginInputs(email, password)) return;
@@ -4524,7 +4524,7 @@ async function handleAuthLogin() {
 async function handleAuthSignup() {
   const { email, password, passwordConfirm } = getAuthFormValues();
   if (!isSupabaseConfigured()) {
-    showAuthMessage('Rejestracja niedostępna: brak konfiguracji Supabase.', 'error');
+    showAuthMessage('Rejestracja niedostępna: brak konfiguracji Convex.', 'error');
     return;
   }
   if (!validateSignupInputs(email, password, passwordConfirm)) return;
@@ -4554,7 +4554,7 @@ async function handleAuthSignup() {
 async function handleAuthPasswordReset() {
   const { email } = getAuthFormValues();
   if (!isSupabaseConfigured()) {
-    showAuthMessage('Reset hasła niedostępny: brak konfiguracji Supabase.', 'error');
+    showAuthMessage('Reset hasła niedostępny: brak konfiguracji Convex.', 'error');
     return;
   }
   if (!validatePasswordResetInput(email)) return;
@@ -4575,7 +4575,7 @@ async function handleAuthPasswordReset() {
 
 async function handleAuthGoogle() {
   if (!isSupabaseConfigured()) {
-    showAuthMessage('Google OAuth niedostępne: brak konfiguracji Supabase.', 'error');
+    showAuthMessage('Google OAuth niedostępne: brak konfiguracji Convex.', 'error');
     return;
   }
 
@@ -5097,7 +5097,7 @@ async function handleShareToggle(deckId) {
     if (!currentUserProfile) {
       currentUserProfile = await fetchMyProfile();
     }
-    await pushSharedDeckToSupabase(deckId);
+    await pushSharedDeckToConvex(deckId);
     showNotification('Talia została udostępniona.', 'success');
     if (activeDeckScope === 'shared') {
       await refreshSharedCatalog();
@@ -6021,7 +6021,7 @@ function saveQuestionEdit() {
     }
   }
 
-  syncOwnedDeckToSupabaseAsync(currentDeckId);
+  syncOwnedDeckToConvexAsync(currentDeckId);
 
   showNotification('Pytanie zostało zaktualizowane.', 'success');
   exitEditMode();

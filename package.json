@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "build": "node scripts/generate-public-decks-manifest.js"
+  },
+  "devDependencies": {
+    "convex": "^1.38.0",
+    "typescript": "^6.0.3"
+  }
+}

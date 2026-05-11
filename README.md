@@ -32,27 +32,29 @@ Aplikacja działa pod adresem:
 - `data/` – talie używane przez aplikację.
 - `data/raw/` – surowe źródła JSON do konwersji.
 - `scripts/` – skrypty pomocnicze (np. konwersja danych).
-- `supabase/` – schema i konfiguracja bazy/auth.
+- `convex/` – backend Convex: schema, auth/session, talie, subskrypcje i głosy.
+- `supabase/` – historyczny schemat sprzed migracji.
 
 ## Logowanie i zapis danych
 
 - Tryb gościa: dane zapisują się lokalnie w przeglądarce.
-- Tryb zalogowany: dane zapisują się na Twoim koncie (Supabase).
+- Tryb zalogowany: dane zapisują się na Twoim koncie (Convex).
 - Możesz korzystać bez logowania, ale prywatne talie (`Moje`) wymagają konta.
 
-## Konfiguracja konta (Supabase)
+## Konfiguracja backendu (Convex)
 
-1. Wykonaj skrypt: `supabase/schema.sql`.
-2. Skopiuj `.env.example` do `.env`.
-3. Ustaw w `.env`:
+1. Zaloguj Convex CLI: `npx convex login`.
+2. Uruchom lub podepnij deployment: `npx convex dev`.
+3. Skopiuj `.env.example` do `.env`.
+4. Ustaw w `.env`:
 
 ```env
-BAZUNIA_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-BAZUNIA_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
 BAZUNIA_PUBLIC_DECK_PROVIDER=static
 ```
 
-4. Włącz provider `Email` (opcjonalnie też `Google`) w Supabase Auth.
+Frontend nadal używa pliku `js/supabase.js` jako warstwy kompatybilności, ale cała komunikacja idzie do Convexa przez `/api/rpc`.
+Rolę `dev` można bootstrapować przez zmienną Convexa `BAZUNIA_DEV_EMAILS` (lista e-maili rozdzielona przecinkami).
 
 ## Własna talia: najprostszy import JSON
 
@@ -102,6 +104,8 @@ docker compose logs -f web
 docker compose restart web
 docker compose down
 node scripts/generate-public-decks-manifest.js
+npm run convex:dev
+npm run convex:deploy
 ```
 
 ## Publiczne talie (Ogólne)
@@ -109,7 +113,7 @@ node scripts/generate-public-decks-manifest.js
 - Źródłem prawdy są pliki `data/*.json` oraz `data/public-decks-manifest.json`.
 - Na Vercel manifest generuje się automatycznie podczas deploya (`vercel.json` -> `buildCommand`).
 - Lokalnie możesz go odtworzyć ręcznie poleceniem `node scripts/generate-public-decks-manifest.js`.
-- Widoczność `Ukryj/Pokaż` jest trzymana osobno w Supabase (`public_deck_visibility`).
+- Widoczność `Ukryj/Pokaż` jest trzymana osobno w Convex (`publicDeckVisibility`).
 - Treść talii ogólnych jest tylko do odczytu w aplikacji.
 
 ## Dokumentacja w aplikacji

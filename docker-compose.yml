@@ -4,10 +4,9 @@ services:
     ports:
       - "8080:80"
     environment:
-      BAZUNIA_SUPABASE_URL: ${BAZUNIA_SUPABASE_URL:-}
-      BAZUNIA_SUPABASE_ANON_KEY: ${BAZUNIA_SUPABASE_ANON_KEY:-}
-      BAZA_SUPABASE_URL: ${BAZA_SUPABASE_URL:-}
-      BAZA_SUPABASE_ANON_KEY: ${BAZA_SUPABASE_ANON_KEY:-}
+      BAZUNIA_CONVEX_URL: ${BAZUNIA_CONVEX_URL:-}
+      BAZA_CONVEX_URL: ${BAZA_CONVEX_URL:-}
+      BAZUNIA_PUBLIC_DECK_PROVIDER: ${BAZUNIA_PUBLIC_DECK_PROVIDER:-static}
     command: >
       /bin/sh -c
       "envsubst < /usr/share/nginx/html/js/runtime-config.template.js > /tmp/runtime-config.js
