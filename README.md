@@ -24,9 +24,19 @@ Aplikacja działa pod adresem:
 
 - `http://localhost:8080`
 
+## Deployment na Railway
+
+Projekt ma konfigurację Dockerfile dla Railway. Kontener serwuje aplikację przez nginx, generuje `data/public-decks-manifest.json` podczas buildu i tworzy `/js/runtime-config.js` oraz `/api/runtime-config` na starcie z envów:
+
+```env
+BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
+BAZUNIA_PUBLIC_DECK_PROVIDER=static
+```
+
+Railway używa `railway.json`, buduje z `Dockerfile` i sprawdza healthcheck pod `/`.
+
 ## Struktura repo (skrót)
 
-- `api/` – endpoint runtime config.
 - `css/` – style aplikacji.
 - `js/` – logika frontendowa.
 - `data/` – talie używane przez aplikację.
@@ -111,7 +121,7 @@ npm run convex:deploy
 ## Publiczne talie (Ogólne)
 
 - Źródłem prawdy są pliki `data/*.json` oraz `data/public-decks-manifest.json`.
-- Na Vercel manifest generuje się automatycznie podczas deploya (`vercel.json` -> `buildCommand`).
+- Na Railway manifest generuje się automatycznie podczas buildu Dockerfile.
 - Lokalnie możesz go odtworzyć ręcznie poleceniem `node scripts/generate-public-decks-manifest.js`.
 - Widoczność `Ukryj/Pokaż` jest trzymana osobno w Convex (`publicDeckVisibility`).
 - Treść talii ogólnych jest tylko do odczytu w aplikacji.
