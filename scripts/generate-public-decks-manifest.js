@@ -55,6 +55,14 @@ function buildEntry(filename) {
   return entry;
 }
 
+function readExistingManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
 function main() {
   const files = fs.readdirSync(dataDir)
     .filter((name) => name.endsWith('.json'))
@@ -62,8 +70,13 @@ function main() {
     .sort();
 
   const manifest = files.map((filename) => buildEntry(filename));
+  const existing = readExistingManifest();
+  const existingDecks = Array.isArray(existing?.decks) ? existing.decks : null;
+  const generatedAt = JSON.stringify(existingDecks) === JSON.stringify(manifest)
+    ? existing.generatedAt || new Date().toISOString()
+    : new Date().toISOString();
   const payload = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     decks: manifest,
   };
 

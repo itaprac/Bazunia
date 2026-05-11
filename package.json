@@ -1,10 +1,17 @@
 {
+  "name": "bazunia",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
     "build": "node scripts/generate-public-decks-manifest.js && vite build",
     "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "check:google-oauth": "node scripts/check-google-oauth-readiness.js",
     "configure:google-oauth": "node scripts/configure-google-oauth-from-client-secret.js"
   },

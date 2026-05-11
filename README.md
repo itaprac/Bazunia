@@ -1,121 +1,150 @@
 # Bazunia
 
-Bazunia to aplikacja webowa do nauki pytań egzaminacyjnych i fiszek.
-Najważniejszy tryb to `Anki` (powtórki SM-2), dodatkowo masz `Test` i `Przeglądanie`.
+Bazunia to aplikacja webowa do nauki pytań egzaminacyjnych, fiszek i współdzielonych talii.
+Frontend jest statyczną aplikacją Vite/React, a backend kont, synchronizacji, talii
+udostępnionych, głosów, ról i Google OAuth działa w Convex.
 
-## Co możesz robić
+## Funkcje
 
-- Uczyć się na taliach `Ogólne` i `Moje` (w tym subskrybowanych).
-- Przeglądać katalog `Udostępnione` i dodawać talie do swoich.
-- Tworzyć własne talie (po zalogowaniu): ręcznie albo przez import JSON.
-- Udostępniać własne talie innym użytkownikom.
-- Subskrybować talie z katalogu `Udostępnione`.
-- Oznaczać pytania flagą i wracać do nich w trybie `Oznaczone`.
+- Tryb powtórek `Anki` oparty o SM-2.
+- Tryb `Test` i `Przeglądanie` dla talii publicznych oraz prywatnych.
+- Tryb gościa z zapisem lokalnym w przeglądarce.
+- Tryb konta z synchronizacją przez Convex.
+- Tworzenie prywatnych talii, ręcznie albo przez import JSON.
+- Katalog talii udostępnionych z subskrypcjami.
+- Role `admin` i `dev` dla zarządzania taliami publicznymi.
+- Manifest talii publicznych generowany z plików `data/*.json`.
 
-## Szybki start
+## Stack
 
-W katalogu projektu:
+- Frontend: Vite, React, CSS, moduły aplikacji w `js/`.
+- Backend: Convex functions i HTTP actions w `convex/`.
+- Dane: statyczne talie publiczne w `data/`.
+- Produkcja: Railway, Docker i nginx.
+
+## Wymagania
+
+- Node.js 22 lub nowszy (`.nvmrc` jest w repo).
+- npm.
+- Dostęp do Convex CLI dla pracy nad backendem i deploymentu.
+- Docker tylko do lokalnego testu kontenera zgodnego z Railway.
+
+## Development Lokalny
+
+Zainstaluj zależności:
 
 ```bash
 npm install
+```
+
+Utwórz publiczną konfigurację runtime frontendu:
+
+```bash
+cp .env.example .env
+```
+
+Ustaw co najmniej:
+
+```env
+BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
+BAZUNIA_PUBLIC_DECK_PROVIDER=static
+```
+
+Uruchom frontend:
+
+```bash
 npm run dev
 ```
 
-Dev server Vite działa domyślnie pod adresem:
+Vite wystawia aplikację pod:
 
-- `http://localhost:5173`
+```text
+http://localhost:5173
+```
 
-Wariant kontenerowy:
+Przy pracy nad backendem uruchom Convex w drugim terminalu:
 
 ```bash
-docker compose up -d
+npm run convex:dev
 ```
 
-Kontener działa pod adresem:
+## Środowisko Convex
 
-- `http://localhost:8080`
-
-## Deployment na Railway
-
-Projekt ma konfigurację Dockerfile dla Railway. Kontener serwuje aplikację przez nginx, generuje `data/public-decks-manifest.json` podczas buildu i tworzy `/js/runtime-config.js` oraz `/api/runtime-config` na starcie z envów:
+Plik `.env` zawiera wyłącznie publiczne wartości runtime frontendu. Sekrety OAuth
+ustawiaj w środowisku deploymentu Convex. Referencją jest `.env.convex.example`:
 
 ```env
-BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
-BAZUNIA_PUBLIC_DECK_PROVIDER=static
+BAZUNIA_GOOGLE_CLIENT_ID=YOUR_GOOGLE_OAUTH_CLIENT_ID
+BAZUNIA_GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_OAUTH_CLIENT_SECRET
+BAZUNIA_APP_URL=http://localhost:8080
+BAZUNIA_ALLOWED_REDIRECT_ORIGINS=http://localhost:8080
 ```
 
-Railway używa `railway.json`, buduje z `Dockerfile` i sprawdza healthcheck pod `/`.
-
-## Struktura repo (skrót)
-
-- `css/` – style aplikacji.
-- `js/` – logika frontendowa.
-- `data/` – talie używane przez aplikację.
-- `data/raw/` – surowe źródła JSON do konwersji.
-- `scripts/` – skrypty pomocnicze (np. konwersja danych).
-- `convex/` – backend Convex: schema, auth/session, talie, subskrypcje i głosy.
-- `supabase/` – historyczny schemat sprzed migracji.
-
-## Logowanie i zapis danych
-
-- Tryb gościa: dane zapisują się lokalnie w przeglądarce.
-- Tryb zalogowany: dane zapisują się na Twoim koncie (Convex).
-- Możesz korzystać bez logowania, ale prywatne talie (`Moje`) wymagają konta.
-
-## Konfiguracja backendu (Convex)
-
-1. Zaloguj Convex CLI: `npx convex login`.
-2. Uruchom lub podepnij deployment: `npx convex dev`.
-3. Skopiuj `.env.example` do `.env`.
-4. Ustaw w `.env`:
+Obsługiwane są też aliasy zgodne z przykładami Convex Auth:
 
 ```env
-BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
-BAZUNIA_PUBLIC_DECK_PROVIDER=static
+AUTH_GOOGLE_ID=YOUR_GOOGLE_OAUTH_CLIENT_ID
+AUTH_GOOGLE_SECRET=YOUR_GOOGLE_OAUTH_CLIENT_SECRET
 ```
 
-Frontend nadal używa pliku `js/supabase.js` jako warstwy kompatybilności, ale cała komunikacja idzie do Convexa przez `/api/rpc`.
-Rolę `dev` można bootstrapować przez zmienną Convexa `BAZUNIA_DEV_EMAILS` (lista e-maili rozdzielona przecinkami).
-
-### Google OAuth w Convex
-
-Logowanie Google działa przez Convex HTTP actions:
-
-- start: `https://YOUR_DEPLOYMENT.convex.site/api/auth/google/start`
-- callback do Google Cloud Console: `https://YOUR_DEPLOYMENT.convex.site/api/auth/google/callback`
-
-W Google Cloud utwórz OAuth client typu `Web application`. Client typu `Desktop app` / `installed` z redirectem `http://localhost` nie zadziała z callbackiem Convex `.convex.site`.
-
-W zmiennych środowiskowych deploymentu Convex ustaw:
-
-```env
-BAZUNIA_GOOGLE_CLIENT_ID=...
-BAZUNIA_GOOGLE_CLIENT_SECRET=...
-BAZUNIA_APP_URL=https://bazunia-production.up.railway.app
-BAZUNIA_ALLOWED_REDIRECT_ORIGINS=https://bazunia-production.up.railway.app,http://localhost:8080
-```
-
-Kod akceptuje też nazwy używane w przykładach Convex Auth: `AUTH_GOOGLE_ID` i `AUTH_GOOGLE_SECRET`.
-
-`BAZUNIA_CONVEX_URL` we frontendzie może nadal wskazywać na adres `.convex.cloud`; aplikacja sama zamienia go na `.convex.site` dla endpointów HTTP.
-
-Gotowość produkcyjnego flow sprawdzisz komendą:
+Deployment funkcji Convex:
 
 ```bash
-npm run check:google-oauth
+npm run convex:deploy
 ```
 
-Jeżeli pobierzesz z Google Cloud poprawny `client_secret_*.json` dla OAuth clienta typu `Web application`, możesz ustawić Convex envy jednym poleceniem:
+## Google OAuth
+
+Logowanie przez Google działa przez Convex HTTP actions:
+
+```text
+https://YOUR_DEPLOYMENT.convex.site/api/auth/google/start
+https://YOUR_DEPLOYMENT.convex.site/api/auth/google/callback
+```
+
+W Google Cloud utwórz OAuth client typu `Web application`. Nie używaj klienta
+`Desktop app`, bo jego redirecty `localhost` nie pasują do callbacku Convex.
+
+Po pobraniu pliku `client_secret_*.json` możesz ustawić zmienne Convex poleceniem:
 
 ```bash
 npm run configure:google-oauth -- ~/Downloads/client_secret_....json
 ```
 
-Szczegółowa instrukcja krok po kroku jest w `docs/google-oauth-runbook.md`.
+Sprawdzenie produkcyjnego flow:
 
-## Własna talia: najprostszy import JSON
+```bash
+npm run check:google-oauth
+```
 
-Minimalny format:
+Szczegółowy runbook jest w `docs/google-oauth-runbook.md`.
+
+## Talie Publiczne
+
+Źródłem talii publicznych są pliki:
+
+```text
+data/*.json
+```
+
+Manifest aplikacji:
+
+```text
+data/public-decks-manifest.json
+```
+
+Regeneracja lokalna:
+
+```bash
+node scripts/generate-public-decks-manifest.js
+```
+
+Skrypt zachowuje istniejące `generatedAt`, jeśli zawartość talii się nie zmieniła.
+Dzięki temu zwykły build nie powinien brudzić worktree samą datą.
+
+## Format Importu JSON
+
+Minimalny format prywatnej talii:
 
 ```json
 {
@@ -138,41 +167,89 @@ Minimalny format:
 }
 ```
 
-Wymagania importu:
+Zasady importu:
 
 - `deck.id` i `deck.name` są wymagane.
-- `deck.id`: tylko litery, cyfry, `_`, `-`.
-- Opcjonalnie: `deck.defaultSelectionMode` = `single` lub `multiple`.
-- `questions` musi zawierać co najmniej 1 pytanie.
-- Pytanie może mieć:
-  - `0` odpowiedzi (fiszka), albo
-  - `2+` odpowiedzi (testowe).
-- Tryb wyboru pytania:
-  - `question.selectionMode` ma priorytet,
-  - w przeciwnym razie używany jest `deck.defaultSelectionMode`,
-  - gdy oba pola są puste, domyślnie działa `multiple` (zgodność wsteczna).
-- Dla `selectionMode: "single"` pytanie statyczne musi mieć dokładnie 1 poprawną odpowiedź.
-- Dla `selectionMode: "single"` z `correctWhen`: jeśli po losowaniu wyjdzie więcej niż jedna poprawna, pytanie jest tymczasowo pokazane jako `multiple`.
+- `deck.id` może zawierać litery, cyfry, `_` i `-`.
+- `deck.defaultSelectionMode` może mieć wartość `single` albo `multiple`.
+- `questions` musi zawierać co najmniej jedno pytanie.
+- Pytanie może nie mieć odpowiedzi, jeśli ma działać jako fiszka.
+- Pytanie testowe powinno mieć co najmniej dwie odpowiedzi.
+- `question.selectionMode` nadpisuje `deck.defaultSelectionMode`.
+- Statyczne pytanie `single` musi mieć dokładnie jedną poprawną odpowiedź.
 
-## Najczęstsze komendy
+## Deployment Produkcyjny
 
-```bash
-docker compose logs -f web
-docker compose restart web
-docker compose down
-node scripts/generate-public-decks-manifest.js
-npm run convex:dev
-npm run convex:deploy
+Aktualna ścieżka produkcyjna to Railway z plikami:
+
+```text
+railway.json
+Dockerfile
+nginx.conf
 ```
 
-## Publiczne talie (Ogólne)
+Railway buduje obraz Docker, uruchamia `npm run build`, serwuje wynik Vite przez
+nginx i generuje `/js/runtime-config.js` na starcie kontenera z envów.
 
-- Źródłem prawdy są pliki `data/*.json` oraz `data/public-decks-manifest.json`.
-- Na Railway manifest generuje się automatycznie podczas buildu Dockerfile.
-- Lokalnie możesz go odtworzyć ręcznie poleceniem `node scripts/generate-public-decks-manifest.js`.
-- Widoczność `Ukryj/Pokaż` jest trzymana osobno w Convex (`publicDeckVisibility`).
-- Treść talii ogólnych jest tylko do odczytu w aplikacji.
+Wymagane zmienne Railway:
 
-## Dokumentacja w aplikacji
+```env
+BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
+BAZUNIA_PUBLIC_DECK_PROVIDER=static
+```
 
-W aplikacji kliknij `Dokumentacja` w górnym pasku.
+Healthcheck Railway:
+
+```text
+/
+```
+
+## Lokalny Kontener Produkcyjny
+
+Tego trybu używaj do sprawdzenia kontenera zgodnego z Railway:
+
+```bash
+docker compose up --build
+```
+
+Aplikacja będzie dostępna pod:
+
+```text
+http://localhost:8080
+```
+
+Zatrzymanie:
+
+```bash
+docker compose down
+```
+
+## Komendy
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run typecheck
+npm run convex:dev
+npm run convex:deploy
+npm run check:google-oauth
+```
+
+## Struktura Repo
+
+```text
+convex/   schema, funkcje i HTTP actions Convex
+css/      style aplikacji
+data/     statyczne talie publiczne i manifest
+docs/     notatki operacyjne
+js/       główne moduły aplikacji w przeglądarce
+scripts/  konwersja danych i skrypty deploymentowe
+src/      React shell montujący istniejący interfejs aplikacji
+```
+
+## Uwagi
+
+- `js/supabase.js` jest warstwą kompatybilności; obecnie komunikuje się z Convex, nie z Supabase.
+- Lokalny build, zależności, output Vercel, cache Playwright i lokalny stan Convex są ignorowane.
+- Nie commituj `.env`, `.env.local`, sekretów OAuth ani lokalnych katalogów deploymentowych.

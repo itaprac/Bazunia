@@ -1,9 +1,12 @@
 .git
+.convex/local
 .vercel
 .env
 .env.*
 node_modules
 dist
+.playwright-cli
+coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
