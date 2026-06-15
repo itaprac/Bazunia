@@ -1,0 +1,552 @@
+{
+  "deck": {
+    "id": "informatyzacja-organizacji",
+    "name": "Informatyzacja Organizacji",
+    "description": "Pytania z Informatyzacji Organizacji",
+    "version": 1,
+    "group": "Semestr 6",
+    "defaultSelectionMode": "multiple"
+  },
+  "questions": [
+    {
+      "id": "io-org-q001",
+      "text": "Które stwierdzenia dotyczą systemów APS (Advanced Planning and Scheduling)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wykorzystują algorytmy optymalizacyjne.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Pozwalają integrować planowanie zaopatrzenia, produkcji i dystrybucji.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Umożliwiają analizę wąskich gardeł i obciążeń zasobów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Ignorują ograniczenia zasobów, takie jak czas pracy maszyn.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q002",
+      "text": "Do czego służy system WMS (Warehouse Management System)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzania magazynem.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Obsługi relacji z klientami.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Kontroli przepływu towarów w magazynie.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zarządzania kampaniami marketingowymi.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q003",
+      "text": "Co oznacza wyższy poziom dojrzałości IT organizacji?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Lepsze uporządkowanie procesów.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Większą losowość działań.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Możliwość mierzenia i doskonalenia procesów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Brak potrzeby planowania.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q004",
+      "text": "Które stwierdzenia są prawdziwe?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "SCM wspiera zarządzanie łańcuchem dostaw.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "CRM to tylko baza klientów.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "CRM pomaga pozyskiwać i utrzymywać klientów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Dojrzałość IT dotyczy oceny i doskonalenia procesów.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q005",
+      "text": "Co jest operacją gospodarczą?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Uzyskanie w banku linii kredytowej w rachunku bieżącym.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zawarcie umowy o pracę z pracownikiem.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zakup materiałów za gotówkę.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Sprzedaż zapasów magazynowych.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q006",
+      "text": "Czym charakteryzuje się technologia ICR (Intelligent Character Recognition)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Technologia do rozpoznawania słów zamiast znaków w modelach pisma odręcznego.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pozwala na rozpoznawanie różnych rodzajów pisma wraz z właściwościami czcionki.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Umożliwia rozpoznawanie struktury dokumentu.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Wymaga stałego połączenia urządzeń biurowych za pomocą portu LPT.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q007",
+      "text": "Wybierz cechy charakterystyczne dla modeli przetwarzania w chmurze.",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zasoby IT znajdują się poza firmą, a płatność w formie abonamentu.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "W modelu SaaS aktualizacje i poprawki są wdrażane automatycznie przez usługodawcę.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Brak konieczności administrowania (m.in. tworzenia kopii zapasowych) zasobami IT po stronie klienta.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Możliwość łatwego ograniczenia dostępu do zasobów wyłącznie do obszaru fizycznego firmy i/lub domu.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q008",
+      "text": "Które poziomy według klasyfikacji TIER posiadają redundancję wszystkich zasobów?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "TIER I",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "TIER II",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "TIER III",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "TIER IV",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q009",
+      "text": "Co zawiera specyfikacja BOM (Bill of Materials)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Szczegółowy harmonogram produkcji.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zestawienie surowców potrzebnych do wyprodukowania danego wyrobu.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Instrukcję bezpiecznej obsługi maszyn na danym stanowisku.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Dokładne informacje o ilości części składowych potrzebnych do złożenia produktu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q010",
+      "text": "Które z poniższych elementów wchodzą w skład systemu informacyjnego:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "źródła danych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "sposoby uczenia",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "miejsca i metody gromadzenia",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "procesy uczenia",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q011",
+      "text": "Jakie są założenia zastosowania Elektronicznej Wymiany Danych?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "przesyłanie dokumentów jest realizowane za pomocą sieci teleinformatycznych.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "dane są zapisane w predefiniowanym formacie (EDIFACT).",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wszystkie dane są przetwarzane i przekazywane w czasie rzeczywistym.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "dane są generowane i wprowadzane do systemu odbiorcy bez interwencji człowieka.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q012",
+      "text": "Czym NIE jest dojrzałość procesowa?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zespołem różnych narzędzi i praktyk do oceny kompetencji danej organizacji w zakresie zarządzania.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "systematycznym doskonaleniem umiejętności organizacji w celu osiągnięcia wyższej wydajności.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "logicznie uporządkowanym ciągiem czynności w wyniku, których powstaje określony efekt działania.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "stanem organizacji, w którym procesy są jednoznacznie zdefiniowane i zarządzane.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q013",
+      "text": "Jakie cechy posiada system klasy IC (Inventory Control)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "integruje procesy planowania, sterowania i wytwarzania.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "obejmuje planowanie i sterowanie wszystkimi zasobami produkcyjnymi.",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "planowanie oparte na metodach statystycznych i zdroworozsądkowych.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "łączy procesy produkcyjne z procesami obsługi sprzedaży.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q014",
+      "text": "Które z podanych opinii na temat wdrożeń systemów ERP są NIEPRAWDZIWE?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wdrożenie systemu ERP powinno się zakończyć na przełomie roku.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wdrożenie systemu ERP jest projektem informatycznym.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wdrożenie systemu ERP pozwala budować przewagę konkurencyjną.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "ERP zbudowany jest z niezależnych modułów, korzystających ze wspólnej bazy danych.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q015",
+      "text": "Planowanie taktyczne w zarządzaniu produkcją obejmuje:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "planowanie w długim horyzoncie czasowym.",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zadania związane z marketingiem oraz przygotowaniem produkcji.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "działania powtarzalne związane z realizacją produkcji.",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "planowanie finansowe wraz z przepływami pieniężnymi.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q016",
+      "text": "Wskaż korzyści z wdrożenia systemu informatycznego za pomocą metodyki zwinnej:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metodyka ogranicza ryzyko występujące po stronie wykonawcy.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Pozwala na tymczasową integrację nowego systemu z rozwiązaniami używanymi wcześniej.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Koncentruje się na celach biznesowych, a nie na dostarczaniu kolejnych funkcji systemu.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "O tym jakie funkcjonalności są w danym momencie są realizowane decydują wykonawcy projektu.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "io-org-q017",
+      "text": "Na którym poziomie modelu CMM procesy są kontrolowane za pomocą wskaźników?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Początkowy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Powtarzalny",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zdefiniowany",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zarządzany",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q018",
+      "text": "Które elementy są charakterystyczne dla metody JIT?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dostawy materiałów następują dokładnie wtedy, gdy są potrzebne.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wykorzystuje się karty produkcji i karty zapotrzebowania.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Produkcja jest „ssana” przez kolejne stanowiska.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Głównym celem jest minimalizacja zapasów.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q019",
+      "text": "Które z poniższych stwierdzeń są zaletami metody kaskadowej?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Ustalony budżet projektu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Krótkie sprinty 2-3 tygodniowe",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Sformalizowane zarządzanie zmianą wymagań",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Łatwe odstąpienie od umowy w razie problemów",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "io-org-q020",
+      "text": "Wybierz główne cele Systemu Informatycznego Zarządzania:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wspomaganie zarządzania przedsiębiorstwem",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zwiększanie liczby pracowników administracyjnych",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Zastępowanie kadry kierowniczej",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Integracja struktur organizacyjnych",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

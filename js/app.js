@@ -136,7 +136,9 @@ const BUILT_IN_DECK_SOURCES = [
   { id: 'ipz-egzamin', file: '/data/ipz-egzamin.json' },
   { id: 'ai-egzamin', file: '/data/ai-egzamin.json' },
   { id: 'ii-egzamin', file: '/data/ii-egzamin.json' },
+  { id: 'informatyzacja-organizacji', file: '/data/informatyzacja-organizacji.json' },
   { id: 'infrastruktura-informatyczna', file: '/data/infrastruktura_informatyczna.json' },
+  { id: 'zp-egzamin', file: '/data/zp-egzamin.json' },
 ];
 const PUBLIC_DECK_MANIFEST_URL = '/data/public-decks-manifest.json';
 const FALLBACK_PUBLIC_DECK_IDS = BUILT_IN_DECK_SOURCES.map((item) => item.id);

@@ -1,0 +1,547 @@
+{
+  "deck": {
+    "id": "zp-egzamin",
+    "name": "Zarządzanie Projektami",
+    "description": "Pytania z egzaminu z Zarządzania Projektami",
+    "version": 1,
+    "group": "Semestr 6",
+    "defaultSelectionMode": "multiple"
+  },
+  "questions": [
+    {
+      "id": "zp-q001",
+      "text": "Które z wymienionych stanowią komponenty (tematy) wykorzystywane w ramach procesów realizowanych wg. Metodyki PRINCE2:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Uzasadnienie biznesowe",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zamykanie projektu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Inicjowanie projektu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zarządzanie dostarczaniem produktów",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q002",
+      "text": "Według metodyki PRINCE2 każde zarejestrowane ryzyko ma przypisanego",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Głównego Użytkownika",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Właściciela Ryzyka",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Głównego Dostawcę",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q003",
+      "text": "RUP składa się z następujących faz:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wizji, Opracowywania, Konstrukcji, Przekazania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rozpoczęcia, Planowania, Opracowania, Przekazania",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Rozpoczęcia, Opracowania, Budowy, Przekazania",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zp-q004",
+      "text": "W metodyce PRINCE2 komponent (temat) Organizacja definiuje następujące role projektowe:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Przewodniczący",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Kierownik Zespołu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wsparcie projektu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Właściciel produktu",
+          "correct": false
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q005",
+      "text": "Przygotowanie projektu koncentruje się na:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Powołaniu zespołu projektowego",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Definicji celów projektu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ustaleniu sposobu, w jaki uzyska się rozwiązanie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Stworzeniu zarysu Uzasadnienia Biznesowego",
+          "correct": true
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q006",
+      "text": "Podpisanie umowy pomiędzy klientem, a wybranym wykonawcą następuje zwykle po fazie",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Testowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Koncepcji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Inicjacji",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wdrażania",
+          "correct": false
+        },
+        {
+          "id": "e",
+          "text": "Realizacji",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "Eksploatacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q007",
+      "text": "Wartość dodatnia NPV wyznaczone przy ocenie opłacalności oznacza:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Projekt nie jest efektywny z punktu widzenia finansowego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Projekt jest efektywny z punktu widzenia finansowego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Stopa rentowności przedsięwzięcia jest wyższa niż stopa procentowa przyjęta do obliczania współczynnika dyskontowego, zatem inwestycja jest opłacalna.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Stopa rentowności przedsięwzięcia jest niższa niż stopa procentowa przyjęta do obliczania współczynnika dyskontowego, zatem oceniana inwestycja w projekt zwiększa wartość podmiotu.",
+          "correct": false
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q008",
+      "text": "Integracja metodyki wytwarzania RUP ze środowiskiem zarządzania PRINCE2 dotyczy fazy:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rozpoczęcia i Opracowania",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Rozpoczęcia, Opracowania, Budowy, Przekazania",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Wizji, Planowania, Konstrukcji, Stabilizacji",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q009",
+      "text": "„Interfejsem” łączącym metodykę PRINCE2 z metodyką RUP jest przede wszystkim proces:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzanie Dostarczaniem Produktów",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Zarządzanie Strategiczne Projektem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przygotowanie Projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q010",
+      "text": "W którym procesie PRINCE2 zakładany jest Rejestr Ryzyka:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Inicjowanie Projektu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Sterowanie Etapem",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Przygotowanie Projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q011",
+      "text": "Obsługa zmian powoływana jest głównie w celu:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zarządzania sytuacjami ryzykownymi",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zarządzania sytuacjami niepożądanymi",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Obsługi dużej liczby zagadnień projektowych",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "zp-q012",
+      "text": "Raport nadzwyczajny przygotowywany jest:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Pod koniec Etapu Zarządczego",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Gdy przekroczone zostały tolerancje projektowe",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jako część Strategii Zarządzania Konfiguracją",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q013",
+      "text": "Obowiązki dotyczące Jakości mieszczą się w kategoriach:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wytwórca",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Kontroler",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zatwierdzający",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Właściciel",
+          "correct": false
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q014",
+      "text": "Ryzyka projektowe w metodyce PRINCE2 oceniane są przez pryzmat:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Wpływu na projekt",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Prawdopodobieństwa wystąpienia",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Bliskości wystąpienia",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Jako iloczyn prawdopodobieństwa i wpływu",
+          "correct": true
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q015",
+      "text": "Tolerancje dla korzyści zawarte są w:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Uzasadnieniu biznesowym",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Strategii Zarządzania Jakością",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Planie Projektu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "zp-q016",
+      "text": "Kontrolowanie postępów w projekcie obejmuje pomiary faktycznych wyników w odniesieniu do docelowych wskaźników wykonania:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Czasu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Kosztu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Jakości",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zakresu",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Korzyści",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Ryzyka",
+          "correct": true
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q017",
+      "text": "W metodyce PRINCE2 wykorzystanie zarządzania etapowego jest:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Obowiązkowe",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Liczba etapów jest elastyczna",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Liczba etapów zależy od ryzyka projektu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Każdy projekt składa się z Przygotowania Projektu, Inicjowania Projektu oraz przynajmniej jednego Etapu Zarządczego",
+          "correct": true
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q018",
+      "text": "Uzasadnienie biznesowe wskazuje",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Powody podjęcia projektu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Możliwe rozwiązanie biznesowe",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Terminy",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Koszty",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Główne ryzyka",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "Główne zagadnienia",
+          "correct": false
+        },
+        {
+          "id": "g",
+          "text": "Kryteria akceptacji dla jakości produktów projektu",
+          "correct": false
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q019",
+      "text": "SCRUM definiuje w projekcie następujące role:",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Właściciel produktu",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Właściciel procesu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Scrum Master",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Członek zespołu",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Wsparcie projektu",
+          "correct": false
+        }
+      ],
+      "selectionMode": "multiple"
+    },
+    {
+      "id": "zp-q020",
+      "text": "W metodyce SCRUM kluczowym mechanizmem do rejestracji zadań, który definiuje wysokopoziomowe biznesowe funkcje aplikacji jest:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Rejestr produktu (product backlog)",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Rejestr zadań etapu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Dziennik zadań projektu",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

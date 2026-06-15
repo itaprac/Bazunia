@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-25T12:16:43.033Z",
+  "generatedAt": "2026-06-15T18:50:11.536Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -121,6 +121,17 @@
           "questionCount": 6
         }
       ],
+      "defaultSelectionMode": "multiple"
+    },
+    {
+      "id": "informatyzacja-organizacji",
+      "file": "/data/informatyzacja-organizacji.json",
+      "name": "Informatyzacja Organizacji",
+      "description": "Pytania z Informatyzacji Organizacji",
+      "questionCount": 20,
+      "version": 1,
+      "contentHash": "2989c3f612beaca9879e5a7d3b9d91ef4bdd7b3c99e00737f1f21f7a0984c10a",
+      "group": "Semestr 6",
       "defaultSelectionMode": "multiple"
     },
     {
@@ -350,6 +361,17 @@
       "version": 1,
       "contentHash": "6a670e05a47f660729d1d85d48c69600be8b1a1d60f35bfb29932a5878d72606",
       "group": "Semestr 5",
+      "defaultSelectionMode": "multiple"
+    },
+    {
+      "id": "zp-egzamin",
+      "file": "/data/zp-egzamin.json",
+      "name": "Zarządzanie Projektami",
+      "description": "Pytania z egzaminu z Zarządzania Projektami",
+      "questionCount": 20,
+      "version": 1,
+      "contentHash": "deec4def0ea421d9c9dde08684895ff5e4d25d08d1cf36c528276015f6808477",
+      "group": "Semestr 6",
       "defaultSelectionMode": "multiple"
     }
   ]
