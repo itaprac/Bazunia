@@ -2568,6 +2568,8 @@ function bindModeSelectEvents(deckId, stats) {
         navigateToTestConfig(deckId);
       } else if (mode === 'browse') {
         navigateToBrowse(deckId);
+      } else if (mode === 'settings') {
+        navigateToSettings(deckId, 'mode-select');
       } else if (mode === 'flagged') {
         navigateToFlaggedBrowse(deckId);
       }

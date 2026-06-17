@@ -1124,6 +1124,11 @@ export function renderModeSelect(deckName, deckStats, options = {}) {
         <div class="mode-card-name">Przeglądanie</div>
         <div class="mode-card-desc">${browseDesc}</div>
       </div>
+      <div class="mode-card" data-mode="settings">
+        <div class="mode-card-icon">&#9881;</div>
+        <div class="mode-card-name">Ustawienia</div>
+        <div class="mode-card-desc">Parametry talii i powtórek</div>
+      </div>
       ${flaggedCard}
     </div>
   `;
