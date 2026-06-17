@@ -412,10 +412,6 @@
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 3px 8px;
-  min-width: 28px;
   text-align: center;
 }
 
