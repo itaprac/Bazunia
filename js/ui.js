@@ -652,7 +652,7 @@ export function renderQuestion(
       <div class="answers-list" id="answers-list">
         ${shuffledAnswers.map((a, i) => `
           <div class="answer-option" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
-            <div class="answer-indicator ${indicatorType}">${i + 1}</div>
+            <div class="answer-indicator ${indicatorType}"></div>
             <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           </div>
         `).join('')}
@@ -1194,7 +1194,7 @@ export function renderTestQuestion(
       <div class="answers-list" id="test-answers-list">
         ${shuffledAnswers.map((a, i) => `
           <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
-            <div class="answer-indicator ${indicatorType}">${i + 1}</div>
+            <div class="answer-indicator ${indicatorType}"></div>
             <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
           </div>
         `).join('')}
