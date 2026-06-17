@@ -2555,10 +2555,93 @@ function navigateToModeSelect(deckId) {
     canEdit: canEditDeckContent(deckId),
     categoryName: getCategoryLabelForDeck(deckMeta, currentCategory),
   });
+  renderModeSelectActions(deckId);
   bindModeSelectEvents(deckId, stats);
 }
 
+function renderModeSelectActions(deckId) {
+  const actionSlot = document.querySelector('#view-mode-select .study-header > div:last-child');
+  if (!actionSlot) return;
+
+  const deckMeta = getDeckMeta(deckId);
+  const scope = getDeckScope(deckMeta);
+  const shareActionHtml = scope === 'private'
+    ? `<button class="deck-card-menu-item btn-mode-share-deck" type="button">${deckMeta?.isShared === true ? 'Wyłącz udostępnianie' : 'Udostępnij'}</button>`
+    : '';
+
+  actionSlot.className = 'mode-select-header-actions';
+  actionSlot.innerHTML = `
+    <div class="deck-card-menu mode-select-menu" id="mode-select-deck-menu">
+      <button class="deck-card-menu-trigger" type="button" data-tooltip="Opcje talii" aria-label="Opcje talii" aria-expanded="false">&#8942;</button>
+      <div class="deck-card-menu-dropdown">
+        <button class="deck-card-menu-item btn-mode-deck-settings" type="button">Ustawienia</button>
+        <button class="deck-card-menu-item btn-mode-deck-stats" type="button">Statystyki</button>
+        <button class="deck-card-menu-item btn-mode-export-deck" type="button">Eksportuj</button>
+        ${shareActionHtml}
+      </div>
+    </div>
+  `;
+}
+
 function bindModeSelectEvents(deckId, stats) {
+  const menu = document.getElementById('mode-select-deck-menu');
+  const menuTrigger = menu?.querySelector('.deck-card-menu-trigger');
+  const closeModeMenu = () => {
+    if (!menu) return;
+    menu.classList.remove('open');
+    menuTrigger?.setAttribute('aria-expanded', 'false');
+  };
+
+  menuTrigger?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const wasOpen = menu.classList.contains('open');
+    closeModeMenu();
+    if (!wasOpen) {
+      menu.classList.add('open');
+      menuTrigger.setAttribute('aria-expanded', 'true');
+      setTimeout(() => {
+        document.addEventListener('click', closeModeMenu, { once: true });
+      }, 0);
+    }
+  });
+
+  menu?.querySelector('.deck-card-menu-dropdown')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  menu?.querySelector('.btn-mode-deck-settings')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    navigateToSettings(deckId, 'mode-select');
+  });
+
+  menu?.querySelector('.btn-mode-deck-stats')?.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    const deckMeta = getDeckMeta(deckId);
+    if (deckMeta && getDeckScope(deckMeta) === 'public' && sessionMode === 'user' && currentUser) {
+      try {
+        await ensurePublicDeckLoaded(deckId);
+      } catch (error) {
+        showNotification(`Nie udało się załadować talii: ${error.message}`, 'error');
+        return;
+      }
+    }
+    navigateToStats({ deckId });
+  });
+
+  menu?.querySelector('.btn-mode-export-deck')?.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    await exportDeckToJSON(deckId);
+  });
+
+  menu?.querySelector('.btn-mode-share-deck')?.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    await handleShareToggle(deckId, { returnTo: 'mode-select' });
+  });
+
   document.querySelectorAll('.mode-card:not(.disabled)').forEach(card => {
     card.addEventListener('click', () => {
       const mode = card.dataset.mode;
@@ -2568,8 +2651,6 @@ function bindModeSelectEvents(deckId, stats) {
         navigateToTestConfig(deckId);
       } else if (mode === 'browse') {
         navigateToBrowse(deckId);
-      } else if (mode === 'settings') {
-        navigateToSettings(deckId, 'mode-select');
       } else if (mode === 'flagged') {
         navigateToFlaggedBrowse(deckId);
       }
@@ -5070,7 +5151,7 @@ async function copyDeckFromSharedCatalog(sharedDeckId) {
   });
 }
 
-async function handleShareToggle(deckId) {
+async function handleShareToggle(deckId, options = {}) {
   const deckMeta = getDeckMeta(deckId);
   if (!deckMeta) return;
   if (getDeckScope(deckMeta) !== 'private') return;
@@ -5101,7 +5182,11 @@ async function handleShareToggle(deckId) {
       if (activeDeckScope === 'shared') {
         await refreshSharedCatalog();
       }
-      navigateToDeckList('private');
+      if (options.returnTo === 'mode-select') {
+        navigateToModeSelect(deckId);
+      } else {
+        navigateToDeckList('private');
+      }
     } catch (error) {
       showNotification(`Nie udało się wyłączyć udostępniania: ${error.message}`, 'error');
     }
@@ -5117,7 +5202,11 @@ async function handleShareToggle(deckId) {
     if (activeDeckScope === 'shared') {
       await refreshSharedCatalog();
     }
-    navigateToDeckList('private');
+    if (options.returnTo === 'mode-select') {
+      navigateToModeSelect(deckId);
+    } else {
+      navigateToDeckList('private');
+    }
   } catch (error) {
     showNotification(`Nie udało się udostępnić talii: ${error.message}`, 'error');
   }

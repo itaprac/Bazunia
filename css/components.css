@@ -712,6 +712,16 @@
   background: var(--color-answer-incorrect);
 }
 
+.mode-select-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 44px;
+}
+
+.mode-select-menu .deck-card-menu-dropdown {
+  min-width: 190px;
+}
+
 .deck-private-sections {
   gap: 20px;
 }
