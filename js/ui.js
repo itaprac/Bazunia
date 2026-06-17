@@ -713,14 +713,14 @@ export function renderAnswerFeedback(
 
       if (noSelection) {
         if (isCorrect) {
-          stateClass += ' correct-selected';
+          stateClass += isMultiSelect ? ' correct-missed' : ' correct-selected';
         }
       } else if (isSelected && isCorrect) {
         stateClass += ' correct-selected';
       } else if (isSelected && !isCorrect) {
         stateClass += ' incorrect-selected';
       } else if (!isSelected && isCorrect) {
-        stateClass += ' correct-missed';
+        stateClass += isMultiSelect ? ' correct-missed' : ' correct-selected';
       }
 
       const votesHtml = renderAnswerVoteControls(
@@ -1253,7 +1253,7 @@ export function renderTestResult(deckName, results) {
         cssClass = 'is-incorrect-selected';
         icon = '<span class="test-review-answer-icon" style="color: var(--color-danger)">&#10007;</span>';
       } else if (!wasSelected && isRight) {
-        cssClass = 'is-correct';
+        cssClass = questionSelectionMode === 'multiple' ? 'is-correct-missed' : 'is-correct';
         icon = '<span class="test-review-answer-icon" style="color: var(--color-warning)">&#10003;</span>';
       } else {
         icon = '<span class="test-review-answer-icon" style="color: transparent">&#8226;</span>';

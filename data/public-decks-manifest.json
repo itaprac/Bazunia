@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T18:50:11.536Z",
+  "generatedAt": "2026-06-17T19:27:38.440Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -339,6 +339,17 @@
       "version": 1,
       "contentHash": "b64ef7ba4ed7e902bec21694394ad6b9294f0eb4c0f69cbbbe34f80408b63d53",
       "group": "Semestr 4",
+      "defaultSelectionMode": "multiple"
+    },
+    {
+      "id": "tm-egzamin",
+      "file": "/data/tm-egzamin.json",
+      "name": "Systemy Multimedialne",
+      "description": "Pytania z egzaminu z Systemów Multimedialnych według wykładów",
+      "questionCount": 30,
+      "version": 1,
+      "contentHash": "1f069e62ec7d5cbb67e569f89efd5c92e255c65af65506cc5ba1b3a3f6b941cb",
+      "group": "Semestr 6",
       "defaultSelectionMode": "multiple"
     },
     {

@@ -952,8 +952,8 @@
 }
 
 .answer-option.correct-missed {
-  border-color: var(--color-answer-correct-border);
-  background: var(--color-answer-correct);
+  border-color: var(--color-answer-missed-border);
+  background: var(--color-answer-missed);
 }
 
 .answer-option .answer-indicator {
@@ -985,9 +985,15 @@
 }
 
 .answer-option.correct-selected .answer-indicator,
-.answer-option.correct-missed .answer-indicator {
+.answer-option.correct-selected .answer-indicator {
   border-color: var(--color-success);
   background: var(--color-success);
+  color: white;
+}
+
+.answer-option.correct-missed .answer-indicator {
+  border-color: var(--color-warning);
+  background: var(--color-warning);
   color: white;
 }
 
@@ -1875,6 +1881,10 @@
 
 .test-review-answer.is-correct {
   background: var(--color-answer-correct);
+}
+
+.test-review-answer.is-correct-missed {
+  background: var(--color-answer-missed);
 }
 
 .test-review-answer.is-incorrect-selected {

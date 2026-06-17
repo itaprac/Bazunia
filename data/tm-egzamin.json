@@ -1,0 +1,847 @@
+{
+  "deck": {
+    "id": "tm-egzamin",
+    "name": "Systemy Multimedialne",
+    "description": "Pytania z egzaminu z Systemów Multimedialnych według wykładów",
+    "version": 1,
+    "group": "Semestr 6",
+    "defaultSelectionMode": "multiple"
+  },
+  "questions": [
+    {
+      "id": "tm-q001",
+      "text": "Maskowanie w modelu psychoakustycznym dotyczy m.in.",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Maskowania szumem dźwięków słyszalnych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Maskowania sąsiednich częstotliwości / dźwięków w obecności innych dźwięków",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "„Zagłuszania” wybranych dźwięków po sobie następujących w określonych warunkach",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Maskowania częstotliwości mowy przez odpowiednią muzykę",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q002",
+      "text": "Zniekształcenia niestrukturalne w ocenie jakości obrazu to m.in.:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rozmycie",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zmiana jasności",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "kompresja stratna typu JPEG",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "zmiana kontrastu",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "kompresja stratna oparta na falkach",
+          "correct": false
+        },
+        {
+          "id": "f",
+          "text": "zmiana współczynnika gamma",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q003",
+      "text": "Metoda podwójnej ślepej próby (test ABC) w ocenie jakości dźwięku wykorzystuje",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "2 sygnały",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "dowolną liczbę sygnałów, przy założeniu, że tylko jeden jest referencyjny",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "3 sygnały",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "4 sygnały",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q004",
+      "text": "Bolometr (mikrobolometr) służy do",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "rejestracji promieniowania X w cyfrowych urządzeniach medycznych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "tworzenia termogramów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "oceny kształtów małych obiektów kulistych w skanowaniu laserowym",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "pomiaru energii przenoszonej przez promieniowanie cieplne",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q005",
+      "text": "Oko ludzkie jest czułe na barwy w następujących proporcjach",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Czerwony 50%, Zielony 40%, Niebieski 10%",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Czerwony 30%, Zielony 60%, Niebieski 10%",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Czerwony 10%, Zielony 30%, Niebieski 60%",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Czerwony 33%, Zielony 33%, Niebieski 33%",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q006",
+      "text": "Dynamika dźwięku zapisanego za pomocą 16-bitowych liczb stałoprzecinkowych (I-16, zapis CD) to około",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "48 dB",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "128 dB",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "144 dB",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "96 dB",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q007",
+      "text": "Kodowanie Huffmana dla ciągu `123123123`",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zwiększy zapotrzebowanie na miejsce potrzebne do zapisania formy zakodowanej",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Da dużą oszczędność miejsca",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Nie zmieni objętości danych zakodowanych w stosunku do oryginalnych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q008",
+      "text": "PhotoStimulating Luminescence pozwala na",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "budowę obrazów radiograficznych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "pomiar energii przenoszonej przez promieniowanie cieplne",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wykrywanie obiektów o naturalnej luminescencji w obrazach mikroskopowych",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "rejestrację promieniowania X w cyfrowych urządzeniach medycznych",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q009",
+      "text": "Zaznacz prawidłowe",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Treść nielinearna oferuje interaktywność",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Przykładem treści linearnej jest np. przekaz kinowy",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Treść nielinearna to treść hipermedialna",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Treść linearna wymaga kontroli nawigacyjnej ze strony odbiorcy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q010",
+      "text": "Algorytmy kodowania bez analizy całego zbioru danych to m.in.:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Kodowanie Huffmana",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Kodowanie arytmetyczne",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "LZ77",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "RLE",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "ByteRun",
+          "correct": true
+        },
+        {
+          "id": "f",
+          "text": "LZW",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q011",
+      "text": "Które z poniższych stwierdzeń poprawnie opisują relację między parametrami technologicznymi (QoS) a postrzeganą jakością (QoE)?",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dobra jakość techniczna (wysoki QoS) nie zawsze oznacza dobrą jakość percepcyjną.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Wysoka przepływność (bitrate) w każdym przypadku gwarantuje wysoką jakość postrzeganą (QoE).",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "QoS opisuje parametry techniczne systemu, takie jak opóźnienie, jitter czy straty pakietów.",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "QoE opisuje subiektywną jakość odbieraną przez użytkownika i zależy od kontekstu odbioru.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q012",
+      "text": "Dane bardzo trudne lub niemożliwe do skompresowania metodami bezstratnymi to:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "strumienie liczb losowych",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "pliki JPEG i MP3",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "wszystkie obrazy monochromatyczne",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "strumienie liczb pseudolosowych",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "dane skompresowane za pomocą tego samego lub innego algorytmu",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q013",
+      "text": "Klatki typu I w kompresji wideo przechowują informację",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Zrekonstruowaną z klatek B i P",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Skompresowaną algorytmem podobnym do JFIF/JPEG",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zrekonstruowaną z klatek P",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Całkowitą o obrazie",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q014",
+      "text": "„Stratność” kompresji w algorytmie JPEG jest realizowana poprzez",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "skanowanie zig-zag",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "subsampling kolorów",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "kwantyzację",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "centrowanie wartości poziomów jasności",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q015",
+      "text": "Zasada Huygensa pozwala na",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "zmniejszenie echa w przypadku nagłaśniania dużych pomieszczeń",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "odwzorowanie przestrzennego rozkładu pola akustycznego",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "stworzenie pozornych źródeł poza obszarem odsłuchu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "podwyższenie jakości dźwięku kompresowanego algorytmami stratnymi",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q016",
+      "text": "Binning pozwala na",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wzmocnienie prądu odczytywanego z pojedynczego piksela matrycy światłoczułej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "zwiększenie rozdzielczości przestrzennej obrazu",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "rejestrowanie obrazów w słabym oświetleniu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "łączenie pikseli w matrycy w celu zmniejszenia poziomu szumu w obrazie",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q017",
+      "text": "Wskaż prawdziwe informacje dotyczące klasyfikacji obiektywnych miar jakości:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Metody Full-Reference (FR) polegają na precyzyjnym porównaniu sygnału odebranego z pełnym sygnałem wzorcowym",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Metody No-Reference (NR) są jedynymi, które można stosować, gdy nie posiadamy oryginału, np. przy ocenie transmisji na żywo.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Metoda SSIM (Structural Similarity) jest przykładem miary typu No-Reference (NR), ponieważ analizuje strukturę obrazu bez zaglądania do oryginału",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Metody Reduced-Reference (RR) wymagają dostępu do wybranych cech oryginału, np. histogramu, a nie całego pliku",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q018",
+      "text": "Szum kwantyzacji obniża się",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "wraz ze wzrostem głębokości bitowej rejestrowanego dźwięku",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "nie zależy od głębokości bitowej rejestrowanego dźwięku",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "wraz ze zmniejszeniem się głębokości bitowej rejestrowanego dźwięku",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q019",
+      "text": "Z punktu widzenia fizyki, częstotliwość dźwięku odbierana jako",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "kontur melodii",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "wysokość tonu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "barwa dźwięku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "stosunek/proporcje częstotliwości podstawowej do aktualnie rejestrowanej",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q020",
+      "text": "Model barw YCbCr używany jest w kompresji obrazów ponieważ",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dzięki rozdzieleniu luminancji od chrominancji można uzyskać wyższy stopień kompresji",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Kolory w nim są odwzorowane z większą dokładnością",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Obliczenia w nim są szybsze niż w RGB",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Jest zoptymalizowany pod kątem algorytmów sztucznej inteligencji w telewizorach smart",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q021",
+      "text": "Czułość matrycy światłoczułej zależy od",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Długości połączenia z przetwornikiem A/D",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bezwładności prądowej",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Kolorów filtrów CFA, np. w matrycy Bayera",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Wielkości pojedynczego piksela",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "Powierzchni czynnej piksela",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q022",
+      "text": "Zmienna przepływność",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Dopasowuje liczbę bitów do maksymalnej amplitudy sygnału",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Gwarantuje utrzymanie stałej jakości sygnału wyjściowego, nie zaś stałej ilości danych przypadających na daną jednostkę czasu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Zapisuje określony fragment nagrania przy pomocy różnej liczby bitów, zależnie od stopnia skomplikowania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Zapisuje określony fragment nagrania zawsze przy pomocy tej samej liczby bitów, niezależnie od stopnia skomplikowania zapisywanych danych",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q023",
+      "text": "Na odbiór danej barwy wpływ ma wiele bodźców, m.in.",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "ilość energii świetlnej",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "liczba równoczesnych odbiorców",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "skład widmowy promieniowania",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "obecność innych barw w pobliżu",
+          "correct": true
+        },
+        {
+          "id": "e",
+          "text": "samopoczucie odbiorcy odczuwane danego dnia",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q024",
+      "text": "MDCT (modified DCT) pozwala na",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Działanie na danych w skali logarytmicznej",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zmniejszenie zniekształceń na granicach ramek audio w kompresji stratnej",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Realizację przekształcenia na blokach nachodzących na siebie w czasie",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Obliczanie jedynie połowy współczynników widma DCT dla zwiększenia szybkości działania",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q025",
+      "text": "Subsampling (opisywany np. jako 4:2:2) stosowany w JPEG i MPEG dotyczy:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Proporcji liczby klatek I, P i B",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Stosunku liczby zapamiętanych w obrazie pikseli luminancji i chrominancji",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Stosunku wielkości bloków w algorytmie estymacji ruchu",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kwantyzacji współczynników transformaty DCT w kolejnych blokach obrazu",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q026",
+      "text": "Różnica pomiędzy CCD a CMOS w matrycach światłoczułych polega na tym, iż",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "w matrycach CMOS konwersja ładunku na napięcie odbywa się poprzez pojedynczą konwersję dla całej matrycy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "odczyt wartości z matrycy CMOS odbywa się wierszami",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "odczyt wartości z matrycy CMOS odbywa się w jednym kroku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "w matrycach CMOS konwersja ładunku na napięcie odbywa się w każdym pikselu matrycy",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q027",
+      "text": "Zakres maksymalnej czułości słuchu ludzkiego to około",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "od 2 kHz do 4 kHz",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "od 16 Hz do 16 kHz",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "od 20 Hz do 20 kHz",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "od 1 kHz do 2 kHz",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q028",
+      "text": "Po wykonaniu algorytmu RLE na ciągu\n\n`1,1,1,1,2,2,2,3,3,3,3,1,2,3,1,2,3,4,5`\n\nuzyska się następujący wynik:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "`4,1,3,2,4,3,0,8,1,2,3,1,2,3,4,5`",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "`4,1,3,2,4,3,0,8,1,2,3,1,2,3,4,5,0`",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "`-5,1,-3,2,-3,3,8,1,2,3,1,2,3,4,5`",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "`-5,1,-3,2,-3,3,8,1,2,3,1,2,3,4,5,0`",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "tm-q029",
+      "text": "Standard VMAF, opracowany przez Netflix i używany w streamingu, charakteryzuje się tym, że:",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Jest modelem uczenia maszynowego, który łączy w sobie kilka różnych wskaźników (VIF, DLM, Motion).",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Inaczej ocenia błędy w scenach statycznych, a inaczej w scenach z szybkim ruchem — uwzględnia percepcję ruchu.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Przyjmuje, że różnica 6 punktów w jego skali to tzw. JND (Just Noticeable Difference).",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Pozwala na optymalizację typu Per-Title Encoding, dobierając najniższy możliwy bitrate zachowujący wysoką jakość dla konkretnego filmu.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "tm-q030",
+      "text": "Cechą charakterystyczną redundancji informacyjnej jest",
+      "selectionMode": "multiple",
+      "answers": [
+        {
+          "id": "a",
+          "text": "Losowy rozkład symboli w ciągu danych",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Wysoka entropia strumienia danych",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Częste powtarzanie się symboli w ciągu danych",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Niska entropia strumienia danych",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}
