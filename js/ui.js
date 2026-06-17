@@ -1708,7 +1708,7 @@ export function renderSettings(settings, defaults, options = {}) {
   `;
 
   const deckMetaHtml = deckMeta ? `
-    <div class="settings-form">
+    <div class="settings-form-section">
       <div class="settings-group">
         <label class="settings-label" for="set-deck-name">Nazwa talii</label>
         <input class="settings-input" type="text" id="set-deck-name" value="${escapeAttr(deckMeta.name || '')}" ${canEditMeta ? '' : 'disabled'}>
@@ -1729,58 +1729,60 @@ export function renderSettings(settings, defaults, options = {}) {
   ` : '';
 
   document.getElementById('settings-content').innerHTML = `
-    ${deckMetaHtml}
     <div class="settings-form">
-      <div class="settings-group">
-        <div class="toggle-row">
-          <div>
-            <div class="toggle-label-text">Losuj wbudowane warianty pytań obliczeniowych</div>
-            <div class="toggle-hint">Dotyczy pytań z gotowym generatorem (ikona kostki). Pytania szablonowe działają niezależnie.</div>
+      ${deckMetaHtml}
+      <div class="settings-form-section">
+        <div class="settings-group">
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label-text">Losuj wbudowane warianty pytań obliczeniowych</div>
+              <div class="toggle-hint">Dotyczy pytań z gotowym generatorem (ikona kostki). Pytania szablonowe działają niezależnie.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="set-builtInCalculationVariants" ${settings.builtInCalculationVariants ? 'checked' : ''}>
+              <span class="toggle-slider"></span>
+            </label>
           </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="set-builtInCalculationVariants" ${settings.builtInCalculationVariants ? 'checked' : ''}>
-            <span class="toggle-slider"></span>
-          </label>
         </div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-newCardsPerDay">Nowe karty dziennie</label>
-        <input class="settings-input" type="number" id="set-newCardsPerDay" min="1" max="9999" value="${settings.newCardsPerDay}">
-        <div class="settings-hint">Ile nowych kart wprowadzić dziennie (1–9999)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-maxReviewsPerDay">Maks. powtórek dziennie</label>
-        <input class="settings-input" type="number" id="set-maxReviewsPerDay" min="1" max="9999" value="${settings.maxReviewsPerDay}">
-        <div class="settings-hint">Limit powtórek na dzień (1–9999)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-learningSteps">Kroki nauki (min)</label>
-        <input class="settings-input" type="text" id="set-learningSteps" value="${stepsToStr(settings.learningSteps)}">
-        <div class="settings-hint">Interwały w minutach dla nowych kart, oddzielone przecinkami (np. 1, 10)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-relearningSteps">Kroki ponownej nauki (min)</label>
-        <input class="settings-input" type="text" id="set-relearningSteps" value="${stepsToStr(settings.relearningSteps)}">
-        <div class="settings-hint">Interwały dla kart z błędem, oddzielone przecinkami (np. 10)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-graduatingInterval">Interwał początkowy (dni)</label>
-        <input class="settings-input" type="number" id="set-graduatingInterval" min="1" max="30" value="${settings.graduatingInterval}">
-        <div class="settings-hint">Po ukończeniu kroków nauki (1–30)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-easyInterval">Łatwy interwał (dni)</label>
-        <input class="settings-input" type="number" id="set-easyInterval" min="1" max="60" value="${settings.easyInterval}">
-        <div class="settings-hint">Po kliknięciu "Łatwe" (1–60)</div>
-      </div>
-      <div class="settings-group">
-        <label class="settings-label" for="set-maximumInterval">Maks. interwał (dni)</label>
-        <input class="settings-input" type="number" id="set-maximumInterval" min="1" max="36500" value="${settings.maximumInterval}">
-        <div class="settings-hint">Maksymalny odstęp między powtórkami (1–36500)</div>
-      </div>
-      <div class="settings-actions">
-        <button class="btn btn-primary" id="btn-save-settings">Zapisz</button>
-        <button class="btn btn-secondary" id="btn-restore-defaults">Przywróć domyślne</button>
+        <div class="settings-group">
+          <label class="settings-label" for="set-newCardsPerDay">Nowe karty dziennie</label>
+          <input class="settings-input" type="number" id="set-newCardsPerDay" min="1" max="9999" value="${settings.newCardsPerDay}">
+          <div class="settings-hint">Ile nowych kart wprowadzić dziennie (1–9999)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-maxReviewsPerDay">Maks. powtórek dziennie</label>
+          <input class="settings-input" type="number" id="set-maxReviewsPerDay" min="1" max="9999" value="${settings.maxReviewsPerDay}">
+          <div class="settings-hint">Limit powtórek na dzień (1–9999)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-learningSteps">Kroki nauki (min)</label>
+          <input class="settings-input" type="text" id="set-learningSteps" value="${stepsToStr(settings.learningSteps)}">
+          <div class="settings-hint">Interwały w minutach dla nowych kart, oddzielone przecinkami (np. 1, 10)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-relearningSteps">Kroki ponownej nauki (min)</label>
+          <input class="settings-input" type="text" id="set-relearningSteps" value="${stepsToStr(settings.relearningSteps)}">
+          <div class="settings-hint">Interwały dla kart z błędem, oddzielone przecinkami (np. 10)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-graduatingInterval">Interwał początkowy (dni)</label>
+          <input class="settings-input" type="number" id="set-graduatingInterval" min="1" max="30" value="${settings.graduatingInterval}">
+          <div class="settings-hint">Po ukończeniu kroków nauki (1–30)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-easyInterval">Łatwy interwał (dni)</label>
+          <input class="settings-input" type="number" id="set-easyInterval" min="1" max="60" value="${settings.easyInterval}">
+          <div class="settings-hint">Po kliknięciu "Łatwe" (1–60)</div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label" for="set-maximumInterval">Maks. interwał (dni)</label>
+          <input class="settings-input" type="number" id="set-maximumInterval" min="1" max="36500" value="${settings.maximumInterval}">
+          <div class="settings-hint">Maksymalny odstęp między powtórkami (1–36500)</div>
+        </div>
+        <div class="settings-actions">
+          <button class="btn btn-primary" id="btn-save-settings">Zapisz</button>
+          <button class="btn btn-secondary" id="btn-restore-defaults">Przywróć domyślne</button>
+        </div>
       </div>
     </div>
     <div class="settings-danger-zone">

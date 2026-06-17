@@ -2086,6 +2086,12 @@
   box-shadow: var(--shadow);
 }
 
+.settings-form-section + .settings-form-section {
+  border-top: 1px solid var(--color-border-light);
+  margin-top: 22px;
+  padding-top: 22px;
+}
+
 .settings-group {
   margin-bottom: 18px;
 }
