@@ -3639,6 +3639,7 @@ function saveCreatedQuestion(editor, wrapper) {
   const isFlashcardQuestion = !!editor.querySelector('#create-question-is-flashcard')?.checked;
   const questionImage = normalizeImageInputValue(editor.querySelector('#create-question-image')?.value);
   const flashcardAnswer = (editor.querySelector('#create-question-answer')?.value || '').trim();
+  const flashcardAnswerImage = normalizeImageInputValue(editor.querySelector('#create-question-answer-image')?.value);
   const explanation = (editor.querySelector('#create-question-explanation')?.value || '').trim();
   const selectionMode = normalizeSelectionMode(
     editor.querySelector('#create-question-selection-mode')?.value,
@@ -3698,6 +3699,9 @@ function saveCreatedQuestion(editor, wrapper) {
   }
   if (isFlashcardQuestion && flashcardAnswer) {
     newQuestion.answer = flashcardAnswer;
+  }
+  if (isFlashcardQuestion && flashcardAnswerImage) {
+    newQuestion.answerImage = flashcardAnswerImage;
   }
   if (!isFlashcardQuestion) {
     newQuestion.selectionMode = selectionMode;
@@ -3835,6 +3839,7 @@ function saveBrowseEdit(index, editor) {
   const newExplanation = editor.querySelector('.editor-explanation').value.trim();
   const newImage = normalizeImageInputValue(editor.querySelector('.editor-question-image')?.value);
   const newAnswer = (editor.querySelector('.editor-question-answer')?.value || '').trim();
+  const newAnswerImage = normalizeImageInputValue(editor.querySelector('.editor-question-answer-image')?.value);
   const selectionMode = normalizeSelectionMode(
     editor.querySelector('.editor-selection-mode')?.value,
     getDeckDefaultSelectionModeForDeckId(currentDeckId)
@@ -3891,10 +3896,24 @@ function saveBrowseEdit(index, editor) {
     if (updatedAnswers.length > 0) {
       allQuestions[qIndex].answers = updatedAnswers;
       allQuestions[qIndex].selectionMode = selectionMode;
+      delete allQuestions[qIndex].answer;
+      delete allQuestions[qIndex].back;
+      delete allQuestions[qIndex].answerImage;
+      delete allQuestions[qIndex].backImage;
+      delete allQuestions[qIndex].answerImageAlt;
+      delete allQuestions[qIndex].backImageAlt;
     } else {
       allQuestions[qIndex].answer = newAnswer || undefined;
       delete allQuestions[qIndex].back;
       delete allQuestions[qIndex].selectionMode;
+      if (newAnswerImage) {
+        allQuestions[qIndex].answerImage = newAnswerImage;
+      } else {
+        delete allQuestions[qIndex].answerImage;
+        delete allQuestions[qIndex].backImage;
+        delete allQuestions[qIndex].answerImageAlt;
+        delete allQuestions[qIndex].backImageAlt;
+      }
     }
     allQuestions[qIndex].explanation = newExplanation || undefined;
     if (newRandomize) {
@@ -6363,6 +6382,7 @@ function saveQuestionEdit() {
   const newExplanation = document.getElementById('editor-explanation').value.trim();
   const newImage = normalizeImageInputValue(document.getElementById('editor-question-image')?.value);
   const newAnswer = (document.getElementById('editor-question-answer')?.value || '').trim();
+  const newAnswerImage = normalizeImageInputValue(document.getElementById('editor-question-answer-image')?.value);
   const selectionMode = normalizeSelectionMode(
     document.getElementById('editor-selection-mode')?.value,
     getDeckDefaultSelectionModeForDeckId(currentDeckId)
@@ -6470,10 +6490,24 @@ function saveQuestionEdit() {
     if (updatedAnswers.length > 0) {
       questions[qIndex].answers = updatedAnswers;
       questions[qIndex].selectionMode = selectionMode;
+      delete questions[qIndex].answer;
+      delete questions[qIndex].back;
+      delete questions[qIndex].answerImage;
+      delete questions[qIndex].backImage;
+      delete questions[qIndex].answerImageAlt;
+      delete questions[qIndex].backImageAlt;
     } else {
       questions[qIndex].answer = newAnswer || undefined;
       delete questions[qIndex].back;
       delete questions[qIndex].selectionMode;
+      if (newAnswerImage) {
+        questions[qIndex].answerImage = newAnswerImage;
+      } else {
+        delete questions[qIndex].answerImage;
+        delete questions[qIndex].backImage;
+        delete questions[qIndex].answerImageAlt;
+        delete questions[qIndex].backImageAlt;
+      }
     }
     questions[qIndex].explanation = newExplanation || undefined;
     if (newRandomize) {

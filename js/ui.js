@@ -1589,6 +1589,7 @@ export function renderBrowseCreateEditor(options = {}) {
   const questionText = typeof options.text === 'string' ? options.text : '';
   const questionImage = getContentImageSource(options);
   const answerText = typeof options.answer === 'string' ? options.answer : '';
+  const answerImage = String(options.answerImage || options.backImage || '').trim();
   const explanation = typeof options.explanation === 'string' ? options.explanation : '';
   const isFlashcard = !!options.isFlashcard;
   const selectionMode = normalizeSelectionMode(options.selectionMode, 'multiple');
@@ -1656,6 +1657,11 @@ export function renderBrowseCreateEditor(options = {}) {
       <div class="editor-section create-editor-flashcard-answer" style="${isFlashcard ? '' : 'display:none'}">
         <label class="editor-label" for="create-question-answer">Odpowiedź</label>
         <textarea class="editor-textarea" id="create-question-answer" rows="3">${escapeHtml(answerText)}</textarea>
+        ${renderEditorImageField(answerImage, {
+          inputId: 'create-question-answer-image',
+          inputClass: 'editor-question-answer-image',
+          label: 'Obrazek odpowiedzi',
+        })}
       </div>
       <div class="editor-section" id="create-editor-answers-section" style="${isFlashcard ? 'display:none' : ''}">
         <label class="editor-label" for="create-question-selection-mode">Typ wyboru</label>
@@ -1777,6 +1783,10 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
       <div class="editor-section">
         <label class="editor-label">Odpowiedź</label>
         <textarea class="editor-textarea editor-question-answer" rows="3">${escapeHtml(question.answer || question.back || '')}</textarea>
+        ${renderEditorImageField(String(question.answerImage || question.backImage || '').trim(), {
+          inputClass: 'editor-question-answer-image',
+          label: 'Obrazek odpowiedzi',
+        })}
       </div>
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
@@ -2095,6 +2105,11 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
       <div class="editor-section">
         <label class="editor-label" for="editor-question-answer">Odpowiedź</label>
         <textarea class="editor-textarea" id="editor-question-answer" rows="3">${escapeHtml(question.answer || question.back || '')}</textarea>
+        ${renderEditorImageField(String(question.answerImage || question.backImage || '').trim(), {
+          inputId: 'editor-question-answer-image',
+          inputClass: 'editor-question-answer-image',
+          label: 'Obrazek odpowiedzi',
+        })}
       </div>
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
