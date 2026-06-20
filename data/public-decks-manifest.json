@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T13:08:40.607Z",
+  "generatedAt": "2026-06-20T14:09:19.357Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -247,7 +247,7 @@
       "description": "Pytania z PDF Baza na Miss. Otwarte pytania są fiszkami z proponowanymi odpowiedziami, zamknięte jako pytania testowe.",
       "questionCount": 73,
       "version": 1,
-      "contentHash": "3f5865523b6e4d833d119535cf4701665d2bb2f12b65f2d84c62b34119e550af",
+      "contentHash": "69d5a01604d25b10e87e2b6f6328ab708b4948aca8f4d23a8a3ea67e4eaa9dc0",
       "group": "Semestr 6",
       "defaultSelectionMode": "single"
     },

@@ -86,23 +86,86 @@ export function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const HTML_ENTITY_REPLACEMENTS = Object.freeze({
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+});
+
+function unescapeHtmlEntities(text) {
+  return String(text || '').replace(/&(amp|lt|gt|quot|#39);/g, entity => (
+    HTML_ENTITY_REPLACEMENTS[entity] || entity
+  ));
+}
+
+function normalizeMathShorthand(tex) {
+  return String(tex || '')
+    .replace(/\.\.\./g, '\\ldots')
+    .replace(/\b([A-Za-z])([0-9]+)dot\b/g, '\\dot{$1}_{$2}')
+    .replace(/\b([A-Za-z])dot\b/g, '\\dot{$1}')
+    .replace(/([A-Za-z])˙([0-9]+)/g, '\\dot{$1}_{$2}')
+    .replace(/([A-Za-z])˙/g, '\\dot{$1}')
+    .replace(/([A-Za-z])¨/g, '\\ddot{$1}')
+    .replace(/\bint_/g, '\\int_')
+    .replace(/\binfty\b/g, '\\infty')
+    .replace(/\b(sin|cos|tan|log|ln|exp)\s*\(/g, '\\$1(')
+    .replace(/\^\(([^()]+)\)/g, '^{$1}')
+    .replace(/<=/g, '\\le ')
+    .replace(/>=/g, '\\ge ')
+    .replace(/\*/g, '\\cdot ');
+}
+
+function looksLikeInlineMath(text) {
+  const raw = unescapeHtmlEntities(text).trim();
+  if (!raw) return false;
+  if (/^-?\d+(?:,\s*-?\d+)+$/.test(raw)) return false;
+  return /[=+\-*/^_()[\]{}]|(?:dot|˙|¨|int_|infty|sqrt|sin|cos|tan|log|ln|exp)\b|[A-Za-z][0-9]/.test(raw);
+}
+
+function renderMath(tex, displayMode = false, normalizeShorthand = false) {
+  const unescaped = unescapeHtmlEntities(tex).trim();
+  const normalized = normalizeShorthand ? normalizeMathShorthand(unescaped) : unescaped;
+  return katex.renderToString(normalized, { throwOnError: false, displayMode });
+}
+
 /**
- * Replace $$ ... $$ in already-escaped HTML with rendered KaTeX.
+ * Replace LaTeX fragments in already-escaped HTML with rendered KaTeX.
+ * Supports $$...$$, \(...\), \[...\] and math-looking `backtick` snippets.
  * Falls back to raw text if KaTeX is not loaded.
  */
 export function renderLatex(html) {
   if (typeof katex === 'undefined') return html;
-  return html.replace(/\$\$([\s\S]*?)\$\$/g, (match, tex) => {
+
+  let rendered = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, tex) => {
     try {
-      // Unescape HTML entities that escapeHtml may have introduced inside $$
-      const unescaped = tex
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .trim();
-      return katex.renderToString(unescaped, { throwOnError: false, displayMode: false });
+      return renderMath(tex, false);
+    } catch {
+      return match;
+    }
+  });
+
+  rendered = rendered.replace(/\\\(([\s\S]*?)\\\)/g, (match, tex) => {
+    try {
+      return renderMath(tex, false);
+    } catch {
+      return match;
+    }
+  });
+
+  rendered = rendered.replace(/\\\[([\s\S]*?)\\\]/g, (match, tex) => {
+    try {
+      return renderMath(tex, true);
+    } catch {
+      return match;
+    }
+  });
+
+  return rendered.replace(/`([^`]+)`/g, (match, tex) => {
+    if (!looksLikeInlineMath(tex)) return match;
+    try {
+      return renderMath(tex, false, true);
     } catch {
       return match;
     }

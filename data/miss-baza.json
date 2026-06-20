@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "miss-q001",
-      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\n1. y(x1, x2) = a * x1 + b * x2\n2. x¨ + (k/m) * x˙ + (g/l) * sin(x) = 0",
+      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\n1. \\(y(x_1, x_2)=a\\cdot x_1+b\\cdot x_2\\)\n2. \\(\\ddot{x}+\\frac{k}{m}\\dot{x}+\\frac{g}{l}\\sin(x)=0\\)",
       "answer": "Pierwszy: model statyczny, deterministyczny, ciagly, liniowy, stacjonarny, parametryczny, wielowymiarowy/MISO. Drugi: model dynamiczny, deterministyczny, ciagly, nieliniowy, stacjonarny, o parametrach skupionych, parametryczny.",
       "image": "/data/assets/miss-baza/q001.png",
       "imageAlt": "Wzory modeli do sklasyfikowania"
@@ -19,7 +19,7 @@
     {
       "id": "miss-q002",
       "text": "Za pomocą jakich równań (układu równań) w przestrzeni stanów opisane są systemy dynamiczne?",
-      "answer": "Rownaniem stanu i rownaniem wyjscia. Ogolnie: `Xdot(t)=F(...)`, `Y(t)=G(...)`; dla liniowego stacjonarnego: `Xdot=A*X+B*U`, `Y=C*X+D*U`."
+      "answer": "Rownaniem stanu i rownaniem wyjscia. Ogolnie: \\(\\dot{X}(t)=F(\\ldots)\\), \\(Y(t)=G(\\ldots)\\); dla liniowego stacjonarnego: \\(\\dot{X}=A\\cdot X+B\\cdot U\\), \\(Y=C\\cdot X+D\\cdot U\\)."
     },
     {
       "id": "miss-q003",
@@ -99,8 +99,8 @@
     },
     {
       "id": "miss-q009",
-      "text": "Wyjaśnij oznaczenia występujące we wzorze: d/dt (∂T/∂q̇k) - ∂T/∂qk = Qk (k = 1, N).\n\nT - Qk - t - qk - N -",
-      "answer": "`T` - energia kinetyczna; `Q_k` - sila uogolniona zwiazana ze wspolrzedna `q_k`; `t` - czas; `q_k` - wspolrzedna uogolniona; `N` - liczba wspolrzednych uogolnionych/stopni swobody; `k` - numer wspolrzednej.",
+      "text": "Wyjaśnij oznaczenia występujące we wzorze: \\(\\frac{d}{dt}\\left(\\frac{\\partial T}{\\partial \\dot{q}_k}\\right)-\\frac{\\partial T}{\\partial q_k}=Q_k\\), \\(k=1,\\ldots,N\\).\n\n\\(T\\) - \\(Q_k\\) - \\(t\\) - \\(q_k\\) - \\(N\\) -",
+      "answer": "\\(T\\) - energia kinetyczna; \\(Q_k\\) - sila uogolniona zwiazana ze wspolrzedna \\(q_k\\); \\(t\\) - czas; \\(q_k\\) - wspolrzedna uogolniona; \\(N\\) - liczba wspolrzednych uogolnionych/stopni swobody; \\(k\\) - numer wspolrzednej.",
       "image": "/data/assets/miss-baza/q009.png",
       "imageAlt": "Wzór równań Eulera-Lagrange’a z oznaczeniami"
     },
@@ -111,13 +111,13 @@
     },
     {
       "id": "miss-q011",
-      "text": "Sprowadź równanie x¨ + x˙ = 2u * x do normalnej postaci równań dynamicznych systemu.",
-      "answer": "Przyjmij `x1=x`, `x2=x˙`. Wtedy `x˙1=x2`, `x˙2=2u*x1-x2`."
+      "text": "Sprowadź równanie \\(\\ddot{x}+\\dot{x}=2u\\cdot x\\) do normalnej postaci równań dynamicznych systemu.",
+      "answer": "Przyjmij \\(x_1=x\\), \\(x_2=\\dot{x}\\). Wtedy \\(\\dot{x}_1=x_2\\), \\(\\dot{x}_2=2u\\cdot x_1-x_2\\)."
     },
     {
       "id": "miss-q012",
       "text": "Jakie dane musisz posiadać aby rozwiązać dowolne równanie różniczkowe metodami numerycznymi?",
-      "answer": "Rownanie w postaci `ydot=f(x,y)` lub uklad, warunek/przyblizenie poczatkowe, krok calkowania i przedzial obliczen."
+      "answer": "Rownanie w postaci \\(\\dot{y}=f(x,y)\\) lub uklad, warunek/przyblizenie poczatkowe, krok calkowania i przedzial obliczen."
     },
     {
       "id": "miss-q013",
@@ -144,7 +144,7 @@
     {
       "id": "miss-q017",
       "text": "Zapisz równanie dla podanego modelu zrealizowanego w Simulinku.",
-      "answer": "Schemat odpowiada rownaniu trzeciego rzedu: `y''' = u + 3*cos(y') - 2y`, czyli rownowaznie `y''' + 2y = u + 3*cos(y')`.",
+      "answer": "Schemat odpowiada rownaniu trzeciego rzedu: \\(y'''=u+3\\cos(y')-2y\\), czyli rownowaznie \\(y'''+2y=u+3\\cos(y')\\).",
       "image": "/data/assets/miss-baza/q017.png",
       "imageAlt": "Schemat blokowy Simulinka z integratorami i sprzężeniami"
     },
@@ -206,21 +206,21 @@
     {
       "id": "miss-q029",
       "text": "Całkę Laplace zapisujemy w postaci; wyjaśnij oznaczenia występujące we wzorze.",
-      "answer": "`L[f(t)]=F(s)=int_0^infty f(t)*e^(-st) dt`; `f(t)` - oryginal/funkcja czasu, `F(s)` - obraz Laplace'a, `s=c+jw` - zmienna zespolona, `t` - czas, `e^(-st)` - jadro przeksztalcenia, calkowanie od `0` do `infty` dotyczy czasu dodatniego.",
+      "answer": "\\(\\mathcal{L}\\{f(t)\\}=F(s)=\\int_{0}^{\\infty} f(t)\\cdot e^{-st}\\,dt\\); \\(f(t)\\) - oryginal/funkcja czasu, \\(F(s)\\) - obraz Laplace'a, \\(s=c+j\\omega\\) - zmienna zespolona, \\(t\\) - czas, \\(e^{-st}\\) - jadro przeksztalcenia, calkowanie od \\(0\\) do \\(\\infty\\) dotyczy czasu dodatniego.",
       "image": "/data/assets/miss-baza/q029.png",
       "imageAlt": "Wzór całki Laplace’a"
     },
     {
       "id": "miss-q030",
       "text": "Przedstaw graficznie sygnał kwantowy/dyskretny i podpisz go.",
-      "answer": "Sygnał dyskretny przedstawia się jako próbki w wybranych chwilach czasu, np. pionowe kreski/stem plot dla x[k]. Sygnał kwantowy ma dodatkowo wartości zaokrąglone do ustalonych poziomów kwantyzacji.",
+      "answer": "Sygnał dyskretny przedstawia się jako próbki w wybranych chwilach czasu, np. pionowe kreski/stem plot dla \\(x[k]\\). Sygnał kwantowy ma dodatkowo wartości zaokrąglone do ustalonych poziomów kwantyzacji.",
       "answerImage": "/data/assets/miss-baza/q030.png",
       "answerImageAlt": "Sygnał dyskretny i kwantowy przedstawiony jako próbki oraz poziomy kwantyzacji"
     },
     {
       "id": "miss-q031",
       "text": "Przedstaw graficznie sygnał/model ciągły/skończony.",
-      "answer": "Model ciągły rysuje się jako gładką krzywą x(t), której wartości są określone dla każdego t. Model skończony przedstawia się jako przebieg przyjmujący skończoną liczbę stanów/poziomów, np. prostokątne odcinki w czasie.",
+      "answer": "Model ciągły rysuje się jako gładką krzywą \\(x(t)\\), której wartości są określone dla każdego \\(t\\). Model skończony przedstawia się jako przebieg przyjmujący skończoną liczbę stanów/poziomów, np. prostokątne odcinki w czasie.",
       "answerImage": "/data/assets/miss-baza/q031.png",
       "answerImageAlt": "Porównanie modelu ciągłego jako gładkiej krzywej oraz modelu skończonego jako odcinków prostokątnych"
     },
@@ -237,7 +237,7 @@
     {
       "id": "miss-q034",
       "text": "Transmitancja operatorowa to stosunek:",
-      "answer": "`G(s)=Y(s)/U(s)`, czyli stosunek transformaty Laplace'a sygnalu wyjsciowego do transformaty sygnalu wejsciowego przy zerowych warunkach poczatkowych."
+      "answer": "\\(G(s)=\\frac{Y(s)}{U(s)}\\), czyli stosunek transformaty Laplace'a sygnalu wyjsciowego do transformaty sygnalu wejsciowego przy zerowych warunkach poczatkowych."
     },
     {
       "id": "miss-q035",
@@ -284,7 +284,7 @@
     {
       "id": "miss-q043",
       "text": "Podaj wzór przekształcenia Laplace’a.",
-      "answer": "`L[f(t)]=F(s)=int_0^infty f(t)*e^(-st) dt`."
+      "answer": "\\(\\mathcal{L}\\{f(t)\\}=F(s)=\\int_{0}^{\\infty} f(t)\\cdot e^{-st}\\,dt\\)."
     },
     {
       "id": "miss-q044",
@@ -299,7 +299,7 @@
     {
       "id": "miss-q046",
       "text": "Narysować skok jednostkowy:",
-      "answer": "Skok jednostkowy 1(t) ma wartość 0 dla t<0 oraz 1 dla t≥0. Na wykresie jest poziom 0 przed zerem i poziom 1 od chwili t=0.",
+      "answer": "Skok jednostkowy \\(1(t)\\) ma wartość \\(0\\) dla \\(t<0\\) oraz \\(1\\) dla \\(t\\ge 0\\). Na wykresie jest poziom \\(0\\) przed zerem i poziom \\(1\\) od chwili \\(t=0\\).",
       "answerImage": "/data/assets/miss-baza/q046.png",
       "answerImageAlt": "Skok jednostkowy u(t) równy zero przed zerem i jeden po zerze"
     },
@@ -313,7 +313,7 @@
     {
       "id": "miss-q048",
       "text": "Co to jest przestrzeń stanów?",
-      "answer": "`n`-wymiarowa przestrzen, w ktorej kazdy stan systemu mozna przedstawic jako punkt."
+      "answer": "\\(n\\)-wymiarowa przestrzen, w ktorej kazdy stan systemu mozna przedstawic jako punkt."
     },
     {
       "id": "miss-q049",
@@ -332,13 +332,13 @@
     },
     {
       "id": "miss-q052",
-      "text": "Równania Eulera-Lagrange'a tworzą układ N równań różniczkowych zwyczajnych rzędu:",
+      "text": "Równania Eulera-Lagrange'a tworzą układ \\(N\\) równań różniczkowych zwyczajnych rzędu:",
       "answer": "Drugiego rzedu."
     },
     {
       "id": "miss-q053",
       "text": "Od czego zależy dokładność rozwiązania równania różniczkowego (metodami numerycznymi)?",
-      "answer": "Od wyboru metody, jej rzedu, kroku calkowania `h`, warunkow poczatkowych oraz charakteru rownania."
+      "answer": "Od wyboru metody, jej rzedu, kroku calkowania \\(h\\), warunkow poczatkowych oraz charakteru rownania."
     },
     {
       "id": "miss-q054",
@@ -348,7 +348,7 @@
     {
       "id": "miss-q055",
       "text": "Co jest rozwiązaniem równania różniczkowego metodami numerycznymi?",
-      "answer": "Zbior przyblizonych wartosci rozwiazania w kolejnych punktach siatki, np. `y0,y1,...` dla `x0,x1,...`."
+      "answer": "Zbior przyblizonych wartosci rozwiazania w kolejnych punktach siatki, np. \\(y_0,y_1,\\ldots\\) dla \\(x_0,x_1,\\ldots\\)."
     },
     {
       "id": "miss-q056",
@@ -358,12 +358,12 @@
     {
       "id": "miss-q057",
       "text": "Jak rozwiązać równanie różniczkowe 4 rzędu metodami numerycznymi?",
-      "answer": "Sprowadzic je do ukladu czterech rownan pierwszego rzedu przez podstawienie `x1=x`, `x2=x'`, `x3=x''`, `x4=x'''`, a potem zastosowac metode numeryczna do ukladu."
+      "answer": "Sprowadzic je do ukladu czterech rownan pierwszego rzedu przez podstawienie \\(x_1=x\\), \\(x_2=x'\\), \\(x_3=x''\\), \\(x_4=x'''\\), a potem zastosowac metode numeryczna do ukladu."
     },
     {
       "id": "miss-q058",
       "text": "Czy jednemu modelowi zapisanemu w postaci przestrzeni stanów może odpowiadać wiele transmitancji?",
-      "answer": "Dla ustalonego modelu SISO z okreslonymi macierzami `A,B,C,D` transmitancja jest wyznaczona jednoznacznie: `G(s)=C(sI-A)^(-1)B+D`. Dla ukladow MIMO mowi sie raczej o macierzy transmitancji z wieloma elementami wejscie-wyjscie."
+      "answer": "Dla ustalonego modelu SISO z okreslonymi macierzami \\(A,B,C,D\\) transmitancja jest wyznaczona jednoznacznie: \\(G(s)=C(sI-A)^{-1}B+D\\). Dla ukladow MIMO mowi sie raczej o macierzy transmitancji z wieloma elementami wejscie-wyjscie."
     },
     {
       "id": "miss-q059",
@@ -382,8 +382,8 @@
     },
     {
       "id": "miss-q062",
-      "text": "Co to jest transmitancja operatorowa G(s)?",
-      "answer": "`G(s)=Y(s)/U(s)`, czyli stosunek transformaty Laplace'a wyjscia do transformaty wejscia przy zerowych warunkach poczatkowych."
+      "text": "Co to jest transmitancja operatorowa \\(G(s)\\)?",
+      "answer": "\\(G(s)=\\frac{Y(s)}{U(s)}\\), czyli stosunek transformaty Laplace'a wyjscia do transformaty wejscia przy zerowych warunkach poczatkowych."
     },
     {
       "id": "miss-q063",
@@ -428,7 +428,7 @@
     {
       "id": "miss-q066",
       "text": "Kiedy mamy do czynienia z rozwiązaniem szczególnym równania różniczkowego?",
-      "answer": "Gdy z rozwiazania ogolnego wyznaczymy stale na podstawie warunkow poczatkowych/konkretnych wartosci, np. `y(x0)=y0`."
+      "answer": "Gdy z rozwiazania ogolnego wyznaczymy stale na podstawie warunkow poczatkowych/konkretnych wartosci, np. \\(y(x_0)=y_0\\)."
     },
     {
       "id": "miss-q067",
@@ -437,13 +437,13 @@
     },
     {
       "id": "miss-q068",
-      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\nModel 1: y(x1, x2) = a * x1 + b * x1 * x2\nModel 2: d2x/dt2 + (k/m) * dx/dt + (g/l) * x = 0",
+      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\nModel 1: \\(y(x_1, x_2)=a\\cdot x_1+b\\cdot x_1\\cdot x_2\\)\nModel 2: \\(\\frac{d^2x}{dt^2}+\\frac{k}{m}\\frac{dx}{dt}+\\frac{g}{l}x=0\\)",
       "answer": "Model 1: statyczny, deterministyczny, ciagly, nieliniowy, stacjonarny, parametryczny, MISO. Model 2: dynamiczny, deterministyczny, ciagly, liniowy, stacjonarny, o parametrach skupionych."
     },
     {
       "id": "miss-q069",
       "text": "Za pomocą jakich równań (układu równań) w przestrzeni stanów opisane są systemy dynamiczne?",
-      "answer": "Rownaniem stanu i rownaniem wyjscia, np. `Xdot=A*X+B*U`, `Y=C*X+D*U` dla modelu liniowego."
+      "answer": "Rownaniem stanu i rownaniem wyjscia, np. \\(\\dot{X}=A\\cdot X+B\\cdot U\\), \\(Y=C\\cdot X+D\\cdot U\\) dla modelu liniowego."
     },
     {
       "id": "miss-q070",
@@ -452,20 +452,20 @@
     },
     {
       "id": "miss-q071",
-      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\na) y(x1, x2) = a * x1 * x2 + b * x2\nb) Ẋ = A(t) * X + B(t) * U, Y = C(t) * X + D(t) * U",
+      "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\na) \\(y(x_1, x_2)=a\\cdot x_1\\cdot x_2+b\\cdot x_2\\)\nb) \\(\\dot{X}=A(t)\\cdot X+B(t)\\cdot U\\), \\(Y=C(t)\\cdot X+D(t)\\cdot U\\)",
       "answer": "a) statyczny, deterministyczny, ciagly, nieliniowy, stacjonarny, parametryczny, MISO. b) dynamiczny, deterministyczny, ciagly, liniowy, niestacjonarny, w przestrzeni stanu, parametryczny; niestacjonarny, bo macierze zaleza od czasu."
     },
     {
       "id": "miss-q072",
-      "text": "Sprowadź równanie 2 * x‴ + x″ + 2u = 0 do normalnej postaci równań dynamicznych systemu.",
-      "answer": "`x'''=-(1/2)x''-u`. Przyjmij `x1=x`, `x2=x'`, `x3=x''`. Wtedy: `x1dot=x2`, `x2dot=x3`, `x3dot=-(1/2)*x3-u`.",
+      "text": "Sprowadź równanie \\(2\\cdot x'''+x''+2u=0\\) do normalnej postaci równań dynamicznych systemu.",
+      "answer": "\\(x'''=-\\frac{1}{2}x''-u\\). Przyjmij \\(x_1=x\\), \\(x_2=x'\\), \\(x_3=x''\\). Wtedy: \\(\\dot{x}_1=x_2\\), \\(\\dot{x}_2=x_3\\), \\(\\dot{x}_3=-\\frac{1}{2}x_3-u\\).",
       "image": "/data/assets/miss-baza/q072.png",
       "imageAlt": "Równanie 2 x potrójna pochodna plus x podwójna pochodna plus 2u równa się 0"
     },
     {
       "id": "miss-q073",
-      "text": "Podaj odpowiedź modelu o transmitancji na skok jednostkowy:\n\nG(s) = 1 / (s + 2)",
-      "answer": "Dla skoku `U(s)=1/s`, wiec `Y(s)=G(s)/s=1/(s(s+2))`. Po rozkladzie: `Y(s)=1/2*(1/s-1/(s+2))`, zatem `y(t)=1/2*(1-e^(-2t))` dla `t>=0`."
+      "text": "Podaj odpowiedź modelu o transmitancji na skok jednostkowy:\n\n\\(G(s)=\\frac{1}{s+2}\\)",
+      "answer": "Dla skoku \\(U(s)=\\frac{1}{s}\\), wiec \\(Y(s)=\\frac{G(s)}{s}=\\frac{1}{s(s+2)}\\). Po rozkladzie: \\(Y(s)=\\frac{1}{2}\\left(\\frac{1}{s}-\\frac{1}{s+2}\\right)\\), zatem \\(y(t)=\\frac{1}{2}(1-e^{-2t})\\) dla \\(t\\ge 0\\)."
     }
   ]
 }
