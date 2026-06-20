@@ -29,6 +29,7 @@ import {
   renderAdminPanel,
   setDeckHeaderLabel,
   formatKeyName,
+  getRenderableImageSource,
   updateStudyCounts,
   updateProgress,
   showView,
@@ -1813,6 +1814,25 @@ async function ensurePublicDeckLoaded(deckId) {
   markPublicDeckLoadingStart(deckId);
   try {
     const existingQuestions = storage.peekQuestions(deckId);
+    const usesConvexPublicDecks = PUBLIC_DECK_PROVIDER === 'convex' || PUBLIC_DECK_PROVIDER === 'supabase';
+    if (usesConvexPublicDecks) {
+      await syncPublicDecksFromConvex({ fallbackToBuiltInsOnError: false });
+      const syncedQuestions = storage.peekQuestions(deckId);
+      if (syncedQuestions.length === 0) {
+        throw new Error(`Brak talii "${deckId}" w Convex.`);
+      }
+      const syncedDeckMeta = getDeckMeta(deckId) || deckMeta;
+      const defaultMode = normalizeSelectionMode(syncedDeckMeta.defaultSelectionMode, null);
+      const normalizedQuestions = applyDeckDefaultSelectionModeToQuestions(syncedQuestions, defaultMode);
+      if (normalizedQuestions !== syncedQuestions) {
+        storage.saveQuestions(deckId, normalizedQuestions);
+        mergeCardsForQuestions(deckId, normalizedQuestions);
+      } else if (storage.peekCards(deckId).length === 0) {
+        mergeCardsForQuestions(deckId, syncedQuestions);
+      }
+      return true;
+    }
+
     let manifestEntry = getPublicDeckManifestEntry(deckId);
     if (existingQuestions.length > 0) {
       if (!manifestEntry) {
@@ -1916,16 +1936,22 @@ function filterBuiltInPublicRows(rows = []) {
 
 async function syncPublicDecksFromConvex(options = {}) {
   if (!isSupabaseConfigured()) {
-    await loadBuiltInDecks();
-    return;
+    if (options.fallbackToBuiltInsOnError !== false) {
+      await loadBuiltInDecks();
+      return;
+    }
+    throw new Error('Brak konfiguracji Convex dla talii ogólnych.');
   }
   const fallbackToBuiltInsOnError = options.fallbackToBuiltInsOnError !== false;
   try {
     const includeHidden = canManagePublicDecks();
     const rows = filterBuiltInPublicRows(await fetchPublicDecks({ includeArchived: includeHidden }));
     if (rows.length === 0) {
-      await loadBuiltInDecks();
-      return;
+      if (fallbackToBuiltInsOnError) {
+        await loadBuiltInDecks();
+        return;
+      }
+      throw new Error('Convex nie zwrócił żadnej talii ogólnej.');
     }
     applyPublicDeckRowsToLocal(rows, { includeHidden });
     migrateDeckMetadata();
@@ -1933,7 +1959,9 @@ async function syncPublicDecksFromConvex(options = {}) {
     showNotification(`Nie udało się wczytać talii ogólnych z Convex: ${error.message}`, 'error');
     if (fallbackToBuiltInsOnError) {
       await loadBuiltInDecks();
+      return;
     }
+    throw error;
   }
 }
 
@@ -3598,7 +3626,7 @@ function bindEditorImageControls(root = document) {
       if (value) {
         preview.replaceChildren();
         const image = document.createElement('img');
-        image.src = value;
+        image.src = getRenderableImageSource(value);
         image.alt = '';
         preview.appendChild(image);
         preview.hidden = false;

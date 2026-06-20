@@ -638,13 +638,23 @@ function getContentImageAlt(item, fallback) {
   return typeof alt === 'string' && alt.trim() ? alt.trim() : fallback;
 }
 
+const CONVEX_IMAGE_CACHE_BUSTER = '20260620';
+
+export function getRenderableImageSource(value) {
+  const src = String(value || '').trim();
+  if (!src || src.startsWith('data:')) return src;
+  if (!src.includes('/api/image?') || /[?&]v=/.test(src)) return src;
+  return `${src}${src.includes('?') ? '&' : '?'}v=${CONVEX_IMAGE_CACHE_BUSTER}`;
+}
+
 function renderContentImage(item, className, fallbackAlt) {
   const src = getContentImageSource(item);
   if (!src) return '';
+  const renderSrc = getRenderableImageSource(src);
 
   return `
     <div class="content-image ${className}">
-      <img src="${escapeAttr(src)}" alt="${escapeAttr(getContentImageAlt(item, fallbackAlt))}" loading="lazy">
+      <img src="${escapeAttr(renderSrc)}" alt="${escapeAttr(getContentImageAlt(item, fallbackAlt))}" loading="lazy">
     </div>
   `;
 }
@@ -680,8 +690,9 @@ export function renderEditorImageField(value, options = {}) {
   const visibleValue = isEmbeddedImage ? '' : normalizedValue;
   const visiblePlaceholder = isEmbeddedImage ? 'Obrazek z pliku, wklej link aby zastąpić' : placeholder;
   const compactClass = options.compact ? ' compact' : '';
+  const previewSrc = getRenderableImageSource(normalizedValue);
   const previewHtml = hasImage
-    ? `<img src="${escapeAttr(normalizedValue)}" alt="${escapeAttr(label)}" loading="lazy">`
+    ? `<img src="${escapeAttr(previewSrc)}" alt="${escapeAttr(label)}" loading="lazy">`
     : '';
 
   return `
