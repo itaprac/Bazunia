@@ -29,7 +29,7 @@ import {
   renderAdminPanel,
   setDeckHeaderLabel,
   formatKeyName,
-  getRenderableImageSource,
+  applyRenderableImageSource,
   updateStudyCounts,
   updateProgress,
   showView,
@@ -1049,10 +1049,82 @@ function shouldRandomizeQuestion(question, deckSettings = currentDeckSettings) {
   return !!(deckSettings?.builtInCalculationVariants && hasRandomizer(question.id));
 }
 
+const CONVEX_IMAGE_SELECTOR = 'img[data-convex-image-src]';
+const convexImageBlobUrls = new Map();
+let convexImageObserver = null;
+
+async function getConvexImageBlobUrl(source) {
+  if (convexImageBlobUrls.has(source)) {
+    return convexImageBlobUrls.get(source);
+  }
+
+  const response = await fetch(source, { cache: 'no-store', mode: 'cors' });
+  if (!response.ok) {
+    throw new Error(`Nie udało się pobrać obrazka (HTTP ${response.status}).`);
+  }
+  const blob = await response.blob();
+  if (!String(blob.type || '').startsWith('image/')) {
+    throw new Error('Convex zwrócił nieprawidłowy typ obrazka.');
+  }
+
+  const blobUrl = URL.createObjectURL(blob);
+  convexImageBlobUrls.set(source, blobUrl);
+  return blobUrl;
+}
+
+async function hydrateConvexImageElement(image) {
+  const source = String(image?.dataset?.convexImageSrc || '').trim();
+  if (!source || image.dataset.convexImageLoaded === source || image.dataset.convexImageLoading === source) {
+    return;
+  }
+
+  image.dataset.convexImageLoading = source;
+  delete image.dataset.convexImageError;
+  try {
+    const blobUrl = await getConvexImageBlobUrl(source);
+    if (String(image.dataset.convexImageSrc || '').trim() !== source) return;
+    image.src = blobUrl;
+    image.dataset.convexImageLoaded = source;
+  } catch (error) {
+    image.dataset.convexImageError = error.message || 'Nie udało się pobrać obrazka.';
+    image.src = source;
+  } finally {
+    if (image.dataset.convexImageLoading === source) {
+      delete image.dataset.convexImageLoading;
+    }
+  }
+}
+
+function hydrateConvexImages(root = document) {
+  const scope = root && typeof root.querySelectorAll === 'function' ? root : document;
+  if (scope.matches?.(CONVEX_IMAGE_SELECTOR)) {
+    hydrateConvexImageElement(scope);
+  }
+  scope.querySelectorAll?.(CONVEX_IMAGE_SELECTOR).forEach((image) => {
+    hydrateConvexImageElement(image);
+  });
+}
+
+function initConvexImageLoader() {
+  hydrateConvexImages(document);
+  if (convexImageObserver || !document.body || typeof MutationObserver === 'undefined') return;
+  convexImageObserver = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          hydrateConvexImages(node);
+        }
+      });
+    }
+  });
+  convexImageObserver.observe(document.body, { childList: true, subtree: true });
+}
+
 // --- Initialization ---
 
 async function init() {
   initTooltips({ defaultDelay: 450, defaultPlacement: 'top' });
+  initConvexImageLoader();
   bindGlobalEvents();
   bindAuthEvents();
   const oauthRedirect = isSupabaseConfigured()
@@ -3626,9 +3698,10 @@ function bindEditorImageControls(root = document) {
       if (value) {
         preview.replaceChildren();
         const image = document.createElement('img');
-        image.src = getRenderableImageSource(value);
+        applyRenderableImageSource(image, value);
         image.alt = '';
         preview.appendChild(image);
+        hydrateConvexImages(image);
         preview.hidden = false;
         empty.hidden = true;
       } else {

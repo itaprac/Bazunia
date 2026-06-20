@@ -639,6 +639,7 @@ function getContentImageAlt(item, fallback) {
 }
 
 const CONVEX_IMAGE_CACHE_BUSTER = '20260620';
+const IMAGE_PLACEHOLDER_SRC = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
 export function getRenderableImageSource(value) {
   const src = String(value || '').trim();
@@ -647,14 +648,43 @@ export function getRenderableImageSource(value) {
   return `${src}${src.includes('?') ? '&' : '?'}v=${CONVEX_IMAGE_CACHE_BUSTER}`;
 }
 
+export function isConvexImageSource(value) {
+  return String(value || '').includes('/api/image?');
+}
+
+export function applyRenderableImageSource(image, value) {
+  if (!image) return '';
+  const renderSrc = getRenderableImageSource(value);
+  if (isConvexImageSource(renderSrc)) {
+    image.src = IMAGE_PLACEHOLDER_SRC;
+    image.dataset.convexImageSrc = renderSrc;
+    delete image.dataset.convexImageLoaded;
+    delete image.dataset.convexImageError;
+    return renderSrc;
+  }
+
+  image.src = renderSrc;
+  delete image.dataset.convexImageSrc;
+  delete image.dataset.convexImageLoaded;
+  delete image.dataset.convexImageError;
+  return renderSrc;
+}
+
+function renderImageSourceAttrs(value) {
+  const renderSrc = getRenderableImageSource(value);
+  if (isConvexImageSource(renderSrc)) {
+    return `src="${IMAGE_PLACEHOLDER_SRC}" data-convex-image-src="${escapeAttr(renderSrc)}"`;
+  }
+  return `src="${escapeAttr(renderSrc)}"`;
+}
+
 function renderContentImage(item, className, fallbackAlt) {
   const src = getContentImageSource(item);
   if (!src) return '';
-  const renderSrc = getRenderableImageSource(src);
 
   return `
     <div class="content-image ${className}">
-      <img src="${escapeAttr(renderSrc)}" alt="${escapeAttr(getContentImageAlt(item, fallbackAlt))}" loading="lazy">
+      <img ${renderImageSourceAttrs(src)} alt="${escapeAttr(getContentImageAlt(item, fallbackAlt))}" loading="lazy">
     </div>
   `;
 }
@@ -690,9 +720,8 @@ export function renderEditorImageField(value, options = {}) {
   const visibleValue = isEmbeddedImage ? '' : normalizedValue;
   const visiblePlaceholder = isEmbeddedImage ? 'Obrazek z pliku, wklej link aby zastąpić' : placeholder;
   const compactClass = options.compact ? ' compact' : '';
-  const previewSrc = getRenderableImageSource(normalizedValue);
   const previewHtml = hasImage
-    ? `<img src="${escapeAttr(previewSrc)}" alt="${escapeAttr(label)}" loading="lazy">`
+    ? `<img ${renderImageSourceAttrs(normalizedValue)} alt="${escapeAttr(label)}" loading="lazy">`
     : '';
 
   return `

@@ -896,6 +896,26 @@
   background: var(--color-bg);
 }
 
+.content-image img[data-convex-image-src]:not([data-convex-image-loaded]),
+.editor-image-preview img[data-convex-image-src]:not([data-convex-image-loaded]) {
+  min-width: 160px;
+  min-height: 96px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent),
+    var(--color-bg);
+  background-size: 220px 100%, auto;
+  animation: image-placeholder-sheen 1.1s ease-out infinite;
+}
+
+@keyframes image-placeholder-sheen {
+  from {
+    background-position: -220px 0, 0 0;
+  }
+  to {
+    background-position: 220px 0, 0 0;
+  }
+}
+
 .question-image {
   margin-bottom: 14px;
 }
