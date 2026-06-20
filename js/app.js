@@ -61,6 +61,7 @@ import {
   fetchAdminUsers,
   setUserRole,
   fetchPublicDecks,
+  upsertPublicDeck,
   fetchPublicDeckVisibility,
   setPublicDeckVisibility,
   fetchMyProfile,
@@ -660,7 +661,7 @@ function canEditDeckContent(deckId) {
   if (!deckMeta) return false;
   const scope = getDeckScope(deckMeta);
   if (scope === 'public') {
-    return false;
+    return sessionMode === 'user' && canManagePublicDecks() && isSupabaseConfigured();
   }
   if (scope === 'subscribed') {
     return false;
@@ -1436,6 +1437,60 @@ function buildSharedDeckPayload(deckId) {
   };
 }
 
+function buildPublicDeckPayload(deckId) {
+  const deckMeta = getDeckMeta(deckId);
+  if (!deckMeta || getDeckScope(deckMeta) !== 'public') return null;
+  const questions = storage.getQuestions(deckId);
+  return {
+    id: deckMeta.id,
+    name: deckMeta.name || deckMeta.id,
+    description: deckMeta.description || '',
+    deck_group: normalizeDeckGroup(deckMeta.group) || null,
+    categories: Array.isArray(deckMeta.categories) ? deckMeta.categories : null,
+    questions,
+    question_count: questions.length,
+    version: Number(deckMeta.version) || 1,
+    source: deckMeta.source || 'public-db',
+    is_archived: deckMeta.adminOnly === true,
+  };
+}
+
+async function pushPublicDeckToConvex(deckId) {
+  if (sessionMode !== 'user' || !canManagePublicDecks() || !isSupabaseConfigured()) return;
+  const payload = buildPublicDeckPayload(deckId);
+  if (!payload) return;
+  const row = await upsertPublicDeck(payload);
+  const decks = storage.getDecks();
+  const idx = decks.findIndex((d) => d.id === deckId);
+  if (idx < 0) return;
+
+  const nextDeck = {
+    ...decks[idx],
+    name: row.name || decks[idx].name,
+    description: row.description || '',
+    questionCount: Number.isFinite(row.question_count) ? row.question_count : payload.question_count,
+    version: Number(row.version) || payload.version,
+    source: row.source || payload.source,
+    scope: 'public',
+    readOnlyContent: true,
+    adminOnly: row.is_archived === true,
+  };
+  const deckGroup = normalizeDeckGroup(row.deck_group);
+  if (deckGroup) {
+    nextDeck.group = deckGroup;
+  } else {
+    delete nextDeck.group;
+  }
+  if (Array.isArray(row.categories)) {
+    nextDeck.categories = row.categories;
+  } else {
+    delete nextDeck.categories;
+  }
+
+  decks[idx] = nextDeck;
+  storage.saveDecks(decks);
+}
+
 async function pushSharedDeckToConvex(deckId) {
   const payload = buildSharedDeckPayload(deckId);
   if (!payload) return;
@@ -1459,6 +1514,13 @@ function syncSharedDeckToConvexAsync(deckId) {
 }
 
 function syncOwnedDeckToConvexAsync(deckId) {
+  const deckMeta = getDeckMeta(deckId);
+  if (deckMeta && getDeckScope(deckMeta) === 'public') {
+    pushPublicDeckToConvex(deckId).catch((error) => {
+      showNotification(`Nie udało się zsynchronizować talii ogólnej: ${error.message}`, 'error');
+    });
+    return;
+  }
   syncSharedDeckToConvexAsync(deckId);
 }
 
@@ -4392,7 +4454,7 @@ function saveDeckMetadata(deckId) {
     showNotification('Nie znaleziono talii.', 'error');
     return;
   }
-  if (isDeckReadOnlyContent(deckMeta)) {
+  if (!canEditDeckContent(deckId)) {
     showNotification('Talia ogólna jest tylko do odczytu.', 'info');
     return;
   }
