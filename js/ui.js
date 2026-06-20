@@ -810,10 +810,17 @@ export function renderAnswerFeedback(
   const flashcardAnswer = flashcard
     ? String(question.answer || question.back || '').trim()
     : '';
-  const flashcardAnswerHtml = flashcard && (flashcardAnswer || explanation) ? `
+  const flashcardAnswerImage = flashcard
+    ? String(question.answerImage || question.backImage || '').trim()
+    : '';
+  const flashcardAnswerImageAlt = flashcard
+    ? String(question.answerImageAlt || question.backImageAlt || '').trim()
+    : '';
+  const flashcardAnswerHtml = flashcard && (flashcardAnswer || explanation || flashcardAnswerImage) ? `
     <div class="flashcard-answer-box">
       <div class="explanation-label">Odpowiedź</div>
-      <div>${renderLatex(escapeHtml(flashcardAnswer || explanation))}</div>
+      ${(flashcardAnswer || explanation) ? `<div>${renderLatex(escapeHtml(flashcardAnswer || explanation))}</div>` : ''}
+      ${flashcardAnswerImage ? renderContentImage({ image: flashcardAnswerImage, alt: flashcardAnswerImageAlt }, 'flashcard-answer-image', 'Obrazek do odpowiedzi') : ''}
     </div>
   ` : '';
 
@@ -1266,12 +1273,13 @@ export function renderTestQuestion(
     ? String(question.answer || question.back || question.explanation || '').trim()
     : '';
   const answerImage = flashcard ? String(question.answerImage || question.backImage || '').trim() : '';
+  const answerImageAlt = flashcard ? String(question.answerImageAlt || question.backImageAlt || '').trim() : '';
   const openAnswerHtml = flashcard && openRevealed ? `
       <div class="test-open-answer">
         <div class="explanation-label">Odpowiedź</div>
         <div class="answer-body">
           ${answerText ? `<div class="test-open-answer-text">${renderLatex(escapeHtml(answerText))}</div>` : '<div class="test-open-answer-text muted">Brak zapisanej odpowiedzi.</div>'}
-          ${answerImage ? renderContentImage({ image: answerImage }, 'test-open-answer-image', 'Obrazek do odpowiedzi') : ''}
+          ${answerImage ? renderContentImage({ image: answerImage, alt: answerImageAlt }, 'test-open-answer-image', 'Obrazek do odpowiedzi') : ''}
         </div>
       </div>
       <div class="test-open-assessment" role="group" aria-label="Oceń odpowiedź">
@@ -1357,13 +1365,14 @@ export function renderTestResult(deckName, results) {
     if (flashcard) {
       const answerText = String(a.question.answer || a.question.back || a.question.explanation || '').trim();
       const answerImage = String(a.question.answerImage || a.question.backImage || '').trim();
+      const answerImageAlt = String(a.question.answerImageAlt || a.question.backImageAlt || '').trim();
       detailHtml = `
         <div class="test-review-answer ${isCorrect ? 'is-correct' : 'is-incorrect-selected'}">
           <span class="test-review-answer-icon" style="color: ${isCorrect ? 'var(--color-success)' : 'var(--color-danger)'}">${iconChar}</span>
           <div class="answer-body">
             <div class="test-review-answer-label">Twoja ocena: ${isCorrect ? 'znam' : 'nie znam'}</div>
             ${answerText ? `<div class="test-review-answer-text">${renderLatex(escapeHtml(answerText))}</div>` : '<div class="test-review-answer-text">Brak zapisanej odpowiedzi.</div>'}
-            ${answerImage ? renderContentImage({ image: answerImage }, 'test-review-answer-image', 'Obrazek do odpowiedzi') : ''}
+            ${answerImage ? renderContentImage({ image: answerImage, alt: answerImageAlt }, 'test-review-answer-image', 'Obrazek do odpowiedzi') : ''}
           </div>
         </div>
       `;
@@ -1509,8 +1518,10 @@ export function renderBrowse(deckName, questions, options = {}) {
       ? `<div class="browse-item-explanation"><strong>Wyjaśnienie:</strong> ${renderLatex(escapeHtml(q.explanation))}</div>`
       : '';
     const flashcardAnswer = flashcard ? String(q.answer || q.back || '').trim() : '';
-    const flashcardAnswerHtml = flashcard && flashcardAnswer
-      ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${renderLatex(escapeHtml(flashcardAnswer))}</div>`
+    const flashcardAnswerImage = flashcard ? String(q.answerImage || q.backImage || '').trim() : '';
+    const flashcardAnswerImageAlt = flashcard ? String(q.answerImageAlt || q.backImageAlt || '').trim() : '';
+    const flashcardAnswerHtml = flashcard && (flashcardAnswer || flashcardAnswerImage)
+      ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${flashcardAnswer ? renderLatex(escapeHtml(flashcardAnswer)) : ''}${flashcardAnswerImage ? renderContentImage({ image: flashcardAnswerImage, alt: flashcardAnswerImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}</div>`
       : '';
 
     const flagTooltip = isQuestionFlagged
@@ -1833,7 +1844,7 @@ export function renderFlaggedBrowse(deckName, flaggedQuestions, options = {}) {
         <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
         <div class="browse-item-question">${renderQuestionBody(q)}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
-        ${flashcard && (q.answer || q.back) ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${renderLatex(escapeHtml(q.answer || q.back))}</div>` : ''}
+        ${flashcard && (q.answer || q.back || q.answerImage || q.backImage) ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${q.answer || q.back ? renderLatex(escapeHtml(q.answer || q.back)) : ''}${q.answerImage || q.backImage ? renderContentImage({ image: q.answerImage || q.backImage, alt: q.answerImageAlt || q.backImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}</div>` : ''}
         <div class="flagged-item-actions">
           <button class="btn btn-secondary btn-sm btn-unflag" data-question-id="${escapeAttr(q.id)}">Odznacz</button>
         </div>

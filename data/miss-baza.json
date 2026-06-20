@@ -12,19 +12,19 @@
     {
       "id": "miss-q001",
       "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\n1. y(x1, x2) = a * x1 + b * x2\n2. x¨ + (k/m) * x˙ + (g/l) * sin(x) = 0",
-      "answer": "1. Model matematyczny, statyczny/algebraiczny, liniowy, deterministyczny, o parametrach skupionych.\n2. Model matematyczny, dynamiczny, ciągły w czasie, nieliniowy (sin(x)), deterministyczny, o parametrach skupionych.",
+      "answer": "Pierwszy: model statyczny, deterministyczny, ciagly, liniowy, stacjonarny, parametryczny, wielowymiarowy/MISO. Drugi: model dynamiczny, deterministyczny, ciagly, nieliniowy, stacjonarny, o parametrach skupionych, parametryczny.",
       "image": "/data/assets/miss-baza/q001.png",
       "imageAlt": "Wzory modeli do sklasyfikowania"
     },
     {
       "id": "miss-q002",
       "text": "Za pomocą jakich równań (układu równań) w przestrzeni stanów opisane są systemy dynamiczne?",
-      "answer": "Najczęściej układem równań stanu i równaniem wyjścia: x˙ = f(x, u, t), y = g(x, u, t), z warunkiem początkowym x(t0) = x0. Dla układów liniowych: x˙ = A x + B u, y = C x + D u."
+      "answer": "Rownaniem stanu i rownaniem wyjscia. Ogolnie: `Xdot(t)=F(...)`, `Y(t)=G(...)`; dla liniowego stacjonarnego: `Xdot=A*X+B*U`, `Y=C*X+D*U`."
     },
     {
       "id": "miss-q003",
       "text": "Czy ten sam system może być opisany przez różne zbiory zmiennych stanu?",
-      "answer": "Tak. Wybór zmiennych stanu nie jest jednoznaczny. Różne, równoważne zbiory zmiennych mogą opisywać tę samą dynamikę, o ile zawierają pełną informację o stanie systemu."
+      "answer": "Tak."
     },
     {
       "id": "miss-q004",
@@ -51,12 +51,13 @@
           "text": "parametry techniczne",
           "correct": true
         }
-      ]
+      ],
+      "explanation": "d) parametry techniczne."
     },
     {
       "id": "miss-q005",
       "text": "Wymień rodzaje symulacji komputerowej.",
-      "answer": "Przykładowe podziały: symulacja ciągła, dyskretna i hybrydowa; deterministyczna i stochastyczna; statyczna i dynamiczna; analogowa i cyfrowa."
+      "answer": "Symulacja analogowa/ciagla, dyskretna i agentowa."
     },
     {
       "id": "miss-q006",
@@ -84,295 +85,305 @@
           "correct": true
         }
       ],
-      "explanation": "Weryfikacja sprawdza, czy model został poprawnie zaimplementowany/zbudowany. Walidacja pyta raczej, czy zbudowano właściwy model względem rzeczywistości."
+      "explanation": "d) weryfikacja."
     },
     {
       "id": "miss-q007",
       "text": "Czy dwa fizycznie różne systemy mogą mieć takie same (identyczne) transmitancje operatorowe?",
-      "answer": "Tak. Różne układy fizyczne mogą mieć identyczny opis wejście-wyjście, czyli tę samą transmitancję, jeśli ich dynamika względem wybranych wejść i wyjść jest taka sama."
+      "answer": "Tak."
     },
     {
       "id": "miss-q008",
       "text": "Podaj przykład analogowej symulacji komputerowej.",
-      "answer": "Przykład: elektryczny układ RLC użyty jako analog modelu mechanicznego masa-sprężyna-tłumik, gdzie napięcie/prąd odpowiadają przemieszczeniu, prędkości lub sile."
+      "answer": "Symulator lotu albo symulator samochodu."
     },
     {
       "id": "miss-q009",
       "text": "Wyjaśnij oznaczenia występujące we wzorze: d/dt (∂T/∂q̇k) - ∂T/∂qk = Qk (k = 1, N).\n\nT - Qk - t - qk - N -",
-      "answer": "T - energia kinetyczna układu.\nQk - uogólniona siła odpowiadająca współrzędnej qk.\nt - czas.\nqk - k-ta współrzędna uogólniona.\nN - liczba współrzędnych uogólnionych, czyli liczba stopni swobody.",
+      "answer": "`T` - energia kinetyczna; `Q_k` - sila uogolniona zwiazana ze wspolrzedna `q_k`; `t` - czas; `q_k` - wspolrzedna uogolniona; `N` - liczba wspolrzednych uogolnionych/stopni swobody; `k` - numer wspolrzednej.",
       "image": "/data/assets/miss-baza/q009.png",
       "imageAlt": "Wzór równań Eulera-Lagrange’a z oznaczeniami"
     },
     {
       "id": "miss-q010",
       "text": "Co to jest model behawioralny?",
-      "answer": "Model behawioralny opisuje zachowanie systemu, zwykle relację wejście-wyjście, bez szczegółowego opisywania wewnętrznej struktury lub mechanizmu działania."
+      "answer": "Model typu black-box opracowany na podstawie danych pomiarowych, zwykle bez opisu wewnetrznej struktury fizycznej systemu."
     },
     {
       "id": "miss-q011",
       "text": "Sprowadź równanie x¨ + x˙ = 2u * x do normalnej postaci równań dynamicznych systemu.",
-      "answer": "Przyjmij x1 = x oraz x2 = x˙. Wtedy:\n\nx˙1 = x2\nx˙2 = 2u * x1 - x2"
+      "answer": "Przyjmij `x1=x`, `x2=x˙`. Wtedy `x˙1=x2`, `x˙2=2u*x1-x2`."
     },
     {
       "id": "miss-q012",
       "text": "Jakie dane musisz posiadać aby rozwiązać dowolne równanie różniczkowe metodami numerycznymi?",
-      "answer": "Potrzebne są: równanie lub układ równań, warunki początkowe/brzegowe, wartości parametrów, wymuszenia/wejścia, przedział obliczeń oraz metoda numeryczna z krokiem lub tolerancją błędu."
+      "answer": "Rownanie w postaci `ydot=f(x,y)` lub uklad, warunek/przyblizenie poczatkowe, krok calkowania i przedzial obliczen."
     },
     {
       "id": "miss-q013",
       "text": "W których metodach rozwiązywania równań różniczkowych do wyznaczenia rozwiązania wykorzystuje się informacje w 1 punkcie?",
-      "answer": "W metodach jednokrokowych, np. metodzie Eulera i metodach Rungego-Kutty. Kolejny krok jest wyznaczany głównie z informacji w bieżącym punkcie/kroku."
+      "answer": "W metodach jednokrokowych, np. Eulera i Rungego-Kutty."
     },
     {
       "id": "miss-q014",
       "text": "Jak stwierdzić, że mamy do czynienia z modelem nieliniowym znając jego strukturę?",
-      "answer": "Model jest nieliniowy, jeśli zmienne stanu, wejścia lub ich pochodne występują nieliniowo, np. w iloczynach, potęgach, funkcjach sin/cos, albo współczynniki zależą od stanu/wejścia."
+      "answer": "Gdy w strukturze rownan wystepuja nieliniowe funkcje, iloczyny zmiennych, nieliniowe charakterystyki elementow, ograniczenia lub nasycenia."
     },
     {
       "id": "miss-q015",
       "text": "Czy jednemu modelowi zapisanemu postaci transmitancji może odpowiadać wiele modeli zapisanych w przestrzeni stanu?",
-      "answer": "Tak. Jedna transmitancja może mieć wiele realizacji w przestrzeni stanu. Różne macierze A, B, C, D mogą opisywać ten sam związek wejście-wyjście."
+      "answer": "Tak. Ta sama transmitancja moze miec rozne realizacje w przestrzeni stanu."
     },
     {
       "id": "miss-q016",
       "text": "Jaki model przedstawia poniższy rysunek?",
-      "answer": "Jest to model/sygnał dyskretny w czasie, przedstawiony jako próbki w kolejnych chwilach. Ponieważ wartości przyjmują poziomy skokowe, można go też interpretować jako sygnał skwantowany.",
+      "answer": "Model/sygnal cyfrowy: wartosci sa okreslone w dyskretnych chwilach czasu i przyjmuja dyskretne poziomy.",
       "image": "/data/assets/miss-baza/q016.png",
       "imageAlt": "Wykres próbkowanego sygnału dyskretnego"
     },
     {
       "id": "miss-q017",
       "text": "Zapisz równanie dla podanego modelu zrealizowanego w Simulinku.",
-      "answer": "Z diagramu z trzema integratorami można przyjąć, że wyjściem jest y. Sygnał przed pierwszym integratorem to y‴. Sprzężenia dają roboczo:\n\ny‴ = u + 3 cos(y˙) - 2y\n\nczyli y‴ + 2y - 3 cos(y˙) = u. Odpowiedź warto zweryfikować z oznaczeniami wejść sumatora z oryginalnego diagramu.",
+      "answer": "Schemat odpowiada rownaniu trzeciego rzedu: `y''' = u + 3*cos(y') - 2y`, czyli rownowaznie `y''' + 2y = u + 3*cos(y')`.",
       "image": "/data/assets/miss-baza/q017.png",
       "imageAlt": "Schemat blokowy Simulinka z integratorami i sprzężeniami"
     },
     {
       "id": "miss-q018",
       "text": "Wymień dwie metody linearyzacji.",
-      "answer": "Najczęściej: linearyzacja przez rozwinięcie w szereg Taylora w otoczeniu punktu pracy oraz linearyzacja małosygnałowa/styczna wokół punktu równowagi."
+      "answer": "Linearyzacja przez uproszczenia oraz przez rozklad w szereg Taylora. Mozna tez podac metode malych odchylen albo identyfikacje."
     },
     {
       "id": "miss-q019",
       "text": "Jakiego typu równaniami opisane są systemy statyczne?",
-      "answer": "Systemy statyczne opisuje się równaniami algebraicznymi, bez pochodnych czasu i bez pamięci stanu."
+      "answer": "Rownaniami algebraicznymi."
     },
     {
       "id": "miss-q020",
       "text": "Co wpływa na dokładność modelu dyskretnego uzyskanego w procesie kwantyzacji?",
-      "answer": "Głównie krok/przedział kwantyzacji, częstotliwość próbkowania, metoda dyskretyzacji, precyzja obliczeń oraz charakter sygnału/modelu."
+      "answer": "Krok/czas probkowania oraz krok kwantyzacji, czyli liczba i gestosc dostepnych poziomow wartosci."
     },
     {
       "id": "miss-q021",
       "text": "Wymień przynajmniej dwie metody walidacji modelu.",
-      "answer": "Porównanie wyników modelu z pomiarami eksperymentalnymi, porównanie z danymi historycznymi, ocena ekspercka, analiza wrażliwości oraz testy na niezależnym zestawie danych."
+      "answer": "Ocena ekspertow/face validation, porownanie z danymi rzeczywistymi, testy dynamiczne, cross-validation."
     },
     {
       "id": "miss-q022",
       "text": "Co to jest płaszczyzna fazowa?",
-      "answer": "Płaszczyzna fazowa to wykres w przestrzeni dwóch zmiennych stanu, np. x oraz x˙. Pokazuje trajektorie stanów układu w czasie."
+      "answer": "Plaszczyzna, na ktorej przedstawia sie zaleznosc pomiedzy zmiennymi stanu w postaci wykresu."
     },
     {
       "id": "miss-q023",
       "text": "Podaj przykład dyskretnej symulacji komputerowej.",
-      "answer": "Przykład: symulacja kolejki klientów w banku/sklepie, symulacja stanów magazynu albo symulacja zdarzeń w sieci komputerowej."
+      "answer": "Symulator stacji paliw albo symulator kolejki."
     },
     {
       "id": "miss-q024",
       "text": "Co to jest model stacjonarny?",
-      "answer": "Model stacjonarny ma parametry i zależności niezmienne w czasie. Jego własności nie zależą bezpośrednio od chwili obserwacji."
+      "answer": "Model, ktorego parametry nie zmieniaja sie w czasie."
     },
     {
       "id": "miss-q025",
       "text": "Opisz ogólną koncepcję działania metody predyktor-korektor rozwiązywania równań różniczkowych.",
-      "answer": "Najpierw predyktor wyznacza przybliżoną wartość rozwiązania w następnym kroku. Następnie korektor używa tej prognozy do poprawienia wyniku, często przez ponowne uwzględnienie pochodnej w punkcie końcowym."
+      "answer": "Najpierw metoda jawna przewiduje wartosc w kolejnym punkcie (predyktor), a potem metoda niejawna/interpolacyjna poprawia te wartosc (korektor), zwykle wykorzystujac informacje z kilku poprzednich punktow."
     },
     {
       "id": "miss-q026",
       "text": "W jaki sposób zweryfikować poprawność wyniku uzyskanego daną metodą numeryczną w procesie modelowania systemów dynamicznych?",
-      "answer": "Można porównać wynik z rozwiązaniem analitycznym lub benchmarkiem, zmniejszyć krok i sprawdzić zbieżność, porównać z inną metodą, sprawdzić prawa zachowania oraz porównać z pomiarem eksperymentalnym."
+      "answer": "Porownac wynik z rozwiazaniem analitycznym, jesli istnieje, albo z wynikiem metody dokladniejszej/mniejszego kroku, oraz sprawdzic blad i stabilnosc."
     },
     {
       "id": "miss-q027",
       "text": "Wymień wady symulacji komputerowej.",
-      "answer": "Model jest uproszczeniem rzeczywistości, wyniki zależą od założeń i danych wejściowych, walidacja bywa trudna, obliczenia mogą być kosztowne, a błędy implementacji mogą dawać pozornie wiarygodne wyniki."
+      "answer": "Uproszczenie rzeczywistosci, zaleznosc wynikow od zalozen i danych, trudnosc weryfikacji/walidacji, ryzyko blednej interpretacji, duzy naklad pracy przy zlozonych modelach."
     },
     {
       "id": "miss-q028",
       "text": "Jakiego typu równaniami opisane są modele systemów o parametrach rozproszonych?",
-      "answer": "Najczęściej równaniami różniczkowymi cząstkowymi, ponieważ stan zależy nie tylko od czasu, ale też od współrzędnych przestrzennych."
+      "answer": "Rownaniami rozniczkowymi czastkowymi (PDE)."
     },
     {
       "id": "miss-q029",
       "text": "Całkę Laplace zapisujemy w postaci; wyjaśnij oznaczenia występujące we wzorze.",
-      "answer": "L[f(t)] = F(s) = ∫0∞ f(t) e^(-st) dt.\n\nf(t) - funkcja w dziedzinie czasu.\nF(s) - transformata Laplace’a.\ns - zmienna zespolona.\ne^(-st) - jądro przekształcenia.\nt - czas, granice całkowania zwykle od 0 do nieskończoności dla transformaty jednostronnej.",
+      "answer": "`L[f(t)]=F(s)=int_0^infty f(t)*e^(-st) dt`; `f(t)` - oryginal/funkcja czasu, `F(s)` - obraz Laplace'a, `s=c+jw` - zmienna zespolona, `t` - czas, `e^(-st)` - jadro przeksztalcenia, calkowanie od `0` do `infty` dotyczy czasu dodatniego.",
       "image": "/data/assets/miss-baza/q029.png",
       "imageAlt": "Wzór całki Laplace’a"
     },
     {
       "id": "miss-q030",
       "text": "Przedstaw graficznie sygnał kwantowy/dyskretny i podpisz go.",
-      "answer": "Sygnał dyskretny rysuje się jako pojedyncze próbki, np. pionowe kreski/stem plot w chwilach tk. Oś pozioma: czas/próbka k lub tk, oś pionowa: wartość x[k]. Sygnał kwantowy ma wartości przypisane do skończonych poziomów kwantyzacji."
+      "answer": "Sygnał dyskretny przedstawia się jako próbki w wybranych chwilach czasu, np. pionowe kreski/stem plot dla x[k]. Sygnał kwantowy ma dodatkowo wartości zaokrąglone do ustalonych poziomów kwantyzacji.",
+      "answerImage": "/data/assets/miss-baza/q030.png",
+      "answerImageAlt": "Sygnał dyskretny i kwantowy przedstawiony jako próbki oraz poziomy kwantyzacji"
     },
     {
       "id": "miss-q031",
       "text": "Przedstaw graficznie sygnał/model ciągły/skończony.",
-      "answer": "Sygnał ciągły rysuje się jako ciągłą krzywą x(t) w funkcji czasu t. Jeśli jest skończony czasowo, zaznacza się ograniczony przedział, np. t od t0 do tk, poza którym sygnał nie jest rozpatrywany albo jest równy 0."
+      "answer": "Model ciągły rysuje się jako gładką krzywą x(t), której wartości są określone dla każdego t. Model skończony przedstawia się jako przebieg przyjmujący skończoną liczbę stanów/poziomów, np. prostokątne odcinki w czasie.",
+      "answerImage": "/data/assets/miss-baza/q031.png",
+      "answerImageAlt": "Porównanie modelu ciągłego jako gładkiej krzywej oraz modelu skończonego jako odcinków prostokątnych"
     },
     {
       "id": "miss-q032",
       "text": "Proces zmiany modelu konceptualnego na model komputerowy to:",
-      "answer": "Implementacja, czyli przekształcenie modelu konceptualnego/matematycznego w program komputerowy lub model symulacyjny."
+      "answer": "Kodowanie modelu."
     },
     {
       "id": "miss-q033",
       "text": "Co umożliwia przekształcenie Laurenta?",
-      "answer": "Pozwala opisywać ciągi/sygnały dyskretne w dziedzinie zmiennej zespolonej z. W praktyce jest podstawą transformaty Z i analizy układów dyskretnych."
+      "answer": "W dostepnych wykladach nie znalazlem wprost hasla \"przeksztalcenie Laurenta\". Najbezpieczniej: w kontekscie modeli dyskretnych chodzi o przejscie z opisu dyskretnego/roznicowego do opisu operatorowego, analogicznie do tego, jak transformata Laplace'a ulatwia rozwiazywanie rownan i analize ukladow ciaglych."
     },
     {
       "id": "miss-q034",
       "text": "Transmitancja operatorowa to stosunek:",
-      "answer": "Stosunek transformaty sygnału wyjściowego do transformaty sygnału wejściowego przy zerowych warunkach początkowych: G(s) = Y(s) / U(s)."
+      "answer": "`G(s)=Y(s)/U(s)`, czyli stosunek transformaty Laplace'a sygnalu wyjsciowego do transformaty sygnalu wejsciowego przy zerowych warunkach poczatkowych."
     },
     {
       "id": "miss-q035",
       "text": "Własności transmitancji operatorowej:",
-      "answer": "Opisuje zależność wejście-wyjście układu liniowego stacjonarnego, zakłada zerowe warunki początkowe, zależy od parametrów układu, a jej bieguny i zera informują o dynamice, stabilności i charakterze odpowiedzi."
+      "answer": "Jest wlasnoscia systemu, niezalezna od wielkosci i natury wejscia; opisuje zwiazek wejscie-wyjscie, ale nie strukture fizyczna; rozne systemy fizyczne moga miec identyczna transmitancje; ulatwia skladanie modeli; pozwala okreslac odpowiedzi dla roznych wejsc."
     },
     {
       "id": "miss-q036",
       "text": "Co to jest model?",
-      "answer": "Model to uproszczona reprezentacja rzeczywistego systemu, zjawiska lub procesu, która zachowuje cechy istotne dla danego celu analizy, projektowania lub symulacji."
+      "answer": "Uproszczona, celowa reprezentacja rzeczywistosci, ujmujaca tylko wybrane cechy istotne z punktu widzenia celu modelowania."
     },
     {
       "id": "miss-q037",
       "text": "Kategorie modeli matematycznych:",
-      "answer": "Przykłady kategorii: statyczne/dynamiczne, liniowe/nieliniowe, ciągłe/dyskretne, deterministyczne/stochastyczne, stacjonarne/niestacjonarne, o parametrach skupionych/rozproszonych, algebraiczne/różniczkowe."
+      "answer": "Deterministyczne/stochastyczne, statyczne/dynamiczne, ciagle/dyskretne, stacjonarne/niestacjonarne, jednowymiarowe/wielowymiarowe, liniowe/nieliniowe, o parametrach skupionych/rozproszonych, SISO/MISO/MIMO."
     },
     {
       "id": "miss-q038",
       "text": "Proces polegający na wykorzystywaniu aparatu matematycznego do analizy to:",
-      "answer": "Modelowanie matematyczne, czyli opis i analiza systemu za pomocą pojęć, zależności i równań matematycznych."
+      "answer": "Modelowanie matematyczne."
     },
     {
       "id": "miss-q039",
       "text": "Co to jest kwantowanie (kwantyzacja)?",
-      "answer": "Kwantowanie to zastąpienie ciągłego zbioru wartości skończonym lub przeliczalnym zbiorem poziomów. Powoduje błąd kwantyzacji."
+      "answer": "Zastapienie wartosci ciaglych ograniczonym zbiorem dopuszczalnych poziomow, czyli zmienne moga przyjmowac tylko okreslone wartosci."
     },
     {
       "id": "miss-q040",
       "text": "Opisz zalety symulacji.",
-      "answer": "Symulacja pozwala tanio i bezpiecznie badać warianty działania systemu, testować sytuacje trudne lub ryzykowne w rzeczywistości, powtarzać eksperymenty, przyspieszać lub zwalniać czas oraz analizować wpływ parametrów."
+      "answer": "Pozwala badac system bez ingerencji w obiekt rzeczywisty, obniza koszt i czas badan, pozwala latwo zmieniac model, sprawdzac rozne scenariusze, badac stany ekstremalne/niebezpieczne oraz sterowac czasem symulacji."
     },
     {
       "id": "miss-q041",
       "text": "Narysuj impuls Diraca:",
-      "answer": "Impuls Diraca δ(t) przedstawia się jako strzałkę w t = 0. Ma wartość 0 dla t ≠ 0, a całka po całej osi wynosi 1."
+      "answer": "Impuls Diraca δ(t) rysuje się jako strzałkę w t = 0. Formalnie: δ(t)=0 dla t≠0 oraz δ(t)=∞ dla t=0, przy czym pole impulsu, czyli całka po całej osi, wynosi 1.",
+      "answerImage": "/data/assets/miss-baza/q041.png",
+      "answerImageAlt": "Impuls Diraca jako strzałka w chwili t równej zero"
     },
     {
       "id": "miss-q042",
       "text": "Rodzaje metod numerycznych rozwiązywania równań różniczkowych.",
-      "answer": "Przykłady: metody jednokrokowe i wielokrokowe; jawne i niejawne; metoda Eulera, metody Rungego-Kutty, metody Adamsa, metody predyktor-korektor."
+      "answer": "Jednokrokowe i wielokrokowe; ze stalym albo zmiennym krokiem; metody roznych rzedow. Przyklady: Euler, zmodyfikowany/udoskonalony Euler, Runge-Kutta, Adams-Bashforth."
     },
     {
       "id": "miss-q043",
       "text": "Podaj wzór przekształcenia Laplace’a.",
-      "answer": "F(s) = L{f(t)} = ∫0∞ f(t) e^(-st) dt."
+      "answer": "`L[f(t)]=F(s)=int_0^infty f(t)*e^(-st) dt`."
     },
     {
       "id": "miss-q044",
       "text": "Którego rzędu są rozwiązania w metodzie Eulera?",
-      "answer": "Klasyczna jawna metoda Eulera jest metodą pierwszego rzędu. Błąd globalny jest rzędu O(h), a lokalny błąd obcięcia O(h^2)."
+      "answer": "Metoda Eulera jest metoda pierwszego rzedu."
     },
     {
       "id": "miss-q045",
       "text": "Co odpowiada na pytanie „Czy zbudowaliśmy poprawny model?”",
-      "answer": "Walidacja modelu. Sprawdza, czy model adekwatnie opisuje rzeczywisty system względem celu badania."
+      "answer": "Weryfikacja."
     },
     {
       "id": "miss-q046",
       "text": "Narysować skok jednostkowy:",
-      "answer": "Skok jednostkowy u(t): dla t < 0 ma wartość 0, a dla t ≥ 0 ma wartość 1. Na wykresie jest poziom 0 przed zerem i poziom 1 po chwili t = 0."
+      "answer": "Skok jednostkowy 1(t) ma wartość 0 dla t<0 oraz 1 dla t≥0. Na wykresie jest poziom 0 przed zerem i poziom 1 od chwili t=0.",
+      "answerImage": "/data/assets/miss-baza/q046.png",
+      "answerImageAlt": "Skok jednostkowy u(t) równy zero przed zerem i jeden po zerze"
     },
     {
       "id": "miss-q047",
       "text": "Podaj, za pomocą rysunku, co to jest system:",
-      "answer": "Najprostszy schemat: wejście u(t) -> [SYSTEM] -> wyjście y(t). System ma też stan x(t), parametry, granice oraz może podlegać zakłóceniom i oddziaływaniu otoczenia."
+      "answer": "System to wyodrębniona część rzeczywistości podlegająca badaniu. Graficznie: otoczenie oddziałuje na system, do systemu wchodzą wielkości wejściowe, z systemu wychodzą wielkości wyjściowe, a na działanie mogą wpływać zakłócenia.",
+      "answerImage": "/data/assets/miss-baza/q047.png",
+      "answerImageAlt": "Schemat systemu z wejściem, blokiem systemu, stanem, zakłóceniem i wyjściem"
     },
     {
       "id": "miss-q048",
       "text": "Co to jest przestrzeń stanów?",
-      "answer": "Przestrzeń stanów to zbiór wszystkich możliwych wartości wektora stanu x. Każdy punkt tej przestrzeni odpowiada jednemu możliwemu stanowi systemu."
+      "answer": "`n`-wymiarowa przestrzen, w ktorej kazdy stan systemu mozna przedstawic jako punkt."
     },
     {
       "id": "miss-q049",
       "text": "Wymień metody formułowania modeli systemów dynamicznych opisanych przy pomocy równań wyjścia (równań stanu).",
-      "answer": "Przykłady: metoda bilansowa, metoda równań Lagrange’a, metoda analogii fizycznych, metoda schematów blokowych oraz identyfikacja eksperymentalna."
+      "answer": "Metoda bilansowa oraz metody wariacyjne, np. metoda/równania Eulera-Lagrange'a."
     },
     {
       "id": "miss-q050",
       "text": "Co to jest model deterministyczny?",
-      "answer": "Model deterministyczny nie zawiera losowości. Dla tych samych warunków początkowych, parametrów i wejść daje zawsze ten sam wynik."
+      "answer": "Model, w ktorym tym samym danym wejsciowym odpowiada zawsze jednoznacznie okreslony wynik."
     },
     {
       "id": "miss-q051",
       "text": "Co to jest model dynamiczny?",
-      "answer": "Model dynamiczny opisuje zmiany systemu w czasie. Zwykle zawiera zmienne stanu i równania różniczkowe lub różnicowe."
+      "answer": "Model, w ktorym wyjscie zalezy od historii wejscia i/lub stanu poczatkowego; opisuje zmiany systemu w czasie."
     },
     {
       "id": "miss-q052",
       "text": "Równania Eulera-Lagrange'a tworzą układ N równań różniczkowych zwyczajnych rzędu:",
-      "answer": "Drugiego rzędu, po jednym równaniu dla każdej współrzędnej uogólnionej qk."
+      "answer": "Drugiego rzedu."
     },
     {
       "id": "miss-q053",
       "text": "Od czego zależy dokładność rozwiązania równania różniczkowego (metodami numerycznymi)?",
-      "answer": "Od rzędu i typu metody, kroku całkowania, tolerancji błędu, dokładności danych początkowych i parametrów, stabilności problemu oraz błędów zaokrągleń."
+      "answer": "Od wyboru metody, jej rzedu, kroku calkowania `h`, warunkow poczatkowych oraz charakteru rownania."
     },
     {
       "id": "miss-q054",
       "text": "Etapy budowy modelu w metodzie bilansowej/modelu dynamicznym.",
-      "answer": "Określenie granic systemu, wybór zmiennych stanu, przyjęcie założeń, zapis bilansów, dodanie zależności konstytutywnych, określenie parametrów i warunków początkowych, implementacja, weryfikacja i walidacja."
+      "answer": "Wybor wielkosci bilansowych, ulozenie rownan bilansowych, wybor wielkosci stanu, ulozenie rownan stanu, okreslenie wielkosci wyjsciowych."
     },
     {
       "id": "miss-q055",
       "text": "Co jest rozwiązaniem równania różniczkowego metodami numerycznymi?",
-      "answer": "Zbiór przybliżonych wartości rozwiązania w kolejnych punktach czasu lub siatki, a nie dokładna postać analityczna funkcji."
+      "answer": "Zbior przyblizonych wartosci rozwiazania w kolejnych punktach siatki, np. `y0,y1,...` dla `x0,x1,...`."
     },
     {
       "id": "miss-q056",
       "text": "Wypisać etapy tworzenia modelu:",
-      "answer": "Sformułowanie celu, analiza systemu, założenia i uproszczenia, model koncepcyjny, model matematyczny, identyfikacja parametrów, implementacja komputerowa, weryfikacja, walidacja, eksperymenty i dokumentacja."
+      "answer": "Sformulowanie problemu, ustalenie celow i planu, tworzenie modelu konceptualnego, zbieranie danych, kodowanie modelu, weryfikacja, walidacja, testowanie, korekta struktury/parametrow w razie potrzeby, dokumentacja i wdrozenie."
     },
     {
       "id": "miss-q057",
       "text": "Jak rozwiązać równanie różniczkowe 4 rzędu metodami numerycznymi?",
-      "answer": "Sprowadzić je do układu czterech równań pierwszego rzędu, np. x1 = x, x2 = x˙, x3 = x¨, x4 = x‴, a następnie rozwiązać układ metodą numeryczną."
+      "answer": "Sprowadzic je do ukladu czterech rownan pierwszego rzedu przez podstawienie `x1=x`, `x2=x'`, `x3=x''`, `x4=x'''`, a potem zastosowac metode numeryczna do ukladu."
     },
     {
       "id": "miss-q058",
       "text": "Czy jednemu modelowi zapisanemu w postaci przestrzeni stanów może odpowiadać wiele transmitancji?",
-      "answer": "Dla ustalonych wejść i wyjść model przestrzeni stanu daje określoną transmitancję lub macierz transmitancji. Jeśli wybierzemy różne pary wejście-wyjście albo różne równania wyjścia, można otrzymać wiele transmitancji."
+      "answer": "Dla ustalonego modelu SISO z okreslonymi macierzami `A,B,C,D` transmitancja jest wyznaczona jednoznacznie: `G(s)=C(sI-A)^(-1)B+D`. Dla ukladow MIMO mowi sie raczej o macierzy transmitancji z wieloma elementami wejscie-wyjscie."
     },
     {
       "id": "miss-q059",
       "text": "Proces przekształcenia sygnału ciągłego w dyskretny nazywamy:",
-      "answer": "Próbkowaniem, czyli dyskretyzacją w czasie. Jeśli dyskretyzujemy wartości amplitudy, mówimy dodatkowo o kwantyzacji."
+      "answer": "Probkowaniem."
     },
     {
       "id": "miss-q060",
       "text": "Jakim typem równań opisane są systemy dyskretne.",
-      "answer": "Równaniami różnicowymi lub rekurencyjnymi, np. x[k+1] = f(x[k], u[k], k)."
+      "answer": "Rownaniami roznicowymi."
     },
     {
       "id": "miss-q061",
       "text": "Opis zależności „wejście-wyjście” w formie operatorowej stosuje się do systemów:",
-      "answer": "Do układów liniowych stacjonarnych, zwykle przy zerowych warunkach początkowych. Wtedy można użyć transmitancji operatorowej."
+      "answer": "Liniowych systemow dynamicznych."
     },
     {
       "id": "miss-q062",
       "text": "Co to jest transmitancja operatorowa G(s)?",
-      "answer": "Transmitancja G(s) to operatorowy opis dynamiki układu liniowego stacjonarnego: G(s) = Y(s)/U(s), czyli stosunek transformaty wyjścia do transformaty wejścia przy zerowych warunkach początkowych."
+      "answer": "`G(s)=Y(s)/U(s)`, czyli stosunek transformaty Laplace'a wyjscia do transformaty wejscia przy zerowych warunkach poczatkowych."
     },
     {
       "id": "miss-q063",
@@ -399,59 +410,62 @@
           "text": "parametry są stałe",
           "correct": false
         }
-      ]
+      ],
+      "explanation": "Parametry zmieniaja sie w czasie."
     },
     {
       "id": "miss-q064",
       "text": "Co to jest system i jakie są jego cechy?",
-      "answer": "System to wyodrębniony zbiór elementów połączonych relacjami, realizujący określoną funkcję. Cechy: granice, wejścia, wyjścia, stan, parametry, struktura, zachowanie w czasie i oddziaływanie z otoczeniem."
+      "answer": "System to wyodrębniona część rzeczywistości podlegająca badaniu. Cechy: wyodrębnienie z otoczenia, określone wielkości wejściowe i wyjściowe, budowa z podsystemów, wzajemne oddziaływanie elementów, spełnianie założonego celu oraz zachowanie podstawowych właściwości mimo ograniczonej zmienności w czasie.",
+      "answerImage": "/data/assets/miss-baza/q064.png",
+      "answerImageAlt": "Właściwości systemu oraz podział systemu na podsystemy"
     },
     {
       "id": "miss-q065",
       "text": "Czy równania Eulera-Lagrange'a są równaniami stanu?",
-      "answer": "Nie bezpośrednio. Są równaniami ruchu drugiego rzędu. Można je przekształcić do postaci równań stanu przez wprowadzenie zmiennych stanu, np. położeń i prędkości."
+      "answer": "Nie wprost. Sa rownaniami rozniczkowymi zwyczajnymi drugiego rzedu; mozna je dopiero przeksztalcic do postaci rownan stanu pierwszego rzedu."
     },
     {
       "id": "miss-q066",
       "text": "Kiedy mamy do czynienia z rozwiązaniem szczególnym równania różniczkowego?",
-      "answer": "Gdy ogólne rozwiązanie zostanie dopasowane do konkretnych warunków początkowych lub brzegowych oraz wymuszeń. Wtedy stałe całkowania są wyznaczone."
+      "answer": "Gdy z rozwiazania ogolnego wyznaczymy stale na podstawie warunkow poczatkowych/konkretnych wartosci, np. `y(x0)=y0`."
     },
     {
       "id": "miss-q067",
       "text": "Jak rozwiązuje się układy równań różniczkowych metodami numerycznymi?",
-      "answer": "Zapisuje się je w postaci wektorowej x˙ = f(x, u, t), wybiera warunki początkowe, krok i metodę, a następnie jednocześnie oblicza kolejne wartości wszystkich zmiennych stanu."
+      "answer": "Traktuje sie wektor zmiennych jako stan i w kazdym kroku oblicza przyblizone nowe wartosci wszystkich skladowych ukladu dana metoda numeryczna; uklady wyzszego rzedu najpierw sprowadza sie do ukladu pierwszego rzedu."
     },
     {
       "id": "miss-q068",
       "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\nModel 1: y(x1, x2) = a * x1 + b * x1 * x2\nModel 2: d2x/dt2 + (k/m) * dx/dt + (g/l) * x = 0",
-      "answer": "Model 1: matematyczny, statyczny/algebraiczny, nieliniowy (iloczyn x1*x2), deterministyczny, o parametrach skupionych.\nModel 2: matematyczny, dynamiczny, ciągły w czasie, liniowy, stacjonarny, deterministyczny, o parametrach skupionych."
+      "answer": "Model 1: statyczny, deterministyczny, ciagly, nieliniowy, stacjonarny, parametryczny, MISO. Model 2: dynamiczny, deterministyczny, ciagly, liniowy, stacjonarny, o parametrach skupionych."
     },
     {
       "id": "miss-q069",
       "text": "Za pomocą jakich równań (układu równań) w przestrzeni stanów opisane są systemy dynamiczne?",
-      "answer": "Równaniami stanu i wyjścia: x˙ = f(x, u, t), y = g(x, u, t), a dla systemu liniowego x˙ = A x + B u oraz y = C x + D u."
+      "answer": "Rownaniem stanu i rownaniem wyjscia, np. `Xdot=A*X+B*U`, `Y=C*X+D*U` dla modelu liniowego."
     },
     {
       "id": "miss-q070",
       "text": "Jakie wielkości charakteryzują stan systemu?",
-      "answer": "Stan systemu charakteryzują zmienne stanu, czyli minimalny zestaw wielkości potrzebnych do jednoznacznego wyznaczenia dalszego zachowania systemu przy znanych wejściach."
+      "answer": "Zmienne stanu, czyli minimalny zestaw wielkosci zawierajacy informacje potrzebna do okreslenia przyszlego stanu i wyjsc systemu."
     },
     {
       "id": "miss-q071",
       "text": "Do jakiej kategorii zaliczysz podane modele? (wymień przynajmniej 3 kategorie)\n\na) y(x1, x2) = a * x1 * x2 + b * x2\nb) Ẋ = A(t) * X + B(t) * U, Y = C(t) * X + D(t) * U",
-      "answer": "a) Model matematyczny, statyczny/algebraiczny, nieliniowy, deterministyczny, o parametrach skupionych.\nb) Model matematyczny w przestrzeni stanu, dynamiczny, liniowy względem X i U, niestacjonarny (macierze zależą od czasu), ciągły w czasie."
+      "answer": "a) statyczny, deterministyczny, ciagly, nieliniowy, stacjonarny, parametryczny, MISO. b) dynamiczny, deterministyczny, ciagly, liniowy, niestacjonarny, w przestrzeni stanu, parametryczny; niestacjonarny, bo macierze zaleza od czasu."
     },
     {
       "id": "miss-q072",
       "text": "Sprowadź równanie 2 * x‴ + x″ + 2u = 0 do normalnej postaci równań dynamicznych systemu.",
-      "answer": "Przyjmij x1 = x, x2 = x˙, x3 = x¨. Wtedy:\n\nx˙1 = x2\nx˙2 = x3\nx˙3 = -0.5 * x3 - u",
+      "answer": "`x'''=-(1/2)x''-u`. Przyjmij `x1=x`, `x2=x'`, `x3=x''`. Wtedy: `x1dot=x2`, `x2dot=x3`, `x3dot=-(1/2)*x3-u`.",
       "image": "/data/assets/miss-baza/q072.png",
       "imageAlt": "Równanie 2 x potrójna pochodna plus x podwójna pochodna plus 2u równa się 0"
     },
     {
       "id": "miss-q073",
       "text": "Podaj odpowiedź modelu o transmitancji na skok jednostkowy:\n\nG(s) = 1 / (s + 2)",
-      "answer": "Dla skoku jednostkowego U(s) = 1/s.\n\nY(s) = G(s)U(s) = 1 / (s(s + 2)) = 1/2 * (1/s - 1/(s + 2)).\n\nOdpowiedź czasowa: y(t) = 1/2 * (1 - e^(-2t)) dla t >= 0."
+      "answer": "Dla skoku `U(s)=1/s`, wiec `Y(s)=G(s)/s=1/(s(s+2))`. Po rozkladzie: `Y(s)=1/2*(1/s-1/(s+2))`, zatem `y(t)=1/2*(1-e^(-2t))` dla `t>=0`."
     }
   ]
 }
