@@ -125,11 +125,12 @@
     {
       "id": "q1",
       "text": "Treść pytania?",
+      "image": "https://example.com/pytanie.png",
       "category": "cat1",
       "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "Odpowiedź A", "correct": true },
-        { "id": "b", "text": "Odpowiedź B", "correct": false },
+        { "id": "b", "text": "Odpowiedź B", "image": "https://example.com/odpowiedz.png", "correct": false },
         { "id": "c", "text": "Odpowiedź C", "correct": false },
         { "id": "d", "text": "Odpowiedź D", "correct": false }
       ],
@@ -170,6 +171,7 @@
           <li><code>deck.categories</code> (dla widoku wyboru kategorii; każda kategoria powinna mieć <code>id</code>, <code>name</code>, <code>questionCount</code>)</li>
           <li><code>category</code> w pytaniu (ID kategorii)</li>
           <li><code>selectionMode</code> w pytaniu testowym</li>
+          <li><code>image</code> w pytaniu lub odpowiedzi (URL obrazka)</li>
           <li><code>explanation</code> w pytaniu</li>
           <li><code>randomize</code> w pytaniu (losowe wartości / szablony)</li>
         </ul>

@@ -158,6 +158,7 @@ Plik musi mieć:
 Dla każdego pytania:
 - wymagane: `id`, `text`.
 - opcjonalnie: `selectionMode` (`single` lub `multiple`) dla pytań testowych,
+- opcjonalnie: `image` jako URL obrazka do pytania,
 - odpowiedzi:
   - `0` odpowiedzi = fiszka,
   - `2+` odpowiedzi = pytanie testowe,
@@ -165,6 +166,7 @@ Dla każdego pytania:
 
 Dla pytań testowych:
 - odpowiedź musi mieć `id`, `text`,
+- odpowiedź może mieć `image` jako URL obrazka,
 - poprawność przez `correct` (boolean) lub `correctWhen` (warunek dynamiczny),
 - musi istnieć co najmniej jedna odpowiedź poprawna,
 - tryb wyboru wyznaczany jest kolejno:
@@ -193,10 +195,11 @@ z zachowaniem istniejącego postępu kart.
     {
       "id": "q001",
       "text": "Treść pytania",
+      "image": "https://example.com/pytanie.png",
       "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "A", "correct": false },
-        { "id": "b", "text": "B", "correct": true }
+        { "id": "b", "text": "B", "image": "https://example.com/odpowiedz.png", "correct": true }
       ]
     }
   ]

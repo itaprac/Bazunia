@@ -157,10 +157,11 @@ Minimalny format prywatnej talii:
     {
       "id": "q001",
       "text": "Treść pytania",
+      "image": "https://example.com/pytanie.png",
       "selectionMode": "single",
       "answers": [
         { "id": "a", "text": "A", "correct": false },
-        { "id": "b", "text": "B", "correct": true }
+        { "id": "b", "text": "B", "image": "https://example.com/odpowiedz.png", "correct": true }
       ]
     }
   ]
@@ -176,6 +177,7 @@ Zasady importu:
 - Pytanie może nie mieć odpowiedzi, jeśli ma działać jako fiszka.
 - Pytanie testowe powinno mieć co najmniej dwie odpowiedzi.
 - `question.selectionMode` nadpisuje `deck.defaultSelectionMode`.
+- `image` w pytaniu lub odpowiedzi jest opcjonalnym URL-em obrazka.
 - Statyczne pytanie `single` musi mieć dokładnie jedną poprawną odpowiedź.
 
 ## Deployment Produkcyjny

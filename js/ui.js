@@ -617,6 +617,67 @@ export function renderSharedDeckCatalog(data = {}, options = {}) {
 
 // --- Question Rendering ---
 
+function getContentImageSource(item) {
+  if (!item || typeof item !== 'object') return '';
+
+  const candidates = [item.image, item.imageUrl, item.image_url];
+  for (const candidate of candidates) {
+    if (typeof candidate === 'string' && candidate.trim()) return candidate.trim();
+    if (candidate && typeof candidate === 'object') {
+      const nested = candidate.url || candidate.src;
+      if (typeof nested === 'string' && nested.trim()) return nested.trim();
+    }
+  }
+
+  return '';
+}
+
+function getContentImageAlt(item, fallback) {
+  if (!item || typeof item !== 'object') return fallback;
+  const alt = item.imageAlt || item.image_alt || item.alt;
+  return typeof alt === 'string' && alt.trim() ? alt.trim() : fallback;
+}
+
+function renderContentImage(item, className, fallbackAlt) {
+  const src = getContentImageSource(item);
+  if (!src) return '';
+
+  return `
+    <div class="content-image ${className}">
+      <img src="${escapeAttr(src)}" alt="${escapeAttr(getContentImageAlt(item, fallbackAlt))}" loading="lazy">
+    </div>
+  `;
+}
+
+function renderQuestionBody(question) {
+  return `
+    <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+    ${renderContentImage(question, 'question-image', 'Obrazek do pytania')}
+  `;
+}
+
+function renderAnswerBody(answer, textClass = 'answer-text', imageClass = 'answer-image') {
+  return `
+    <div class="answer-body">
+      <div class="${textClass}">${renderLatex(escapeHtml(answer.text))}</div>
+      ${renderContentImage(answer, imageClass, 'Obrazek do odpowiedzi')}
+    </div>
+  `;
+}
+
+function renderEditorImageField(value, options = {}) {
+  const inputClass = options.inputClass || 'editor-image-input';
+  const inputId = options.inputId ? ` id="${escapeAttr(options.inputId)}"` : '';
+  const labelFor = options.inputId ? ` for="${escapeAttr(options.inputId)}"` : '';
+  const label = options.label || 'Obrazek';
+  const placeholder = options.placeholder || 'https://...';
+
+  return `
+    <label class="editor-label editor-image-label"${labelFor}>${escapeHtml(label)} <span class="editor-label-hint">(opcjonalnie)</span></label>
+    <input${inputId} type="url" class="editor-image-input ${escapeAttr(inputClass)}" value="${escapeAttr(value || '')}" placeholder="${escapeAttr(placeholder)}">
+  `;
+}
+
 export function renderQuestion(
   question,
   cardNumber,
@@ -653,7 +714,7 @@ export function renderQuestion(
         ${shuffledAnswers.map((a, i) => `
           <div class="answer-option" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
             <div class="answer-indicator ${indicatorType}"></div>
-            <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+            ${renderAnswerBody(a)}
           </div>
         `).join('')}
       </div>`;
@@ -668,7 +729,7 @@ export function renderQuestion(
           ${editBtn}
         </div>
       </div>
-      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      ${renderQuestionBody(question)}
       <div class="question-hint">${hint}</div>
       ${answersHtml}
       <div class="check-answer-container">
@@ -733,7 +794,7 @@ export function renderAnswerFeedback(
       return `
         <div class="answer-option ${stateClass}" data-answer-id="${escapeAttr(a.id)}">
           <div class="answer-indicator ${isMultiSelect ? 'checkbox' : ''}"></div>
-          <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+          ${renderAnswerBody(a)}
           ${votesHtml}
         </div>
       `;
@@ -744,6 +805,15 @@ export function renderAnswerFeedback(
     <div class="explanation-box">
       <div class="explanation-label">Wyjaśnienie</div>
       <div>${renderLatex(escapeHtml(explanation))}</div>
+    </div>
+  ` : '';
+  const flashcardAnswer = flashcard
+    ? String(question.answer || question.back || '').trim()
+    : '';
+  const flashcardAnswerHtml = flashcard && (flashcardAnswer || explanation) ? `
+    <div class="flashcard-answer-box">
+      <div class="explanation-label">Odpowiedź</div>
+      <div>${renderLatex(escapeHtml(flashcardAnswer || explanation))}</div>
     </div>
   ` : '';
 
@@ -794,8 +864,9 @@ export function renderAnswerFeedback(
           ${feedbackEditBtn}
         </div>
       </div>
-      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      ${renderQuestionBody(question)}
       ${answersHtml ? `<div class="answers-list">${answersHtml}</div>` : ''}
+      ${flashcardAnswerHtml}
       ${explanationHtml}
       ${ratingHtml}
     </div>
@@ -1184,13 +1255,13 @@ export function renderTestQuestion(
           <button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-test-flag-question" ${tooltipAttrs(flagTooltip)} aria-label="${flagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>
         </div>
       </div>
-      <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
+      ${renderQuestionBody(question)}
       <div class="question-hint">${hint}</div>
       <div class="answers-list" id="test-answers-list">
         ${shuffledAnswers.map((a, i) => `
           <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
             <div class="answer-indicator ${indicatorType}"></div>
-            <div class="answer-text">${renderLatex(escapeHtml(a.text))}</div>
+            ${renderAnswerBody(a)}
           </div>
         `).join('')}
       </div>
@@ -1270,14 +1341,20 @@ export function renderTestResult(deckName, results) {
         }
       );
 
-      return `<div class="test-review-answer ${cssClass}">${icon}<span>${renderLatex(escapeHtml(ans.text))}</span>${votesHtml}</div>`;
+      return `
+        <div class="test-review-answer ${cssClass}">
+          ${icon}
+          ${renderAnswerBody(ans, 'test-review-answer-text', 'test-review-answer-image')}
+          ${votesHtml}
+        </div>
+      `;
     }).join('');
 
     return `
       <div class="test-review-item" data-index="${i}">
         <div class="test-review-header">
           <div class="test-review-icon ${iconClass}">${iconChar}</div>
-          <div class="test-review-question">${renderLatex(escapeHtml(a.question.text))}</div>
+          <div class="test-review-question">${renderQuestionBody(a.question)}</div>
           <div class="test-review-chevron">&#9654;</div>
         </div>
         <div class="test-review-detail">${detailHtml}</div>
@@ -1354,12 +1431,22 @@ export function renderBrowse(deckName, questions, options = {}) {
             showMinus,
           }
         );
-        return `<div class="browse-answer ${cls}">${icon}<span class="browse-answer-text">${renderLatex(escapeHtml(a.text))}</span>${votesHtml}</div>`;
+        return `
+          <div class="browse-answer ${cls}">
+            ${icon}
+            ${renderAnswerBody(a, 'browse-answer-text', 'browse-answer-image')}
+            ${votesHtml}
+          </div>
+        `;
       }).join('');
     }
 
     const explanationHtml = q.explanation
       ? `<div class="browse-item-explanation"><strong>Wyjaśnienie:</strong> ${renderLatex(escapeHtml(q.explanation))}</div>`
+      : '';
+    const flashcardAnswer = flashcard ? String(q.answer || q.back || '').trim() : '';
+    const flashcardAnswerHtml = flashcard && flashcardAnswer
+      ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${renderLatex(escapeHtml(flashcardAnswer))}</div>`
       : '';
 
     const flagTooltip = isQuestionFlagged
@@ -1379,8 +1466,9 @@ export function renderBrowse(deckName, questions, options = {}) {
             ${editBtn}
           </div>
         </div>
-        <div class="browse-item-question">${renderLatex(escapeHtml(q.text))}</div>
+        <div class="browse-item-question">${renderQuestionBody(q)}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
+        ${flashcardAnswerHtml}
         ${explanationHtml}
       </div>
     `;
@@ -1393,6 +1481,8 @@ export function renderBrowseCreateEditor(options = {}) {
   const categories = Array.isArray(options.categories) ? options.categories : [];
   const selectedCategory = typeof options.selectedCategory === 'string' ? options.selectedCategory : '';
   const questionText = typeof options.text === 'string' ? options.text : '';
+  const questionImage = getContentImageSource(options);
+  const answerText = typeof options.answer === 'string' ? options.answer : '';
   const explanation = typeof options.explanation === 'string' ? options.explanation : '';
   const isFlashcard = !!options.isFlashcard;
   const selectionMode = normalizeSelectionMode(options.selectionMode, 'multiple');
@@ -1409,7 +1499,10 @@ export function renderBrowseCreateEditor(options = {}) {
         <input type="checkbox" class="create-answer-correct" ${a.correct ? 'checked' : ''}>
         <span class="toggle-slider"></span>
       </label>
-      <input type="text" class="editor-answer-text create-answer-text" value="${escapeAttr(a.text || '')}" placeholder="Treść odpowiedzi">
+      <div class="editor-answer-fields">
+        <input type="text" class="editor-answer-text create-answer-text" value="${escapeAttr(a.text || '')}" placeholder="Treść odpowiedzi">
+        <input type="url" class="editor-image-input editor-answer-image create-answer-image" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+      </div>
       <button class="btn-remove-create-answer" ${tooltipAttrs('Usuń odpowiedź')} aria-label="Usuń odpowiedź" ${answers.length <= 2 ? 'disabled' : ''}>&times;</button>
     </div>
   `).join('');
@@ -1444,6 +1537,15 @@ export function renderBrowseCreateEditor(options = {}) {
       <div class="editor-section">
         <label class="editor-label" for="create-question-text">Treść pytania</label>
         <textarea class="editor-textarea" id="create-question-text" rows="3">${escapeHtml(questionText)}</textarea>
+        ${renderEditorImageField(questionImage, {
+          inputId: 'create-question-image',
+          inputClass: 'editor-question-image',
+          label: 'Obrazek pytania',
+        })}
+      </div>
+      <div class="editor-section create-editor-flashcard-answer" style="${isFlashcard ? '' : 'display:none'}">
+        <label class="editor-label" for="create-question-answer">Odpowiedź</label>
+        <textarea class="editor-textarea" id="create-question-answer" rows="3">${escapeHtml(answerText)}</textarea>
       </div>
       <div class="editor-section" id="create-editor-answers-section" style="${isFlashcard ? 'display:none' : ''}">
         <label class="editor-label" for="create-question-selection-mode">Typ wyboru</label>
@@ -1508,7 +1610,10 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
         <input type="checkbox" class="editor-answer-correct" data-answer-id="${escapeAttr(a.id)}" ${a.correct ? 'checked' : ''}>
         <span class="toggle-slider"></span>
       </label>
-      <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+      <div class="editor-answer-fields">
+        <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+        <input type="url" class="editor-image-input editor-answer-image" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+      </div>
     </div>
   `).join('');
 
@@ -1549,8 +1654,16 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
       <div class="editor-section">
         <label class="editor-label">Treść pytania</label>
         <textarea class="editor-textarea editor-question-text" rows="3">${escapeHtml(question.text)}</textarea>
+        ${renderEditorImageField(getContentImageSource(question), {
+          inputClass: 'editor-question-image',
+          label: 'Obrazek pytania',
+        })}
       </div>
       ${flashcard ? `
+      <div class="editor-section">
+        <label class="editor-label">Odpowiedź</label>
+        <textarea class="editor-textarea editor-question-answer" rows="3">${escapeHtml(question.answer || question.back || '')}</textarea>
+      </div>
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
       </div>` : `
@@ -1642,15 +1755,21 @@ export function renderFlaggedBrowse(deckName, flaggedQuestions, options = {}) {
         const icon = isCorrect
           ? '<span class="browse-answer-icon" style="color: var(--color-success)">&#10003;</span>'
           : '<span class="browse-answer-icon" style="color: transparent">&#8226;</span>';
-        return `<div class="browse-answer ${cls}">${icon}<span>${renderLatex(escapeHtml(a.text))}</span></div>`;
+        return `
+          <div class="browse-answer ${cls}">
+            ${icon}
+            ${renderAnswerBody(a, 'browse-answer-text', 'browse-answer-image')}
+          </div>
+        `;
       }).join('');
     }
 
     return `
       <div class="browse-item flagged-item" data-question-id="${escapeAttr(q.id)}">
         <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
-        <div class="browse-item-question">${renderLatex(escapeHtml(q.text))}</div>
+        <div class="browse-item-question">${renderQuestionBody(q)}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
+        ${flashcard && (q.answer || q.back) ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${renderLatex(escapeHtml(q.answer || q.back))}</div>` : ''}
         <div class="flagged-item-actions">
           <button class="btn btn-secondary btn-sm btn-unflag" data-question-id="${escapeAttr(q.id)}">Odznacz</button>
         </div>
@@ -1800,7 +1919,10 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
         <input type="checkbox" class="editor-answer-correct" data-answer-id="${escapeAttr(a.id)}" ${a.correct ? 'checked' : ''}>
         <span class="toggle-slider"></span>
       </label>
-      <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+      <div class="editor-answer-fields">
+        <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+        <input type="url" class="editor-image-input editor-answer-image" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+      </div>
     </div>
   `).join('');
 
@@ -1841,8 +1963,17 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
       <div class="editor-section">
         <label class="editor-label">Treść pytania</label>
         <textarea class="editor-textarea" id="editor-question-text" rows="3">${escapeHtml(question.text)}</textarea>
+        ${renderEditorImageField(getContentImageSource(question), {
+          inputId: 'editor-question-image',
+          inputClass: 'editor-question-image',
+          label: 'Obrazek pytania',
+        })}
       </div>
       ${flashcard ? `
+      <div class="editor-section">
+        <label class="editor-label" for="editor-question-answer">Odpowiedź</label>
+        <textarea class="editor-textarea" id="editor-question-answer" rows="3">${escapeHtml(question.answer || question.back || '')}</textarea>
+      </div>
       <div class="editor-section">
         <div class="editor-flashcard-note">Fiszka (brak odpowiedzi ABCD)</div>
       </div>` : `

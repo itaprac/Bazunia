@@ -138,6 +138,7 @@ const BUILT_IN_DECK_SOURCES = [
   { id: 'ii-egzamin', file: '/data/ii-egzamin.json' },
   { id: 'informatyzacja-organizacji', file: '/data/informatyzacja-organizacji.json' },
   { id: 'infrastruktura-informatyczna', file: '/data/infrastruktura_informatyczna.json' },
+  { id: 'miss-baza', file: '/data/miss-baza.json' },
   { id: 'tm-egzamin', file: '/data/tm-egzamin.json' },
   { id: 'zp-egzamin', file: '/data/zp-egzamin.json' },
 ];
@@ -3162,9 +3163,13 @@ function openBrowseCreateEditor() {
 function bindCreateQuestionEditorEvents(editor, wrapper) {
   const flashcardToggle = editor.querySelector('#create-question-is-flashcard');
   const answersSection = editor.querySelector('#create-editor-answers-section');
+  const flashcardAnswerSection = editor.querySelector('.create-editor-flashcard-answer');
   if (flashcardToggle && answersSection) {
     flashcardToggle.addEventListener('change', () => {
       answersSection.style.display = flashcardToggle.checked ? 'none' : '';
+      if (flashcardAnswerSection) {
+        flashcardAnswerSection.style.display = flashcardToggle.checked ? '' : 'none';
+      }
     });
   }
 
@@ -3201,6 +3206,11 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
     .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+  const safeImageValue = String(answer.image || answer.imageUrl || answer.image_url || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
   const row = document.createElement('div');
   row.className = 'editor-answer-row create-answer-row';
   row.innerHTML = `
@@ -3208,7 +3218,10 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
       <input type="checkbox" class="create-answer-correct" ${answer.correct ? 'checked' : ''}>
       <span class="toggle-slider"></span>
     </label>
-    <input type="text" class="editor-answer-text create-answer-text" value="${safeValue}">
+    <div class="editor-answer-fields">
+      <input type="text" class="editor-answer-text create-answer-text" value="${safeValue}">
+      <input type="url" class="editor-image-input editor-answer-image create-answer-image" value="${safeImageValue}" placeholder="URL obrazka odpowiedzi">
+    </div>
     <button class="btn-remove-create-answer" data-tooltip="Usuń odpowiedź" aria-label="Usuń odpowiedź">&times;</button>
   `;
   list.appendChild(row);
@@ -3236,6 +3249,15 @@ function updateCreateAnswerRemoveState(editor) {
     const btn = row.querySelector('.btn-remove-create-answer');
     if (btn) btn.disabled = disableRemove;
   });
+}
+
+function normalizeImageInputValue(value) {
+  return String(value || '').trim();
+}
+
+function addOptionalImage(target, imageValue) {
+  const image = normalizeImageInputValue(imageValue);
+  return image ? { ...target, image } : target;
 }
 
 function collectRandomizeFromEditor(editor) {
@@ -3302,6 +3324,8 @@ function saveCreatedQuestion(editor, wrapper) {
   }
 
   const isFlashcardQuestion = !!editor.querySelector('#create-question-is-flashcard')?.checked;
+  const questionImage = normalizeImageInputValue(editor.querySelector('#create-question-image')?.value);
+  const flashcardAnswer = (editor.querySelector('#create-question-answer')?.value || '').trim();
   const explanation = (editor.querySelector('#create-question-explanation')?.value || '').trim();
   const selectionMode = normalizeSelectionMode(
     editor.querySelector('#create-question-selection-mode')?.value,
@@ -3319,9 +3343,10 @@ function saveCreatedQuestion(editor, wrapper) {
     let correctCount = 0;
     rows.forEach((row, idx) => {
       const answerText = (row.querySelector('.create-answer-text')?.value || '').trim();
+      const answerImage = row.querySelector('.create-answer-image')?.value || '';
       const isCorrect = !!row.querySelector('.create-answer-correct')?.checked;
       if (!answerText) return;
-      answers.push({ id: `a${idx + 1}`, text: answerText, correct: isCorrect });
+      answers.push(addOptionalImage({ id: `a${idx + 1}`, text: answerText, correct: isCorrect }, answerImage));
       if (isCorrect) correctCount++;
     });
 
@@ -3355,6 +3380,12 @@ function saveCreatedQuestion(editor, wrapper) {
     text,
     answers: isFlashcardQuestion ? [] : answers,
   };
+  if (questionImage) {
+    newQuestion.image = questionImage;
+  }
+  if (isFlashcardQuestion && flashcardAnswer) {
+    newQuestion.answer = flashcardAnswer;
+  }
   if (!isFlashcardQuestion) {
     newQuestion.selectionMode = selectionMode;
   }
@@ -3489,6 +3520,8 @@ function saveBrowseEdit(index, editor) {
   }
 
   const newExplanation = editor.querySelector('.editor-explanation').value.trim();
+  const newImage = normalizeImageInputValue(editor.querySelector('.editor-question-image')?.value);
+  const newAnswer = (editor.querySelector('.editor-question-answer')?.value || '').trim();
   const selectionMode = normalizeSelectionMode(
     editor.querySelector('.editor-selection-mode')?.value,
     getDeckDefaultSelectionModeForDeckId(currentDeckId)
@@ -3502,6 +3535,7 @@ function saveBrowseEdit(index, editor) {
     for (const row of answerRows) {
       const id = row.dataset.answerId;
       const text = row.querySelector('.editor-answer-text').value.trim();
+      const image = row.querySelector('.editor-answer-image')?.value || '';
       const correct = row.querySelector('.editor-answer-correct').checked;
 
       if (!text) {
@@ -3510,7 +3544,7 @@ function saveBrowseEdit(index, editor) {
       }
 
       if (correct) correctCount++;
-      updatedAnswers.push({ id, text, correct });
+      updatedAnswers.push(addOptionalImage({ id, text, correct }, image));
     }
 
     if (selectionMode === 'single' && correctCount !== 1) {
@@ -3534,10 +3568,19 @@ function saveBrowseEdit(index, editor) {
 
   if (qIndex !== -1) {
     allQuestions[qIndex].text = newText;
+    if (newImage) {
+      allQuestions[qIndex].image = newImage;
+    } else {
+      delete allQuestions[qIndex].image;
+      delete allQuestions[qIndex].imageUrl;
+      delete allQuestions[qIndex].image_url;
+    }
     if (updatedAnswers.length > 0) {
       allQuestions[qIndex].answers = updatedAnswers;
       allQuestions[qIndex].selectionMode = selectionMode;
     } else {
+      allQuestions[qIndex].answer = newAnswer || undefined;
+      delete allQuestions[qIndex].back;
       delete allQuestions[qIndex].selectionMode;
     }
     allQuestions[qIndex].explanation = newExplanation || undefined;
@@ -6004,6 +6047,8 @@ function saveQuestionEdit() {
   }
 
   const newExplanation = document.getElementById('editor-explanation').value.trim();
+  const newImage = normalizeImageInputValue(document.getElementById('editor-question-image')?.value);
+  const newAnswer = (document.getElementById('editor-question-answer')?.value || '').trim();
   const selectionMode = normalizeSelectionMode(
     document.getElementById('editor-selection-mode')?.value,
     getDeckDefaultSelectionModeForDeckId(currentDeckId)
@@ -6018,6 +6063,7 @@ function saveQuestionEdit() {
     for (const row of answerRows) {
       const id = row.dataset.answerId;
       const text = row.querySelector('.editor-answer-text').value.trim();
+      const image = row.querySelector('.editor-answer-image')?.value || '';
       const correct = row.querySelector('.editor-answer-correct').checked;
 
       if (!text) {
@@ -6026,7 +6072,7 @@ function saveQuestionEdit() {
       }
 
       if (correct) correctCount++;
-      updatedAnswers.push({ id, text, correct });
+      updatedAnswers.push(addOptionalImage({ id, text, correct }, image));
     }
 
     if (selectionMode === 'single' && correctCount !== 1) {
@@ -6100,10 +6146,19 @@ function saveQuestionEdit() {
   const qIndex = questions.findIndex(q => q.id === currentQuestion.id);
   if (qIndex !== -1) {
     questions[qIndex].text = newText;
+    if (newImage) {
+      questions[qIndex].image = newImage;
+    } else {
+      delete questions[qIndex].image;
+      delete questions[qIndex].imageUrl;
+      delete questions[qIndex].image_url;
+    }
     if (updatedAnswers.length > 0) {
       questions[qIndex].answers = updatedAnswers;
       questions[qIndex].selectionMode = selectionMode;
     } else {
+      questions[qIndex].answer = newAnswer || undefined;
+      delete questions[qIndex].back;
       delete questions[qIndex].selectionMode;
     }
     questions[qIndex].explanation = newExplanation || undefined;
