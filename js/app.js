@@ -20,6 +20,7 @@ import {
   renderBrowse,
   renderBrowseCreateEditor,
   renderBrowseEditor,
+  renderEditorImageField,
   renderFlaggedBrowse,
   renderAppSettings,
   renderQuestionEditor,
@@ -3225,6 +3226,7 @@ function openBrowseEditor(index) {
   }
 
   // Bind add variable/derived/constraint buttons
+  bindEditorImageControls(editor);
   bindBrowseEditorAddButtons(editor);
   bindBrowseEditorRemoveButtons(editor);
 
@@ -3274,6 +3276,7 @@ function openBrowseCreateEditor() {
   if (!editor) return;
 
   bindCreateQuestionEditorEvents(editor, wrapper);
+  bindEditorImageControls(editor);
   bindBrowseEditorAddButtons(editor);
   bindBrowseEditorRemoveButtons(editor);
 
@@ -3328,10 +3331,7 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
   const safeImageValue = String(answer.image || answer.imageUrl || answer.image_url || '')
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .trim();
   const row = document.createElement('div');
   row.className = 'editor-answer-row create-answer-row';
   row.innerHTML = `
@@ -3341,11 +3341,16 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
     </label>
     <div class="editor-answer-fields">
       <input type="text" class="editor-answer-text create-answer-text" value="${safeValue}">
-      <input type="url" class="editor-image-input editor-answer-image create-answer-image" value="${safeImageValue}" placeholder="URL obrazka odpowiedzi">
+      ${renderEditorImageField(safeImageValue, {
+        inputClass: 'editor-answer-image create-answer-image',
+        label: 'Obrazek odpowiedzi',
+        compact: true,
+      })}
     </div>
     <button class="btn-remove-create-answer" data-tooltip="Usuń odpowiedź" aria-label="Usuń odpowiedź">&times;</button>
   `;
   list.appendChild(row);
+  bindEditorImageControls(row);
   bindCreateAnswerRemoveButtons(editor);
   updateCreateAnswerRemoveState(editor);
 }
@@ -3379,6 +3384,193 @@ function normalizeImageInputValue(value) {
 function addOptionalImage(target, imageValue) {
   const image = normalizeImageInputValue(imageValue);
   return image ? { ...target, image } : target;
+}
+
+const EDITOR_IMAGE_MAX_SOURCE_BYTES = 8 * 1024 * 1024;
+const EDITOR_IMAGE_DIRECT_EMBED_BYTES = 640 * 1024;
+const EDITOR_IMAGE_MAX_STORED_DIMENSION = 1600;
+const EDITOR_IMAGE_JPEG_QUALITY = 0.88;
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.onerror = () => reject(new Error('Nie udało się odczytać pliku.'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function loadImageForEditor(src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error('Nie udało się przygotować obrazka.'));
+    image.src = src;
+  });
+}
+
+async function convertEditorImageFileToValue(file) {
+  if (!file || !String(file.type || '').startsWith('image/')) {
+    throw new Error('Wybierz plik graficzny.');
+  }
+  if (file.size > EDITOR_IMAGE_MAX_SOURCE_BYTES) {
+    throw new Error('Obrazek jest za duży. Maksymalny rozmiar pliku to 8 MB.');
+  }
+
+  const sourceDataUrl = await readFileAsDataUrl(file);
+  const type = String(file.type || '').toLowerCase();
+  const canStoreDirectly = file.size <= EDITOR_IMAGE_DIRECT_EMBED_BYTES
+    || type === 'image/gif'
+    || type === 'image/svg+xml';
+
+  if (canStoreDirectly) {
+    return sourceDataUrl;
+  }
+
+  const image = await loadImageForEditor(sourceDataUrl);
+  const sourceWidth = image.naturalWidth || image.width;
+  const sourceHeight = image.naturalHeight || image.height;
+  if (!sourceWidth || !sourceHeight) return sourceDataUrl;
+
+  const scale = Math.min(1, EDITOR_IMAGE_MAX_STORED_DIMENSION / Math.max(sourceWidth, sourceHeight));
+  const width = Math.max(1, Math.round(sourceWidth * scale));
+  const height = Math.max(1, Math.round(sourceHeight * scale));
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return sourceDataUrl;
+  ctx.fillStyle = '#fbfaf6';
+  ctx.fillRect(0, 0, width, height);
+  ctx.drawImage(image, 0, 0, width, height);
+
+  return canvas.toDataURL('image/jpeg', EDITOR_IMAGE_JPEG_QUALITY);
+}
+
+function getImageFileFromList(fileList) {
+  return Array.from(fileList || []).find((file) => String(file.type || '').startsWith('image/')) || null;
+}
+
+function bindEditorImageControls(root = document) {
+  const scope = root && typeof root.querySelectorAll === 'function' ? root : document;
+  scope.querySelectorAll('[data-editor-image-control]').forEach((control) => {
+    if (control.dataset.imageControlBound === '1') return;
+    control.dataset.imageControlBound = '1';
+
+    const input = control.querySelector('.editor-image-input');
+    const urlInput = control.querySelector('.editor-image-url-input');
+    const fileInput = control.querySelector('.editor-image-file-input');
+    const dropzone = control.querySelector('[data-image-dropzone]');
+    const preview = control.querySelector('[data-image-preview]');
+    const empty = control.querySelector('[data-image-empty]');
+    const pickBtn = control.querySelector('.editor-image-pick');
+    const clearBtn = control.querySelector('.editor-image-clear');
+    if (!input || !urlInput || !fileInput || !dropzone || !preview || !empty || !pickBtn || !clearBtn) return;
+
+    const syncUrlInput = (value) => {
+      if (value.startsWith('data:image/')) {
+        urlInput.value = '';
+        urlInput.placeholder = 'Obrazek z pliku, wklej link aby zastąpić';
+        return;
+      }
+      urlInput.placeholder = 'Wklej link albo dodaj plik';
+      urlInput.value = value;
+    };
+
+    const syncPreview = (options = {}) => {
+      const value = normalizeImageInputValue(input.value);
+      if (options.updateUrlInput !== false) {
+        syncUrlInput(value);
+      }
+      control.classList.toggle('has-image', value.length > 0);
+      clearBtn.disabled = value.length === 0;
+      if (value) {
+        preview.replaceChildren();
+        const image = document.createElement('img');
+        image.src = value;
+        image.alt = '';
+        preview.appendChild(image);
+        preview.hidden = false;
+        empty.hidden = true;
+      } else {
+        preview.innerHTML = '';
+        preview.hidden = true;
+        empty.hidden = false;
+      }
+    };
+
+    const setBusy = (busy) => {
+      control.classList.toggle('is-busy', busy);
+      pickBtn.disabled = busy;
+      clearBtn.disabled = busy || normalizeImageInputValue(input.value).length === 0;
+    };
+
+    const applyFile = async (file) => {
+      if (!file) {
+        showNotification('Upuszczony plik nie jest obrazkiem.', 'error');
+        return;
+      }
+      setBusy(true);
+      try {
+        input.value = await convertEditorImageFileToValue(file);
+        syncPreview();
+      } catch (error) {
+        showNotification(error.message || 'Nie udało się dodać obrazka.', 'error');
+      } finally {
+        fileInput.value = '';
+        setBusy(false);
+      }
+    };
+
+    urlInput.addEventListener('input', () => {
+      input.value = normalizeImageInputValue(urlInput.value);
+      syncPreview({ updateUrlInput: false });
+    });
+    pickBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => applyFile(getImageFileFromList(fileInput.files)));
+
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      urlInput.value = '';
+      syncPreview();
+      urlInput.focus();
+    });
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      fileInput.click();
+    });
+
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        control.classList.add('is-drag-over');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach((eventName) => {
+      dropzone.addEventListener(eventName, () => {
+        control.classList.remove('is-drag-over');
+      });
+    });
+
+    dropzone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      applyFile(getImageFileFromList(event.dataTransfer?.files));
+    });
+
+    control.addEventListener('paste', (event) => {
+      const file = getImageFileFromList(event.clipboardData?.files);
+      if (!file) return;
+      event.preventDefault();
+      applyFile(file);
+    });
+
+    syncPreview();
+  });
 }
 
 function collectRandomizeFromEditor(editor) {
@@ -6116,6 +6308,7 @@ function enterEditMode() {
   }
 
   renderQuestionEditor(editorQuestion, getDeckDefaultSelectionModeForDeckId(currentDeckId));
+  bindEditorImageControls(document.getElementById('study-content'));
 
   // Cancel
   document.getElementById('btn-editor-cancel').addEventListener('click', () => {

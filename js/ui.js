@@ -665,16 +665,43 @@ function renderAnswerBody(answer, textClass = 'answer-text', imageClass = 'answe
   `;
 }
 
-function renderEditorImageField(value, options = {}) {
+export function renderEditorImageField(value, options = {}) {
   const inputClass = options.inputClass || 'editor-image-input';
-  const inputId = options.inputId ? ` id="${escapeAttr(options.inputId)}"` : '';
-  const labelFor = options.inputId ? ` for="${escapeAttr(options.inputId)}"` : '';
+  const inputIdValue = options.inputId || '';
+  const inputId = inputIdValue ? ` id="${escapeAttr(inputIdValue)}"` : '';
+  const visibleInputId = inputIdValue ? `${inputIdValue}-url` : '';
+  const visibleInputIdAttr = visibleInputId ? ` id="${escapeAttr(visibleInputId)}"` : '';
+  const labelFor = visibleInputId ? ` for="${escapeAttr(visibleInputId)}"` : '';
   const label = options.label || 'Obrazek';
-  const placeholder = options.placeholder || 'https://...';
+  const placeholder = options.placeholder || 'Wklej link albo dodaj plik';
+  const normalizedValue = String(value || '').trim();
+  const hasImage = normalizedValue.length > 0;
+  const isEmbeddedImage = normalizedValue.startsWith('data:image/');
+  const visibleValue = isEmbeddedImage ? '' : normalizedValue;
+  const visiblePlaceholder = isEmbeddedImage ? 'Obrazek z pliku, wklej link aby zastąpić' : placeholder;
+  const compactClass = options.compact ? ' compact' : '';
+  const previewHtml = hasImage
+    ? `<img src="${escapeAttr(normalizedValue)}" alt="${escapeAttr(label)}" loading="lazy">`
+    : '';
 
   return `
-    <label class="editor-label editor-image-label"${labelFor}>${escapeHtml(label)} <span class="editor-label-hint">(opcjonalnie)</span></label>
-    <input${inputId} type="url" class="editor-image-input ${escapeAttr(inputClass)}" value="${escapeAttr(value || '')}" placeholder="${escapeAttr(placeholder)}">
+    <div class="editor-image-control${compactClass}${hasImage ? ' has-image' : ''}" data-editor-image-control>
+      <label class="editor-label editor-image-label"${labelFor}>${escapeHtml(label)} <span class="editor-label-hint">(opcjonalnie)</span></label>
+      <div class="editor-image-dropzone" data-image-dropzone role="button" tabindex="0" aria-label="${escapeAttr(`Dodaj plik dla pola: ${label}`)}">
+        <div class="editor-image-preview" data-image-preview ${hasImage ? '' : 'hidden'}>${previewHtml}</div>
+        <div class="editor-image-empty" data-image-empty ${hasImage ? 'hidden' : ''}>
+          <span class="editor-image-empty-title">Upuść obrazek tutaj</span>
+          <span class="editor-image-empty-subtitle">albo wybierz plik z dysku</span>
+        </div>
+      </div>
+      <div class="editor-image-tools">
+        <input${inputId} type="hidden" class="editor-image-input ${escapeAttr(inputClass)}" value="${escapeAttr(normalizedValue)}">
+        <input${visibleInputIdAttr} type="text" inputmode="url" class="editor-image-url-input" value="${escapeAttr(visibleValue)}" placeholder="${escapeAttr(visiblePlaceholder)}">
+        <input type="file" class="editor-image-file-input" accept="image/*" hidden>
+        <button class="btn btn-secondary btn-sm editor-image-pick" type="button">Wybierz</button>
+        <button class="btn btn-secondary btn-sm editor-image-clear" type="button" ${hasImage ? '' : 'disabled'}>Usuń</button>
+      </div>
+    </div>
   `;
 }
 
@@ -1580,7 +1607,11 @@ export function renderBrowseCreateEditor(options = {}) {
       </label>
       <div class="editor-answer-fields">
         <input type="text" class="editor-answer-text create-answer-text" value="${escapeAttr(a.text || '')}" placeholder="Treść odpowiedzi">
-        <input type="url" class="editor-image-input editor-answer-image create-answer-image" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+        ${renderEditorImageField(getContentImageSource(a), {
+          inputClass: 'editor-answer-image create-answer-image',
+          label: 'Obrazek odpowiedzi',
+          compact: true,
+        })}
       </div>
       <button class="btn-remove-create-answer" ${tooltipAttrs('Usuń odpowiedź')} aria-label="Usuń odpowiedź" ${answers.length <= 2 ? 'disabled' : ''}>&times;</button>
     </div>
@@ -1691,7 +1722,11 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
       </label>
       <div class="editor-answer-fields">
         <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
-        <input type="url" class="editor-image-input editor-answer-image" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+        ${renderEditorImageField(getContentImageSource(a), {
+          inputClass: 'editor-answer-image',
+          label: 'Obrazek odpowiedzi',
+          compact: true,
+        })}
       </div>
     </div>
   `).join('');
@@ -2004,7 +2039,11 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
       </label>
       <div class="editor-answer-fields">
         <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
-        <input type="url" class="editor-image-input editor-answer-image" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(getContentImageSource(a))}" placeholder="URL obrazka odpowiedzi">
+        ${renderEditorImageField(getContentImageSource(a), {
+          inputClass: 'editor-answer-image',
+          label: 'Obrazek odpowiedzi',
+          compact: true,
+        })}
       </div>
     </div>
   `).join('');
