@@ -819,7 +819,7 @@ export function renderAnswerFeedback(
   const flashcardAnswerHtml = flashcard && (flashcardAnswer || explanation || flashcardAnswerImage) ? `
     <div class="flashcard-answer-box">
       <div class="explanation-label">Odpowiedź</div>
-      ${(flashcardAnswer || explanation) ? `<div>${renderLatex(escapeHtml(flashcardAnswer || explanation))}</div>` : ''}
+      ${(flashcardAnswer || explanation) ? `<div class="flashcard-answer-content">${renderLatex(escapeHtml(flashcardAnswer || explanation))}</div>` : ''}
       ${flashcardAnswerImage ? renderContentImage({ image: flashcardAnswerImage, alt: flashcardAnswerImageAlt }, 'flashcard-answer-image', 'Obrazek do odpowiedzi') : ''}
     </div>
   ` : '';
@@ -1521,7 +1521,11 @@ export function renderBrowse(deckName, questions, options = {}) {
     const flashcardAnswerImage = flashcard ? String(q.answerImage || q.backImage || '').trim() : '';
     const flashcardAnswerImageAlt = flashcard ? String(q.answerImageAlt || q.backImageAlt || '').trim() : '';
     const flashcardAnswerHtml = flashcard && (flashcardAnswer || flashcardAnswerImage)
-      ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${flashcardAnswer ? renderLatex(escapeHtml(flashcardAnswer)) : ''}${flashcardAnswerImage ? renderContentImage({ image: flashcardAnswerImage, alt: flashcardAnswerImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}</div>`
+      ? `<div class="browse-flashcard-answer">
+          <div class="browse-flashcard-answer-label">Odpowiedź</div>
+          ${flashcardAnswer ? `<div class="browse-flashcard-answer-content">${renderLatex(escapeHtml(flashcardAnswer))}</div>` : ''}
+          ${flashcardAnswerImage ? renderContentImage({ image: flashcardAnswerImage, alt: flashcardAnswerImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}
+        </div>`
       : '';
 
     const flagTooltip = isQuestionFlagged
@@ -1844,7 +1848,11 @@ export function renderFlaggedBrowse(deckName, flaggedQuestions, options = {}) {
         <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
         <div class="browse-item-question">${renderQuestionBody(q)}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
-        ${flashcard && (q.answer || q.back || q.answerImage || q.backImage) ? `<div class="browse-item-explanation"><strong>Odpowiedź:</strong> ${q.answer || q.back ? renderLatex(escapeHtml(q.answer || q.back)) : ''}${q.answerImage || q.backImage ? renderContentImage({ image: q.answerImage || q.backImage, alt: q.answerImageAlt || q.backImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}</div>` : ''}
+        ${flashcard && (q.answer || q.back || q.answerImage || q.backImage) ? `<div class="browse-flashcard-answer">
+          <div class="browse-flashcard-answer-label">Odpowiedź</div>
+          ${q.answer || q.back ? `<div class="browse-flashcard-answer-content">${renderLatex(escapeHtml(q.answer || q.back))}</div>` : ''}
+          ${q.answerImage || q.backImage ? renderContentImage({ image: q.answerImage || q.backImage, alt: q.answerImageAlt || q.backImageAlt }, 'browse-answer-image', 'Obrazek do odpowiedzi') : ''}
+        </div>` : ''}
         <div class="flagged-item-actions">
           <button class="btn btn-secondary btn-sm btn-unflag" data-question-id="${escapeAttr(q.id)}">Odznacz</button>
         </div>
