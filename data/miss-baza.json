@@ -1,7 +1,7 @@
 {
   "deck": {
     "id": "miss-baza",
-    "name": "Modelowanie i Symulacja Systemów - Baza na MISS",
+    "name": "Modelowanie i Symulacja Systemów",
     "description": "Pytania z PDF Baza na Miss. Otwarte pytania są fiszkami z proponowanymi odpowiedziami, zamknięte jako pytania testowe.",
     "version": 1,
     "group": "Semestr 6",

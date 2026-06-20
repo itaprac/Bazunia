@@ -1205,6 +1205,16 @@ export function renderModeSelect(deckName, deckStats, options = {}) {
 export function renderTestConfig(totalQuestions) {
   const defaultCount = Math.min(10, totalQuestions);
 
+  if (totalQuestions <= 0) {
+    document.getElementById('test-content').innerHTML = `
+      <div class="test-config">
+        <div class="test-config-title">Brak pytań do testu</div>
+        <div class="test-config-label">Ta talia nie ma jeszcze pytań, które można uruchomić w trybie testu.</div>
+      </div>
+    `;
+    return;
+  }
+
   document.getElementById('test-content').innerHTML = `
     <div class="test-config">
       <div class="test-config-title">Konfiguracja testu</div>
@@ -1228,11 +1238,15 @@ export function renderTestQuestion(
   shouldShuffle = true,
   preShuffledAnswers = null,
   previousSelection = null,
-  flagged = false
+  flagged = false,
+  openState = null
 ) {
+  const flashcard = isFlashcard(question);
   const isMulti = selectionMode === 'multiple';
-  const shuffledAnswers = preShuffledAnswers || (shouldShuffle ? shuffle(question.answers) : [...question.answers]);
-  const hint = isMulti ? '(Zaznacz wszystkie poprawne)' : '(Wybierz jedną odpowiedź)';
+  const shuffledAnswers = flashcard ? [] : (preShuffledAnswers || (shouldShuffle ? shuffle(question.answers) : [...question.answers]));
+  const hint = flashcard
+    ? '(Odpowiedz, potem odsłoń odpowiedź)'
+    : (isMulti ? '(Zaznacz wszystkie poprawne)' : '(Wybierz jedną odpowiedź)');
   const indicatorType = isMulti ? 'checkbox' : '';
   const flagTooltip = flagged
     ? 'Usuń oznaczenie pytania (skrót: F)'
@@ -1245,18 +1259,37 @@ export function renderTestQuestion(
 
   const isLast = num === total;
   const isFirst = num === 1;
-  const hasSelection = previousSelection && previousSelection.size > 0;
-
-  document.getElementById('test-content').innerHTML = `
-    <div class="question-card">
-      <div class="question-card-topbar">
-        <div class="question-number">Pytanie ${num} z ${total}</div>
-        <div class="question-card-topbar-actions">
-          <button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-test-flag-question" ${tooltipAttrs(flagTooltip)} aria-label="${flagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>
+  const openResult = openState && typeof openState.correct === 'boolean' ? openState.correct : null;
+  const openRevealed = openState?.revealed === true || openResult !== null;
+  const hasSelection = flashcard ? openResult !== null : (previousSelection && previousSelection.size > 0);
+  const answerText = flashcard
+    ? String(question.answer || question.back || question.explanation || '').trim()
+    : '';
+  const answerImage = flashcard ? String(question.answerImage || question.backImage || '').trim() : '';
+  const openAnswerHtml = flashcard && openRevealed ? `
+      <div class="test-open-answer">
+        <div class="explanation-label">Odpowiedź</div>
+        <div class="answer-body">
+          ${answerText ? `<div class="test-open-answer-text">${renderLatex(escapeHtml(answerText))}</div>` : '<div class="test-open-answer-text muted">Brak zapisanej odpowiedzi.</div>'}
+          ${answerImage ? renderContentImage({ image: answerImage }, 'test-open-answer-image', 'Obrazek do odpowiedzi') : ''}
         </div>
       </div>
-      ${renderQuestionBody(question)}
-      <div class="question-hint">${hint}</div>
+      <div class="test-open-assessment" role="group" aria-label="Oceń odpowiedź">
+        <button class="btn btn-secondary test-open-result ${openResult === false ? 'selected' : ''}" type="button" data-correct="false">Nie znam</button>
+        <button class="btn btn-primary test-open-result ${openResult === true ? 'selected' : ''}" type="button" data-correct="true">Znam</button>
+      </div>
+    ` : '';
+  const openActionsHtml = flashcard && !openRevealed ? `
+      <div class="test-open-actions">
+        <button class="btn btn-primary" id="btn-test-reveal-answer" type="button">Pokaż odpowiedź</button>
+      </div>
+    ` : '';
+  const answersHtml = flashcard ? `
+      <div class="test-open-panel">
+        ${openActionsHtml}
+        ${openAnswerHtml}
+      </div>
+    ` : `
       <div class="answers-list" id="test-answers-list">
         ${shuffledAnswers.map((a, i) => `
           <div class="answer-option ${previousSelection && previousSelection.has(a.id) ? 'selected' : ''}" data-answer-id="${escapeAttr(a.id)}" data-index="${i}">
@@ -1265,6 +1298,19 @@ export function renderTestQuestion(
           </div>
         `).join('')}
       </div>
+    `;
+
+  document.getElementById('test-content').innerHTML = `
+    <div class="question-card${flashcard ? ' flashcard' : ''}">
+      <div class="question-card-topbar">
+        <div class="question-number">Pytanie ${num} z ${total}</div>
+        <div class="question-card-topbar-actions">
+          <button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-test-flag-question" ${tooltipAttrs(flagTooltip)} aria-label="${flagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>
+        </div>
+      </div>
+      ${renderQuestionBody(question)}
+      <div class="question-hint">${hint}</div>
+      ${answersHtml}
       <div class="check-answer-container">
         ${!isFirst ? '<button class="btn btn-secondary" id="btn-test-prev">Wstecz</button>' : ''}
         <button class="btn btn-primary" id="btn-test-next" ${hasSelection ? '' : 'disabled'}>
@@ -1304,51 +1350,69 @@ export function renderTestResult(deckName, results) {
     const isCorrect = a.correct;
     const iconClass = isCorrect ? 'correct' : 'incorrect';
     const iconChar = isCorrect ? '&#10003;' : '&#10007;';
+    const flashcard = isFlashcard(a.question);
 
-    const questionSelectionMode = getEffectiveQuestionSelectionMode(a.question, deckDefaultSelectionMode);
-    const showMinus = questionSelectionMode === 'multiple';
-    const questionVotes = voteSummaryByQuestion && typeof voteSummaryByQuestion === 'object'
-      ? voteSummaryByQuestion[a.question.id] || null
-      : null;
+    let detailHtml = '';
 
-    const detailHtml = a.question.answers.map(ans => {
-      const wasSelected = a.selectedIds.has(ans.id);
-      const isRight = ans.correct;
-
-      let cssClass = '';
-      let icon = '';
-      if (wasSelected && isRight) {
-        cssClass = 'is-correct';
-        icon = '<span class="test-review-answer-icon" style="color: var(--color-success)">&#10003;</span>';
-      } else if (wasSelected && !isRight) {
-        cssClass = 'is-incorrect-selected';
-        icon = '<span class="test-review-answer-icon" style="color: var(--color-danger)">&#10007;</span>';
-      } else if (!wasSelected && isRight) {
-        cssClass = questionSelectionMode === 'multiple' ? 'is-correct-missed' : 'is-correct';
-        icon = '<span class="test-review-answer-icon" style="color: var(--color-warning)">&#10003;</span>';
-      } else {
-        icon = '<span class="test-review-answer-icon" style="color: transparent">&#8226;</span>';
-      }
-
-      const votesHtml = renderAnswerVoteControls(
-        a.question.id,
-        ans.id,
-        questionVotes,
-        {
-          enabled: voteConfigBase.enabled === true,
-          canVote: voteConfigBase.canVote === true,
-          showMinus,
-        }
-      );
-
-      return `
-        <div class="test-review-answer ${cssClass}">
-          ${icon}
-          ${renderAnswerBody(ans, 'test-review-answer-text', 'test-review-answer-image')}
-          ${votesHtml}
+    if (flashcard) {
+      const answerText = String(a.question.answer || a.question.back || a.question.explanation || '').trim();
+      const answerImage = String(a.question.answerImage || a.question.backImage || '').trim();
+      detailHtml = `
+        <div class="test-review-answer ${isCorrect ? 'is-correct' : 'is-incorrect-selected'}">
+          <span class="test-review-answer-icon" style="color: ${isCorrect ? 'var(--color-success)' : 'var(--color-danger)'}">${iconChar}</span>
+          <div class="answer-body">
+            <div class="test-review-answer-label">Twoja ocena: ${isCorrect ? 'znam' : 'nie znam'}</div>
+            ${answerText ? `<div class="test-review-answer-text">${renderLatex(escapeHtml(answerText))}</div>` : '<div class="test-review-answer-text">Brak zapisanej odpowiedzi.</div>'}
+            ${answerImage ? renderContentImage({ image: answerImage }, 'test-review-answer-image', 'Obrazek do odpowiedzi') : ''}
+          </div>
         </div>
       `;
-    }).join('');
+    } else {
+      const questionSelectionMode = getEffectiveQuestionSelectionMode(a.question, deckDefaultSelectionMode);
+      const showMinus = questionSelectionMode === 'multiple';
+      const questionVotes = voteSummaryByQuestion && typeof voteSummaryByQuestion === 'object'
+        ? voteSummaryByQuestion[a.question.id] || null
+        : null;
+
+      detailHtml = a.question.answers.map(ans => {
+        const wasSelected = a.selectedIds.has(ans.id);
+        const isRight = ans.correct;
+
+        let cssClass = '';
+        let icon = '';
+        if (wasSelected && isRight) {
+          cssClass = 'is-correct';
+          icon = '<span class="test-review-answer-icon" style="color: var(--color-success)">&#10003;</span>';
+        } else if (wasSelected && !isRight) {
+          cssClass = 'is-incorrect-selected';
+          icon = '<span class="test-review-answer-icon" style="color: var(--color-danger)">&#10007;</span>';
+        } else if (!wasSelected && isRight) {
+          cssClass = questionSelectionMode === 'multiple' ? 'is-correct-missed' : 'is-correct';
+          icon = '<span class="test-review-answer-icon" style="color: var(--color-warning)">&#10003;</span>';
+        } else {
+          icon = '<span class="test-review-answer-icon" style="color: transparent">&#8226;</span>';
+        }
+
+        const votesHtml = renderAnswerVoteControls(
+          a.question.id,
+          ans.id,
+          questionVotes,
+          {
+            enabled: voteConfigBase.enabled === true,
+            canVote: voteConfigBase.canVote === true,
+            showMinus,
+          }
+        );
+
+        return `
+          <div class="test-review-answer ${cssClass}">
+            ${icon}
+            ${renderAnswerBody(ans, 'test-review-answer-text', 'test-review-answer-image')}
+            ${votesHtml}
+          </div>
+        `;
+      }).join('');
+    }
 
     return `
       <div class="test-review-item" data-index="${i}">

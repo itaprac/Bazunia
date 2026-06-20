@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T10:59:12.252Z",
+  "generatedAt": "2026-06-20T11:08:01.372Z",
   "decks": [
     {
       "id": "ai-egzamin",
@@ -243,11 +243,11 @@
     {
       "id": "miss-baza",
       "file": "/data/miss-baza.json",
-      "name": "Modelowanie i Symulacja Systemów - Baza na MISS",
+      "name": "Modelowanie i Symulacja Systemów",
       "description": "Pytania z PDF Baza na Miss. Otwarte pytania są fiszkami z proponowanymi odpowiedziami, zamknięte jako pytania testowe.",
       "questionCount": 73,
       "version": 1,
-      "contentHash": "8f651a60cf768e7f6429f2b39ccb87e30b29173a8bc380425c0fe84753c8b869",
+      "contentHash": "c4c614b93dcce2c6363ec73bf648d51145fdda8d64042eff16506e17599403a4",
       "group": "Semestr 6",
       "defaultSelectionMode": "single"
     },

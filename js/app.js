@@ -213,6 +213,8 @@ let publicDeckInitialSyncDone = false;
 let testQuestions = [];
 let testCurrentIndex = 0;
 let testAnswers = new Map(); // questionId → Set of selected answer ids
+let testOpenRevealedIds = new Set();
+let testOpenResults = new Map(); // questionId → boolean self-assessment
 let testShuffledAnswers = null;
 let testSelectedIds = new Set();
 let testShuffledMap = new Map(); // index → shuffled answers array
@@ -2397,6 +2399,13 @@ function getFilteredQuestions(deckId) {
   return questions.filter(q => q.category === currentCategory);
 }
 
+function getTestableQuestions(deckId) {
+  return getFilteredQuestions(deckId).filter((question) => (
+    isFlashcard(question) ||
+    (Array.isArray(question?.answers) && question.answers.length > 0)
+  ));
+}
+
 function navigateToCategorySelect(deckId) {
   currentDeckId = deckId;
   currentCategory = null;
@@ -2666,7 +2675,7 @@ function navigateToTestConfig(deckId) {
   currentDeckSettings = getSettingsForDeck(deckId);
   const deckMeta = storage.getDecks().find(d => d.id === deckId);
   const deckName = deckMeta ? deckMeta.name : deckId;
-  const questions = getFilteredQuestions(deckId).filter(q => !isFlashcard(q));
+  const questions = getTestableQuestions(deckId);
 
   setDeckHeaderLabel('test-deck-name', deckName, getCategoryLabelForDeck(deckMeta, currentCategory));
   document.getElementById('test-counter').textContent = '';
@@ -2682,6 +2691,8 @@ function bindTestConfigEvents(deckId, totalQuestions) {
   const display = document.getElementById('test-count-display');
   const startBtn = document.getElementById('btn-start-test');
 
+  if (!slider || !display || !startBtn) return;
+
   slider.addEventListener('input', () => {
     display.textContent = slider.value;
   });
@@ -2695,7 +2706,7 @@ function bindTestConfigEvents(deckId, totalQuestions) {
 function startTest(deckId, questionCount) {
   currentDeckId = deckId;
   currentDeckSettings = getSettingsForDeck(deckId);
-  const allQuestions = getFilteredQuestions(deckId).filter(q => !isFlashcard(q));
+  const allQuestions = getTestableQuestions(deckId);
   if (appSettings.questionOrder === 'ordered') {
     // Sort by originalIndex (if present) for ordered mode
     const sorted = [...allQuestions].sort((a, b) => (a.originalIndex ?? 0) - (b.originalIndex ?? 0));
@@ -2705,6 +2716,8 @@ function startTest(deckId, questionCount) {
   }
   testCurrentIndex = 0;
   testAnswers = new Map();
+  testOpenRevealedIds = new Set();
+  testOpenResults = new Map();
   testShuffledMap = new Map();
   testResultAnswers = [];
 
@@ -2726,13 +2739,18 @@ function showTestQuestion() {
     }
   }
 
-  const selectionMode = getEffectiveSelectionModeForDeck(question, currentDeckId);
+  const flashcard = isFlashcard(question);
+  const selectionMode = flashcard ? 'flashcard' : getEffectiveSelectionModeForDeck(question, currentDeckId);
   const isMulti = selectionMode === 'multiple';
 
   // Reuse previously stored shuffle order if going back
   const storedShuffle = testShuffledMap.get(testCurrentIndex) || null;
   // Restore previous selection if any
-  const previousSelection = testAnswers.get(question.id) || null;
+  const previousSelection = flashcard ? null : (testAnswers.get(question.id) || null);
+  const openState = flashcard ? {
+    revealed: testOpenRevealedIds.has(question.id),
+    correct: testOpenResults.has(question.id) ? testOpenResults.get(question.id) : null,
+  } : null;
   testCurrentFlagged = deck.getFlaggedQuestionIds(currentDeckId, [question.id]).includes(question.id);
 
   testShuffledAnswers = renderTestQuestion(
@@ -2743,15 +2761,16 @@ function showTestQuestion() {
     appSettings.shuffleAnswers,
     storedShuffle,
     previousSelection,
-    testCurrentFlagged
+    testCurrentFlagged,
+    openState
   );
 
   // Store shuffle order for this index
-  if (!storedShuffle) {
+  if (!flashcard && !storedShuffle) {
     testShuffledMap.set(testCurrentIndex, testShuffledAnswers);
   }
 
-  testSelectedIds = previousSelection ? new Set(previousSelection) : new Set();
+  testSelectedIds = !flashcard && previousSelection ? new Set(previousSelection) : new Set();
 
   bindTestQuestionEvents(isMulti, question);
 }
@@ -2759,8 +2778,31 @@ function showTestQuestion() {
 function bindTestQuestionEvents(isMulti, question) {
   const answersList = document.getElementById('test-answers-list');
   const nextBtn = document.getElementById('btn-test-next');
+  const flashcard = isFlashcard(question);
 
-  answersList.addEventListener('click', (e) => {
+  if (flashcard) {
+    const revealBtn = document.getElementById('btn-test-reveal-answer');
+    if (revealBtn) {
+      revealBtn.addEventListener('click', () => {
+        testOpenRevealedIds.add(question.id);
+        showTestQuestion();
+      });
+    }
+
+    document.querySelectorAll('.test-open-result').forEach((button) => {
+      button.addEventListener('click', () => {
+        const correct = button.dataset.correct === 'true';
+        testOpenRevealedIds.add(question.id);
+        testOpenResults.set(question.id, correct);
+        document.querySelectorAll('.test-open-result').forEach((item) => {
+          item.classList.toggle('selected', item === button);
+        });
+        nextBtn.disabled = false;
+      });
+    });
+  }
+
+  answersList?.addEventListener('click', (e) => {
     const option = e.target.closest('.answer-option');
     if (!option) return;
 
@@ -2787,7 +2829,11 @@ function bindTestQuestionEvents(isMulti, question) {
   nextBtn.addEventListener('click', async () => {
     // Save answer
     const question = testQuestions[testCurrentIndex];
-    testAnswers.set(question.id, new Set(testSelectedIds));
+    if (isFlashcard(question)) {
+      if (!testOpenResults.has(question.id)) return;
+    } else {
+      testAnswers.set(question.id, new Set(testSelectedIds));
+    }
 
     testCurrentIndex++;
     if (testCurrentIndex < testQuestions.length) {
@@ -2802,7 +2848,7 @@ function bindTestQuestionEvents(isMulti, question) {
     prevBtn.addEventListener('click', () => {
       // Save current answer before going back
       const question = testQuestions[testCurrentIndex];
-      if (testSelectedIds.size > 0) {
+      if (!isFlashcard(question) && testSelectedIds.size > 0) {
         testAnswers.set(question.id, new Set(testSelectedIds));
       }
 
@@ -2854,6 +2900,18 @@ function handleTestFlagToggle(questionId) {
 async function finishTest() {
   let score = 0;
   const answers = testQuestions.map(q => {
+    if (isFlashcard(q)) {
+      const isCorrect = testOpenResults.get(q.id) === true;
+      if (isCorrect) score++;
+
+      return {
+        question: q,
+        selectedIds: new Set(),
+        correctIds: new Set(),
+        correct: isCorrect,
+      };
+    }
+
     const selectedIds = testAnswers.get(q.id) || new Set();
     const correctIds = new Set(q.answers.filter(a => a.correct).map(a => a.id));
 
@@ -2876,15 +2934,16 @@ async function finishTest() {
   const deckName = deckMeta ? deckMeta.name : currentDeckId;
   let voteConfig = getVoteConfigForDeck(currentDeckId);
   let voteSummaryByQuestion = {};
+  const votableTestQuestions = testQuestions.filter((question) => !isFlashcard(question));
 
-  if (voteConfig.enabled && testQuestions.length > 0) {
+  if (voteConfig.enabled && votableTestQuestions.length > 0) {
     try {
       const voteTarget = await ensureVoteSummaryForQuestions(
         currentDeckId,
-        testQuestions.map((question) => question.id)
+        votableTestQuestions.map((question) => question.id)
       );
       if (voteTarget) {
-        voteSummaryByQuestion = buildVoteSummaryByQuestion(voteTarget, testQuestions);
+        voteSummaryByQuestion = buildVoteSummaryByQuestion(voteTarget, votableTestQuestions);
       }
     } catch (error) {
       if (!isAnswerVoteRpcReady()) {
