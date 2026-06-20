@@ -1514,15 +1514,27 @@ function syncSharedDeckToConvexAsync(deckId) {
   });
 }
 
-function syncOwnedDeckToConvexAsync(deckId) {
+async function syncOwnedDeckToConvex(deckId) {
   const deckMeta = getDeckMeta(deckId);
   if (deckMeta && getDeckScope(deckMeta) === 'public') {
-    pushPublicDeckToConvex(deckId).catch((error) => {
-      showNotification(`Nie udało się zsynchronizować talii ogólnej: ${error.message}`, 'error');
-    });
+    await pushPublicDeckToConvex(deckId);
     return;
   }
-  syncSharedDeckToConvexAsync(deckId);
+  if (shouldSyncSharedDeck(deckId)) {
+    await pushSharedDeckToConvex(deckId);
+  }
+}
+
+function syncOwnedDeckToConvexAsync(deckId) {
+  syncOwnedDeckToConvex(deckId).catch((error) => {
+    showNotification(`Nie udało się zsynchronizować talii: ${error.message}`, 'error');
+  });
+}
+
+async function persistDeckContentChanges(deckId) {
+  await storage.flushPendingWrites();
+  await syncOwnedDeckToConvex(deckId);
+  await storage.flushPendingWrites();
 }
 
 function mergeCardsForQuestions(deckId, questions) {
@@ -3236,8 +3248,9 @@ function openBrowseEditor(index) {
   });
 
   // Save
-  editor.querySelector('.btn-browse-editor-save').addEventListener('click', () => {
-    saveBrowseEdit(index, editor);
+  const saveButton = editor.querySelector('.btn-browse-editor-save');
+  saveButton.addEventListener('click', async () => {
+    await runEditorSaveAction(saveButton, () => saveBrowseEdit(index, editor));
   });
 }
 
@@ -3316,9 +3329,22 @@ function bindCreateQuestionEditorEvents(editor, wrapper) {
 
   const saveBtn = editor.querySelector('#btn-create-question-save');
   if (saveBtn) {
-    saveBtn.addEventListener('click', () => {
-      saveCreatedQuestion(editor, wrapper);
+    saveBtn.addEventListener('click', async () => {
+      await runEditorSaveAction(saveBtn, () => saveCreatedQuestion(editor, wrapper));
     });
+  }
+}
+
+async function runEditorSaveAction(button, task) {
+  if (!button || button.disabled) return;
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Zapisywanie...';
+  try {
+    await task();
+  } finally {
+    button.disabled = false;
+    button.textContent = previousText;
   }
 }
 
@@ -3624,7 +3650,7 @@ function collectRandomizeFromEditor(editor) {
   return newRandomize;
 }
 
-function saveCreatedQuestion(editor, wrapper) {
+async function saveCreatedQuestion(editor, wrapper) {
   if (isCurrentDeckReadOnlyContent()) {
     showNotification('Talia ogólna jest tylko do nauki. Edycja jest zablokowana.', 'info');
     return;
@@ -3743,7 +3769,12 @@ function saveCreatedQuestion(editor, wrapper) {
     storage.saveDecks(decks);
   }
 
-  syncOwnedDeckToConvexAsync(currentDeckId);
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się zapisać pytania: ${error.message}`, 'error');
+    return;
+  }
 
   const activeSearch = getBrowseSearchQuery();
   wrapper.remove();
@@ -3824,7 +3855,7 @@ function bindBrowseEditorRemoveButtons(editor) {
   });
 }
 
-function saveBrowseEdit(index, editor) {
+async function saveBrowseEdit(index, editor) {
   if (isCurrentDeckReadOnlyContent()) {
     showNotification('Talia ogólna jest tylko do nauki. Edycja jest zablokowana.', 'info');
     return;
@@ -3924,7 +3955,12 @@ function saveBrowseEdit(index, editor) {
     storage.saveQuestions(currentDeckId, allQuestions);
   }
 
-  syncOwnedDeckToConvexAsync(currentDeckId);
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się zapisać pytania: ${error.message}`, 'error');
+    return;
+  }
 
   showNotification('Pytanie zostało zaktualizowane.', 'success');
   navigateToBrowse(currentDeckId, { searchQuery: getBrowseSearchQuery() });
@@ -6335,8 +6371,9 @@ function enterEditMode() {
   });
 
   // Save
-  document.getElementById('btn-editor-save').addEventListener('click', () => {
-    saveQuestionEdit();
+  const saveButton = document.getElementById('btn-editor-save');
+  saveButton.addEventListener('click', async () => {
+    await runEditorSaveAction(saveButton, () => saveQuestionEdit());
   });
 }
 
@@ -6367,7 +6404,7 @@ function exitEditMode() {
   editReturnPhase = null;
 }
 
-function saveQuestionEdit() {
+async function saveQuestionEdit() {
   if (isCurrentDeckReadOnlyContent()) {
     showNotification('Talia ogólna jest tylko do nauki. Edycja jest zablokowana.', 'info');
     return;
@@ -6528,7 +6565,12 @@ function saveQuestionEdit() {
     }
   }
 
-  syncOwnedDeckToConvexAsync(currentDeckId);
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się zapisać pytania: ${error.message}`, 'error');
+    return;
+  }
 
   showNotification('Pytanie zostało zaktualizowane.', 'success');
   exitEditMode();
