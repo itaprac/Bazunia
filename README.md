@@ -47,7 +47,7 @@ Ustaw co najmniej:
 
 ```env
 BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
-BAZUNIA_PUBLIC_DECK_PROVIDER=static
+BAZUNIA_PUBLIC_DECK_PROVIDER=convex
 ```
 
 Uruchom frontend:
@@ -197,7 +197,7 @@ Wymagane zmienne Railway:
 
 ```env
 BAZUNIA_CONVEX_URL=https://YOUR_DEPLOYMENT.convex.cloud
-BAZUNIA_PUBLIC_DECK_PROVIDER=static
+BAZUNIA_PUBLIC_DECK_PROVIDER=convex
 ```
 
 Healthcheck Railway:
