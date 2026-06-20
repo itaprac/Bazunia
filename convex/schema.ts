@@ -75,6 +75,18 @@ export default defineSchema({
     .index("by_deck_id", ["deckId"])
     .index("by_hidden", ["isHidden"]),
 
+  imageAssets: defineTable({
+    assetId: v.string(),
+    contentType: v.string(),
+    data: v.string(),
+    byteLength: v.number(),
+    createdBy: v.optional(v.union(v.id("users"), v.null())),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_asset_id", ["assetId"])
+    .index("by_created_by", ["createdBy"]),
+
   sharedDecks: defineTable({
     sharedDeckId: v.string(),
     ownerUserId: v.id("users"),

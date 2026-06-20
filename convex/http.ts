@@ -39,6 +39,15 @@ function bytesFromBase64(value: string) {
   return bytes;
 }
 
+function parseDataUrl(value: string) {
+  const match = String(value || "").match(/^data:([^;,]+);base64,(.+)$/);
+  if (!match) return null;
+  return {
+    contentType: match[1],
+    bytes: bytesFromBase64(match[2]),
+  };
+}
+
 async function sha256Base64(value: string) {
   const buffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
   return base64FromBytes(new Uint8Array(buffer));
@@ -349,6 +358,16 @@ async function handleRpc(ctx: any, request: Request) {
           isHidden: args.isHidden === true,
         }),
       };
+    case "imageAssets.upsert":
+      return {
+        data: await ctx.runMutation(internal.ops.upsertImageAsset, {
+          tokenHash: await sessionHashFromToken(sessionToken),
+          assetId: args.assetId,
+          contentType: args.contentType,
+          data: args.data,
+          byteLength: Number(args.byteLength) || 0,
+        }),
+      };
     case "sharedDecks.search":
       return {
         data: await ctx.runQuery(internal.ops.searchSharedDecks, {
@@ -428,6 +447,31 @@ http.route({
     } catch (error) {
       return jsonResponse(request, { data: null, error: { message: error?.message || "Błąd Convex." } }, 200);
     }
+  }),
+});
+
+http.route({
+  path: "/api/image",
+  method: "GET",
+  handler: httpAction(async (ctx, request) => {
+    const requestUrl = new URL(request.url);
+    const assetId = String(requestUrl.searchParams.get("id") || "").trim();
+    if (!assetId) {
+      return new Response("Missing image id", { status: 400, headers: corsHeaders(request) });
+    }
+    const asset = await ctx.runQuery(internal.ops.fetchImageAsset, { assetId });
+    const parsed = asset ? parseDataUrl(asset.data) : null;
+    if (!asset || !parsed) {
+      return new Response("Image not found", { status: 404, headers: corsHeaders(request) });
+    }
+    return new Response(parsed.bytes, {
+      status: 200,
+      headers: {
+        ...corsHeaders(request),
+        "Content-Type": asset.content_type || parsed.contentType,
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    });
   }),
 });
 

@@ -4,11 +4,12 @@ export const CONVEX_URL = window.__BAZUNIA_CONVEX_URL || window.__BAZA_CONVEX_UR
 export const CONVEX_SITE_URL = normalizeConvexSiteUrl(CONVEX_URL);
 export const SUPABASE_URL = CONVEX_URL;
 export const SUPABASE_ANON_KEY = '';
-export const PUBLIC_DECK_PROVIDER = (
-  ['convex', 'supabase'].includes(String(window.__BAZUNIA_PUBLIC_DECK_PROVIDER || window.__BAZA_PUBLIC_DECK_PROVIDER || 'static').toLowerCase())
-    ? 'convex'
-    : 'static'
-);
+const PUBLIC_DECK_PROVIDER_CONFIG = String(
+  window.__BAZUNIA_PUBLIC_DECK_PROVIDER || window.__BAZA_PUBLIC_DECK_PROVIDER || ''
+).toLowerCase();
+export const PUBLIC_DECK_PROVIDER = CONVEX_SITE_URL
+  ? 'convex'
+  : (['convex', 'supabase'].includes(PUBLIC_DECK_PROVIDER_CONFIG) ? 'convex' : 'static');
 
 function normalizeConvexSiteUrl(value) {
   const raw = String(value || '').trim().replace(/\/+$/, '');

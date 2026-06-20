@@ -63,6 +63,7 @@ import {
   setUserRole,
   fetchPublicDecks,
   upsertPublicDeck,
+  uploadImageAsset,
   fetchPublicDeckVisibility,
   setPublicDeckVisibility,
   fetchMyProfile,
@@ -1457,10 +1458,23 @@ function buildPublicDeckPayload(deckId) {
 }
 
 async function pushPublicDeckToConvex(deckId) {
-  if (sessionMode !== 'user' || !canManagePublicDecks() || !isSupabaseConfigured()) return;
+  if (sessionMode !== 'user') {
+    throw new Error('Edycja talii ogólnej wymaga zalogowania.');
+  }
+  if (!canManagePublicDecks()) {
+    throw new Error('Brak uprawnień do zapisu talii ogólnej.');
+  }
+  if (!isSupabaseConfigured()) {
+    throw new Error('Brak konfiguracji Convex dla zapisu talii ogólnej.');
+  }
   const payload = buildPublicDeckPayload(deckId);
-  if (!payload) return;
+  if (!payload) {
+    throw new Error('Nie udało się przygotować danych talii ogólnej.');
+  }
   const row = await upsertPublicDeck(payload);
+  if (!row || row.id !== deckId || !Array.isArray(row.questions)) {
+    throw new Error('Convex nie potwierdził zapisu talii ogólnej.');
+  }
   const decks = storage.getDecks();
   const idx = decks.findIndex((d) => d.id === deckId);
   if (idx < 0) return;
@@ -1950,7 +1964,7 @@ async function syncPublicDecksForCurrentUser(options = {}) {
   if (provider === 'convex' || provider === 'supabase') {
     await syncPublicDecksFromConvex({
       ...options,
-      fallbackToBuiltInsOnError: allowFallback,
+      fallbackToBuiltInsOnError: false,
     });
     return;
   }
@@ -3416,6 +3430,7 @@ const EDITOR_IMAGE_MAX_SOURCE_BYTES = 8 * 1024 * 1024;
 const EDITOR_IMAGE_DIRECT_EMBED_BYTES = 640 * 1024;
 const EDITOR_IMAGE_MAX_STORED_DIMENSION = 1600;
 const EDITOR_IMAGE_JPEG_QUALITY = 0.88;
+const EDITOR_IMAGE_MAX_STORED_BYTES = 850 * 1024;
 
 function readFileAsDataUrl(file) {
   return new Promise((resolve, reject) => {
@@ -3435,6 +3450,24 @@ function loadImageForEditor(src) {
   });
 }
 
+function getDataUrlByteLength(value) {
+  const match = String(value || '').match(/^data:[^;,]+;base64,(.+)$/);
+  if (!match) return 0;
+  const base64 = match[1];
+  const padding = (base64.endsWith('==') ? 2 : (base64.endsWith('=') ? 1 : 0));
+  return Math.max(0, Math.floor((base64.length * 3) / 4) - padding);
+}
+
+function getDataUrlContentType(value) {
+  const match = String(value || '').match(/^data:([^;,]+);base64,/);
+  return match ? match[1].toLowerCase() : '';
+}
+
+async function sha256Hex(value) {
+  const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
 async function convertEditorImageFileToValue(file) {
   if (!file || !String(file.type || '').startsWith('image/')) {
     throw new Error('Wybierz plik graficzny.');
@@ -3445,9 +3478,7 @@ async function convertEditorImageFileToValue(file) {
 
   const sourceDataUrl = await readFileAsDataUrl(file);
   const type = String(file.type || '').toLowerCase();
-  const canStoreDirectly = file.size <= EDITOR_IMAGE_DIRECT_EMBED_BYTES
-    || type === 'image/gif'
-    || type === 'image/svg+xml';
+  const canStoreDirectly = file.size <= EDITOR_IMAGE_DIRECT_EMBED_BYTES;
 
   if (canStoreDirectly) {
     return sourceDataUrl;
@@ -3471,11 +3502,64 @@ async function convertEditorImageFileToValue(file) {
   ctx.fillRect(0, 0, width, height);
   ctx.drawImage(image, 0, 0, width, height);
 
-  return canvas.toDataURL('image/jpeg', EDITOR_IMAGE_JPEG_QUALITY);
+  const output = canvas.toDataURL('image/jpeg', EDITOR_IMAGE_JPEG_QUALITY);
+  if (getDataUrlByteLength(output) > EDITOR_IMAGE_MAX_STORED_BYTES) {
+    throw new Error('Obrazek jest za duży po kompresji. Użyj mniejszego pliku.');
+  }
+  return output;
 }
 
 function getImageFileFromList(fileList) {
   return Array.from(fileList || []).find((file) => String(file.type || '').startsWith('image/')) || null;
+}
+
+const QUESTION_IMAGE_FIELDS = ['image', 'imageUrl', 'image_url', 'answerImage', 'backImage'];
+
+async function persistImageValueAsAsset(value, cache) {
+  const imageValue = normalizeImageInputValue(value);
+  if (!imageValue.startsWith('data:image/')) return imageValue;
+  if (!isSupabaseConfigured() || sessionMode !== 'user') return imageValue;
+  if (cache.has(imageValue)) return cache.get(imageValue);
+
+  const contentType = getDataUrlContentType(imageValue);
+  const byteLength = getDataUrlByteLength(imageValue);
+  if (!contentType || byteLength <= 0) {
+    throw new Error('Nieprawidłowy obrazek.');
+  }
+  if (byteLength > EDITOR_IMAGE_MAX_STORED_BYTES) {
+    throw new Error('Obrazek jest za duży po kompresji. Użyj mniejszego pliku.');
+  }
+
+  const hash = await sha256Hex(imageValue);
+  const asset = await uploadImageAsset({
+    assetId: `img_${hash}`,
+    contentType,
+    data: imageValue,
+    byteLength,
+  });
+  const assetUrl = asset.url || imageValue;
+  cache.set(imageValue, assetUrl);
+  return assetUrl;
+}
+
+async function persistObjectImageFields(target, cache) {
+  if (!target || typeof target !== 'object') return;
+  for (const field of QUESTION_IMAGE_FIELDS) {
+    if (typeof target[field] !== 'string' || !target[field].trim()) continue;
+    target[field] = await persistImageValueAsAsset(target[field], cache);
+  }
+}
+
+async function persistQuestionImageAssets(questions = []) {
+  const cache = new Map();
+  for (const question of questions) {
+    await persistObjectImageFields(question, cache);
+    if (Array.isArray(question?.answers)) {
+      for (const answer of question.answers) {
+        await persistObjectImageFields(answer, cache);
+      }
+    }
+  }
 }
 
 function bindEditorImageControls(root = document) {
@@ -3746,6 +3830,12 @@ async function saveCreatedQuestion(editor, wrapper) {
   }
 
   allQuestions.push(newQuestion);
+  try {
+    await persistQuestionImageAssets(allQuestions);
+  } catch (error) {
+    showNotification(`Nie udało się przygotować obrazka: ${error.message}`, 'error');
+    return;
+  }
   storage.saveQuestions(currentDeckId, allQuestions);
 
   const cards = storage.getCards(currentDeckId);
@@ -3951,6 +4041,12 @@ async function saveBrowseEdit(index, editor) {
       allQuestions[qIndex].randomize = newRandomize;
     } else {
       delete allQuestions[qIndex].randomize;
+    }
+    try {
+      await persistQuestionImageAssets(allQuestions);
+    } catch (error) {
+      showNotification(`Nie udało się przygotować obrazka: ${error.message}`, 'error');
+      return;
     }
     storage.saveQuestions(currentDeckId, allQuestions);
   }
@@ -6551,6 +6647,12 @@ async function saveQuestionEdit() {
       questions[qIndex].randomize = newRandomize;
     } else {
       delete questions[qIndex].randomize;
+    }
+    try {
+      await persistQuestionImageAssets(questions);
+    } catch (error) {
+      showNotification(`Nie udało się przygotować obrazka: ${error.message}`, 'error');
+      return;
     }
     storage.saveQuestions(currentDeckId, questions);
 

@@ -106,6 +106,18 @@ function sharedDeckToClient(row) {
   };
 }
 
+function imageAssetToClient(row) {
+  if (!row) return null;
+  return {
+    id: row.assetId,
+    content_type: row.contentType,
+    byte_length: row.byteLength || 0,
+    created_by: row.createdBy || null,
+    created_at: new Date(row.createdAt).toISOString(),
+    updated_at: new Date(row.updatedAt).toISOString(),
+  };
+}
+
 async function getUserBySessionHash(ctx, tokenHash) {
   const session = await ctx.db
     .query("sessions")
@@ -575,6 +587,74 @@ export const setPublicDeckVisibility = internalMutation({
     }
     const id = await ctx.db.insert("publicDeckVisibility", { ...patch, createdAt: ts });
     return visibilityToClient(await ctx.db.get(id));
+  },
+});
+
+export const upsertImageAsset = internalMutation({
+  args: {
+    tokenHash: v.string(),
+    assetId: v.string(),
+    contentType: v.string(),
+    data: v.string(),
+    byteLength: v.number(),
+  },
+  returns: v.any(),
+  handler: async (ctx, args) => {
+    const user = await requireUserBySessionHash(ctx, args.tokenHash);
+    const assetId = String(args.assetId || "").trim();
+    const contentType = String(args.contentType || "").trim().toLowerCase();
+    const data = String(args.data || "").trim();
+    const byteLength = Math.max(0, Number(args.byteLength) || 0);
+    if (!/^img_[a-f0-9]{32,64}$/.test(assetId)) throw new Error("Nieprawidłowy identyfikator obrazka.");
+    if (!contentType.startsWith("image/")) throw new Error("Nieprawidłowy typ obrazka.");
+    if (!data.startsWith(`data:${contentType};base64,`)) throw new Error("Nieprawidłowe dane obrazka.");
+    if (byteLength <= 0 || byteLength > 900_000) throw new Error("Obrazek jest za duży po kompresji.");
+
+    const existing = await ctx.db
+      .query("imageAssets")
+      .withIndex("by_asset_id", (q) => q.eq("assetId", assetId))
+      .unique();
+    const ts = now();
+    const patch = {
+      assetId,
+      contentType,
+      data,
+      byteLength,
+      createdBy: user._id,
+      updatedAt: ts,
+    };
+    if (existing) {
+      await ctx.db.patch(existing._id, {
+        contentType,
+        data,
+        byteLength,
+        updatedAt: ts,
+      });
+      return imageAssetToClient({ ...existing, contentType, data, byteLength, updatedAt: ts });
+    }
+    const id = await ctx.db.insert("imageAssets", { ...patch, createdAt: ts });
+    return imageAssetToClient(await ctx.db.get(id));
+  },
+});
+
+export const fetchImageAsset = internalQuery({
+  args: { assetId: v.string() },
+  returns: v.union(v.null(), v.any()),
+  handler: async (ctx, args) => {
+    const assetId = String(args.assetId || "").trim();
+    if (!assetId) return null;
+    const row = await ctx.db
+      .query("imageAssets")
+      .withIndex("by_asset_id", (q) => q.eq("assetId", assetId))
+      .unique();
+    if (!row) return null;
+    return {
+      id: row.assetId,
+      content_type: row.contentType,
+      data: row.data,
+      byte_length: row.byteLength || 0,
+      updated_at: row.updatedAt || 0,
+    };
   },
 });
 

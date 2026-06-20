@@ -247,6 +247,18 @@ export async function setPublicDeckVisibility(deckId, isHidden) {
   return await callConvex('publicDeckVisibility.set', { deckId, isHidden });
 }
 
+export async function uploadImageAsset(options = {}) {
+  const assetId = String(options.assetId || '').trim();
+  const contentType = String(options.contentType || '').trim();
+  const data = String(options.data || '').trim();
+  const byteLength = Math.max(0, Number(options.byteLength) || 0);
+  const row = await callConvex('imageAssets.upsert', { assetId, contentType, data, byteLength });
+  return {
+    ...row,
+    url: `${CONVEX_SITE_URL}/api/image?id=${encodeURIComponent(row.id || assetId)}`,
+  };
+}
+
 // --- User profile (username) ---
 
 export async function fetchMyProfile() {
