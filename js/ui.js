@@ -1649,7 +1649,7 @@ export function renderBrowse(deckName, questions, options = {}) {
       ? `<button class="btn-edit-question browse-edit-btn" data-question-index="${i}" ${tooltipAttrs('Edytuj treść pytania')} aria-label="Edytuj treść pytania">&#9998;</button>`
       : '';
     const archiveBtn = canEdit && archiveMode === 'active'
-      ? `<button class="btn btn-secondary btn-sm btn-browse-archive-question" data-question-id="${escapeAttr(q.id)}">Archiwizuj</button>`
+      ? `<button class="btn-archive-question btn-browse-archive-question" data-question-id="${escapeAttr(q.id)}" ${tooltipAttrs('Archiwizuj pytanie')} aria-label="Archiwizuj pytanie">&#x1F5C4;&#xFE0E;</button>`
       : '';
     const restoreBtn = canEdit && archiveMode === 'archived'
       ? `<button class="btn btn-secondary btn-sm btn-browse-restore-question" data-question-id="${escapeAttr(q.id)}">Przywróć</button>`
