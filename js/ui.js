@@ -1715,19 +1715,20 @@ export function renderBrowseCreateEditor(options = {}) {
     </div>
   `).join('');
 
-  const categorySection = categories.length > 0 ? `
+  const categorySection = `
     <div class="editor-section">
       <label class="editor-label" for="create-question-category">Kategoria</label>
       <select class="editor-select" id="create-question-category">
-        <option value="">(Bez kategorii)</option>
+        <option value="">Bez kategorii</option>
         ${categories.map((cat) => `
           <option value="${escapeAttr(cat.id)}" ${cat.id === selectedCategory ? 'selected' : ''}>
             ${escapeHtml(cat.name || cat.id)}
           </option>
         `).join('')}
+        <option value="__new__">+ Nowa kategoria</option>
       </select>
     </div>
-  ` : '';
+  `;
 
   return `
     <div class="question-card question-editor browse-editor browse-create-editor">
@@ -1813,9 +1814,11 @@ export function renderBrowseCreateEditor(options = {}) {
 
 // --- Browse Editor (inline) ---
 
-export function renderBrowseEditor(question, index, deckDefaultSelectionMode = 'multiple') {
+export function renderBrowseEditor(question, index, deckDefaultSelectionMode = 'multiple', options = {}) {
   const flashcard = isFlashcard(question);
   const selectionMode = normalizeSelectionMode(question.selectionMode, normalizeSelectionMode(deckDefaultSelectionMode, 'multiple'));
+  const categories = Array.isArray(options.categories) ? options.categories : [];
+  const selectedCategory = typeof question.category === 'string' ? question.category : '';
 
   const answersHtml = flashcard ? '' : question.answers.map((a) => `
     <div class="editor-answer-row" data-answer-id="${escapeAttr(a.id)}">
@@ -1875,6 +1878,18 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
           inputClass: 'editor-question-image',
           label: 'Obrazek pytania',
         })}
+      </div>
+      <div class="editor-section">
+        <label class="editor-label">Kategoria</label>
+        <select class="editor-select editor-question-category">
+          <option value="">Bez kategorii</option>
+          ${categories.map((cat) => `
+            <option value="${escapeAttr(cat.id)}" ${cat.id === selectedCategory ? 'selected' : ''}>
+              ${escapeHtml(cat.name || cat.id)}
+            </option>
+          `).join('')}
+          <option value="__new__">+ Nowa kategoria</option>
+        </select>
       </div>
       ${flashcard ? `
       <div class="editor-section">
@@ -2024,6 +2039,35 @@ export function renderSettings(settings, defaults, options = {}) {
     groupOptions.push(currentGroup);
   }
   const selectedGroupValue = currentGroup || '';
+  const categories = Array.isArray(deckMeta?.categories) ? deckMeta.categories : [];
+  const activeQuestionCount = Math.max(0, Number(options.activeQuestionCount ?? deckMeta?.questionCount) || 0);
+  const autoSplitMax = Math.max(1, activeQuestionCount);
+  const autoSplitDefault = Math.min(25, autoSplitMax);
+  const autoSplitCategoryCount = activeQuestionCount > 0
+    ? Math.ceil(activeQuestionCount / autoSplitDefault)
+    : 0;
+  const categoryRowsHtml = categories
+    .map((category) => {
+      const categoryId = String(category?.id || '').trim();
+      if (!categoryId) return '';
+      const categoryName = String(category?.name || categoryId).trim();
+      const questionCount = Math.max(0, Number(category?.questionCount) || 0);
+      return `
+        <div class="deck-category-row" data-category-id="${escapeAttr(categoryId)}">
+          <div class="deck-category-main">
+            <div class="deck-category-name">${escapeHtml(categoryName)}</div>
+            <div class="deck-category-meta">${escapeHtml(categoryId)} · ${questionCount} ${questionCount === 1 ? 'pytanie' : 'pytań'}</div>
+          </div>
+          ${canEditMeta ? `
+            <div class="deck-category-actions">
+              <button class="btn btn-secondary btn-sm btn-rename-category" type="button" data-category-id="${escapeAttr(categoryId)}">Zmień nazwę</button>
+              <button class="btn btn-secondary btn-sm btn-delete-category" type="button" data-category-id="${escapeAttr(categoryId)}">Usuń</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    })
+    .join('');
   const groupOptionsHtml = groupOptions
     .map((groupName) => `<option value="${escapeAttr(groupName)}" ${selectedGroupValue === groupName ? 'selected' : ''}>${escapeHtml(groupName)}</option>`)
     .join('');
@@ -2059,6 +2103,45 @@ export function renderSettings(settings, defaults, options = {}) {
         <div class="settings-hint">${canEditMeta ? 'Edytowalny opis prywatnej talii.' : 'Talia ogólna: opis jest tylko do odczytu.'}</div>
       </div>
       ${groupFieldHtml}
+      <div class="settings-group">
+        <div class="settings-label-row">
+          <label class="settings-label">Kategorie pytań</label>
+          ${canEditMeta ? '<button class="btn btn-secondary btn-sm" id="btn-add-deck-category" type="button">+ Dodaj kategorię</button>' : ''}
+        </div>
+        <div class="settings-hint">${canEditMeta ? 'Kategorie porządkują pytania i pojawiają się przy wyborze trybu nauki oraz w edytorze pytania.' : 'Kategorie tej talii są tylko do odczytu.'}</div>
+        ${canEditMeta ? `
+          <div class="deck-category-autosplit">
+            <div class="deck-category-autosplit-head">
+              <div>
+                <div class="deck-category-autosplit-title">Auto-podział</div>
+                <div class="deck-category-autosplit-preview" id="deck-category-autosplit-preview">
+                  ${activeQuestionCount > 0
+                    ? `${autoSplitCategoryCount} ${autoSplitCategoryCount === 1 ? 'kategoria' : 'kategorie'} po maks. ${autoSplitDefault} pytań`
+                    : 'Brak aktywnych pytań do podziału'}
+                </div>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-auto-split-categories" type="button" ${activeQuestionCount > 0 ? '' : 'disabled'}>Podziel</button>
+            </div>
+            <div class="deck-category-autosplit-control">
+              <input
+                type="range"
+                id="auto-category-size"
+                min="1"
+                max="${autoSplitMax}"
+                value="${autoSplitDefault}"
+                ${activeQuestionCount > 0 ? '' : 'disabled'}
+              >
+              <div class="deck-category-autosplit-value">
+                <span id="auto-category-size-value">${autoSplitDefault}</span>
+                <span>pytań w kategorii</span>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+        <div class="deck-category-list">
+          ${categoryRowsHtml || '<div class="deck-category-empty">Brak kategorii. Nowe pytania możesz zostawić bez kategorii albo dodać pierwszą kategorię tutaj.</div>'}
+        </div>
+      </div>
       ${canEditMeta ? `
       <div class="settings-actions">
         <button class="btn btn-secondary" id="btn-save-deck-meta">Zapisz nazwę, opis i grupę</button>

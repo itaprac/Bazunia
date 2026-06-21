@@ -152,6 +152,7 @@ const BUILT_IN_DECK_SOURCES = [
 const PUBLIC_DECK_MANIFEST_URL = '/data/public-decks-manifest.json';
 const FALLBACK_PUBLIC_DECK_IDS = BUILT_IN_DECK_SOURCES.map((item) => item.id);
 const DECK_ID_RE = /^[a-z0-9_-]+$/i;
+const CATEGORY_ID_RE = /^[a-z0-9_-]+$/i;
 const USERNAME_RE = /^[a-z0-9_.-]{3,24}$/;
 const ADMIN_USERS_PAGE_SIZE = 12;
 const ADMIN_HIDDEN_DECKS_PAGE_SIZE = 8;
@@ -258,6 +259,92 @@ function slugifyDeckId(value) {
 function normalizeDeckGroup(value) {
   if (typeof value !== 'string') return '';
   return value.trim().replace(/\s+/g, ' ');
+}
+
+function normalizeCategoryName(value) {
+  if (typeof value !== 'string') return '';
+  return value.trim().replace(/\s+/g, ' ');
+}
+
+function slugifyCategoryId(value) {
+  return slugifyDeckId(value);
+}
+
+function normalizeDeckCategoryList(categories = [], questions = []) {
+  const activeQuestions = getActiveQuestions(Array.isArray(questions) ? questions : []);
+  const categoryCounts = new Map();
+  for (const question of activeQuestions) {
+    const categoryId = String(question?.category || '').trim();
+    if (!categoryId) continue;
+    categoryCounts.set(categoryId, (categoryCounts.get(categoryId) || 0) + 1);
+  }
+
+  const seen = new Set();
+  const normalized = [];
+  for (const category of Array.isArray(categories) ? categories : []) {
+    const id = String(category?.id || '').trim();
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    const name = normalizeCategoryName(category?.name) || id;
+    normalized.push({
+      id,
+      name,
+      questionCount: categoryCounts.get(id) || 0,
+    });
+  }
+
+  return normalized;
+}
+
+function getCategoryIdsForDeck(deckMeta = null) {
+  return new Set(
+    (Array.isArray(deckMeta?.categories) ? deckMeta.categories : [])
+      .map((category) => String(category?.id || '').trim())
+      .filter(Boolean)
+  );
+}
+
+function getUniqueCategoryId(deckMeta, name, preferredId = '') {
+  const taken = getCategoryIdsForDeck(deckMeta);
+  const rawPreferred = String(preferredId || '').trim().toLowerCase();
+  const base = slugifyCategoryId(rawPreferred || name) || `kategoria-${Date.now().toString(36)}`;
+  let candidate = base;
+  let index = 2;
+  while (taken.has(candidate)) {
+    candidate = `${base}-${index}`;
+    index++;
+  }
+  return candidate;
+}
+
+function saveDeckCategories(deckId, categories, questions = null) {
+  const sourceQuestions = Array.isArray(questions) ? questions : storage.getQuestions(deckId);
+  const normalizedCategories = normalizeDeckCategoryList(categories, sourceQuestions);
+  let savedMeta = null;
+  updateLocalDeckMeta(deckId, (deckMeta) => {
+    savedMeta = { ...deckMeta };
+    if (normalizedCategories.length > 0) {
+      savedMeta.categories = normalizedCategories;
+    } else {
+      delete savedMeta.categories;
+    }
+    savedMeta.questionCount = getActiveQuestions(sourceQuestions).length;
+    return savedMeta;
+  });
+  return savedMeta;
+}
+
+function addDeckCategory(deckId, name, preferredId = '') {
+  const deckMeta = getDeckMeta(deckId);
+  if (!deckMeta) return null;
+  const categoryName = normalizeCategoryName(name);
+  if (!categoryName) return null;
+  const id = getUniqueCategoryId(deckMeta, categoryName, preferredId);
+  if (!CATEGORY_ID_RE.test(id)) return null;
+  const categories = normalizeDeckCategoryList(deckMeta.categories, storage.getQuestions(deckId));
+  const nextCategory = { id, name: categoryName };
+  saveDeckCategories(deckId, [...categories, nextCategory]);
+  return nextCategory;
 }
 
 function getAvailableDeckGroups(scope = 'private') {
@@ -401,6 +488,8 @@ function recomputeDeckQuestionMetadata(deckId, sourceQuestions = null) {
   const nextCategories = normalizeDeckCategoriesForQuestionCounts(nextDeckMeta.categories, questions);
   if (nextCategories) {
     nextDeckMeta.categories = nextCategories;
+  } else {
+    delete nextDeckMeta.categories;
   }
 
   decks[idx] = nextDeckMeta;
@@ -3595,11 +3684,13 @@ function openBrowseEditor(index) {
 
   const browseItem = document.querySelector(`.browse-item[data-question-index="${index}"]`);
   if (!browseItem) return;
+  const deckMeta = getDeckMeta(currentDeckId);
 
   browseItem.innerHTML = renderBrowseEditor(
     question,
     index,
-    getDeckDefaultSelectionModeForDeckId(currentDeckId)
+    getDeckDefaultSelectionModeForDeckId(currentDeckId),
+    { categories: Array.isArray(deckMeta?.categories) ? deckMeta.categories : [] }
   );
 
   // Bind randomize toggle
@@ -3616,6 +3707,7 @@ function openBrowseEditor(index) {
   bindEditorImageControls(editor);
   bindBrowseEditorAddButtons(editor);
   bindBrowseEditorRemoveButtons(editor);
+  bindQuestionCategorySelect(editor.querySelector('.editor-question-category'));
 
   // Cancel
   editor.querySelector('.btn-browse-editor-cancel').addEventListener('click', () => {
@@ -3672,6 +3764,75 @@ function openBrowseCreateEditor() {
   if (textInput) textInput.focus();
 }
 
+async function promptForNewCategory(deckId, options = {}) {
+  const entered = await showPrompt({
+    title: 'Nowa kategoria',
+    text: 'Podaj krótką nazwę kategorii. ID zostanie utworzone automatycznie.',
+    label: 'Nazwa kategorii',
+    placeholder: 'np. Definicje',
+    confirmLabel: 'Utwórz',
+    cancelLabel: 'Anuluj',
+    validator: (value) => {
+      const name = normalizeCategoryName(value);
+      if (!name) return 'Nazwa kategorii nie może być pusta.';
+      const deckMeta = getDeckMeta(deckId);
+      const exists = (Array.isArray(deckMeta?.categories) ? deckMeta.categories : [])
+        .some((category) => normalizeCategoryName(category?.name).toLowerCase() === name.toLowerCase());
+      if (exists) return 'Kategoria o takiej nazwie już istnieje.';
+      return true;
+    },
+  });
+  if (entered === null) return null;
+
+  const category = addDeckCategory(deckId, entered);
+  if (!category) {
+    showNotification('Nie udało się utworzyć kategorii.', 'error');
+    return null;
+  }
+
+  syncOwnedDeckToConvexAsync(deckId);
+  if (options.notify !== false) {
+    showNotification('Kategoria została dodana.', 'success');
+  }
+  return category;
+}
+
+function appendCategoryOption(selectEl, category) {
+  if (!selectEl || !category) return;
+  const newOption = selectEl.querySelector('option[value="__new__"]');
+  const option = document.createElement('option');
+  option.value = category.id;
+  option.textContent = category.name || category.id;
+  if (newOption) {
+    selectEl.insertBefore(option, newOption);
+  } else {
+    selectEl.appendChild(option);
+  }
+  selectEl.value = category.id;
+}
+
+function bindQuestionCategorySelect(selectEl) {
+  if (!selectEl) return;
+  let previousValue = selectEl.value || '';
+  selectEl.addEventListener('focus', () => {
+    previousValue = selectEl.value || '';
+  });
+  selectEl.addEventListener('change', async () => {
+    if (selectEl.value !== '__new__') {
+      previousValue = selectEl.value || '';
+      return;
+    }
+
+    const category = await promptForNewCategory(currentDeckId);
+    if (!category) {
+      selectEl.value = previousValue;
+      return;
+    }
+    appendCategoryOption(selectEl, category);
+    previousValue = category.id;
+  });
+}
+
 function bindCreateQuestionEditorEvents(editor, wrapper) {
   const flashcardToggle = editor.querySelector('#create-question-is-flashcard');
   const answersSection = editor.querySelector('#create-editor-answers-section');
@@ -3708,6 +3869,8 @@ function bindCreateQuestionEditorEvents(editor, wrapper) {
       await runEditorSaveAction(saveBtn, () => saveCreatedQuestion(editor, wrapper));
     });
   }
+
+  bindQuestionCategorySelect(editor.querySelector('#create-question-category'));
 }
 
 async function runEditorSaveAction(button, task) {
@@ -4180,6 +4343,10 @@ async function saveCreatedQuestion(editor, wrapper) {
 
   const categorySelect = editor.querySelector('#create-question-category');
   const selectedCategory = categorySelect ? categorySelect.value.trim() : '';
+  if (selectedCategory === '__new__') {
+    showNotification('Najpierw utwórz lub wybierz kategorię.', 'error');
+    return;
+  }
   if (selectedCategory) {
     newQuestion.category = selectedCategory;
   }
@@ -4304,6 +4471,12 @@ async function saveBrowseEdit(index, editor) {
   const newImage = normalizeImageInputValue(editor.querySelector('.editor-question-image')?.value);
   const newAnswer = (editor.querySelector('.editor-question-answer')?.value || '').trim();
   const newAnswerImage = normalizeImageInputValue(editor.querySelector('.editor-question-answer-image')?.value);
+  const categorySelect = editor.querySelector('.editor-question-category');
+  const newCategory = categorySelect ? String(categorySelect.value || '').trim() : '';
+  if (newCategory === '__new__') {
+    showNotification('Najpierw utwórz lub wybierz kategorię.', 'error');
+    return;
+  }
   const selectionMode = normalizeSelectionMode(
     editor.querySelector('.editor-selection-mode')?.value,
     getDeckDefaultSelectionModeForDeckId(currentDeckId)
@@ -4385,6 +4558,11 @@ async function saveBrowseEdit(index, editor) {
     } else {
       delete allQuestions[qIndex].randomize;
     }
+    if (newCategory) {
+      allQuestions[qIndex].category = newCategory;
+    } else {
+      delete allQuestions[qIndex].category;
+    }
     try {
       await persistQuestionImageAssets(allQuestions);
     } catch (error) {
@@ -4421,6 +4599,7 @@ function navigateToSettings(deckId, returnTo = 'mode-select') {
     deckMeta,
     canEditMeta: canEditDeckContent(deckId),
     groupOptions: getAvailableDeckGroups(groupScope),
+    activeQuestionCount: getActiveQuestions(storage.getQuestions(deckId)).length,
   });
   bindSettingsEvents(deckId);
 }
@@ -5098,6 +5277,8 @@ function bindSettingsEvents(deckId) {
     promptText: 'Podaj nazwę nowej grupy dla talii:',
   });
 
+  bindDeckCategoryManagementEvents(deckId);
+
   const saveDeckMetaBtn = document.getElementById('btn-save-deck-meta');
   if (saveDeckMetaBtn) {
     saveDeckMetaBtn.addEventListener('click', () => {
@@ -5118,6 +5299,7 @@ function bindSettingsEvents(deckId) {
       deckMeta: getDeckMeta(deckId),
       canEditMeta: canEditDeckContent(deckId),
       groupOptions: getAvailableDeckGroups(getDeckScope(getDeckMeta(deckId)) === 'public' ? 'public' : 'private'),
+      activeQuestionCount: getActiveQuestions(storage.getQuestions(deckId)).length,
     });
     bindSettingsEvents(deckId);
     showNotification('Przywrócono ustawienia domyślne.', 'info');
@@ -5134,6 +5316,233 @@ function bindSettingsEvents(deckId) {
       returnFromSettings();
     }
   });
+}
+
+function rerenderDeckSettings(deckId) {
+  const deckMeta = getDeckMeta(deckId);
+  const deckScope = getDeckScope(deckMeta);
+  renderSettings(getSettingsForDeck(deckId), DEFAULT_SETTINGS, {
+    deckMeta,
+    canEditMeta: canEditDeckContent(deckId),
+    groupOptions: getAvailableDeckGroups(deckScope === 'public' ? 'public' : 'private'),
+    activeQuestionCount: getActiveQuestions(storage.getQuestions(deckId)).length,
+  });
+  bindSettingsEvents(deckId);
+}
+
+function bindDeckCategoryManagementEvents(deckId) {
+  const addButton = document.getElementById('btn-add-deck-category');
+  if (addButton) {
+    addButton.addEventListener('click', async () => {
+      const category = await promptForNewCategory(deckId);
+      if (!category) return;
+      rerenderDeckSettings(deckId);
+    });
+  }
+
+  bindAutoSplitCategoryControl(deckId);
+
+  document.querySelectorAll('.btn-rename-category[data-category-id]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      await renameDeckCategory(deckId, button.dataset.categoryId);
+    });
+  });
+
+  document.querySelectorAll('.btn-delete-category[data-category-id]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      await deleteDeckCategory(deckId, button.dataset.categoryId);
+    });
+  });
+}
+
+function getCategoryCountLabel(count) {
+  if (count === 1) return 'kategoria';
+  if (count >= 2 && count <= 4) return 'kategorie';
+  return 'kategorii';
+}
+
+function bindAutoSplitCategoryControl(deckId) {
+  const rangeInput = document.getElementById('auto-category-size');
+  const valueEl = document.getElementById('auto-category-size-value');
+  const previewEl = document.getElementById('deck-category-autosplit-preview');
+  const applyBtn = document.getElementById('btn-auto-split-categories');
+  if (!rangeInput || !valueEl || !previewEl || !applyBtn) return;
+
+  const activeCount = getActiveQuestions(storage.getQuestions(deckId)).length;
+  const updatePreview = () => {
+    const size = clamp(parseInt(rangeInput.value, 10) || 1, 1, Math.max(1, activeCount));
+    const categoryCount = activeCount > 0 ? Math.ceil(activeCount / size) : 0;
+    valueEl.textContent = String(size);
+    previewEl.textContent = activeCount > 0
+      ? `${categoryCount} ${getCategoryCountLabel(categoryCount)} po maks. ${size} pytań`
+      : 'Brak aktywnych pytań do podziału';
+  };
+
+  rangeInput.addEventListener('input', updatePreview);
+  applyBtn.addEventListener('click', async () => {
+    const size = clamp(parseInt(rangeInput.value, 10) || 1, 1, Math.max(1, activeCount));
+    await autoSplitDeckCategories(deckId, size);
+  });
+  updatePreview();
+}
+
+async function autoSplitDeckCategories(deckId, questionsPerCategory) {
+  if (!canEditDeckContent(deckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const allQuestions = storage.getQuestions(deckId);
+  const activeQuestions = getActiveQuestions(allQuestions);
+  const size = clamp(
+    parseInt(questionsPerCategory, 10) || 1,
+    1,
+    Math.max(1, activeQuestions.length)
+  );
+  if (activeQuestions.length === 0) {
+    showNotification('Ta talia nie ma aktywnych pytań do podziału.', 'info');
+    return;
+  }
+
+  const categoryCount = Math.ceil(activeQuestions.length / size);
+  const confirmed = await showConfirmWithOptions(
+    'Podziel talię automatycznie',
+    `Aktualne kategorie zostaną zastąpione przez ${categoryCount} ${getCategoryCountLabel(categoryCount)} po maksymalnie ${size} pytań.`,
+    { confirmLabel: 'Podziel' }
+  );
+  if (!confirmed) return;
+
+  const categories = Array.from({ length: categoryCount }, (_, index) => {
+    const start = index * size + 1;
+    const end = Math.min((index + 1) * size, activeQuestions.length);
+    return {
+      id: `czesc-${index + 1}`,
+      name: `Część ${index + 1} (${start}-${end})`,
+    };
+  });
+
+  const activeCategoryByQuestionId = new Map();
+  activeQuestions.forEach((question, index) => {
+    const categoryIndex = Math.floor(index / size);
+    activeCategoryByQuestionId.set(question.id, categories[categoryIndex].id);
+  });
+
+  const nextQuestions = allQuestions.map((question) => {
+    const categoryId = activeCategoryByQuestionId.get(question.id);
+    if (!categoryId) {
+      if (!question.category) return question;
+      const nextQuestion = { ...question };
+      delete nextQuestion.category;
+      return nextQuestion;
+    }
+    return {
+      ...question,
+      category: categoryId,
+    };
+  });
+
+  storage.saveQuestions(deckId, nextQuestions);
+  saveDeckCategories(deckId, categories, nextQuestions);
+  recomputeDeckQuestionMetadata(deckId, nextQuestions);
+
+  try {
+    await persistDeckContentChanges(deckId);
+  } catch (error) {
+    showNotification(`Nie udało się podzielić talii: ${error.message}`, 'error');
+    return;
+  }
+
+  currentCategory = null;
+  rerenderDeckSettings(deckId);
+  showNotification(`Talia została podzielona na ${categoryCount} ${getCategoryCountLabel(categoryCount)}.`, 'success');
+}
+
+async function renameDeckCategory(deckId, categoryId) {
+  if (!canEditDeckContent(deckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const deckMeta = getDeckMeta(deckId);
+  const categories = normalizeDeckCategoryList(deckMeta?.categories, storage.getQuestions(deckId));
+  const category = categories.find((item) => item.id === categoryId);
+  if (!category) return;
+
+  const entered = await showPrompt({
+    title: 'Zmień nazwę kategorii',
+    text: 'Zmiana nazwy nie zmienia ID kategorii ani przypisanych pytań.',
+    label: 'Nazwa kategorii',
+    initialValue: category.name || category.id,
+    confirmLabel: 'Zapisz',
+    cancelLabel: 'Anuluj',
+    validator: (value) => {
+      const name = normalizeCategoryName(value);
+      if (!name) return 'Nazwa kategorii nie może być pusta.';
+      const exists = categories.some((item) => (
+        item.id !== categoryId
+        && normalizeCategoryName(item.name).toLowerCase() === name.toLowerCase()
+      ));
+      if (exists) return 'Kategoria o takiej nazwie już istnieje.';
+      return true;
+    },
+  });
+  if (entered === null) return;
+
+  const nextCategories = categories.map((item) => (
+    item.id === categoryId ? { ...item, name: normalizeCategoryName(entered) } : item
+  ));
+  saveDeckCategories(deckId, nextCategories);
+  syncOwnedDeckToConvexAsync(deckId);
+  rerenderDeckSettings(deckId);
+  showNotification('Nazwa kategorii została zapisana.', 'success');
+}
+
+async function deleteDeckCategory(deckId, categoryId) {
+  if (!canEditDeckContent(deckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const deckMeta = getDeckMeta(deckId);
+  const questions = storage.getQuestions(deckId);
+  const categories = normalizeDeckCategoryList(deckMeta?.categories, questions);
+  const category = categories.find((item) => item.id === categoryId);
+  if (!category) return;
+
+  const affectedCount = questions.filter((question) => question.category === categoryId).length;
+  const confirmed = await showConfirmWithOptions(
+    'Usuń kategorię',
+    affectedCount > 0
+      ? `Kategoria zostanie usunięta, a ${affectedCount} przypisanych pytań trafi do sekcji bez kategorii.`
+      : 'Kategoria zostanie usunięta z talii.',
+    { confirmLabel: 'Usuń kategorię' }
+  );
+  if (!confirmed) return;
+
+  const nextQuestions = questions.map((question) => {
+    if (question.category !== categoryId) return question;
+    const nextQuestion = { ...question };
+    delete nextQuestion.category;
+    return nextQuestion;
+  });
+  const nextCategories = categories.filter((item) => item.id !== categoryId);
+
+  storage.saveQuestions(deckId, nextQuestions);
+  saveDeckCategories(deckId, nextCategories, nextQuestions);
+  recomputeDeckQuestionMetadata(deckId, nextQuestions);
+
+  try {
+    await persistDeckContentChanges(deckId);
+  } catch (error) {
+    showNotification(`Nie udało się usunąć kategorii: ${error.message}`, 'error');
+    return;
+  }
+
+  if (currentCategory === categoryId) {
+    currentCategory = null;
+  }
+  rerenderDeckSettings(deckId);
+  showNotification('Kategoria została usunięta.', 'success');
 }
 
 function saveDeckMetadata(deckId) {
