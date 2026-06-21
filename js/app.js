@@ -365,7 +365,7 @@ function getQuestionArchiveCounts(deckId) {
 }
 
 function normalizeDeckCategoriesForQuestionCounts(categories = [], questions = []) {
-  if (!Array.isArray(categories)) return null;
+  if (!Array.isArray(categories) || categories.length === 0) return null;
 
   const categoryCounts = new Map();
   for (const question of getActiveQuestions(questions)) {
@@ -374,10 +374,14 @@ function normalizeDeckCategoriesForQuestionCounts(categories = [], questions = [
     categoryCounts.set(categoryId, (categoryCounts.get(categoryId) || 0) + 1);
   }
 
-  return categories.map((category) => ({
-    ...category,
-    questionCount: categoryCounts.get(category.id) || 0,
-  }));
+  const normalized = categories
+    .filter((category) => String(category?.id || '').trim())
+    .map((category) => ({
+      ...category,
+      questionCount: categoryCounts.get(category.id) || 0,
+    }));
+
+  return normalized.length > 0 ? normalized : null;
 }
 
 function recomputeDeckQuestionMetadata(deckId, sourceQuestions = null) {
@@ -2648,6 +2652,27 @@ function getCategoryLabelForDeck(deckMeta, categoryId = currentCategory) {
   return label.replace(/^\d+\.\s*/, '').trim();
 }
 
+function hasDeckCategoryChoices(deckMeta, deckId = '') {
+  if (!deckMeta || !Array.isArray(deckMeta.categories) || deckMeta.categories.length === 0) {
+    return false;
+  }
+
+  const categories = deckMeta.categories.filter((category) => String(category?.id || '').trim());
+  if (categories.length === 0) return false;
+
+  const questions = deckId ? storage.peekQuestions(deckId) : [];
+  const activeCategoryIds = new Set(
+    getActiveQuestions(questions)
+      .map((question) => String(question?.category || '').trim())
+      .filter(Boolean)
+  );
+
+  return categories.some((category) => {
+    const categoryId = String(category.id || '').trim();
+    return activeCategoryIds.has(categoryId) || Number(category.questionCount) > 0;
+  });
+}
+
 function getFilteredQuestionIds(deckId) {
   return getFilteredQuestions(deckId).map(q => q.id);
 }
@@ -2672,7 +2697,7 @@ function navigateToCategorySelect(deckId) {
   const deckMeta = storage.getDecks().find(d => d.id === deckId);
   const deckName = deckMeta ? deckMeta.name : deckId;
 
-  if (!deckMeta || !deckMeta.categories) {
+  if (!hasDeckCategoryChoices(deckMeta, deckId)) {
     navigateToModeSelect(deckId);
     return;
   }
@@ -5707,7 +5732,7 @@ function bindGlobalEvents() {
   });
   document.getElementById('btn-back-from-complete').addEventListener('click', () => {
     const deckMeta = currentDeckId ? storage.getDecks().find(d => d.id === currentDeckId) : null;
-    if (deckMeta && deckMeta.categories) {
+    if (hasDeckCategoryChoices(deckMeta, currentDeckId)) {
       navigateToCategorySelect(currentDeckId);
     } else {
       navigateToDeckList();
@@ -5718,7 +5743,7 @@ function bindGlobalEvents() {
   });
   document.getElementById('btn-back-from-mode-select').addEventListener('click', () => {
     const deckMeta = currentDeckId ? storage.getDecks().find(d => d.id === currentDeckId) : null;
-    if (deckMeta && deckMeta.categories) {
+    if (hasDeckCategoryChoices(deckMeta, currentDeckId)) {
       navigateToCategorySelect(currentDeckId);
     } else {
       navigateToDeckList();
@@ -6187,7 +6212,7 @@ function bindDeckListEvents() {
           return;
         }
       }
-      if (deckMeta && deckMeta.categories) {
+      if (hasDeckCategoryChoices(deckMeta, deckId)) {
         navigateToCategorySelect(deckId);
       } else {
         navigateToModeSelect(deckId);
@@ -7127,7 +7152,7 @@ function bindCompleteEvents() {
   if (btn) {
     btn.addEventListener('click', () => {
       const deckMeta = currentDeckId ? storage.getDecks().find(d => d.id === currentDeckId) : null;
-      if (deckMeta && deckMeta.categories) {
+      if (hasDeckCategoryChoices(deckMeta, currentDeckId)) {
         navigateToCategorySelect(currentDeckId);
       } else {
         navigateToDeckList();
