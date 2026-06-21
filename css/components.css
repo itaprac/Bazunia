@@ -882,6 +882,11 @@
   color: var(--color-text);
 }
 
+.question-section-label {
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
 .content-image {
   margin-top: 10px;
 }

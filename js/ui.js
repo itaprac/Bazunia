@@ -698,8 +698,12 @@ function renderContentImage(item, className, fallbackAlt) {
   `;
 }
 
-function renderQuestionBody(question) {
+function renderQuestionBody(question, options = {}) {
+  const label = typeof options.label === 'string' && options.label.trim()
+    ? `<div class="question-section-label explanation-label">${escapeHtml(options.label.trim())}</div>`
+    : '';
   return `
+    ${label}
     <div class="question-text">${renderLatex(escapeHtml(question.text))}</div>
     ${renderContentImage(question, 'question-image', 'Obrazek do pytania')}
   `;
@@ -805,7 +809,7 @@ export function renderQuestion(
           ${editBtn}
         </div>
       </div>
-      ${renderQuestionBody(question)}
+      ${renderQuestionBody(question, { label: flashcard ? 'Pytanie' : '' })}
       <div class="question-hint">${hint}</div>
       ${answersHtml}
       <div class="check-answer-container">
@@ -947,7 +951,7 @@ export function renderAnswerFeedback(
           ${feedbackEditBtn}
         </div>
       </div>
-      ${renderQuestionBody(question)}
+      ${renderQuestionBody(question, { label: flashcard ? 'Pytanie' : '' })}
       ${answersHtml ? `<div class="answers-list">${answersHtml}</div>` : ''}
       ${flashcardAnswerHtml}
       ${explanationHtml}
@@ -1399,7 +1403,7 @@ export function renderTestQuestion(
           <button class="btn-flag-question${flagged ? ' flagged' : ''}" id="btn-test-flag-question" ${tooltipAttrs(flagTooltip)} aria-label="${flagAria}">${flagged ? '&#x1F6A9;' : '&#x2691;'}</button>
         </div>
       </div>
-      ${renderQuestionBody(question)}
+      ${renderQuestionBody(question, { label: flashcard ? 'Pytanie' : '' })}
       <div class="question-hint">${hint}</div>
       ${answersHtml}
       <div class="check-answer-container">
@@ -1665,7 +1669,7 @@ export function renderBrowse(deckName, questions, options = {}) {
             ${activeControlsHtml}
           </div>
         </div>
-        <div class="browse-item-question">${renderQuestionBody(q)}</div>
+        <div class="browse-item-question">${renderQuestionBody(q, { label: flashcard ? 'Pytanie' : '' })}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
         ${flashcardAnswerHtml}
         ${explanationHtml}
@@ -1984,7 +1988,7 @@ export function renderFlaggedBrowse(deckName, flaggedQuestions, options = {}) {
     return `
       <div class="browse-item flagged-item" data-question-id="${escapeAttr(q.id)}">
         <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
-        <div class="browse-item-question">${renderQuestionBody(q)}</div>
+        <div class="browse-item-question">${renderQuestionBody(q, { label: flashcard ? 'Pytanie' : '' })}</div>
         ${answersHtml ? `<div class="browse-item-answers">${answersHtml}</div>` : ''}
         ${flashcard && (q.answer || q.back || q.answerImage || q.backImage) ? `<div class="browse-flashcard-answer">
           <div class="browse-flashcard-answer-label">Odpowiedź</div>
