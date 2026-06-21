@@ -179,6 +179,22 @@ export function isFlashcard(question) {
   return !question.answers || question.answers.length === 0;
 }
 
+export function isQuestionArchived(question) {
+  return question?.archived === true || question?.isArchived === true;
+}
+
+export function getActiveQuestions(questions = []) {
+  return Array.isArray(questions)
+    ? questions.filter((question) => !isQuestionArchived(question))
+    : [];
+}
+
+export function getArchivedQuestions(questions = []) {
+  return Array.isArray(questions)
+    ? questions.filter((question) => isQuestionArchived(question))
+    : [];
+}
+
 export function normalizeSelectionMode(value, fallback = SELECTION_MODES.MULTIPLE) {
   if (value === SELECTION_MODES.SINGLE || value === SELECTION_MODES.MULTIPLE) {
     return value;

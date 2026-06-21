@@ -41,6 +41,9 @@ import {
 import {
   shuffle,
   isFlashcard,
+  isQuestionArchived,
+  getActiveQuestions,
+  getArchivedQuestions,
   generateId,
   normalizeSelectionMode,
   getDeckDefaultSelectionMode as resolveDeckDefaultSelectionMode,
@@ -163,7 +166,8 @@ let currentCategory = null; // null = all, or category id
 let currentSessionCategory = null; // category snapshot used for active queues/session resume
 let activeDeckScope = 'public'; // 'public' | 'shared' | 'private'
 let showPrivateArchived = false;
-let settingsReturnTo = null; // 'mode-select' or 'deck-list'
+let browseArchiveMode = 'active'; // 'active' | 'archived'
+let settingsReturnTo = null; // 'mode-select' | 'deck-list' | 'browse'
 let appSettingsReturnView = null; // view id to return to from app settings
 let docsReturnView = null;
 let docsLoaded = false;
@@ -339,6 +343,65 @@ function isDeckReadOnlyContent(deckMeta) {
 
 function getDeckMeta(deckId) {
   return storage.getDecks().find((d) => d.id === deckId) || null;
+}
+
+function getQuestionArchiveMode(value = 'active') {
+  return value === 'archived' ? 'archived' : 'active';
+}
+
+function getQuestionsForArchiveMode(questions = [], archiveMode = 'active') {
+  return getQuestionArchiveMode(archiveMode) === 'archived'
+    ? getArchivedQuestions(questions)
+    : getActiveQuestions(questions);
+}
+
+function getQuestionArchiveCounts(deckId) {
+  const questions = storage.getQuestions(deckId)
+    .filter((question) => !currentCategory || question.category === currentCategory);
+  return {
+    active: getActiveQuestions(questions).length,
+    archived: getArchivedQuestions(questions).length,
+  };
+}
+
+function normalizeDeckCategoriesForQuestionCounts(categories = [], questions = []) {
+  if (!Array.isArray(categories)) return null;
+
+  const categoryCounts = new Map();
+  for (const question of getActiveQuestions(questions)) {
+    const categoryId = String(question?.category || '').trim();
+    if (!categoryId) continue;
+    categoryCounts.set(categoryId, (categoryCounts.get(categoryId) || 0) + 1);
+  }
+
+  return categories.map((category) => ({
+    ...category,
+    questionCount: categoryCounts.get(category.id) || 0,
+  }));
+}
+
+function recomputeDeckQuestionMetadata(deckId, sourceQuestions = null) {
+  const questions = Array.isArray(sourceQuestions)
+    ? sourceQuestions
+    : storage.getQuestions(deckId);
+  const decks = storage.getDecks();
+  const idx = decks.findIndex((d) => d.id === deckId);
+  if (idx < 0) return null;
+
+  const activeQuestionCount = getActiveQuestions(questions).length;
+  const nextDeckMeta = {
+    ...decks[idx],
+    questionCount: activeQuestionCount,
+  };
+
+  const nextCategories = normalizeDeckCategoriesForQuestionCounts(nextDeckMeta.categories, questions);
+  if (nextCategories) {
+    nextDeckMeta.categories = nextCategories;
+  }
+
+  decks[idx] = nextDeckMeta;
+  storage.saveDecks(decks);
+  return nextDeckMeta;
 }
 
 function getDeckDefaultSelectionModeForDeckId(deckId) {
@@ -874,6 +937,7 @@ function getTopbarCopy(viewId = 'deck-list') {
     };
   }
 
+  const canManageCurrentDeck = currentDeckId && canEditDeckContent(currentDeckId);
   const copyMap = {
     auth: { title: 'Dostęp', subtitle: 'Logowanie, rejestracja i tryb gościa' },
     study: { title: 'Sesja Anki', subtitle: 'Skupienie na pytaniu i jakości odpowiedzi' },
@@ -882,7 +946,9 @@ function getTopbarCopy(viewId = 'deck-list') {
     'mode-select': { title: 'Tryb nauki', subtitle: 'Anki, test lub przeglądanie treści' },
     test: { title: 'Tryb testu', subtitle: 'Egzaminacyjny przebieg pytań bez wpływu na SRS' },
     'test-result': { title: 'Wynik testu', subtitle: 'Ocena i przegląd odpowiedzi' },
-    browse: { title: 'Przeglądanie', subtitle: 'Lista pytań, filtracja i edycja treści' },
+    browse: canManageCurrentDeck
+      ? { title: 'Zarządzaj talią', subtitle: 'Pytania, archiwum i szybka edycja treści' }
+      : { title: 'Przeglądanie', subtitle: 'Lista pytań i odpowiedzi' },
     settings: { title: 'Ustawienia talii', subtitle: 'Parametry SRS i konfiguracja decka' },
     'app-settings': { title: 'Ustawienia aplikacji', subtitle: 'Wygląd, skróty i zachowanie UI' },
     stats: { title: 'Statystyki', subtitle: 'Podsumowanie aktywności i postęp nauki Anki' },
@@ -1497,6 +1563,7 @@ function buildSharedDeckPayload(deckId) {
   if (!deckMeta || !currentUser) return null;
   if (getDeckScope(deckMeta) !== 'private') return null;
   const questions = storage.getQuestions(deckId);
+  const categories = normalizeDeckCategoriesForQuestionCounts(deckMeta.categories, questions);
   return {
     id: deckMeta.sharedDeckId || `shared_${generateId().replace(/[^a-z0-9_-]/gi, '').toLowerCase()}`,
     owner_user_id: currentUser.id,
@@ -1505,9 +1572,9 @@ function buildSharedDeckPayload(deckId) {
     name: deckMeta.name || deckMeta.id,
     description: deckMeta.description || '',
     deck_group: normalizeDeckGroup(deckMeta.group) || null,
-    categories: Array.isArray(deckMeta.categories) ? deckMeta.categories : null,
+    categories,
     questions,
-    question_count: questions.length,
+    question_count: getActiveQuestions(questions).length,
     is_published: true,
   };
 }
@@ -1516,14 +1583,15 @@ function buildPublicDeckPayload(deckId) {
   const deckMeta = getDeckMeta(deckId);
   if (!deckMeta || getDeckScope(deckMeta) !== 'public') return null;
   const questions = storage.getQuestions(deckId);
+  const categories = normalizeDeckCategoriesForQuestionCounts(deckMeta.categories, questions);
   return {
     id: deckMeta.id,
     name: deckMeta.name || deckMeta.id,
     description: deckMeta.description || '',
     deck_group: normalizeDeckGroup(deckMeta.group) || null,
-    categories: Array.isArray(deckMeta.categories) ? deckMeta.categories : null,
+    categories,
     questions,
-    question_count: questions.length,
+    question_count: getActiveQuestions(questions).length,
     version: Number(deckMeta.version) || 1,
     source: deckMeta.source || 'public-db',
     is_archived: deckMeta.adminOnly === true,
@@ -1694,12 +1762,12 @@ function applyPublicDeckRowsToLocal(rows = [], options = {}) {
 
   for (const row of activePublicRows) {
     const questions = Array.isArray(row.questions) ? row.questions : [];
-    const categories = Array.isArray(row.categories) ? row.categories : null;
+    const categories = normalizeDeckCategoriesForQuestionCounts(row.categories, questions);
     const deckMeta = {
       id: row.id,
       name: row.name || row.id,
       description: row.description || '',
-      questionCount: Number.isFinite(row.question_count) ? row.question_count : questions.length,
+      questionCount: getActiveQuestions(questions).length,
       importedAt: Date.now(),
       version: Number(row.version) || 1,
       scope: 'public',
@@ -1981,7 +2049,7 @@ async function ensurePublicDeckLoaded(deckId) {
       const manifestVersion = Number(manifestEntry.version) || 1;
       const nextMeta = {
         ...decks[idx],
-        questionCount: normalizedQuestions.length,
+        questionCount: getActiveQuestions(normalizedQuestions).length,
         version: Number(data.deck?.version) || manifestVersion || 1,
         syncedVersion: manifestVersion,
       };
@@ -2174,7 +2242,7 @@ async function syncSubscribedDecksForCurrentUser() {
 
     if (sharedRow && sharedRow.is_published !== false) {
       const questions = Array.isArray(sharedRow.questions) ? sharedRow.questions : [];
-      const categories = Array.isArray(sharedRow.categories) ? sharedRow.categories : null;
+      const categories = normalizeDeckCategoriesForQuestionCounts(sharedRow.categories, questions);
       storage.saveQuestions(localDeckId, questions);
       mergeCardsForQuestions(localDeckId, questions);
       const nextMeta = {
@@ -2182,7 +2250,7 @@ async function syncSubscribedDecksForCurrentUser() {
         id: localDeckId,
         name: sharedRow.name || existingMeta?.name || sharedDeckId,
         description: sharedRow.description || '',
-        questionCount: Number.isFinite(sharedRow.question_count) ? sharedRow.question_count : questions.length,
+        questionCount: getActiveQuestions(questions).length,
         importedAt: Date.now(),
         scope: 'subscribed',
         source: 'shared-subscription',
@@ -2207,7 +2275,7 @@ async function syncSubscribedDecksForCurrentUser() {
       continue;
     }
 
-    const localQuestionCount = storage.getQuestions(localDeckId).length;
+    const localQuestionCount = getActiveQuestions(storage.getQuestions(localDeckId)).length;
     const unavailableMeta = {
       ...(existingMeta || {}),
       id: localDeckId,
@@ -2551,12 +2619,16 @@ function navigateToDeckList(scope = activeDeckScope, options = {}) {
   for (const d of visibleDecks) {
     statsMap[d.id] = deck.getDeckStats(d.id, getSettingsForDeck(d.id), appSettings.flaggedInAnki);
   }
+  const editableDeckIds = visibleDecks
+    .filter((deckMeta) => canEditDeckContent(deckMeta.id))
+    .map((deckMeta) => deckMeta.id);
   renderDeckList(visibleDecks, statsMap, {
     activeScope: activeDeckScope,
     sessionMode,
     showPrivateLocked,
     deckListMode: appSettings.deckListMode,
     canTogglePublicDeckVisibility: canManagePublicDecks(),
+    editableDeckIds,
     showPrivateArchived,
     hasArchivedPrivate,
     isLoading: activeDeckScope === 'public' && !skipPublicSync,
@@ -2577,13 +2649,12 @@ function getCategoryLabelForDeck(deckMeta, categoryId = currentCategory) {
 }
 
 function getFilteredQuestionIds(deckId) {
-  if (!currentCategory) return null; // null means all questions
-  const questions = storage.getQuestions(deckId);
-  return questions.filter(q => q.category === currentCategory).map(q => q.id);
+  return getFilteredQuestions(deckId).map(q => q.id);
 }
 
-function getFilteredQuestions(deckId) {
-  const questions = storage.getQuestions(deckId);
+function getFilteredQuestions(deckId, options = {}) {
+  const archiveMode = getQuestionArchiveMode(options.archiveMode || 'active');
+  const questions = getQuestionsForArchiveMode(storage.getQuestions(deckId), archiveMode);
   if (!currentCategory) return questions;
   return questions.filter(q => q.category === currentCategory);
 }
@@ -2726,7 +2797,7 @@ function navigateToModeSelect(deckId) {
   } else {
     stats = deck.getDeckStats(deckId, deckSettings, appSettings.flaggedInAnki);
     if ((stats.totalCards || 0) === 0) {
-      const questionsCount = storage.getQuestions(deckId).length;
+      const questionsCount = getActiveQuestions(storage.getQuestions(deckId)).length;
       if (questionsCount > 0) {
         const allCards = storage.getCards(deckId);
         const today = new Date(); today.setHours(0, 0, 0, 0); const todayMs = today.getTime();
@@ -2764,6 +2835,9 @@ function renderModeSelectActions(deckId) {
 
   const deckMeta = getDeckMeta(deckId);
   const scope = getDeckScope(deckMeta);
+  const manageActionHtml = canEditDeckContent(deckId)
+    ? '<button class="deck-card-menu-item btn-mode-manage-deck" type="button">Zarządzaj talią</button>'
+    : '';
   const shareActionHtml = scope === 'private'
     ? `<button class="deck-card-menu-item btn-mode-share-deck" type="button">${deckMeta?.isShared === true ? 'Wyłącz udostępnianie' : 'Udostępnij'}</button>`
     : '';
@@ -2773,6 +2847,7 @@ function renderModeSelectActions(deckId) {
     <div class="deck-card-menu mode-select-menu" id="mode-select-deck-menu">
       <button class="deck-card-menu-trigger" type="button" data-tooltip="Opcje talii" aria-label="Opcje talii" aria-expanded="false">&#8942;</button>
       <div class="deck-card-menu-dropdown">
+        ${manageActionHtml}
         <button class="deck-card-menu-item btn-mode-deck-settings" type="button">Ustawienia</button>
         <button class="deck-card-menu-item btn-mode-deck-stats" type="button">Statystyki</button>
         <button class="deck-card-menu-item btn-mode-export-deck" type="button">Eksportuj</button>
@@ -2812,6 +2887,12 @@ function bindModeSelectEvents(deckId, stats) {
     event.stopPropagation();
     closeModeMenu();
     navigateToSettings(deckId, 'mode-select');
+  });
+
+  menu?.querySelector('.btn-mode-manage-deck')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    navigateToBrowse(deckId, { archiveMode: 'active' });
   });
 
   menu?.querySelector('.btn-mode-deck-stats')?.addEventListener('click', async (event) => {
@@ -3191,9 +3272,14 @@ function bindTestResultEvents() {
 
 async function navigateToBrowse(deckId, options = {}) {
   currentDeckId = deckId;
+  browseArchiveMode = getQuestionArchiveMode(options.archiveMode || 'active');
   const deckMeta = storage.getDecks().find(d => d.id === deckId);
   const deckName = deckMeta ? deckMeta.name : deckId;
-  const questions = getFilteredQuestions(deckId);
+  const canEdit = canEditDeckContent(deckId);
+  if (!canEdit) {
+    browseArchiveMode = 'active';
+  }
+  const questions = getFilteredQuestions(deckId, { archiveMode: browseArchiveMode });
   const flaggedQuestionIds = deck.getFlaggedQuestionIds(deckId, questions.map((question) => question.id));
   let voteConfig = getVoteConfigForDeck(deckId);
   let voteSummaryByQuestion = {};
@@ -3219,7 +3305,9 @@ async function navigateToBrowse(deckId, options = {}) {
 
   showView('browse');
   renderBrowse(deckName, questions, {
-    canEdit: canEditDeckContent(deckId),
+    canEdit,
+    archiveMode: browseArchiveMode,
+    counts: getQuestionArchiveCounts(deckId),
     voteSummaryByQuestion,
     voteConfig,
     deckDefaultSelectionMode: getDeckDefaultSelectionModeForDeckId(deckId),
@@ -3239,6 +3327,19 @@ async function navigateToBrowse(deckId, options = {}) {
 }
 
 function bindBrowseEvents() {
+  document.querySelectorAll('[data-browse-archive-mode]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = getQuestionArchiveMode(btn.dataset.browseArchiveMode);
+      navigateToBrowse(currentDeckId, { archiveMode: mode });
+    });
+  });
+
+  document.querySelectorAll('[data-browse-section="details"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      navigateToSettings(currentDeckId, 'browse');
+    });
+  });
+
   const searchInput = document.getElementById('browse-search-input');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -3289,6 +3390,27 @@ function bindBrowseEvents() {
       handleBrowseFlagToggle(btn);
     });
   });
+
+  document.querySelectorAll('.btn-browse-archive-question').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      await archiveQuestionFromBrowse(btn.dataset.questionId);
+    });
+  });
+
+  document.querySelectorAll('.btn-browse-restore-question').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      await restoreQuestionFromBrowse(btn.dataset.questionId);
+    });
+  });
+
+  document.querySelectorAll('.btn-browse-delete-question').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      await deleteArchivedQuestionFromBrowse(btn.dataset.questionId);
+    });
+  });
 }
 
 function updateBrowseFlagButtonState(button, flagged) {
@@ -3320,6 +3442,120 @@ function handleBrowseFlagToggle(button) {
 
   updateBrowseFlagButtonState(button, nextFlagged);
   showNotification(nextFlagged ? 'Pytanie oznaczone.' : 'Oznaczenie usunięte.', 'info');
+}
+
+async function archiveQuestionFromBrowse(questionId) {
+  if (!currentDeckId || !questionId) return;
+  if (!canEditDeckContent(currentDeckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const allQuestions = storage.getQuestions(currentDeckId);
+  const questionIndex = allQuestions.findIndex((question) => question.id === questionId);
+  if (questionIndex < 0) return;
+  if (isQuestionArchived(allQuestions[questionIndex])) return;
+
+  const confirmed = await showConfirmWithOptions(
+    'Archiwizuj pytanie',
+    'Pytanie zniknie z nauki, testów i aktywnej listy. Będzie można je później przywrócić z archiwum.',
+    { confirmLabel: 'Archiwizuj' }
+  );
+  if (!confirmed) return;
+
+  allQuestions[questionIndex] = {
+    ...allQuestions[questionIndex],
+    archived: true,
+    archivedAt: Date.now(),
+  };
+  if (currentUser?.id) {
+    allQuestions[questionIndex].archivedBy = currentUser.id;
+  }
+
+  storage.saveQuestions(currentDeckId, allQuestions);
+  recomputeDeckQuestionMetadata(currentDeckId, allQuestions);
+
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się zarchiwizować pytania: ${error.message}`, 'error');
+    return;
+  }
+
+  showNotification('Pytanie przeniesione do archiwum.', 'success');
+  navigateToBrowse(currentDeckId, {
+    archiveMode: 'active',
+    searchQuery: getBrowseSearchQuery(),
+  });
+}
+
+async function restoreQuestionFromBrowse(questionId) {
+  if (!currentDeckId || !questionId) return;
+  if (!canEditDeckContent(currentDeckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const allQuestions = storage.getQuestions(currentDeckId);
+  const questionIndex = allQuestions.findIndex((question) => question.id === questionId);
+  if (questionIndex < 0) return;
+  if (!isQuestionArchived(allQuestions[questionIndex])) return;
+
+  const restoredQuestion = { ...allQuestions[questionIndex] };
+  delete restoredQuestion.archived;
+  delete restoredQuestion.isArchived;
+  delete restoredQuestion.archivedAt;
+  delete restoredQuestion.archivedBy;
+  allQuestions[questionIndex] = restoredQuestion;
+
+  storage.saveQuestions(currentDeckId, allQuestions);
+  recomputeDeckQuestionMetadata(currentDeckId, allQuestions);
+  mergeCardsForQuestions(currentDeckId, allQuestions);
+
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się przywrócić pytania: ${error.message}`, 'error');
+    return;
+  }
+
+  showNotification('Pytanie zostało przywrócone.', 'success');
+  navigateToBrowse(currentDeckId, { archiveMode: 'archived' });
+}
+
+async function deleteArchivedQuestionFromBrowse(questionId) {
+  if (!currentDeckId || !questionId) return;
+  if (!canEditDeckContent(currentDeckId)) {
+    showNotification('Nie masz uprawnień do edycji tej talii.', 'info');
+    return;
+  }
+
+  const allQuestions = storage.getQuestions(currentDeckId);
+  const question = allQuestions.find((item) => item.id === questionId);
+  if (!question || !isQuestionArchived(question)) return;
+
+  const confirmed = await showConfirmWithOptions(
+    'Usuń pytanie trwale',
+    'Tej operacji nie da się cofnąć. Usunięty zostanie też postęp tej karty.',
+    { confirmLabel: 'Usuń trwale' }
+  );
+  if (!confirmed) return;
+
+  const nextQuestions = allQuestions.filter((item) => item.id !== questionId);
+  const nextCards = storage.getCards(currentDeckId).filter((card) => card.questionId !== questionId);
+  storage.saveQuestions(currentDeckId, nextQuestions);
+  storage.saveCards(currentDeckId, nextCards);
+  recomputeDeckQuestionMetadata(currentDeckId, nextQuestions);
+
+  try {
+    await persistDeckContentChanges(currentDeckId);
+  } catch (error) {
+    showNotification(`Nie udało się usunąć pytania: ${error.message}`, 'error');
+    return;
+  }
+
+  showNotification('Pytanie zostało trwale usunięte.', 'success');
+  navigateToBrowse(currentDeckId, { archiveMode: 'archived' });
 }
 
 function openBrowseEditor(index) {
@@ -3939,26 +4175,8 @@ async function saveCreatedQuestion(editor, wrapper) {
   }
   storage.saveQuestions(currentDeckId, allQuestions);
 
-  const cards = storage.getCards(currentDeckId);
-  cards.push(createCard(questionId, currentDeckId));
-  storage.saveCards(currentDeckId, cards);
-
-  const decks = storage.getDecks();
-  const deckIndex = decks.findIndex((d) => d.id === currentDeckId);
-  if (deckIndex >= 0) {
-    const nextDeck = { ...decks[deckIndex], questionCount: allQuestions.length };
-    if (selectedCategory && Array.isArray(nextDeck.categories)) {
-      nextDeck.categories = nextDeck.categories.map((cat) => {
-        if (cat.id !== selectedCategory) return cat;
-        return {
-          ...cat,
-          questionCount: (Number(cat.questionCount) || 0) + 1,
-        };
-      });
-    }
-    decks[deckIndex] = nextDeck;
-    storage.saveDecks(decks);
-  }
+  mergeCardsForQuestions(currentDeckId, allQuestions);
+  recomputeDeckQuestionMetadata(currentDeckId, allQuestions);
 
   try {
     await persistDeckContentChanges(currentDeckId);
@@ -4186,6 +4404,8 @@ function navigateToSettings(deckId, returnTo = 'mode-select') {
 function returnFromSettings() {
   if (settingsReturnTo === 'deck-list') {
     navigateToDeckList();
+  } else if (settingsReturnTo === 'browse') {
+    navigateToBrowse(currentDeckId, { archiveMode: browseArchiveMode });
   } else {
     navigateToModeSelect(currentDeckId);
   }
@@ -5629,8 +5849,9 @@ async function exportDeckToJSON(deckId) {
   if (group) {
     deckPayload.group = group;
   }
-  if (Array.isArray(deckMeta.categories) && deckMeta.categories.length > 0) {
-    deckPayload.categories = cloneJSON(deckMeta.categories, []);
+  const exportCategories = normalizeDeckCategoriesForQuestionCounts(deckMeta.categories, questions);
+  if (Array.isArray(exportCategories) && exportCategories.length > 0) {
+    deckPayload.categories = cloneJSON(exportCategories, []);
   }
 
   const exportPayload = {
@@ -5682,7 +5903,7 @@ async function copyDeckToPrivate(options = {}) {
     id: nextDeckId,
     name: nextName,
     description: sourceDescription,
-    questionCount: sourceQuestions.length,
+    questionCount: getActiveQuestions(sourceQuestions).length,
     importedAt: Date.now(),
     version: 1,
     scope: 'private',
@@ -5695,7 +5916,9 @@ async function copyDeckToPrivate(options = {}) {
     nextDeckMeta.defaultSelectionMode = sourceDefaultSelectionMode;
   }
   if (sourceGroup) nextDeckMeta.group = sourceGroup;
-  if (sourceCategories) nextDeckMeta.categories = sourceCategories;
+  if (sourceCategories) {
+    nextDeckMeta.categories = normalizeDeckCategoriesForQuestionCounts(sourceCategories, sourceQuestions);
+  }
   decks.push(nextDeckMeta);
   storage.saveDecks(decks);
   storage.saveQuestions(nextDeckId, sourceQuestions);
@@ -5974,6 +6197,27 @@ function bindDeckListEvents() {
   });
 
   // Settings buttons on deck cards
+  document.querySelectorAll('.btn-manage-deck').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const deckId = String(btn.dataset.deckId || '').trim();
+      if (!deckId) return;
+      const deckMeta = getDeckMeta(deckId);
+      if (deckMeta && getDeckScope(deckMeta) === 'public') {
+        try {
+          await ensurePublicDeckLoaded(deckId);
+        } catch (error) {
+          showNotification(`Nie udało się załadować talii: ${error.message}`, 'error');
+          return;
+        }
+      }
+      if (!canEditDeckContent(deckId)) {
+        showNotification('Nie masz uprawnień do zarządzania tą talią.', 'info');
+        return;
+      }
+      navigateToBrowse(deckId, { archiveMode: 'active' });
+    });
+  });
+
   document.querySelectorAll('.btn-deck-settings').forEach(btn => {
     btn.addEventListener('click', async () => {
       const deckId = String(btn.dataset.deckId || '').trim();

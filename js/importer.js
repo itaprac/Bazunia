@@ -2,7 +2,7 @@
 
 import { createCard } from './card.js';
 import * as storage from './storage.js';
-import { normalizeSelectionMode, SELECTION_MODES } from './utils.js';
+import { normalizeSelectionMode, SELECTION_MODES, getActiveQuestions } from './utils.js';
 
 const DEFAULT_IMPORT_OPTIONS = {
   scope: 'private',
@@ -316,7 +316,7 @@ function registerImport(data, options = {}) {
     id: data.deck.id,
     name: data.deck.name,
     description: data.deck.description || '',
-    questionCount: data.questions.length,
+    questionCount: getActiveQuestions(data.questions).length,
     importedAt: Date.now(),
     version: data.deck.version || 1,
     scope: importOptions.scope,

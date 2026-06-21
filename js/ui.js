@@ -130,6 +130,7 @@ export function renderDeckList(decks, statsMap, options = {}) {
   const showPrivateLocked = !!options.showPrivateLocked;
   const deckListMode = options.deckListMode === 'classic' ? 'classic' : 'compact';
   const canTogglePublicDeckVisibility = options.canTogglePublicDeckVisibility === true;
+  const editableDeckIds = new Set(Array.isArray(options.editableDeckIds) ? options.editableDeckIds : []);
   const showPrivateArchived = options.showPrivateArchived === true;
   const hasArchivedPrivate = options.hasArchivedPrivate === true;
   const isLoading = options.isLoading === true;
@@ -254,6 +255,7 @@ export function renderDeckList(decks, statsMap, options = {}) {
     const canShowVisibilityToggle = isPublicDeck && canTogglePublicDeckVisibility;
     const canShowArchiveToggle = isOwnPrivateDeck;
     const canShowShareToggle = isOwnPrivateDeck && !isArchivedPrivateDeck;
+    const canManageContent = canOpenDeck && editableDeckIds.has(deck.id);
     const ownerLine = isSubscribedDeck && deck.ownerUsername
       ? `<div class="deck-card-owner">Autor: @${escapeHtml(deck.ownerUsername)}</div>`
       : '';
@@ -276,6 +278,13 @@ export function renderDeckList(decks, statsMap, options = {}) {
       </button>
     `);
 
+    if (canManageContent) {
+      menuItems.push(`
+        <button class="deck-card-menu-item btn-manage-deck" data-deck-id="${escapeAttr(deck.id)}" type="button">
+          Zarządzaj
+        </button>
+      `);
+    }
     if (canOpenDeck) {
       menuItems.push(`
         <button class="deck-card-menu-item btn-deck-settings" data-deck-id="${escapeAttr(deck.id)}" type="button">
@@ -1195,7 +1204,10 @@ export function showPrompt(options = {}) {
 export function renderCategorySelect(deckName, categories, statsMap) {
   setDeckHeaderLabel('category-select-deck-name', deckName);
 
-  const totalQuestions = categories.reduce((sum, c) => sum + c.questionCount, 0);
+  const totalQuestions = categories.reduce((sum, c) => {
+    const stats = statsMap[c.id] || {};
+    return sum + (Number.isFinite(stats.questionCount) ? stats.questionCount : Number(c.questionCount) || 0);
+  }, 0);
   const totalDue = Object.values(statsMap).reduce((sum, s) => sum + s.due, 0);
   const totalNew = Object.values(statsMap).reduce((sum, s) => sum + s.newCount, 0);
 
@@ -1212,11 +1224,14 @@ export function renderCategorySelect(deckName, categories, statsMap) {
 
   const cardsHtml = categories.map(cat => {
     const stats = statsMap[cat.id] || { due: 0, newCount: 0 };
+    const questionCount = Number.isFinite(stats.questionCount)
+      ? stats.questionCount
+      : Number(cat.questionCount) || 0;
     return `
       <div class="category-card" data-category="${escapeAttr(cat.id)}">
         <div class="category-card-num">${escapeHtml(cat.name.split('.')[0] || '')}</div>
         <div class="category-card-name">${escapeHtml(cat.name.replace(/^\d+\.\s*/, ''))}</div>
-        <div class="category-card-count">${cat.questionCount} pytań</div>
+        <div class="category-card-count">${questionCount} pytań</div>
         <div class="category-card-stats">
           ${stats.due > 0 ? `<span class="cat-stat due">${stats.due} do powtórki</span>` : ''}
           ${stats.newCount > 0 ? `<span class="cat-stat new">${stats.newCount} nowych</span>` : ''}
@@ -1236,8 +1251,9 @@ export function renderModeSelect(deckName, deckStats, options = {}) {
   const canStartAnki = (Number(deckStats.totalCards) || 0) > 0;
   const flaggedCount = deckStats.flagged || 0;
   const canEdit = options.canEdit === true;
+  const browseName = canEdit ? 'Zarządzaj' : 'Przeglądanie';
   const browseDesc = canEdit
-    ? 'Lista wszystkich pytań z odpowiedziami + możliwość dodawania nowych pytań'
+    ? 'Pytania, edycja i archiwum talii'
     : 'Lista wszystkich pytań z odpowiedziami';
 
   const flaggedCard = flaggedCount > 0 ? `
@@ -1264,9 +1280,9 @@ export function renderModeSelect(deckName, deckStats, options = {}) {
         <div class="mode-card-name">Test</div>
         <div class="mode-card-desc">Losowy test z wybraną liczbą pytań</div>
       </div>
-      <div class="mode-card ${deckStats.totalCards === 0 ? 'disabled' : ''}" data-mode="browse">
+      <div class="mode-card ${!canEdit && deckStats.totalCards === 0 ? 'disabled' : ''}" data-mode="browse">
         <div class="mode-card-icon">&#x1F50D;</div>
-        <div class="mode-card-name">Przeglądanie</div>
+        <div class="mode-card-name">${browseName}</div>
         <div class="mode-card-desc">${browseDesc}</div>
       </div>
       ${flaggedCard}
@@ -1523,6 +1539,10 @@ export function renderTestResult(deckName, results) {
 
 export function renderBrowse(deckName, questions, options = {}) {
   const canEdit = options.canEdit !== false;
+  const archiveMode = options.archiveMode === 'archived' ? 'archived' : 'active';
+  const counts = options.counts && typeof options.counts === 'object'
+    ? options.counts
+    : { active: questions.length, archived: 0 };
   const voteSummaryByQuestion = options.voteSummaryByQuestion && typeof options.voteSummaryByQuestion === 'object'
     ? options.voteSummaryByQuestion
     : null;
@@ -1535,16 +1555,37 @@ export function renderBrowse(deckName, questions, options = {}) {
     : new Set(Array.isArray(options.flaggedQuestionIds) ? options.flaggedQuestionIds : []);
   setDeckHeaderLabel('browse-deck-name', deckName, options.categoryName || '');
 
+  const manageTabsHtml = canEdit ? `
+    <div class="browse-manage-tabs" role="tablist" aria-label="Zarządzanie talią">
+      <button class="browse-manage-tab ${archiveMode === 'active' ? 'active' : ''}" type="button" data-browse-archive-mode="active" aria-pressed="${archiveMode === 'active' ? 'true' : 'false'}">
+        Pytania <span>${Number(counts.active) || 0}</span>
+      </button>
+      <button class="browse-manage-tab ${archiveMode === 'archived' ? 'active' : ''}" type="button" data-browse-archive-mode="archived" aria-pressed="${archiveMode === 'archived' ? 'true' : 'false'}">
+        Archiwum <span>${Number(counts.archived) || 0}</span>
+      </button>
+      <button class="browse-manage-tab" type="button" data-browse-section="details">
+        Szczegóły
+      </button>
+    </div>
+  ` : '';
+
   const toolbarHtml = `
+    ${manageTabsHtml}
     <div class="browse-toolbar">
       <div class="browse-search">
-        <input type="text" id="browse-search-input" placeholder="Szukaj pytania...">
+        <input type="text" id="browse-search-input" placeholder="${archiveMode === 'archived' ? 'Szukaj w archiwum...' : 'Szukaj pytania...'}">
       </div>
-      ${canEdit ? '<button class="btn btn-primary btn-sm" id="btn-browse-add-question">+ Dodaj pytanie</button>' : ''}
+      ${canEdit && archiveMode === 'active' ? '<button class="btn btn-primary btn-sm" id="btn-browse-add-question">+ Dodaj pytanie</button>' : ''}
     </div>
   `;
 
-  const listHtml = questions.map((q, i) => {
+  const emptyText = archiveMode === 'archived'
+    ? 'Brak zarchiwizowanych pytań.'
+    : (canEdit ? 'Brak aktywnych pytań. Dodaj pierwsze pytanie.' : 'Brak pytań do wyświetlenia.');
+
+  const listHtml = questions.length === 0
+    ? `<div class="browse-empty">${emptyText}</div>`
+    : questions.map((q, i) => {
     const flashcard = isFlashcard(q);
     const isQuestionFlagged = flaggedSet.has(q.id);
     const questionSelectionMode = getEffectiveQuestionSelectionMode(q, deckDefaultSelectionMode);
@@ -1600,16 +1641,28 @@ export function renderBrowse(deckName, questions, options = {}) {
       : 'Oznacz pytanie flagą';
     const flagBtn = `<button class="btn-flag-question btn-browse-flag${isQuestionFlagged ? ' flagged' : ''}" data-question-id="${escapeAttr(q.id)}" data-flagged="${isQuestionFlagged ? '1' : '0'}" ${tooltipAttrs(flagTooltip)} aria-label="${flagTooltip}">${isQuestionFlagged ? '&#x1F6A9;' : '&#x2691;'}</button>`;
     const editBtn = canEdit
+      && archiveMode === 'active'
       ? `<button class="btn-edit-question browse-edit-btn" data-question-index="${i}" ${tooltipAttrs('Edytuj treść pytania')} aria-label="Edytuj treść pytania">&#9998;</button>`
       : '';
+    const archiveBtn = canEdit && archiveMode === 'active'
+      ? `<button class="btn btn-secondary btn-sm btn-browse-archive-question" data-question-id="${escapeAttr(q.id)}">Archiwizuj</button>`
+      : '';
+    const restoreBtn = canEdit && archiveMode === 'archived'
+      ? `<button class="btn btn-secondary btn-sm btn-browse-restore-question" data-question-id="${escapeAttr(q.id)}">Przywróć</button>`
+      : '';
+    const deleteBtn = canEdit && archiveMode === 'archived'
+      ? `<button class="btn btn-danger btn-sm btn-browse-delete-question" data-question-id="${escapeAttr(q.id)}">Usuń trwale</button>`
+      : '';
+    const activeControlsHtml = archiveMode === 'active'
+      ? `${flagBtn}${editBtn}${archiveBtn}`
+      : `${restoreBtn}${deleteBtn}`;
 
     return `
-      <div class="browse-item" data-search-text="${escapeAttr(q.text.toLowerCase())}" data-question-index="${i}">
+      <div class="browse-item${archiveMode === 'archived' ? ' is-archived' : ''}" data-search-text="${escapeAttr(String(q.text || '').toLowerCase())}" data-question-index="${i}" data-question-id="${escapeAttr(q.id)}">
         <div class="browse-item-header">
           <div class="browse-item-number">${flashcard ? 'Fiszka' : 'Pytanie'} ${i + 1}</div>
           <div class="browse-item-controls">
-            ${flagBtn}
-            ${editBtn}
+            ${activeControlsHtml}
           </div>
         </div>
         <div class="browse-item-question">${renderQuestionBody(q)}</div>

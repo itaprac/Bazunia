@@ -1,9 +1,19 @@
 // deck.js — Deck management, queue building, session orchestration
 
 import { CARD_STATES, isNew, isDue, isLearning, isRelearning, isReview, isFlagged, createCard } from './card.js';
-import { startOfDay, formatDate, DAY_MS, MINUTE_MS, shuffle } from './utils.js';
+import { startOfDay, formatDate, DAY_MS, MINUTE_MS, shuffle, isQuestionArchived } from './utils.js';
 import { DEFAULT_SETTINGS } from './sm2.js';
 import * as storage from './storage.js';
+
+function getActiveQuestionIdSet(deckId) {
+  const questions = storage.peekQuestions(deckId);
+  if (!Array.isArray(questions) || questions.length === 0) return null;
+  return new Set(
+    questions
+      .filter((question) => !isQuestionArchived(question))
+      .map((question) => question.id)
+  );
+}
 
 function ensureDeckIdOnCards(deckId, cards) {
   let changed = false;
@@ -57,6 +67,11 @@ export function buildQueues(
   // Repair legacy cards without deckId to keep progress persistence reliable.
   if (changed) {
     storage.saveCards(deckId, cards);
+  }
+
+  const activeQuestionIds = getActiveQuestionIdSet(deckId);
+  if (activeQuestionIds) {
+    cards = cards.filter(c => activeQuestionIds.has(c.questionId));
   }
 
   if (questionIdFilter) {
@@ -237,12 +252,18 @@ export function recordStat(deckId, rating, cardSource) {
 export function getDeckStats(deckId, settings = DEFAULT_SETTINGS, includeFlagged = false) {
   const now = Date.now();
   const today = startOfDay(now);
-  const allCards = storage.peekCards(deckId);
+  const activeQuestionIds = getActiveQuestionIdSet(deckId);
+  const activeQuestionCount = activeQuestionIds ? activeQuestionIds.size : null;
+  const allCards = activeQuestionIds
+    ? storage.peekCards(deckId).filter((card) => activeQuestionIds.has(card.questionId))
+    : storage.peekCards(deckId);
   if (allCards.length === 0) {
     const deckMeta = storage.getDecks().find((d) => d.id === deckId) || null;
-    const fallbackQuestionCount = Number.isFinite(deckMeta?.questionCount)
+    const fallbackQuestionCount = activeQuestionCount != null
+      ? activeQuestionCount
+      : (Number.isFinite(deckMeta?.questionCount)
       ? Math.max(0, Math.floor(deckMeta.questionCount))
-      : 0;
+      : 0);
     const fallbackNewAvailable = Math.min(
       fallbackQuestionCount,
       Math.max(0, Number(settings?.newCardsPerDay) || 0)
@@ -505,18 +526,27 @@ export function getStatsDashboardData(options = {}) {
  */
 export function getDeckCategoryStats(deckId, categories, includeFlagged = false) {
   const now = Date.now();
-  const cards = storage.peekCards(deckId);
+  const activeQuestionIds = getActiveQuestionIdSet(deckId);
+  const cards = activeQuestionIds
+    ? storage.peekCards(deckId).filter((card) => activeQuestionIds.has(card.questionId))
+    : storage.peekCards(deckId);
   const questions = storage.peekQuestions(deckId);
 
   // Build questionId → category map
   const qCatMap = new Map();
   for (const q of questions) {
+    if (isQuestionArchived(q)) continue;
     if (q.category) qCatMap.set(q.id, q.category);
   }
 
   const statsMap = {};
   for (const cat of categories) {
-    statsMap[cat.id] = { due: 0, newCount: 0, learning: 0 };
+    statsMap[cat.id] = { due: 0, newCount: 0, learning: 0, questionCount: 0 };
+  }
+
+  for (const catId of qCatMap.values()) {
+    if (!statsMap[catId]) continue;
+    statsMap[catId].questionCount++;
   }
 
   for (const card of cards) {
@@ -582,6 +612,10 @@ export function setCardFlagged(deckId, questionId, flagged) {
  */
 export function getFlaggedCount(deckId, questionIdFilter = null) {
   let cards = storage.getCards(deckId);
+  const activeQuestionIds = getActiveQuestionIdSet(deckId);
+  if (activeQuestionIds) {
+    cards = cards.filter(c => activeQuestionIds.has(c.questionId));
+  }
   if (questionIdFilter) {
     const filterSet = new Set(questionIdFilter);
     cards = cards.filter(c => filterSet.has(c.questionId));
@@ -594,6 +628,10 @@ export function getFlaggedCount(deckId, questionIdFilter = null) {
  */
 export function getFlaggedQuestionIds(deckId, questionIdFilter = null) {
   let cards = storage.getCards(deckId);
+  const activeQuestionIds = getActiveQuestionIdSet(deckId);
+  if (activeQuestionIds) {
+    cards = cards.filter(c => activeQuestionIds.has(c.questionId));
+  }
   if (questionIdFilter) {
     const filterSet = new Set(questionIdFilter);
     cards = cards.filter(c => filterSet.has(c.questionId));

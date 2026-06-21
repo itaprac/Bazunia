@@ -2039,6 +2039,59 @@
 
 /* --- Browse List --- */
 
+.browse-manage-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 4px;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-warm);
+  overflow-x: auto;
+}
+
+.browse-manage-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 6px 11px;
+  border: 0;
+  border-radius: calc(var(--radius-sm) - 2px);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.78rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.browse-manage-tab span {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.browse-manage-tab:hover {
+  color: var(--color-text);
+  background: var(--color-card-bg);
+}
+
+.browse-manage-tab.active {
+  color: var(--color-primary);
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow);
+}
+
+.browse-manage-tab.active span {
+  color: var(--color-primary);
+}
+
 .browse-toolbar {
   display: flex;
   align-items: center;
@@ -2094,6 +2147,10 @@
   border-color: var(--color-text-muted);
 }
 
+.browse-item.is-archived {
+  background: var(--color-bg-warm);
+}
+
 .browse-item-header {
   display: flex;
   align-items: center;
@@ -2104,7 +2161,9 @@
 .browse-item-controls {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .browse-item-number {
