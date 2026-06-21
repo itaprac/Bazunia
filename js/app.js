@@ -3703,7 +3703,6 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
   if (!list) return;
   const safeValue = String(answer.text || '')
     .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
   const safeImageValue = String(answer.image || answer.imageUrl || answer.image_url || '')
@@ -3716,7 +3715,7 @@ function addCreateAnswerRow(editor, answer = { text: '', correct: false }) {
       <span class="toggle-slider"></span>
     </label>
     <div class="editor-answer-fields">
-      <input type="text" class="editor-answer-text create-answer-text" value="${safeValue}">
+      <textarea class="editor-answer-text create-answer-text" rows="2" placeholder="Treść odpowiedzi">${safeValue}</textarea>
       ${renderEditorImageField(safeImageValue, {
         inputClass: 'editor-answer-image create-answer-image',
         label: 'Obrazek odpowiedzi',

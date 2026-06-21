@@ -880,6 +880,7 @@
   line-height: 1.65;
   margin-bottom: 8px;
   color: var(--color-text);
+  white-space: pre-wrap;
 }
 
 .question-section-label {
@@ -1054,6 +1055,7 @@
   min-width: 0;
   font-size: calc(0.95rem * var(--font-scale));
   line-height: 1.55;
+  white-space: pre-wrap;
 }
 
 .answer-body {
@@ -1083,6 +1085,7 @@
   font-size: calc(1.14rem * var(--font-scale));
   line-height: 1.72;
   color: var(--color-text);
+  white-space: pre-wrap;
 }
 
 .test-open-panel {
@@ -1109,6 +1112,7 @@
   max-width: 72ch;
   font-size: calc(1.14rem * var(--font-scale));
   line-height: 1.72;
+  white-space: pre-wrap;
 }
 
 .test-open-answer-text.muted {
@@ -2004,6 +2008,7 @@
 .test-review-answer-text {
   font-size: inherit;
   line-height: inherit;
+  white-space: pre-wrap;
 }
 
 .test-review-answer-label {
@@ -2227,6 +2232,7 @@
   min-width: 0;
   font-size: inherit;
   line-height: inherit;
+  white-space: pre-wrap;
 }
 
 .browse-answer.correct {
@@ -2258,6 +2264,7 @@
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--color-text);
+  white-space: pre-wrap;
 }
 
 .browse-item-explanation strong {
@@ -2292,6 +2299,7 @@
   font-size: calc(1.04rem * var(--font-scale));
   line-height: 1.68;
   color: var(--color-text);
+  white-space: pre-wrap;
 }
 
 .browse-empty {
@@ -2696,8 +2704,11 @@
   border-radius: var(--radius);
   font-size: 0.95rem;
   font-family: var(--font-family);
+  line-height: 1.45;
+  resize: vertical;
   background: var(--color-card-bg);
   color: var(--color-text);
+  box-sizing: border-box;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 

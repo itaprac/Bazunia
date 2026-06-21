@@ -1704,7 +1704,7 @@ export function renderBrowseCreateEditor(options = {}) {
         <span class="toggle-slider"></span>
       </label>
       <div class="editor-answer-fields">
-        <input type="text" class="editor-answer-text create-answer-text" value="${escapeAttr(a.text || '')}" placeholder="Treść odpowiedzi">
+        <textarea class="editor-answer-text create-answer-text" rows="2" placeholder="Treść odpowiedzi">${escapeHtml(a.text || '')}</textarea>
         ${renderEditorImageField(getContentImageSource(a), {
           inputClass: 'editor-answer-image create-answer-image',
           label: 'Obrazek odpowiedzi',
@@ -1766,7 +1766,7 @@ export function renderBrowseCreateEditor(options = {}) {
           <option value="multiple" ${selectionMode === 'multiple' ? 'selected' : ''}>Wielokrotny wybór</option>
           <option value="single" ${selectionMode === 'single' ? 'selected' : ''}>Pojedynczy wybór</option>
         </select>
-        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
+        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(Enter = nowa linia, przełącznik = poprawna)</span></label>
         <div class="editor-answers-list" id="create-editor-answers-list">
           ${answerRowsHtml}
         </div>
@@ -1824,7 +1824,7 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
         <span class="toggle-slider"></span>
       </label>
       <div class="editor-answer-fields">
-        <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+        <textarea class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" rows="2">${escapeHtml(a.text)}</textarea>
         ${renderEditorImageField(getContentImageSource(a), {
           inputClass: 'editor-answer-image',
           label: 'Obrazek odpowiedzi',
@@ -1896,7 +1896,7 @@ export function renderBrowseEditor(question, index, deckDefaultSelectionMode = '
         </select>
       </div>
       <div class="editor-section">
-        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
+        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(Enter = nowa linia, przełącznik = poprawna)</span></label>
         <div class="editor-answers-list">
           ${answersHtml}
         </div>
@@ -2145,7 +2145,7 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
         <span class="toggle-slider"></span>
       </label>
       <div class="editor-answer-fields">
-        <input type="text" class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" value="${escapeAttr(a.text)}">
+        <textarea class="editor-answer-text" data-answer-id="${escapeAttr(a.id)}" rows="2">${escapeHtml(a.text)}</textarea>
         ${renderEditorImageField(getContentImageSource(a), {
           inputClass: 'editor-answer-image',
           label: 'Obrazek odpowiedzi',
@@ -2219,7 +2219,7 @@ export function renderQuestionEditor(question, deckDefaultSelectionMode = 'multi
         </select>
       </div>
       <div class="editor-section">
-        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(przełącznik = poprawna)</span></label>
+        <label class="editor-label">Odpowiedzi <span class="editor-label-hint">(Enter = nowa linia, przełącznik = poprawna)</span></label>
         <div class="editor-answers-list" id="editor-answers-list">
           ${answersHtml}
         </div>
