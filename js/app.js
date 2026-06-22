@@ -1,7 +1,7 @@
 // app.js — Application entry point, router, study session loop
 
 import { DEFAULT_SETTINGS, processRating, getButtonIntervals } from './sm2.js';
-import { RATINGS, isNew as isNewCard, isReview as isReviewCard, isLearning as isLearningCard, isRelearning as isRelearningCard, isFlagged, createCard } from './card.js';
+import { CARD_STATES, RATINGS, isNew as isNewCard, isReview as isReviewCard, isLearning as isLearningCard, isRelearning as isRelearningCard, isFlagged, createCard } from './card.js';
 import * as deck from './deck.js';
 import * as storage from './storage.js';
 import { importFromFile, importBuiltIn } from './importer.js';
@@ -2780,6 +2780,66 @@ function getTestableQuestions(deckId) {
   ));
 }
 
+function scheduleQuestionsForReview(deckId, questionIds) {
+  const targetIds = new Set(
+    (Array.isArray(questionIds) ? questionIds : [])
+      .map((id) => String(id || '').trim())
+      .filter(Boolean)
+  );
+  if (targetIds.size === 0) return 0;
+
+  const questions = getActiveQuestions(storage.getQuestions(deckId));
+  mergeCardsForQuestions(deckId, questions);
+
+  const now = Date.now();
+  let changed = 0;
+  const nextCards = storage.getCards(deckId).map((card) => {
+    if (!targetIds.has(card.questionId)) return card;
+    changed++;
+    return {
+      ...card,
+      deckId,
+      state: CARD_STATES.REVIEW,
+      interval: Math.max(1, Number(card.interval) || 1),
+      stepIndex: 0,
+      dueDate: now,
+      firstStudiedDate: card.firstStudiedDate || now,
+    };
+  });
+
+  storage.saveCards(deckId, nextCards);
+  return changed;
+}
+
+async function scheduleCurrentScopeForReview(deckId) {
+  const questions = getFilteredQuestions(deckId);
+  if (questions.length === 0) {
+    showNotification('Brak aktywnych pytań do zaplanowania.', 'info');
+    return;
+  }
+
+  const deckMeta = getDeckMeta(deckId);
+  const categoryName = getCategoryLabelForDeck(deckMeta, currentCategory);
+  const scopeLabel = categoryName ? `kategorię "${categoryName}"` : 'całą talię';
+  const confirmed = await showConfirmWithOptions(
+    'Zaplanuj powtórkę',
+    `Ustawić ${questions.length} pytań z zakresu: ${scopeLabel} jako do powtórki teraz?`,
+    { confirmLabel: 'Zaplanuj', cancelLabel: 'Anuluj' }
+  );
+  if (!confirmed) return;
+
+  const scheduledCount = scheduleQuestionsForReview(deckId, questions.map((question) => question.id));
+  if (currentDeckId === deckId) {
+    queues = null;
+    currentCard = null;
+    currentSource = null;
+    studyPhase = null;
+    currentSessionCategory = null;
+  }
+  navigateToModeSelect(deckId);
+  showNotification(`Zaplanowano ${scheduledCount} pytań do powtórki.`, 'success');
+}
+
 function navigateToCategorySelect(deckId) {
   currentDeckId = deckId;
   currentCategory = null;
@@ -2963,6 +3023,7 @@ function renderModeSelectActions(deckId) {
       <div class="deck-card-menu-dropdown">
         ${manageActionHtml}
         <button class="deck-card-menu-item btn-mode-deck-settings" type="button">Ustawienia</button>
+        <button class="deck-card-menu-item btn-mode-schedule-review" type="button">Zaplanuj powtórkę</button>
         <button class="deck-card-menu-item btn-mode-deck-stats" type="button">Statystyki</button>
         <button class="deck-card-menu-item btn-mode-export-deck" type="button">Eksportuj</button>
         ${shareActionHtml}
@@ -3007,6 +3068,12 @@ function bindModeSelectEvents(deckId, stats) {
     event.stopPropagation();
     closeModeMenu();
     navigateToBrowse(deckId, { archiveMode: 'active' });
+  });
+
+  menu?.querySelector('.btn-mode-schedule-review')?.addEventListener('click', async (event) => {
+    event.stopPropagation();
+    closeModeMenu();
+    await scheduleCurrentScopeForReview(deckId);
   });
 
   menu?.querySelector('.btn-mode-deck-stats')?.addEventListener('click', async (event) => {
