@@ -2811,7 +2811,7 @@ function scheduleQuestionsForReview(deckId, questionIds) {
   return changed;
 }
 
-async function scheduleCurrentScopeForReview(deckId) {
+async function scheduleCurrentScopeForReview(deckId, options = {}) {
   const questions = getFilteredQuestions(deckId);
   if (questions.length === 0) {
     showNotification('Brak aktywnych pytań do zaplanowania.', 'info');
@@ -2836,7 +2836,14 @@ async function scheduleCurrentScopeForReview(deckId) {
     studyPhase = null;
     currentSessionCategory = null;
   }
-  navigateToModeSelect(deckId);
+  if (options.returnTo === 'browse') {
+    navigateToBrowse(deckId, {
+      archiveMode: browseArchiveMode,
+      searchQuery: getBrowseSearchQuery(),
+    });
+  } else {
+    navigateToModeSelect(deckId);
+  }
   showNotification(`Zaplanowano ${scheduledCount} pytań do powtórki.`, 'success');
 }
 
@@ -3553,6 +3560,13 @@ function bindBrowseEvents() {
   if (addQuestionBtn) {
     addQuestionBtn.addEventListener('click', () => {
       openBrowseCreateEditor();
+    });
+  }
+
+  const scheduleReviewBtn = document.getElementById('btn-browse-schedule-review');
+  if (scheduleReviewBtn) {
+    scheduleReviewBtn.addEventListener('click', async () => {
+      await scheduleCurrentScopeForReview(currentDeckId, { returnTo: 'browse' });
     });
   }
 

@@ -2115,6 +2115,14 @@
   margin-bottom: 0;
 }
 
+.browse-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .browse-search input {
   width: 100%;
   padding: 12px 18px;
@@ -4148,6 +4156,14 @@ body.app-docs-mode .docs-toc {
   .browse-toolbar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .browse-toolbar-actions {
+    justify-content: stretch;
+  }
+
+  .browse-toolbar-actions .btn {
+    flex: 1 1 160px;
   }
 
   #view-auth {

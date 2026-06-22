@@ -1579,7 +1579,10 @@ export function renderBrowse(deckName, questions, options = {}) {
       <div class="browse-search">
         <input type="text" id="browse-search-input" placeholder="${archiveMode === 'archived' ? 'Szukaj w archiwum...' : 'Szukaj pytania...'}">
       </div>
-      ${canEdit && archiveMode === 'active' ? '<button class="btn btn-primary btn-sm" id="btn-browse-add-question">+ Dodaj pytanie</button>' : ''}
+      <div class="browse-toolbar-actions">
+        ${archiveMode === 'active' ? '<button class="btn btn-secondary btn-sm" id="btn-browse-schedule-review" type="button">Zaplanuj powtórkę</button>' : ''}
+        ${canEdit && archiveMode === 'active' ? '<button class="btn btn-primary btn-sm" id="btn-browse-add-question" type="button">+ Dodaj pytanie</button>' : ''}
+      </div>
     </div>
   `;
 
